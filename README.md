@@ -4,6 +4,12 @@ Decide Less. Live More. EAT recepti i BOOK preporuke knjiga; jedan SPIN daje jed
 
 Prvi razvojni tok: Expo Android/iOS/web klijent, lokalni privatni Content Studio, Workers API i D1 migracija. Najnovije odluke su u [docs/handoff/READ_FIRST_LATEST_DECISIONS.md](docs/handoff/READ_FIRST_LATEST_DECISIONS.md).
 
+## Najbrža proba na Windowsu
+
+Raspakuj source ZIP i dvoklikni **POKRENI_RANDOM.cmd**. Script instalira zaključane pakete samo kada nedostaju ili se lockfile promijeni, pokreće Expo i otvara browser. Node.js 24 LTS treba biti instaliran. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.
+
+Ovo je demo s dva primjera, bez baze, tokena ili cloud servisa. Postojeće API/.env postavke se ne mijenjaju; demo proces ih ignoriše. Detalji su u PROBAJ_PRVO.txt. Za puni urednički tok koristi upute ispod.
+
 ## Lokalno pokretanje bez dodatnih troškova
 
 Node 24 LTS i npm 11. Iz korijena repozitorija:

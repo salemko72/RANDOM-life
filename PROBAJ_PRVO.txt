@@ -1,0 +1,20 @@
+RANDOM - NAJJEDNOSTAVNIJA PROBA (WINDOWS)
+
+1. Raspakuj cijeli ZIP (nemoj pokretati fajl unutar ZIP-a).
+2. Otvori raspakovani folder RANDOM-life.
+3. Dvoklik na POKRENI_RANDOM.cmd.
+
+Prvi put script instalira pakete. Nakon toga otvara aplikaciju u tvom
+pregledniku. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.
+
+Izaberi EAT ili BOOK i klikni SPIN. Probaj detalje i SPIN AGAIN.
+Postoje samo dva jasno oznacena razvojna demo primjera.
+Browser preview nije native emulator.
+
+Ova proba ne pokrece bazu, Content Studio, Cloudflare, OpenAI API ili
+placene servise. Postojeci .env/API URL se ignorise samo za demo proces;
+fajlovi se ne prepisuju. Za kompletan urednicki tok pogledaj docs/DEVELOPMENT.md.
+
+Node.js mora biti instaliran; preporuka je besplatni Node.js 24 LTS.
+PowerShell execution policy override vazi samo za ovaj proces, ne mijenja
+trajnu Windows politiku. Script koristi npm.cmd da izbjegne npx.ps1 blokadu.

@@ -1,0 +1,2 @@
+# Local development only. Generate a random value; never commit the real .dev.vars.
+ADMIN_TOKEN=REPLACE_WITH_RANDOM_LOCAL_VALUE

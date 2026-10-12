@@ -1,0 +1,16 @@
+{
+  "name": "@random/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --ip 127.0.0.1",
+    "db:local": "wrangler d1 migrations apply CONTENT_DB --local"
+  },
+  "dependencies": {
+    "@random/shared": "*"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+dist/
+dist-native/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+*.log
+.superpowers/
+local-media/

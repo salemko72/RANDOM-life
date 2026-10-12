@@ -20,6 +20,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "owner": "salemko",
+    "extra": {
+      "eas": {
+        "projectId": "04bf570d-5e7b-4c51-b1ae-65e6fc60cf5a"
+      }
     }
   }
 }

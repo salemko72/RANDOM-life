@@ -1,7 +1,7 @@
 import { chromium } from "playwright-core";
 import { readFile, stat, unlink } from "node:fs/promises";
 import { createServer } from "node:http";
-import { resolve, extname } from "node:path";
+import { resolve, extname, sep } from "node:path";
 import assert from "node:assert/strict";
 
 const vars = await readFile("services/api/.dev.vars", "utf8");
@@ -20,7 +20,7 @@ const server = createServer(async (req, res) => {
       root,
       "." + new URL(req.url, "http://localhost").pathname,
     );
-    if (path !== root && !path.startsWith(root + "/")) {
+    if (path !== root && !path.startsWith(root + sep)) {
       res.writeHead(403).end();
       return;
     }

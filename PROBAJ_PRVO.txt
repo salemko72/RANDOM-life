@@ -2,7 +2,13 @@ RANDOM - NAJJEDNOSTAVNIJA PROBA (WINDOWS)
 
 1. Raspakuj cijeli ZIP (nemoj pokretati fajl unutar ZIP-a).
 2. Otvori raspakovani folder RANDOM-life.
-3. Dvoklik na POKRENI_RANDOM.cmd.
+3. Za browser: dvoklik na POKRENI_RANDOM.cmd.
+   Za telefon: dvoklik na POKRENI_EXPO_GO.cmd.
+
+EXPO GO: instaliraj najnoviji Expo Go na telefon. Racunar i telefon trebaju
+biti na istom Wi-Fi. Script otvara QR kod u pregledniku. Android: skeniraj
+u Expo Go; iPhone: skeniraj kamerom i otvori u Expo Go. Ne treba kucati
+komande, otvarati cloud bazu ili unositi API kljuceve.
 
 Prvi put script instalira pakete. Nakon toga otvara aplikaciju u tvom
 pregledniku. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.

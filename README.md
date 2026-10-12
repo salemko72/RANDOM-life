@@ -6,7 +6,7 @@ Prvi razvojni tok: Expo Android/iOS/web klijent, lokalni privatni Content Studio
 
 ## Najbrža proba na Windowsu
 
-Raspakuj source ZIP i dvoklikni **POKRENI_RANDOM.cmd**. Script instalira zaključane pakete samo kada nedostaju ili se lockfile promijeni, pokreće Expo i otvara browser. Node.js 24 LTS treba biti instaliran. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.
+Raspakuj source ZIP i dvoklikni **POKRENI_RANDOM.cmd** za browser ili **POKRENI_EXPO_GO.cmd** za telefon. Script instalira zaključane pakete samo kada nedostaju ili se lockfile promijeni i pokreće Expo. Expo Go launcher automatski otvara QR stranicu u browseru; skeniraj telefonom na istom Wi-Fi-ju (Android: Expo Go, iPhone: kamera). Node.js 24 LTS treba biti instaliran. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.
 
 Ovo je demo s dva primjera, bez baze, tokena ili cloud servisa. Postojeće API/.env postavke se ne mijenjaju; demo proces ih ignoriše. Detalji su u PROBAJ_PRVO.txt. Za puni urednički tok koristi upute ispod.
 

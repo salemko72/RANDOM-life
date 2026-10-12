@@ -1,10 +1,12 @@
+param([switch]$ExpoGo)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $projectRoot
 
 try {
     Write-Host ''
-    Write-Host 'RANDOM - brza proba u pregledniku' -ForegroundColor Magenta
+    if ($ExpoGo) { Write-Host 'RANDOM - Expo Go na telefonu' -ForegroundColor Magenta }
+    else { Write-Host 'RANDOM - brza proba u pregledniku' -ForegroundColor Magenta }
     Write-Host 'Demo recept + knjiga. Bez baze, kljuceva ili placenih servisa.'
     Write-Host ''
 
@@ -25,9 +27,13 @@ try {
         Set-Content -Path $stamp -Value $lockHash
     }
 
-    Write-Host 'Pokrecem aplikaciju. Preglednik ce se otvoriti automatski.'
+    if ($ExpoGo) {
+        Write-Host 'Pokrecem Expo Go. U pregledniku ce se pojaviti QR kod.'
+        Write-Host 'Telefon i racunar trebaju biti na istoj Wi-Fi mrezi.'
+    } else { Write-Host 'Pokrecem aplikaciju. Preglednik ce se otvoriti automatski.' }
     Write-Host 'Ostavi ovaj prozor otvoren. Za zaustavljanje pritisni Ctrl+C.'
-    & node.exe scripts/preview.mjs
+    if ($ExpoGo) { & node.exe scripts/preview.mjs --go }
+    else { & node.exe scripts/preview.mjs }
     if ($LASTEXITCODE -ne 0) { throw 'Preview nije zavrsio uredno. Posalji gresku iz ovog prozora.' }
 } catch {
     Write-Host $_.Exception.Message -ForegroundColor Red

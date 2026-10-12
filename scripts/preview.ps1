@@ -28,6 +28,13 @@ try {
     }
 
     if ($ExpoGo) {
+        $env:EXPO_OFFLINE = '0'
+        Write-Host 'Provjeravam Expo prijavu (potrebna za razvojni certifikat).'
+        & node.exe node_modules/expo/bin/cli whoami
+        if ($LASTEXITCODE -ne 0) {
+            & node.exe node_modules/expo/bin/cli login
+            if ($LASTEXITCODE -ne 0) { throw 'Expo prijava nije zavrsena. Koristi isti Expo racun kao na telefonu.' }
+        }
         Write-Host 'Pokrecem Expo Go. U pregledniku ce se pojaviti QR kod.'
         Write-Host 'Telefon i racunar trebaju biti na istoj Wi-Fi mrezi.'
     } else { Write-Host 'Pokrecem aplikaciju. Preglednik ce se otvoriti automatski.' }

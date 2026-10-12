@@ -27,7 +27,7 @@ if (port === 8091) throw new Error('Preview portovi su zauzeti. Zatvori prethodn
 const url = `http://localhost:${port}`;
 const child = spawn(process.execPath, [cli, 'start', ...(expoGo ? ['--go', '--lan'] : ['--web', '--localhost']), '--port', String(port), '--clear'], {
   cwd: resolve(root, 'apps/client'), stdio: 'inherit',
-  env: { ...process.env, EXPO_NO_DOTENV: '1', EXPO_PUBLIC_API_URL: '', EXPO_NO_TELEMETRY: '1', EXPO_OFFLINE: '1', BROWSER: 'none', ...(address ? { REACT_NATIVE_PACKAGER_HOSTNAME: address } : {}) },
+  env: { ...process.env, EXPO_NO_DOTENV: '1', EXPO_PUBLIC_API_URL: '', EXPO_NO_TELEMETRY: '1', EXPO_OFFLINE: expoGo ? '0' : '1', BROWSER: 'none', ...(address ? { REACT_NATIVE_PACKAGER_HOSTNAME: address } : {}) },
 });
 let stopped = false;
 child.on('error', error => { console.error(error.message); stopped = true; process.exitCode = 1; });
@@ -40,7 +40,7 @@ for (let attempt = 0; attempt < 180 && !stopped; attempt++) {
     if (response.ok) {
       if (expoGo) qrPage = await showExpoGoQR(address, port);
       const browserUrl = qrPage?.url ?? url;
-      console.log(`\nRANDOM ${expoGo ? 'Expo Go QR' : 'preview'} je spreman: ${browserUrl}\n${qrPage ? `Expo Go: ${qrPage.link}\n` : ''}Demo mod je aktivan; nema cloud ili AI API poziva.\n`);
+      console.log(`\nRANDOM ${expoGo ? 'Expo Go QR' : 'preview'} je spreman: ${browserUrl}\n${qrPage ? `Expo Go: ${qrPage.link}\n` : ''}Demo mod je aktivan; nema baze ili OpenAI API poziva.\n`);
       if (!noOpen) {
         const command = process.platform === 'win32'
           ? ['powershell.exe', ['-NoLogo', '-NoProfile', '-Command', `Start-Process '${browserUrl}'`]]

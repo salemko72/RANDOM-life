@@ -9,6 +9,9 @@ EXPO GO: instaliraj najnoviji Expo Go na telefon. Racunar i telefon trebaju
 biti na istom Wi-Fi. Script otvara QR kod u pregledniku. Android: skeniraj
 u Expo Go; iPhone: skeniraj kamerom i otvori u Expo Go. Ne treba kucati
 komande, otvarati cloud bazu ili unositi API kljuceve.
+Za povezani Expo projekt launcher provjerava CLI prijavu i po potrebi
+otvara sigurnu Expo prijavu u terminalu. Expo Go radi online radi razvojnog
+certifikata; to ne ukljucuje EAS build, OpenAI API niti placeni servis.
 
 Prvi put script instalira pakete. Nakon toga otvara aplikaciju u tvom
 pregledniku. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.

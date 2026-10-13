@@ -103,7 +103,7 @@ it("manual prompt requires sources, unverified facts and human review without an
 describe('ZIP prompt and AI dietary proposals',()=>{
  it('requests one ZIP, category correction and unconfirmed dietary assessment',()=>{
  const prompt=createChatGPTPrompt('WATCH','recipe ingredients');
- expect(prompt).toContain('RANDOM-content.zip');expect(prompt).toContain('content.json');expect(prompt).toContain('samo prijedlog');expect(prompt).toContain('dietaryAssessment');expect(prompt).toContain('uncertain');expect(prompt).toContain('allergensVerified ostaje false');
+ expect(prompt).toContain('RANDOM-<naslov>.zip');expect(prompt).toContain('najmanje 6 slova');expect(prompt).toContain('RANDOM-inception.zip');expect(prompt).toContain('content.json');expect(prompt).toContain('samo prijedlog');expect(prompt).toContain('dietaryAssessment');expect(prompt).toContain('uncertain');expect(prompt).toContain('allergensVerified ostaje false');
  });
  it('blocks conflicting dietary claims and classification before publication',()=>{
  const recipe=structuredClone(demoItems.find(i=>i.category==='EAT')!);

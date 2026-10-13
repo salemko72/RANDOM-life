@@ -18,8 +18,11 @@
     "build:studio": "npm run build -w @random/studio",
     "build:client": "npm run build:web -w @random/client",
     "check:expo": "npm run check -w @random/client",
-    "smoke:browser": "node scripts/smoke-browser.mjs",
-    "setup:local": "node scripts/local-secret.mjs"
+    "smoke:browser": "npm run build:preview && node scripts/smoke-browser.mjs",
+    "setup:local": "node scripts/local-secret.mjs",
+    "build:preview": "node scripts/build-preview.mjs",
+    "postinstall": "node scripts/build-preview.mjs",
+    "smoke:demo": "npm run build:preview && node scripts/smoke-demo.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261012.1",

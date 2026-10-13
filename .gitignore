@@ -2,6 +2,7 @@ node_modules/
 .expo/
 dist/
 dist-native/
+preview-dist/
 .wrangler/
 .dev.vars
 .env
@@ -11,3 +12,5 @@ dist-native/
 .superpowers/
 local-media/
 .random-repair-backups/
+
+apps/client/src/generated/

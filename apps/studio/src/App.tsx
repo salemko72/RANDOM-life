@@ -6,17 +6,20 @@ import {
   publicationIssues,
   type Category,
   type ContentRecord,
+  type ContentInput,
 } from "@random/shared";
+
+import { previewRequest, putPreviewImage } from "./preview-store";
 
 const labels = {
   draft: "Nacrt",
   review: "Na pregledu",
   published: "Objavljeno",
 };
-export default function App() {
+export default function App({preview = false, samples = demoItems}: {preview?: boolean; samples?: ContentInput[]} = {}) {
   const [api, setApi] = useState("http://127.0.0.1:8787");
   const [token, setToken] = useState("");
-  const [connected, setConnected] = useState(false);
+  const [connected, setConnected] = useState(preview);
   const [items, setItems] = useState<ContentRecord[]>([]);
   const [category, setCategory] = useState<Category>("EAT");
   const [source, setSource] = useState("");
@@ -52,6 +55,7 @@ export default function App() {
     body?: unknown,
     version?: number,
   ) {
+    if (preview) return previewRequest(path, method, body, version);
     const url = new URL(api);
     if (!["localhost", "127.0.0.1", "[::1]"].includes(url.hostname))
       throw new Error(
@@ -90,6 +94,7 @@ export default function App() {
     setItems(data.items);
     setConnected(true);
   }
+  useEffect(() => { if (preview) refresh().catch(e => setMessage(e.message)); }, [preview]);
   async function run(work: () => Promise<void>) {
     if (busy) return;
     setBusy(true);
@@ -201,15 +206,17 @@ export default function App() {
           .replace(/[^a-zA-Z0-9_-]/g, "-")
           .slice(0, 70) || "random-image";
       const name = `${stem}-${crypto.randomUUID().slice(0, 8)}.${blob.type === "image/webp" ? "webp" : "png"}`;
+      if (preview) await putPreviewImage(`/media/${name}`, blob);
       setStaged({ url: URL.createObjectURL(blob), name, bytes: blob.size });
       setOriginal({ url: URL.createObjectURL(file), name: file.name });
       if (json.trim()) {
         const data = JSON.parse(json);
         data.image.path = `/media/${name}`;
+        data.image.rightsConfirmed = false;
         setJson(JSON.stringify(data, null, 2));
       }
       setMessage(
-        "Slika je obrađena lokalno. Preuzmi je u services/api/public/media, sačuvaj nacrt i ponovo provjeri prije objave. Original ostaje dostupan za preuzimanje.",
+        preview ? "Slika je optimizirana i sačuvana u ovom pregledniku. Sačuvaj nacrt i potvrdi prava prije objave." : "Slika je obrađena lokalno. Preuzmi je u services/api/public/media, sačuvaj nacrt i ponovo provjeri prije objave. Original ostaje dostupan za preuzimanje.",
       );
     } finally {
       bitmap.close();
@@ -237,7 +244,7 @@ export default function App() {
         <p className="muted">Content Studio</p>
         <div className="nav active">✦ Urednički stol</div>
         <div className="nav">EAT · recepti</div>
-        <div className="nav">BOOK · knjige</div>
+        <div className="nav">LEARN · knjige</div>
         <div className="aside-note">
           AI priprema.
           <br />
@@ -260,7 +267,7 @@ export default function App() {
           </div>
           <span className="badge">Lokalni razvoj</span>
         </header>
-        <section className="connection">
+        {!preview && <section className="connection">
           <label>
             API adresa
             <input
@@ -289,11 +296,8 @@ export default function App() {
             Poveži Studio
           </button>
           <span>{connected ? "● Povezano" : "○ Nije povezano"}</span>
-        </section>
-        <p className="note">
-          Token se čuva samo u memoriji ovog taba. Studio je dostupan samo
-          lokalno dok ne odaberemo administratorsku prijavu.
-        </p>
+        </section>}
+        <p className="note">{preview ? "Lokalni preview Studio: sadržaj i slike ostaju u ovom pregledniku. Objavljeni izbori se pojavljuju u RANDOM previewu. Bez API troškova." : "Token se čuva samo u memoriji ovog taba. Studio je dostupan samo lokalno dok ne odaberemo administratorsku prijavu."}</p>
         <section className="stats">
           <div>
             <span>EAT</span>
@@ -303,7 +307,7 @@ export default function App() {
             <p>odobrenih recepata</p>
           </div>
           <div>
-            <span>BOOK</span>
+            <span>LEARN</span>
             <strong>
               {count("BOOK")} <small>/ 50</small>
             </strong>
@@ -341,7 +345,7 @@ export default function App() {
                     className={category === c ? "selected" : "quiet"}
                     onClick={() => setCategory(c)}
                   >
-                    {c}
+                    {c === "BOOK" ? "LEARN" : c}
                   </button>
                 ))}
               </div>
@@ -377,7 +381,7 @@ export default function App() {
                 <button
                   className="quiet"
                   onClick={() => {
-                    const demo = demoItems.find(
+                    const demo = samples.find(
                       (i) => i.category === category,
                     )!;
                     setSelected(null);
@@ -443,11 +447,7 @@ export default function App() {
                   </div>
                 </div>
               )}
-              <p className="note">
-                Ovo nije cloud upload. Optimiziranu sliku dodaj u{" "}
-                <code>services/api/public/media</code>; objava provjerava da je
-                asset dostupan. Za public test potreban je novi deployment.
-              </p>
+              <p className="note">{preview ? "Slika se automatski optimizira i čuva lokalno. Original možeš zasebno preuzeti; prije objave potvrdi prava." : <>Ovo nije cloud upload. Optimiziranu sliku dodaj u <code>services/api/public/media</code>; objava provjerava da je asset dostupan. Za public test potreban je novi deployment.</>}</p>
               <fieldset>
                 <legend>Ljudska provjera</legend>
                 <label>

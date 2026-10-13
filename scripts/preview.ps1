@@ -7,7 +7,7 @@ try {
     Write-Host ''
     if ($ExpoGo) { Write-Host 'RANDOM - Expo Go na telefonu' -ForegroundColor Magenta }
     else { Write-Host 'RANDOM - brza proba u pregledniku' -ForegroundColor Magenta }
-    Write-Host 'Demo recept + knjiga. Bez baze, kljuceva ili placenih servisa.'
+    Write-Host 'Demo: 5 recepata + 5 knjiga. Bez baze, kljuceva ili placenih servisa.'
     Write-Host ''
 
     if (-not (Get-Command node.exe -ErrorAction SilentlyContinue) -or -not (Get-Command npm.cmd -ErrorAction SilentlyContinue)) {
@@ -26,6 +26,9 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Instalacija paketa nije zavrsena. Posalji gresku iz ovog prozora.' }
         Set-Content -Path $stamp -Value $lockHash
     }
+
+    & npm.cmd run build:preview
+    if ($LASTEXITCODE -ne 0) { throw 'Priprema previewa nije zavrsena.' }
 
     if ($ExpoGo) {
         $env:EXPO_OFFLINE = '0'

@@ -96,3 +96,8 @@ describe('content ZIP import',()=>{
     expect(()=>readContentPackage(sizes)).toThrow('sizes');
   });
 });
+
+it('recovers unknown optional illustration tags without changing recipe facts',()=>{
+ const raw=source();if(raw.category!=='EAT')throw Error();raw.ingredients[0]={...raw.ingredients[0],name:'Luk',tag:'invented-onion-tag'};raw.ingredients[1]={...raw.ingredients[1],name:'Ingredient without illustration',tag:'invented-illustration'};
+ const {input}=readContentPackage(bundle(raw));if(input.category!=='EAT')throw Error();expect(input.ingredients[0].tag).toBe('onion');expect(input.ingredients[1]).not.toHaveProperty('tag');expect(input.ingredients.map(i=>[i.name,i.quantity,i.unit])).toEqual(raw.ingredients.map(i=>[i.name,i.quantity,i.unit]));expect(input.allergens).toEqual(raw.allergens);expect(input.translations).toEqual(Object.fromEntries(Object.entries(raw.translations!).map(([code,t])=>[code,{...t,reviewed:false}])));
+});

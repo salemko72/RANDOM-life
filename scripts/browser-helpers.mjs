@@ -13,3 +13,11 @@ export async function seedEditor(page,input){
  await page.evaluate(input=>{const key='random-life.studio-editor.v1';const saved=JSON.parse(localStorage.getItem(key)||'{}');localStorage.setItem(key,JSON.stringify({...saved,json:typeof input==='string'?input:JSON.stringify(input)}));},input);
  await page.reload();
 }
+
+export async function reopenLastSaved(page){
+ const id=await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open('random-editorial-preview',1);r.onsuccess=()=>{const db=r.result,q=db.transaction('content').objectStore('content').getAll();q.onsuccess=()=>{const rows=q.result.sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt));db.close();resolve(rows[0]?.id);};q.onerror=reject;};r.onerror=reject;}));
+ if(!id)throw Error('No saved record to reopen');
+ await page.waitForFunction(id=>Array.from(document.querySelectorAll('.library .item')).some(row=>row.getAttribute('data-content-id')===id&&!row.disabled),id);
+ await page.locator('.library .item').evaluateAll((rows,id)=>{const button=rows.find(row=>row.getAttribute('data-content-id')===id);if(!button)throw Error('Saved record not visible');button.click();},id);
+ await page.waitForFunction(id=>{try{return JSON.parse(localStorage.getItem('random-life.studio-editor.v1')).selected?.id===id;}catch{return false;}},id);
+}

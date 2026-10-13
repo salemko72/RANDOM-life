@@ -1,0 +1,7 @@
+# Preview 0.14
+
+Saving a new, nonduplicate item clears the editor for the next source. Its draft remains in the existing library. Editing an existing draft keeps the editor open; a duplicate loads its existing record without overwriting it. Sending a record for review also clears the editor, while retaining its review status, ID and version in the library. Reset includes source, JSON/WIP, review checkboxes, optimized/original image previews, copied-prompt status, ZIP filename/status and repair diagnostics. Category is retained for convenient consecutive entry.
+
+ZIP ingestion now treats unknown ingredient illustration tags as repairable optional metadata. Before strict content validation, an unknown tag is mapped through the ingredient name when there is a known atlas alias; otherwise the tag is removed. The original ingredient name, quantity, unit, order, translations and allergens remain unchanged. Unknown ingredient names continue to enter the cumulative missing-illustrations queue. A visible correction list explains each mapping/removal. Required content fields, archive/image validation and human publication reviews remain strict.
+
+Verification: TypeScript,97 tests including malformed tag recovery, and a browser workflow verifies a ZIP with unknown tags, illustration queue entry, form reset after new save and review, persistence of the review record, separate demo/saved catalog and backup recovery.

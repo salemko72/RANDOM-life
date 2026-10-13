@@ -1,5 +1,5 @@
 import { unzipSync } from 'fflate';
-import { bilingualIssues, contentSchema, type ContentInput } from '@random/shared';
+import { bilingualIssues, contentSchema, ingredientDefinitions, resolveIngredient, type ContentInput } from '@random/shared';
 
 const MB = 1024 * 1024;
 const decoder = new TextDecoder('utf-8', { fatal: true });
@@ -67,7 +67,7 @@ function imageMime(name: string, b: Uint8Array): string {
   return fail('Image extension and binary format must match PNG, JPEG, WebP, or AVIF.');
 }
 
-export function readContentPackage(bytes: Uint8Array): { input: ContentInput; image: {name: string; bytes: Uint8Array; mime: string}; classificationChanged?: boolean } {
+export function readContentPackage(bytes: Uint8Array): { input: ContentInput; image: {name: string; bytes: Uint8Array; mime: string}; classificationChanged?: boolean; corrections?:string[] } {
   const entries = inspect(bytes);
   const images = [...entries.keys()].filter(name => imagePattern.test(name));
   if (images.length !== 1) fail('ZIP package must contain exactly one image.');
@@ -77,6 +77,20 @@ export function readContentPackage(bytes: Uint8Array): { input: ContentInput; im
   const raw = parseJson(files['content.json']!, 'content.json');
   const classificationChanged = raw.category === 'READ';
   if (classificationChanged) raw.category = 'BOOK';
+  const corrections:string[]=[];
+  if(raw.category==='EAT'&&Array.isArray(raw.ingredients)){
+    raw.ingredients=raw.ingredients.map((value:unknown,index:number)=>{
+      if(!value||typeof value!=='object'||Array.isArray(value))return value;
+      const ingredient={...value} as Record<string,unknown>;
+      if(ingredient.tag!==undefined&&!ingredientDefinitions.some(entry=>entry.id===ingredient.tag)){
+        const supplied=(typeof ingredient.tag==='string'?ingredient.tag:JSON.stringify(ingredient.tag)??'unknown').slice(0,80);delete ingredient.tag;
+        const match=typeof ingredient.name==='string'?resolveIngredient(ingredient.name):undefined;
+        if(match)ingredient.tag=match.id;
+        corrections.push(`ingredients.${index}.tag: ${supplied} → ${match?.id??'unmapped; illustration needed'}`);
+      }
+      return ingredient;
+    });
+  }
   const parsed = contentSchema.safeParse(raw);
   if (!parsed.success) return fail(`Invalid content.json fields: ${parsed.error.issues.map(issue=>`${issue.path.join('.')}: ${issue.message}`).join('; ')}.`);
   const input = parsed.data;
@@ -98,5 +112,5 @@ export function readContentPackage(bytes: Uint8Array): { input: ContentInput; im
   input.image.rightsConfirmed = false;
   for (const translation of Object.values(input.translations ?? {})) if (translation) translation.reviewed = false;
   if (input.category === 'EAT') {input.allergensVerified = false;if(input.phosphateAssessment)input.phosphateAssessment.reviewed=false;}
-  return { input, image: {name, bytes:files[name]!, mime:imageMime(name,files[name]!)}, ...(classificationChanged ? {classificationChanged:true} : {}) };
+  return { input, image: {name, bytes:files[name]!, mime:imageMime(name,files[name]!)}, ...(classificationChanged ? {classificationChanged:true} : {}),...(corrections.length?{corrections}:{}) };
 }

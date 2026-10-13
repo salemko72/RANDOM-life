@@ -99,3 +99,7 @@
 .completed-float small{position:absolute;left:48px;top:10px;font-size:8px;white-space:nowrap;padding:5px 7px;border-radius:10px;background:rgba(117,77,63,.6);opacity:0;transform:translateX(-4px);transition:.2s}.completed-float:hover small,.completed-float:focus-visible small,.completed-float.marked small{opacity:1;transform:none}.completed-float.marked{background:#765545!important}.show-details .completed-float{opacity:0;pointer-events:none}
 @media(max-width:600px){.completed-float{left:42px!important;top:214px!important;width:39px!important;height:39px!important}.completed-float small{left:45px;top:8px}.result-title-block .book-author{font-size:11px}.result-actions{bottom:76px}}
 @media(max-height:790px) and (max-width:600px){.completed-float{top:205px!important}}
+
+.wordmark h1{display:flex;align-items:baseline;gap:10px;white-space:nowrap}.wordmark h1 em,.logo-life{font-family:RandomDisplay,Georgia,serif;font-size:.85em;letter-spacing:0;font-weight:400;font-style:italic;color:#896356}.your-spin{font-size:14px}
+
+.wordmark h1 em,.logo-life{font-family:RandomLife,Georgia,serif}

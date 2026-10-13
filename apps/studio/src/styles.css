@@ -502,3 +502,10 @@ code {
 .staged img {
   object-fit: contain;
 }
+
+.brand .logo-life{font-family:Georgia,serif;font-style:italic;letter-spacing:0;font-size:22px;color:#896356}.prompt-copied{background:#d8eadb!important;color:#245336!important;border:1px solid #91b59b!important}.copy-status{background:#e6f2e8;color:#245336;padding:10px;border-radius:12px;font-size:12px}.editing-status{background:#fff2dc;padding:12px;border-radius:12px;font-size:12px}.missing-illustrations{border-bottom:1px solid #ddd;padding-bottom:24px;margin-bottom:24px}.missing-illustrations ul{padding-left:20px;max-height:300px;overflow:auto}.missing-illustrations li{margin:10px 0;overflow-wrap:anywhere}.missing-illustrations small{display:block;color:#777;margin-top:4px}
+
+@font-face{font-family:RandomLife;src:url('../../../node_modules/@expo-google-fonts/dm-serif-display/400Regular_Italic/DMSerifDisplay_400Regular_Italic.ttf') format('truetype');font-style:italic;font-weight:400;font-display:swap}
+.brand{display:flex;align-items:baseline;gap:8px;letter-spacing:2px;font-size:15px;white-space:nowrap}.brand .logo-life{font-family:RandomLife,Georgia,serif}
+
+.saved-revisions{margin:16px 0;font-size:12px}.saved-revisions summary{cursor:pointer}.revision-entry{display:block;width:100%;text-align:left;margin:6px 0;overflow-wrap:anywhere}

@@ -1,5 +1,5 @@
 import type {ContentRecord} from '@random/shared';
-export type ActivityRecord = Omit<Extract<ContentRecord,{category:'BOOK'}>,'category'|'authors'> & {category:'MOVE'|'GO';subtype:string;durationMinutes:number;intensity:'low'|'medium'|'high';equipment:string[];steps:string[];company:'solo'|'pair'|'friends';recommendationReason:string};
+export type ActivityRecord = Extract<ContentRecord,{category:'MOVE'|'GO'}>;
 export const activityCatalog:ActivityRecord[]=[];
 // Local editorial ideas only: source references and routines await editorial review.
 const exerciseSource='https://www.nhs.uk/live-well/exercise/';

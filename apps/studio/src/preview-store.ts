@@ -1,3 +1,4 @@
+import {collectMissing, type MissingIngredient} from './missing-ingredients';
 import { contentSchema, publicationIssues, type ContentRecord } from '@random/shared';
 const builtInMedia = new Set(['/media/lentil-soup.png','/media/reading.png','/media/demo-eat.png','/media/demo-book.png','/media/potato-salad.png','/media/swedish-meatballs.png','/media/menemen.png','/media/moussaka.png']);
 let opening: Promise<IDBDatabase> | undefined;
@@ -9,8 +10,10 @@ function database() {
       items.createIndex('dedup','dedupKey',{unique:true});
       request.result.createObjectStore('media');
       request.result.createObjectStore('events',{autoIncrement:true});
+
     };
-    request.onsuccess=()=>resolve(request.result);
+    request.onsuccess=()=>{request.result.onversionchange=()=>{request.result.close();opening=undefined;};resolve(request.result);};
+    request.onblocked=()=>{opening=undefined;reject(new Error('Zatvori druge otvorene RANDOM Studio tabove pa osvježi; lokalna biblioteka čeka nadogradnju.'));};
     request.onerror=()=>{opening=undefined;reject(new Error('Lokalno čuvanje nije dostupno u ovom pregledniku.'));};
   });
 }
@@ -69,4 +72,16 @@ export async function previewRequest(path: string, method='GET', body?:unknown, 
       } else {item.status=match[2]==='review'?'review':'draft';finish(item,match[2]??'edit',row.dedupKey);}
     };
   });
+}
+
+let ingredientOpening:Promise<IDBDatabase>|undefined;
+function ingredientDatabase(){return ingredientOpening??=new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('random-ingredient-illustrations',1);r.onupgradeneeded=()=>r.result.createObjectStore('missing-ingredients',{keyPath:'key'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>{ingredientOpening=undefined;reject(new Error('Lista ilustracija nije dostupna u lokalnoj pohrani.'));};});}
+export async function readMissingIngredients():Promise<MissingIngredient[]> {
+ const db=await ingredientDatabase();return new Promise((resolve,reject)=>{const r=db.transaction('missing-ingredients').objectStore('missing-ingredients').getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});
+}
+export async function rememberMissingIngredients(input:import('@random/shared').ContentInput):Promise<MissingIngredient[]> {
+ const db=await ingredientDatabase();return new Promise((resolve,reject)=>{const tx=db.transaction('missing-ingredients','readwrite'),store=tx.objectStore('missing-ingredients');let result:MissingIngredient[]=[];const r=store.getAll();r.onsuccess=()=>{result=collectMissing(r.result,input);for(const entry of result)store.put(entry);};tx.oncomplete=()=>resolve(result);tx.onabort=()=>reject(new Error('Lista nedostajućih ilustracija nije sačuvana.'));});
+}
+export async function readPreviewRevisions():Promise<ContentRecord[]> {
+ const db=await database();return new Promise((resolve,reject)=>{const r=db.transaction('events').objectStore('events').getAll();r.onsuccess=()=>{const unique=new Map<string,ContentRecord>();for(const event of r.result){if(event.item?.title)unique.set(`${event.item.category}|${event.item.source?.url}|${event.item.title}`,event.item);}resolve([...unique.values()].reverse());};r.onerror=()=>reject(r.error);});
 }

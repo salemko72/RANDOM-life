@@ -12,22 +12,30 @@ import {
   type ContentInput,
 } from "@random/shared";
 
-import { previewRequest, putPreviewImage } from "./preview-store";
+import { previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
 
+import {unresolvedIngredients, missingAtlasPrompt, type MissingIngredient} from './missing-ingredients';
+const EDITOR_KEY='random-life.studio-editor.v1';
+function readEditor(){try{const data=JSON.parse(localStorage.getItem(EDITOR_KEY)||'{}');return data&&typeof data==='object'&&!Array.isArray(data)?data:{};}catch{return {};}}
 const labels = {
   draft: "Nacrt",
   review: "Na pregledu",
   published: "Objavljeno",
 };
 export default function App({preview = false, samples = demoItems}: {preview?: boolean; samples?: ContentInput[]} = {}) {
+  const [initial] = useState(readEditor);
+  const [revisions,setRevisions]=useState<ContentRecord[]>([]);
+  const [missing,setMissing]=useState<MissingIngredient[]>([]);
+  const [copied,setCopied]=useState<{signature:string;at:string}|null>(initial.copied??null);
+  const [storageWarning,setStorageWarning]=useState('');
   const [api, setApi] = useState("http://127.0.0.1:8787");
   const [token, setToken] = useState("");
   const [connected, setConnected] = useState(preview);
   const [items, setItems] = useState<ContentRecord[]>([]);
-  const [category, setCategory] = useState<Category>("EAT");
-  const [source, setSource] = useState("");
-  const [json, setJson] = useState("");
-  const [selected, setSelected] = useState<ContentRecord | null>(null);
+  const [category, setCategory] = useState<Category>(["EAT","BOOK","WATCH","MOVE","GO"].includes(initial.category)?initial.category:"EAT");
+  const [source, setSource] = useState(typeof initial.source==='string'?initial.source:"");
+  const [json, setJson] = useState(typeof initial.json==='string'?initial.json:"");
+  const [selected, setSelected] = useState<ContentRecord | null>(initial.selected?.id&&contentSchema.safeParse(initial.selected).success?initial.selected:null);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [search, setSearch] = useState("");
@@ -46,6 +54,13 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
     url: string;
     name: string;
   } | null>(null);
+  const promptSignature=JSON.stringify([category,source]);
+  const promptCopied=copied?.signature===promptSignature;
+  useEffect(()=>{try{localStorage.setItem(EDITOR_KEY,JSON.stringify({category,source,json,selected,copied}));setStorageWarning('');}catch{setStorageWarning('Obrazac nije automatski sačuvan: provjeri prostor ili dozvole preglednika.');}},[category,source,json,selected,copied]);
+  useEffect(()=>{readMissingIngredients().then(setMissing).catch(e=>setStorageWarning(e.message));},[]);
+  useEffect(()=>{const timer=setTimeout(()=>{try{const input=contentSchema.parse(JSON.parse(json));rememberMissingIngredients(input).then(setMissing).catch(e=>setStorageWarning(e.message));}catch{}},300);return()=>clearTimeout(timer);},[json]);
+  function resetEditor(){setSelected(null);setJson('');setSource('');setCopied(null);setStaged(null);setOriginal(null);}
+  function downloadLibrary(){const blob=new Blob([JSON.stringify({format:'RANDOM-content-backup-v1',exportedAt:new Date().toISOString(),items,missingIngredients:missing},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='RANDOM-content-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   useEffect(
     () => () => {
       if (staged) URL.revokeObjectURL(staged.url);
@@ -101,6 +116,8 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
   async function refresh() {
     const data = await request("/admin/content");
     setItems(data.items);
+    for(const row of data.items) await rememberMissingIngredients(row);
+    setMissing(await readMissingIngredients());
     setConnected(true);
   }
   useEffect(() => { if (preview) refresh().catch(e => setMessage(e.message)); }, [preview]);
@@ -130,6 +147,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
   }
   async function save() {
     const parsed = parsedInput();
+    if(selected&&(parsed.title!==selected.title||parsed.source.url!==selected.source.url))throw new Error('Naslov ili izvor pripadaju novom unosu. Klikni „Sačuvaj kao novi nacrt“; prethodna stavka neće biti prepisana.');
     const result = await request(
       selected ? `/admin/content/${selected.id}` : "/admin/content",
       selected ? "PUT" : "POST",
@@ -165,9 +183,9 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
       undefined,
       selected.version,
     );
-    setSelected(result.item);
+    if(action==='publish')resetEditor();else setSelected(result.item);
     await refresh();
-    setMessage(labels[result.item.status as keyof typeof labels]);
+    setMessage(action==='publish'?`Objavljeno: ${result.item.title}. Stavka je u Biblioteci; obrazac je spreman za novi unos.`:labels[result.item.status as keyof typeof labels]);
   }
   function updateVerification(
     field: "factsVerified" | "allergensVerified" | "rightsConfirmed",
@@ -261,11 +279,11 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
   return (
     <div className="layout">
       <aside>
-        <div className="brand">R A N D O M</div>
+        <div className="brand">R A N D O M <em className="logo-life">life</em></div>
         <p className="muted">Content Studio</p>
         <div className="nav active">✦ Urednički stol</div>
         <div className="nav">EAT · recepti</div>
-        <div className="nav">READ · knjige</div>
+        <div className="nav">READ · knjige</div><div className="nav">WATCH · filmovi i serije</div><div className="nav">MOVE · aktivnosti</div><div className="nav">GO · izlasci</div>
         <div className="aside-note">
           AI priprema.
           <br />
@@ -351,28 +369,25 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                 <h2>{selected ? "Uredi stavku" : "Nova preporuka"}</h2>
                 <button
                   className="quiet"
-                  onClick={() => {
-                    setSelected(null);
-                    setJson("");
-                    setStaged(null);
-                    setOriginal(null);
-                  }}
+                  onClick={resetEditor}
                 >
                   Novi nacrt +
                 </button>
               </div>
+              {selected&&<p className="editing-status">Uređuješ: {selected.title} · {labels[selected.status]}. Za drugi recept koristi novi nacrt.</p>}
+              {selected&&<button className="quiet" onClick={()=>{setSelected(null);setStaged(null);setOriginal(null);setCopied(null);}}>Sačuvaj kao novi nacrt</button>}
               <div className="tabs">
-                {(["EAT", "BOOK"] as const).map((c) => (
+                {(["EAT", "BOOK", "WATCH", "MOVE", "GO"] as const).map((c) => (
                   <button
                     key={c}
                     className={category === c ? "selected" : "quiet"}
-                    onClick={() => setCategory(c)}
+                    onClick={() => {if(c!==category&&json.trim()&&!window.confirm("Otvoriti prazni obrazac za drugu kategoriju? Sačuvani recept ostaje u biblioteci."))return;if(c!==category)resetEditor();setCategory(c);}}
                   >
                     {c === "BOOK" ? "READ" : c}
                   </button>
                 ))}
               </div>
-              <p className="input-help">1. Pronađi pouzdan izvor za recept ili knjigu. Izaberi EAT za recept, READ za knjigu.</p>
+              <p className="input-help">1. Pronađi pouzdan izvor za recept ili knjigu. Izaberi EAT, READ, WATCH, MOVE ili GO. Svaka kategorija ima svoj JSON i prompt.</p>
               <label>
                 Izvor za ChatGPT
                 <textarea
@@ -380,7 +395,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   placeholder={
                     category === "EAT"
                       ? "URL ili tekst recepta i napomene o izvoru…"
-                      : "Naslov, autor, izdanje i bibliografski izvor…"
+                      : category === "BOOK" ? "Naslov, autor, izdanje i bibliografski izvor…" : category === "WATCH" ? "Naslov filma/serije, pouzdan izvor, platforma i napomene…" : "Aktivnost ili izlazak, pouzdan izvor, oprema, mjesto i napomene…"
                   }
                   value={source}
                   onChange={(e) => setSource(e.target.value)}
@@ -389,26 +404,27 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
               <p className="input-help">2. Unesi link ili tekst izvora, autora i važne napomene. Izvor će biti dio prompta.</p>
               <div className="actions">
                 <button
-                  className="quiet"
+                  className={`quiet ${promptCopied?"prompt-copied":""}`}
+                  disabled={busy||!source.trim()}
                   onClick={() =>
                     run(async () => {
                       await navigator.clipboard.writeText(
                         createChatGPTPrompt(category, source),
                       );
+                      setCopied({signature:promptSignature,at:new Date().toISOString()});
                       setMessage(
                         "Prompt kopiran. Koristi ga ručno u ChatGPT-u i vrati JSON i sliku.",
                       );
                     })
                   }
                 >
-                  Kopiraj ChatGPT prompt ↗
+                  {promptCopied?"✓ Prompt kopiran":"Kopiraj ChatGPT prompt ↗"}
                 </button>
                 <button
                   className="quiet"
                   onClick={() => {
-                    const demo = samples.find(
-                      (i) => i.category === category,
-                    )!;
+                    const demo = samples.find(i => i.category === category);
+                    if(!demo){setMessage("Za ovu kategoriju prvo unesi izvor i kopiraj prompt.");return;}
                     setSelected(null);
                     setJson(
                       JSON.stringify(
@@ -431,6 +447,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   Učitaj demo nacrt
                 </button>
               </div>
+              {promptCopied&&<p className="copy-status" role="status">✓ Kopirano {new Date(copied!.at).toLocaleTimeString("bs",{hour:"2-digit",minute:"2-digit"})}. Spremno za ručno lijepljenje u ChatGPT; slanje nije automatsko.</p>}
               <p className="input-help">3. Kopiraj prompt i ručno ga zalijepi u ChatGPT. Zatraži JSON i fotografiju, pa ih preuzmi. Studio ne šalje API zahtjeve ChatGPT-u i nema API troškova.</p>
               <label>
                 JSON iz ChatGPT-a
@@ -591,10 +608,19 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
             </fieldset>
           </section>
           <section className="library card">
+            <section className="missing-illustrations" aria-label="Namirnice bez ilustracije">
+              <h2>Namirnice bez ilustracije</h2>
+              <p className="input-help">Kumulativna lista iz svih sačuvanih recepata i validnog trenutnog unosa. Ne briše se kad započneš drugi recept. Novi atlas i tagovi moraju se povezati u sljedećoj verziji aplikacije.</p>
+              {unresolvedIngredients(missing).length? <><ul>{unresolvedIngredients(missing).map(entry=><li key={entry.key}><strong>{entry.name}</strong><small>{entry.recipes.join(' · ')}</small></li>)}</ul><button className="quiet" onClick={()=>run(async()=>{await navigator.clipboard.writeText(missingAtlasPrompt(unresolvedIngredients(missing)));setMessage('Popis i prompt za nove ilustracije kopirani.');})}>Kopiraj listu za novi atlas ({unresolvedIngredients(missing).length})</button></>:<p>Nema evidentiranih sastojaka bez ilustracije.</p>}
+            </section>
+
             <div className="section-head">
               <h2>Biblioteka</h2>
               <span>{items.length} stavki</span>
+              <button className="quiet" onClick={downloadLibrary}>Preuzmi backup JSON</button>
             </div>
+            <p className="input-help">Biblioteka je lokalna za ovaj browser i ovu adresu. Preuzmi backup JSON prije brisanja podataka; slike se preuzimaju odvojeno. Osvježenje verzije aplikacije ne briše biblioteku.</p>
+            {preview&&<details className="saved-revisions"><summary onClick={()=>readPreviewRevisions().then(setRevisions).catch(e=>setMessage(e.message))}>Historija sačuvanih unosa · oporavak ranijeg recepta</summary><p className="input-help">Ako je sačuvani recept kasnije promijenio naslov, ovdje potraži njegov raniji zapis. Učitava se kao novi nacrt i traži novu provjeru; ne mijenja postojeću stavku. Unos koji nikad nije sačuvan ovdje nije dostupan.</p>{revisions.map((record,index)=><button className="quiet revision-entry" key={`${record.id}-${index}`} onClick={()=>{resetEditor();setCategory(record.category);setSource(record.source.url);const data=contentSchema.parse(record);setJson(JSON.stringify({...data,factsVerified:false,image:{...data.image,rightsConfirmed:false},...(data.category==='EAT'?{allergensVerified:false}:{})},null,2));setMessage('Ranija verzija učitana kao novi nacrt. Provjeri podatke i sačuvaj.');}}>{record.title} · verzija {record.version}</button>)}</details>}
             <input
               aria-label="Pretraži sadržaj"
               placeholder="Pretraži naslov…"
@@ -629,13 +655,14 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   onClick={() => {
                     setSelected(i);
                     setCategory(i.category);
+                    setSource(i.source.url);setCopied(null);
                     setJson(JSON.stringify(contentSchema.parse(i), null, 2));
                     setStaged(null);
                     setOriginal(null);
                     setMessage("");
                   }}
                 >
-                  <span className="item-category">{i.category}</span>
+                  <span className="item-category">{i.category==="BOOK"?"READ":i.category}</span>
                   <strong>{i.title}</strong>
                   <span className={`status ${i.status}`}>
                     {labels[i.status]}
@@ -645,6 +672,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
               ))}
           </section>
         </div>
+        {!!storageWarning&&<p role="alert">{storageWarning}</p>}
         {!!message && (
           <pre role="status" className="message">
             {message}

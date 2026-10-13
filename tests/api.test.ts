@@ -237,3 +237,12 @@ it("concurrent duplicate imports return the same item without duplicate audit ro
     )?.count,
   ).toBe(1);
 });
+
+it('imports all new categories into D1 using their own structured fields',async()=>{
+ for(const category of ['WATCH','MOVE','GO'] as const){
+  const base={...demoItems[1],title:'API '+category,category,factsVerified:false};
+  const fields=category==='WATCH'?{format:'Film',year:2020,durationLabel:'90 min',platform:'Test',genres:['Drama'],recommendationReason:'Za test'}:{subtype:category==='MOVE'?'yoga':'cafe',durationMinutes:15,intensity:'low',equipment:[],steps:['Provjeri uslove.'],company:'solo',genres:['Mir'],recommendationReason:'Za test'};
+  const created=await call('/admin/content','POST',{...base,...fields});
+  expect(created.status).toBe(201);expect(created.data.item.category).toBe(category);
+ }
+});

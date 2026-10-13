@@ -46,6 +46,12 @@ const base = {
     generated: z.boolean(),
   }),
 };
+const activityFields = {
+ subtype: text.max(60), durationMinutes:z.number().int().min(1).max(1440),
+ intensity:z.enum(['low','medium','high']), equipment:z.array(text.max(160)).max(50),
+ steps:z.array(text).min(1).max(60), company:z.enum(['solo','pair','friends']),
+ genres:z.array(text.max(60)).min(1).max(20), recommendationReason:text,
+};
 export const contentSchema = z.discriminatedUnion("category", [
   z.object({
     ...base,
@@ -80,6 +86,9 @@ export const contentSchema = z.discriminatedUnion("category", [
       .optional(),
     pageCount: z.number().int().positive().optional(),
   }),
+  z.object({...base,category:z.literal('WATCH'),format:z.enum(['Film','Serija']),year:z.number().int().min(1888).max(2100),durationLabel:text.max(60),platform:text.max(100),genres:z.array(text.max(60)).min(1).max(20),recommendationReason:text}),
+  z.object({...base,...activityFields,category:z.literal('MOVE')}),
+  z.object({...base,...activityFields,category:z.literal('GO')}),
 ]);
 export type ContentInput = z.infer<typeof contentSchema>;
 export type Category = ContentInput["category"];
@@ -105,7 +114,7 @@ export function publicationIssues(item: ContentInput): string[] {
   return issues;
 }
 export const spinContextSchema = z.object({
-  category: z.enum(["EAT", "BOOK"]),
+  category: z.enum(["EAT", "BOOK", "WATCH", "MOVE", "GO"]),
   language: z.string().trim().min(2).max(16).optional(),
   excludedAllergens: z.array(allergenSchema).max(13).default([]),
   requiredDietaryTags: z.array(text.max(60)).max(20).default([]),

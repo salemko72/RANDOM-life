@@ -1,8 +1,6 @@
 import type {ActivityRecord} from './activities';
 import type {ContentRecord} from '@random/shared';
-export type WatchRecord = Omit<Extract<ContentRecord,{category:'BOOK'}>,'category'|'authors'> & {
- category:'WATCH';format:'Film'|'Serija';year:number;durationLabel:string;platform:'Netflix';
-};
+export type WatchRecord = Extract<ContentRecord,{category:'WATCH'}>;
 export type PreviewRecord = ContentRecord | WatchRecord | ActivityRecord;
 // Local demo only. No streaming integration, availability lookup or D1 publication.
 const common={category:'WATCH' as const,status:'published' as const,version:1,updatedAt:'2026-10-13T00:00:00Z',approvedBy:'preview-fixture',approvedAt:'2026-10-13T00:00:00Z',language:'bs',factsVerified:true,tags:[],platform:'Netflix' as const};

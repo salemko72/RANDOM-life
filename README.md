@@ -61,3 +61,5 @@ Aktuelni stalni demo: https://random-life-preview.pages.dev/ — Studio: https:/
 Raspored oznaka uz naslov (verzija 0.4): [docs/PREVIEW_0_4.md](docs/PREVIEW_0_4.md).
 
 Najnovije korekcije, lokalni profil, kontekstualni paneli i atlas 100 sastojaka: [preview 0.5](docs/PREVIEW_0_5.md).
+
+Najnoviji logo i Studio tok: [preview 0.6](docs/PREVIEW_0_6.md). Predložena struktura jezika: [višejezični podaci](docs/MULTILINGUAL_DATA_PLAN.md).

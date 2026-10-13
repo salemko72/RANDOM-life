@@ -9,7 +9,7 @@ const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['-
 try{
  const p=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});const errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`http://127.0.0.1:${server.address().port}/RANDOM_INTERACTIVE_PREVIEW.html`);await p.getByRole('button',{name:'UĐI U RANDOM'}).click();
- for(const category of ['EAT','LEARN']){
+ for(const category of ['EAT','LEARN','WATCH']){
   const titles=[];
   for(let i=0;i<5;i++){
    const old=await p.locator('.result-copy h2').textContent().catch(()=>null);
@@ -21,7 +21,20 @@ try{
   assert.equal(new Set(titles).size,5);
   console.log(category+': '+titles.join(' | '));
  }
+ await p.getByRole('button',{name:'POGLEDAJ DETALJE'}).click();await p.getByText('NETFLIX · DEMO',{exact:true}).waitFor();
+ const automatic=await browser.newPage({viewport:{width:430,height:932},reducedMotion:'reduce'});
+ await automatic.goto(`http://127.0.0.1:${server.address().port}/RANDOM_INTERACTIVE_PREVIEW.html`);await automatic.getByRole('button',{name:'UĐI U RANDOM'}).click();
+ const automaticTitles=[];const categories=[];
+ for(let n=0;n<15;n++){
+  const old=await automatic.locator('.result-copy h2').textContent().catch(()=>null);
+  await automatic.locator('.rail-respin').click();
+  await automatic.waitForFunction(old=>{const e=document.querySelector('.result-scene.scene-visible .result-copy h2');return e&&e.textContent!==old},old);
+  automaticTitles.push(await automatic.locator('.result-copy h2').textContent());categories.push(await automatic.locator('.rail-category.selected').getAttribute('aria-label'));
+ }
+ assert.equal(new Set(automaticTitles).size,15);for(const c of ['EAT','LEARN','WATCH'])assert.equal(categories.filter(v=>v===c).length,5);
+
+ console.log('PASS: 15 automatic spins exhaust all three categories without duplicate recommendations.');
  assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  await p.goto(`http://127.0.0.1:${server.address().port}/RANDOM_CONTENT_STUDIO.html`);await p.getByRole('heading',{name:'Tvoj urednički stol.'}).waitFor();assert.deepEqual(errors,[]);
- console.log('PASS: all ten unique demo choices, decoded embedded photos, phone width, separate Studio HTML.');
+ console.log('PASS: all fifteen unique demo choices, decoded embedded photos, phone width, separate Studio HTML.');
 }finally{await browser.close();await new Promise(r=>server.close(r));}

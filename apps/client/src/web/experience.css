@@ -33,7 +33,10 @@
 
 .welcome-screen{transition:opacity .45s ease,transform .5s ease}.welcome-screen.welcome-leaving{opacity:0;transform:translateY(-10px);pointer-events:none;animation:none}.panel-scrim{transition:opacity .22s ease}.panel-scrim.panel-closing{opacity:0;pointer-events:none;animation:none}.panel-closing .floating-panel{transform:translateY(12px) scale(.985);transition:transform .22s;animation:none}
 
-.photo-potato-salad,.photo-swedish-meatballs,.photo-menemen,.photo-moussaka{background-image:url('./assets/demo-foods.png');background-size:200% 200%}
+.photo-potato-salad,.photo-swedish-meatballs,.photo-menemen,.photo-moussaka{background-image:url('./assets/demo-foods.png');background-size:auto 200%}
 .photo-potato-salad{background-position:left top}.photo-swedish-meatballs{background-position:right top}.photo-menemen{background-position:left bottom}.photo-moussaka{background-position:right bottom}
 
 .result-copy h2.long-title{font-size:35px}@media(max-width:600px){.result-copy h2.long-title{font-size:30px}}
+
+.photo-watch-enola,.photo-watch-adam,.photo-watch-dark,.photo-watch-wednesday,.photo-watch-queens{background-image:url('./assets/watch-scenes.png');background-size:auto 300%;background-repeat:no-repeat}
+.photo-watch-enola{background-position:left top}.photo-watch-adam{background-position:right top}.photo-watch-dark{background-position:left center}.photo-watch-wednesday{background-position:right center}.photo-watch-queens{background-position:left bottom}

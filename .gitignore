@@ -14,3 +14,5 @@ local-media/
 .random-repair-backups/
 
 apps/client/src/generated/
+
+preview-site/

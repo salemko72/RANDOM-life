@@ -22,7 +22,8 @@
     "setup:local": "node scripts/local-secret.mjs",
     "build:preview": "node scripts/build-preview.mjs",
     "postinstall": "node scripts/build-preview.mjs",
-    "smoke:demo": "npm run build:preview && node scripts/smoke-demo.mjs"
+    "smoke:demo": "npm run build:preview && node scripts/smoke-demo.mjs",
+    "deploy:preview": "npm run build:preview && node scripts/stage-preview.mjs && wrangler pages deploy apps/client/preview-site --project-name random-life-preview --branch main"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261012.1",

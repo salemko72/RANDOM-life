@@ -1,4 +1,5 @@
 import { z } from "zod";
+import {ingredientDefinitions} from "./ingredient-tags";
 
 const text = z.string().trim().min(1).max(2000);
 export const allergenSchema = z.enum([
@@ -55,6 +56,7 @@ export const contentSchema = z.discriminatedUnion("category", [
       .array(
         z.object({
           name: text.max(160),
+          tag: z.string().refine(tag=>ingredientDefinitions.some(i=>i.id===tag), "Nepoznat tag sastojka").optional(),
           quantity: z.number().positive(),
           unit: text.max(40),
         }),

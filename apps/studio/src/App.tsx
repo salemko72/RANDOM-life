@@ -4,6 +4,9 @@ import {
   createChatGPTPrompt,
   demoItems,
   publicationIssues,
+  ingredientDefinitions,
+  resolveIngredient,
+  tagIngredients,
   type Category,
   type ContentRecord,
   type ContentInput,
@@ -32,6 +35,12 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
     url: string;
     name: string;
     bytes: number;
+    width: number;
+    height: number;
+    originalWidth: number;
+    originalHeight: number;
+    originalBytes: number;
+    format: string;
   } | null>(null);
   const [original, setOriginal] = useState<{
     url: string;
@@ -117,7 +126,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
           .map((i) => `${i.path.join(".")}: ${i.message}`)
           .join("\n"),
       );
-    return parsed.data;
+    return tagIngredients(parsed.data);
   }
   async function save() {
     const parsed = parsedInput();
@@ -128,7 +137,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
       selected?.version,
     );
     setSelected(result.item);
-    setJson(JSON.stringify(contentSchema.parse(result.item), null, 2));
+    setJson(JSON.stringify(tagIngredients(contentSchema.parse(result.item)), null, 2));
     await refresh();
     setMessage(
       result.duplicate
@@ -140,7 +149,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
     if (!selected) return;
     if (
       JSON.stringify(parsedInput()) !==
-      JSON.stringify(contentSchema.parse(selected))
+      JSON.stringify(tagIngredients(contentSchema.parse(selected)))
     )
       throw new Error("Prvo sačuvaj izmjene JSON-a.");
     if (
@@ -181,17 +190,19 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
       file.size > 15 * 1024 * 1024
     )
       throw new Error("Izaberi PNG, JPG, WebP ili AVIF do 15 MB.");
+    setMessage("Slika se obrađuje u pregledniku: čitanje i proporcionalno smanjivanje…");
     const bitmap = await createImageBitmap(file);
     try {
       if (bitmap.width * bitmap.height > 40_000_000)
         throw new Error("Slika je prevelika (maksimalno 40 megapiksela).");
       const canvas = document.createElement("canvas");
       const ratio = Math.min(1, 1440 / Math.max(bitmap.width, bitmap.height));
-      canvas.width = Math.round(bitmap.width * ratio);
-      canvas.height = Math.round(bitmap.height * ratio);
+      canvas.width = Math.max(1, Math.round(bitmap.width * ratio));
+      canvas.height = Math.max(1, Math.round(bitmap.height * ratio));
       canvas
         .getContext("2d")!
         .drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      setMessage("Priprema optimizirane slike bez rezanja i razvlačenja…");
       const blob = await new Promise<Blob>((resolve, reject) =>
         canvas.toBlob(
           (b) =>
@@ -207,7 +218,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
           .slice(0, 70) || "random-image";
       const name = `${stem}-${crypto.randomUUID().slice(0, 8)}.${blob.type === "image/webp" ? "webp" : "png"}`;
       if (preview) await putPreviewImage(`/media/${name}`, blob);
-      setStaged({ url: URL.createObjectURL(blob), name, bytes: blob.size });
+      setStaged({ url: URL.createObjectURL(blob), name, bytes: blob.size, width: canvas.width, height: canvas.height, originalWidth: bitmap.width, originalHeight: bitmap.height, originalBytes: file.size, format: blob.type === "image/webp" ? "WebP" : "PNG" });
       setOriginal({ url: URL.createObjectURL(file), name: file.name });
       if (json.trim()) {
         const data = JSON.parse(json);
@@ -228,7 +239,17 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
   } catch {
     /* preserve pasted input */
   }
-  const valid = parsed?.success ? parsed.data : null;
+  const valid = parsed?.success ? tagIngredients(parsed.data) : null;
+  function mapIngredient(index: number, tag: string) {
+    try {
+      const data = JSON.parse(json);
+      if (tag) data.ingredients[index].tag = tag;
+      else delete data.ingredients[index].tag;
+      setJson(JSON.stringify(data, null, 2));
+    } catch {
+      setMessage("Prvo unesi validan JSON recepta.");
+    }
+  }
   const issues = valid ? publicationIssues(valid) : [];
   const count = (c: Category) =>
     items.filter(
@@ -244,7 +265,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
         <p className="muted">Content Studio</p>
         <div className="nav active">✦ Urednički stol</div>
         <div className="nav">EAT · recepti</div>
-        <div className="nav">LEARN · knjige</div>
+        <div className="nav">READ · knjige</div>
         <div className="aside-note">
           AI priprema.
           <br />
@@ -278,6 +299,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                 setConnected(false);
               }}
             />
+            <small className="input-help">Unesi adresu lokalno pokrenutog API-ja, pa poveži Studio.</small>
           </label>
           <label>
             Lokalni admin token
@@ -292,6 +314,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
               }}
             />
           </label>
+          <p className="input-help">Token preuzmi iz svoje lokalne konfiguracije; ne šalji ga u ChatGPT.</p>
           <button disabled={busy || !token} onClick={() => run(refresh)}>
             Poveži Studio
           </button>
@@ -307,7 +330,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
             <p>odobrenih recepata</p>
           </div>
           <div>
-            <span>LEARN</span>
+            <span>READ</span>
             <strong>
               {count("BOOK")} <small>/ 50</small>
             </strong>
@@ -345,10 +368,11 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                     className={category === c ? "selected" : "quiet"}
                     onClick={() => setCategory(c)}
                   >
-                    {c === "BOOK" ? "LEARN" : c}
+                    {c === "BOOK" ? "READ" : c}
                   </button>
                 ))}
               </div>
+              <p className="input-help">1. Pronađi pouzdan izvor za recept ili knjigu. Izaberi EAT za recept, READ za knjigu.</p>
               <label>
                 Izvor za ChatGPT
                 <textarea
@@ -362,6 +386,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   onChange={(e) => setSource(e.target.value)}
                 />
               </label>
+              <p className="input-help">2. Unesi link ili tekst izvora, autora i važne napomene. Izvor će biti dio prompta.</p>
               <div className="actions">
                 <button
                   className="quiet"
@@ -406,6 +431,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   Učitaj demo nacrt
                 </button>
               </div>
+              <p className="input-help">3. Kopiraj prompt i ručno ga zalijepi u ChatGPT. Zatraži JSON i fotografiju, pa ih preuzmi. Studio ne šalje API zahtjeve ChatGPT-u i nema API troškova.</p>
               <label>
                 JSON iz ChatGPT-a
                 <textarea
@@ -417,6 +443,34 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   placeholder="Zalijepi JSON bez markdown oznaka…"
                 />
               </label>
+              <p className="input-help">4. Zalijepi samo JSON, bez oznaka markdowna. Provjeri naslov, izvor i podatke; demo služi kao primjer.</p>
+              {valid?.category === "EAT" && (
+                <section className="ingredient-mapper" aria-label="Povezivanje sastojaka">
+                  <h3>Ikone sastojaka</h3>
+                  <p className="input-help">Prepoznati nazivi automatski dobiju oznaku pri čuvanju. Za ostale izaberi odgovarajući sastojak; naziv i količina ostaju tvoji. Oznaka ikone ne potvrđuje alergene.</p>
+                  {valid.ingredients.map((ingredient, index) => {
+                    const definition = resolveIngredient(ingredient.name, ingredient.tag);
+                    return (
+                      <div className="ingredient-row" key={index}>
+                        {definition && <span className="ingredient-sprite" aria-hidden="true" style={{backgroundPosition: `${definition.column * 100 / 9}% ${definition.row * 100 / 9}%`}} />}
+                        <label>
+                          {ingredient.name}
+                          <select aria-label={`Ikona za ${ingredient.name}`} value={definition?.id ?? ""} onChange={e => mapIngredient(index, e.target.value)}>
+                            <option value="">Bez prepoznate oznake</option>
+                            {ingredientDefinitions.map(entry => <option key={entry.id} value={entry.id}>{entry.name} · {entry.id}</option>)}
+                          </select>
+                          <small className="input-help">{definition ? `Oznaka: ${definition.id}` : "Naziv nije prepoznat; izaberi ikonu ako postoji."}</small>
+                        </label>
+                      </div>
+                    );
+                  })}
+                  <details>
+                    <summary>Pregled svih 100 sastojaka</summary>
+                    <div className="ingredient-atlas-grid">{ingredientDefinitions.map(entry => <div key={entry.id} title={entry.id}><span className="ingredient-sprite" aria-hidden="true" style={{backgroundPosition: `${entry.column * 100 / 9}% ${entry.row * 100 / 9}%`}} /><span>{entry.name}</span></div>)}</div>
+                  </details>
+                  <button className="quiet" onClick={() => run(async () => { await navigator.clipboard.writeText(ingredientDefinitions.map(entry => `${entry.id}: ${entry.name}`).join("\n")); setMessage("Lista oznaka sastojaka je kopirana."); })}>Kopiraj listu oznaka</button>
+                </section>
+              )}
               <label className="upload">
                 + Dodaj sliku iz ChatGPT-a
                 <input
@@ -429,6 +483,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   }}
                 />
               </label>
+              <p className="input-help">5. Dodaj preuzetu fotografiju. Obrada je lokalna: duža stranica najviše 1440 px, bez povećavanja, rezanja i razvlačenja; WebP kvaliteta 84%. Original ostaje dostupan.</p>
               {staged && (
                 <div className="staged">
                   <img src={staged.url} alt="Lokalni pregled uvezene slike" />
@@ -437,7 +492,9 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                       Preuzmi optimiziranu sliku
                     </a>
                     <p>
-                      {staged.name} · {Math.round(staged.bytes / 1024)} KB
+                      {staged.name} · {staged.width} × {staged.height} px · {staged.format} · {Math.round(staged.bytes / 1024)} KB
+                    </p>
+                    <p>Original: {staged.originalWidth} × {staged.originalHeight} px · {Math.round(staged.originalBytes / 1024)} KB
                     </p>
                     {original && (
                       <a href={original.url} download={original.name}>
@@ -486,6 +543,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   Potvrđujem prava na sliku
                 </label>
               </fieldset>
+              <p className="input-help">6. Lično provjeri činjenice i izvor, sastojke i alergene te pravo korištenja fotografije. Označi samo ono što si stvarno provjerio/la.</p>
               {!!issues.length && (
                 <ul className="warnings">
                   {issues.map((i) => (
@@ -529,6 +587,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
                   </>
                 )}
               </div>
+              <p className="input-help">7. Sačuvaj nacrt, pošalji ga na pregled i nakon provjere odobri objavu. Svaku novu izmjenu prvo sačuvaj i ponovo pregledaj.</p>
             </fieldset>
           </section>
           <section className="library card">
@@ -542,6 +601,7 @@ export default function App({preview = false, samples = demoItems}: {preview?: b
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+            <p className="input-help">Pronađi sačuvanu stavku po naslovu i otvori je za izmjenu ili pregled. Status pokazuje da li je nacrt, na pregledu ili objavljena.</p>
             {!items.length && (
               <div className="empty">
                 ✦

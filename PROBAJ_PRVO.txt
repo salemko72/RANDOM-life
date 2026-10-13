@@ -16,8 +16,9 @@ certifikata; to ne ukljucuje EAS build, OpenAI API niti placeni servis.
 Prvi put script instalira pakete. Nakon toga otvara aplikaciju u tvom
 pregledniku. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.
 
-Izaberi EAT ili BOOK i klikni SPIN. Probaj detalje i SPIN AGAIN.
-Postoje samo dva jasno oznacena razvojna demo primjera.
+Klikni SPIN. Aktivni su EAT, READ, WATCH, MOVE i GO.
+Demo ima 25 izbora. Probaj detalje, desni panel i SPIN AGAIN.
+Profil, favorite i vec procitane/gledane izbore pamti lokalno.
 Browser preview nije native emulator.
 
 Ova proba ne pokrece bazu, Content Studio, Cloudflare, OpenAI API ili

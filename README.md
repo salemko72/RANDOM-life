@@ -8,7 +8,7 @@ Prvi razvojni tok: Expo Android/iOS/web klijent, lokalni privatni Content Studio
 
 Raspakuj source ZIP i dvoklikni **POKRENI_RANDOM.cmd** za browser ili **POKRENI_EXPO_GO.cmd** za telefon. Script instalira zaključane pakete samo kada nedostaju ili se lockfile promijeni i pokreće Expo. Expo Go launcher automatski otvara QR stranicu u browseru; skeniraj telefonom na istom Wi-Fi-ju (Android: Expo Go, iPhone: kamera). Node.js 24 LTS treba biti instaliran. Ostavi terminal otvoren; Ctrl+C zaustavlja preview.
 
-Ovo je demo 0.4 s pet recepata, pet knjiga i pet filmova/serija, bez baze, tokena ili cloud servisa. Postojeće API/.env postavke se ne mijenjaju; demo proces ih ignoriše. Detalji su u PROBAJ_PRVO.txt. Za puni urednički tok koristi upute ispod.
+Ovo je demo 0.5 s pet recepata, pet knjiga, pet filmova/serija, šest MOVE aktivnosti i četiri GO ideje, bez baze, tokena ili cloud servisa. Postojeće API/.env postavke se ne mijenjaju; demo proces ih ignoriše. Detalji su u PROBAJ_PRVO.txt. Za puni urednički tok koristi upute ispod.
 
 ## Lokalno pokretanje bez dodatnih troškova
 
@@ -28,7 +28,7 @@ npm run dev:studio
 npm run dev:client
 ```
 
-Samostalni Studio uz lokalni API koristi lokalni token. Browser i Expo Go preview 0.4 koriste ugrađeni demo s pet recepata, pet knjiga i pet filmova/serija; Studio u tom previewu čuva ručno uvezen sadržaj i slike samo na tom uređaju. Expo Go trenutno prikazuje isti dizajn kroz lokalni WebView, bez API poziva. Expo terminal nudi web preview i QR za Expo Go. Detalji za Windows, sliku iz ChatGPT-a i fizičke telefone su u [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+Samostalni Studio uz lokalni API koristi lokalni token. Browser i Expo Go preview 0.5 koriste ugrađeni demo s pet recepata, pet knjiga, pet filmova/serija, šest MOVE aktivnosti i četiri GO ideje; Studio u tom previewu čuva ručno uvezen sadržaj i slike samo na tom uređaju. Expo Go trenutno prikazuje isti dizajn kroz lokalni WebView, bez API poziva. Expo terminal nudi web preview i QR za Expo Go. Detalji za Windows, sliku iz ChatGPT-a i fizičke telefone su u [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 ## Provjere
 
@@ -59,3 +59,5 @@ Detalji previewa 0.2, povezivanja Expo projekta i razlike između preuzetog HTML
 Aktuelni stalni demo: https://random-life-preview.pages.dev/ — Studio: https://random-life-preview.pages.dev/studio.html. Korekcije i provjere verzije 0.3: [docs/PREVIEW_0_3.md](docs/PREVIEW_0_3.md).
 
 Raspored oznaka uz naslov (verzija 0.4): [docs/PREVIEW_0_4.md](docs/PREVIEW_0_4.md).
+
+Najnovije korekcije, lokalni profil, kontekstualni paneli i atlas 100 sastojaka: [preview 0.5](docs/PREVIEW_0_5.md).

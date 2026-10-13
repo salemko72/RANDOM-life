@@ -1,22 +1,40 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ActivityIndicator, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
 import preview from './src/generated/preview.json';
+import {applyStorageMessage, createSnapshotWriter, LocalState, NATIVE_STATE_KEY, readSnapshot, seedPreviewHtml} from './src/native/profile-bridge';
 
 // Temporary Expo Go preview bridge. The browser UI is embedded locally;
 // this is not the final native implementation and does not call a backend.
 export default function App(){
  const [error,setError]=useState('');
+ const [html,setHtml]=useState<string | null>(null);
+ const state=useRef<LocalState>({});
+ const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
+ useEffect(()=>{
+  let active=true;
+  AsyncStorage.getItem(NATIVE_STATE_KEY).then(raw=>{
+   if(!active)return;
+   state.current=readSnapshot(raw);
+   setHtml(seedPreviewHtml(preview.html,state.current));
+  }).catch(()=>{if(active)setError('Lokalni podaci nisu dostupni. Ponovo otvori RANDOM.');});
+  return ()=>{active=false;};
+ },[]);
  return <SafeAreaView style={styles.screen}>
   <StatusBar style="dark"/>
-  {error?<View style={styles.error}><Text>{error}</Text></View>:<WebView
-   source={{html:preview.html,baseUrl:'https://random-preview.invalid/'}}
+  {error?<View style={styles.error}><Text>{error}</Text></View>:html===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
+   source={{html,baseUrl:'https://random-preview.invalid/'}}
    originWhitelist={['https://random-preview.invalid']}
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.startsWith('https://random-preview.invalid/')}
    onError={()=>setError('Preview se nije učitao. Zatvori i ponovo otvori RANDOM u Expo Go.')}
+   onMessage={event=>{
+    const next=applyStorageMessage(state.current,event.nativeEvent.data);
+    if(next){state.current=next;void writer.current(next);}
+   }}
    style={styles.web}
   />}
  </SafeAreaView>;

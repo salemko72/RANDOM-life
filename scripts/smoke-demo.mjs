@@ -12,7 +12,7 @@ try{
  for(const category of ['EAT','LEARN','WATCH']){
   const titles=[];
   for(let i=0;i<5;i++){
-   const old=await p.locator('.result-copy h2').textContent().catch(()=>null);
+   const old=await p.evaluate(()=>document.querySelector('.result-copy h2')?.textContent??null);
    await p.getByRole('button',{name:category,exact:true}).click();
    await p.waitForFunction(old=>{const e=document.querySelector('.result-scene.scene-visible .result-copy h2');return e&&e.textContent!==old},old);
    titles.push(await p.locator('.result-copy h2').textContent());
@@ -26,7 +26,7 @@ try{
  await automatic.goto(`http://127.0.0.1:${server.address().port}/RANDOM_INTERACTIVE_PREVIEW.html`);await automatic.getByRole('button',{name:'UĐI U RANDOM'}).click();
  const automaticTitles=[];const categories=[];
  for(let n=0;n<15;n++){
-  const old=await automatic.locator('.result-copy h2').textContent().catch(()=>null);
+  const old=await automatic.evaluate(()=>document.querySelector('.result-copy h2')?.textContent??null);
   await automatic.locator('.rail-respin').click();
   await automatic.waitForFunction(old=>{const e=document.querySelector('.result-scene.scene-visible .result-copy h2');return e&&e.textContent!==old},old);
   automaticTitles.push(await automatic.locator('.result-copy h2').textContent());categories.push(await automatic.locator('.rail-category.selected').getAttribute('aria-label'));

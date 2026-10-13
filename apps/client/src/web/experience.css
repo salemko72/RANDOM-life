@@ -40,3 +40,16 @@
 
 .photo-watch-enola,.photo-watch-adam,.photo-watch-dark,.photo-watch-wednesday,.photo-watch-queens{background-image:url('./assets/watch-scenes.png');background-size:auto 300%;background-repeat:no-repeat}
 .photo-watch-enola{background-position:left top}.photo-watch-adam{background-position:right top}.photo-watch-dark{background-position:left center}.photo-watch-wednesday{background-position:right center}.photo-watch-queens{background-position:left bottom}
+
+/* Result badges follow the title in normal flow, avoiding description overlap. */
+.result-copy{right:24px}
+.result-heading-row{display:grid;grid-template-columns:minmax(0,1fr) 94px;gap:14px;align-items:start}
+.result-heading-row h2{display:block;-webkit-line-clamp:unset;max-width:none;overflow:visible;overflow-wrap:normal}
+.result-heading-row .result-meta{position:static;inset:auto;display:flex;flex-direction:column;flex-wrap:nowrap;gap:9px;padding-top:6px;align-items:stretch}
+.result-heading-row .result-meta>span{max-width:none;width:100%;min-height:35px;padding:9px 10px;font-size:10px;gap:6px;white-space:normal;overflow:visible;line-height:1.35}
+.result-heading-row .result-meta svg{width:18px;height:18px;flex-shrink:0}
+.result-summary{max-width:100%}
+@media(max-width:600px){.result-copy{right:18px}.result-heading-row{grid-template-columns:minmax(0,1fr) 76px;gap:10px}.result-heading-row .result-meta>span{padding:8px;font-size:9px;gap:5px;min-height:32px}.result-heading-row .result-meta svg{width:15px;height:15px}.result-heading-row h2{font-size:34px}.result-heading-row h2.long-title{font-size:28px}}
+@media(max-height:790px) and (max-width:600px){.result-heading-row h2{font-size:30px}.result-heading-row h2.long-title{font-size:26px}.result-heading-row .result-meta{gap:6px}}
+.result-copy{top:min(370px,calc(100% - 460px))}
+.result-heading-row .result-meta>span{background:#f5e4d9f2;color:#70594e;box-shadow:0 6px 18px #a67c6520}

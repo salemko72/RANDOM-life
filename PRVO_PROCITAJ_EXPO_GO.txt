@@ -1,0 +1,21 @@
+RANDOM life 0.15 - telefon / Expo Go
+
+1. Raspakuj ovaj ZIP direktno u C:\
+   Folder ce biti C:\RANDOM-life
+2. Otvori C:\RANDOM-life i dvoklikni POKRENI_EXPO_GO.cmd
+3. Prvi put pokretac sam instalira pakete. Ostavi prozor otvoren.
+4. Ako zatrazi Expo prijavu, prijavi se na svoj postojeci racun.
+5. Na telefonu otvori Expo Go i skeniraj QR kod koji se otvori u browseru.
+   Na iPhoneu QR mozes skenirati i aplikacijom Camera.
+6. Racunar i telefon trebaju biti na istom Wi-Fi-ju.
+
+Potreban je Node.js 24 LTS (https://nodejs.org/) i azurirani Expo Go.
+Ne pokreci komande u C:\ - pokretac sam koristi apps\client.
+Ne trazi EAS build niti aktivira placene servise.
+Aplikacija koristi privremeni WebView preview most za Expo Go.
+Tvoji unosi iz web Content Studija nisu u ovom ZIP-u; ostaju u onom browseru
+u kojem si ih sacuvao. Paket sadrzi program i demo sadrzaj verzije 0.15.
+
+Za preview u browseru: dvoklik POKRENI_RANDOM.cmd.
+Za gasenje servera: Ctrl+C u prozoru pokretaca.
+Ako Windows Firewall pita, dozvoli Node.js na privatnoj Wi-Fi mrezi.

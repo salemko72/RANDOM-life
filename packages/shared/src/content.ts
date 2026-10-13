@@ -77,6 +77,7 @@ export const contentSchema = z.discriminatedUnion("category", [
     allergens: z.array(allergenSchema).max(13),
     allergensVerified: z.boolean(),
     dietaryTags: z.array(text.max(60)).max(20),
+    phosphateAssessment:z.object({suitability:z.enum(['low','not-low','uncertain']),reviewed:z.boolean().default(false),phosphorusMgPerServing:z.number().finite().nonnegative().optional(),evidenceUrl:z.url().refine(url=>new URL(url).protocol==='https:').optional(),notes:z.object({en:text,bs:text})}).optional(),
   }),
   z.object({
     ...base,
@@ -115,6 +116,7 @@ export function publicationIssues(item: ContentInput): string[] {
   if (!item.image.rightsConfirmed) issues.push("Potvrdi prava za sliku.");
   if (item.category === "EAT" && !item.allergensVerified)
     issues.push("Sastojci i alergeni moraju biti provjereni.");
+  if(item.category==='EAT'&&item.dietaryTags.includes('low-phosphate')&&!(item.phosphateAssessment?.suitability==='low'&&item.phosphateAssessment.reviewed===true))issues.push('Low-phosphate classification requires a reviewed phosphate assessment.');
   if(item.category==='EAT'&&item.dietaryAssessment){
    if(item.dietaryTags.includes('gluten-free')&&item.dietaryAssessment.gluten!=='absent')issues.push('Gluten-free claim conflicts with the dietary assessment.');
    if(item.dietaryTags.includes('lactose-free')&&item.dietaryAssessment.lactose!=='absent')issues.push('Lactose-free claim conflicts with the dietary assessment.');

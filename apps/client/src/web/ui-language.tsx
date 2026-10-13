@@ -1,6 +1,9 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import type {Locale} from '@random/shared';
 const english:Record<string,string> = {
+ "Prehrana s malo fosfora":"Low-phosphate diet",
+ "Prikazujemo samo recepte s potvrđenom oznakom za ovaj režim. Ograničenja za bubrežne bolesnike su individualna.":"Only recipes with a verified low-phosphate classification are shown. Kidney dietary restrictions are individual.",
+ " · prehrana s malo fosfora":" · low-phosphate diet",
  "Film":"Film", "Serija":"Series", "Korak":"Step", "od":"of", "su aktivni u testu.":"are active in this demo.", "Decide Less. Live More.":"Decide Less. Live More.", "Decide less.":"Decide less.", "Live more.":"Live more.",
  "Već čitao/la": "Already read",
  "Već gledao/la": "Already watched",

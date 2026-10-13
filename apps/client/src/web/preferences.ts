@@ -3,14 +3,14 @@ export type UiCategory = 'EAT'|'READ'|'WATCH'|'MOVE'|'GO';
 export interface PreferenceItem {
  id:string; category:string; title:string; status:string; tags?:readonly string[];
  genres?:readonly string[]; allergens?:readonly string[]; allergensVerified?:boolean;
- dietaryTags?:readonly string[]; totalMinutes?:number; durationMinutes?:number;
+ phosphateAssessment?:{suitability:'low'|'not-low'|'uncertain';reviewed:boolean}; dietaryTags?:readonly string[]; totalMinutes?:number; durationMinutes?:number;
  intensity?:string; company?:string|readonly string[];
 }
 export type SignalKind='exposure'|'open'|'save'|'accept'|'skip';
 export interface PreferenceEvent {itemId:string;category:UiCategory;topics:string[];kind:SignalKind;at:number}
 export interface Profile {
  version:1;id:string;name:string;onboarded:boolean;interests:UiCategory[];topics:string[];
- allergens:string[];intolerances:string[];intoleranceNote:string;completedIds:string[];vegetarian:boolean;maxCookingMinutes:number|null;freeMinutes:number|null;
+ allergens:string[];intolerances:string[];intoleranceNote:string;completedIds:string[];lowPhosphateDiet:boolean;vegetarian:boolean;maxCookingMinutes:number|null;freeMinutes:number|null;
  energy:'low'|'medium'|'high';company:'solo'|'pair'|'friends';learning:boolean;events:PreferenceEvent[];
 }
 const STORAGE_KEY='random-life.local-profile.v1';
@@ -21,7 +21,7 @@ const category=(value:string):UiCategory|null=>value==='BOOK'?'READ':categories.
 const finiteMinutes=(value:unknown):value is number=>typeof value==='number'&&Number.isFinite(value)&&value>0;
 const strings=(value:unknown):value is string[]=>Array.isArray(value)&&value.length<=100&&value.every(v=>typeof v==='string'&&v.length<=200);
 export function createProfile():Profile {
- return {version:1,id:globalThis.crypto?.randomUUID?.()??`local-${Date.now()}-${Math.random().toString(36).slice(2)}`,name:'',onboarded:false,interests:[],topics:[],allergens:[],intolerances:[],intoleranceNote:'',completedIds:[],vegetarian:false,maxCookingMinutes:null,freeMinutes:null,energy:'medium',company:'solo',learning:true,events:[]};
+ return {version:1,id:globalThis.crypto?.randomUUID?.()??`local-${Date.now()}-${Math.random().toString(36).slice(2)}`,name:'',onboarded:false,interests:[],topics:[],allergens:[],intolerances:[],intoleranceNote:'',completedIds:[],lowPhosphateDiet:false,vegetarian:false,maxCookingMinutes:null,freeMinutes:null,energy:'medium',company:'solo',learning:true,events:[]};
 }
 function validEvent(value:unknown):value is PreferenceEvent {
  if(!value||typeof value!=='object')return false;
@@ -30,10 +30,10 @@ function validEvent(value:unknown):value is PreferenceEvent {
 }
 function validated(value:unknown):Profile|null {
  if(!value||typeof value!=='object')return null;
- const p={intolerances:[],intoleranceNote:'',completedIds:[],...value} as unknown as Profile;
- if(p.version!==1||typeof p.id!=='string'||!p.id||p.id.length>200||typeof p.name!=='string'||p.name.length>200||typeof p.onboarded!=='boolean'||!strings(p.interests)||!p.interests.every(c=>categories.includes(c))||!strings(p.topics)||!strings(p.allergens)||!strings(p.intolerances)||!p.intolerances.every(t=>['gluten','lactose'].includes(t))||typeof p.intoleranceNote!=='string'||p.intoleranceNote.length>1000||!Array.isArray(p.completedIds)||!p.completedIds.every(id=>typeof id==='string'&&id.length>0&&id.length<=200)||typeof p.vegetarian!=='boolean'||!(p.maxCookingMinutes===null||finiteMinutes(p.maxCookingMinutes))||!(p.freeMinutes===null||finiteMinutes(p.freeMinutes))||!['low','medium','high'].includes(p.energy)||!['solo','pair','friends'].includes(p.company)||typeof p.learning!=='boolean'||!Array.isArray(p.events)||!p.events.every(validEvent))return null;
+ const p={lowPhosphateDiet:false,intolerances:[],intoleranceNote:'',completedIds:[],...value} as unknown as Profile;
+ if(p.version!==1||typeof p.id!=='string'||!p.id||p.id.length>200||typeof p.name!=='string'||p.name.length>200||typeof p.onboarded!=='boolean'||!strings(p.interests)||!p.interests.every(c=>categories.includes(c))||!strings(p.topics)||!strings(p.allergens)||!strings(p.intolerances)||!p.intolerances.every(t=>['gluten','lactose'].includes(t))||typeof p.intoleranceNote!=='string'||p.intoleranceNote.length>1000||!Array.isArray(p.completedIds)||!p.completedIds.every(id=>typeof id==='string'&&id.length>0&&id.length<=200)||typeof p.lowPhosphateDiet!=='boolean'||typeof p.vegetarian!=='boolean'||!(p.maxCookingMinutes===null||finiteMinutes(p.maxCookingMinutes))||!(p.freeMinutes===null||finiteMinutes(p.freeMinutes))||!['low','medium','high'].includes(p.energy)||!['solo','pair','friends'].includes(p.company)||typeof p.learning!=='boolean'||!Array.isArray(p.events)||!p.events.every(validEvent))return null;
  // Rebuild known fields; never retain arbitrary data from local storage.
- return {version:1,id:p.id,name:p.name,onboarded:p.onboarded,interests:[...new Set(p.interests)],topics:[...p.topics],allergens:[...p.allergens],intolerances:[...new Set(p.intolerances)],intoleranceNote:p.intoleranceNote,completedIds:[...new Set(p.completedIds)].slice(-1000),vegetarian:p.vegetarian,maxCookingMinutes:p.maxCookingMinutes,freeMinutes:p.freeMinutes,energy:p.energy,company:p.company,learning:p.learning,events:p.events.slice(-300).map(e=>({itemId:e.itemId,category:e.category,topics:[...e.topics],kind:e.kind,at:e.at}))};
+ return {version:1,id:p.id,name:p.name,onboarded:p.onboarded,interests:[...new Set(p.interests)],topics:[...p.topics],allergens:[...p.allergens],intolerances:[...new Set(p.intolerances)],intoleranceNote:p.intoleranceNote,completedIds:[...new Set(p.completedIds)].slice(-1000),lowPhosphateDiet:p.lowPhosphateDiet,vegetarian:p.vegetarian,maxCookingMinutes:p.maxCookingMinutes,freeMinutes:p.freeMinutes,energy:p.energy,company:p.company,learning:p.learning,events:p.events.slice(-300).map(e=>({itemId:e.itemId,category:e.category,topics:[...e.topics],kind:e.kind,at:e.at}))};
 }
 export function loadProfile(storage?:Storage):Profile {
  try {const raw=(storage??globalThis.localStorage)?.getItem(STORAGE_KEY);return raw?validated(JSON.parse(raw))??createProfile():createProfile();}catch{return createProfile();}
@@ -54,6 +54,7 @@ export function eligibleForProfile(item:PreferenceItem,profile:Profile):boolean 
  if(item.category!=='EAT')return true;
  if(profile.allergens.length&&(!item.allergensVerified||!Array.isArray(item.allergens)||item.allergens.some(a=>profile.allergens.map(normalize).includes(normalize(a)))))return false;
  const diet=(item.dietaryTags??[]).map(normalize);
+ if(profile.lowPhosphateDiet&&(!diet.includes('low-phosphate')||item.phosphateAssessment?.suitability!=='low'||item.phosphateAssessment.reviewed!==true))return false;
  if(profile.intolerances.includes('gluten')&&!diet.includes('gluten-free'))return false;
  if(profile.intolerances.includes('lactose')&&!diet.includes('lactose-free'))return false;
  if(profile.vegetarian&&!(item.dietaryTags??[]).some(t=>['vegetarian','vegan'].includes(normalize(t))))return false;

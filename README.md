@@ -69,3 +69,5 @@ Aktuelni ENG/BHS preview, format prevoda i upute za ranije unose: [preview 0.7](
 Konkretni izbori na wheelu, animacija čuvanja, Studio oporavak i grupni prevodi: [preview 0.8](docs/PREVIEW_0_8.md).
 
 ZIP import, AI prijedlozi kategorije/alergena i grupni upload prevoda: [preview 0.9](docs/PREVIEW_0_9.md).
+
+ZIP kao jedini unos i prehrana s malo fosfora: [preview 0.10](docs/PREVIEW_0_10.md).

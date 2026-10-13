@@ -78,7 +78,7 @@ export function readContentPackage(bytes: Uint8Array): { input: ContentInput; im
   const classificationChanged = raw.category === 'READ';
   if (classificationChanged) raw.category = 'BOOK';
   const parsed = contentSchema.safeParse(raw);
-  if (!parsed.success) return fail(`Invalid content.json fields: ${parsed.error.issues.map(issue=>issue.path.join('.')).join(', ')}.`);
+  if (!parsed.success) return fail(`Invalid content.json fields: ${parsed.error.issues.map(issue=>`${issue.path.join('.')}: ${issue.message}`).join('; ')}.`);
   const input = parsed.data;
   const issues = bilingualIssues(input).filter(issue => !issue.endsWith('translation requires human review.'));
   for (const locale of ['en', 'bs'] as const) {
@@ -97,6 +97,6 @@ export function readContentPackage(bytes: Uint8Array): { input: ContentInput; im
   input.factsVerified = false;
   input.image.rightsConfirmed = false;
   for (const translation of Object.values(input.translations ?? {})) if (translation) translation.reviewed = false;
-  if (input.category === 'EAT') input.allergensVerified = false;
+  if (input.category === 'EAT') {input.allergensVerified = false;if(input.phosphateAssessment)input.phosphateAssessment.reviewed=false;}
   return { input, image: {name, bytes:files[name]!, mime:imageMime(name,files[name]!)}, ...(classificationChanged ? {classificationChanged:true} : {}) };
 }

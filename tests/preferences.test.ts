@@ -74,3 +74,13 @@ test('completed items persistently exclude exact recommendations until unmarked'
  expect(selectPersonalized([{...book,id:'another'}],completed,[],0)?.id).toBe('another');
  const restored=toggleCompleted(loadProfile(s),book.id);expect(selectPersonalized([book],restored,[],0)?.id).toBe(book.id);
 });
+
+test('low-phosphate profiles only receive explicitly reviewed low-phosphate recipes',()=>{
+ const profile={...createProfile(),lowPhosphateDiet:true};
+ const verified=food('verified',{dietaryTags:['low-phosphate'],phosphateAssessment:{suitability:'low',reviewed:true}});
+ expect(eligibleForProfile(verified,profile)).toBe(true);
+ for(const extra of [{},{dietaryTags:['low-phosphate']},{dietaryTags:['low-phosphate'],phosphateAssessment:{suitability:'low' as const,reviewed:false}},{dietaryTags:['low-phosphate'],phosphateAssessment:{suitability:'uncertain' as const,reviewed:true}}])expect(eligibleForProfile(food('excluded',extra),profile)).toBe(false);
+ expect(selectPersonalized([food('unassessed')],profile,[],.5)).toBeNull();
+ const s=storage();expect(saveProfile(profile,s)).toBe(true);expect(loadProfile(s).lowPhosphateDiet).toBe(true);
+ const legacy={...profile};delete (legacy as Partial<typeof legacy>).lowPhosphateDiet;s.setItem(s.key(0)!,JSON.stringify(legacy));expect(loadProfile(s).lowPhosphateDiet).toBe(false);
+});

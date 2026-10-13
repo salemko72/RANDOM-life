@@ -38,6 +38,10 @@ describe('content ZIP import',()=>{
       expect(input.allergens).toEqual(original.allergens);
     }
   });
+  it('never trusts a phosphate review imported from ChatGPT',()=>{
+    const raw=source();if(raw.category!=='EAT')throw Error();raw.phosphateAssessment={suitability:'low',reviewed:true,notes:{en:'AI suggestion',bs:'AI prijedlog'}};
+    const imported=readContentPackage(bundle(raw)).input;if(imported.category!=='EAT')throw Error();expect(imported.phosphateAssessment?.reviewed).toBe(false);
+  });
   it('accepts unreviewed translations and maps READ to BOOK explicitly',()=>{
     const raw=source('BOOK'); raw.translations!.en!.reviewed=false;
     const result=readContentPackage(bundle({...raw,category:'READ'}));

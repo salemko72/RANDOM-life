@@ -257,3 +257,11 @@ it('D1 content exposes the selected ENG/BHS text with one identity and shared qu
  const english=(await call('/catalog')).data.items.find((i:any)=>i.id===id);expect(english.title).toBe(original.translations!.en!.title);expect(english.id).toBe(catalogue.id);expect(english.ingredients.map((i:any)=>i.quantity)).toEqual(catalogue.ingredients.map((i:any)=>i.quantity));
  const db=await mf.getD1Database('CONTENT_DB');expect((await db.prepare('SELECT data FROM content_items WHERE id=?').bind(id).first<{data:string}>())?.data).toContain('translations');
 });
+
+it('preserves phosphate assessment in local D1 and blocks unreviewed low-phosphate publication',async()=>{
+ const input={...structuredClone(demoItems[0]),title:'Phosphate contract test',dietaryTags:['low-phosphate'],phosphateAssessment:{suitability:'low',reviewed:false,notes:{en:'Editorial evidence review required.',bs:'Potreban pregled nutritivne osnove.'}}};
+ const created=await call('/admin/content','POST',input);expect(created.status).toBe(201);const id=created.data.item.id;
+ const db=await mf.getD1Database('CONTENT_DB');const row=await db.prepare('SELECT data FROM content_items WHERE id=?').bind(id).first<{data:string}>();expect(JSON.parse(row!.data).phosphateAssessment.reviewed).toBe(false);
+ expect((await call(`/admin/content/${id}/review`,'POST')).status).toBe(200);
+ expect((await call(`/admin/content/${id}/publish`,'POST')).status).toBe(422);
+});

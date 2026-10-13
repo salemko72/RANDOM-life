@@ -28,6 +28,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     const tx = (value: string) => studioText(locale, value);
     const [atlasQueue,setAtlasQueue]=useState<AtlasBatch[]>(()=>{try{const saved=JSON.parse(localStorage.getItem('random-life.atlas-queue.v1')||'[]');return Array.isArray(saved)?saved.filter(b=>b?.status==='pending'&&b?.columns===10&&b?.rows===10&&Array.isArray(b.cells)&&b.cells.length===100):[];}catch{return [];}});
     const [batchJSON,setBatchJSON]=useState('');
+    const [zipUpload,setZipUpload]=useState<{name:string;state:'loading'|'saved'|'error';error?:string}|null>(null);
     const [recoveryBackup,setRecoveryBackup]=useState('');
     const [translationLocale, setTranslationLocale] = useState<Locale>(locale);
     const [initial] = useState(readEditor);
@@ -219,7 +220,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             if(packageInput){
                 const input=tagIngredients({...packageInput,image:{...packageInput.image,path:`/media/${name}`,rightsConfirmed:false}});
                 imported=await importPreviewPackage(input,blob);
-                setSelected(imported);setCategory(imported.category);setJson(JSON.stringify(imported,null,2));await refresh();
+                setSelected(imported);setCategory(imported.category);setSource(imported.source.url);setJson(JSON.stringify(imported,null,2));await refresh();
             } else if (preview)
                 await putPreviewImage(`/media/${name}`, blob);
             setStaged({ url: URL.createObjectURL(blob), name, bytes: blob.size, width: canvas.width, height: canvas.height, originalWidth: bitmap.width, originalHeight: bitmap.height, originalBytes: file.size, format: blob.type === "image/webp" ? "WebP" : "PNG" });
@@ -359,6 +360,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               </div>
               {selected && <p className="editing-status">{tx("Ure\u0111uje\u0161:")}{localizeContent(selected,locale).title} · {tx(labels[selected.status])}{tx(". Za drugi recept koristi novi nacrt.")}</p>}
               {selected && <button className="quiet" onClick={() => { setSelected(null); setStaged(null); setOriginal(null); setCopied(null); }}>{tx("Sa\u010Duvaj kao novi nacrt")}</button>}
+              {preview && <section className="zip-import"><h3>{locale==='en'?'Import ChatGPT ZIP':'Uvezi ChatGPT ZIP'}</h3><p>{locale==='en'?'Paste the prompt into ChatGPT, download its ZIP containing content.json and one image, then select it here. Studio validates both languages, optimizes the image and saves a NEW draft. Existing items are never overwritten.':'Zalijepi prompt u ChatGPT, preuzmi ZIP sa content.json i jednom slikom, pa ga izaberi ovdje. Studio provjerava oba jezika, optimizira sliku i čuva NOVI nacrt. Postojeći unosi se ne prepisuju.'}</p><label>{locale==='en'?'ChatGPT content ZIP':'ChatGPT ZIP sadržaja'}<input type="file" accept=".zip,application/zip" disabled={busy} onChange={e=>{const file=e.target.files?.[0];if(file)run(async()=>{setZipUpload({name:file.name,state:'loading'});try{if(file.size>25*1024*1024)throw new Error('ZIP exceeds 25 MB.');const pack=readContentPackage(new Uint8Array(await file.arrayBuffer()));await imageFile(new File([new Uint8Array(pack.image.bytes)],pack.image.name,{type:pack.image.mime}),pack.input);setZipUpload({name:file.name,state:'saved'});}catch(error){setZipUpload({name:file.name,state:'error',error:error instanceof Error?error.message:String(error)});throw error;}});}}/></label>{zipUpload && <div data-testid="zip-import-status" className={`zip-upload-status ${zipUpload.state}`} role={zipUpload.state==='error'?'alert':undefined}><strong>{zipUpload.name}</strong><p>{zipUpload.state==='loading'?(locale==='en'?'Reading ZIP and checking content…':'Čitam ZIP i provjeravam sadržaj…'):zipUpload.state==='saved'?(locale==='en'?'✓ Loaded and saved as a new draft. Category, both languages and image came from this ZIP.':'✓ Učitano i sačuvano kao novi nacrt. Kategorija, oba jezika i slika pročitani su iz ZIP-a.'):(locale==='en'?'ZIP was not imported. Your existing items are unchanged.':'ZIP nije uvezen. Postojeći unosi nisu izmijenjeni.')}</p>{zipUpload.error&&<p>{zipUpload.error}</p>}</div>}</section>}
+              <details className="prompt-builder"><summary>{locale==='en'?'Prepare a ChatGPT prompt · optional before import':'Pripremi ChatGPT prompt · nije potrebno za uvoz'}</summary>
               <div className="tabs">
                 {(["EAT", "BOOK", "WATCH", "MOVE", "GO"] as const).map((c) => (<button key={c} className={category === c ? "selected" : "quiet"} onClick={() => { if (c !== category && json.trim() && !window.confirm(tx("Otvoriti prazni obrazac za drugu kategoriju? Sa\u010Duvani recept ostaje u biblioteci.")))
             return; if (c !== category)
@@ -375,7 +378,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                 <button className={`quiet ${promptCopied ? "prompt-copied" : ""}`} disabled={busy || (!source.trim() && !valid)} onClick={() => run(async () => {
             await navigator.clipboard.writeText(createChatGPTPrompt(category, valid ? JSON.stringify(valid) : source));
             setCopied({ signature: promptSignature, at: new Date().toISOString() });
-            setMessage(tx("Prompt kopiran. Koristi ga ru\u010Dno u ChatGPT-u i vrati JSON i sliku."));
+            setMessage(locale==='en'?'Prompt copied. Return one ZIP from ChatGPT.':'Prompt kopiran. Vrati jedan ZIP iz ChatGPT-a.');
         })}>
                   {promptCopied ? tx("\u2713 Prompt kopiran") : tx("Kopiraj ChatGPT prompt \u2197")}
                 </button>
@@ -401,11 +404,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               </div>
               {promptCopied && <p className="copy-status" role="status">{tx("\u2713 Kopirano")} {new Date(copied!.at).toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" })}{tx(". Spremno za ru\u010Dno lijepljenje u ChatGPT; slanje nije automatsko.")}</p>}
               <p className="input-help">{locale==='en'?'3. Copy the prompt into ChatGPT and download its ZIP with JSON and the generated image. Import the ZIP below. No API requests or API costs.':'3. Kopiraj prompt u ChatGPT i preuzmi ZIP sa JSON-om i generisanom slikom. Uvezi ZIP ispod. Nema API poziva ni troškova.'}</p>
-              <p hidden className="input-help">{tx("3. Kopiraj prompt i ru\u010Dno ga zalijepi u ChatGPT. Zatra\u017Ei JSON i fotografiju, pa ih preuzmi. Studio ne \u0161alje API zahtjeve ChatGPT-u i nema API tro\u0161kova.")}</p>
-              {preview && <section className="zip-import"><h3>{locale==='en'?'Import ChatGPT ZIP':'Uvezi ChatGPT ZIP'}</h3><p>{locale==='en'?'Paste the prompt into ChatGPT, download its ZIP containing content.json and one image, then select it here. Studio validates both languages, optimizes the image and saves a NEW draft. Existing items are never overwritten.':'Zalijepi prompt u ChatGPT, preuzmi ZIP sa content.json i jednom slikom, pa ga izaberi ovdje. Studio provjerava oba jezika, optimizira sliku i čuva NOVI nacrt. Postojeći unosi se ne prepisuju.'}</p><label>{locale==='en'?'ChatGPT content ZIP':'ChatGPT ZIP sadržaja'}<input type="file" accept=".zip,application/zip" disabled={busy} onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)run(async()=>{if(file.size>25*1024*1024)throw new Error('ZIP exceeds 25 MB.');const pack=readContentPackage(new Uint8Array(await file.arrayBuffer()));await imageFile(new File([new Uint8Array(pack.image.bytes)],pack.image.name,{type:pack.image.mime}),pack.input);});}}/></label></section>}
-              <label>{tx("JSON iz ChatGPT-a")}<textarea className="json" rows={15} spellCheck={false} value={json} onChange={(e) => setJson(e.target.value)} placeholder={tx("Zalijepi JSON bez markdown oznaka\u2026")}/>
-              </label>
-              <p className="input-help">{tx("4. Zalijepi samo JSON, bez oznaka markdowna. Provjeri naslov, izvor i podatke; demo slu\u017Ei kao primjer.")}</p>
+              </details>
+
+              {json.trim() && <details className="package-data"><summary>{locale==='en'?'Imported package data · read only':'Podaci iz paketa · samo pregled'}</summary><label>{locale==='en'?'Imported package data':'Podaci iz uvezenog paketa'}<textarea readOnly className="json" rows={10} spellCheck={false} value={json}/></label></details>}
               {json.trim() && inspection.errors.length>0 && <section className="validation-errors" role="alert"><strong>{locale==='en'?'JSON needs attention':'JSON zahtijeva ispravke'}</strong><ul>{inspection.errors.map((error,index)=><li key={index}>{error}</li>)}</ul>{preview&&draftValid&&<p>{locale==='en'?'You can save incomplete translations as local draft work. Publication remains blocked.':'Nepotpune prevode možeš sačuvati kao lokalni nacrt. Objava ostaje blokirana.'}</p>}</section>}
               {raw && <button className="quiet" type="button" onClick={()=>{try{const repair=recoverImport(raw);setRecoveryBackup(json);setJson(JSON.stringify(repair.data,null,2));setMessage(repair.corrections.length?repair.corrections.join('\n'):(locale==='en'?'No safe metadata corrections needed. Review validation paths.':'Nema sigurnih ispravki metapodataka. Provjeri navedena polja.'));}catch(e){setMessage(String(e));}}}>{locale==='en'?'Repair import metadata (review required)':'Ispravi metapodatke uvoza (provjera obavezna)'}</button>}
               {recoveryBackup&&<details><summary>{locale==='en'?'Original JSON before repair':'Originalni JSON prije ispravke'}</summary><textarea readOnly value={recoveryBackup} rows={8}/></details>}
@@ -448,14 +449,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                   </details>
                   <button className="quiet" onClick={() => run(async () => { await navigator.clipboard.writeText(ingredientDefinitions.map(entry => `${entry.id}: ${locale==='en'?entry.id.replace(/-/g,' '):entry.name}`).join("\n")); setMessage(tx("Lista oznaka sastojaka je kopirana.")); })}>{tx("Kopiraj listu oznaka")}</button>
                 </section>)}
-              <label className="upload">{tx("+ Dodaj sliku iz ChatGPT-a")}<input type="file" accept="image/png,image/jpeg,image/webp,image/avif" onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file)
-                run(() => imageFile(file));
-            e.target.value = "";
-        }}/>
-              </label>
-              <p className="input-help">{tx("5. Dodaj preuzetu fotografiju. Obrada je lokalna: du\u017Ea stranica najvi\u0161e 1440 px, bez pove\u0107avanja, rezanja i razvla\u010Denja; WebP kvaliteta 84%. Original ostaje dostupan.")}</p>
+              {valid && <p className="input-help">{locale==='en'?'The ZIP image is optimized automatically: longest side up to 1440 px, proportional scaling, WebP quality 84%. Review the imported content below.':'Slika iz ZIP-a automatski se optimizira: duža stranica najviše 1440 px, proporcionalno smanjivanje, WebP kvaliteta 84%. Pregledaj uvezeni sadržaj ispod.'}</p>}
               {staged && (<div className="staged">
                   <img src={staged.url} alt={tx("Lokalni pregled uvezene slike")}/>
                   <div>
@@ -471,6 +465,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               <p className="note">{preview ? tx("Slika se automatski optimizira i \u010Duva lokalno. Original mo\u017Ee\u0161 zasebno preuzeti; prije objave potvrdi prava.") : <>{tx("Ovo nije cloud upload. Optimiziranu sliku dodaj u")}<code>services/api/public/media</code>{tx("; objava provjerava da je asset dostupan. Za public test potreban je novi deployment.")}</>}</p>
               {valid?.classification && <section className="copy-status"><strong>{locale==='en'?'AI category suggestion':'AI prijedlog kategorije'}: {valid.classification.suggestedCategory==='BOOK'?'READ':valid.classification.suggestedCategory}</strong><p>{valid.classification.reason[locale]}</p></section>}
               {valid?.dietaryAssessment && <section className="copy-status"><strong>{locale==='en'?'AI dietary suggestions · human confirmation required':'AI prijedlog ograničenja · čovjek potvrđuje'}</strong><p>Gluten: {valid.dietaryAssessment.gluten} · {locale==='en'?'Lactose':'Laktoza'}: {valid.dietaryAssessment.lactose}</p><p>{valid.dietaryAssessment.notes[locale]}</p></section>}
+              {valid?.category==='EAT' && <section className="copy-status"><strong>{locale==='en'?'Low-phosphate diet':'Prehrana s malo fosfora'}</strong><p>{valid.phosphateAssessment?.notes[locale]??(locale==='en'?'No phosphate assessment supplied. This recipe will not be recommended to a low-phosphate profile.':'Procjena fosfora nije priložena. Ovaj recept neće biti preporučen profilu s prehranom s malo fosfora.')}</p>{valid.phosphateAssessment && <><p>{locale==='en'?'AI suggestion':'AI prijedlog'}: {valid.phosphateAssessment.suitability}{valid.phosphateAssessment.phosphorusMgPerServing!==undefined?` · ${valid.phosphateAssessment.phosphorusMgPerServing} mg/${locale==='en'?'serving':'porcija'}`:''}</p><label><input type="checkbox" disabled={valid.phosphateAssessment.suitability!=='low'} checked={valid.phosphateAssessment.reviewed} onChange={e=>{const data=JSON.parse(json);data.phosphateAssessment.reviewed=e.target.checked;data.dietaryTags=data.dietaryTags.filter((tag:string)=>tag!=='low-phosphate');if(e.target.checked)data.dietaryTags.push('low-phosphate');setJson(JSON.stringify(data,null,2));}}/>{locale==='en'?'I verified the low-phosphate classification and evidence':'Provjerio/la sam klasifikaciju s malo fosfora i njenu osnovu'}</label><p>{locale==='en'?'Phosphate restriction is individual; this classification does not imply low potassium, low sodium or suitability for every kidney patient.':'Ograničenje fosfora je individualno; ova oznaka ne znači nizak kalij, nizak natrij niti prikladnost za svakog bubrežnog bolesnika.'}</p></>}</section>}
               <fieldset>
                 <legend>{tx("Ljudska provjera")}</legend>
                 <label>

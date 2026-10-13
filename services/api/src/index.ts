@@ -1,5 +1,7 @@
 import {
   contentSchema,
+  localizeContent,
+  type Locale,
   publicationIssues,
   selectRecommendation,
   spinContextSchema,
@@ -37,7 +39,7 @@ function record(row: Row): ContentRecord {
 }
 function publicItem(item: ContentRecord) {
   const { approvedBy, approvedAt, ...publicData } = item;
-  return publicData;
+  return {...publicData,translations:Object.fromEntries(Object.entries(publicData.translations??{}).filter(([,t])=>t.reviewed))};
 }
 function json(data: unknown, status = 200) {
   return Response.json(data, {
@@ -127,11 +129,13 @@ async function route(request: Request, env: Env): Promise<Response> {
     const rows = await env.CONTENT_DB.prepare(
       `SELECT ${columns} FROM content_items WHERE status='published' ORDER BY updated_at DESC LIMIT 500`,
     ).all<Row>();
+    const requested:Locale=url.searchParams.get('locale')==='bs'?'bs':'en';
     return json({
+      locale:requested,
       items: rows.results
         .map(record)
         .filter((item) => !publicationIssues(item).length)
-        .map(publicItem),
+        .map(item=>publicItem(localizeContent(item,requested))),
     });
   }
   if (path === "/spin" && request.method === "POST") {
@@ -155,7 +159,7 @@ async function route(request: Request, env: Env): Promise<Response> {
     );
     return json({
       recommendationId: crypto.randomUUID(),
-      item: selected ? publicItem(selected) : null,
+      item: selected ? publicItem(localizeContent(selected,parsed.data.language==='bs'?'bs':'en')) : null,
       reason: selected
         ? "Odabrano iz provjerenog kataloga uz tvoja ograničenja."
         : "Nema odgovarajuće preporuke. Ograničenja nisu promijenjena.",

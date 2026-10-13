@@ -66,6 +66,12 @@ export const demoItems: ContentInput[] = [
       "Za trenutak kada želiš kratko čitanje i drugačiji pogled na svakodnevicu.",
   },
 ];
+// Explicit bilingual test fixtures; production translations still require human review.
+for(const item of demoItems){
+ const bs={title:item.title,summary:item.summary,imageAlt:item.image.alt,sourceLabel:item.source.label,rightsNote:item.source.rightsNote,reviewed:true,...(item.category==='EAT'?{steps:item.steps,ingredientNames:item.ingredients.map(i=>i.name),ingredientUnits:item.ingredients.map(i=>i.unit)}:item.category==='BOOK'?{genres:item.genres,recommendationReason:item.recommendationReason,authors:item.authors}:{})};
+ const en=item.category==='EAT'?{title:'Pasta with tomatoes',summary:'A few ingredients, a warm plate and a quiet evening. A simple local development recipe.',imageAlt:'Original vector illustration of a plate of pasta',sourceLabel:'Local development example — not a source for public release',rightsNote:'Demonstration content; real editorial review is required before testing.',reviewed:true,steps:['Cook the pasta according to the package instructions.','Cook chopped tomatoes in oil for 10 minutes.','Combine with the pasta and add Parmesan.'],ingredientNames:['Pasta','Tomato','Olive oil','Parmesan'],ingredientUnits:['g','g','tbsp','g']}:{title:'The Little Prince',summary:'A short story that opens big questions about friendship, care and the things that matter to us.',imageAlt:'Original illustration of an open book and stars',sourceLabel:'Development bibliographic example — verify the chosen edition',rightsNote:'Original demo description and illustration; no copied book cover.',reviewed:true,genres:['Novella','Fantasy'],recommendationReason:'For a moment when you want a short read and a different perspective on everyday life.',authors:['Antoine de Saint-Exupéry']};
+ item.translations={en,bs};
+}
 export const demoCatalog: ContentRecord[] = demoItems.map((item, i) => ({
   ...item,
   id: `demo-${i + 1}`,

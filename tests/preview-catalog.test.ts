@@ -1,5 +1,5 @@
 import {test,expect} from 'vitest';
-import {previewCatalog} from '../apps/client/src/web/catalog';
+import {demoCatalog as previewCatalog} from '../apps/client/src/web/bilingualCatalog';
 import {contentSchema,selectRecommendation} from '@random/shared';
 test('demo offers five distinct choices per active category before exhausting the pool',()=>{
  for(const category of ['EAT','BOOK'] as const){

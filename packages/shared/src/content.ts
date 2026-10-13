@@ -1,4 +1,5 @@
 import { z } from "zod";
+import {translationsSchema,bilingualIssues} from './localization';
 import {ingredientDefinitions} from "./ingredient-tags";
 
 const text = z.string().trim().min(1).max(2000);
@@ -23,6 +24,7 @@ const base = {
   language: z.string().trim().min(2).max(16),
   tags: z.array(text.max(60)).max(30),
   factsVerified: z.boolean(),
+  translations: translationsSchema.optional(),
   source: z.object({
     url: z
       .url()
@@ -111,7 +113,7 @@ export function publicationIssues(item: ContentInput): string[] {
   if (!item.image.rightsConfirmed) issues.push("Potvrdi prava za sliku.");
   if (item.category === "EAT" && !item.allergensVerified)
     issues.push("Sastojci i alergeni moraju biti provjereni.");
-  return issues;
+  return [...issues,...bilingualIssues(item)];
 }
 export const spinContextSchema = z.object({
   category: z.enum(["EAT", "BOOK", "WATCH", "MOVE", "GO"]),

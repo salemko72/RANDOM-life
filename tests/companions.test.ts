@@ -6,8 +6,8 @@ import {companionItems} from '../apps/client/src/web/companions';
 
 test('book companions are other real works by the selected author, without file navigation',()=>{
  const expected:Record<string,string[]>={
-  'Yuval Noah Harari':['Homo Deus','21 Lessons for the 21st Century'],
-  'Thomas Mann':['Buddenbrooks','Der Zauberberg','Der Tod in Venedig'],
+  'Yuval Noah Harari':['Homo Deus','21 lekcija za 21. stoljeće'],
+  'Thomas Mann':['Buddenbrooks','Čarobni brijeg','Smrt u Veneciji'],
   'Fjodor Dostojevski':['Zločin i kazna','Braća Karamazovi','Idiot'],
   'Miljenko Jergović':['Sarajevo Marlboro','Rod','Inšallah, Madona, inšallah'],
   'Danilo Kiš':['Grobnica za Borisa Davidoviča','Enciklopedija mrtvih','Rani jadi']

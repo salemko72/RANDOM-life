@@ -1,6 +1,6 @@
 # Višejezični RANDOM life — predloženi ugovor
 
-Status: prijedlog; prevodi i promjena početnog jezika još nisu implementirani. Potreban je izbor početnog jezika; preporuka je BHS pa engleski.
+Status: ENG/BHS dio implementiran u previewu 0.7, engleski početni jezik. Trenutno translations map živi u postojećem JSON zapisu; normalizovane tabele i preostalih pet jezika su budući prijedlog. Aktuelni ugovor i ograničenja: PREVIEW_0_7.md.
 
 ## Jezici
 

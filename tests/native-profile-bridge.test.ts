@@ -1,8 +1,9 @@
 import {runInNewContext} from 'node:vm';
 import {describe,expect,it} from 'vitest';
-import {applyStorageMessage,createSnapshotWriter,PROFILE_KEY,readSnapshot,seedPreviewHtml} from '../apps/client/src/native/profile-bridge';
+import {applyStorageMessage,createSnapshotWriter,LOCALE_KEY,PROFILE_KEY,readSnapshot,seedPreviewHtml} from '../apps/client/src/native/profile-bridge';
 
 describe('native profile persistence',()=>{
+ it('includes ENG/BHS language in the native persisted snapshot',()=>{const state=applyStorageMessage({},JSON.stringify({type:'random-life.local-state.v1',operation:'set',key:LOCALE_KEY,value:'bs'}));expect(state).toEqual({[LOCALE_KEY]:'bs'});expect(readSnapshot(JSON.stringify(state))).toEqual(state);});
  it('restores safely before preview code with unavailable origin storage',()=>{
   const value='</script><script>globalThis.attacked=true</script>\u2028';
   const html=seedPreviewHtml('<html><script>app()</script></html>',{[PROFILE_KEY]:value});

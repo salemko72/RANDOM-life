@@ -246,3 +246,14 @@ it('imports all new categories into D1 using their own structured fields',async(
   expect(created.status).toBe(201);expect(created.data.item.category).toBe(category);
  }
 });
+it('D1 content exposes the selected ENG/BHS text with one identity and shared quantities',async()=>{
+ const original=demoItems[0];const payload={...original,title:'Bilingual API fixture',source:{...original.source,url:'https://example.com/bilingual-api-fixture'}};
+ const created=await call('/admin/content','POST',payload);expect(created.status).toBe(201);const id=created.data.item.id;
+ await call(`/admin/content/${id}/review`,'POST');expect((await call(`/admin/content/${id}/publish`,'POST')).status).toBe(200);
+ const en=(await call('/spin','POST',{category:'EAT',language:'en',excludeIds:[]})).data.item;
+ expect(en.language).toBe('en');
+ const catalogue=(await call('/catalog?locale=bs')).data.items.find((i:any)=>i.id===id);
+ expect(catalogue.language).toBe('bs');expect(catalogue.title).toBe(original.translations!.bs!.title);
+ const english=(await call('/catalog')).data.items.find((i:any)=>i.id===id);expect(english.title).toBe(original.translations!.en!.title);expect(english.id).toBe(catalogue.id);expect(english.ingredients.map((i:any)=>i.quantity)).toEqual(catalogue.ingredients.map((i:any)=>i.quantity));
+ const db=await mf.getD1Database('CONTENT_DB');expect((await db.prepare('SELECT data FROM content_items WHERE id=?').bind(id).first<{data:string}>())?.data).toContain('translations');
+});

@@ -21,7 +21,7 @@ export function selectRecommendation<T extends Candidate>(
       return false;
     if (
       parsed.excludeIds.includes(item.id) ||
-      (parsed.language && item.language !== parsed.language)
+      (parsed.language && item.language !== parsed.language && !item.translations?.[parsed.language as keyof NonNullable<typeof item.translations>])
     )
       return false;
     if (item.category === "EAT") {

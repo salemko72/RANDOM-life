@@ -103,3 +103,13 @@
 .wordmark h1{display:flex;align-items:baseline;gap:10px;white-space:nowrap}.wordmark h1 em,.logo-life{font-family:RandomDisplay,Georgia,serif;font-size:.85em;letter-spacing:0;font-weight:400;font-style:italic;color:#896356}.your-spin{font-size:14px}
 
 .wordmark h1 em,.logo-life{font-family:RandomLife,Georgia,serif}
+/* Locale is a display preference; category and recommendation identifiers stay stable. */
+.language-chooser{display:flex;gap:6px;align-items:center;margin:0 42px 20px 0;position:relative;z-index:2}
+.language-chooser button{border:1px solid #ad7976;border-radius:999px;padding:8px 15px;background:transparent;color:#4b3334;font:600 12px RandomSans,sans-serif;letter-spacing:.08em;cursor:pointer}
+.language-chooser button[aria-pressed="true"]{background:#75494a;color:#fff5ee;border-color:#75494a}
+.language-chooser button:focus-visible{outline:3px solid #b97772;outline-offset:3px}
+.onboarding-content>.language-chooser{margin-bottom:14px}
+html[lang="bs"] .rail-label{font-size:10px;letter-spacing:.02em}
+html[lang="bs"] .wheel-svg text{font-size:15px}
+
+.details-screen{overflow-x:hidden}

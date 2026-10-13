@@ -1,11 +1,12 @@
 export const NATIVE_STATE_KEY = 'RANDOM-life.local-state.v1';
+export const LOCALE_KEY = 'random-life.locale.v1';
 export const PROFILE_KEY = 'random-life.local-profile.v1';
 export const EXPERIENCE_PREFIX = 'random-life.experience.';
 const MAX_VALUE = 128 * 1024;
 const MAX_STATE = 512 * 1024;
 export type LocalState = Record<string, string>;
 export function allowedKey(key: string): boolean {
- return key === PROFILE_KEY || (key.startsWith(EXPERIENCE_PREFIX) && key.length <= 200);
+ return key === PROFILE_KEY || key === LOCALE_KEY || (key.startsWith(EXPERIENCE_PREFIX) && key.length <= 200);
 }
 export function readSnapshot(raw: string | null): LocalState {
  try {
@@ -46,7 +47,7 @@ export function seedPreviewHtml(html: string, state: LocalState): string {
  const safeState = JSON.stringify(readSnapshot(JSON.stringify(state))).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
  const bootstrap = `<script>(function(){
  var seed=${safeState}, memory=Object.create(null), nativeStore=null;
- var allowed=function(k){return k===${JSON.stringify(PROFILE_KEY)}||(k.indexOf(${JSON.stringify(EXPERIENCE_PREFIX)})===0&&k.length<=200);};
+ var allowed=function(k){return k===${JSON.stringify(PROFILE_KEY)}||k===${JSON.stringify(LOCALE_KEY)}||(k.indexOf(${JSON.stringify(EXPERIENCE_PREFIX)})===0&&k.length<=200);};
  try {nativeStore=window.localStorage;var probe='random-life.bridge-probe';nativeStore.setItem(probe,'1');nativeStore.removeItem(probe);}catch(e){nativeStore=null;}
  if(nativeStore){try{for(var i=nativeStore.length-1;i>=0;i--){var key=nativeStore.key(i);if(key&&allowed(key))nativeStore.removeItem(key);}}catch(e){nativeStore=null;}}
  Object.keys(seed).forEach(function(k){memory[k]=seed[k];if(nativeStore){try{nativeStore.setItem(k,seed[k]);}catch(e){}}});

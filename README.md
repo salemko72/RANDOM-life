@@ -79,3 +79,5 @@ Redoslijed izvor → prompt → ZIP → pregled → čuvanje, sa odvojenim demo 
 Jače sjene, BHS nazivi kategorija i skrolanje detalja: [preview 0.13](docs/PREVIEW_0_13.md).
 
 Novi unos prazni editor; nepoznati tagovi ilustracija ne blokiraju ZIP: [preview 0.14](docs/PREVIEW_0_14.md).
+
+Diskretni scrollbar i pregled preko cijelog ekrana u šest kolona: [preview 0.15](docs/PREVIEW_0_15.md).

@@ -303,7 +303,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     const count = (c: Category) => items.filter((i) => i.category === c &&
         i.status === "published" &&
         !publicationIssues(i).length).length;
-    return (<div className="layout">
+    return (<div className={`layout ${browse?'browse-mode':''}`}>
       <aside>
         <div className="brand">R A N D O M <em className="logo-life">life</em></div>
         <p className="muted">Content Studio</p>

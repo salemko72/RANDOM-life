@@ -1,3 +1,4 @@
+import BaseBrowser from './BaseBrowser';
 import {readContentPackage} from './content-package';
 import {planAtlasBatches,atlasBatchPrompt,atlasBatchManifestJson,type AtlasBatch} from './atlas-batches';
 import {inspectImport,recoverImport,draftInput,batchTranslationPrompt,needsTranslationRepair} from './import-recovery';
@@ -28,6 +29,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     const tx = (value: string) => studioText(locale, value);
     const [atlasQueue,setAtlasQueue]=useState<AtlasBatch[]>(()=>{try{const saved=JSON.parse(localStorage.getItem('random-life.atlas-queue.v1')||'[]');return Array.isArray(saved)?saved.filter(b=>b?.status==='pending'&&b?.columns===10&&b?.rows===10&&Array.isArray(b.cells)&&b.cells.length===100):[];}catch{return [];}});
     const [batchJSON,setBatchJSON]=useState('');
+    const [browse,setBrowse]=useState(false);
     const [zipUpload,setZipUpload]=useState<{name:string;state:'loading'|'saved'|'error';error?:string}|null>(null);
     const [recoveryBackup,setRecoveryBackup]=useState('');
     const [translationLocale, setTranslationLocale] = useState<Locale>(locale);
@@ -147,6 +149,10 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         finally {
             setBusy(false);
         }
+    }
+    function openRecord(i:ContentRecord){
+        setSelected(i);setCategory(i.category);setSource(i.source.url);setCopied(null);setJson(JSON.stringify(draftInput(i),null,2));setStaged(null);setOriginal(null);setMessage('');setBrowse(false);
+        requestAnimationFrame(()=>document.querySelector('.editor')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}));
     }
     function parsedInput() {
         return tagIngredients(preview ? draftInput(JSON.parse(json)) : contentSchema.parse(JSON.parse(json)));
@@ -296,6 +302,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
       <aside>
         <div className="brand">R A N D O M <em className="logo-life">life</em></div>
         <p className="muted">Content Studio</p>
+        <button className="nav quiet" onClick={()=>setBrowse(true)}>Base browser &amp; editor</button>
         <div className="nav active">{tx("\u2726 Uredni\u010Dki stol")}</div>
         <div className="nav">{tx("EAT \u00B7 recepti")}</div>
         <div className="nav">{tx("READ \u00B7 knjige")}</div><div className="nav">{tx("WATCH \u00B7 filmovi i serije")}</div><div className="nav">{tx("MOVE \u00B7 aktivnosti")}</div><div className="nav">{tx("GO \u00B7 izlasci")}</div>
@@ -351,7 +358,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             <p>{tx("nacrta i pregleda")}</p>
           </div>
         </section>
-        <div className="workspace">
+        <div className="actions studio-mode"><button className={!browse?'selected':'quiet'} onClick={()=>setBrowse(false)}>{locale==='en'?'Prompt creator & editor':'Kreator prompta i uređivanje'}</button><button className={browse?'selected':'quiet'} onClick={()=>setBrowse(true)}>Base browser &amp; editor</button></div>
+        {browse&&<BaseBrowser items={items} preview={preview} locale={locale} busy={busy} onEdit={openRecord}/>}
+        <div className={`workspace ${browse?'browse-hidden':''}`}>
           <section className="editor card">
             <fieldset className="editor-lock" disabled={busy}>
               <div className="section-head">
@@ -361,7 +370,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               {selected && <p className="editing-status">{tx("Ure\u0111uje\u0161:")}{localizeContent(selected,locale).title} · {tx(labels[selected.status])}{tx(". Za drugi recept koristi novi nacrt.")}</p>}
               {selected && <button className="quiet" onClick={() => { setSelected(null); setStaged(null); setOriginal(null); setCopied(null); }}>{tx("Sa\u010Duvaj kao novi nacrt")}</button>}
               {preview && <section className="zip-import"><h3>{locale==='en'?'Import ChatGPT ZIP':'Uvezi ChatGPT ZIP'}</h3><p>{locale==='en'?'Paste the prompt into ChatGPT, download its ZIP containing content.json and one image, then select it here. Studio validates both languages, optimizes the image and saves a NEW draft. Existing items are never overwritten.':'Zalijepi prompt u ChatGPT, preuzmi ZIP sa content.json i jednom slikom, pa ga izaberi ovdje. Studio provjerava oba jezika, optimizira sliku i čuva NOVI nacrt. Postojeći unosi se ne prepisuju.'}</p><label>{locale==='en'?'ChatGPT content ZIP':'ChatGPT ZIP sadržaja'}<input type="file" accept=".zip,application/zip" disabled={busy} onChange={e=>{const file=e.target.files?.[0];if(file)run(async()=>{setZipUpload({name:file.name,state:'loading'});try{if(file.size>25*1024*1024)throw new Error('ZIP exceeds 25 MB.');const pack=readContentPackage(new Uint8Array(await file.arrayBuffer()));await imageFile(new File([new Uint8Array(pack.image.bytes)],pack.image.name,{type:pack.image.mime}),pack.input);setZipUpload({name:file.name,state:'saved'});}catch(error){setZipUpload({name:file.name,state:'error',error:error instanceof Error?error.message:String(error)});throw error;}});}}/></label>{zipUpload && <div data-testid="zip-import-status" className={`zip-upload-status ${zipUpload.state}`} role={zipUpload.state==='error'?'alert':undefined}><strong>{zipUpload.name}</strong><p>{zipUpload.state==='loading'?(locale==='en'?'Reading ZIP and checking content…':'Čitam ZIP i provjeravam sadržaj…'):zipUpload.state==='saved'?(locale==='en'?'✓ Loaded and saved as a new draft. Category, both languages and image came from this ZIP.':'✓ Učitano i sačuvano kao novi nacrt. Kategorija, oba jezika i slika pročitani su iz ZIP-a.'):(locale==='en'?'ZIP was not imported. Your existing items are unchanged.':'ZIP nije uvezen. Postojeći unosi nisu izmijenjeni.')}</p>{zipUpload.error&&<p>{zipUpload.error}</p>}</div>}</section>}
-              <details className="prompt-builder"><summary>{locale==='en'?'Prepare a ChatGPT prompt · optional before import':'Pripremi ChatGPT prompt · nije potrebno za uvoz'}</summary>
+              <details open className="prompt-builder"><summary>{locale==='en'?'ChatGPT prompt creator · website or inspiration':'Kreator ChatGPT prompta · stranica ili inspiracija'}</summary>
               <div className="tabs">
                 {(["EAT", "BOOK", "WATCH", "MOVE", "GO"] as const).map((c) => (<button key={c} className={category === c ? "selected" : "quiet"} onClick={() => { if (c !== category && json.trim() && !window.confirm(tx("Otvoriti prazni obrazac za drugu kategoriju? Sa\u010Duvani recept ostaje u biblioteci.")))
             return; if (c !== category)
@@ -515,16 +524,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               </div>)}
             {items
             .filter((i) => [i.title,...Object.values(i.translations??{}).map(t=>t?.title)].some(title=>typeof title==='string'&&title.toLocaleLowerCase(locale).includes(search.toLocaleLowerCase(locale))))
-            .map((i) => (<button disabled={busy} key={i.id} className="item" onClick={() => {
-                setSelected(i);
-                setCategory(i.category);
-                setSource(i.source.url);
-                setCopied(null);
-                setJson(JSON.stringify(draftInput(i), null, 2));
-                setStaged(null);
-                setOriginal(null);
-                setMessage("");
-            }}>
+            .map((i) => (<button disabled={busy} key={i.id} className="item" onClick={() => openRecord(i)}>
                   <span className="item-category">{i.category === "BOOK" ? "READ" : i.category}</span>
                   <strong>{localizeContent(i, locale).title}</strong><span className="locale-status">{(['en','bs'] as const).map(code=><small key={code}>{code==='en'?'ENG':'BHS'} {i.translations?.[code]?.reviewed?'✓':tx('nedostaje pregled')}</small>)}</span>
                   <span className={`status ${i.status}`}>

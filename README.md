@@ -71,3 +71,5 @@ Konkretni izbori na wheelu, animacija čuvanja, Studio oporavak i grupni prevodi
 ZIP import, AI prijedlozi kategorije/alergena i grupni upload prevoda: [preview 0.9](docs/PREVIEW_0_9.md).
 
 ZIP kao jedini unos i prehrana s malo fosfora: [preview 0.10](docs/PREVIEW_0_10.md).
+
+Vidljivi kreator prompta i pregled baze po kategoriji: [preview 0.11](docs/PREVIEW_0_11.md).

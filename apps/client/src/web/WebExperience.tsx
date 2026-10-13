@@ -152,5 +152,5 @@ function Experience(){
   {saveNotice&&<div className="save-notice" role="status">{saveNotice}</div>}
   {welcomeRendered&&<Onboarding profile={profile} leaving={entered} onComplete={finishProfile}/>}
   {editingProfile&&<><Onboarding profile={profile} editing onComplete={finishProfile}/><button className="cancel-profile-edit" onClick={()=>setEditingProfile(false)} aria-label={t("Otkaži uređivanje profila")}><Icon name="close" size={24}/></button></>}
- </div><p className="preview-footer">RANDOM · demo 0.10 <span>{t("Originalne demo ilustracije · probni profil na uređaju.")}</span></p></div>;
+ </div><p className="preview-footer">RANDOM · demo 0.11 <span>{t("Originalne demo ilustracije · probni profil na uređaju.")}</span></p></div>;
 }

@@ -113,3 +113,20 @@ describe('ZIP prompt and AI dietary proposals',()=>{
  expect(publicationIssues(recipe)).toEqual(expect.arrayContaining(['Gluten-free claim conflicts with the dietary assessment.','Lactose-free claim conflicts with the dietary assessment.','Category must match the proposed classification before publishing.']));
  });
 });
+
+it('documents text limits for base fields and both translations in every category prompt',()=>{
+ for(const category of ['EAT','BOOK','WATCH','MOVE','GO'] as const){
+ const prompt=createChatGPTPrompt(category,'example');
+ for(const rule of ['title ≤160','summary ≤2000','image.alt/imageAlt ≤300','source.label/sourceLabel ≤200','≤40','platform ≤100','translations.en.durationLabel','translations.bs.durationLabel','≤60 znakova','45–60 min/episode','45–60 min/epizoda'])expect(prompt).toContain(rule);
+ }
+ const movie={...demoItems[1],category:'WATCH',format:'Film',year:2020,durationLabel:'123 min',platform:'Cinema',genres:['Drama'],recommendationReason:'A film recommendation.'};
+ const overlong='x'.repeat(61);
+ expect(contentSchema.safeParse({...movie,durationLabel:overlong}).success).toBe(false);
+ expect(contentSchema.safeParse({...movie,translations:{...movie.translations,en:{...movie.translations!.en,durationLabel:overlong}}}).success).toBe(false);
+ expect(contentSchema.safeParse({...movie,durationLabel:'123 min'}).success).toBe(true);
+});
+
+it('treats streaming platform as informational without region verification blocking publication',()=>{
+ const prompt=createChatGPTPrompt('WATCH','Netflix title');
+ expect(prompt).toContain('takva promjena nije prepreka');expect(prompt).toContain('Ne traži provjeru svake regije');expect(prompt).toContain('bez tvrdnje da je naslov sada dostupan');
+});

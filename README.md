@@ -75,3 +75,5 @@ ZIP kao jedini unos i prehrana s malo fosfora: [preview 0.10](docs/PREVIEW_0_10.
 Vidljivi kreator prompta i pregled baze po kategoriji: [preview 0.11](docs/PREVIEW_0_11.md).
 
 Redoslijed izvor → prompt → ZIP → pregled → čuvanje, sa odvojenim demo sadržajem i oporavkom backupa: [preview 0.12](docs/PREVIEW_0_12.md).
+
+Jače sjene, BHS nazivi kategorija i skrolanje detalja: [preview 0.13](docs/PREVIEW_0_13.md).

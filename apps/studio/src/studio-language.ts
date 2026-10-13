@@ -1,5 +1,10 @@
 /** Explicit Studio UI catalog. Content titles, ingredients and JSON are left intact. */
 export const studioEnglish: Record<string, string> = {
+ 'Atlas serija spremna · 100 sastojaka':'Atlas batch ready · 100 ingredients',
+ 'Manifest je pripremljen za originalnu PNG sliku 10 × 10. Slika još nije generisana; nakon generisanja potreban je ljudski pregled.':'The manifest is ready for an original 10 × 10 PNG image. The image has not been generated; artwork requires human review.',
+ 'Prompt atlas serije kopiran.':'Atlas batch prompt copied.',
+ 'Kopiraj prompt atlas serije':'Copy atlas batch prompt',
+ 'Preuzmi manifest atlas serije':'Download atlas batch manifest',
  'nedostaje pregled':'needs review',
  'verzija':'version',
  'Jezičke verzije':'Language versions',

@@ -19,7 +19,7 @@ try {
  await enterDemo(p);await p.waitForTimeout(550);
  assert.equal(await p.getByRole('button',{name:'DO — uskoro',exact:true}).count(),0);assert.equal(await p.locator('.rail-category').count(),5);
  assert(await p.locator('.category-eat').first().evaluate(e=>getComputedStyle(e).backgroundImage!=='none'));await shot('home');
- await p.getByRole('button',{name:'EAT',exact:true}).click();assert(await p.getByRole('button',{name:'Wheel se okreće'}).isDisabled());
+ await p.getByRole('button',{name:'Zavrti wheel',exact:true}).click();assert(await p.getByRole('button',{name:'Wheel se okreće'}).isDisabled());
  assert(await p.getByRole('link',{name:'Otvori Content Studio'}).evaluate(e=>e.classList.contains('disabled')));
  const visited=new Set();for(let n=0;n<12;n++){visited.add(await p.locator('.rail-category.selected').getAttribute('aria-label'));await p.waitForTimeout(180);}assert(visited.size>=3,'Highlight must track actual wheel sectors');
  await p.getByRole('button',{name:'KUHAJMO'}).waitFor({timeout:15000});assert(await p.locator('.result-copy').getByText('Mercimek čorbasi',{exact:false}).count());assert.equal(await p.locator('.rail-category.selected').getAttribute('aria-label'),'EAT');await shot('eat');

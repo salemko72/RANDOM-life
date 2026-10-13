@@ -65,3 +65,5 @@ Najnovije korekcije, lokalni profil, kontekstualni paneli i atlas 100 sastojaka:
 Najnoviji logo i Studio tok: [preview 0.6](docs/PREVIEW_0_6.md). Predložena struktura jezika: [višejezični podaci](docs/MULTILINGUAL_DATA_PLAN.md).
 
 Aktuelni ENG/BHS preview, format prevoda i upute za ranije unose: [preview 0.7](docs/PREVIEW_0_7.md).
+
+Konkretni izbori na wheelu, animacija čuvanja, Studio oporavak i grupni prevodi: [preview 0.8](docs/PREVIEW_0_8.md).

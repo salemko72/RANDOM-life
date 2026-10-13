@@ -1,3 +1,4 @@
+import {draftInput,prepareTranslationBatch,legacyRecordMetadata} from './import-recovery';
 import {collectMissing, type MissingIngredient} from './missing-ingredients';
 import { contentSchema, publicationIssues, type ContentRecord } from '@random/shared';
 const builtInMedia = new Set(['/media/lentil-soup.png','/media/reading.png','/media/demo-eat.png','/media/demo-book.png','/media/potato-salad.png','/media/swedish-meatballs.png','/media/menemen.png','/media/moussaka.png']);
@@ -19,7 +20,7 @@ function database() {
 }
 export async function readPreviewCatalog(): Promise<ContentRecord[]> {
   const db=await database();
-  return new Promise((resolve,reject)=>{const request=db.transaction('content').objectStore('content').getAll();request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});
+  return new Promise((resolve,reject)=>{const request=db.transaction('content').objectStore('content').getAll();request.onsuccess=()=>resolve(request.result.map(legacyRecordMetadata));request.onerror=()=>reject(request.error);});
 }
 export async function putPreviewImage(path: string, blob: Blob) {
   const db=await database();
@@ -42,7 +43,7 @@ export async function previewRequest(path: string, method='GET', body?:unknown, 
     tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve(answer);};
     tx.onabort=()=>reject(failure??new Error('Izmjena nije sačuvana. Provjeri duplikat ili lokalni prostor.'));
     if(path==='/admin/content' && method==='POST') {
-      const parsed=contentSchema.safeParse(body);if(!parsed.success){fail('JSON nije validan: '+parsed.error.issues.map(i=>`${i.path.join('.')}: ${i.message}`).join('; '));return;}
+      const parsed=(()=>{try{return {success:true as const,data:draftInput(body)}}catch(error){return {success:false as const,error:{issues:[{path:[] as string[],message:String(error)}]}}}})();if(!parsed.success){fail('JSON nije validan: '+parsed.error.issues.map(i=>`${i.path.join('.')}: ${i.message}`).join('; '));return;}
       const data=parsed.data;const dedupKey=`${data.category}|${data.source.url}|${data.title.trim().toLowerCase()}`;
       const existing=content.index('dedup').get(dedupKey);
       existing.onsuccess=()=>{
@@ -53,12 +54,12 @@ export async function previewRequest(path: string, method='GET', body?:unknown, 
     const match=path.match(/^\/admin\/content\/([^/]+)(?:\/(review|publish|unpublish))?$/);
     if(!match){fail('Putanja nije podržana u previewu.');return;}
     const found=content.get(match[1]);found.onsuccess=()=>{
-      const row=found.result as (ContentRecord & {dedupKey:string})|undefined;
+      const row=found.result?legacyRecordMetadata(found.result) as (ContentRecord & {dedupKey:string}):undefined;
       if(!row){fail('Stavka nije pronađena.');return;}
       if(version!==row.version){fail('Stavka je promijenjena u drugom tabu. Učitaj novu verziju.');return;}
       let item:ContentRecord={...row,version:row.version+1,updatedAt:new Date().toISOString(),approvedAt:null,approvedBy:null};
       if(!match[2] && method==='PUT') {
-        const parsed=contentSchema.safeParse(body);if(!parsed.success){fail('JSON ne odgovara ugovoru sadržaja.');return;}
+        const parsed=(()=>{try{return {success:true as const,data:draftInput(body)}}catch(error){return {success:false as const,error:{issues:[{path:[] as string[],message:String(error)}]}}}})();if(!parsed.success){fail(parsed.error.issues.map(i=>`${i.path.join('.')}: ${i.message}`).join('; '));return;}
         if(parsed.data.category!==row.category){fail('Kategorija se ne može mijenjati.');return;}
         item={...item,...parsed.data,status:'draft'};finish(item,'edit',`${item.category}|${item.source.url}|${item.title.trim().toLowerCase()}`);return;
       }
@@ -84,4 +85,16 @@ export async function rememberMissingIngredients(input:import('@random/shared').
 }
 export async function readPreviewRevisions():Promise<ContentRecord[]> {
  const db=await database();return new Promise((resolve,reject)=>{const r=db.transaction('events').objectStore('events').getAll();r.onsuccess=()=>{const unique=new Map<string,ContentRecord>();for(const event of r.result){if(event.item?.title)unique.set(`${event.item.category}|${event.item.source?.url}|${event.item.title}`,event.item);}resolve([...unique.values()].reverse());};r.onerror=()=>reject(r.error);});
+}
+
+export async function applyPreviewTranslationBatch(raw:unknown){
+ const db=await database();return new Promise<number>((resolve,reject)=>{
+  const tx=db.transaction(['content','events'],'readwrite'),store=tx.objectStore('content');let failure:unknown;let count=0;
+  tx.onabort=()=>reject(failure??new Error('Batch was not saved.'));tx.onerror=()=>{failure=tx.error;};
+  tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve(count);};
+  const request=store.getAll();request.onsuccess=()=>{try{
+   const changes=prepareTranslationBatch(raw,request.result);count=changes.length;
+   for(const change of changes){const original=request.result.find((r:any)=>r.id===change.id);const item={...original,...change.input,status:'draft',version:change.version+1,updatedAt:new Date().toISOString(),approvedBy:null,approvedAt:null};store.put(item);tx.objectStore('events').add({item,action:'translation-batch',at:item.updatedAt});}
+  }catch(error){failure=error;tx.abort();}};
+ });
 }

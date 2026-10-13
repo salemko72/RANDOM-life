@@ -12,7 +12,7 @@ import Onboarding from './Onboarding';
 import {companionItems,type Companion} from './companions';
 import {loadProfile,saveProfile,createProfile,recordSignal,selectPersonalized,choosePersonalizedCategory,eligibleForProfile,explainPreference,type Profile,type SignalKind,type UiCategory,toggleCompleted} from './preferences';
 import {loadExperience,saveExperience} from './experience-state';
-import { WHEEL_CATEGORIES, SECTOR_DEGREES, coast, landingRotation, sectorAtRotation, type WheelCategory, type ActiveCategory } from './wheel';
+import { WHEEL_CATEGORIES, itemWheelChoices, coast, landingRotation, sectorAtRotation, type WheelCategory, type ActiveCategory } from './wheel';
 
 function uiCategory(r:PreviewRecord):UiCategory{return r.category==='BOOK'?'READ':r.category;}
 function completedLabel(r:PreviewRecord,locale:import("@random/shared").Locale){const t=(text:string)=>translate(text,locale);return r.category==='BOOK'?t("Već čitao/la"):r.category==='WATCH'?t("Već gledao/la"):r.category==='MOVE'?t("Već radio/la"):r.category==='GO'?t("Već bio/la"):t("Već probao/la");}
@@ -23,22 +23,28 @@ function imageClass(item:PreviewRecord) { if(['WATCH','MOVE','GO'].includes(item
 function CategoryPhoto({ category, className='' }: {category:WheelCategory;className?:string}) {
   return <span className={`category-photo category-${category.toLowerCase()} ${className}`} />;
 }
-function Wheel({ rotor, tick, spinning, onSpin }: {rotor:React.RefObject<HTMLDivElement|null>;tick:number;spinning:boolean;onSpin:()=>void}) {
-  const {t,category}=useLanguage();
-  function sector(index:number) {const start=(index*SECTOR_DEGREES-90-SECTOR_DEGREES/2)*Math.PI/180,end=(index*SECTOR_DEGREES-90+SECTOR_DEGREES/2)*Math.PI/180;return `M300 300 L${300+286*Math.cos(start)} ${300+286*Math.sin(start)} A286 286 0 0 1 ${300+286*Math.cos(end)} ${300+286*Math.sin(end)} Z`;}
-  return <div className={`wheel-stage ${spinning?'is-spinning':''}`}>
-    <div className="wheel-rotor" ref={rotor}><svg className="wheel-svg" viewBox="0 0 600 600" aria-hidden="true"><defs>{WHEEL_CATEGORIES.map((c,i)=><clipPath id={`sector-${i}`} key={c.id}><path d={sector(i)}/></clipPath>)}</defs>
+function WheelChoicePhoto({record}:{record:PreviewRecord}){
+ const [url,setUrl]=useState<string|null>(null);
+ useEffect(()=>{let live=true;let imageUrl:string|undefined;readPreviewImage(record.image.path).then(blob=>{if(blob&&live){imageUrl=URL.createObjectURL(blob);setUrl(imageUrl);}}).catch(()=>{});return()=>{live=false;if(imageUrl)URL.revokeObjectURL(imageUrl);};},[record.id,record.image.path]);
+ return <span className={`wheel-choice-photo ${imageClass(record)}`} style={url?{backgroundImage:`url(${url})`,backgroundSize:'cover',backgroundPosition:'center'}:undefined}/>;
+}
+function choiceLines(text:string){const lines:string[]=[];let line='';for(const word of text.split(/\s+/)){if(line&&line.length+word.length>17){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);return lines.slice(0,3).map((l,i)=>i===2&&lines.length>3?l.slice(0,15)+'…':l);}
+function Wheel({ rotor, tick, spinning, onSpin, choices }: {rotor:React.RefObject<HTMLDivElement|null>;tick:number;spinning:boolean;onSpin:()=>void;choices:PreviewRecord[]|null}) {
+  const {t,category,locale}=useLanguage();
+  const segments=choices??WHEEL_CATEGORIES;const degrees=360/segments.length;
+  function sector(index:number) {if(segments.length===1)return 'M300 14 A286 286 0 1 1 300 586 A286 286 0 1 1 300 14 Z';const start=(index*degrees-90-degrees/2)*Math.PI/180,end=(index*degrees-90+degrees/2)*Math.PI/180;return `M300 300 L${300+286*Math.cos(start)} ${300+286*Math.sin(start)} A286 286 0 ${degrees>180?1:0} 1 ${300+286*Math.cos(end)} ${300+286*Math.sin(end)} Z`;}
+  return <div className={`wheel-stage ${spinning?'is-spinning':''} ${choices?'item-wheel':'category-wheel'}`} data-wheel-mode={choices?'items':'categories'}>
+    <div className="wheel-rotor" ref={rotor}><svg className="wheel-svg" viewBox="0 0 600 600" aria-hidden="true"><defs>{segments.map((c,i)=><clipPath id={`sector-${i}`} key={c.id}><path d={sector(i)}/></clipPath>)}</defs>
       <circle cx="300" cy="300" r="299" fill="#f6e3dd"/>
-      {WHEEL_CATEGORIES.map((c,i)=><g key={c.id} clipPath={`url(#sector-${i})`}>
+      {segments.map((c,i)=>{const record=choices?.[i];const label=record?localizeContent(record,locale).title:category(c.id);const icon=record?actionIcon(record):WHEEL_CATEGORIES[i].icon;return <g key={c.id} clipPath={`url(#sector-${i})`} data-choice-id={record?.id} data-choice-title={record?label:undefined}>
         <path d={sector(i)} fill={i%2===0?'#ba7d79':'#e9d2c9'} stroke="#f9eee8" strokeWidth="2"/>
-        {i%2===0 && <foreignObject x="0" y="0" width="600" height="600"><CategoryPhoto category={c.id} className="wheel-sector-photo"/></foreignObject>}
-        {i%2===0 && <path d={sector(i)} fill="#382324" opacity=".32"/>}
-        <g transform={`rotate(${i*SECTOR_DEGREES} 300 300)`} fill={i%2===0?'#fff6ee':'#251e20'}>
-          <foreignObject x="273" y="75" width="54" height="60"><div className={`sector-icon ${i%2===0?'light':''}`}><Icon name={c.icon} size={42}/></div></foreignObject>
-          <text x="300" y="159" textAnchor="middle" fontSize="19" fontFamily="RandomSans">{category(c.id)}</text>
-          {!c.enabled && <text x="300" y="178" textAnchor="middle" fontSize="9" opacity=".65" letterSpacing="2">{t("USKORO")}</text>}
+        {(record||i%2===0)&&<foreignObject x="0" y="0" width="600" height="600">{record?<WheelChoicePhoto record={record}/>:<CategoryPhoto category={WHEEL_CATEGORIES[i].id} className="wheel-sector-photo"/>}</foreignObject>}
+        {(record||i%2===0)&&<path d={sector(i)} fill="#382324" opacity={record?'.48':'.32'}/>}
+        <g transform={`rotate(${i*degrees} 300 300)`} fill={record||i%2===0?'#fff6ee':'#251e20'}>
+          <foreignObject x="273" y="75" width="54" height="60"><div className={`sector-icon ${record||i%2===0?'light':''}`}><Icon name={icon} size={record?32:42}/></div></foreignObject>
+          <text x="300" y="159" textAnchor="middle" fontSize={record?17:19} fontFamily="RandomSans">{record?choiceLines(label).map((line,n)=><tspan key={n} x="300" dy={n?22:0}>{line}</tspan>):label}</text>
         </g>
-      </g>)}
+      </g>;})}
       <circle cx="300" cy="300" r="288" fill="none" stroke="#fff4eb" strokeWidth="5"/>
     </svg></div>
     <div className="wheel-pointer" key={tick}><svg viewBox="0 0 60 66"><path d="M9 4h42q7 0 4 8L35 56q-5 10-10 0L5 12Q2 4 9 4Z" fill="#ae6b69" stroke="#e8c4bc" strokeWidth="4"/></svg></div>
@@ -59,6 +65,8 @@ function Experience(){
  const {t,locale,category,value}=useLanguage();
  const [profile,setProfile]=useState(loadProfile);const [entered,setEntered]=useState(()=>profile.onboarded);const [welcomeRendered,setWelcomeRendered]=useState(()=>!profile.onboarded);const [editingProfile,setEditingProfile]=useState(false);const [storageAvailable,setStorageAvailable]=useState(true);
  const [studio,setStudio]=useState(location.hash==='#studio');const [scene,setScene]=useState<'home'|'result'>('home');
+ const [wheelChoices,setWheelChoices]=useState<PreviewRecord[]|null>(null);const [pointerChoice,setPointerChoice]=useState(0);
+ const [saveFlight,setSaveFlight]=useState<{id:number;x:number;y:number;toX:number;toY:number;label:string}|null>(null);const [saveNotice,setSaveNotice]=useState('');
  const [item,setItem]=useState<PreviewRecord|null>(null);const [busy,setBusy]=useState(false);const [active,setActive]=useState(0);const [tick,setTick]=useState(0);
  type Panel='menu'|'ingredients'|'companions'|'related-info'|'favorites'|'profile'|'history'|null;
  const [panel,setPanel]=useState<Panel>(null);const [renderedPanel,setRenderedPanel]=useState<Panel>(null);const visiblePanel=panel||renderedPanel;const [relatedInfo,setRelatedInfo]=useState<Companion|null>(null);const [details,setDetails]=useState(false);const [message,setMessage]=useState('');
@@ -90,16 +98,22 @@ function Experience(){
   if(!selected){setMessage("Sve prikladne demo izbore si već vidio/la. Vrati prijedloge za novi krug; tvoja ograničenja ostaju.");locked.current=false;setBusy(false);return;}
   const targetIndex=WHEEL_CATEGORIES.findIndex(c=>c.id===selected);lastCategory.current=selected;
   const recommendation=selectPersonalized(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds);
+  const visualChoices=target&&recommendation?itemWheelChoices(eligible.filter(r=>uiCategory(r)===selected),recommendation):null;
+  setWheelChoices(visualChoices);setPointerChoice(0);
+  const landingIndex=visualChoices?visualChoices.findIndex(r=>r.id===recommendation?.id):targetIndex;const segmentCount=visualChoices?.length??WHEEL_CATEGORIES.length;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  await new Promise<void>(resolve=>requestAnimationFrame(()=>resolve()));
   if(scene==='result'){setScene('home');await new Promise(r=>setTimeout(r,reduced?0:340));}
-  const from=rotation.current,to=landingRotation(from,targetIndex,6),began=performance.now(),duration=reduced?0:4800;
-  await new Promise<void>(resolve=>{let previous=-1;const frame=(now:number)=>{if(!mounted.current){resolve();return;}const progress=duration?Math.min(1,(now-began)/duration):1;rotation.current=from+(to-from)*coast(progress);if(rotor.current)rotor.current.style.transform=`rotate(${rotation.current}deg)`;const index=sectorAtRotation(rotation.current);if(index!==previous){previous=index;setActive(index);setTick(v=>v+1);}if(progress<1)animation.current=requestAnimationFrame(frame);else resolve();};animation.current=requestAnimationFrame(frame);});
+  const from=rotation.current,to=landingRotation(from,landingIndex,6,segmentCount),began=performance.now(),duration=reduced?0:4800;
+  await new Promise<void>(resolve=>{let previous=-1;const frame=(now:number)=>{if(!mounted.current){resolve();return;}const progress=duration?Math.min(1,(now-began)/duration):1;rotation.current=from+(to-from)*coast(progress);if(rotor.current)rotor.current.style.transform=`rotate(${rotation.current}deg)`;const index=sectorAtRotation(rotation.current,segmentCount);if(index!==previous){previous=index;if(visualChoices){setActive(targetIndex);setPointerChoice(index);}else setActive(index);setTick(v=>v+1);}if(progress<1)animation.current=requestAnimationFrame(frame);else resolve();};animation.current=requestAnimationFrame(frame);});
   await new Promise(r=>setTimeout(r,reduced?0:450));if(!mounted.current)return;setActive(targetIndex);
   if(recommendation)expose(recommendation);else{setItem(null);setMessage("Nema novog izbora za ova ograničenja. Vrati prethodne prijedloge ili izmijeni profil.");}
   locked.current=false;setBusy(false);
  }
- function goHome(){if(busy)return;setScene('home');setPanel(null);setDetails(false);}
- function toggleFavorite(){if(!item)return;const removing=favoriteIds.includes(item.id);setFavoriteIds(ids=>removing?ids.filter(id=>id!==item.id):[...ids,item.id].slice(-200));if(!removing)signal(item,'save');}
+ function goHome(){if(busy)return;setWheelChoices(null);setScene('home');setPanel(null);setDetails(false);}
+ function toggleFavorite(event?:React.MouseEvent<HTMLButtonElement>){if(!item)return;const removing=favoriteIds.includes(item.id);setFavoriteIds(ids=>removing?ids.filter(id=>id!==item.id):[...ids,item.id].slice(-200));if(!removing){signal(item,'save');setSaveNotice(locale==='en'?'Saved to favorites':'Sačuvano u favorite');const card=document.querySelector('.random-card')?.getBoundingClientRect();const origin=event?.currentTarget.getBoundingClientRect();const target=document.querySelector('[data-nav="favorites"]')?.getBoundingClientRect();if(card&&origin&&target){setSaveFlight({id:Date.now(),x:origin.x+origin.width/2-card.x,y:origin.y+origin.height/2-card.y,toX:target.x+target.width/2-card.x,toY:target.y+target.height/2-card.y,label:locale==='en'?'Saved to favorites':'Sačuvano u favorite'});}}else{setSaveFlight(null);setSaveNotice(locale==='en'?'Removed from favorites':'Uklonjeno iz favorita');}}
+ useEffect(()=>{if(!saveFlight)return;const timer=setTimeout(()=>setSaveFlight(null),900);return()=>clearTimeout(timer);},[saveFlight]);
+ useEffect(()=>{if(!saveNotice)return;const timer=setTimeout(()=>setSaveNotice(''),1800);return()=>clearTimeout(timer);},[saveNotice]);
  function acceptItem(){if(!item)return;signal(item,'accept');setDetails(true);setPanel(item.category==='EAT'?'ingredients':'companions');}
  function openCompanion(companion:Companion){const target=records.find(r=>r.id===companion.targetId);if(target&&eligibleForProfile(target,profile)){setPanel(null);setDetails(false);expose(target);signal(target,'accept');}else{setRelatedInfo(companion);setPanel('related-info');}}
  const d=item?localizeContent(item,locale):null;
@@ -110,7 +124,7 @@ function Experience(){
  return <div className="random-world"><div className={`random-card ${entered?'entered':''} ${busy?'spinning':''}`}>
   <div className="card-grain"/><div className="main-stage" inert={!entered||!!visiblePanel||editingProfile} aria-hidden={!entered}>
    <header className={`random-header ${scene==='result'?'result-header':''}`}><button className="icon-button menu-button" aria-label={scene==='home'?t("Otvori meni"):t("Nazad na Home")} disabled={busy} onClick={()=>scene==='home'?setPanel('menu'):goHome()}><Icon name={scene==='home'?'menu':'back'} size={26}/></button>{scene==='home'&&<div className="wordmark"><h1><span>R A N D O M</span> <em>life</em></h1><p>{t("Decide Less. Live More.")}</p></div>}{scene==='result'&&<button className={`icon-button bookmark-button ${saved?'saved':''}`} onClick={toggleFavorite} aria-label={saved?t("Ukloni iz sačuvanog"):t("Sačuvaj preporuku")}><Icon name="bookmark" size={24}/></button>}</header>
-   <section className={`home-scene scene ${scene==='home'?'scene-visible':''}`} aria-hidden={scene!=='home'}><Wheel rotor={rotor} tick={tick} spinning={busy} onSpin={()=>startSpin()}/><div className="wheel-caption"><span>{busy?t("Samo trenutak…"):`${t("Tvoj sljedeći trenutak")}, ${profile.name||t("istraživaču")}.`}</span><p>{busy?category(WHEEL_CATEGORIES[active].id):t("Tvoji interesi. Malo iznenađenja.")}</p></div></section>
+   <section className={`home-scene scene ${scene==='home'?'scene-visible':''}`} aria-hidden={scene!=='home'}><Wheel rotor={rotor} tick={tick} spinning={busy} choices={wheelChoices} onSpin={()=>startSpin()}/><div className="wheel-caption"><span>{busy?t("Samo trenutak…"):`${t("Tvoj sljedeći trenutak")}, ${profile.name||t("istraživaču")}.`}</span><p>{busy?(wheelChoices?localizeContent(wheelChoices[pointerChoice]??wheelChoices[0],locale).title:category(WHEEL_CATEGORIES[active].id)):t("Tvoji interesi. Malo iznenađenja.")}</p></div></section>
    <section className={`result-scene scene ${scene==='result'?'scene-visible':''} ${details?'show-details':''}`} aria-hidden={scene!=='result'}>{item&&d&&<>
     <div className={`feature-photo ${imageClass(item)}`} role="img" aria-label={d.image.alt} style={uploadedImage?{backgroundImage:`url(${uploadedImage})`}:undefined}/><button className={`favorite-float ${saved?'saved':''}`} aria-label={saved?t("Ukloni iz favorita"):t("Dodaj u favorite")} onClick={toggleFavorite}><Icon name="heart" size={23}/></button>
     <button className={`completed-float ${profile.completedIds.includes(item.id)?'marked':''}`} title={completedLabel(item,locale)} aria-label={profile.completedIds.includes(item.id)?`${t("Poništi")}: ${completedLabel(item,locale)}`:completedLabel(item,locale)} aria-pressed={profile.completedIds.includes(item.id)} onClick={()=>setProfile(p=>toggleCompleted(p,item.id))}><Icon name={profile.completedIds.includes(item.id)?'check':d.category==='BOOK'?'book':'seen'} size={21}/><small>{completedLabel(item,locale)}</small></button>
@@ -122,7 +136,7 @@ function Experience(){
      </div>
     </div>
    </>}</section>
-   <nav className="bottom-nav" aria-label={t("Glavna navigacija")}><button className={scene==='home'?'active':''} onClick={goHome} disabled={busy} aria-label={t("Home")}><Icon name="home" size={21}/><span>{t("Home")}</span></button><button onClick={()=>setPanel('favorites')} disabled={busy} aria-label={t("Favoriti")}><Icon name="heart" size={23}/></button><button onClick={()=>setPanel('history')} disabled={busy} aria-label={t("Historija spinova")}><Icon name="chart" size={23}/></button><button onClick={()=>setPanel('profile')} disabled={busy} aria-label={t("Profil i ograničenja")}><Icon name="profile" size={23}/></button></nav>
+   <nav className="bottom-nav" aria-label={t("Glavna navigacija")}><button className={scene==='home'?'active':''} onClick={goHome} disabled={busy} aria-label={t("Home")}><Icon name="home" size={21}/><span>{t("Home")}</span></button><button data-nav="favorites" className={saveFlight?'favorite-arrival':''} onClick={()=>setPanel('favorites')} disabled={busy} aria-label={t("Favoriti")}><Icon name="heart" size={23}/></button><button onClick={()=>setPanel('history')} disabled={busy} aria-label={t("Historija spinova")}><Icon name="chart" size={23}/></button><button onClick={()=>setPanel('profile')} disabled={busy} aria-label={t("Profil i ograničenja")}><Icon name="profile" size={23}/></button></nav>
    {!!message&&<div className="empty-notice" role="status"><p>{t(message)}</p><button onClick={()=>{setSeenIds([]);setMessage('');}}>{t("Vrati prethodne prijedloge")}</button></div>}
   </div>
   <aside className="category-rail" inert={!entered||!!visiblePanel||editingProfile} aria-hidden={!entered}><button className="rail-close" disabled={busy} aria-label={t("Vrati se na wheel")} onClick={goHome}><Icon name="close" size={26}/></button><p className="your-spin">{t("Choose")}<br/>{t("category")}</p><div className="rail-categories">{WHEEL_CATEGORIES.map((c,i)=><button key={c.id} className={`rail-category ${active===i?'selected':''} ${c.enabled?'enabled':'coming-soon'}`} aria-label={`${c.id}${c.enabled?'':` — ${t("Uskoro")}`}`} aria-pressed={active===i} disabled={busy||!c.enabled} onClick={()=>startSpin(c.id as ActiveCategory)}><CategoryPhoto category={c.id}/><span className="rail-icon"><Icon name={c.icon} size={15}/></span><span className="rail-label">{category(c.id)}</span>{!c.enabled&&<span className="soon-dot" title={t("Uskoro")}/>}</button>)}</div><button className="rail-respin" onClick={()=>startSpin()} disabled={busy} aria-label={t("Spin again")}><span><Icon name="refresh" size={25}/></span><small>{t("Spin again")}</small></button><a className={`studio-link ${busy?'disabled':''}`} href="#studio" aria-label={t("Otvori Content Studio")} onClick={e=>{if(busy)e.preventDefault();}}><Icon name="home" size={17}/><small>Studio</small></a></aside>
@@ -134,7 +148,9 @@ function Experience(){
    {visiblePanel==='profile'&&<><p className="eyebrow">{t("TVOJ IZBOR")}</p><h3>{t("Zdravo")}, {profile.name||t("istraživaču")}.</h3><p className="panel-note">{t("Profil je na ovom uređaju.")} {storageAvailable?t("Vraćaš se bez ponovnog unosa."):t("Preglednik ne dopušta trajno čuvanje; profil ostaje samo tokom ove posjete.")}</p><div className="profile-interests">{profile.interests.map(c=><span key={c}>{category(c)}</span>)}</div><p className="panel-note">{t("Teme")}: {profile.topics.map(value).join(', ')||t("otvoren/a za iznenađenja")}.<br/>{t("Ograničenja")}: {profile.allergens.map(value).join(', ')||t("nema odabranih alergena")}{profile.vegetarian?t(" · vegetarijansko"):''}.<br/>{t("Intolerancije")}: {profile.intolerances.map(value).join(', ')||t("nisu odabrane")}{profile.intoleranceNote?` · ${profile.intoleranceNote}`:''}.</p><label className="preference-check"><input type="checkbox" checked={profile.learning} onChange={e=>setProfile(p=>({...p,learning:e.target.checked}))}/>{t("Uči iz mojih izbora")}</label><div className="profile-stats"><span><strong>{profile.events.filter(e=>e.kind==='accept').length}</strong>{t("odabira")}</span><span><strong>{favoriteIds.length}</strong>{t("sačuvano")}</span><span><strong>{profile.events.filter(e=>e.kind==='skip').length}</strong>{t("preskočeno")}</span></div><button className="pill-primary" onClick={()=>{setPanel(null);setEditingProfile(true);}}>{t("UREDI ODGOVORE")}</button><button className="profile-reset" onClick={()=>setProfile(p=>({...p,events:[]}))}>{t("Obriši naučene preferencije")}</button><button className="profile-reset" onClick={()=>{if(window.confirm(t("Obrisati profil, historiju i favorite na ovom uređaju?"))){try{localStorage.removeItem('random-life.experience.'+profile.id);}catch{}const next=createProfile();setProfile(next);setFavoriteIds([]);setSeenIds([]);setHistoryIds([]);setEntered(false);setWelcomeRendered(true);setPanel(null);goHome();}}}>{t("Zaboravi ovaj profil")}</button></>}
    {(visiblePanel==='favorites'||visiblePanel==='history')&&<><p className="eyebrow">{t("TVOJI TRENUTCI")}</p><h3>{visiblePanel==='favorites'?t("Sačuvaj ono dobro."):t("Tvoji dosadašnji izbori.")}</h3>{(visiblePanel==='favorites'?favoriteIds:[...historyIds].reverse()).length?(visiblePanel==='favorites'?favoriteIds:[...historyIds].reverse()).map((id,i)=>{const r=records.find(v=>v.id===id);if(!r)return null;return <button className="saved-item" key={`${id}-${i}`} disabled={!eligibleForProfile(r,{...profile,completedIds:[]})} onClick={()=>{setItem(r);setScene('result');setDetails(false);setPanel(null);setActive(WHEEL_CATEGORIES.findIndex(c=>c.id===uiCategory(r)));signal(r,'open');}}><span className={`saved-photo ${imageClass(r)}`}/><span><small>{category(uiCategory(r))}</small><strong>{localizeContent(r,locale).title}</strong>{profile.completedIds.includes(r.id)?<small>{completedLabel(r,locale)}</small>:!eligibleForProfile(r,profile)&&<small>{t("Ne odgovara tvojim ograničenjima")}</small>}</span><Icon name="arrow" size={18}/></button>;}):<p className="panel-note">{t("Još nema izbora. Zavrtimo nešto dobro.")}</p>}</>}
   </section></div>}
+  {saveFlight&&<div key={saveFlight.id} className="save-flight" aria-hidden="true" style={{'--from-x':`${saveFlight.x}px`,'--from-y':`${saveFlight.y}px`,'--to-x':`${saveFlight.toX}px`,'--to-y':`${saveFlight.toY}px`} as React.CSSProperties}><Icon name="mail" size={25}/></div>}
+  {saveNotice&&<div className="save-notice" role="status">{saveNotice}</div>}
   {welcomeRendered&&<Onboarding profile={profile} leaving={entered} onComplete={finishProfile}/>}
   {editingProfile&&<><Onboarding profile={profile} editing onComplete={finishProfile}/><button className="cancel-profile-edit" onClick={()=>setEditingProfile(false)} aria-label={t("Otkaži uređivanje profila")}><Icon name="close" size={24}/></button></>}
- </div><p className="preview-footer">RANDOM · demo 0.7 <span>{t("Originalne demo ilustracije · probni profil na uređaju.")}</span></p></div>;
+ </div><p className="preview-footer">RANDOM · demo 0.8 <span>{t("Originalne demo ilustracije · probni profil na uređaju.")}</span></p></div>;
 }

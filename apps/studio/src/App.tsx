@@ -1,8 +1,10 @@
+import {planAtlasBatches,atlasBatchPrompt,atlasBatchManifestJson,type AtlasBatch} from './atlas-batches';
+import {inspectImport,recoverImport,draftInput,batchTranslationPrompt,needsTranslationRepair} from './import-recovery';
 import React, { useEffect, useState } from "react";
 import { contentSchema, createChatGPTPrompt, demoItems, publicationIssues, ingredientDefinitions, resolveIngredient, tagIngredients, type Category, type ContentRecord, type ContentInput, type Locale, localizeContent, } from "@random/shared";
 import {editableSource} from "./editable-translations";
 import { studioText } from './studio-language';
-import { previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
+import { applyPreviewTranslationBatch, previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
 import { unresolvedIngredients, missingAtlasPrompt, type MissingIngredient } from './missing-ingredients';
 const EDITOR_KEY = 'random-life.studio-editor.v1';
 function readEditor() { try {
@@ -23,6 +25,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     locale?: Locale;
 } = {}) {
     const tx = (value: string) => studioText(locale, value);
+    const [atlasQueue,setAtlasQueue]=useState<AtlasBatch[]>(()=>{try{const saved=JSON.parse(localStorage.getItem('random-life.atlas-queue.v1')||'[]');return Array.isArray(saved)?saved.filter(b=>b?.status==='pending'&&b?.columns===10&&b?.rows===10&&Array.isArray(b.cells)&&b.cells.length===100):[];}catch{return [];}});
+    const [batchJSON,setBatchJSON]=useState('');
+    const [recoveryBackup,setRecoveryBackup]=useState('');
     const [translationLocale, setTranslationLocale] = useState<Locale>(locale);
     const [initial] = useState(readEditor);
     const [revisions, setRevisions] = useState<ContentRecord[]>([]);
@@ -39,7 +44,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     const [category, setCategory] = useState<Category>(["EAT", "BOOK", "WATCH", "MOVE", "GO"].includes(initial.category) ? initial.category : "EAT");
     const [source, setSource] = useState(typeof initial.source === 'string' ? initial.source : "");
     const [json, setJson] = useState(typeof initial.json === 'string' ? initial.json : "");
-    const [selected, setSelected] = useState<ContentRecord | null>(initial.selected?.id && contentSchema.safeParse(initial.selected).success ? initial.selected : null);
+    const [selected, setSelected] = useState<ContentRecord | null>(()=>{try{if(initial.selected?.id){draftInput(initial.selected);return initial.selected;}}catch{}return null;});
     const [message, setMessage] = useState("");
     const [busy, setBusy] = useState(false);
     const [search, setSearch] = useState("");
@@ -142,12 +147,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         }
     }
     function parsedInput() {
-        const parsed = contentSchema.safeParse(JSON.parse(json));
-        if (!parsed.success)
-            throw new Error(parsed.error.issues
-                .map((i) => `${i.path.join(".")}: ${i.message}`)
-                .join("\n"));
-        return tagIngredients(parsed.data);
+        return tagIngredients(preview ? draftInput(JSON.parse(json)) : contentSchema.parse(JSON.parse(json)));
     }
     async function save() {
         const parsed = parsedInput();
@@ -155,7 +155,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             throw new Error('Naslov ili izvor pripadaju novom unosu. Klikni „Sačuvaj kao novi nacrt“; prethodna stavka neće biti prepisana.');
         const result = await request(selected ? `/admin/content/${selected.id}` : "/admin/content", selected ? "PUT" : "POST", parsed, selected?.version);
         setSelected(result.item);
-        setJson(JSON.stringify(tagIngredients(contentSchema.parse(result.item)), null, 2));
+        setJson(JSON.stringify(tagIngredients(preview ? draftInput(result.item) : contentSchema.parse(result.item)), null, 2));
         await refresh();
         setMessage(result.duplicate
             ? "Duplikat pronađen. Postojeća stavka je učitana; nije prepisana."
@@ -165,7 +165,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         if (!selected)
             return;
         if (JSON.stringify(parsedInput()) !==
-            JSON.stringify(tagIngredients(contentSchema.parse(selected))))
+            JSON.stringify(tagIngredients(preview ? draftInput(selected) : contentSchema.parse(selected))))
             throw new Error("Prvo sačuvaj izmjene JSON-a.");
         if (action === "publish" &&
             !window.confirm(tx("Potvrđuješ li provjeru činjenica, izvora, alergena i prava na sliku?")))
@@ -237,6 +237,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     catch {
         /* preserve pasted input */
     }
+    const inspection=inspectImport(json);
+    const raw=inspection.raw;
+    let draftValid:ContentInput|null=null;try{draftValid=draftInput(raw);}catch{}
     const valid = parsed?.success ? tagIngredients(parsed.data) : null;
     function mapIngredient(index: number, tag: string) {
         try {
@@ -273,7 +276,11 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     catch {
         setMessage('Prvo dodaj obje jezičke verzije u JSON.');
     } }
-    const issues = valid ? publicationIssues(valid) : [];
+    useEffect(()=>{
+      setAtlasQueue(existing=>{const assigned=new Set(existing.flatMap(b=>b.cells.map(c=>c.key)));const additional=planAtlasBatches(missing.filter(entry=>!assigned.has(entry.key))).ready;if(!additional.length)return existing;const queue=[...existing,...additional];try{localStorage.setItem('random-life.atlas-queue.v1',JSON.stringify(queue));}catch{setStorageWarning(locale==='en'?'Atlas queue could not be saved. Download its manifest before closing this tab.':'Atlas red nije sačuvan. Preuzmi manifest prije zatvaranja taba.');}return queue;});
+    },[missing]);
+    const atlasPlan={ready:atlasQueue};
+    const issues = valid ? publicationIssues(valid) : inspection.errors;
     const count = (c: Category) => items.filter((i) => i.category === c &&
         i.status === "published" &&
         !publicationIssues(i).length).length;
@@ -390,6 +397,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               <label>{tx("JSON iz ChatGPT-a")}<textarea className="json" rows={15} spellCheck={false} value={json} onChange={(e) => setJson(e.target.value)} placeholder={tx("Zalijepi JSON bez markdown oznaka\u2026")}/>
               </label>
               <p className="input-help">{tx("4. Zalijepi samo JSON, bez oznaka markdowna. Provjeri naslov, izvor i podatke; demo slu\u017Ei kao primjer.")}</p>
+              {json.trim() && inspection.errors.length>0 && <section className="validation-errors" role="alert"><strong>{locale==='en'?'JSON needs attention':'JSON zahtijeva ispravke'}</strong><ul>{inspection.errors.map((error,index)=><li key={index}>{error}</li>)}</ul>{preview&&draftValid&&<p>{locale==='en'?'You can save incomplete translations as local draft work. Publication remains blocked.':'Nepotpune prevode možeš sačuvati kao lokalni nacrt. Objava ostaje blokirana.'}</p>}</section>}
+              {raw && <button className="quiet" type="button" onClick={()=>{try{const repair=recoverImport(raw);setRecoveryBackup(json);setJson(JSON.stringify(repair.data,null,2));setMessage(repair.corrections.length?repair.corrections.join('\n'):(locale==='en'?'No safe metadata corrections needed. Review validation paths.':'Nema sigurnih ispravki metapodataka. Provjeri navedena polja.'));}catch(e){setMessage(String(e));}}}>{locale==='en'?'Repair import metadata (review required)':'Ispravi metapodatke uvoza (provjera obavezna)'}</button>}
+              {recoveryBackup&&<details><summary>{locale==='en'?'Original JSON before repair':'Originalni JSON prije ispravke'}</summary><textarea readOnly value={recoveryBackup} rows={8}/></details>}
               {translationOwner && <section className="translation-editor" aria-label={tx("Jezi\u010Dke verzije")}>
                 <h3>{tx("ENG i BHS \u00B7 jedna preporuka")}</h3>
                 <p className="input-help">{tx("Prompt uvijek tra\u017Ei obje verzije. Koli\u010Dine, alergeni, izvor i slika su zajedni\u010Dki. Prevode provjeri odvojeno; bez obje kompletne verzije nema objave.")}</p>
@@ -397,12 +407,14 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                 {!activeTranslation ? <p role="alert">{tx("Nedostaje ova jezi\u010Dka verzija. Kopiraj dvojezi\u010Dni prompt i vrati JSON sa translations.en i translations.bs.")}</p> : <>
                  <label>{tx("Prevedeni naslov")}<input value={activeTranslation.title} onChange={e => editTranslation('title', e.target.value)}/></label>
                  <label>{tx("Prevedeni opis")}<textarea value={activeTranslation.summary} rows={3} onChange={e => editTranslation('summary', e.target.value)}/></label>
+                 <label>{locale==='en'?'Translated source label':'Prevedeni naziv izvora'}<input value={activeTranslation.sourceLabel} onChange={e=>editTranslation('sourceLabel',e.target.value)}/></label>
+                 <label>{locale==='en'?'Translated rights note':'Prevedena napomena o pravima'}<textarea rows={2} value={activeTranslation.rightsNote} onChange={e=>editTranslation('rightsNote',e.target.value)}/></label>
                  <label>{tx("Opis slike")}<input value={activeTranslation.imageAlt} onChange={e => editTranslation('imageAlt', e.target.value)}/></label>
                  {activeTranslation.recommendationReason !== undefined && <label>{tx("Razlog preporuke")}<textarea rows={3} value={activeTranslation.recommendationReason} onChange={e => editTranslation('recommendationReason', e.target.value)}/></label>}
                  {activeTranslation.steps?.map((step, index) => <label key={index}>{tx("Korak")} {index + 1}<textarea value={step} rows={2} onChange={e => editTranslation('steps', activeTranslation.steps!.map((s, i) => i === index ? e.target.value : s))}/></label>)}
                  {translationOwner.category === 'EAT' && activeTranslation.ingredientNames?.map((name, index) => <div className="translation-ingredient" key={index}><label>{tx("Prevedeni sastojak")}<input value={name} onChange={e => editTranslation('ingredientNames', activeTranslation.ingredientNames!.map((n, i) => i === index ? e.target.value : n))}/></label><label>{tx("Jedinica")}<input value={activeTranslation.ingredientUnits?.[index] ?? ''} onChange={e => editTranslation('ingredientUnits', (activeTranslation.ingredientUnits ?? []).map((unit, i) => i === index ? e.target.value : unit))}/></label></div>)}
                 </>}
-                <div className="translation-reviews">{(['en', 'bs'] as const).map(code => <label key={code}><input type="checkbox" disabled={!valid?.translations?.[code]} checked={translationOwner.translations?.[code]?.reviewed ?? false} onChange={e => reviewTranslation(code, e.target.checked)}/>{code === 'en' ? tx("Provjerio/la sam ENG prevod") : tx("Provjerio/la sam BHS prevod")}</label>)}</div>
+                <div className="translation-reviews">{(['en', 'bs'] as const).map(code => <label key={code}><input type="checkbox" disabled={!translationOwner?.translations?.[code]} checked={translationOwner.translations?.[code]?.reviewed ?? false} onChange={e => reviewTranslation(code, e.target.checked)}/>{code === 'en' ? tx("Provjerio/la sam ENG prevod") : tx("Provjerio/la sam BHS prevod")}</label>)}</div>
               </section>}
               {valid?.category === "EAT" && (<section className="ingredient-mapper" aria-label={tx("Povezivanje sastojaka")}>
                   <h3>{tx("Ikone sastojaka")}</h3>
@@ -451,18 +463,18 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               <fieldset>
                 <legend>{tx("Ljudska provjera")}</legend>
                 <label>
-                  <input type="checkbox" checked={valid?.factsVerified ?? false} onChange={(e) => updateVerification("factsVerified", e.target.checked)}/>{" "}{tx("Provjerio/la sam \u010Dinjenice i izvor")}</label>
-                {valid?.category === "EAT" && (<label>
-                    <input type="checkbox" checked={valid.allergensVerified} onChange={(e) => updateVerification("allergensVerified", e.target.checked)}/>{" "}{tx("Provjerio/la sam sastojke i alergene")}</label>)}
+                  <input type="checkbox" checked={raw?.factsVerified === true} onChange={(e) => updateVerification("factsVerified", e.target.checked)}/>{" "}{tx("Provjerio/la sam \u010Dinjenice i izvor")}</label>
+                {raw?.category === "EAT" && (<label>
+                    <input type="checkbox" checked={raw?.allergensVerified === true} onChange={(e) => updateVerification("allergensVerified", e.target.checked)}/>{" "}{tx("Provjerio/la sam sastojke i alergene")}</label>)}
                 <label>
-                  <input type="checkbox" checked={valid?.image.rightsConfirmed ?? false} onChange={(e) => updateVerification("rightsConfirmed", e.target.checked)}/>{" "}{tx("Potvr\u0111ujem prava na sliku")}</label>
+                  <input type="checkbox" checked={raw?.image?.rightsConfirmed === true} onChange={(e) => updateVerification("rightsConfirmed", e.target.checked)}/>{" "}{tx("Potvr\u0111ujem prava na sliku")}</label>
               </fieldset>
               <p className="input-help">{tx("6. Li\u010Dno provjeri \u010Dinjenice i izvor, sastojke i alergene te pravo kori\u0161tenja fotografije. Ozna\u010Di samo ono \u0161to si stvarno provjerio/la.")}</p>
               {!!issues.length && (<ul className="warnings">
                   {issues.map((i) => (<li key={i}>{tx(i)}</li>))}
                 </ul>)}
               <div className="actions">
-                <button disabled={busy || !connected || !valid} onClick={() => run(save)}>{tx("Sa\u010Duvaj nacrt")}</button>
+                <button disabled={busy || !connected || !(preview ? draftValid : valid)} onClick={() => run(save)}>{tx("Sa\u010Duvaj nacrt")}</button>
                 {selected && (<>
                     <button className="quiet" disabled={busy} onClick={() => run(() => transition("review"))}>{tx("Na pregled")}</button>
                     <button disabled={busy || selected.status !== "review" || !!issues.length} onClick={() => run(() => transition("publish"))}>{tx("Odobri i objavi")}</button>
@@ -476,6 +488,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             <section className="missing-illustrations" aria-label={tx("Namirnice bez ilustracije")}>
               <h2>{tx("Namirnice bez ilustracije")}</h2>
               <p className="input-help">{tx("Kumulativna lista iz svih sa\u010Duvanih recepata i validnog trenutnog unosa. Ne bri\u0161e se kad zapo\u010Dne\u0161 drugi recept. Novi atlas i tagovi moraju se povezati u sljede\u0107oj verziji aplikacije.")}</p>
+              {atlasPlan.ready.map(batch=><section className="atlas-ready" role="status" key={batch.atlasId}><strong>{tx('Atlas serija spremna · 100 sastojaka')}</strong><p>{tx('Manifest je pripremljen za originalnu PNG sliku 10 × 10. Slika još nije generisana; nakon generisanja potreban je ljudski pregled.')}</p><button className="quiet" onClick={()=>run(async()=>{await navigator.clipboard.writeText(atlasBatchPrompt(batch));setMessage(tx('Prompt atlas serije kopiran.'));})}>{tx('Kopiraj prompt atlas serije')}</button><button className="quiet" onClick={()=>{const url=URL.createObjectURL(new Blob([atlasBatchManifestJson(batch)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`${batch.atlasId}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}}>{tx('Preuzmi manifest atlas serije')}</button></section>)}
               {unresolvedIngredients(missing).length ? <><ul>{unresolvedIngredients(missing).map(entry => <li key={entry.key}><strong>{entry.names?.[locale]??entry.name}{locale==='en'&&!entry.names?.en?' (BHS)':''}</strong><small>{entry.recipes.join(' · ')}</small></li>)}</ul><button className="quiet" onClick={() => run(async () => { await navigator.clipboard.writeText(missingAtlasPrompt(unresolvedIngredients(missing))); setMessage(tx("Popis i prompt za nove ilustracije kopirani.")); })}>{tx("Kopiraj listu za novi atlas (")}{unresolvedIngredients(missing).length})</button></> : <p>{tx("Nema evidentiranih sastojaka bez ilustracije.")}</p>}
             </section>
 
@@ -485,7 +498,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               <button className="quiet" onClick={downloadLibrary}>{tx("Preuzmi backup JSON")}</button>
             </div>
             <p className="input-help">{tx("Biblioteka je lokalna za ovaj browser i ovu adresu. Preuzmi backup JSON prije brisanja podataka; slike se preuzimaju odvojeno. Osvje\u017Eenje verzije aplikacije ne bri\u0161e biblioteku.")}</p>
-            {preview && <details className="saved-revisions"><summary onClick={() => readPreviewRevisions().then(setRevisions).catch(e => setMessage(e.message))}>{tx("Historija sa\u010Duvanih unosa \u00B7 oporavak ranijeg recepta")}</summary><p className="input-help">{tx("Ako je sa\u010Duvani recept kasnije promijenio naslov, ovdje potra\u017Ei njegov raniji zapis. U\u010Ditava se kao novi nacrt i tra\u017Ei novu provjeru; ne mijenja postoje\u0107u stavku. Unos koji nikad nije sa\u010Duvan ovdje nije dostupan.")}</p>{revisions.map((record, index) => <button className="quiet revision-entry" key={`${record.id}-${index}`} onClick={() => { resetEditor(); setCategory(record.category); setSource(record.source.url); const data = contentSchema.parse(record); setJson(JSON.stringify({ ...data, factsVerified: false, image: { ...data.image, rightsConfirmed: false }, ...(data.category === 'EAT' ? { allergensVerified: false } : {}) }, null, 2)); setMessage(tx("Ranija verzija u\u010Ditana kao novi nacrt. Provjeri podatke i sa\u010Duvaj.")); }}>{localizeContent(record,locale).title} · {tx("verzija")} {record.version}</button>)}</details>}
+            {preview && <details className="translation-batch"><summary>{locale==='en'?'Translate existing EAT recipes · batch':'Prevedi postojeće EAT recepte · grupa'}</summary><p>{locale==='en'?'Copies complete originals with IDs and versions. Paste translations only; all entries are checked before any write. Images and recipes stay in place. Every affected recipe becomes an unchecked draft.':'Kopira kompletne originale sa ID i verzijom. Zalijepi samo prevode; svi unosi se provjeravaju prije čuvanja. Slike i recepti ostaju sačuvani. Svaki izmijenjeni recept postaje neprovjeren nacrt.'}</p><button className="quiet" disabled={busy||!items.some(needsTranslationRepair)} onClick={()=>run(async()=>{await navigator.clipboard.writeText(batchTranslationPrompt(items.filter(needsTranslationRepair)));setMessage(locale==='en'?'Batch prompt copied.':'Grupni prompt kopiran.');})}>{locale==='en'?'Copy recipe translation batch prompt':'Kopiraj grupni prompt za prevode'}</button><label>{locale==='en'?'Batch translation JSON':'JSON grupnih prevoda'}<textarea value={batchJSON} onChange={e=>setBatchJSON(e.target.value)} rows={8}/></label><button disabled={busy||!batchJSON.trim()} onClick={()=>run(async()=>{const count=await applyPreviewTranslationBatch(JSON.parse(batchJSON));await refresh();setSelected(null);setMessage(locale==='en'?`${count} recipes updated as drafts. Review each translation before publishing.`:`${count} recepata sačuvano kao nacrt. Pregledaj svaki prevod prije objave.`);setBatchJSON('');})}>{locale==='en'?'Validate and apply all translations':'Provjeri i primijeni sve prevode'}</button></details>}
+            {preview && <details className="saved-revisions"><summary onClick={() => readPreviewRevisions().then(setRevisions).catch(e => setMessage(e.message))}>{tx("Historija sa\u010Duvanih unosa \u00B7 oporavak ranijeg recepta")}</summary><p className="input-help">{tx("Ako je sa\u010Duvani recept kasnije promijenio naslov, ovdje potra\u017Ei njegov raniji zapis. U\u010Ditava se kao novi nacrt i tra\u017Ei novu provjeru; ne mijenja postoje\u0107u stavku. Unos koji nikad nije sa\u010Duvan ovdje nije dostupan.")}</p>{revisions.map((record, index) => <button className="quiet revision-entry" key={`${record.id}-${index}`} onClick={() => { resetEditor(); setCategory(record.category); setSource(record.source.url); const data = draftInput(record); setJson(JSON.stringify({ ...data, factsVerified: false, image: { ...data.image, rightsConfirmed: false }, ...(data.category === 'EAT' ? { allergensVerified: false } : {}) }, null, 2)); setMessage(tx("Ranija verzija u\u010Ditana kao novi nacrt. Provjeri podatke i sa\u010Duvaj.")); }}>{localizeContent(record,locale).title} · {tx("verzija")} {record.version}</button>)}</details>}
             <input aria-label={tx("Pretra\u017Ei sadr\u017Eaj")} placeholder={tx("Pretra\u017Ei naslov\u2026")} value={search} onChange={(e) => setSearch(e.target.value)}/>
             <p className="input-help">{tx("Prona\u0111i sa\u010Duvanu stavku po naslovu i otvori je za izmjenu ili pregled. Status pokazuje da li je nacrt, na pregledu ili objavljena.")}</p>
             {!items.length && (<div className="empty">
@@ -494,13 +508,13 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                 <p>{tx("Pove\u017Ei Studio i uvezi prvi nacrt.")}<br />{tx("Test tra\u017Ei 50 + 50 stvarnih stavki.")}</p>
               </div>)}
             {items
-            .filter((i) => [i.title,...Object.values(i.translations??{}).map(t=>t.title)].some(title=>title.toLocaleLowerCase(locale).includes(search.toLocaleLowerCase(locale))))
+            .filter((i) => [i.title,...Object.values(i.translations??{}).map(t=>t?.title)].some(title=>typeof title==='string'&&title.toLocaleLowerCase(locale).includes(search.toLocaleLowerCase(locale))))
             .map((i) => (<button disabled={busy} key={i.id} className="item" onClick={() => {
                 setSelected(i);
                 setCategory(i.category);
                 setSource(i.source.url);
                 setCopied(null);
-                setJson(JSON.stringify(contentSchema.parse(i), null, 2));
+                setJson(JSON.stringify(draftInput(i), null, 2));
                 setStaged(null);
                 setOriginal(null);
                 setMessage("");

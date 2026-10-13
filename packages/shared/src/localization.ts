@@ -38,7 +38,7 @@ export function resolveLocale(item:ContentInput,requested:Locale):string{
 }
 export function localizeContent<T extends ContentInput>(item:T,requested:Locale):T{
  const t=item.translations?.[requested]??item.translations?.en;
- if(!t)return item;
+ if(!t||!translationSchema.safeParse(t).success)return item;
  const result:any={...item,title:t.title,summary:t.summary,language:resolveLocale(item,requested),image:{...item.image,alt:t.imageAlt},source:{...item.source,label:t.sourceLabel,rightsNote:t.rightsNote}};
  if(t.genres)result.genres=t.genres;
  if(t.recommendationReason)result.recommendationReason=t.recommendationReason;

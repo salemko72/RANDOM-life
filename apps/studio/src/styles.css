@@ -513,3 +513,14 @@ code {
 .translation-editor{margin:20px 0;padding:18px;background:#f6f1eb;border-radius:16px}.translation-editor label{display:block;margin:12px 0;font-size:12px}.translation-editor input:not([type=checkbox]),.translation-editor textarea{width:100%;margin-top:6px}.translation-reviews{display:flex;flex-wrap:wrap;gap:14px}.translation-reviews label{display:flex;align-items:center;gap:7px}.translation-ingredient{display:grid;grid-template-columns:2fr 1fr;gap:12px}
 
 .locale-status{display:flex;gap:7px;flex-wrap:wrap}.locale-status small{border-radius:8px;background:#f5e9dc;padding:3px 5px;font-size:10px}
+/* Import diagnostics and the local illustration queue. */
+.validation-errors { border:1px solid #b55a32; border-radius:12px; padding:16px; background:#fff5eb; overflow-wrap:anywhere; }
+.validation-errors ul { padding-left:22px; }
+.translation-batch { margin:20px 0; padding:16px; border:1px solid #d8cbb7; border-radius:12px; }
+.translation-batch textarea { width:100%; box-sizing:border-box; }
+.atlas-ready { margin:16px 0; padding:18px; border:2px solid #698047; border-radius:12px; background:#f2f6e8; }
+.atlas-ready button { margin:6px 8px 0 0; }
+/* Subtle surface depth, also in the editorial workspace. */
+.layout .card{box-shadow:0 7px 24px rgba(105,77,65,.07),inset 0 1px 0 rgba(255,255,255,.8)}
+.layout button:not(:disabled){box-shadow:0 3px 9px rgba(103,74,63,.08),inset 0 1px 0 rgba(255,255,255,.28)}
+.layout input:not([type=checkbox]),.layout textarea,.layout select{box-shadow:inset 0 1px 3px rgba(116,87,73,.04),0 2px 5px rgba(116,87,73,.025)}

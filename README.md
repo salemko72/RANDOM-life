@@ -73,3 +73,5 @@ ZIP import, AI prijedlozi kategorije/alergena i grupni upload prevoda: [preview 
 ZIP kao jedini unos i prehrana s malo fosfora: [preview 0.10](docs/PREVIEW_0_10.md).
 
 Vidljivi kreator prompta i pregled baze po kategoriji: [preview 0.11](docs/PREVIEW_0_11.md).
+
+Redoslijed izvor → prompt → ZIP → pregled → čuvanje, sa odvojenim demo sadržajem i oporavkom backupa: [preview 0.12](docs/PREVIEW_0_12.md).

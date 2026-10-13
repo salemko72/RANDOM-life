@@ -115,3 +115,13 @@ export async function importPreviewPackage(input: unknown, blob: Blob): Promise<
     tx.onabort=()=>reject(failure??new Error('ZIP import could not be saved. No existing item was changed.'));
   });
 }
+
+export async function restorePreviewBackup(raw:unknown):Promise<{added:number;skipped:number}>{
+ const data=raw as {format?:string;items?:unknown[]};
+ if(data?.format!=='RANDOM-content-backup-v1'||!Array.isArray(data.items)||data.items.length>10000)throw Error('Choose a RANDOM-content-backup-v1 JSON backup.');
+ const ids=new Set<string>();
+ const rows=data.items.map(value=>{const original=value as ContentRecord;if(typeof original.id!=='string'||!original.id||ids.has(original.id))throw Error('Backup contains missing or duplicate IDs.');ids.add(original.id);const input=draftInput(original);return {...input,id:original.id,status:'draft' as const,version:Number.isInteger(original.version)&&original.version>0?original.version:1,updatedAt:new Date().toISOString(),approvedAt:null,approvedBy:null,factsVerified:false,image:{...input.image,rightsConfirmed:false},translations:Object.fromEntries(Object.entries(input.translations??{}).map(([code,t])=>[code,{...t,reviewed:false}])),...(input.category==='EAT'?{allergensVerified:false,phosphateAssessment:input.phosphateAssessment?{...input.phosphateAssessment,reviewed:false}:undefined}:{})};});
+ const db=await database();return new Promise((resolve,reject)=>{const tx=db.transaction(['content','events'],'readwrite'),store=tx.objectStore('content');let added=0,skipped=0;
+ for(const row of rows){const lookup=store.get(row.id);lookup.onsuccess=()=>{if(lookup.result){skipped++;return;}const dedupKey=`${row.category}|${row.source.url}|${row.title.trim().toLowerCase()}`;const duplicate=store.index('dedup').get(dedupKey);duplicate.onsuccess=()=>{if(duplicate.result){skipped++;return;}store.add({...row,dedupKey});tx.objectStore('events').add({item:row,action:'backup-restore',at:row.updatedAt});added++;};};}
+ tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve({added,skipped});};tx.onabort=()=>reject(Error('Backup could not be restored. Existing library unchanged.'));});
+}

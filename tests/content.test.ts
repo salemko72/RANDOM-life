@@ -99,3 +99,17 @@ it("manual prompt requires sources, unverified facts and human review without an
   expect(prompt).toContain("ISBN");
   expect(prompt).toContain("BOOK");
 });
+
+describe('ZIP prompt and AI dietary proposals',()=>{
+ it('requests one ZIP, category correction and unconfirmed dietary assessment',()=>{
+ const prompt=createChatGPTPrompt('WATCH','recipe ingredients');
+ expect(prompt).toContain('RANDOM-content.zip');expect(prompt).toContain('content.json');expect(prompt).toContain('samo prijedlog');expect(prompt).toContain('dietaryAssessment');expect(prompt).toContain('uncertain');expect(prompt).toContain('allergensVerified ostaje false');
+ });
+ it('blocks conflicting dietary claims and classification before publication',()=>{
+ const recipe=structuredClone(demoItems.find(i=>i.category==='EAT')!);
+ if(recipe.category!=='EAT')throw Error();
+ recipe.dietaryTags=['gluten-free','lactose-free'];recipe.dietaryAssessment={gluten:'uncertain',lactose:'present',suggestedAllergens:['milk'],notes:{en:'Review labels',bs:'Provjeri deklaracije'}};
+ recipe.classification={requestedCategory:'EAT',suggestedCategory:'WATCH',confidence:'low',reason:{en:'Needs review',bs:'Za pregled'}};
+ expect(publicationIssues(recipe)).toEqual(expect.arrayContaining(['Gluten-free claim conflicts with the dietary assessment.','Lactose-free claim conflicts with the dietary assessment.','Category must match the proposed classification before publishing.']));
+ });
+});

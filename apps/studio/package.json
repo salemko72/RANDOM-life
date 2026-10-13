@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@random/shared": "*",
+    "fflate": "0.8.2",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

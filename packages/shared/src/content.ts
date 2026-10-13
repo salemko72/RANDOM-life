@@ -24,6 +24,8 @@ const base = {
   language: z.string().trim().min(2).max(16),
   tags: z.array(text.max(60)).max(30),
   factsVerified: z.boolean(),
+  classification: z.object({requestedCategory:z.enum(['EAT','BOOK','READ','WATCH','MOVE','GO']),suggestedCategory:z.enum(['EAT','BOOK','WATCH','MOVE','GO']),confidence:z.enum(['low','medium','high']),reason:z.object({en:text,bs:text})}).optional(),
+  dietaryAssessment:z.object({gluten:z.enum(['present','absent','uncertain']),lactose:z.enum(['present','absent','uncertain']),suggestedAllergens:z.array(allergenSchema).max(13),notes:z.object({en:text,bs:text})}).optional(),
   translations: translationsSchema.optional(),
   source: z.object({
     url: z
@@ -113,6 +115,11 @@ export function publicationIssues(item: ContentInput): string[] {
   if (!item.image.rightsConfirmed) issues.push("Potvrdi prava za sliku.");
   if (item.category === "EAT" && !item.allergensVerified)
     issues.push("Sastojci i alergeni moraju biti provjereni.");
+  if(item.category==='EAT'&&item.dietaryAssessment){
+   if(item.dietaryTags.includes('gluten-free')&&item.dietaryAssessment.gluten!=='absent')issues.push('Gluten-free claim conflicts with the dietary assessment.');
+   if(item.dietaryTags.includes('lactose-free')&&item.dietaryAssessment.lactose!=='absent')issues.push('Lactose-free claim conflicts with the dietary assessment.');
+  }
+  if(item.classification&&item.classification.suggestedCategory!==item.category)issues.push('Category must match the proposed classification before publishing.');
   return [...issues,...bilingualIssues(item)];
 }
 export const spinContextSchema = z.object({

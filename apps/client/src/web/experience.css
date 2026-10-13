@@ -136,3 +136,6 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 
 .wheel-caption{max-width:290px;margin:0 auto;padding:8px 12px;border-radius:19px;background:rgba(255,246,236,.78);border:1px solid rgba(255,255,255,.55);box-shadow:0 4px 14px rgba(109,72,56,.09);backdrop-filter:blur(8px)}
 .random-world .choice-chips button,.random-world .onboarding-field input,.random-world .onboarding-field select,.companion-thumb,.ingredient-symbol{box-shadow:0 3px 9px rgba(111,77,63,.075),inset 0 1px 0 rgba(255,255,255,.4)}
+
+.spinning .rail-category.selected>.category-photo{border:4px solid #fffdf2;box-shadow:0 0 0 5px #fff4da88,0 0 23px #fffce5cc,0 7px 15px #8e5d4d3a;transform:scale(1.12)}
+.zip-import{padding:20px;border:1px solid #d9b9a5;border-radius:18px;background:#faf4ed;margin:20px 0}.zip-import p{line-height:1.65}

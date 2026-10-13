@@ -98,3 +98,20 @@ export async function applyPreviewTranslationBatch(raw:unknown){
   }catch(error){failure=error;tx.abort();}};
  });
 }
+
+export async function importPreviewPackage(input: unknown, blob: Blob): Promise<ContentRecord> {
+  const data=draftInput(input),db=await database();
+  const dedupKey=`${data.category}|${data.source.url}|${data.title.trim().toLowerCase()}`;
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(['content','media','events'],'readwrite'),store=tx.objectStore('content');
+    let item:ContentRecord;let failure:Error|undefined;
+    const existing=store.index('dedup').get(dedupKey);
+    existing.onsuccess=()=>{
+      if(existing.result){failure=new Error('This item already exists. Open it in the library to edit; ZIP import never overwrites it.');tx.abort();return;}
+      item={...data,id:crypto.randomUUID(),status:'draft',version:1,updatedAt:new Date().toISOString(),approvedAt:null,approvedBy:null};
+      tx.objectStore('media').put(blob,data.image.path);store.add({...item,dedupKey});tx.objectStore('events').add({item,action:'zip-import',at:item.updatedAt});
+    };
+    tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve(item);};
+    tx.onabort=()=>reject(failure??new Error('ZIP import could not be saved. No existing item was changed.'));
+  });
+}

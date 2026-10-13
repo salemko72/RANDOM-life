@@ -1,10 +1,11 @@
+import {readContentPackage} from './content-package';
 import {planAtlasBatches,atlasBatchPrompt,atlasBatchManifestJson,type AtlasBatch} from './atlas-batches';
 import {inspectImport,recoverImport,draftInput,batchTranslationPrompt,needsTranslationRepair} from './import-recovery';
 import React, { useEffect, useState } from "react";
 import { contentSchema, createChatGPTPrompt, demoItems, publicationIssues, ingredientDefinitions, resolveIngredient, tagIngredients, type Category, type ContentRecord, type ContentInput, type Locale, localizeContent, } from "@random/shared";
 import {editableSource} from "./editable-translations";
 import { studioText } from './studio-language';
-import { applyPreviewTranslationBatch, previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
+import { importPreviewPackage, applyPreviewTranslationBatch, previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
 import { unresolvedIngredients, missingAtlasPrompt, type MissingIngredient } from './missing-ingredients';
 const EDITOR_KEY = 'random-life.studio-editor.v1';
 function readEditor() { try {
@@ -191,7 +192,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             setMessage("Prvo unesi validan JSON.");
         }
     }
-    async function imageFile(file: File) {
+    async function imageFile(file: File, packageInput?: ContentInput) {
         if (!["image/png", "image/jpeg", "image/webp", "image/avif"].includes(file.type) ||
             file.size > 15 * 1024 * 1024)
             throw new Error("Izaberi PNG, JPG, WebP ili AVIF do 15 MB.");
@@ -214,16 +215,22 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                 .replace(/[^a-zA-Z0-9_-]/g, "-")
                 .slice(0, 70) || "random-image";
             const name = `${stem}-${crypto.randomUUID().slice(0, 8)}.${blob.type === "image/webp" ? "webp" : "png"}`;
-            if (preview)
+            let imported:ContentRecord|undefined;
+            if(packageInput){
+                const input=tagIngredients({...packageInput,image:{...packageInput.image,path:`/media/${name}`,rightsConfirmed:false}});
+                imported=await importPreviewPackage(input,blob);
+                setSelected(imported);setCategory(imported.category);setJson(JSON.stringify(imported,null,2));await refresh();
+            } else if (preview)
                 await putPreviewImage(`/media/${name}`, blob);
             setStaged({ url: URL.createObjectURL(blob), name, bytes: blob.size, width: canvas.width, height: canvas.height, originalWidth: bitmap.width, originalHeight: bitmap.height, originalBytes: file.size, format: blob.type === "image/webp" ? "WebP" : "PNG" });
             setOriginal({ url: URL.createObjectURL(file), name: file.name });
-            if (json.trim()) {
+            if (!packageInput && json.trim()) {
                 const data = JSON.parse(json);
                 data.image.path = `/media/${name}`;
                 data.image.rightsConfirmed = false;
                 setJson(JSON.stringify(data, null, 2));
             }
+            if(imported){setMessage(locale==='en'?'ZIP imported as a new draft. Image optimized; review both languages, facts and allergens before publishing.':'ZIP je uvezen kao novi nacrt. Slika je optimizirana; provjeri oba jezika, činjenice i alergene prije objave.');return;}
             setMessage(preview ? "Slika je optimizirana i sačuvana u ovom pregledniku. Sačuvaj nacrt i potvrdi prava prije objave." : "Slika je obrađena lokalno. Preuzmi je u services/api/public/media, sačuvaj nacrt i ponovo provjeri prije objave. Original ostaje dostupan za preuzimanje.");
         }
         finally {
@@ -393,7 +400,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         }}>{tx("U\u010Ditaj demo nacrt")}</button>
               </div>
               {promptCopied && <p className="copy-status" role="status">{tx("\u2713 Kopirano")} {new Date(copied!.at).toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" })}{tx(". Spremno za ru\u010Dno lijepljenje u ChatGPT; slanje nije automatsko.")}</p>}
-              <p className="input-help">{tx("3. Kopiraj prompt i ru\u010Dno ga zalijepi u ChatGPT. Zatra\u017Ei JSON i fotografiju, pa ih preuzmi. Studio ne \u0161alje API zahtjeve ChatGPT-u i nema API tro\u0161kova.")}</p>
+              <p className="input-help">{locale==='en'?'3. Copy the prompt into ChatGPT and download its ZIP with JSON and the generated image. Import the ZIP below. No API requests or API costs.':'3. Kopiraj prompt u ChatGPT i preuzmi ZIP sa JSON-om i generisanom slikom. Uvezi ZIP ispod. Nema API poziva ni troškova.'}</p>
+              <p hidden className="input-help">{tx("3. Kopiraj prompt i ru\u010Dno ga zalijepi u ChatGPT. Zatra\u017Ei JSON i fotografiju, pa ih preuzmi. Studio ne \u0161alje API zahtjeve ChatGPT-u i nema API tro\u0161kova.")}</p>
+              {preview && <section className="zip-import"><h3>{locale==='en'?'Import ChatGPT ZIP':'Uvezi ChatGPT ZIP'}</h3><p>{locale==='en'?'Paste the prompt into ChatGPT, download its ZIP containing content.json and one image, then select it here. Studio validates both languages, optimizes the image and saves a NEW draft. Existing items are never overwritten.':'Zalijepi prompt u ChatGPT, preuzmi ZIP sa content.json i jednom slikom, pa ga izaberi ovdje. Studio provjerava oba jezika, optimizira sliku i čuva NOVI nacrt. Postojeći unosi se ne prepisuju.'}</p><label>{locale==='en'?'ChatGPT content ZIP':'ChatGPT ZIP sadržaja'}<input type="file" accept=".zip,application/zip" disabled={busy} onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)run(async()=>{if(file.size>25*1024*1024)throw new Error('ZIP exceeds 25 MB.');const pack=readContentPackage(new Uint8Array(await file.arrayBuffer()));await imageFile(new File([new Uint8Array(pack.image.bytes)],pack.image.name,{type:pack.image.mime}),pack.input);});}}/></label></section>}
               <label>{tx("JSON iz ChatGPT-a")}<textarea className="json" rows={15} spellCheck={false} value={json} onChange={(e) => setJson(e.target.value)} placeholder={tx("Zalijepi JSON bez markdown oznaka\u2026")}/>
               </label>
               <p className="input-help">{tx("4. Zalijepi samo JSON, bez oznaka markdowna. Provjeri naslov, izvor i podatke; demo slu\u017Ei kao primjer.")}</p>
@@ -460,6 +469,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                   </div>
                 </div>)}
               <p className="note">{preview ? tx("Slika se automatski optimizira i \u010Duva lokalno. Original mo\u017Ee\u0161 zasebno preuzeti; prije objave potvrdi prava.") : <>{tx("Ovo nije cloud upload. Optimiziranu sliku dodaj u")}<code>services/api/public/media</code>{tx("; objava provjerava da je asset dostupan. Za public test potreban je novi deployment.")}</>}</p>
+              {valid?.classification && <section className="copy-status"><strong>{locale==='en'?'AI category suggestion':'AI prijedlog kategorije'}: {valid.classification.suggestedCategory==='BOOK'?'READ':valid.classification.suggestedCategory}</strong><p>{valid.classification.reason[locale]}</p></section>}
+              {valid?.dietaryAssessment && <section className="copy-status"><strong>{locale==='en'?'AI dietary suggestions · human confirmation required':'AI prijedlog ograničenja · čovjek potvrđuje'}</strong><p>Gluten: {valid.dietaryAssessment.gluten} · {locale==='en'?'Lactose':'Laktoza'}: {valid.dietaryAssessment.lactose}</p><p>{valid.dietaryAssessment.notes[locale]}</p></section>}
               <fieldset>
                 <legend>{tx("Ljudska provjera")}</legend>
                 <label>
@@ -498,7 +509,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               <button className="quiet" onClick={downloadLibrary}>{tx("Preuzmi backup JSON")}</button>
             </div>
             <p className="input-help">{tx("Biblioteka je lokalna za ovaj browser i ovu adresu. Preuzmi backup JSON prije brisanja podataka; slike se preuzimaju odvojeno. Osvje\u017Eenje verzije aplikacije ne bri\u0161e biblioteku.")}</p>
-            {preview && <details className="translation-batch"><summary>{locale==='en'?'Translate existing EAT recipes · batch':'Prevedi postojeće EAT recepte · grupa'}</summary><p>{locale==='en'?'Copies complete originals with IDs and versions. Paste translations only; all entries are checked before any write. Images and recipes stay in place. Every affected recipe becomes an unchecked draft.':'Kopira kompletne originale sa ID i verzijom. Zalijepi samo prevode; svi unosi se provjeravaju prije čuvanja. Slike i recepti ostaju sačuvani. Svaki izmijenjeni recept postaje neprovjeren nacrt.'}</p><button className="quiet" disabled={busy||!items.some(needsTranslationRepair)} onClick={()=>run(async()=>{await navigator.clipboard.writeText(batchTranslationPrompt(items.filter(needsTranslationRepair)));setMessage(locale==='en'?'Batch prompt copied.':'Grupni prompt kopiran.');})}>{locale==='en'?'Copy recipe translation batch prompt':'Kopiraj grupni prompt za prevode'}</button><label>{locale==='en'?'Batch translation JSON':'JSON grupnih prevoda'}<textarea value={batchJSON} onChange={e=>setBatchJSON(e.target.value)} rows={8}/></label><button disabled={busy||!batchJSON.trim()} onClick={()=>run(async()=>{const count=await applyPreviewTranslationBatch(JSON.parse(batchJSON));await refresh();setSelected(null);setMessage(locale==='en'?`${count} recipes updated as drafts. Review each translation before publishing.`:`${count} recepata sačuvano kao nacrt. Pregledaj svaki prevod prije objave.`);setBatchJSON('');})}>{locale==='en'?'Validate and apply all translations':'Provjeri i primijeni sve prevode'}</button></details>}
+            {preview && <details className="translation-batch"><summary>{locale==='en'?'Translate existing EAT recipes · batch':'Prevedi postojeće EAT recepte · grupa'}</summary><p>{locale==='en'?'Copies complete originals with IDs and versions. Paste translations only; all entries are checked before any write. Images and recipes stay in place. Every affected recipe becomes an unchecked draft.':'Kopira kompletne originale sa ID i verzijom. Zalijepi samo prevode; svi unosi se provjeravaju prije čuvanja. Slike i recepti ostaju sačuvani. Svaki izmijenjeni recept postaje neprovjeren nacrt.'}</p><button className="quiet" disabled={busy||!items.some(needsTranslationRepair)} onClick={()=>run(async()=>{await navigator.clipboard.writeText(batchTranslationPrompt(items.filter(needsTranslationRepair)));setMessage(locale==='en'?'Batch prompt copied.':'Grupni prompt kopiran.');})}>{locale==='en'?'Copy recipe translation batch prompt':'Kopiraj grupni prompt za prevode'}</button><label>{locale==='en'?'Upload translation batch JSON':'Uvezi JSON grupnih prevoda'}<input type="file" accept=".json,application/json" onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)run(async()=>{if(file.size>2*1024*1024)throw Error('Translation file exceeds 2 MB.');setBatchJSON(await file.text());});}}/></label><label>{locale==='en'?'Batch translation JSON':'JSON grupnih prevoda'}<textarea value={batchJSON} onChange={e=>setBatchJSON(e.target.value)} rows={8}/></label><button disabled={busy||!batchJSON.trim()} onClick={()=>run(async()=>{const count=await applyPreviewTranslationBatch(JSON.parse(batchJSON));await refresh();setSelected(null);setMessage(locale==='en'?`${count} recipes updated as drafts. Review each translation before publishing.`:`${count} recepata sačuvano kao nacrt. Pregledaj svaki prevod prije objave.`);setBatchJSON('');})}>{locale==='en'?'Validate and apply all translations':'Provjeri i primijeni sve prevode'}</button></details>}
             {preview && <details className="saved-revisions"><summary onClick={() => readPreviewRevisions().then(setRevisions).catch(e => setMessage(e.message))}>{tx("Historija sa\u010Duvanih unosa \u00B7 oporavak ranijeg recepta")}</summary><p className="input-help">{tx("Ako je sa\u010Duvani recept kasnije promijenio naslov, ovdje potra\u017Ei njegov raniji zapis. U\u010Ditava se kao novi nacrt i tra\u017Ei novu provjeru; ne mijenja postoje\u0107u stavku. Unos koji nikad nije sa\u010Duvan ovdje nije dostupan.")}</p>{revisions.map((record, index) => <button className="quiet revision-entry" key={`${record.id}-${index}`} onClick={() => { resetEditor(); setCategory(record.category); setSource(record.source.url); const data = draftInput(record); setJson(JSON.stringify({ ...data, factsVerified: false, image: { ...data.image, rightsConfirmed: false }, ...(data.category === 'EAT' ? { allergensVerified: false } : {}) }, null, 2)); setMessage(tx("Ranija verzija u\u010Ditana kao novi nacrt. Provjeri podatke i sa\u010Duvaj.")); }}>{localizeContent(record,locale).title} · {tx("verzija")} {record.version}</button>)}</details>}
             <input aria-label={tx("Pretra\u017Ei sadr\u017Eaj")} placeholder={tx("Pretra\u017Ei naslov\u2026")} value={search} onChange={(e) => setSearch(e.target.value)}/>
             <p className="input-help">{tx("Prona\u0111i sa\u010Duvanu stavku po naslovu i otvori je za izmjenu ili pregled. Status pokazuje da li je nacrt, na pregledu ili objavljena.")}</p>

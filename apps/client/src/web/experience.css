@@ -185,3 +185,5 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .rail-categories{flex-shrink:0}
 @media(max-width:600px){.random-world .rail-category{min-height:66px}}
 @media(max-height:790px) and (max-width:600px){.random-world .rail-category{min-height:61px}}
+
+.ingredient-symbol.tagged-ingredient.ingredient-atlas-extension-74{background-image:url('./assets/ingredient-atlas-extension-74.png')}

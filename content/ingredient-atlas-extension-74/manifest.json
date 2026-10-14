@@ -1,13 +1,13 @@
 {
   "version": 1,
   "atlasId": "atlas-extension-74-2026-10-14",
-  "status": "pending-human-review",
-  "approved": false,
+  "status": "approved-and-integrated",
+  "approved": true,
   "columns": 10,
   "rows": 10,
   "image": "atlas.png",
   "imageSha256": "bf8819fd832c5832b9a5614f45a0666ce8c2c71f84ef51e8871c5a361128362b",
-  "coordinateConvention": "zero-based; row-major; confirm grid alignment before integration",
+  "coordinateConvention": "zero-based; row-major; 10 by 10 atlas",
   "cells": [
     {
       "id": "extension-74-001",

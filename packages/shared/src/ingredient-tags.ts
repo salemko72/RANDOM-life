@@ -1,4 +1,5 @@
-export interface IngredientDefinition{id:string;name:string;aliases:string[];row:number;column:number}
+import {extensionIngredients} from './ingredient-atlas-extension';
+export interface IngredientDefinition{id:string;name:string;aliases:string[];row:number;column:number;atlas?:'extension-74'}
 // Ordered 10×10 atlas contract. Append a new atlas/version rather than reordering cells.
 const rows=[
  ['potato|Krompir|krumpir,krompiri','onion|Luk|crni luk','garlic|Bijeli luk|češnjak,beli luk','carrot|Mrkva|šargarepa,mrkve','tomato|Paradajz|rajčica,paradajzi','cucumber|Krastavac|krastavci','bell-pepper|Paprika|crvena paprika,babura','zucchini|Tikvica|tikvice','eggplant|Patlidžan|patlidžani','broccoli|Brokula|brokoli'],
@@ -13,9 +14,10 @@ const rows=[
  ['chicken-breast|Pileća prsa|pileći file,piletina','ground-beef|Mljevena junetina|mljeveno meso,mljevena govedina','breadcrumbs|Prezle|krušne mrvice,prezla','salmon|Losos|file lososa','tuna|Tuna|tunjevina','shrimp|Škampi|kozice,račići','almonds|Bademi|badem','walnuts|Orasi|orah','hazelnuts|Lješnjaci|lješnjak','water|Voda|voda']
 ];
 export const ingredientDefinitions:IngredientDefinition[]=rows.flatMap((row,r)=>row.map((value,c)=>{const[id,name,aliases]=value.split('|');return{id,name,aliases:[name,id,...aliases.split(',')],row:r,column:c};}));
+ingredientDefinitions.push(...extensionIngredients.map(i=>({...i,aliases:[...i.aliases,i.id]})));
 const normalize=(name:string)=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');
 export function resolveIngredient(name:string,tag?:string):IngredientDefinition|undefined{
- if(tag)return ingredientDefinitions.find(i=>i.id===tag);
+ if(tag){const tagged=ingredientDefinitions.find(i=>i.id===tag);if(tagged)return tagged;}
  const key=normalize(name);return ingredientDefinitions.find(i=>i.aliases.some(a=>normalize(a)===key));
 }
 export function tagIngredients<T extends {category:string;ingredients?:{name:string;tag?:string}[]}>(content:T):T{

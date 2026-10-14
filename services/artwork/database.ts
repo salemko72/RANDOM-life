@@ -107,6 +107,13 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
         }
         if (!auth)
             return json({ error: 'UNAUTHORIZED' }, 401);
+        if (path === '/api/database/storage' && request.method === 'GET') {
+            const measurement = await db.prepare('SELECT (SELECT COUNT(*) FROM random_items) AS items,(SELECT COALESCE(SUM(length(bytes)),0) FROM random_media) AS mediaBytes,(SELECT COUNT(*) FROM random_events) AS revisions').all();
+            const row = measurement.results[0] as any;
+            const databaseBytes = measurement.meta.size_after;
+            if (!Number.isFinite(databaseBytes) || databaseBytes <= 0) return json({error:'STORAGE_MEASUREMENT_UNAVAILABLE'},503);
+            return json({database:'random-test-content',databaseBytes,mediaBytes:Number(row.mediaBytes),items:Number(row.items),revisions:Number(row.revisions),databaseLimitBytes:500000000,accountLimitBytes:5000000000,measuredAt:new Date().toISOString()});
+        }
         if (path === '/api/content' && request.method === 'GET')
             return json({ items: await all(), deletedIds: (await db.prepare("SELECT DISTINCT content_id FROM random_events WHERE action='delete' AND NOT EXISTS(SELECT 1 FROM random_items WHERE random_items.id=random_events.content_id)").all()).results.map((row:any)=>row.content_id), events: (await db.prepare('SELECT * FROM random_events ORDER BY created_at,id').all()).results.map((event: any) => ({ ...event, snapshot: JSON.parse(event.snapshot) })) });
         if (path === '/api/database/import-batch' && request.method === 'POST') {

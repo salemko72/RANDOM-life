@@ -60,3 +60,11 @@ it('migrates history larger than 64KiB in aggregate but caps each snapshot',asyn
  const rejection=await call('/api/database/migrate','POST',oversized);expect(rejection.response.status).toBe(413);expect(rejection.data.error).toBe('EVENT_SNAPSHOT_TOO_LARGE');
  expect((await call('/api/content')).data.items.some((record:any)=>record.id==='oversized-history')).toBe(false);
 });
+
+it('reports authenticated D1 size including retained media and history',async()=>{
+ expect((await call('/api/database/storage','GET',undefined,false)).response.status).toBe(401);
+ const stats=await call('/api/database/storage');expect(stats.response.status).toBe(200);
+ expect(stats.data.databaseBytes).toBeGreaterThan(0);expect(stats.data.mediaBytes).toBeGreaterThan(0);
+ expect(stats.data.items).toBeGreaterThan(0);expect(stats.data.databaseLimitBytes).toBe(500000000);
+ expect(stats.data.measuredAt).toBeTruthy();
+});

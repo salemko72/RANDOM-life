@@ -8,6 +8,8 @@ async function request<T>(path:string,method='GET',body?:unknown):Promise<T>{
  if(!response.ok)throw new OnlineError(data.error??(response.status===401?'Sign in to the online database first.':'Online database request failed.'),response.status);
  return data as T;
 }
+export type OnlineStorage={database:string;databaseBytes:number;mediaBytes:number;items:number;revisions:number;databaseLimitBytes:number;accountLimitBytes:number;measuredAt:string};
+export const onlineStorage=()=>request<OnlineStorage>('/api/database/storage');
 export const onlineStatus=()=>request<OnlineStatus>('/api/database/status');
 export const onlineLogin=(password:string)=>request<OnlineStatus>('/api/database/login','POST',{password});
 export const onlineLogout=()=>request<unknown>('/api/database/logout','POST');

@@ -7,7 +7,7 @@ try {
     Write-Host ''
     if ($ExpoGo) { Write-Host 'RANDOM - Expo Go na telefonu' -ForegroundColor Magenta }
     else { Write-Host 'RANDOM - brza proba u pregledniku' -ForegroundColor Magenta }
-    Write-Host 'RANDOM 0.15: EAT, READ, WATCH, MOVE, GO. Bez baze, kljuceva ili placenih servisa.'
+    Write-Host 'RANDOM 0.16: EAT, READ, WATCH, MOVE, GO. Bez baze, kljuceva ili placenih servisa.'
     Write-Host ''
 
     if (-not (Get-Command node.exe -ErrorAction SilentlyContinue) -or -not (Get-Command npm.cmd -ErrorAction SilentlyContinue)) {

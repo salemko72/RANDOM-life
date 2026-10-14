@@ -81,3 +81,5 @@ Jače sjene, BHS nazivi kategorija i skrolanje detalja: [preview 0.13](docs/PREV
 Novi unos prazni editor; nepoznati tagovi ilustracija ne blokiraju ZIP: [preview 0.14](docs/PREVIEW_0_14.md).
 
 Diskretni scrollbar i pregled preko cijelog ekrana u šest kolona: [preview 0.15](docs/PREVIEW_0_15.md).
+
+Jednostavnija objava, automatska popravka ZIP formata i razmjena kataloga: [preview 0.16](docs/PREVIEW_0_16.md).

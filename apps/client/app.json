@@ -2,7 +2,7 @@
   "expo": {
     "name": "RANDOM life",
     "slug": "random-life",
-    "version": "0.15.0",
+    "version": "0.16.0",
     "orientation": "portrait",
     "icon": "./icon.png",
     "userInterfaceStyle": "light",
@@ -26,6 +26,7 @@
       "eas": {
         "projectId": "04bf570d-5e7b-4c51-b1ae-65e6fc60cf5a"
       }
-    }
+    },
+    "backgroundColor": "#fbefe7"
   }
 }

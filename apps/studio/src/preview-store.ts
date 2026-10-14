@@ -125,3 +125,30 @@ export async function restorePreviewBackup(raw:unknown):Promise<{added:number;sk
  for(const row of rows){const lookup=store.get(row.id);lookup.onsuccess=()=>{if(lookup.result){skipped++;return;}const dedupKey=`${row.category}|${row.source.url}|${row.title.trim().toLowerCase()}`;const duplicate=store.index('dedup').get(dedupKey);duplicate.onsuccess=()=>{if(duplicate.result){skipped++;return;}store.add({...row,dedupKey});tx.objectStore('events').add({item:row,action:'backup-restore',at:row.updatedAt});added++;};};}
  tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve({added,skipped});};tx.onabort=()=>reject(Error('Backup could not be restored. Existing library unchanged.'));});
 }
+
+/** One editorial action: publish verified content, retain incomplete content for review. */
+export async function submitPreviewContent(raw:unknown,id?:string,version?:number):Promise<{item:ContentRecord;duplicate?:boolean}>{
+ const data=draftInput(raw),db=await database();
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(['content','media','events'],'readwrite'),store=tx.objectStore('content');let answer:{item:ContentRecord;duplicate?:boolean};let failure:Error|undefined;
+  const fail=(message:string)=>{failure=Error(message);tx.abort();};
+  const write=(previous?:ContentRecord)=>{
+   if(previous&&previous.version!==version){fail('The item changed in another tab. Reopen it before saving.');return;}
+   const flags=publicationIssues(data);const media=tx.objectStore('media').get(data.image.path);
+   media.onsuccess=()=>{
+    if(!builtInMedia.has(data.image.path)&&!media.result)flags.push('Image needs checking.');
+    const ready=!flags.length,now=new Date().toISOString();
+    const item:ContentRecord & {editorialFlags:string[]}={...data,id:previous?.id??crypto.randomUUID(),version:(previous?.version??0)+1,status:ready?'published':'review',updatedAt:now,approvedAt:ready?now:null,approvedBy:ready?'local-preview-editor':null,editorialFlags:flags};
+    const dedupKey=`${data.category}|${data.source.url}|${data.title.trim().toLowerCase()}`;
+    const duplicate=store.index('dedup').get(dedupKey);duplicate.onsuccess=()=>{
+     if(duplicate.result&&duplicate.result.id!==item.id){answer={item:duplicate.result,duplicate:true};return;}
+     if(previous)tx.objectStore('events').add({item:previous,action:'before-edit',at:now});
+     store.put({...item,dedupKey});tx.objectStore('events').add({item,action:ready?'publish':'flagged-review',at:now});answer={item};
+    };
+   };
+  };
+  if(id){const found=store.get(id);found.onsuccess=()=>{if(!found.result){fail('Item not found. Reload the library.');return;}write(found.result);};}else write();
+  tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve(answer);};
+  tx.onabort=()=>reject(failure??Error('The item could not be saved. Your library is unchanged.'));
+ });
+}

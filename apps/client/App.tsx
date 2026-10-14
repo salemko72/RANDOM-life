@@ -1,6 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
+import React, {useEffect, useRef, useState, useMemo} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
 import preview from './src/generated/preview.json';
@@ -8,7 +9,9 @@ import {applyStorageMessage, createSnapshotWriter, LocalState, NATIVE_STATE_KEY,
 
 // Temporary Expo Go preview bridge. The browser UI is embedded locally;
 // this is not the final native implementation and does not call a backend.
-export default function App(){
+export default function App(){return <SafeAreaProvider style={{flex:1,backgroundColor:'#fbefe7'}}><NativeExperience/></SafeAreaProvider>;}
+function NativeExperience(){
+ const insets=useSafeAreaInsets();
  const [error,setError]=useState('');
  const [html,setHtml]=useState<string | null>(null);
  const state=useRef<LocalState>({});
@@ -22,10 +25,16 @@ export default function App(){
   }).catch(()=>{if(active)setError('Lokalni podaci nisu dostupni. Ponovo otvori RANDOM.');});
   return ()=>{active=false;};
  },[]);
- return <SafeAreaView style={styles.screen}>
+ const renderedHtml=useMemo(()=>{
+  if(html===null)return null;
+  const safe=seedPreviewHtml(preview.html,state.current);
+  const css=`<style>html,body{background:#fbefe7}</style><script>document.documentElement.style.setProperty('--native-safe-top','${insets.top}px');document.documentElement.style.setProperty('--native-safe-bottom','${insets.bottom}px');</script>`;
+  return safe.replace('</head>',css+'</head>').replace('initial-scale=1','initial-scale=1,viewport-fit=cover');
+ },[html,insets.top,insets.bottom]);
+ return <View style={styles.screen}>
   <StatusBar style="dark"/>
   {error?<View style={styles.error}><Text>{error}</Text></View>:html===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
-   source={{html,baseUrl:'https://random-preview.invalid/'}}
+   source={{html:renderedHtml??'',baseUrl:'https://random-preview.invalid/'}}
    originWhitelist={['https://random-preview.invalid']}
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
@@ -37,6 +46,6 @@ export default function App(){
    }}
    style={styles.web}
   />}
- </SafeAreaView>;
+ </View>;
 }
 const styles=StyleSheet.create({screen:{flex:1,backgroundColor:'#fbefe7'},web:{flex:1,backgroundColor:'#fbefe7'},loading:{position:'absolute',top:0,bottom:0,left:0,right:0,justifyContent:'center',alignItems:'center',backgroundColor:'#fbefe7'},error:{padding:30}});

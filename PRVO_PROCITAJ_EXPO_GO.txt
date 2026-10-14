@@ -1,4 +1,4 @@
-RANDOM life 0.15 - telefon / Expo Go
+RANDOM life 0.16 - telefon / Expo Go
 
 1. Raspakuj ovaj ZIP direktno u C:\
    Folder ce biti C:\RANDOM-life
@@ -14,7 +14,7 @@ Ne pokreci komande u C:\ - pokretac sam koristi apps\client.
 Ne trazi EAS build niti aktivira placene servise.
 Aplikacija koristi privremeni WebView preview most za Expo Go.
 Tvoji unosi iz web Content Studija nisu u ovom ZIP-u; ostaju u onom browseru
-u kojem si ih sacuvao. Paket sadrzi program i demo sadrzaj verzije 0.15.
+u kojem si ih sacuvao. Paket sadrzi program i demo sadrzaj verzije 0.16.
 
 Za preview u browseru: dvoklik POKRENI_RANDOM.cmd.
 Za gasenje servera: Ctrl+C u prozoru pokretaca.

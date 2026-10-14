@@ -1,4 +1,5 @@
 import { unzipSync } from 'fflate';
+import { repairStructure } from './structural-repair';
 import { bilingualIssues, contentSchema, ingredientDefinitions, resolveIngredient, type ContentInput } from '@random/shared';
 
 const MB = 1024 * 1024;
@@ -49,9 +50,17 @@ function inspect(bytes: Uint8Array): Map<string, number> {
   return entries;
 }
 
-function parseJson(bytes: Uint8Array, name: string): Record<string, unknown> {
+function parseJson(bytes: Uint8Array, name: string, repair = false): Record<string, unknown> {
   let value: unknown;
-  try { value = JSON.parse(decoder.decode(bytes)); } catch { return fail(`${name} must contain valid UTF-8 JSON.`); }
+  try {
+    let text = decoder.decode(bytes);
+    if (repair) {
+      text = text.replace(/^\uFEFF/, '').trim();
+      const fence = /^```(?:json)?\s*\n([\s\S]*?)\n```$/i.exec(text);
+      if (fence) text = fence[1]!;
+    }
+    value = JSON.parse(text);
+  } catch { return fail(`${name} must contain valid UTF-8 JSON.`); }
   if (!value || typeof value !== 'object' || Array.isArray(value)) fail(`${name} must contain a JSON object.`);
   return value as Record<string, unknown>;
 }
@@ -67,17 +76,18 @@ function imageMime(name: string, b: Uint8Array): string {
   return fail('Image extension and binary format must match PNG, JPEG, WebP, or AVIF.');
 }
 
-export function readContentPackage(bytes: Uint8Array): { input: ContentInput; image: {name: string; bytes: Uint8Array; mime: string}; classificationChanged?: boolean; corrections?:string[] } {
+export function readContentPackage(bytes: Uint8Array, options: { repair?: boolean } = {}): { input: ContentInput; image: {name: string; bytes: Uint8Array; mime: string}; classificationChanged?: boolean; corrections?:string[]; reviewFlags?: string[]; originalJson?: string } {
   const entries = inspect(bytes);
   const images = [...entries.keys()].filter(name => imagePattern.test(name));
   if (images.length !== 1) fail('ZIP package must contain exactly one image.');
   let files: Record<string, Uint8Array>;
   try { files = unzipSync(bytes); } catch { return fail('ZIP package could not be decompressed.'); }
   for (const [name, length] of entries) if (!files[name] || files[name].length !== length) fail('Decompressed ZIP sizes do not match.');
-  const raw = parseJson(files['content.json']!, 'content.json');
-  const classificationChanged = raw.category === 'READ';
+  const raw = parseJson(files['content.json']!, 'content.json', options.repair);
+  const classificationChanged = raw.category === 'READ' || (options.repair === true && typeof raw.category === 'string' && raw.category.trim().toUpperCase() === 'READ');
+  const repaired = options.repair ? repairStructure(raw) : undefined;
   if (classificationChanged) raw.category = 'BOOK';
-  const corrections:string[]=[];
+  const corrections:string[]=[...(repaired?.corrections ?? [])];
   if(raw.category==='EAT'&&Array.isArray(raw.ingredients)){
     raw.ingredients=raw.ingredients.map((value:unknown,index:number)=>{
       if(!value||typeof value!=='object'||Array.isArray(value))return value;
@@ -92,6 +102,7 @@ export function readContentPackage(bytes: Uint8Array): { input: ContentInput; im
     });
   }
   const parsed = contentSchema.safeParse(raw);
+  if (!parsed.success && options.repair) return fail(`Complete required fields: ${[...new Set(parsed.error.issues.map(issue => issue.path.join('.') || 'content'))].join(', ')}. Missing facts cannot be inferred automatically.`);
   if (!parsed.success) return fail(`Invalid content.json fields: ${parsed.error.issues.map(issue=>`${issue.path.join('.')}: ${issue.message}`).join('; ')}.`);
   const input = parsed.data;
   const issues = bilingualIssues(input).filter(issue => !issue.endsWith('translation requires human review.'));
@@ -112,5 +123,5 @@ export function readContentPackage(bytes: Uint8Array): { input: ContentInput; im
   input.image.rightsConfirmed = false;
   for (const translation of Object.values(input.translations ?? {})) if (translation) translation.reviewed = false;
   if (input.category === 'EAT') {input.allergensVerified = false;if(input.phosphateAssessment)input.phosphateAssessment.reviewed=false;}
-  return { input, image: {name, bytes:files[name]!, mime:imageMime(name,files[name]!)}, ...(classificationChanged ? {classificationChanged:true} : {}),...(corrections.length?{corrections}:{}) };
+  return { input, image: {name, bytes:files[name]!, mime:imageMime(name,files[name]!)}, ...(classificationChanged ? {classificationChanged:true} : {}),...(corrections.length?{corrections}:{}), ...(repaired ? {reviewFlags: repaired.reviewFlags, originalJson: decoder.decode(files['content.json']!)} : {}) };
 }

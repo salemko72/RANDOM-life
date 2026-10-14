@@ -1,3 +1,4 @@
+import {importPreparedRecipes} from './prepared-recipes';
 import {findArtwork,downloadArtwork,type ArtworkCandidate} from './artwork';
 import {repairContentPackage} from './structural-repair';
 import {exportCatalogPackage,exportCatalogJson,prepareCatalogImport,applyCatalogImport,type CatalogImportPlan} from './catalog-exchange';
@@ -142,6 +143,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     }
     useEffect(() => { if (preview)
         refresh().catch(e => setMessage(e.message)); }, [preview]);
+    useEffect(()=>{if(!preview)return;let live=true;importPreparedRecipes().then(async result=>{if(!live)return;if(result.added){await refresh();setMessage(locale==='en'?`${result.added} prepared recipes added for human review.`:`Dodano ${result.added} pripremljenih recepata na ljudski pregled.`);}}).catch(()=>{/* Retry on the next Studio visit; existing library remains intact. */});return()=>{live=false;};},[preview]);
     async function run(work: () => Promise<void>) {
         if (busy)
             return;

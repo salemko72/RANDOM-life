@@ -28,12 +28,7 @@ const base = {
   dietaryAssessment:z.object({gluten:z.enum(['present','absent','uncertain']),lactose:z.enum(['present','absent','uncertain']),suggestedAllergens:z.array(allergenSchema).max(13),notes:z.object({en:text,bs:text})}).optional(),
   translations: translationsSchema.optional(),
   source: z.object({
-    url: z
-      .url()
-      .refine(
-        (url) => new URL(url).protocol === "https:",
-        "HTTPS izvor je obavezan",
-      ),
+    url: z.preprocess(value=>value==null?'':value,z.union([z.literal(''),z.url().refine(url=>new URL(url).protocol==='https:','Ako je naveden URL, koristi HTTPS')])).default(''),
     label: text.max(200),
     checkedAt: z.iso.date(),
     rightsNote: text,

@@ -22,6 +22,7 @@ const english:Record<string,string> = {
  "ISPLANIRAJ IZLAZAK": "PLAN YOUR OUTING",
  "USKORO": "COMING SOON",
  "Wheel se okreće": "Wheel is spinning",
+ "Nema novih odobrenih ONLINE izbora za tvoje preference. Provjeri objave u Studiju ili vrati prethodne prijedloge.":"No new approved online items match your preferences. Check Studio publications or reset previously seen suggestions.",
  "Zavrti wheel": "Spin the wheel",
  "nešto dobro dolazi": "something good is coming",
  "Lako": "Easy",

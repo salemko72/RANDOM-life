@@ -47,7 +47,7 @@ export function seedPreviewHtml(html: string, state: LocalState): string {
  const safeState = JSON.stringify(readSnapshot(JSON.stringify(state))).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
  const bootstrap = `<script>(function(){
  var seed=${safeState}, memory=Object.create(null), nativeStore=null;
- var allowed=function(k){return k===${JSON.stringify(PROFILE_KEY)}||k===${JSON.stringify(LOCALE_KEY)}||(k.indexOf(${JSON.stringify(EXPERIENCE_PREFIX)})===0&&k.length<=200);};
+ var allowed=function(k){return k==="random-life.sfx.v1"||k===${JSON.stringify(PROFILE_KEY)}||k===${JSON.stringify(LOCALE_KEY)}||(k.indexOf(${JSON.stringify(EXPERIENCE_PREFIX)})===0&&k.length<=200);};
  try {nativeStore=window.localStorage;var probe='random-life.bridge-probe';nativeStore.setItem(probe,'1');nativeStore.removeItem(probe);}catch(e){nativeStore=null;}
  if(nativeStore){try{for(var i=nativeStore.length-1;i>=0;i--){var key=nativeStore.key(i);if(key&&allowed(key))nativeStore.removeItem(key);}}catch(e){nativeStore=null;}}
  Object.keys(seed).forEach(function(k){memory[k]=seed[k];if(nativeStore){try{nativeStore.setItem(k,seed[k]);}catch(e){}}});

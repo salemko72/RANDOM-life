@@ -1,4 +1,4 @@
-import {importPreparedRecipes} from './prepared-recipes';
+import {onlineCatalog,onlineStatus,onlineLogin,onlineLogout,migrateLocalItems,type OnlineStatus,type MigrationReport} from './online-store';
 import {findArtwork,downloadArtwork,type ArtworkCandidate} from './artwork';
 import {repairContentPackage} from './structural-repair';
 import {exportCatalogPackage,exportCatalogJson,prepareCatalogImport,applyCatalogImport,type CatalogImportPlan} from './catalog-exchange';
@@ -10,7 +10,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { contentSchema, createChatGPTPrompt, demoItems, publicationIssues, ingredientDefinitions, resolveIngredient, tagIngredients, type Category, type ContentRecord, type ContentInput, type Locale, localizeContent, } from "@random/shared";
 import {editableSource} from "./editable-translations";
 import { studioText } from './studio-language';
-import { deletePreviewContent, submitPreviewContent, restorePreviewBackup, applyPreviewTranslationBatch, previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
+import { readLocalCatalog,readLocalImage,readLocalEvents,readStudioCatalog,deletePreviewContent, submitPreviewContent, restorePreviewBackup, applyPreviewTranslationBatch, previewRequest, putPreviewImage, readMissingIngredients, rememberMissingIngredients, readPreviewRevisions } from "./preview-store";
 import { unresolvedIngredients, missingAtlasPrompt, type MissingIngredient } from './missing-ingredients';
 const EDITOR_KEY = 'random-life.studio-editor.v1';
 function readEditor() { try {
@@ -33,6 +33,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     const tx = (value: string) => studioText(locale, value);
     const [atlasQueue,setAtlasQueue]=useState<AtlasBatch[]>(()=>{try{const saved=JSON.parse(localStorage.getItem('random-life.atlas-queue.v1')||'[]');return Array.isArray(saved)?saved.filter(b=>b?.status==='pending'&&b?.columns===10&&b?.rows===10&&Array.isArray(b.cells)&&b.cells.length===100):[];}catch{return [];}});
     const [batchJSON,setBatchJSON]=useState('');
+    const [databaseStatus,setDatabaseStatus]=useState<OnlineStatus>({configured:false,authenticated:false,ok:false});
+    const [studioPassword,setStudioPassword]=useState('');const [migrationReport,setMigrationReport]=useState<MigrationReport|null>(null);
     const [browse,setBrowse]=useState(false);
     const [artwork,setArtwork]=useState<{state:string;candidates:ArtworkCandidate[];code?:string}|null>(null);
     const [exchangeOpen,setExchangeOpen]=useState(false);
@@ -139,11 +141,11 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         for (const row of data.items)
             await rememberMissingIngredients(row);
         setMissing(await readMissingIngredients());
-        setConnected(true);
+        if(preview){try{const status=await onlineStatus();setDatabaseStatus(status);setConnected(status.authenticated&&status.ok);}catch{setDatabaseStatus({configured:false,authenticated:false,ok:false});setConnected(false);}}else setConnected(true);
     }
     useEffect(() => { if (preview)
         refresh().catch(e => setMessage(e.message)); }, [preview]);
-    useEffect(()=>{if(!preview)return;let live=true;importPreparedRecipes().then(async result=>{if(!live)return;if(result.added){await refresh();setMessage(locale==='en'?`${result.added} prepared recipes added for human review.`:`Dodano ${result.added} pripremljenih recepata na ljudski pregled.`);}}).catch(()=>{/* Retry on the next Studio visit; existing library remains intact. */});return()=>{live=false;};},[preview]);
+
     async function run(work: () => Promise<void>) {
         if (busy)
             return;
@@ -159,6 +161,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             setBusy(false);
         }
     }
+    async function migrateLibrary(){
+      const local=await readLocalCatalog();const report=await migrateLocalItems(local,readLocalImage,await readLocalEvents());setMigrationReport(report);await refresh();if(selected){const online=(await onlineCatalog(true)).find(row=>row.id===report.mapping[selected.id]);if(online){setSelected(online);if(json.trim()){const draft=JSON.parse(json);if(draft.image.path===selected.image.path)draft.image.path=online.image.path;setJson(JSON.stringify(draft,null,2));}}}setMessage(locale==='en'?`D1 migration: ${report.added} added, ${report.skipped} already online, ${report.conflicts} conflicts, ${report.failed} need attention. Local backups were retained.`:`D1 migracija: ${report.added} dodano, ${report.skipped} već online, ${report.conflicts} sukoba, ${report.failed} traži pregled. Lokalni backup je sačuvan.`);
+    }
     function openRecord(i:ContentRecord){
         if(i.id.startsWith('__demo:')){const input=draftInput({...i,factsVerified:false,image:{...i.image,rightsConfirmed:false},translations:Object.fromEntries(Object.entries(i.translations??{}).map(([code,t])=>[code,{...t,reviewed:false}])),...(i.category==='EAT'?{allergensVerified:false}:{})});setSelected(null);setCategory(input.category);setSource(input.source.url);setJson(JSON.stringify(input,null,2));setStaged(null);setOriginal(null);setBrowse(false);setMessage(locale==='en'?'Demo opened as an unsaved editable copy.':'Demo je otvoren kao nesačuvana kopija za uređivanje.');return;}
 
@@ -167,7 +172,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     }
     async function deleteItem(item:ContentRecord){
       if(!window.confirm(locale==='en'?`Delete “${item.title}” from the library?`:`Obrisati “${item.title}” iz biblioteke?`))return;
-      if(!preview)throw Error('Deletion is available in the preview library.');
+      if(!preview)throw Error('Deletion is available in the preview library.');if((item as any).__storage==='local')throw Error('Migrate the local item before deleting it online.');
       await deletePreviewContent(item.id,item.version);if(selected?.id===item.id)resetEditor();await refresh();setMessage(locale==='en'?'Item deleted.':'Stavka obrisana.');
     }
     function parsedInput() {
@@ -175,7 +180,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     }
     async function publishOne(){
       const input=parsedInput();
-      if(preview){const result=await submitPreviewContent(input,selected?.id,selected?.version);await refresh();resetEditor();setMessage(result.duplicate?(locale==='en'?'Already saved; existing item unchanged.':'Već sačuvano; postojeća stavka nije izmijenjena.'):result.item.status==='published'?(locale==='en'?'Published and saved. Ready for the next item.':'Objavljeno i sačuvano. Spremno za novi unos.'):(locale==='en'?'Saved with a review flag. It stays in Studio until verified.':'Sačuvano s flagom za provjeru. Ostaje u Studiju do potvrde.'));return;}
+      if(preview){if(selected&&(selected as any).__storage==='local')throw Error(locale==='en'?'Migrate this LOCAL item to D1 before publishing.':'Prvo prebaci ovu LOCAL stavku u D1.');const result=await submitPreviewContent(input,selected?.id,selected?.version);await refresh();resetEditor();setMessage(result.duplicate?(locale==='en'?'Already saved; existing item unchanged.':'Već sačuvano; postojeća stavka nije izmijenjena.'):result.item.status==='published'?(locale==='en'?'Published and saved. Ready for the next item.':'Objavljeno i sačuvano. Spremno za novi unos.'):(locale==='en'?'Saved with a review flag. It stays in Studio until verified.':'Sačuvano s flagom za provjeru. Ostaje u Studiju do potvrde.'));return;}
       const result=await request(selected?`/admin/content/${selected.id}`:'/admin/content',selected?'PUT':'POST',input,selected?.version);
       let record=result.item;if(!result.duplicate){record=(await request(`/admin/content/${record.id}/review`,'POST',undefined,record.version)).item;if(!publicationIssues(input).length)record=(await request(`/admin/content/${record.id}/publish`,'POST',undefined,record.version)).item;}
       resetEditor();await refresh();setMessage(record.status==='published'?(locale==='en'?'Published.':'Objavljeno.'):(locale==='en'?'Saved for verification in Studio.':'Sačuvano za provjeru u Studiju.'));
@@ -354,7 +359,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             <h1>{tx("Tvoj uredni\u010Dki stol.")}</h1>
             <p className="muted">{tx("Pripremi, provjeri i objavi. Jedna kvalitetna stavka vi\u0161e.")}</p>
           </div>
-          <span className="badge">{tx("Lokalni razvoj")}</span>
+          {preview?<section className="database-controls"><strong className={databaseStatus.ok?'d1-connected':'d1-disconnected'}>{databaseStatus.ok?(locale==='en'?'D1 access · connected':'D1 pristup · uključen'):(locale==='en'?'D1 access · unavailable':'D1 pristup · nedostupan')}</strong>{databaseStatus.authenticated?<><small>{locale==='en'?'Editor signed in':'Urednik prijavljen'}</small><button disabled={busy} onClick={()=>run(migrateLibrary)}>UPDATE local to D1</button><button className="quiet" disabled={busy} onClick={()=>run(async()=>{await onlineLogout();await refresh();})}>{locale==='en'?'Sign out':'Odjavi se'}</button></>:<form onSubmit={e=>{e.preventDefault();run(async()=>{await onlineLogin(studioPassword);setStudioPassword('');await refresh();});}}><label>{locale==='en'?'Studio password':'Lozinka Studija'}<input type="password" autoComplete="current-password" value={studioPassword} onChange={e=>setStudioPassword(e.target.value)} required/></label><button disabled={busy||!databaseStatus.configured}>{locale==='en'?'Sign in':'Prijavi se'}</button>{!databaseStatus.configured&&<small>{locale==='en'?'Server password or D1 binding needs configuration.':'Potrebna je serverska lozinka ili D1 veza.'}</small>}</form>}{migrationReport?.results.filter(r=>r.status==='conflict'||r.status==='failed').length?<details><summary>{locale==='en'?'Migration details':'Detalji migracije'}</summary>{migrationReport.results.filter(r=>r.error).map(r=><p key={r.localId}>{r.localId}: {r.error}</p>)}</details>:null}</section>:<span className="badge">{tx("Lokalni razvoj")}</span>}
         </header>
         {!preview && <section className="connection">
           <label>{tx("API adresa")}<input disabled={busy} value={api} onChange={(e) => {
@@ -519,7 +524,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             </fieldset>
           </section>
           <section className="library card">
-            {preview&&<section className="storage-summary"><h3>{locale==='en'?'Library & recovery':'Biblioteka i oporavak'}</h3><p>{items.length} {locale==='en'?'saved items in this browser':'sačuvanih stavki u ovom browseru'} · {samples.length} {locale==='en'?'built-in demo items available in Base browser':'demo stavki dostupnih u Base browseru'}</p><p>{locale==='en'?'Local storage belongs to this browser and website address. Another browser or address has a separate library. A version update does not clear it.':'Lokalni podaci pripadaju ovom browseru i adresi stranice. Drugi browser ili adresa imaju drugu biblioteku. Promjena verzije je ne briše.'}</p><button className="quiet" onClick={()=>run(refresh)}>{locale==='en'?'Reload saved library':'Ponovo učitaj biblioteku'}</button><label>{locale==='en'?'Restore content backup JSON':'Vrati JSON backup sadržaja'}<input type="file" accept=".json,application/json" onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)run(async()=>{if(file.size>10*1024*1024)throw Error('Backup exceeds 10 MB.');const result=await restorePreviewBackup(JSON.parse(await file.text()));await refresh();setMessage(locale==='en'?`${result.added} items restored as drafts; ${result.skipped} existing items left unchanged. Backup image paths do not contain the image files.`:`${result.added} stavki vraćeno kao nacrt; ${result.skipped} postojećih stavki sačuvano bez izmjene. Putanje slika u backupu nisu fajlovi slika.`);});}}/></label></section>}
+            {preview&&<section className="storage-summary"><h3>{locale==='en'?'Online library & local migration':'Online biblioteka i lokalna migracija'}</h3><p>{items.length} {locale==='en'?'items (ONLINE D1 / LOCAL)':'stavki (ONLINE D1 / LOCAL)'} · {samples.length} {locale==='en'?'built-in demo items available in Base browser':'demo stavki dostupnih u Base browseru'}</p><p>{locale==='en'?'New items and edits are saved in shared D1. Blue LOCAL entries are legacy copies awaiting migration. They are never published from local storage.':'Novi unosi i izmjene snimaju se u zajednički D1. Plave LOCAL stavke su stare kopije koje čekaju migraciju i nisu javne iz lokalne pohrane.'}</p><button className="quiet" onClick={()=>run(refresh)}>{locale==='en'?'Reload saved library':'Ponovo učitaj biblioteku'}</button><label>{locale==='en'?'Restore content backup JSON':'Vrati JSON backup sadržaja'}<input type="file" accept=".json,application/json" onChange={e=>{const file=e.target.files?.[0];e.target.value='';if(file)run(async()=>{if(file.size>10*1024*1024)throw Error('Backup exceeds 10 MB.');const result=await restorePreviewBackup(JSON.parse(await file.text()));await refresh();setMessage(locale==='en'?`${result.added} items restored as drafts; ${result.skipped} existing items left unchanged. Backup image paths do not contain the image files.`:`${result.added} stavki vraćeno kao nacrt; ${result.skipped} postojećih stavki sačuvano bez izmjene. Putanje slika u backupu nisu fajlovi slika.`);});}}/></label></section>}
             <section className="missing-illustrations" aria-label={tx("Namirnice bez ilustracije")}>
               <h2>{tx("Namirnice bez ilustracije")}</h2>
               <p className="input-help">{tx("Kumulativna lista iz svih sa\u010Duvanih recepata i validnog trenutnog unosa. Ne bri\u0161e se kad zapo\u010Dne\u0161 drugi recept. Novi atlas i tagovi moraju se povezati u sljede\u0107oj verziji aplikacije.")}</p>
@@ -544,8 +549,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
               </div>)}
             {items
             .filter((i) => [i.title,...Object.values(i.translations??{}).map(t=>t?.title)].some(title=>typeof title==='string'&&title.toLocaleLowerCase(locale).includes(search.toLocaleLowerCase(locale))))
-            .map((i) => (<button disabled={busy} key={i.id} data-content-id={i.id} className="item" onClick={() => openRecord(i)}>
-                  <span className="item-category">{i.category === "BOOK" ? "READ" : i.category}</span>
+            .map((i) => (<button disabled={busy} key={i.id} data-content-id={i.id} className={`item ${(i as any).__storage==='d1'?'storage-online':'storage-local'}`} onClick={() => openRecord(i)}>
+                  <span className="storage-label">{(i as any).__storage==='d1'?'ONLINE D1':'LOCAL'}</span><span className="item-category">{i.category === "BOOK" ? "READ" : i.category}</span>
                   <strong>{localizeContent(i, locale).title}</strong><span className="locale-status">{(['en','bs'] as const).map(code=><small key={code}>{code==='en'?'ENG':'BHS'} {i.translations?.[code]?.reviewed?'✓':tx('nedostaje pregled')}</small>)}</span>
                   <span className={`status ${i.status}`}>
                     {tx(labels[i.status])}

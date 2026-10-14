@@ -1,4 +1,5 @@
-export type Env={ASSETS:{fetch(request:Request):Promise<Response>};TMDB_READ_TOKEN?:string};
+import {handleDatabase,type DatabaseEnv} from './database';
+export type Env=DatabaseEnv&{ASSETS:{fetch(request:Request):Promise<Response>};TMDB_READ_TOKEN?:string};
 const json=(data:unknown,status=200)=>Response.json(data,{status});
 const norm=(s:string)=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 export function allowedImage(value:string){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&((u.hostname==='image.tmdb.org'&&/^\/t\/p\/w780\/[^/]+\.(jpg|png)$/.test(u.pathname))||(u.hostname==='covers.openlibrary.org'&&/^\/b\/id\/\d+-L.jpg$/.test(u.pathname)));}catch{return false;}}
@@ -16,7 +17,7 @@ class SourceError extends Error{constructor(public status:number){super('Source 
 export function tmdbAuth(token:string){const clean=token.trim().replace(/^Bearer\s+/i,'');return /^[a-fA-F0-9]{32}$/.test(clean)?{key:clean,headers:undefined}:{key:undefined,headers:{Authorization:`Bearer ${clean}`}};}
 async function remote(url:string,headers?:HeadersInit){const r=await fetch(url,{headers,signal:AbortSignal.timeout(12000)});if(!r.ok)throw new SourceError(r.status);return r.json() as Promise<any>;}
 export async function handle(request:Request,env:Env):Promise<Response>{
- const u=new URL(request.url);if(!u.pathname.startsWith('/api/artwork'))return env.ASSETS.fetch(request);
+ const u=new URL(request.url);if(u.pathname.startsWith('/api/database/')||u.pathname==='/api/catalog'||u.pathname==='/api/content'||u.pathname.startsWith('/api/content/')||u.pathname.startsWith('/media/'))return handleDatabase(request,env);if(!u.pathname.startsWith('/api/artwork'))return env.ASSETS.fetch(request);
  if(request.method!=='GET')return json({error:'Method not allowed'},405);
  try{
  if(u.pathname==='/api/artwork-image'){

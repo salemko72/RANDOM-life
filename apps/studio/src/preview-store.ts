@@ -1,3 +1,4 @@
+import {getOnlineDeletedIds,onlineCatalog,onlineSubmit,onlineDelete,onlinePutImage,onlineStatus} from './online-store';
 import {draftInput,prepareTranslationBatch,legacyRecordMetadata} from './import-recovery';
 import {collectMissing, type MissingIngredient} from './missing-ingredients';
 import { contentSchema, publicationIssues, type ContentRecord } from '@random/shared';
@@ -18,20 +19,20 @@ function database() {
     request.onerror=()=>{opening=undefined;reject(new Error('Lokalno čuvanje nije dostupno u ovom pregledniku.'));};
   });
 }
-export async function readPreviewCatalog(): Promise<ContentRecord[]> {
+export async function readLocalCatalog(): Promise<ContentRecord[]> {
   const db=await database();
   return new Promise((resolve,reject)=>{const request=db.transaction('content').objectStore('content').getAll();request.onsuccess=()=>resolve(request.result.map(legacyRecordMetadata));request.onerror=()=>reject(request.error);});
 }
-export async function putPreviewImage(path: string, blob: Blob) {
+export async function putLocalImage(path: string, blob: Blob) {
   const db=await database();
   return new Promise<void>((resolve,reject)=>{const tx=db.transaction('media','readwrite');tx.objectStore('media').put(blob,path);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(new Error('Slika nije sačuvana. Provjeri prostor preglednika.'));});
 }
-export async function readPreviewImage(path: string): Promise<Blob | null> {
+export async function readLocalImage(path: string): Promise<Blob | null> {
   const db=await database();
   return new Promise((resolve,reject)=>{const request=db.transaction('media').objectStore('media').get(path);request.onsuccess=()=>resolve(request.result??null);request.onerror=()=>reject(request.error);});
 }
-export async function previewRequest(path: string, method='GET', body?:unknown, version?:number):Promise<any> {
-  if(path==='/admin/content' && method==='GET') return {items:await readPreviewCatalog()};
+export async function legacyPreviewRequest(path: string, method='GET', body?:unknown, version?:number):Promise<any> {
+  if(path==='/admin/content' && method==='GET') return {items:await readLocalCatalog()};
   const db=await database();
   return new Promise((resolve,reject)=>{
     const tx=db.transaction(['content','media','events'],'readwrite');const content=tx.objectStore('content');
@@ -83,21 +84,11 @@ export async function readMissingIngredients():Promise<MissingIngredient[]> {
 export async function rememberMissingIngredients(input:import('@random/shared').ContentInput):Promise<MissingIngredient[]> {
  const db=await ingredientDatabase();return new Promise((resolve,reject)=>{const tx=db.transaction('missing-ingredients','readwrite'),store=tx.objectStore('missing-ingredients');let result:MissingIngredient[]=[];const r=store.getAll();r.onsuccess=()=>{result=collectMissing(r.result,input);for(const entry of result)store.put(entry);};tx.oncomplete=()=>resolve(result);tx.onabort=()=>reject(new Error('Lista nedostajućih ilustracija nije sačuvana.'));});
 }
-export async function readPreviewRevisions():Promise<ContentRecord[]> {
+export async function readLocalRevisions():Promise<ContentRecord[]> {
  const db=await database();return new Promise((resolve,reject)=>{const r=db.transaction('events').objectStore('events').getAll();r.onsuccess=()=>{const unique=new Map<string,ContentRecord>();for(const event of r.result){if(event.item?.title)unique.set(`${event.item.category}|${event.item.source?.url}|${event.item.title}`,event.item);}resolve([...unique.values()].reverse());};r.onerror=()=>reject(r.error);});
 }
 
-export async function applyPreviewTranslationBatch(raw:unknown){
- const db=await database();return new Promise<number>((resolve,reject)=>{
-  const tx=db.transaction(['content','events'],'readwrite'),store=tx.objectStore('content');let failure:unknown;let count=0;
-  tx.onabort=()=>reject(failure??new Error('Batch was not saved.'));tx.onerror=()=>{failure=tx.error;};
-  tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve(count);};
-  const request=store.getAll();request.onsuccess=()=>{try{
-   const changes=prepareTranslationBatch(raw,request.result);count=changes.length;
-   for(const change of changes){const original=request.result.find((r:any)=>r.id===change.id);const item={...original,...change.input,status:'draft',version:change.version+1,updatedAt:new Date().toISOString(),approvedBy:null,approvedAt:null};store.put(item);tx.objectStore('events').add({item,action:'translation-batch',at:item.updatedAt});}
-  }catch(error){failure=error;tx.abort();}};
- });
-}
+export async function applyPreviewTranslationBatch(raw:unknown){const current=await onlineCatalog(true),changes=prepareTranslationBatch(raw,current);const items=changes.map((change:any)=>({item:{...current.find(r=>r.id===change.id)!,...change.input},expectedVersion:change.version}));const response=await fetch('/api/database/import-batch',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});if(!response.ok)throw Error('Online translation batch was not saved.');window.dispatchEvent(new Event('random-content-updated'));return changes.length;}
 
 export async function importPreviewPackage(input: unknown, blob: Blob): Promise<ContentRecord> {
   const data=draftInput(input),db=await database();
@@ -116,7 +107,7 @@ export async function importPreviewPackage(input: unknown, blob: Blob): Promise<
   });
 }
 
-export async function restorePreviewBackup(raw:unknown):Promise<{added:number;skipped:number}>{
+export async function restoreLocalBackup(raw:unknown):Promise<{added:number;skipped:number}>{
  const data=raw as {format?:string;items?:unknown[]};
  if(data?.format!=='RANDOM-content-backup-v1'||!Array.isArray(data.items)||data.items.length>10000)throw Error('Choose a RANDOM-content-backup-v1 JSON backup.');
  const ids=new Set<string>();
@@ -127,32 +118,16 @@ export async function restorePreviewBackup(raw:unknown):Promise<{added:number;sk
 }
 
 /** One editorial action: publish verified content, retain incomplete content for review. */
-export async function submitPreviewContent(raw:unknown,id?:string,version?:number):Promise<{item:ContentRecord;duplicate?:boolean}>{
- const data=draftInput(raw),db=await database();
- return new Promise((resolve,reject)=>{
-  const tx=db.transaction(['content','media','events'],'readwrite'),store=tx.objectStore('content');let answer:{item:ContentRecord;duplicate?:boolean};let failure:Error|undefined;
-  const fail=(message:string)=>{failure=Error(message);tx.abort();};
-  const write=(previous?:ContentRecord)=>{
-   if(previous&&previous.version!==version){fail('The item changed in another tab. Reopen it before saving.');return;}
-   const flags=publicationIssues(data);const media=tx.objectStore('media').get(data.image.path);
-   media.onsuccess=()=>{
-    if(!builtInMedia.has(data.image.path)&&!media.result)flags.push('Image needs checking.');
-    const ready=!flags.length,now=new Date().toISOString();
-    const item:ContentRecord & {editorialFlags:string[]}={...data,id:previous?.id??crypto.randomUUID(),version:(previous?.version??0)+1,status:ready?'published':'review',updatedAt:now,approvedAt:ready?now:null,approvedBy:ready?'local-preview-editor':null,editorialFlags:flags};
-    const dedupKey=`${data.category}|${data.source.url}|${data.title.trim().toLowerCase()}`;
-    const duplicate=store.index('dedup').get(dedupKey);duplicate.onsuccess=()=>{
-     if(duplicate.result&&duplicate.result.id!==item.id){answer={item:duplicate.result,duplicate:true};return;}
-     if(previous)tx.objectStore('events').add({item:previous,action:'before-edit',at:now});
-     store.put({...item,dedupKey});tx.objectStore('events').add({item,action:ready?'publish':'flagged-review',at:now});answer={item};
-    };
-   };
-  };
-  if(id){const found=store.get(id);found.onsuccess=()=>{if(!found.result){fail('Item not found. Reload the library.');return;}write(found.result);};}else write();
-  tx.oncomplete=()=>{window.dispatchEvent(new Event('random-content-updated'));resolve(answer);};
-  tx.onabort=()=>reject(failure??Error('The item could not be saved. Your library is unchanged.'));
- });
-}
+export async function submitPreviewContent(raw:unknown,id?:string,version?:number){const result=await onlineSubmit(draftInput(raw),id,version);window.dispatchEvent(new Event('random-content-updated'));return result;}
 
-export async function deletePreviewContent(id:string,version:number){
- const db=await database();await new Promise<void>((resolve,reject)=>{const tx=db.transaction(['content','events'],'readwrite'),store=tx.objectStore('content');let failure:Error|undefined;const req=store.get(id);req.onsuccess=()=>{const item=req.result;if(!item||item.version!==version){failure=Error('Item changed. Reload the library before deleting.');tx.abort();return;}tx.objectStore('events').add({item,action:'deleted',at:new Date().toISOString()});store.delete(id);};tx.oncomplete=()=>resolve();tx.onabort=()=>reject(failure??tx.error??Error('Deletion failed'));tx.onerror=()=>reject(tx.error);});window.dispatchEvent(new Event('random-content-updated'));
-}
+export async function deletePreviewContent(id:string,version:number){await onlineDelete(id,version);window.dispatchEvent(new Event('random-content-updated'));}
+export async function readPreviewCatalog(){return onlineCatalog(false);}
+export async function readStudioCatalog(){const local=(await readLocalCatalog()).map(i=>({...i,__storage:'local'}));let remote:ContentRecord[]=[];try{remote=await onlineCatalog(true);}catch{}const deleted=getOnlineDeletedIds();const ids=new Set(remote.map(i=>i.id)),keys=new Set(remote.map(i=>`${i.category}|${i.source.url}|${i.title.trim().toLowerCase()}`));return [...remote,...local.filter(i=>!deleted.has(i.id)&&!ids.has(i.id)&&!keys.has(`${i.category}|${i.source.url}|${i.title.trim().toLowerCase()}`))];}
+export async function readPreviewImage(path:string):Promise<Blob|null>{try{const response=await fetch(mediaAddress(path),{credentials:'same-origin'});if(response.ok&&(response.headers.get('content-type')??'').startsWith('image/'))return response.blob();}catch{}return readLocalImage(path);}
+function mediaAddress(path:string){return typeof window!=='undefined'&&(window.location.hostname==='random-preview.invalid'||window.location.protocol==='file:')?'https://random-life-preview.pages.dev'+path:path;}
+export async function putPreviewImage(path:string,blob:Blob){await onlinePutImage(path,blob);}
+export async function previewRequest(path:string,method='GET',body?:unknown,version?:number):Promise<any>{if(path==='/admin/content'&&method==='GET')return{items:await readStudioCatalog()};if(method==='POST'&&path==='/admin/content')return submitPreviewContent(body);if(method==='PUT'&&path.startsWith('/admin/content/'))return submitPreviewContent(body,path.split('/')[3],version);throw Error('This operation requires the online Studio editor.');}
+
+export async function readLocalEvents():Promise<any[]>{const db=await database();return new Promise((resolve,reject)=>{const q=db.transaction('events').objectStore('events').getAll();q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);});}
+export async function readPreviewRevisions():Promise<ContentRecord[]>{const local=await readLocalRevisions();try{const r=await fetch('/api/content',{credentials:'same-origin'});if(!r.ok)return local;const data:any=await r.json();return [...(data.events??[]).map((e:any)=>typeof e.snapshot==='string'?JSON.parse(e.snapshot):e.snapshot),...local];}catch{return local;}}
+export async function restorePreviewBackup(raw:any){if(!Array.isArray(raw?.items))throw Error('Backup items are missing.');const {migrateLocalItems}=await import('./online-store');const report=await migrateLocalItems(raw.items.map(legacyRecordMetadata),readPreviewImage);return{added:report.added,skipped:report.skipped,failed:report.failed};}

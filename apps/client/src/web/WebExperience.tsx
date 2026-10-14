@@ -73,7 +73,7 @@ function Experience(){
  const [panel,setPanel]=useState<Panel>(null);const [renderedPanel,setRenderedPanel]=useState<Panel>(null);const visiblePanel=panel||renderedPanel;const [relatedInfo,setRelatedInfo]=useState<Companion|null>(null);const [details,setDetails]=useState(false);const [message,setMessage]=useState('');
  const initialExperience=useRef(loadExperience(profile.id));const [historyIds,setHistoryIds]=useState(initialExperience.current.history);const [seenIds,setSeenIds]=useState(initialExperience.current.seen);const [favoriteIds,setFavoriteIds]=useState(initialExperience.current.favorites);
  const [published,setPublished]=useState<ContentRecord[]>([]);const [uploadedImage,setUploadedImage]=useState<string|null>(null);
- const records:PreviewRecord[]=[...demoCatalog,...published];
+ const records:PreviewRecord[]=[...published];
  const [soundEnabled,setSoundEnabled]=useState(loadSfx);const sfx=useRef<InterfaceSfx|null>(null);
  useEffect(()=>{const audio=new InterfaceSfx();sfx.current=audio;audio.setEnabled(loadSfx());const click=(event:MouseEvent)=>{const target=event.target instanceof Element?event.target.closest('button,a,input[type=checkbox],select'):null;if(!target||(target instanceof HTMLButtonElement&&target.disabled))return;void audio.unlock().then(()=>{if(window.location.hash!=='#studio')audio.welcome();audio.click();});};const visibility=()=>{if(document.visibilityState==='hidden')audio.pause();};document.addEventListener('click',click,true);document.addEventListener('visibilitychange',visibility);window.addEventListener('pagehide',visibility);return()=>{document.removeEventListener('click',click,true);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',visibility);audio.dispose();sfx.current=null;};},[]);
  function changeSound(){const enabled=!soundEnabled;setSoundEnabled(enabled);sfx.current?.setEnabled(enabled);if(enabled)void sfx.current?.unlock().then(()=>sfx.current?.click());}
@@ -96,10 +96,10 @@ function Experience(){
   let currentProfile=profile;
   if(scene==='result'&&item&&!profile.completedIds.includes(item.id)&&!profile.events.some(e=>e.itemId===item.id&&e.kind==='accept')){currentProfile=recordSignal(profile,item,'skip');setProfile(currentProfile);}
   const current=await readPreviewCatalog().catch(()=>published);
-  const catalog:PreviewRecord[]=[...demoCatalog,...current.filter(r=>r.status==='published'&&!publicationIssues(r).length)];
+  const catalog:PreviewRecord[]=[...current.filter(r=>r.status==='published'&&!publicationIssues(r).length)];
   const eligible=catalog.filter(r=>eligibleForProfile(r,currentProfile)&&!seenIds.includes(r.id));
   const selected=target??choosePersonalizedCategory(eligible,currentProfile,lastCategory.current);
-  if(!selected){setMessage("Sve prikladne demo izbore si već vidio/la. Vrati prijedloge za novi krug; tvoja ograničenja ostaju.");locked.current=false;setBusy(false);return;}
+  if(!selected){setMessage("Nema novih odobrenih ONLINE izbora za tvoje preference. Provjeri objave u Studiju ili vrati prethodne prijedloge.");locked.current=false;setBusy(false);return;}
   const targetIndex=WHEEL_CATEGORIES.findIndex(c=>c.id===selected);lastCategory.current=selected;
   const recommendation=selectPersonalized(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds);
   const visualChoices=target&&recommendation?itemWheelChoices(eligible.filter(r=>uiCategory(r)===selected),recommendation):null;

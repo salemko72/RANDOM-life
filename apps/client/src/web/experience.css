@@ -177,3 +177,11 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .catalog-online{color:#45684f}.catalog-error{color:#8a3a2d}.preview-footer button{margin-left:8px;color:inherit;text-decoration:underline;font:inherit}.studio-login-notice{padding:16px;border-radius:16px;background:#fffaf5;color:#665044;border:1px solid #decebd}.studio-login-notice button{margin-left:8px}
 
 .mobile-catalog-status{display:none;font-size:9px;letter-spacing:0}.mobile-catalog-status a{color:inherit;text-decoration:underline}.mobile-catalog-status button{font:inherit;text-decoration:underline;margin-left:5px}@media(max-width:600px){.mobile-catalog-status{display:block}}
+
+/* Keep circular photos rigid when a category label wraps (including iOS Safari). */
+.random-world .rail-category{height:auto!important;flex:0 0 auto;min-height:70px}
+.rail-category>.category-photo{flex:0 0 auto;aspect-ratio:1 / 1;box-sizing:border-box}
+.rail-category .rail-label{flex:0 0 auto;min-height:24px;line-height:12px;text-align:center;white-space:normal}
+.rail-categories{flex-shrink:0}
+@media(max-width:600px){.random-world .rail-category{min-height:66px}}
+@media(max-height:790px) and (max-width:600px){.random-world .rail-category{min-height:61px}}

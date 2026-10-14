@@ -6,7 +6,7 @@ export function allowedCoverRedirect(value:string,origin:string){
  if(allowedImage(value))return true;
  try{const original=new URL(origin),u=new URL(value);const id=/^\/b\/id\/(\d+)-L\.jpg$/.exec(original.pathname)?.[1];
  const archiveHost=u.hostname==='archive.org'||/^ia\d+(?:\.[a-z0-9-]+)*\.archive\.org$/.test(u.hostname);
- return original.hostname==='covers.openlibrary.org'&&!!id&&u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&archiveHost&&/^\/(?:download\/|\d+\/items\/|items\/)olcovers\d+\/olcovers\d+-L\.zip\/\d+-L\.jpg$/.test(u.pathname)&&u.pathname.endsWith('/'+id+'-L.jpg');
+ return original.hostname==='covers.openlibrary.org'&&!!id&&u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&archiveHost&&(/^\/(?:download\/|\d+\/items\/|items\/)olcovers\d+\/olcovers\d+-L\.zip\/\d+-L\.jpg$/.test(u.pathname)||/^\/(?:download\/|\d+\/items\/|items\/)l_covers_\d+\/l_covers_\d+_\d+\.zip\/\d+-L\.jpg$/.test(u.pathname))&&Number(/\/(\d+)-L\.jpg$/.exec(u.pathname)?.[1])===Number(id);
  }catch{return false;}
 }
 class SourceError extends Error{constructor(public status:number){super('Source unavailable')}}

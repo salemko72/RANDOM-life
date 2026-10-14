@@ -476,7 +476,7 @@ code {
   width: 56px;
   height: 56px;
   flex: 0 0 56px;
-  background-image: url("../../client/src/web/assets/ingredient-atlas.png");
+  background-image: none;
   background-size: 1000% 1000%;
   background-repeat: no-repeat;
 }

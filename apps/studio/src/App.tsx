@@ -1,3 +1,4 @@
+import {ingredientSpriteStyle} from '../../client/src/web/ingredient-atlas';
 import {onlineCatalog,getOnlineDeletedIds,onlineStorage,type OnlineStorage,onlineStatus,onlineLogin,onlineLogout,migrateLocalItems,type OnlineStatus,type MigrationReport} from './online-store';
 import {findArtwork,downloadArtwork,type ArtworkCandidate} from './artwork';
 import {repairContentPackage} from './structural-repair';
@@ -497,7 +498,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                   {valid.ingredients.map((ingredient, index) => {
                 const definition = resolveIngredient(ingredient.name, ingredient.tag);
                 return (<div className="ingredient-row" key={index}>
-                        {definition && <span className="ingredient-sprite" aria-hidden="true" style={{ backgroundPosition: `${definition.column * 100 / 9}% ${definition.row * 100 / 9}%` }}/>}
+                        {definition && <span className="ingredient-sprite" aria-hidden="true" data-ingredient-tag={definition.id} data-ingredient-atlas={definition.atlas??'original'} style={ingredientSpriteStyle(definition)}/>}
                         <label>
                           {displayValid?.category === 'EAT' ? displayValid.ingredients[index].name : ingredient.name}
                           <select aria-label={`${tx(tx("Ikona za"))} ${displayValid?.category === 'EAT' ? displayValid.ingredients[index].name : ingredient.name}`} value={definition?.id ?? ""} onChange={e => mapIngredient(index, e.target.value)}>
@@ -509,8 +510,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                       </div>);
             })}
                   <details>
-                    <summary>{tx("Pregled svih 100 sastojaka")}</summary>
-                    <div className="ingredient-atlas-grid">{ingredientDefinitions.map(entry => <div key={entry.id} title={entry.id}><span className="ingredient-sprite" aria-hidden="true" style={{ backgroundPosition: `${entry.column * 100 / 9}% ${entry.row * 100 / 9}%` }}/><span>{locale==='en'?entry.id.replace(/-/g,' '):entry.name}</span></div>)}</div>
+                    <summary>{locale==='en'?`Browse all ${ingredientDefinitions.length} ingredients`:`Pregled svih ${ingredientDefinitions.length} sastojaka`}</summary>
+                    <div className="ingredient-atlas-grid">{ingredientDefinitions.map(entry => <div key={entry.id} title={entry.id}><span className="ingredient-sprite" aria-hidden="true" data-ingredient-tag={entry.id} data-ingredient-atlas={entry.atlas??'original'} style={ingredientSpriteStyle(entry)}/><span>{locale==='en'?entry.id.replace(/-/g,' '):entry.name}</span></div>)}</div>
                   </details>
                   <button className="quiet" onClick={() => run(async () => { await navigator.clipboard.writeText(ingredientDefinitions.map(entry => `${entry.id}: ${locale==='en'?entry.id.replace(/-/g,' '):entry.name}`).join("\n")); setMessage(tx("Lista oznaka sastojaka je kopirana.")); })}>{tx("Kopiraj listu oznaka")}</button>
                 </section>)}

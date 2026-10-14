@@ -21,3 +21,9 @@ describe('migration preservation and concurrency',()=>{
  it('requires authenticated status before reading or writing content',async()=>{const fetch=vi.fn().mockResolvedValue(response({configured:true,authenticated:false,ok:true}));vi.stubGlobal('fetch',fetch);await expect(migrateLocalItems([row()],async()=>null)).rejects.toThrow('Sign in');expect(fetch).toHaveBeenCalledTimes(1);});
 });
 it('bounds image dimensions without upscaling and hashes bytes independently of basenames',async()=>{expect(optimizedDimensions(2880,1440)).toEqual({width:1440,height:720});expect(optimizedDimensions(100,80)).toEqual({width:100,height:80});expect(()=>optimizedDimensions(10000,10000)).toThrow('40 megapixels');const a=await imagePathForBlob(new Blob(['a']));expect(a).toMatch(/^\/media\/local-[a-f0-9]{64}\.webp$/);expect(await imagePathForBlob(new Blob(['a']))).toBe(a);expect(await imagePathForBlob(new Blob(['b']))).not.toBe(a);});
+
+it('maps an incomplete migration to the existing online entry for image repair',async()=>{
+ const item=row(),online={...item,status:'review',approvedAt:null,approvedBy:null};
+ vi.stubGlobal('fetch',vi.fn().mockResolvedValueOnce(response({configured:true,authenticated:true,ok:true})).mockResolvedValueOnce(response({items:[online]})));
+ const report=await migrateLocalItems([item],async()=>null);expect(report.failed).toBe(1);expect(report.results[0].onlineId).toBe(item.id);expect(report.results[0].missingImage).toBe(true);
+});

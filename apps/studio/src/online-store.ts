@@ -4,8 +4,8 @@ export class OnlineError extends Error {constructor(message:string,public status
 async function request<T>(path:string,method='GET',body?:unknown):Promise<T>{
  let response:Response;
  try{response=await fetch(path,{method,credentials:'same-origin',...(body===undefined?{}:{headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})});}catch{throw new OnlineError('Online database is unavailable. Your local copy is retained.',0);}
- const data=await response.json().catch(()=>({})) as {error?:string};
- if(!response.ok)throw new OnlineError(data.error??(response.status===401?'Sign in to the online database first.':'Online database request failed.'),response.status);
+ const data=await response.json().catch(()=>({})) as {error?:string;issues?:Array<{path?:Array<string|number>;message?:string}>};
+ if(!response.ok)throw new OnlineError((data.error??(response.status===401?'Sign in to the online database first.':'Online database request failed.'))+(data.issues?.length?': '+data.issues.map(i=>(i.path??[]).join('.')+': '+i.message).join('; ').slice(0,1500):''),response.status);
  return data as T;
 }
 export type OnlineStorage={database:string;databaseBytes:number;mediaBytes:number;items:number;revisions:number;databaseLimitBytes:number;accountLimitBytes:number;measuredAt:string};
@@ -40,7 +40,7 @@ export async function optimizeImage(blob:Blob):Promise<Blob>{
  if(result.type!=='image/webp'||result.size>1024*1024)throw Error('Optimized image exceeds 1 MB or WebP is unsupported.');return result;
  }finally{bitmap.close();}
 }
-export type MigrationResult={localId:string;onlineId?:string;status:'added'|'skipped'|'conflict'|'failed';missingImage?:boolean;error?:string};
+export type MigrationResult={localId:string;localTitle?:string;onlineId?:string;status:'added'|'skipped'|'conflict'|'failed';missingImage?:boolean;error?:string};
 export type MigrationReport={added:number;skipped:number;conflicts:number;failed:number;mapping:Record<string,string>;results:MigrationResult[]};
 function canonical(value:unknown):string{if(Array.isArray(value))return '['+value.map(canonical).join(',')+']';if(value&&typeof value==='object')return '{'+Object.entries(value).filter(([key])=>!['__storage','dedupKey','editorialFlags'].includes(key)).sort(([a],[b])=>a.localeCompare(b)).map(([key,v])=>JSON.stringify(key)+':'+canonical(v)).join(',')+'}';return JSON.stringify(value)??'null';}
 export async function migrateLocalItems(localRows:ContentRecord[],readLocalImage:(path:string)=>Promise<Blob|null>,events:unknown[]=[]):Promise<MigrationReport>{
@@ -53,13 +53,14 @@ export async function migrateLocalItems(localRows:ContentRecord[],readLocalImage
  const item=structuredClone(local),blob=await readLocalImage(local.image.path);
  if(blob){item.image.path=await imagePathForBlob(blob);}else{missingImage=true;item.status='review';item.approvedAt=null;item.approvedBy=null;}
  const remote=existing.get(item.id);
- if(remote){if(canonical(remote)!==canonical(item))throw new OnlineError('An online record with this ID differs. Reload and review the conflict.',409);if(missingImage)throw Error('Local image is missing; migration is incomplete.');report.skipped++;report.mapping[local.id]=remote.id;report.results.push({localId:local.id,onlineId:remote.id,status:'skipped'});continue;}
+ if(remote){report.mapping[local.id]=remote.id;if(missingImage)throw Error('Text is already in D1; complete the missing image in the online editor.');if(canonical(remote)!==canonical(item))throw new OnlineError('An online record with this ID differs. Reload and review the conflict.',409);if(missingImage)throw Error('Local image is missing; migration is incomplete.');report.skipped++;report.mapping[local.id]=remote.id;report.results.push({localId:local.id,onlineId:remote.id,status:'skipped'});continue;}
  if(blob)await onlinePutImage(item.image.path,await optimizeImage(blob));
  const relevant=events.filter(event=>{const e=event as {item?:ContentRecord};return e.item?.id===local.id;});
  const result=await request<{item:ContentRecord;duplicate?:boolean}>('/api/database/migrate','POST',{item,events:relevant});
  existing.set(result.item.id,result.item);report.mapping[local.id]=result.item.id;
  if(missingImage){report.failed++;report.results.push({localId:local.id,onlineId:result.item.id,status:'failed',missingImage:true,error:'Local image is missing; online metadata saved for review.'});}
  else{const outcome=result.duplicate?'skipped':'added';report[outcome]++;report.results.push({localId:local.id,onlineId:result.item.id,status:outcome});}
- }catch(error){const conflict=error instanceof OnlineError&&error.status===409;report[conflict?'conflicts':'failed']++;report.results.push({localId:local.id,status:conflict?'conflict':'failed',...(missingImage?{missingImage:true}:{}),error:error instanceof Error?error.message:String(error)});}}
+ }catch(error){const conflict=error instanceof OnlineError&&error.status===409;report[conflict?'conflicts':'failed']++;report.results.push({localId:local.id,...(report.mapping[local.id]?{onlineId:report.mapping[local.id]}:{}),status:conflict?'conflict':'failed',...(missingImage?{missingImage:true}:{}),error:error instanceof Error?error.message:String(error)});}}
+ report.results=report.results.map(result=>({...result,localTitle:localRows.find(row=>row.id===result.localId)?.title??result.localId}));
  return report;
 }

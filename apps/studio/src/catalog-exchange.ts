@@ -34,3 +34,12 @@ export async function applyCatalogImport(plan:CatalogImportPlan){
  if(items.length){const r=await fetch('/api/database/import-batch',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});const data:any=await r.json();if(!r.ok)throw Error(data.error??'Online catalog import failed.');}
  window.dispatchEvent(new Event('random-content-updated'));return plan.counts;
 }
+
+/** Recover originals additively; never rewrite a matching existing title or resurrect a known deleted ID. */
+export function missingOriginalItemsPlan(plan:CatalogImportPlan,deletedIds:Set<string>):CatalogImportPlan {
+ const title=(text:string)=>text.normalize('NFKC').trim().toLocaleLowerCase();
+ const titles=(item:ContentRecord)=>new Set([item.title,...Object.values(item.translations??{}).map(t=>t?.title??'')].filter(Boolean).map(title));
+ const records=plan.records.filter(row=>!deletedIds.has(row.id)&&!plan.snapshot.some(existing=>existing.id===row.id||existing.category===row.category&&[...titles(row)].some(t=>titles(existing).has(t))));
+ const paths=new Set(records.map(row=>row.image.path));
+ return buildCatalogImportPlan(records,plan.snapshot,plan.media.filter(asset=>paths.has(asset.path)));
+}

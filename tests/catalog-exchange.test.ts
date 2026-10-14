@@ -4,7 +4,7 @@ import {demoItems,type ContentRecord} from '@random/shared';
 const local=vi.hoisted(()=>({items:[] as ContentRecord[],media:new Map<string,Blob>()}));
 vi.mock('../apps/studio/src/preview-store',()=>({readStudioCatalog:async()=>local.items,readPreviewImage:async(p:string)=>local.media.get(p)??null}));
 vi.mock('../apps/studio/src/online-store',()=>({onlineCatalog:async()=>local.items}));
-import {buildCatalogImportPlan,prepareCatalogImport} from '../apps/studio/src/catalog-exchange';
+import {missingOriginalItemsPlan,buildCatalogImportPlan,prepareCatalogImport} from '../apps/studio/src/catalog-exchange';
 const row=()=>({...structuredClone(demoItems[0]),id:'one',version:4,status:'published',updatedAt:'2026-10-14T00:00:00Z',approvedAt:'2026-10-14T00:00:00Z',approvedBy:'human'}) as ContentRecord;
 const json=(items:ContentRecord[],media:unknown[]=[])=>strToU8(JSON.stringify({format:'RANDOM-catalog-v2',exportedAt:'2026-10-14',items,media}));
 beforeEach(()=>{local.items=[];local.media.clear();});
@@ -27,4 +27,10 @@ it('preserves unchanged image bytes and sends replacement bytes for the same pat
  const asset={path:'/media/a.png',file:'media/000001.png',mime:'image/png'};const bundle=(b:Uint8Array)=>zipSync({'catalog.json':json([original],[asset]),'media/000001.png':b});
  expect((await prepareCatalogImport(bundle(png),'zip')).counts.unchanged).toBe(1);
  const changed=png.slice();changed[32]=1;const plan=await prepareCatalogImport(bundle(changed),'zip');expect(plan.counts.update).toBe(1);expect(plan.records[0].status).toBe('review');expect(new Uint8Array(await plan.media[0].blob.arrayBuffer())).toEqual(changed);
+});
+
+it('original recovery skips existing translations and deleted IDs and only adds missing records',()=>{
+ const existing=row();const original={...row(),id:'original-copy'};const missing={...row(),id:'missing',title:'Missing recipe',translations:undefined};const deleted={...missing,id:'deleted',title:'Deleted recipe'};
+ const plan=missingOriginalItemsPlan(buildCatalogImportPlan([original,missing,deleted],[existing]),new Set(['deleted']));
+ expect(plan.records.map(i=>i.id)).toEqual(['missing']);expect(plan.counts).toEqual({add:1,update:0,unchanged:0,conflicts:0});expect(plan.records[0].status).toBe('review');expect(existing.status).toBe('published');
 });

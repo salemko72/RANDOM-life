@@ -16,3 +16,5 @@ console.log('Staged Pages preview with artwork routes; static pages remain asset
 const contract=await build({stdin:{contents:"export {readContentPackage} from './apps/studio/src/content-package';export {createChatGPTPrompt} from './packages/shared/src/prompt';",resolveDir:resolve('.')},bundle:true,format:'esm',platform:'node',write:false});
 const kit=zipSync({'random-content-contract.mjs':contract.outputFiles[0].contents,'ahmed-content-import.mjs':new Uint8Array(await readFile('scripts/ahmed-content-import.mjs')),'README.md':new Uint8Array(await readFile('docs/AHMED_CONTENT_WORKFLOW.md')),'package.json':strToU8(JSON.stringify({name:'random-content-kit',private:true,type:'module',engines:{node:'>=22'},dependencies:{sharp:'^0.35.5'}}))});
 await mkdir(resolve(target,'downloads'),{recursive:true});await writeFile(resolve(target,'downloads/RANDOM-Ahmed-content-kit.zip'),kit);
+
+await import('./build-original-recovery.mjs');

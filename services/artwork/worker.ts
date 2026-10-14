@@ -6,7 +6,10 @@ export function allowedCoverRedirect(value:string,origin:string){
  if(allowedImage(value))return true;
  try{const original=new URL(origin),u=new URL(value);const id=/^\/b\/id\/(\d+)-L\.jpg$/.exec(original.pathname)?.[1];
  const archiveHost=u.hostname==='archive.org'||/^ia\d+(?:\.[a-z0-9-]+)*\.archive\.org$/.test(u.hostname);
- return original.hostname==='covers.openlibrary.org'&&!!id&&u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&archiveHost&&(/^\/(?:download\/|\d+\/items\/|items\/)olcovers\d+\/olcovers\d+-L\.zip\/\d+-L\.jpg$/.test(u.pathname)||/^\/(?:download\/|\d+\/items\/|items\/)l_covers_\d+\/l_covers_\d+_\d+\.zip\/\d+-L\.jpg$/.test(u.pathname))&&Number(/\/(\d+)-L\.jpg$/.exec(u.pathname)?.[1])===Number(id);
+ const archive=u.searchParams.get('archive')??u.searchParams.get('zip')??'';
+ const file=u.searchParams.get('file')??'';
+ const archiveFile=u.pathname==='/view_archive.php'&&/^\/(?:\d+\/items\/|items\/|download\/)(?:l_covers_\d+\/l_covers_\d+_\d+\.zip|olcovers\d+\/olcovers\d+-L\.zip)$/.test(archive)&&/^\d+-L\.jpg$/.test(file)&&Number(file.slice(0,-6))===Number(id);
+ return original.hostname==='covers.openlibrary.org'&&!!id&&u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&archiveHost&&(archiveFile||(/^\/(?:download\/|\d+\/items\/|items\/)olcovers\d+\/olcovers\d+-L\.zip\/\d+-L\.jpg$/.test(u.pathname)||/^\/(?:download\/|\d+\/items\/|items\/)l_covers_\d+\/l_covers_\d+_\d+\.zip\/\d+-L\.jpg$/.test(u.pathname))&&Number(/\/(\d+)-L\.jpg$/.exec(u.pathname)?.[1])===Number(id));
  }catch{return false;}
 }
 class SourceError extends Error{constructor(public status:number){super('Source unavailable')}}

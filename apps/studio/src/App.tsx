@@ -227,7 +227,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     async function automaticArtwork(input:ContentInput){
       setArtwork({state:'loading',candidates:[]});const result=await findArtwork(input);setArtwork(result);
       const exact=result.candidates.filter(c=>c.exact);
-      if(exact.length===1){try{await applyArtwork(exact[0]!,input);}catch{setArtwork({state:'unavailable',candidates:result.candidates,code:'IMAGE_DOWNLOAD_FAILED'});}}
+      if(exact.length===1){try{await applyArtwork(exact[0]!,input);}catch(error){setArtwork({state:'unavailable',candidates:result.candidates,code:error instanceof Error&&/^IMAGE_[A-Z0-9_]+$/.test(error.message)?error.message:error instanceof Error&&error.name==='InvalidStateError'?'IMAGE_DECODE_FAILED':'IMAGE_PROCESSING_FAILED'});}}
     }
     async function imageFile(file: File, packageInput?: ContentInput) {
         if (!["image/png", "image/jpeg", "image/webp", "image/avif"].includes(file.type) ||

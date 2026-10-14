@@ -44,6 +44,7 @@ export function repairStructure(raw: RecordValue): { corrections: string[]; revi
   change(raw,'factsVerified',false,'factsVerified');
   if (raw.category === 'EAT') change(raw,'allergensVerified',false,'allergensVerified');
   if (object(raw.image)) change(raw.image,'rightsConfirmed',false,'image.rightsConfirmed');
+  if(raw.category==='WATCH'&&(raw.platform===null||raw.platform===undefined))change(raw,'platform','','platform');
   enumCase(raw,'format',['Film','Serija'],'format');
   enumCase(raw,'intensity',['low','medium','high'],'intensity');
   enumCase(raw,'company',['solo','pair','friends'],'company');

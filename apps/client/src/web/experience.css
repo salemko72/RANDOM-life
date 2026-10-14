@@ -167,3 +167,7 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .result-scene.long-content .result-copy{top:min(370px,calc(100% - 460px))}@media(max-width:600px){.result-scene.long-content .result-copy{top:min(335px,calc(100% - 455px))}}
 /* Category thumbnail styles must never paint the whole result screen. */
 .result-scene{background-image:none}
+
+.feature-photo.real-cover,.detail-photo.real-cover{background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#eddbd0;border-radius:18px;box-shadow:0 12px 26px #79554740}.cover-credit{font-size:9px;line-height:1.5;color:#84675a;margin-top:12px}.cover-credit a{color:inherit}
+/* Show the whole poster/cover above the curved copy surface. */
+.feature-photo.real-cover{height:245px}.detail-photo.real-cover{height:260px}

@@ -48,6 +48,7 @@ const base = {
     alt: text.max(300),
     rightsConfirmed: z.boolean(),
     generated: z.boolean(),
+    provenance: z.object({provider:z.enum(['TMDB','Open Library']),sourceUrl:z.url(),imageUrl:z.url(),externalId:text.max(160),attribution:text}).optional(),
   }),
 };
 const activityFields = {
@@ -91,7 +92,7 @@ export const contentSchema = z.discriminatedUnion("category", [
       .optional(),
     pageCount: z.number().int().positive().optional(),
   }),
-  z.object({...base,category:z.literal('WATCH'),format:z.enum(['Film','Serija']),year:z.number().int().min(1888).max(2100),durationLabel:text.max(60),platform:text.max(100),genres:z.array(text.max(60)).min(1).max(20),recommendationReason:text}),
+  z.object({...base,category:z.literal('WATCH'),format:z.enum(['Film','Serija']),year:z.number().int().min(1888).max(2100),durationLabel:text.max(60),platform:z.string().trim().max(100).default(''),genres:z.array(text.max(60)).min(1).max(20),recommendationReason:text}),
   z.object({...base,...activityFields,category:z.literal('MOVE')}),
   z.object({...base,...activityFields,category:z.literal('GO')}),
 ]);

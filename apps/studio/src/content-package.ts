@@ -19,7 +19,7 @@ function inspect(bytes: Uint8Array): Map<string, number> {
   }
   if (end < 0) fail('Invalid ZIP directory.');
   const count = u16(end + 10), size = u32(end + 12), start = u32(end + 16);
-  if (u16(end + 4) || u16(end + 6) || u16(end + 8) !== count || count < 2 || count > 5 || start + size !== end) fail('Unsupported ZIP directory or entry count.');
+  if (u16(end + 4) || u16(end + 6) || u16(end + 8) !== count || count < 1 || count > 5 || start + size !== end) fail('Unsupported ZIP directory or entry count.');
   const entries = new Map<string, number>();
   let p = start, total = 0;
   const ranges: Array<[number, number]> = [];
@@ -76,10 +76,10 @@ function imageMime(name: string, b: Uint8Array): string {
   return fail('Image extension and binary format must match PNG, JPEG, WebP, or AVIF.');
 }
 
-export function readContentPackage(bytes: Uint8Array, options: { repair?: boolean } = {}): { input: ContentInput; image: {name: string; bytes: Uint8Array; mime: string}; classificationChanged?: boolean; corrections?:string[]; reviewFlags?: string[]; originalJson?: string } {
+export function readContentPackage(bytes: Uint8Array, options: { repair?: boolean } = {}): { input: ContentInput; image: {name: string; bytes: Uint8Array; mime: string}; classificationChanged?: boolean; corrections?:string[]; reviewFlags?: string[]; originalJson?: string; needsArtwork?:boolean } {
   const entries = inspect(bytes);
   const images = [...entries.keys()].filter(name => imagePattern.test(name));
-  if (images.length !== 1) fail('ZIP package must contain exactly one image.');
+  if (images.length > 1) fail('ZIP package must contain exactly one image.');
   let files: Record<string, Uint8Array>;
   try { files = unzipSync(bytes); } catch { return fail('ZIP package could not be decompressed.'); }
   for (const [name, length] of entries) if (!files[name] || files[name].length !== length) fail('Decompressed ZIP sizes do not match.');
@@ -87,6 +87,8 @@ export function readContentPackage(bytes: Uint8Array, options: { repair?: boolea
   const classificationChanged = raw.category === 'READ' || (options.repair === true && typeof raw.category === 'string' && raw.category.trim().toUpperCase() === 'READ');
   const repaired = options.repair ? repairStructure(raw) : undefined;
   if (classificationChanged) raw.category = 'BOOK';
+  if(!images.length&&!['BOOK','WATCH'].includes(String(raw.category)))fail('ZIP package must contain exactly one image.');
+  if(!images.length)raw.image={...(typeof raw.image==='object'&&raw.image?raw.image:{}),path:'/media/awaiting-artwork.png',alt:raw.title,rightsConfirmed:false,generated:false};
   const corrections:string[]=[...(repaired?.corrections ?? [])];
   if(raw.category==='EAT'&&Array.isArray(raw.ingredients)){
     raw.ingredients=raw.ingredients.map((value:unknown,index:number)=>{
@@ -113,9 +115,9 @@ export function readContentPackage(bytes: Uint8Array, options: { repair?: boolea
     if (input.category === 'BOOK' && translation.authors?.length !== input.authors.length) issues.push(`${locale.toUpperCase()} authors must match the source count.`);
   }
   if (issues.length) fail(issues.join(' '));
-  const name = images[0]!;
-  if (input.image.path.split('/').pop() !== name) fail('content.json image.path must match the packaged image filename.');
-  if (files['manifest.json']) {
+  const name = images[0]??'awaiting-artwork.png';
+  if (images.length&&input.image.path.split('/').pop() !== name) fail('content.json image.path must match the packaged image filename.');
+  if (files['manifest.json']&&images.length) {
     const manifest = parseJson(files['manifest.json'], 'manifest.json');
     if (manifest.format !== 'RANDOM-content-package-v1' || manifest.content !== 'content.json' || manifest.image !== name || Object.keys(manifest).some(key=>!['format','content','image'].includes(key))) fail('manifest.json does not match this content package.');
   }
@@ -123,5 +125,5 @@ export function readContentPackage(bytes: Uint8Array, options: { repair?: boolea
   input.image.rightsConfirmed = false;
   for (const translation of Object.values(input.translations ?? {})) if (translation) translation.reviewed = false;
   if (input.category === 'EAT') {input.allergensVerified = false;if(input.phosphateAssessment)input.phosphateAssessment.reviewed=false;}
-  return { input, image: {name, bytes:files[name]!, mime:imageMime(name,files[name]!)}, ...(classificationChanged ? {classificationChanged:true} : {}),...(corrections.length?{corrections}:{}), ...(repaired ? {reviewFlags: repaired.reviewFlags, originalJson: decoder.decode(files['content.json']!)} : {}) };
+  return { input, image: {name, bytes:files[name]??new Uint8Array(), mime:images.length?imageMime(name,files[name]!):'image/png'}, ...(!images.length?{needsArtwork:true}:{}), ...(classificationChanged ? {classificationChanged:true} : {}),...(corrections.length?{corrections}:{}), ...(repaired ? {reviewFlags: repaired.reviewFlags, originalJson: decoder.decode(files['content.json']!)} : {}) };
 }

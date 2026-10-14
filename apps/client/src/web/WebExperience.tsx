@@ -11,7 +11,7 @@ import { demoCatalog } from './bilingualCatalog';
 import {type PreviewRecord} from './watch';
 import Onboarding from './Onboarding';
 import {companionItems,type Companion} from './companions';
-import {loadProfile,saveProfile,createProfile,recordSignal,selectPersonalized,choosePersonalizedCategory,eligibleForProfile,explainPreference,type Profile,type SignalKind,type UiCategory,toggleCompleted} from './preferences';
+import {loadProfile,saveProfile,createProfile,recordSignal,selectPersonalized,cycleCandidates,choosePersonalizedCategory,eligibleForProfile,explainPreference,type Profile,type SignalKind,type UiCategory,toggleCompleted} from './preferences';
 import {loadExperience,saveExperience} from './experience-state';
 import { WHEEL_CATEGORIES, itemWheelChoices, coast, landingRotation, sectorAtRotation, type WheelCategory, type ActiveCategory } from './wheel';
 
@@ -98,12 +98,12 @@ function Experience(){
   if(scene==='result'&&item&&!profile.completedIds.includes(item.id)&&!profile.events.some(e=>e.itemId===item.id&&e.kind==='accept')){currentProfile=recordSignal(profile,item,'skip');setProfile(currentProfile);}
   let current:ContentRecord[];try{current=await readPreviewCatalog();setPublished(current.filter(r=>r.status==='published'&&!publicationIssues(r).length));setCatalogState('online');}catch{setCatalogState('error');setMessage(locale==='en'?'Cannot reach D1. Retry when connected.':'D1 nije dostupan. Pokušaj ponovo kad se veza uspostavi.');locked.current=false;setBusy(false);return;}
   const catalog:PreviewRecord[]=[...current.filter(r=>r.status==='published'&&!publicationIssues(r).length)];
-  const eligible=catalog.filter(r=>eligibleForProfile(r,currentProfile)&&!seenIds.includes(r.id));
+  const eligible=cycleCandidates(catalog,currentProfile,seenIds);
   const selected=target??choosePersonalizedCategory(eligible,currentProfile,lastCategory.current);
   if(!selected){setMessage("Nema novih odobrenih ONLINE izbora za tvoje preference. Provjeri objave u Studiju ili vrati prethodne prijedloge.");locked.current=false;setBusy(false);return;}
   const targetIndex=WHEEL_CATEGORIES.findIndex(c=>c.id===selected);lastCategory.current=selected;
-  const recommendation=selectPersonalized(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds);
-  const visualChoices=target&&recommendation?itemWheelChoices(eligible.filter(r=>uiCategory(r)===selected),recommendation):null;
+  const recommendation=selectPersonalized(cycleCandidates(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds),currentProfile,[]);
+  const visualChoices=target&&recommendation?itemWheelChoices(cycleCandidates(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds),recommendation):null;
   setWheelChoices(visualChoices);setPointerChoice(0);
   const landingIndex=visualChoices?visualChoices.findIndex(r=>r.id===recommendation?.id):targetIndex;const segmentCount=visualChoices?.length??WHEEL_CATEGORIES.length;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;

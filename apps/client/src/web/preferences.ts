@@ -109,3 +109,10 @@ export function toggleCompleted(profile:Profile,itemId:string):Profile {
  const completedIds=profile.completedIds.includes(itemId)?profile.completedIds.filter(id=>id!==itemId):[...profile.completedIds,itemId].slice(-1000);
  return {...profile,completedIds};
 }
+
+/** Exposure avoids repetition within a cycle, but never empties an exhausted category. */
+export function cycleCandidates<T extends PreferenceItem>(items:T[],profile:Profile,seenIds:string[]):T[]{
+ const eligible=items.filter(item=>eligibleForProfile(item,profile));
+ const unseen=eligible.filter(item=>!seenIds.includes(item.id));
+ return unseen.length?unseen:eligible;
+}

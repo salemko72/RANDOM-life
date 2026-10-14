@@ -1,5 +1,5 @@
 import {expect,test} from 'vitest';
-import {toggleCompleted,createProfile,loadProfile,saveProfile,recordSignal,scorePreference,eligibleForProfile,selectPersonalized,choosePersonalizedCategory,preferenceTopics,type PreferenceItem} from '../apps/client/src/web/preferences';
+import {cycleCandidates,toggleCompleted,createProfile,loadProfile,saveProfile,recordSignal,scorePreference,eligibleForProfile,selectPersonalized,choosePersonalizedCategory,preferenceTopics,type PreferenceItem} from '../apps/client/src/web/preferences';
 const food=(id:string,extra:Partial<PreferenceItem>={}):PreferenceItem=>({id,category:'EAT',title:id,status:'published',tags:[],allergens:[],allergensVerified:true,dietaryTags:['vegetarian'],totalMinutes:20,...extra});
 const book:PreferenceItem={id:'book',category:'BOOK',title:'Book',status:'published',tags:['History'],genres:['Science']};
 const storage=()=>{const data=new Map<string,string>();return {getItem:(k:string)=>data.get(k)??null,setItem:(k:string,v:string)=>{data.set(k,v)},removeItem:(k:string)=>data.delete(k),clear:()=>data.clear(),key:(i:number)=>[...data.keys()][i]??null,get length(){return data.size}} satisfies Storage};
@@ -83,4 +83,12 @@ test('low-phosphate profiles only receive explicitly reviewed low-phosphate reci
  expect(selectPersonalized([food('unassessed')],profile,[],.5)).toBeNull();
  const s=storage();expect(saveProfile(profile,s)).toBe(true);expect(loadProfile(s).lowPhosphateDiet).toBe(true);
  const legacy={...profile};delete (legacy as Partial<typeof legacy>).lowPhosphateDiet;s.setItem(s.key(0)!,JSON.stringify(legacy));expect(loadProfile(s).lowPhosphateDiet).toBe(false);
+});
+
+test('spin cycle prefers unseen items and restores seen items only after exhaustion',()=>{
+ const p=createProfile(),a=food('a'),b=food('b');
+ expect(cycleCandidates([a,b],p,['a']).map(i=>i.id)).toEqual(['b']);
+ expect(cycleCandidates([a],p,['a']).map(i=>i.id)).toEqual(['a']);
+ expect(cycleCandidates([a],{...p,completedIds:['a']},['a'])).toEqual([]);
+ expect(cycleCandidates([food('unsafe',{allergens:['milk']})],{...p,allergens:['milk']},['unsafe'])).toEqual([]);
 });

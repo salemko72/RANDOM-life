@@ -1,5 +1,5 @@
 import{it,expect,vi,afterEach}from'vitest';
-import{handle,allowedImage,tmdbAuth,type Env}from'../services/artwork/worker';
+import{handle,allowedImage,allowedCoverRedirect,tmdbAuth,type Env}from'../services/artwork/worker';
 import{readContentPackage}from'../apps/studio/src/content-package';
 import{demoItems,createChatGPTPrompt}from'@random/shared';
 import{zipSync,strToU8}from'fflate';
@@ -17,3 +17,5 @@ it('supports v3 API key and trimmed read-access Bearer token',()=>{expect(tmdbAu
 it('authentication failure is distinct from an unavailable source',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('',{status:401})));const r=await handle(new Request('https://r.test/api/artwork?category=WATCH&title=A%20Separation'),{...env,TMDB_READ_TOKEN:'test'});expect((await r.json() as any).state).toBe('authentication');});
 it('follows only supported image redirects and returns an image',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValueOnce(new Response(null,{status:302,headers:{location:'https://image.tmdb.org/t/p/w780/other.jpg'}})).mockResolvedValueOnce(new Response(new Uint8Array([1,2,3]),{headers:{'content-type':'image/jpeg'}})));const r=await handle(new Request('https://r.test/api/artwork-image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2Fa.jpg'),env);expect(r.status).toBe(200);expect(r.headers.get('content-type')).toBe('image/jpeg');});
 it('blocks image redirect to arbitrary hosts',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response(null,{status:302,headers:{location:'https://evil.test/image.jpg'}})));const r=await handle(new Request('https://r.test/api/artwork-image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw780%2Fa.jpg'),env);expect((await r.json() as any).error).toBe('IMAGE_REDIRECT_UNSUPPORTED');});
+
+it('accepts Open Library archive delivery for the same cover only',()=>{const source='https://covers.openlibrary.org/b/id/123-L.jpg';expect(allowedCoverRedirect('https://archive.org/download/olcovers1/olcovers1-L.zip/123-L.jpg',source)).toBe(true);expect(allowedCoverRedirect('https://ia800100.us.archive.org/10/items/olcovers1/olcovers1-L.zip/123-L.jpg',source)).toBe(true);for(const url of ['https://archive.org/download/other/file.jpg','https://evil.archive.org/download/olcovers1/olcovers1-L.zip/123-L.jpg','https://archive.org/download/olcovers1/olcovers1-L.zip/456-L.jpg'])expect(allowedCoverRedirect(url,source)).toBe(false);expect(allowedCoverRedirect('https://archive.org/download/olcovers1/olcovers1-L.zip/123-L.jpg','https://image.tmdb.org/t/p/w780/123.jpg')).toBe(false);});

@@ -2,6 +2,13 @@ export type Env={ASSETS:{fetch(request:Request):Promise<Response>};TMDB_READ_TOK
 const json=(data:unknown,status=200)=>Response.json(data,{status});
 const norm=(s:string)=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 export function allowedImage(value:string){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&((u.hostname==='image.tmdb.org'&&/^\/t\/p\/w780\/[^/]+\.(jpg|png)$/.test(u.pathname))||(u.hostname==='covers.openlibrary.org'&&/^\/b\/id\/\d+-L.jpg$/.test(u.pathname)));}catch{return false;}}
+export function allowedCoverRedirect(value:string,origin:string){
+ if(allowedImage(value))return true;
+ try{const original=new URL(origin),u=new URL(value);const id=/^\/b\/id\/(\d+)-L\.jpg$/.exec(original.pathname)?.[1];
+ const archiveHost=u.hostname==='archive.org'||/^ia\d+(?:\.[a-z0-9-]+)*\.archive\.org$/.test(u.hostname);
+ return original.hostname==='covers.openlibrary.org'&&!!id&&u.protocol==='https:'&&!u.username&&!u.password&&(!u.port||u.port==='443')&&archiveHost&&/^\/(?:download\/|\d+\/items\/|items\/)olcovers\d+\/olcovers\d+-L\.zip\/\d+-L\.jpg$/.test(u.pathname)&&u.pathname.endsWith('/'+id+'-L.jpg');
+ }catch{return false;}
+}
 class SourceError extends Error{constructor(public status:number){super('Source unavailable')}}
 export function tmdbAuth(token:string){const clean=token.trim().replace(/^Bearer\s+/i,'');return /^[a-fA-F0-9]{32}$/.test(clean)?{key:clean,headers:undefined}:{key:undefined,headers:{Authorization:`Bearer ${clean}`}};}
 async function remote(url:string,headers?:HeadersInit){const r=await fetch(url,{headers,signal:AbortSignal.timeout(12000)});if(!r.ok)throw new SourceError(r.status);return r.json() as Promise<any>;}
@@ -11,7 +18,7 @@ export async function handle(request:Request,env:Env):Promise<Response>{
  try{
  if(u.pathname==='/api/artwork-image'){
   const url=u.searchParams.get('url')??'';if(!allowedImage(url))return json({error:'Unsupported image source'},400);
-  let current=url;let r:Response;for(let hop=0;;hop++){r=await fetch(current,{redirect:'manual',signal:AbortSignal.timeout(12000)});if(![301,302,303,307,308].includes(r.status))break;const location=r.headers.get('location');if(!location||hop>=3)return json({error:'IMAGE_REDIRECT_LIMIT'},502);const next=new URL(location,current).href;if(!allowedImage(next))return json({error:'IMAGE_REDIRECT_UNSUPPORTED'},502);current=next;}const mime=r.headers.get('content-type')??'';if(!r.ok)return json({error:`IMAGE_SOURCE_HTTP_${r.status}`},502);if(!/^image\/(jpeg|png|webp)/.test(mime))return json({error:'IMAGE_SOURCE_NOT_IMAGE'},502);
+  let current=url;let r:Response;for(let hop=0;;hop++){r=await fetch(current,{redirect:'manual',signal:AbortSignal.timeout(12000)});if(![301,302,303,307,308].includes(r.status))break;const location=r.headers.get('location');if(!location||hop>=3)return json({error:'IMAGE_REDIRECT_LIMIT'},502);const next=new URL(location,current).href;if(!allowedCoverRedirect(next,url))return json({error:'IMAGE_REDIRECT_UNSUPPORTED'},502);current=next;}const mime=r.headers.get('content-type')??'';if(!r.ok)return json({error:`IMAGE_SOURCE_HTTP_${r.status}`},502);if(!/^image\/(jpeg|png|webp)/.test(mime))return json({error:'IMAGE_SOURCE_NOT_IMAGE'},502);
   if(Number(r.headers.get('content-length'))>15*1024*1024)return json({error:'Image too large'},413);
   const reader=r.body!.getReader();const parts:Uint8Array[]=[];let size=0;while(true){const v=await reader.read();if(v.done)break;size+=v.value.length;if(size>15*1024*1024){await reader.cancel();return json({error:'Image too large'},413);}parts.push(v.value);}
   return new Response(new Blob(parts as BlobPart[],{type:mime}),{headers:{'Content-Type':mime,'Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff'}});

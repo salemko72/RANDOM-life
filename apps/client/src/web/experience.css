@@ -173,3 +173,7 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .feature-photo.real-cover{height:429px}.detail-photo.real-cover{height:350px}
 @media(max-width:600px){.feature-photo.real-cover{height:390px}.detail-photo.real-cover{height:321px}}
 .feature-photo>.streaming-badge,.detail-photo>.streaming-badge{top:14px;right:46px;left:auto;max-width:150px;margin:0}.detail-photo>.streaming-badge{right:80px}
+
+.catalog-online{color:#45684f}.catalog-error{color:#8a3a2d}.preview-footer button{margin-left:8px;color:inherit;text-decoration:underline;font:inherit}.studio-login-notice{padding:16px;border-radius:16px;background:#fffaf5;color:#665044;border:1px solid #decebd}.studio-login-notice button{margin-left:8px}
+
+.mobile-catalog-status{display:none;font-size:9px;letter-spacing:0}.mobile-catalog-status a{color:inherit;text-decoration:underline}.mobile-catalog-status button{font:inherit;text-decoration:underline;margin-left:5px}@media(max-width:600px){.mobile-catalog-status{display:block}}

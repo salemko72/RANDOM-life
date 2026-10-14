@@ -1,10 +1,12 @@
 import { build } from 'esbuild';
+import {createHash} from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve, relative } from 'node:path';
 const directory=resolve('apps/client/preview-dist');
 const result=await build({entryPoints:['apps/client/src/web/standalone.tsx'],bundle:true,write:false,format:'iife',platform:'browser',target:'es2022',outdir:directory,assetNames:'assets/[name]-[hash]',loader:{'.png':'file','.ttf':'dataurl'},define:{'process.env.NODE_ENV':'"production"'},minify:true});
 for(const file of result.outputFiles){await mkdir(dirname(file.path),{recursive:true});await writeFile(file.path,file.contents);}
-await writeFile(resolve(directory,'index.html'),'<!doctype html><html lang="bs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RANDOM life — interactive preview</title><link rel="stylesheet" href="./standalone.css"></head><body><div id="root"></div><script src="./standalone.js"></script></body></html>');
+const version=createHash('sha256').update(result.outputFiles.find(f=>f.path.endsWith('.js')).contents).update(result.outputFiles.find(f=>f.path.endsWith('.css')).contents).digest('hex').slice(0,12);
+await writeFile(resolve(directory,'index.html'),'<!doctype html><html lang="bs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RANDOM life — interactive preview</title><link rel="stylesheet" href="./standalone.css?v='+version+'"></head><body><div id="root"></div><script src="./standalone.js?v='+version+'"></script></body></html>');
 await writeFile(resolve(directory,'studio.html'),'<html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./#studio"><title>RANDOM life Content Studio</title></head><body><a href="./#studio">Otvori Content Studio</a></body></html>');
 const css=result.outputFiles.find(f=>f.path.endsWith('.css')).text;
 const js=result.outputFiles.find(f=>f.path.endsWith('.js')).text;

@@ -379,6 +379,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
           <span>{connected ? tx("\u25CF Povezano") : tx("\u25CB Nije povezano")}</span>
         </section>}
         <p className="note">{locale==='en'?'Shared D1 library. New items and images are saved online only; legacy LOCAL copies are temporary migration backups.':'Zajednička D1 biblioteka. Novi unosi i slike snimaju se samo online; stare LOCAL kopije su privremeni backup za migraciju.'}</p>
+        {preview&&!databaseStatus.authenticated&&<p className="studio-login-notice">{locale==='en'?'Sign in on this device to see the shared D1 library. Demo examples are not your online items.':'Prijavi se na ovom uređaju da vidiš zajedničku D1 biblioteku. Demo primjeri nisu tvoje online stavke.'} <button className="quiet" onClick={()=>document.querySelector('.database-controls')?.scrollIntoView({behavior:'smooth',block:'center'})}>{locale==='en'?'Go to D1 sign-in':'Idi na D1 prijavu'}</button></p>}
         <section className="stats">
           <div>
             <span>EAT</span>
@@ -547,7 +548,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             {!items.length && (<div className="empty">
                 ✦
                 <h3>{tx("Prva dobra preporuka")}<br />{tx("po\u010Dinje ovdje.")}</h3>
-                <p>{tx("Pove\u017Ei Studio i uvezi prvi nacrt.")}<br />{tx("Test tra\u017Ei 50 + 50 stvarnih stavki.")}</p>
+                <p>{!databaseStatus.authenticated?(locale==='en'?'Sign in to load your online items. This device has not signed in yet.':'Prijavi se za učitavanje online stavki. Ovaj uređaj još nije prijavljen.'):(locale==='en'?'No online items were loaded. Reload the library to retry.':'Online stavke nisu učitane. Ponovo učitaj biblioteku.')}</p>
               </div>)}
             {items
             .filter((i) => [i.title,...Object.values(i.translations??{}).map(t=>t?.title)].some(title=>typeof title==='string'&&title.toLocaleLowerCase(locale).includes(search.toLocaleLowerCase(locale))))

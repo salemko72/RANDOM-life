@@ -1,5 +1,5 @@
 import{it,expect,vi,afterEach}from'vitest';
-import{handle,allowedImage,type Env}from'../services/artwork/worker';
+import{handle,allowedImage,tmdbAuth,type Env}from'../services/artwork/worker';
 import{readContentPackage}from'../apps/studio/src/content-package';
 import{demoItems,createChatGPTPrompt}from'@random/shared';
 import{zipSync,strToU8}from'fflate';
@@ -12,3 +12,6 @@ it('accepts text-only BOOK ZIP and leaves image rights unconfirmed',()=>{const i
 it('WATCH ZIP without platform is accepted without inventing a service',()=>{const item:any=structuredClone(demoItems.find(i=>i.category==='BOOK')!);Object.assign(item,{category:'WATCH',format:'Film',year:2011,durationLabel:'123 min'});delete item.platform;for(const t of Object.values(item.translations) as any[])t.durationLabel='123 min';const p=readContentPackage(zipSync({'content.json':strToU8(JSON.stringify(item))}));expect(p.input.category==='WATCH'&&p.input.platform).toBe('');});
 it('EAT text-only ZIP still requires its generated photo',()=>{const item=demoItems.find(i=>i.category==='EAT')!;expect(()=>readContentPackage(zipSync({'content.json':strToU8(JSON.stringify(item))}))).toThrow('one image');});
 it('prompt requests real covers without ChatGPT artwork for BOOK/WATCH',()=>{expect(createChatGPTPrompt('BOOK','source')).toContain('samo s content.json, bez slike');expect(createChatGPTPrompt('WATCH','source')).toContain('generated:false');});
+
+it('supports v3 API key and trimmed read-access Bearer token',()=>{expect(tmdbAuth('a'.repeat(32)).key).toBe('a'.repeat(32));expect(tmdbAuth(' Bearer abc.def.ghi ').headers).toEqual({Authorization:'Bearer abc.def.ghi'});});
+it('authentication failure is distinct from an unavailable source',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('',{status:401})));const r=await handle(new Request('https://r.test/api/artwork?category=WATCH&title=A%20Separation'),{...env,TMDB_READ_TOKEN:'test'});expect((await r.json() as any).state).toBe('authentication');});

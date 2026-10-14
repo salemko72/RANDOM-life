@@ -2,7 +2,9 @@ export type Env={ASSETS:{fetch(request:Request):Promise<Response>};TMDB_READ_TOK
 const json=(data:unknown,status=200)=>Response.json(data,{status});
 const norm=(s:string)=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
 export function allowedImage(value:string){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&((u.hostname==='image.tmdb.org'&&/^\/t\/p\/w780\/[^/]+\.(jpg|png)$/.test(u.pathname))||(u.hostname==='covers.openlibrary.org'&&/^\/b\/id\/\d+-L.jpg$/.test(u.pathname)));}catch{return false;}}
-async function remote(url:string,headers?:HeadersInit){const r=await fetch(url,{headers,signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('Source unavailable');return r.json() as Promise<any>;}
+class SourceError extends Error{constructor(public status:number){super('Source unavailable')}}
+export function tmdbAuth(token:string){const clean=token.trim().replace(/^Bearer\s+/i,'');return /^[a-fA-F0-9]{32}$/.test(clean)?{key:clean,headers:undefined}:{key:undefined,headers:{Authorization:`Bearer ${clean}`}};}
+async function remote(url:string,headers?:HeadersInit){const r=await fetch(url,{headers,signal:AbortSignal.timeout(12000)});if(!r.ok)throw new SourceError(r.status);return r.json() as Promise<any>;}
 export async function handle(request:Request,env:Env):Promise<Response>{
  const u=new URL(request.url);if(!u.pathname.startsWith('/api/artwork'))return env.ASSETS.fetch(request);
  if(request.method!=='GET')return json({error:'Method not allowed'},405);
@@ -19,7 +21,8 @@ export async function handle(request:Request,env:Env):Promise<Response>{
  if(category==='WATCH'){
   if(!env.TMDB_READ_TOKEN)return json({state:'setup',candidates:[],message:'TMDB connection not configured.'});
   const kind=u.searchParams.get('format')==='Serija'?'tv':'movie';const q=new URLSearchParams({query:title,include_adult:'false',language:'en-US'});if(year)q.set(kind==='tv'?'first_air_date_year':'year',year);
-  const data=await remote(`https://api.themoviedb.org/3/search/${kind}?${q}`,{Authorization:`Bearer ${env.TMDB_READ_TOKEN}`});
+  const auth=tmdbAuth(env.TMDB_READ_TOKEN);if(auth.key)q.set('api_key',auth.key);
+  const data=await remote(`https://api.themoviedb.org/3/search/${kind}?${q}`,auth.headers);
   const candidates=(data.results??[]).filter((x:any)=>x.poster_path).slice(0,8).map((x:any)=>({id:String(x.id),title:x.title??x.name,year:(x.release_date??x.first_air_date??'').slice(0,4),imageUrl:`https://image.tmdb.org/t/p/w780${x.poster_path}`,sourceUrl:`https://www.themoviedb.org/${kind}/${x.id}`,provider:'TMDB',attribution:'This product uses the TMDB API but is not endorsed or certified by TMDB.',exact:[x.title,x.name,x.original_title,x.original_name].some(v=>v&&norm(v)===norm(title))&&(!year||(x.release_date??x.first_air_date??'').startsWith(year))}));
   return json({state:'ready',candidates});
  }
@@ -28,6 +31,6 @@ export async function handle(request:Request,env:Env):Promise<Response>{
   const data=await remote(`https://openlibrary.org/search.json?${q}`);const candidates=(data.docs??[]).filter((x:any)=>x.cover_i).slice(0,8).map((x:any)=>({id:x.key,title:x.title,author:(x.author_name??[]).join(', '),year:x.first_publish_year,imageUrl:`https://covers.openlibrary.org/b/id/${x.cover_i}-L.jpg`,sourceUrl:`https://openlibrary.org${x.key}`,provider:'Open Library',attribution:'Cover source: Open Library. Edition and image rights require editorial confirmation.',exact:norm(x.title)===norm(title)&&!!author&&(x.author_name??[]).some((v:string)=>norm(v)===norm(author))}));return json({state:'ready',candidates});
  }
  return json({error:'Unsupported category'},400);
- }catch{return json({state:'unavailable',candidates:[],message:'Image source is temporarily unavailable. Existing content is preserved.'},502);}
+ }catch(error){if(error instanceof SourceError&&(error.status===401||error.status===403))return json({state:'authentication',candidates:[],message:'TMDB did not accept the configured credential.'});return json({state:'unavailable',candidates:[],message:'Image source is temporarily unavailable. Existing content is preserved.'},502);}
 }
 export default{fetch:handle};

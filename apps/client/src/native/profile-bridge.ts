@@ -6,7 +6,7 @@ const MAX_VALUE = 128 * 1024;
 const MAX_STATE = 512 * 1024;
 export type LocalState = Record<string, string>;
 export function allowedKey(key: string): boolean {
- return key === PROFILE_KEY || key === LOCALE_KEY || (key.startsWith(EXPERIENCE_PREFIX) && key.length <= 200);
+ return key === 'random-life.sfx.v1' || key === PROFILE_KEY || key === LOCALE_KEY || (key.startsWith(EXPERIENCE_PREFIX) && key.length <= 200);
 }
 export function readSnapshot(raw: string | null): LocalState {
  try {

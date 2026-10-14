@@ -535,3 +535,5 @@ code {
 .catalog-exchange{margin:18px 0;padding:18px}.catalog-exchange h3{font-size:20px;margin:0 0 10px}.catalog-exchange p{font-size:12px;line-height:1.65}.publish-action button{width:100%;min-height:52px}.tag-corrections{font-size:11px}
 
 .exchange-overlay{position:fixed;inset:0;z-index:100;background:#38231940;display:flex;justify-content:flex-end;padding:20px;overflow-y:auto}.exchange-overlay .catalog-exchange{width:min(550px,100%);height:fit-content;max-height:calc(100svh - 40px);overflow:auto}.database-mobile{display:none}@media(max-width:800px){.database-mobile{display:inline-block}}
+
+.review-preview .artwork-panel{margin:10px 0 20px;padding:0;background:transparent;border:0}.image-source-status{font-size:12px;color:#795547;margin:8px 0}.image-file-details{font-size:12px;margin:12px 0 20px}.image-file-details summary{cursor:pointer}

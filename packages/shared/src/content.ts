@@ -63,9 +63,9 @@ export const contentSchema = z.discriminatedUnion("category", [
         z.object({
           name: text.max(160),
           tag: z.string().refine(tag=>ingredientDefinitions.some(i=>i.id===tag), "Nepoznat tag sastojka").optional(),
-          quantity: z.number().positive(),
+          quantity: z.number().positive().nullable().default(null),
           unit: text.max(40),
-        }),
+        }).refine(ingredient=>ingredient.quantity!==null||/^(po ukusu|to taste|po potrebi|as needed)$/i.test(ingredient.unit),{path:['quantity'],message:'Navedi količinu ili jedinicu po ukusu / po potrebi'}),
       )
       .min(1)
       .max(100),

@@ -34,3 +34,5 @@ it('moves a long duration description without losing any supplied statement',()=
  const original=value.durationLabel;const result=repairContentPackage(bundle(value));if(result.input.category!=='WATCH')throw Error();expect(result.input.durationLabel).toBe('100 minutes');expect(result.input.summary).toContain(original);expect(result.input.translations!.en!.summary).toContain(original);
  value.durationLabel='A lengthy descriptive statement about this series without any explicitly supplied runtime at all.';expect(()=>repairContentPackage(bundle(value))).toThrow('durationLabel');
 });
+
+it('repairs explicit zero to-taste quantities without inventing amounts',()=>{const value=raw();value.ingredients[0].quantity=0;value.ingredients[0].unit='po ukusu';const p=repairContentPackage(bundle(value));expect(p.input.category==='EAT'&&p.input.ingredients[0].quantity).toBe(null);value.ingredients[0].unit='g';expect(()=>repairContentPackage(bundle(value))).toThrow();});

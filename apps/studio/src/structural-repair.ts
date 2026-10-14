@@ -49,7 +49,7 @@ export function repairStructure(raw: RecordValue): { corrections: string[]; revi
   enumCase(raw,'intensity',['low','medium','high'],'intensity');
   enumCase(raw,'company',['solo','pair','friends'],'company');
   if (Array.isArray(raw.allergens)) raw.allergens = raw.allergens.map(value => typeof value === 'string' ? value.trim().toLowerCase() : value);
-  if (Array.isArray(raw.ingredients)) raw.ingredients.forEach((ingredient,index) => { if (object(ingredient)) number(ingredient,'quantity',`ingredients.${index}.quantity`); });
+  if (Array.isArray(raw.ingredients)) raw.ingredients.forEach((ingredient,index) => { if (object(ingredient)){number(ingredient,'quantity',`ingredients.${index}.quantity`);if(ingredient.quantity===0&&typeof ingredient.unit==='string'&&/^(po ukusu|to taste|po potrebi|as needed)$/i.test(ingredient.unit.trim()))change(ingredient,'quantity',null,`ingredients.${index}.quantity`);} });
   if (object(raw.phosphateAssessment)) { number(raw.phosphateAssessment,'phosphorusMgPerServing','phosphateAssessment.phosphorusMgPerServing'); change(raw.phosphateAssessment,'reviewed',false,'phosphateAssessment.reviewed'); }
   if (object(raw.translations)) {
     const translations = raw.translations;

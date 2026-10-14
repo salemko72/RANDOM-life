@@ -18,3 +18,6 @@ const kit=zipSync({'random-content-contract.mjs':contract.outputFiles[0].content
 await mkdir(resolve(target,'downloads'),{recursive:true});await writeFile(resolve(target,'downloads/RANDOM-Ahmed-content-kit.zip'),kit);
 
 await import('./build-original-recovery.mjs');
+const atlasRoot=resolve('content/ingredient-atlas-extension-74');
+const atlasFiles={};for(const name of ['atlas.png','manifest.json','README.md'])atlasFiles[name]=new Uint8Array(await readFile(resolve(atlasRoot,name)));
+await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-74.zip'),zipSync(atlasFiles));

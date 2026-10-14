@@ -1,0 +1,559 @@
+{
+  "version": 1,
+  "atlasId": "atlas-extension-74-2026-10-14",
+  "status": "pending-human-review",
+  "approved": false,
+  "columns": 10,
+  "rows": 10,
+  "image": "atlas.png",
+  "imageSha256": "bf8819fd832c5832b9a5614f45a0666ce8c2c71f84ef51e8871c5a361128362b",
+  "coordinateConvention": "zero-based; row-major; confirm grid alignment before integration",
+  "cells": [
+    {
+      "id": "extension-74-001",
+      "name": "Basmati riža",
+      "index": 0,
+      "row": 0,
+      "column": 0
+    },
+    {
+      "id": "extension-74-002",
+      "name": "Bijeli biber",
+      "index": 1,
+      "row": 0,
+      "column": 1
+    },
+    {
+      "id": "extension-74-003",
+      "name": "Bijelo sirće",
+      "index": 2,
+      "row": 0,
+      "column": 2
+    },
+    {
+      "id": "extension-74-004",
+      "name": "Biljno ulje",
+      "index": 3,
+      "row": 0,
+      "column": 3
+    },
+    {
+      "id": "extension-74-005",
+      "name": "Bjelance za premazivanje podloge",
+      "index": 4,
+      "row": 0,
+      "column": 4
+    },
+    {
+      "id": "extension-74-006",
+      "name": "Crème fraîche (kisela pavlaka)",
+      "index": 5,
+      "row": 0,
+      "column": 5
+    },
+    {
+      "id": "extension-74-007",
+      "name": "Crveni luk za punjenje",
+      "index": 6,
+      "row": 0,
+      "column": 6
+    },
+    {
+      "id": "extension-74-008",
+      "name": "Čvrsti obični jogurt",
+      "index": 7,
+      "row": 0,
+      "column": 7
+    },
+    {
+      "id": "extension-74-009",
+      "name": "Dimljena paprika",
+      "index": 8,
+      "row": 0,
+      "column": 8
+    },
+    {
+      "id": "extension-74-010",
+      "name": "Dimljena slanina",
+      "index": 9,
+      "row": 0,
+      "column": 9
+    },
+    {
+      "id": "extension-74-011",
+      "name": "Duga ljuta crvena ili zelena paprika",
+      "index": 10,
+      "row": 1,
+      "column": 0
+    },
+    {
+      "id": "extension-74-012",
+      "name": "Garam masala",
+      "index": 11,
+      "row": 1,
+      "column": 1
+    },
+    {
+      "id": "extension-74-013",
+      "name": "Hladna voda",
+      "index": 12,
+      "row": 1,
+      "column": 2
+    },
+    {
+      "id": "extension-74-014",
+      "name": "Hladni maslac",
+      "index": 13,
+      "row": 1,
+      "column": 3
+    },
+    {
+      "id": "extension-74-015",
+      "name": "Instant kvasac",
+      "index": 14,
+      "row": 1,
+      "column": 4
+    },
+    {
+      "id": "extension-74-016",
+      "name": "Kajenska paprika",
+      "index": 15,
+      "row": 1,
+      "column": 5
+    },
+    {
+      "id": "extension-74-017",
+      "name": "Krompir s crvenom korom",
+      "index": 16,
+      "row": 1,
+      "column": 6
+    },
+    {
+      "id": "extension-74-018",
+      "name": "Kuhana riža",
+      "index": 17,
+      "row": 1,
+      "column": 7
+    },
+    {
+      "id": "extension-74-019",
+      "name": "Kuhani slanutak, ocijeđen",
+      "index": 18,
+      "row": 1,
+      "column": 8
+    },
+    {
+      "id": "extension-74-020",
+      "name": "Ledeno hladna voda",
+      "index": 19,
+      "row": 1,
+      "column": 9
+    },
+    {
+      "id": "extension-74-021",
+      "name": "Limun za posluživanje",
+      "index": 20,
+      "row": 2,
+      "column": 0
+    },
+    {
+      "id": "extension-74-022",
+      "name": "Miješana zelena salata",
+      "index": 21,
+      "row": 2,
+      "column": 1
+    },
+    {
+      "id": "extension-74-023",
+      "name": "Mješavina punomasnog mlijeka i slatkog vrhnja (1:1)",
+      "index": 22,
+      "row": 2,
+      "column": 2
+    },
+    {
+      "id": "extension-74-024",
+      "name": "Mlaka voda",
+      "index": 23,
+      "row": 2,
+      "column": 3
+    },
+    {
+      "id": "extension-74-025",
+      "name": "Mljevena slatka paprika",
+      "index": 24,
+      "row": 2,
+      "column": 4
+    },
+    {
+      "id": "extension-74-026",
+      "name": "Mljeveni cimet",
+      "index": 25,
+      "row": 2,
+      "column": 5
+    },
+    {
+      "id": "extension-74-027",
+      "name": "Mljeveni crni biber",
+      "index": 26,
+      "row": 2,
+      "column": 6
+    },
+    {
+      "id": "extension-74-028",
+      "name": "Mljeveni kardamom",
+      "index": 27,
+      "row": 2,
+      "column": 7
+    },
+    {
+      "id": "extension-74-029",
+      "name": "Mljeveni korijander",
+      "index": 28,
+      "row": 2,
+      "column": 8
+    },
+    {
+      "id": "extension-74-030",
+      "name": "Mljeveni kumin",
+      "index": 29,
+      "row": 2,
+      "column": 9
+    },
+    {
+      "id": "extension-74-031",
+      "name": "Mljeveni muškatni oraščić",
+      "index": 30,
+      "row": 3,
+      "column": 0
+    },
+    {
+      "id": "extension-74-032",
+      "name": "Mljeveni sumak",
+      "index": 31,
+      "row": 3,
+      "column": 1
+    },
+    {
+      "id": "extension-74-033",
+      "name": "Naribani cheddar ili gruyère sir",
+      "index": 32,
+      "row": 3,
+      "column": 2
+    },
+    {
+      "id": "extension-74-034",
+      "name": "Nasjeckani peršun ili vlasac (opcionalno)",
+      "index": 33,
+      "row": 3,
+      "column": 3
+    },
+    {
+      "id": "extension-74-035",
+      "name": "Obični jogurt",
+      "index": 34,
+      "row": 3,
+      "column": 4
+    },
+    {
+      "id": "extension-74-036",
+      "name": "Obično pšenično brašno",
+      "index": 35,
+      "row": 3,
+      "column": 5
+    },
+    {
+      "id": "extension-74-037",
+      "name": "Paradajz sos",
+      "index": 36,
+      "row": 3,
+      "column": 6
+    },
+    {
+      "id": "extension-74-038",
+      "name": "Pasirani paradajz",
+      "index": 37,
+      "row": 3,
+      "column": 7
+    },
+    {
+      "id": "extension-74-039",
+      "name": "Pileća prsa bez kosti",
+      "index": 38,
+      "row": 3,
+      "column": 8
+    },
+    {
+      "id": "extension-74-040",
+      "name": "Pileći temeljac",
+      "index": 39,
+      "row": 3,
+      "column": 9
+    },
+    {
+      "id": "extension-74-041",
+      "name": "Pileći temeljac ili voda",
+      "index": 40,
+      "row": 4,
+      "column": 0
+    },
+    {
+      "id": "extension-74-042",
+      "name": "Pileći zabatak bez kosti",
+      "index": 41,
+      "row": 4,
+      "column": 1
+    },
+    {
+      "id": "extension-74-043",
+      "name": "Pileći zabatak bez kostiju i kože",
+      "index": 42,
+      "row": 4,
+      "column": 2
+    },
+    {
+      "id": "extension-74-044",
+      "name": "Pinjoli",
+      "index": 43,
+      "row": 4,
+      "column": 3
+    },
+    {
+      "id": "extension-74-045",
+      "name": "Pita hljeb",
+      "index": 44,
+      "row": 4,
+      "column": 4
+    },
+    {
+      "id": "extension-74-046",
+      "name": "Prašak za pecivo",
+      "index": 45,
+      "row": 4,
+      "column": 5
+    },
+    {
+      "id": "extension-74-047",
+      "name": "Pripremljeno tijesto za slanu pitu",
+      "index": 46,
+      "row": 4,
+      "column": 6
+    },
+    {
+      "id": "extension-74-048",
+      "name": "Rimska salata",
+      "index": 47,
+      "row": 4,
+      "column": 7
+    },
+    {
+      "id": "extension-74-049",
+      "name": "Riža dugog zrna",
+      "index": 48,
+      "row": 4,
+      "column": 8
+    },
+    {
+      "id": "extension-74-050",
+      "name": "Sečuanski biber u zrnu",
+      "index": 49,
+      "row": 4,
+      "column": 9
+    },
+    {
+      "id": "extension-74-051",
+      "name": "Sezamovo ulje",
+      "index": 50,
+      "row": 5,
+      "column": 0
+    },
+    {
+      "id": "extension-74-052",
+      "name": "Shaoxing rižino vino",
+      "index": 51,
+      "row": 5,
+      "column": 1
+    },
+    {
+      "id": "extension-74-053",
+      "name": "Sir Gruyère",
+      "index": 52,
+      "row": 5,
+      "column": 2
+    },
+    {
+      "id": "extension-74-054",
+      "name": "Sitni bulgur",
+      "index": 53,
+      "row": 5,
+      "column": 3
+    },
+    {
+      "id": "extension-74-055",
+      "name": "Sjemenke nara",
+      "index": 54,
+      "row": 5,
+      "column": 4
+    },
+    {
+      "id": "extension-74-056",
+      "name": "Slanina narezana na kockice",
+      "index": 55,
+      "row": 5,
+      "column": 5
+    },
+    {
+      "id": "extension-74-057",
+      "name": "Slatko vrhnje za kuhanje",
+      "index": 56,
+      "row": 5,
+      "column": 6
+    },
+    {
+      "id": "extension-74-058",
+      "name": "Smeđa ili zelena leća",
+      "index": 57,
+      "row": 5,
+      "column": 7
+    },
+    {
+      "id": "extension-74-059",
+      "name": "So i biber",
+      "index": 58,
+      "row": 5,
+      "column": 8
+    },
+    {
+      "id": "extension-74-060",
+      "name": "Suha menta",
+      "index": 59,
+      "row": 5,
+      "column": 9
+    },
+    {
+      "id": "extension-74-061",
+      "name": "Suhi slanutak",
+      "index": 60,
+      "row": 6,
+      "column": 0
+    },
+    {
+      "id": "extension-74-062",
+      "name": "Sušena crvena čili papričica",
+      "index": 61,
+      "row": 6,
+      "column": 1
+    },
+    {
+      "id": "extension-74-063",
+      "name": "Svijetli soja sos",
+      "index": 62,
+      "row": 6,
+      "column": 2
+    },
+    {
+      "id": "extension-74-064",
+      "name": "Svježa menta",
+      "index": 63,
+      "row": 6,
+      "column": 3
+    },
+    {
+      "id": "extension-74-065",
+      "name": "Svježi peršun",
+      "index": 64,
+      "row": 6,
+      "column": 4
+    },
+    {
+      "id": "extension-74-066",
+      "name": "Svježi đumbir",
+      "index": 65,
+      "row": 6,
+      "column": 5
+    },
+    {
+      "id": "extension-74-067",
+      "name": "Tahini",
+      "index": 66,
+      "row": 6,
+      "column": 6
+    },
+    {
+      "id": "extension-74-068",
+      "name": "Tanko pecivo",
+      "index": 67,
+      "row": 6,
+      "column": 7
+    },
+    {
+      "id": "extension-74-069",
+      "name": "Ulje za prženje",
+      "index": 68,
+      "row": 6,
+      "column": 8
+    },
+    {
+      "id": "extension-74-070",
+      "name": "Voda za umak",
+      "index": 69,
+      "row": 6,
+      "column": 9
+    },
+    {
+      "id": "extension-74-071",
+      "name": "Vrhnje za kuhanje",
+      "index": 70,
+      "row": 7,
+      "column": 0
+    },
+    {
+      "id": "extension-74-072",
+      "name": "Vruća voda",
+      "index": 71,
+      "row": 7,
+      "column": 1
+    },
+    {
+      "id": "extension-74-073",
+      "name": "Za’atar mješavina sa susamom",
+      "index": 72,
+      "row": 7,
+      "column": 2
+    },
+    {
+      "id": "extension-74-074",
+      "name": "Žumance",
+      "index": 73,
+      "row": 7,
+      "column": 3
+    }
+  ],
+  "blankCells": [
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ]
+}

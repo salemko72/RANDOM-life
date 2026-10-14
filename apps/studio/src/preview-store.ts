@@ -152,3 +152,7 @@ export async function submitPreviewContent(raw:unknown,id?:string,version?:numbe
   tx.onabort=()=>reject(failure??Error('The item could not be saved. Your library is unchanged.'));
  });
 }
+
+export async function deletePreviewContent(id:string,version:number){
+ const db=await database();await new Promise<void>((resolve,reject)=>{const tx=db.transaction(['content','events'],'readwrite'),store=tx.objectStore('content');let failure:Error|undefined;const req=store.get(id);req.onsuccess=()=>{const item=req.result;if(!item||item.version!==version){failure=Error('Item changed. Reload the library before deleting.');tx.abort();return;}tx.objectStore('events').add({item,action:'deleted',at:new Date().toISOString()});store.delete(id);};tx.oncomplete=()=>resolve();tx.onabort=()=>reject(failure??tx.error??Error('Deletion failed'));tx.onerror=()=>reject(tx.error);});window.dispatchEvent(new Event('random-content-updated'));
+}

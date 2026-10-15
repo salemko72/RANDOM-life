@@ -15,7 +15,7 @@ export function allowedCoverRedirect(value:string,origin:string){
 }
 class SourceError extends Error{constructor(public status:number){super('Source unavailable')}}
 export function tmdbAuth(token:string){const clean=token.trim().replace(/^Bearer\s+/i,'');return /^[a-fA-F0-9]{32}$/.test(clean)?{key:clean,headers:undefined}:{key:undefined,headers:{Authorization:`Bearer ${clean}`}};}
-async function remote(url:string,headers?:HeadersInit){const r=await fetch(url,{headers,signal:AbortSignal.timeout(12000)});if(!r.ok)throw new SourceError(r.status);return r.json() as Promise<any>;}
+async function remote(url:string,headers?:HeadersInit,timeout=12000){const r=await fetch(url,{headers,signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new SourceError(r.status);return r.json() as Promise<any>;}
 export async function handle(request:Request,env:Env):Promise<Response>{
  const u=new URL(request.url);if(u.pathname.startsWith('/api/database/')||u.pathname==='/api/catalog'||u.pathname==='/api/content'||u.pathname.startsWith('/api/content/')||u.pathname.startsWith('/media/'))return handleDatabase(request,env);if(!u.pathname.startsWith('/api/artwork'))return env.ASSETS.fetch(request);
  if(request.method!=='GET')return json({error:'Method not allowed'},405);
@@ -38,8 +38,10 @@ export async function handle(request:Request,env:Env):Promise<Response>{
   return json({state:'ready',candidates});
  }
  if(category==='BOOK'){
-  const q=new URLSearchParams({title,limit:'8',fields:'key,title,author_name,cover_i,first_publish_year'});if(author)q.set('author',author);
-  const data=await remote(`https://openlibrary.org/search.json?${q}`);const candidates=(data.docs??[]).filter((x:any)=>x.cover_i).slice(0,8).map((x:any)=>({id:x.key,title:x.title,author:(x.author_name??[]).join(', '),year:x.first_publish_year,imageUrl:`https://covers.openlibrary.org/b/id/${x.cover_i}-L.jpg`,sourceUrl:`https://openlibrary.org${x.key}`,provider:'Open Library',attribution:'Cover source: Open Library. Edition and image rights require editorial confirmation.',exact:norm(x.title)===norm(title)&&!!author&&(x.author_name??[]).some((v:string)=>norm(v)===norm(author))}));return json({state:'ready',candidates});
+  const q=new URLSearchParams({title,limit:'40',fields:'key,title,author_name,cover_i,first_publish_year'});if(author)q.set('author',author);
+  let data=await remote(`https://openlibrary.org/search.json?${q}`,undefined,6000);
+  if(author&&!(data.docs??[]).some((x:any)=>x.cover_i)){q.delete('author');data=await remote(`https://openlibrary.org/search.json?${q}`,undefined,6000);}
+  const candidates=(data.docs??[]).filter((x:any)=>x.cover_i).slice(0,8).map((x:any)=>({id:x.key,title:x.title,author:(x.author_name??[]).join(', '),year:x.first_publish_year,imageUrl:`https://covers.openlibrary.org/b/id/${x.cover_i}-L.jpg`,sourceUrl:`https://openlibrary.org${x.key}`,provider:'Open Library',attribution:'Cover source: Open Library. Edition and image rights require editorial confirmation.',exact:norm(x.title)===norm(title)&&!!author&&(x.author_name??[]).some((v:string)=>norm(v)===norm(author))}));return json({state:'ready',candidates});
  }
  return json({error:'Unsupported category'},400);
  }catch(error){if(error instanceof SourceError&&(error.status===401||error.status===403))return json({state:'authentication',candidates:[],message:'TMDB did not accept the configured credential.'});return json({state:'unavailable',candidates:[],code:error instanceof SourceError?`UPSTREAM_HTTP_${error.status}`:error instanceof Error&&error.name==='TimeoutError'?'UPSTREAM_TIMEOUT':'UPSTREAM_NETWORK',message:'Image source is temporarily unavailable. Existing content is preserved.'},502);}

@@ -1,0 +1,43 @@
+{
+  "name": "random-life",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json && npm run typecheck -w @random/client",
+    "dev:api": "npm run dev -w @random/api",
+    "db:local": "npm run db:local -w @random/api",
+    "dev:studio": "npm run dev -w @random/studio",
+    "dev:client": "npm run start -w @random/client",
+    "build:studio": "npm run build -w @random/studio",
+    "build:client": "npm run build:web -w @random/client",
+    "check:expo": "npm run check -w @random/client",
+    "smoke:browser": "npm run build:preview && node scripts/smoke-browser.mjs",
+    "setup:local": "node scripts/local-secret.mjs",
+    "build:preview": "node scripts/build-preview.mjs",
+    "postinstall": "node scripts/build-preview.mjs",
+    "smoke:demo": "npm run build:preview && node scripts/smoke-demo.mjs",
+    "deploy:preview": "npm run build:preview && node scripts/stage-preview.mjs && wrangler pages deploy apps/client/preview-site --project-name random-life-preview --branch main",
+    "smoke:bilingual": "npm run build:preview && node scripts/smoke-bilingual.mjs",
+    "smoke:iteration-eight": "npm run build:preview && node scripts/smoke-iteration-eight.mjs && node scripts/smoke-studio-batches.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261012.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "~19.2.2",
+    "@types/react-dom": "~19.2.2",
+    "esbuild": "^0.25.0",
+    "miniflare": "^4.0.0",
+    "playwright-core": "^1.64.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5",
+    "typescript": "~6.0.3",
+    "vitest": "^4.0.0"
+  }
+}

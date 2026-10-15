@@ -1,0 +1,26 @@
+RANDOM life - APK preko Expo EAS (Windows)
+
+1. Instaliraj Node.js 24 LTS sa https://nodejs.org/ ako ga nemas.
+2. Raspakuj cijeli ZIP u novu mapu, npr. C:\RANDOM-life-APK.
+3. Dvoklik na POKRENI-APK.cmd. Ne pokreci iz samog ZIP prozora.
+
+Skripta sama preuzima slike s RANDOM web stranice, provjerava SHA-256,
+instalira zavisnosti, priprema aktuelni UI i pokrece Expo build.
+Prijavi se u Expo kao salemko kada zatrazi. Koristi Expo lozinku i 2FA
+na svom racunaru; token nije potreban i nemoj ga slati u chat.
+Ako trazi generisanje novog Android keystorea, odgovori Yes.
+Ako trazi placeni plan ili kupovinu builda, prekini sa Ctrl+C.
+Besplatna kvota i cekanje zavise od tvog Expo racuna.
+
+Build se izvrsava na Expo serveru, ne na telefonu. Expo prikazuje link
+za pracenje i preuzimanje. Otvori APK link na Android telefonu i instaliraj.
+Ovo je pravi APK za internu probu; Expo Go i Metro nisu potrebni.
+Koristi istu online biblioteku/D1 kao web aplikacija.
+
+Projekt: salemko/random
+Project ID: 04bf570d-5e7b-4c51-b1ae-65e6fc60cf5a
+Android: com.salemko.randomlife
+
+Kod ove verzije je ukljucen u ZIP. Privatni kljucevi, tokeni, baze,
+korisnicki profili i sadrzaj iz lokalnih browsera NISU ukljuceni.
+Ako zapne: posalji tekst greske ili screenshot bez tajni.

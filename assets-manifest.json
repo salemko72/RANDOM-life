@@ -1,0 +1,14 @@
+{
+  "parts": [
+    {
+      "name": "assets-01-92974d9f8f0b.zip",
+      "bytes": 15141379,
+      "sha256": "92974d9f8f0b10711a0aaf952a5003d61688cd25167a9f5d0cfd9e390ed14548"
+    },
+    {
+      "name": "assets-02-973262fe9f5f.zip",
+      "bytes": 15419210,
+      "sha256": "973262fe9f5f9c0f980da02e618cf23546c35c12d10c2b4e778237502f463b3d"
+    }
+  ]
+}

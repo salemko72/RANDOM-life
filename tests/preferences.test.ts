@@ -1,11 +1,12 @@
 import {expect,test} from 'vitest';
-import {cycleCandidates,toggleCompleted,createProfile,loadProfile,saveProfile,recordSignal,scorePreference,eligibleForProfile,selectPersonalized,choosePersonalizedCategory,preferenceTopics,type PreferenceItem} from '../apps/client/src/web/preferences';
+import {cycleCandidates,toggleCompleted,createProfile as makeProfile,setPersonalization,loadProfile,saveProfile,recordSignal,scorePreference,eligibleForProfile,selectPersonalized,choosePersonalizedCategory,preferenceTopics,type PreferenceItem} from '../apps/client/src/web/preferences';
+const createProfile=()=>({...makeProfile(),personalization:true,learning:true});
 const food=(id:string,extra:Partial<PreferenceItem>={}):PreferenceItem=>({id,category:'EAT',title:id,status:'published',tags:[],allergens:[],allergensVerified:true,dietaryTags:['vegetarian'],totalMinutes:20,...extra});
 const book:PreferenceItem={id:'book',category:'BOOK',title:'Book',status:'published',tags:['History'],genres:['Science']};
 const storage=()=>{const data=new Map<string,string>();return {getItem:(k:string)=>data.get(k)??null,setItem:(k:string,v:string)=>{data.set(k,v)},removeItem:(k:string)=>data.delete(k),clear:()=>data.clear(),key:(i:number)=>[...data.keys()][i]??null,get length(){return data.size}} satisfies Storage};
 test('hard restrictions survive learning and empty pools never relax them',()=>{
  const p={...createProfile(),allergens:['milk'],vegetarian:true,maxCookingMinutes:30};
- for(const item of [food('milk',{allergens:['milk']}),food('unknown',{allergensVerified:false}),food('meat',{dietaryTags:[]}),food('slow',{totalMinutes:31}),food('unknown-time',{totalMinutes:undefined}),food('draft',{status:'draft'})]){
+ for(const item of [food('milk',{allergens:['milk']}),food('unknown',{allergensVerified:false}),food('meat',{dietaryTags:[]}),food('draft',{status:'draft'})]){
   expect(eligibleForProfile(item,p)).toBe(false);expect(selectPersonalized([item],p,[],.5)).toBeNull();
  }
  expect(eligibleForProfile(food('safe'),p)).toBe(true);
@@ -33,7 +34,7 @@ test('consent off stops collection and learned scoring; history is capped',()=>{
 test('weighted deterministic sampling preserves diversity and exclusions',()=>{
  const p={...createProfile(),interests:['READ' as const],topics:['Science']};
  expect(choosePersonalizedCategory([food('food'),book],p,undefined,.5)).toBe('READ');
- expect(choosePersonalizedCategory([food('food'),book],p,'READ',.99)).toBe('EAT');
+ expect(choosePersonalizedCategory([food('food'),book],p,'READ',.99)).toBe('READ');
  expect(selectPersonalized([book,food('food')],p,[],0)?.id).toBe('book');
  expect(selectPersonalized([book,food('food')],p,[],1)?.id).toBe('food');
  expect(selectPersonalized([book],p,['book'],0)).toBeNull();
@@ -91,4 +92,37 @@ test('spin cycle prefers unseen items and restores seen items only after exhaust
  expect(cycleCandidates([a],p,['a']).map(i=>i.id)).toEqual(['a']);
  expect(cycleCandidates([a],{...p,completedIds:['a']},['a'])).toEqual([]);
  expect(cycleCandidates([food('unsafe',{allergens:['milk']})],{...p,allergens:['milk']},['unsafe'])).toEqual([]);
+});
+
+ test('profiling is opt-in, old consent is not assumed, and declining preserves dietary safety',()=>{
+ const fresh=makeProfile();expect(fresh.personalization).toBe(false);expect(fresh.learning).toBe(false);
+ expect(recordSignal(fresh,book,'save').events).toEqual([]);
+ const p={...createProfile(),vegan:true,lowPhosphateDiet:true,allergens:['milk'],topics:['Science']};
+ const off=setPersonalization(recordSignal(p,book,'save'),false);
+ expect(off.events).toEqual([]);expect(off.topics).toEqual([]);expect(off.vegan).toBe(true);expect(off.lowPhosphateDiet).toBe(true);expect(off.allergens).toEqual(['milk']);
+ expect(scorePreference(book,{...off,interests:['READ'],topics:['Science']})).toBe(1);
+ const s=storage();saveProfile(p,s);const old:any={...p};delete old.personalization;delete old.vegan;s.setItem(s.key(0)!,JSON.stringify(old));
+ expect(loadProfile(s).personalization).toBe(false);expect(loadProfile(s).learning).toBe(false);expect(loadProfile(s).allergens).toEqual(['milk']);
+ });
+ test('vegan and reviewed phosphate restrictions remain hard even without profiling',()=>{
+ const p={...makeProfile(),vegan:true,lowPhosphateDiet:true};
+ const safe=food('safe',{dietaryTags:['vegan','low-phosphate'],phosphateAssessment:{suitability:'low',reviewed:true}});
+ expect(eligibleForProfile(safe,p)).toBe(true);
+ expect(eligibleForProfile({...safe,dietaryTags:['vegetarian','low-phosphate']},p)).toBe(false);
+ expect(eligibleForProfile({...safe,phosphateAssessment:{suitability:'not-low',reviewed:true}},p)).toBe(false);
+ expect(selectPersonalized([food('unsafe')],p,[],.99)).toBeNull();
+ });
+ test('soft tastes cannot dominate exploration or exclude a slow meal',()=>{
+ const p={...createProfile(),maxCookingMinutes:10,interests:['READ' as const],topics:['Science']};
+ const learned=Array.from({length:300},()=>({itemId:book.id,category:'READ' as const,topics:['science'],kind:'accept' as const,at:1}));
+ const profile={...p,events:learned};expect(scorePreference(book,profile)).toBeLessThanOrEqual(1.8);
+ expect(eligibleForProfile(food('slow',{totalMinutes:90}),profile)).toBe(true);
+ let surprising=0;for(let i=0;i<1000;i++)if(selectPersonalized([book,food('other')],profile,[],i/1000)?.id==='other')surprising++;
+ expect(surprising).toBeGreaterThan(300);
+ expect(cycleCandidates([book,food('other')],p,[book.id]).map(r=>r.id)).toEqual([book.id,'other']);
+ });
+
+test('ENG and BHS topics describe the same mild preference',()=>{
+ const a={...createProfile(),topics:['Nauka']},b={...a,topics:['Science']};
+ expect(scorePreference(book,a)).toBe(scorePreference(book,b));expect(scorePreference(book,a)).toBeGreaterThan(scorePreference(book,createProfile()));
 });

@@ -1,4 +1,4 @@
-/** Browser-only demo preferences. This identifier is not an authenticated account. */
+/** Device-local preferences. This identifier is not an authenticated account. */
 export type UiCategory = 'EAT'|'READ'|'WATCH'|'MOVE'|'GO';
 export interface PreferenceItem {
  id:string; category:string; title:string; status:string; tags?:readonly string[];
@@ -10,18 +10,20 @@ export type SignalKind='exposure'|'open'|'save'|'accept'|'skip';
 export interface PreferenceEvent {itemId:string;category:UiCategory;topics:string[];kind:SignalKind;at:number}
 export interface Profile {
  version:1;id:string;name:string;onboarded:boolean;interests:UiCategory[];topics:string[];
- allergens:string[];intolerances:string[];intoleranceNote:string;completedIds:string[];lowPhosphateDiet:boolean;vegetarian:boolean;maxCookingMinutes:number|null;freeMinutes:number|null;
+ allergens:string[];intolerances:string[];intoleranceNote:string;completedIds:string[];lowPhosphateDiet:boolean;vegetarian:boolean;vegan:boolean;personalization:boolean;maxCookingMinutes:number|null;freeMinutes:number|null;
  energy:'low'|'medium'|'high';company:'solo'|'pair'|'friends';learning:boolean;events:PreferenceEvent[];
 }
 const STORAGE_KEY='random-life.local-profile.v1';
 const categories:UiCategory[]=['EAT','READ','WATCH','MOVE','GO'];
 const kinds:SignalKind[]=['exposure','open','save','accept','skip'];
 const normalize=(value:string)=>value.trim().toLocaleLowerCase();
+const topicAliases:Record<string,string>={roman:'fiction',novel:'fiction',historija:'history',istorija:'history',povijest:'history',nauka:'science',znanost:'science',misterija:'mystery','sci-fi':'science-fiction','science fiction':'science-fiction','naučna fantastika':'science-fiction',trim:'walking',walk:'walking','šetnja':'walking',joga:'yoga',teretana:'gym'};
+const normalizeTopic=(value:string)=>topicAliases[normalize(value)]??normalize(value);
 const category=(value:string):UiCategory|null=>value==='BOOK'?'READ':categories.includes(value as UiCategory)?value as UiCategory:null;
 const finiteMinutes=(value:unknown):value is number=>typeof value==='number'&&Number.isFinite(value)&&value>0;
 const strings=(value:unknown):value is string[]=>Array.isArray(value)&&value.length<=100&&value.every(v=>typeof v==='string'&&v.length<=200);
 export function createProfile():Profile {
- return {version:1,id:globalThis.crypto?.randomUUID?.()??`local-${Date.now()}-${Math.random().toString(36).slice(2)}`,name:'',onboarded:false,interests:[],topics:[],allergens:[],intolerances:[],intoleranceNote:'',completedIds:[],lowPhosphateDiet:false,vegetarian:false,maxCookingMinutes:null,freeMinutes:null,energy:'medium',company:'solo',learning:true,events:[]};
+ return {version:1,id:globalThis.crypto?.randomUUID?.()??`local-${Date.now()}-${Math.random().toString(36).slice(2)}`,name:'',onboarded:false,interests:[],topics:[],allergens:[],intolerances:[],intoleranceNote:'',completedIds:[],lowPhosphateDiet:false,vegetarian:false,vegan:false,personalization:false,maxCookingMinutes:null,freeMinutes:null,energy:'medium',company:'solo',learning:false,events:[]};
 }
 function validEvent(value:unknown):value is PreferenceEvent {
  if(!value||typeof value!=='object')return false;
@@ -30,10 +32,10 @@ function validEvent(value:unknown):value is PreferenceEvent {
 }
 function validated(value:unknown):Profile|null {
  if(!value||typeof value!=='object')return null;
- const p={lowPhosphateDiet:false,intolerances:[],intoleranceNote:'',completedIds:[],...value} as unknown as Profile;
- if(p.version!==1||typeof p.id!=='string'||!p.id||p.id.length>200||typeof p.name!=='string'||p.name.length>200||typeof p.onboarded!=='boolean'||!strings(p.interests)||!p.interests.every(c=>categories.includes(c))||!strings(p.topics)||!strings(p.allergens)||!strings(p.intolerances)||!p.intolerances.every(t=>['gluten','lactose'].includes(t))||typeof p.intoleranceNote!=='string'||p.intoleranceNote.length>1000||!Array.isArray(p.completedIds)||!p.completedIds.every(id=>typeof id==='string'&&id.length>0&&id.length<=200)||typeof p.lowPhosphateDiet!=='boolean'||typeof p.vegetarian!=='boolean'||!(p.maxCookingMinutes===null||finiteMinutes(p.maxCookingMinutes))||!(p.freeMinutes===null||finiteMinutes(p.freeMinutes))||!['low','medium','high'].includes(p.energy)||!['solo','pair','friends'].includes(p.company)||typeof p.learning!=='boolean'||!Array.isArray(p.events)||!p.events.every(validEvent))return null;
+ const p={personalization:false,vegan:false,lowPhosphateDiet:false,intolerances:[],intoleranceNote:'',completedIds:[],...value} as unknown as Profile;
+ if(p.version!==1||typeof p.id!=='string'||!p.id||p.id.length>200||typeof p.name!=='string'||p.name.length>200||typeof p.onboarded!=='boolean'||!strings(p.interests)||!p.interests.every(c=>categories.includes(c))||!strings(p.topics)||!strings(p.allergens)||!strings(p.intolerances)||!p.intolerances.every(t=>['gluten','lactose'].includes(t))||typeof p.intoleranceNote!=='string'||p.intoleranceNote.length>1000||!Array.isArray(p.completedIds)||!p.completedIds.every(id=>typeof id==='string'&&id.length>0&&id.length<=200)||typeof p.lowPhosphateDiet!=='boolean'||typeof p.vegetarian!=='boolean'||typeof p.vegan!=='boolean'||typeof p.personalization!=='boolean'||!(p.maxCookingMinutes===null||finiteMinutes(p.maxCookingMinutes))||!(p.freeMinutes===null||finiteMinutes(p.freeMinutes))||!['low','medium','high'].includes(p.energy)||!['solo','pair','friends'].includes(p.company)||typeof p.learning!=='boolean'||!Array.isArray(p.events)||!p.events.every(validEvent))return null;
  // Rebuild known fields; never retain arbitrary data from local storage.
- return {version:1,id:p.id,name:p.name,onboarded:p.onboarded,interests:[...new Set(p.interests)],topics:[...p.topics],allergens:[...p.allergens],intolerances:[...new Set(p.intolerances)],intoleranceNote:p.intoleranceNote,completedIds:[...new Set(p.completedIds)].slice(-1000),lowPhosphateDiet:p.lowPhosphateDiet,vegetarian:p.vegetarian,maxCookingMinutes:p.maxCookingMinutes,freeMinutes:p.freeMinutes,energy:p.energy,company:p.company,learning:p.learning,events:p.events.slice(-300).map(e=>({itemId:e.itemId,category:e.category,topics:[...e.topics],kind:e.kind,at:e.at}))};
+ return {version:1,id:p.id,name:p.name,onboarded:p.onboarded,interests:[...new Set(p.interests)],topics:[...p.topics],allergens:[...p.allergens],intolerances:[...new Set(p.intolerances)],intoleranceNote:p.intoleranceNote,completedIds:[...new Set(p.completedIds)].slice(-1000),lowPhosphateDiet:p.lowPhosphateDiet,vegetarian:p.vegetarian,vegan:p.vegan,personalization:p.personalization,maxCookingMinutes:p.maxCookingMinutes,freeMinutes:p.freeMinutes,energy:p.energy,company:p.company,learning:p.personalization&&p.learning,events:(p.personalization?p.events:[]).slice(-300).map(e=>({itemId:e.itemId,category:e.category,topics:[...e.topics],kind:e.kind,at:e.at}))};
 }
 export function loadProfile(storage?:Storage):Profile {
  try {const raw=(storage??globalThis.localStorage)?.getItem(STORAGE_KEY);return raw?validated(JSON.parse(raw))??createProfile():createProfile();}catch{return createProfile();}
@@ -42,10 +44,10 @@ export function saveProfile(profile:Profile,storage?:Storage):boolean {
  try {const clean=validated(profile);if(!clean)return false;const target=storage??globalThis.localStorage;if(!target)return false;target.setItem(STORAGE_KEY,JSON.stringify(clean));return true;}catch{return false;}
 }
 export function preferenceTopics(item:PreferenceItem):string[] {
- return [...new Set([...(item.tags??[]),...(item.genres??[])].map(normalize).filter(Boolean))].slice(0,100);
+ return [...new Set([...(item.tags??[]),...(item.genres??[])].map(normalizeTopic).filter(Boolean))].slice(0,100);
 }
 export function recordSignal(profile:Profile,item:PreferenceItem,kind:SignalKind):Profile {
- const c=category(item.category);if(!profile.learning||!c)return profile;
+ const c=category(item.category);if(!profile.personalization||!profile.learning||!c)return profile;
  return {...profile,events:[...profile.events,{itemId:item.id,category:c,topics:preferenceTopics(item),kind,at:Date.now()}].slice(-300)};
 }
 export function eligibleForProfile(item:PreferenceItem,profile:Profile):boolean {
@@ -58,33 +60,37 @@ export function eligibleForProfile(item:PreferenceItem,profile:Profile):boolean 
  if(profile.intolerances.includes('gluten')&&!diet.includes('gluten-free'))return false;
  if(profile.intolerances.includes('lactose')&&!diet.includes('lactose-free'))return false;
  if(profile.vegetarian&&!(item.dietaryTags??[]).some(t=>['vegetarian','vegan'].includes(normalize(t))))return false;
- if(profile.maxCookingMinutes!==null&&(!finiteMinutes(item.totalMinutes)||item.totalMinutes>profile.maxCookingMinutes))return false;
+ if(profile.vegan&&!diet.includes('vegan'))return false;
  return true;
 }
 const signalWeight:Record<SignalKind,number>={exposure:0,open:.35,save:1,accept:1.5,skip:-.7};
 export function scorePreference(item:PreferenceItem,profile:Profile):number {
+ if(!profile.personalization)return 1;
  const c=category(item.category),topics=preferenceTopics(item);
- let score=1+(c&&profile.interests.includes(c)?2:0);
- score+=Math.min(3,topics.filter(t=>profile.topics.map(normalize).includes(t)).length*1.5);
- if(item.intensity===profile.energy)score+=.75;
- if(typeof item.company==='string'?item.company===profile.company:item.company?.includes(profile.company))score+=.75;
+ let score=1+(c&&profile.interests.includes(c)?.25:0);
+ score+=Math.min(.3,topics.filter(t=>profile.topics.map(normalizeTopic).includes(t)).length*.1);
+ if(item.intensity===profile.energy)score+=.1;
+ if(typeof item.company==='string'?item.company===profile.company:item.company?.includes(profile.company))score+=.1;
  const minutes=item.totalMinutes??item.durationMinutes;
- if(profile.freeMinutes!==null&&finiteMinutes(minutes))score+=minutes<=profile.freeMinutes?.75:-.5;
+ if(profile.freeMinutes!==null&&finiteMinutes(minutes))score+=minutes<=profile.freeMinutes?.1:-.1;
  if(profile.learning){
   let learned=0;
   for(const e of profile.events){
-   const similarity=e.itemId===item.id?1:e.topics.some(t=>topics.includes(normalize(t)))?.5:e.category===c?.15:0;
+   const similarity=e.itemId===item.id?1:e.topics.some(t=>topics.includes(normalizeTopic(t)))?.5:e.category===c?.15:0;
    learned+=signalWeight[e.kind]*similarity;
   }
-  score+=Math.max(-.8,Math.min(3,learned));
+  score+=Math.max(-.15,Math.min(.25,learned*.1));
  }
- return Math.max(.2,score);
+ if(item.category==='EAT'&&profile.maxCookingMinutes!==null&&finiteMinutes(item.totalMinutes))score+=item.totalMinutes<=profile.maxCookingMinutes?.1:-.1;
+ return Math.max(.8,Math.min(1.8,score));
 }
 function weighted<T>(items:T[],weight:(item:T)=>number,random:number):T|null {
  if(!items.length)return null;
  const sample=Number.isFinite(random)?Math.max(0,Math.min(1-Number.EPSILON,random)):0;
- let remaining=sample*items.reduce((sum,item)=>sum+weight(item),0);
- for(const item of items){remaining-=weight(item);if(remaining<0)return item;}
+ const scores=items.map(weight),total=scores.reduce((a,b)=>a+b,0);
+ // Thirty percent uniform exploration, always inside the safe eligible pool.
+ let remaining=sample;
+ for(const [index,item]of items.entries()){remaining-=.7*scores[index]/total+.3/items.length;if(remaining<0)return item;}
  return items[items.length-1];
 }
 export function selectPersonalized<T extends PreferenceItem>(items:T[],profile:Profile,excludeIds:string[],random=Math.random()):T|null {
@@ -93,12 +99,12 @@ export function selectPersonalized<T extends PreferenceItem>(items:T[],profile:P
 export function choosePersonalizedCategory(items:PreferenceItem[],profile:Profile,previous?:UiCategory,random=Math.random()):UiCategory|null {
  const eligible=items.filter(item=>eligibleForProfile(item,profile));
  const available=categories.filter(c=>eligible.some(item=>category(item.category)===c));
- const others=available.filter(c=>c!==previous);
- return weighted(others.length?others:available,c=>{const pool=eligible.filter(item=>category(item.category)===c);return pool.reduce((sum,item)=>sum+scorePreference(item,profile),0)/pool.length},random);
+ return weighted(available,c=>{const pool=eligible.filter(item=>category(item.category)===c);return (c===previous?.8:1)*pool.reduce((sum,item)=>sum+scorePreference(item,profile),0)/pool.length},random);
 }
 export function explainPreference(item:PreferenceItem,profile:Profile):string {
  if(!eligibleForProfile(item,profile))return 'Ne odgovara tvojim obaveznim ograničenjima.';
- if(preferenceTopics(item).some(t=>profile.topics.map(normalize).includes(t)))return 'Tema odgovara tvojim odabranim interesima.';
+ if(!profile.personalization)return 'Nešto drugačije među dostupnim prijedlozima.';
+ if(preferenceTopics(item).some(t=>profile.topics.map(normalizeTopic).includes(t)))return 'Tema odgovara tvojim odabranim interesima.';
  if(profile.interests.includes(category(item.category)!))return 'Iz kategorije koju voliš, uz malo iznenađenja.';
  return 'Nešto drugačije među dostupnim prijedlozima.';
 }
@@ -113,6 +119,10 @@ export function toggleCompleted(profile:Profile,itemId:string):Profile {
 /** Exposure avoids repetition within a cycle, but never empties an exhausted category. */
 export function cycleCandidates<T extends PreferenceItem>(items:T[],profile:Profile,seenIds:string[]):T[]{
  const eligible=items.filter(item=>eligibleForProfile(item,profile));
- const unseen=eligible.filter(item=>!seenIds.includes(item.id));
- return unseen.length?unseen:eligible;
+ return eligible.filter(item=>!seenIds.includes(item.id)||!eligible.some(other=>other.category===item.category&&!seenIds.includes(other.id)));
+}
+
+/** Declining personalization clears inferred behavior but preserves explicit safety filters. */
+export function setPersonalization(profile:Profile,enabled:boolean):Profile {
+ return {...profile,personalization:enabled,learning:enabled?profile.learning:false,events:enabled?profile.events:[],...(enabled?{}:{interests:[],topics:[],energy:'medium' as const,company:'solo' as const,freeMinutes:null,maxCookingMinutes:null})};
 }

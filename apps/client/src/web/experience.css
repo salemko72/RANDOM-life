@@ -187,3 +187,5 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 @media(max-height:790px) and (max-width:600px){.random-world .rail-category{min-height:61px}}
 
 .ingredient-symbol.tagged-ingredient.ingredient-atlas-extension-74{background-image:url('./assets/ingredient-atlas-extension-74.png')}
+
+.consent-actions{display:flex;flex-direction:column;gap:14px;margin:24px 0}.consent-actions .pill-primary{width:100%;white-space:normal}.onboarding-skip{border:1px solid rgba(144,98,82,.22);border-radius:24px;padding:14px 18px;background:rgba(255,250,243,.7);color:#694b41;font:inherit;cursor:pointer;box-shadow:0 4px 12px rgba(108,65,49,.07)}.onboarding-skip:hover{background:#fff8f0}

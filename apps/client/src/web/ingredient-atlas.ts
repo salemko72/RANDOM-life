@@ -1,9 +1,10 @@
 /// <reference path="./image-assets.d.ts" />
 import originalAtlas from './assets/ingredient-atlas.png';
 import extensionAtlas from './assets/ingredient-atlas-extension-74.png';
+import extension50Atlas from './assets/ingredient-atlas-extension-50.png';
 import type {IngredientDefinition} from '@random/shared';
 import type {CSSProperties} from 'react';
-const images:Record<string,string>={original:originalAtlas,'extension-74':extensionAtlas};
+const images:Record<string,string>={original:originalAtlas,'extension-74':extensionAtlas,'extension-50':extension50Atlas};
 /** Both Studio and the app must bind coordinates and their owning image together. */
 export function ingredientSpriteStyle(definition:IngredientDefinition):CSSProperties{
  const key=definition.atlas??'original',path=images[key];

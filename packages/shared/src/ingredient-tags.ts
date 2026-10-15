@@ -1,5 +1,6 @@
+import {extension50Ingredients} from './ingredient-atlas-extension-50';
 import {extensionIngredients} from './ingredient-atlas-extension';
-export interface IngredientDefinition{id:string;name:string;aliases:string[];row:number;column:number;atlas?:'extension-74'}
+export interface IngredientDefinition{id:string;name:string;aliases:string[];row:number;column:number;atlas?:'extension-74'|'extension-50'}
 // Ordered 10×10 atlas contract. Append a new atlas/version rather than reordering cells.
 const rows=[
  ['potato|Krompir|krumpir,krompiri','onion|Luk|crni luk','garlic|Bijeli luk|češnjak,beli luk','carrot|Mrkva|šargarepa,mrkve','tomato|Paradajz|rajčica,paradajzi','cucumber|Krastavac|krastavci','bell-pepper|Paprika|crvena paprika,babura','zucchini|Tikvica|tikvice','eggplant|Patlidžan|patlidžani','broccoli|Brokula|brokoli'],
@@ -15,6 +16,7 @@ const rows=[
 ];
 export const ingredientDefinitions:IngredientDefinition[]=rows.flatMap((row,r)=>row.map((value,c)=>{const[id,name,aliases]=value.split('|');return{id,name,aliases:[name,id,...aliases.split(',')],row:r,column:c};}));
 ingredientDefinitions.push(...extensionIngredients.map(i=>({...i,aliases:[...i.aliases,i.id]})));
+ingredientDefinitions.push(...extension50Ingredients.map(i=>({...i,aliases:[...i.aliases,i.id]})));
 const normalize=(name:string)=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');
 export function resolveIngredient(name:string,tag?:string):IngredientDefinition|undefined{
  if(tag){const tagged=ingredientDefinitions.find(i=>i.id===tag);if(tagged)return tagged;}

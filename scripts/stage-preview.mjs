@@ -21,3 +21,5 @@ await import('./build-original-recovery.mjs');
 const atlasRoot=resolve('content/ingredient-atlas-extension-74');
 const atlasFiles={};for(const name of ['atlas.png','manifest.json','README.md'])atlasFiles[name]=new Uint8Array(await readFile(resolve(atlasRoot,name)));
 await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-74.zip'),zipSync(atlasFiles));
+
+const atlas50Root=resolve('content/ingredient-atlas-extension-50');const atlas50Files={};for(const name of ['atlas.png','manifest.json','README.md'])atlas50Files[name]=new Uint8Array(await readFile(resolve(atlas50Root,name)));await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-50.zip'),zipSync(atlas50Files));

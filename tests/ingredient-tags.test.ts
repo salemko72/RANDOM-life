@@ -10,3 +10,13 @@ test('extension maps all 74 cells while preserving original atlas tags',()=>{
  expect(resolveIngredient('Voda')).toMatchObject({id:'water',row:9,column:9});
  expect(resolveIngredient('Sesame oil')?.id).toBe('extension-74-051');
 });
+
+test('second extension adds 50 unique cells without moving the first extension',()=>{
+ const fresh=ingredientDefinitions.filter(i=>i.atlas==='extension-50');expect(fresh).toHaveLength(50);expect(ingredientDefinitions).toHaveLength(224);
+ expect(resolveIngredient('Filet skuše')).toMatchObject({atlas:'extension-50',row:0,column:5});
+ expect(resolveIngredient('Wasabi')).toMatchObject({atlas:'extension-50',row:4,column:7});
+ expect(resolveIngredient('Žumanjak')).toMatchObject({atlas:'extension-50',row:4,column:9});
+ expect(resolveIngredient('Tahini')).toMatchObject({atlas:'extension-74',row:6,column:6});
+ for(const entry of fresh)expect(resolveIngredient(entry.name)).toBeTruthy();
+ expect(new Set(ingredientDefinitions.map(i=>i.id)).size).toBe(224);
+});

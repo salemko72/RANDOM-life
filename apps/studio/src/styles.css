@@ -545,3 +545,5 @@ code {
 .library .database-controls{margin:0 0 22px;width:100%;box-sizing:border-box}.storage-meter{padding:14px 0}.storage-meter progress{width:100%;height:10px;accent-color:#3b9a62}.storage-meter small{display:block;font-size:11px;line-height:1.6;color:#766e68}
 
 .migration-error-dialog{width:min(680px,94vw);max-height:85svh;overflow-y:auto;padding:24px}.migration-error-item{padding:14px 0;border-top:1px solid #e4d5c8}.migration-error-item strong{display:block}.migration-error-item small{display:block;font-size:10px;color:#786b62;margin-bottom:12px}.availability-warning{color:#875e45;line-height:1.6}.original-recovery{margin:15px 0;padding:16px;background:#fffaf5;border-radius:14px;border:1px solid #decebd}
+
+.library-filter{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;margin:16px 0 6px}.library-filter input{width:18px;height:18px;flex:0 0 18px;margin:0;accent-color:#8a6654}

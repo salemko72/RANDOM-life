@@ -1,0 +1,1568 @@
+[
+  {
+    "slug": "call-loved-one",
+    "input": {
+      "category": "GO",
+      "title": "Call someone you love",
+      "summary": "Take a little time to listen to someone close to you.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "connection"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-call-loved-one.webp",
+        "alt": "Call someone you love",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Call someone you love",
+          "summary": "Take a little time to listen to someone close to you.",
+          "imageAlt": "Call someone you love",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose someone you feel comfortable calling.",
+            "Ask whether this is a good time to talk.",
+            "Tell them you care and listen without rushing."
+          ],
+          "equipment": [],
+          "genres": [
+            "connection"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Nazovi nekoga koga voliš",
+          "summary": "Odvoji malo vremena da saslušaš blisku osobu.",
+          "imageAlt": "Nazovi nekoga koga voliš",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi osobu s kojom želiš razgovarati.",
+            "Pitaj je ima li vremena za razgovor.",
+            "Reci joj da ti je stalo i saslušaj je bez žurbe."
+          ],
+          "equipment": [],
+          "genres": [
+            "povezanost"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "connection",
+      "durationMinutes": 10,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Choose someone you feel comfortable calling.",
+        "Ask whether this is a good time to talk.",
+        "Tell them you care and listen without rushing."
+      ],
+      "company": "solo",
+      "genres": [
+        "connection"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "thank-a-friend",
+    "input": {
+      "category": "GO",
+      "title": "Send a friend a thank-you",
+      "summary": "A short, personal message can brighten a friendship.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "connection"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-thank-a-friend.webp",
+        "alt": "Send a friend a thank-you",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Send a friend a thank-you",
+          "summary": "A short, personal message can brighten a friendship.",
+          "imageAlt": "Send a friend a thank-you",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Think of a shared moment you appreciate.",
+            "Write a short message explaining what it means to you.",
+            "Send it without expecting an immediate reply."
+          ],
+          "equipment": [],
+          "genres": [
+            "connection"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Pošalji prijatelju poruku zahvale",
+          "summary": "Kratka, lična poruka može uljepšati prijateljstvo.",
+          "imageAlt": "Pošalji prijatelju poruku zahvale",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Prisjeti se zajedničkog trenutka koji cijeniš.",
+            "Napiši kratku poruku o tome zašto ti znači.",
+            "Pošalji je bez očekivanja trenutnog odgovora."
+          ],
+          "equipment": [],
+          "genres": [
+            "povezanost"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "connection",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Think of a shared moment you appreciate.",
+        "Write a short message explaining what it means to you.",
+        "Send it without expecting an immediate reply."
+      ],
+      "company": "solo",
+      "genres": [
+        "connection"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "tip-and-compliment",
+    "input": {
+      "category": "GO",
+      "title": "Leave a tip and a kind word",
+      "summary": "Thank someone for their work; any tip should fit your budget.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-tip-and-compliment.webp",
+        "alt": "Leave a tip and a kind word",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Leave a tip and a kind word",
+          "summary": "Thank someone for their work; any tip should fit your budget.",
+          "imageAlt": "Leave a tip and a kind word",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "At your next purchase, notice something done well.",
+            "Offer a sincere thank-you or specific compliment.",
+            "Leave a tip only if appropriate and affordable."
+          ],
+          "equipment": [],
+          "genres": [
+            "kindness"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Ostavi napojnicu i lijepu riječ",
+          "summary": "Zahvali nekome na radu; napojnica neka odgovara tvom budžetu.",
+          "imageAlt": "Ostavi napojnicu i lijepu riječ",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Pri sljedećoj kupovini primijeti nešto što je dobro urađeno.",
+            "Iskreno zahvali ili pohvali nešto konkretno.",
+            "Ostavi napojnicu ako je primjerena i možeš je priuštiti."
+          ],
+          "equipment": [],
+          "genres": [
+            "ljubaznost"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "At your next purchase, notice something done well.",
+        "Offer a sincere thank-you or specific compliment.",
+        "Leave a tip only if appropriate and affordable."
+      ],
+      "company": "solo",
+      "genres": [
+        "kindness"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "kind-local-review",
+    "input": {
+      "category": "GO",
+      "title": "Write a thoughtful local review",
+      "summary": "Help others discover a local place you genuinely enjoyed.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-kind-local-review.webp",
+        "alt": "Write a thoughtful local review",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Write a thoughtful local review",
+          "summary": "Help others discover a local place you genuinely enjoyed.",
+          "imageAlt": "Write a thoughtful local review",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose a business you have actually visited.",
+            "Describe one positive detail truthfully.",
+            "Post the review using the platform’s privacy options; anonymity is not guaranteed."
+          ],
+          "equipment": [],
+          "genres": [
+            "community"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Napiši lijepu recenziju lokalnog biznisa",
+          "summary": "Pomozi drugima da otkriju lokalno mjesto u kojem si uživao.",
+          "imageAlt": "Napiši lijepu recenziju lokalnog biznisa",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi biznis koji si zaista posjetio.",
+            "Iskreno opiši jedan pozitivan detalj.",
+            "Objavi recenziju uz dostupne postavke privatnosti; anonimnost nije zagarantovana."
+          ],
+          "equipment": [],
+          "genres": [
+            "zajednica"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Choose a business you have actually visited.",
+        "Describe one positive detail truthfully.",
+        "Post the review using the platform’s privacy options; anonymity is not guaranteed."
+      ],
+      "company": "solo",
+      "genres": [
+        "community"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "sincere-compliment",
+    "input": {
+      "category": "GO",
+      "title": "Give a sincere compliment",
+      "summary": "A brief, respectful compliment can acknowledge someone’s effort.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-sincere-compliment.webp",
+        "alt": "Give a sincere compliment",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Give a sincere compliment",
+          "summary": "A brief, respectful compliment can acknowledge someone’s effort.",
+          "imageAlt": "Give a sincere compliment",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Notice someone’s helpful action or good work.",
+            "Offer one specific, respectful compliment.",
+            "Keep it brief and respect their response."
+          ],
+          "equipment": [],
+          "genres": [
+            "kindness"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Udijeli iskren kompliment",
+          "summary": "Kratkim, obzirnim komplimentom pokaži da cijeniš nečiji trud.",
+          "imageAlt": "Udijeli iskren kompliment",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Primijeti nečiji koristan postupak ili dobar rad.",
+            "Udijeli jednu konkretnu i obzirnu pohvalu.",
+            "Budi kratak i poštuj reakciju druge osobe."
+          ],
+          "equipment": [],
+          "genres": [
+            "ljubaznost"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 3,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Notice someone’s helpful action or good work.",
+        "Offer one specific, respectful compliment.",
+        "Keep it brief and respect their response."
+      ],
+      "company": "solo",
+      "genres": [
+        "kindness"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "share-an-opportunity",
+    "input": {
+      "category": "GO",
+      "title": "Share a useful opportunity",
+      "summary": "Pass along a relevant link that might help someone.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "connection"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-share-an-opportunity.webp",
+        "alt": "Share a useful opportunity",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Share a useful opportunity",
+          "summary": "Pass along a relevant link that might help someone.",
+          "imageAlt": "Share a useful opportunity",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Think of someone who mentioned a practical need.",
+            "Check that the link or opportunity is relevant and current.",
+            "Send it privately; get consent before sharing someone’s personal contact details."
+          ],
+          "equipment": [],
+          "genres": [
+            "community"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Proslijedi korisnu priliku",
+          "summary": "Proslijedi relevantan link koji nekome može pomoći.",
+          "imageAlt": "Proslijedi korisnu priliku",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Prisjeti se osobe koja je spomenula neku potrebu.",
+            "Provjeri je li link ili prilika relevantna i aktuelna.",
+            "Pošalji privatno; za dijeljenje tuđeg ličnog kontakta prvo traži saglasnost."
+          ],
+          "equipment": [],
+          "genres": [
+            "zajednica"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "connection",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Think of someone who mentioned a practical need.",
+        "Check that the link or opportunity is relevant and current.",
+        "Send it privately; get consent before sharing someone’s personal contact details."
+      ],
+      "company": "solo",
+      "genres": [
+        "community"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "quiet-park-walk",
+    "input": {
+      "category": "GO",
+      "title": "Take a quiet park walk",
+      "summary": "Enjoy a short, familiar route with fewer distractions.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "outdoors"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-quiet-park-walk.webp",
+        "alt": "Take a quiet park walk",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Take a quiet park walk",
+          "summary": "Enjoy a short, familiar route with fewer distractions.",
+          "imageAlt": "Take a quiet park walk",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose a safe, accessible park or path.",
+            "Keep your phone safely with you on silent if practical.",
+            "Walk at your own pace and notice the sounds around you."
+          ],
+          "equipment": [],
+          "genres": [
+            "outdoors"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Prošetaj mirno kroz park",
+          "summary": "Uživaj u kratkoj, poznatoj ruti s manje ometanja.",
+          "imageAlt": "Prošetaj mirno kroz park",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi siguran i pristupačan park ili stazu.",
+            "Telefon zadrži uz sebe i po mogućnosti utišaj.",
+            "Hodaj svojim tempom i primijeti zvukove oko sebe."
+          ],
+          "equipment": [],
+          "genres": [
+            "priroda"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "outdoors",
+      "durationMinutes": 15,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Choose a safe, accessible park or path.",
+        "Keep your phone safely with you on silent if practical.",
+        "Walk at your own pace and notice the sounds around you."
+      ],
+      "company": "solo",
+      "genres": [
+        "outdoors"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "water-break",
+    "input": {
+      "category": "GO",
+      "title": "Pause for a sip of water",
+      "summary": "Take a small refreshment break that fits your own needs.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "self-care"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-water-break.webp",
+        "alt": "Pause for a sip of water",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Pause for a sip of water",
+          "summary": "Take a small refreshment break that fits your own needs.",
+          "imageAlt": "Pause for a sip of water",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "If you are thirsty, pour a comfortable amount of water.",
+            "Sip slowly without forcing yourself to drink.",
+            "If you have a prescribed fluid restriction, follow your care team’s guidance."
+          ],
+          "equipment": [],
+          "genres": [
+            "self-care"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Napravi pauzu za gutljaj vode",
+          "summary": "Napravi malu pauzu za osvježenje prema svojim potrebama.",
+          "imageAlt": "Napravi pauzu za gutljaj vode",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Ako si žedan, naspi količinu vode koja ti odgovara.",
+            "Pij polako i nemoj se prisiljavati.",
+            "Ako imaš propisano ograničenje tečnosti, slijedi upute svog zdravstvenog tima."
+          ],
+          "equipment": [],
+          "genres": [
+            "briga o sebi"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "self-care",
+      "durationMinutes": 2,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "If you are thirsty, pour a comfortable amount of water.",
+        "Sip slowly without forcing yourself to drink.",
+        "If you have a prescribed fluid restriction, follow your care team’s guidance."
+      ],
+      "company": "solo",
+      "genres": [
+        "self-care"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "gentle-breathing",
+    "input": {
+      "category": "GO",
+      "title": "Try two minutes of gentle breathing",
+      "summary": "A short pause to breathe comfortably, without pressure or breath-holding.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "self-care"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-gentle-breathing.webp",
+        "alt": "Try two minutes of gentle breathing",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Try two minutes of gentle breathing",
+          "summary": "A short pause to breathe comfortably, without pressure or breath-holding.",
+          "imageAlt": "Try two minutes of gentle breathing",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Sit comfortably and relax your shoulders.",
+            "Breathe naturally; let the exhale become a little slower only if comfortable.",
+            "Continue briefly, stopping if you feel dizzy or uncomfortable."
+          ],
+          "equipment": [],
+          "genres": [
+            "self-care"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Probaj dvije minute mirnog disanja",
+          "summary": "Kratka pauza za ugodno disanje, bez forsiranja ili zadržavanja daha.",
+          "imageAlt": "Probaj dvije minute mirnog disanja",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Sjedni udobno i opusti ramena.",
+            "Diši prirodno; blago uspori izdah samo ako ti prija.",
+            "Nastavi kratko, a prekini ako osjetiš vrtoglavicu ili nelagodu."
+          ],
+          "equipment": [],
+          "genres": [
+            "briga o sebi"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "self-care",
+      "durationMinutes": 2,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Sit comfortably and relax your shoulders.",
+        "Breathe naturally; let the exhale become a little slower only if comfortable.",
+        "Continue briefly, stopping if you feel dizzy or uncomfortable."
+      ],
+      "company": "solo",
+      "genres": [
+        "self-care"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "five-minutes-outdoors",
+    "input": {
+      "category": "GO",
+      "title": "Step outside for five minutes",
+      "summary": "Change the scenery with a brief outdoor break.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "outdoors"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-five-minutes-outdoors.webp",
+        "alt": "Step outside for five minutes",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Step outside for five minutes",
+          "summary": "Change the scenery with a brief outdoor break.",
+          "imageAlt": "Step outside for five minutes",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose a safe place outside, with shade if needed.",
+            "Sit or stand comfortably and notice the air around you.",
+            "Return when ready; avoid looking directly at the sun."
+          ],
+          "equipment": [],
+          "genres": [
+            "outdoors"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Izađi na svjež zrak pet minuta",
+          "summary": "Promijeni okruženje kratkom pauzom na otvorenom.",
+          "imageAlt": "Izađi na svjež zrak pet minuta",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi sigurno mjesto vani i hlad ako je potreban.",
+            "Sjedni ili stani udobno i primijeti zrak oko sebe.",
+            "Vrati se kad želiš; nemoj gledati direktno u sunce."
+          ],
+          "equipment": [],
+          "genres": [
+            "priroda"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "outdoors",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Choose a safe place outside, with shade if needed.",
+        "Sit or stand comfortably and notice the air around you.",
+        "Return when ready; avoid looking directly at the sun."
+      ],
+      "company": "solo",
+      "genres": [
+        "outdoors"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "three-minute-stretch",
+    "input": {
+      "category": "GO",
+      "title": "Take a gentle stretch break",
+      "summary": "Ease into a few comfortable movements after sitting.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "self-care"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-three-minute-stretch.webp",
+        "alt": "Take a gentle stretch break",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Take a gentle stretch break",
+          "summary": "Ease into a few comfortable movements after sitting.",
+          "imageAlt": "Take a gentle stretch break",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Sit or stand with stable support.",
+            "Move your shoulders and gently stretch within a comfortable range.",
+            "Avoid bouncing or pain; skip movements you have been told not to do."
+          ],
+          "equipment": [],
+          "genres": [
+            "self-care"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Napravi pauzu za lagano istezanje",
+          "summary": "Nakon sjedenja napravi nekoliko pokreta koji ti prijaju.",
+          "imageAlt": "Napravi pauzu za lagano istezanje",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Sjedni ili stani uz stabilan oslonac.",
+            "Pokreni ramena i lagano se istegni u ugodnom rasponu.",
+            "Bez trzaja i bola; preskoči pokrete koje ti je stručnjak zabranio."
+          ],
+          "equipment": [],
+          "genres": [
+            "briga o sebi"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "self-care",
+      "durationMinutes": 3,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Sit or stand with stable support.",
+        "Move your shoulders and gently stretch within a comfortable range.",
+        "Avoid bouncing or pain; skip movements you have been told not to do."
+      ],
+      "company": "solo",
+      "genres": [
+        "self-care"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "nostalgic-song",
+    "input": {
+      "category": "GO",
+      "title": "Play a song from your younger days",
+      "summary": "Reconnect with a song and a memory you enjoy.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "music"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-nostalgic-song.webp",
+        "alt": "Play a song from your younger days",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Play a song from your younger days",
+          "summary": "Reconnect with a song and a memory you enjoy.",
+          "imageAlt": "Play a song from your younger days",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose a song that brings back a pleasant memory.",
+            "Set a comfortable listening volume.",
+            "Listen for a few minutes without multitasking."
+          ],
+          "equipment": [],
+          "genres": [
+            "music"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Pusti pjesmu iz mladosti",
+          "summary": "Prisjeti se pjesme i uspomene koja ti prija.",
+          "imageAlt": "Pusti pjesmu iz mladosti",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi pjesmu koja budi lijepu uspomenu.",
+            "Podesi ugodnu jačinu zvuka.",
+            "Slušaj nekoliko minuta bez drugih obaveza."
+          ],
+          "equipment": [],
+          "genres": [
+            "muzika"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "music",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Choose a song that brings back a pleasant memory.",
+        "Set a comfortable listening volume.",
+        "Listen for a few minutes without multitasking."
+      ],
+      "company": "solo",
+      "genres": [
+        "music"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "fresh-air-at-home",
+    "input": {
+      "category": "GO",
+      "title": "Let some fresh air in",
+      "summary": "Refresh a room when outdoor conditions allow.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "home-reset"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-fresh-air-at-home.webp",
+        "alt": "Let some fresh air in",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Let some fresh air in",
+          "summary": "Refresh a room when outdoor conditions allow.",
+          "imageAlt": "Let some fresh air in",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Check outdoor air quality, weather and window safety.",
+            "Open a window briefly if appropriate.",
+            "Secure it again, keeping children and pets safe."
+          ],
+          "equipment": [],
+          "genres": [
+            "home"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Pusti svjež zrak u dom",
+          "summary": "Osvježi prostoriju kada vanjski uslovi to dopuštaju.",
+          "imageAlt": "Pusti svjež zrak u dom",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Provjeri kvalitet zraka, vrijeme i sigurnost prozora.",
+            "Nakratko otvori prozor ako uslovi odgovaraju.",
+            "Ponovo ga osiguraj i pazi na djecu i ljubimce."
+          ],
+          "equipment": [],
+          "genres": [
+            "dom"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "home-reset",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Check outdoor air quality, weather and window safety.",
+        "Open a window briefly if appropriate.",
+        "Secure it again, keeping children and pets safe."
+      ],
+      "company": "solo",
+      "genres": [
+        "home"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "clear-one-surface",
+    "input": {
+      "category": "GO",
+      "title": "Clear just one surface",
+      "summary": "Make one small corner feel more manageable.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "home-reset"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-clear-one-surface.webp",
+        "alt": "Clear just one surface",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Clear just one surface",
+          "summary": "Make one small corner feel more manageable.",
+          "imageAlt": "Clear just one surface",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Pick one desk, shelf or section of a counter.",
+            "Remove rubbish and put remaining items where they belong.",
+            "Stop after that one surface; the rest can wait."
+          ],
+          "equipment": [],
+          "genres": [
+            "home"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Raščisti samo jednu površinu",
+          "summary": "Uredi jedan mali kutak da prostor bude pregledniji.",
+          "imageAlt": "Raščisti samo jednu površinu",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi radni stol, policu ili dio pulta.",
+            "Ukloni smeće, a preostale stvari vrati na mjesto.",
+            "Završi na toj jednoj površini; ostalo može čekati."
+          ],
+          "equipment": [],
+          "genres": [
+            "dom"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "home-reset",
+      "durationMinutes": 10,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Pick one desk, shelf or section of a counter.",
+        "Remove rubbish and put remaining items where they belong.",
+        "Stop after that one surface; the rest can wait."
+      ],
+      "company": "solo",
+      "genres": [
+        "home"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "clean-your-screen",
+    "input": {
+      "category": "GO",
+      "title": "Clean your phone screen",
+      "summary": "Give a frequently used device a little attention.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "home-reset"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-clean-your-screen.webp",
+        "alt": "Clean your phone screen",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Clean your phone screen",
+          "summary": "Give a frequently used device a little attention.",
+          "imageAlt": "Clean your phone screen",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Turn off and unplug the device.",
+            "Use a soft cloth and follow the manufacturer’s cleaning instructions.",
+            "Avoid spraying liquids directly onto the screen or openings."
+          ],
+          "equipment": [],
+          "genres": [
+            "home"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Očisti ekran telefona",
+          "summary": "Posveti malo pažnje uređaju koji često koristiš.",
+          "imageAlt": "Očisti ekran telefona",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Ugasi uređaj i odspoji ga iz struje.",
+            "Koristi mekanu krpu prema uputama proizvođača.",
+            "Ne prskaj tečnost direktno na ekran ili otvore."
+          ],
+          "equipment": [],
+          "genres": [
+            "dom"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "home-reset",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Turn off and unplug the device.",
+        "Use a soft cloth and follow the manufacturer’s cleaning instructions.",
+        "Avoid spraying liquids directly onto the screen or openings."
+      ],
+      "company": "solo",
+      "genres": [
+        "home"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "one-small-task",
+    "input": {
+      "category": "GO",
+      "title": "Finish one small postponed task",
+      "summary": "Choose one manageable task rather than an entire to-do list.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "home-reset"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-one-small-task.webp",
+        "alt": "Finish one small postponed task",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Finish one small postponed task",
+          "summary": "Choose one manageable task rather than an entire to-do list.",
+          "imageAlt": "Finish one small postponed task",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Pick a small task you can realistically finish now.",
+            "Gather what you need and do that one thing.",
+            "Acknowledge that it is done and take a short break."
+          ],
+          "equipment": [],
+          "genres": [
+            "everyday"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Završi jednu malu odgođenu obavezu",
+          "summary": "Izaberi jednu izvodljivu obavezu umjesto cijele liste.",
+          "imageAlt": "Završi jednu malu odgođenu obavezu",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi malu obavezu koju sada možeš završiti.",
+            "Pripremi potrebno i uradi samo tu jednu stvar.",
+            "Primijeti da je završena i napravi kratku pauzu."
+          ],
+          "equipment": [],
+          "genres": [
+            "svakodnevica"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "home-reset",
+      "durationMinutes": 10,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Pick a small task you can realistically finish now.",
+        "Gather what you need and do that one thing.",
+        "Acknowledge that it is done and take a short break."
+      ],
+      "company": "solo",
+      "genres": [
+        "everyday"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "small-change-donation",
+    "input": {
+      "category": "GO",
+      "title": "Donate a little spare change",
+      "summary": "Make a small donation if it fits your budget.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-small-change-donation.webp",
+        "alt": "Donate a little spare change",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Donate a little spare change",
+          "summary": "Make a small donation if it fits your budget.",
+          "imageAlt": "Donate a little spare change",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Set aside only an amount you can comfortably spare.",
+            "Choose a clearly identified, trustworthy charity collection point.",
+            "Donate without pressure; a kind action need not cost money."
+          ],
+          "equipment": [],
+          "genres": [
+            "community"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Doniraj malo sitniša",
+          "summary": "Daj malu donaciju ako to odgovara tvom budžetu.",
+          "imageAlt": "Doniraj malo sitniša",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Odvoji samo iznos koji možeš priuštiti.",
+            "Izaberi jasno označeno i pouzdano mjesto za donacije.",
+            "Doniraj bez pritiska; dobar postupak ne mora koštati."
+          ],
+          "equipment": [],
+          "genres": [
+            "zajednica"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Set aside only an amount you can comfortably spare.",
+        "Choose a clearly identified, trustworthy charity collection point.",
+        "Donate without pressure; a kind action need not cost money."
+      ],
+      "company": "solo",
+      "genres": [
+        "community"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "pick-up-litter",
+    "input": {
+      "category": "GO",
+      "title": "Pick up a safe piece of litter",
+      "summary": "Leave a shared space a little tidier.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-pick-up-litter.webp",
+        "alt": "Pick up a safe piece of litter",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Pick up a safe piece of litter",
+          "summary": "Leave a shared space a little tidier.",
+          "imageAlt": "Pick up a safe piece of litter",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose ordinary paper or an empty bottle in a safe location.",
+            "Use gloves or a litter picker; do not touch sharps or suspicious waste.",
+            "Put it in a suitable bin and wash your hands."
+          ],
+          "equipment": [
+            "Gloves or litter picker"
+          ],
+          "genres": [
+            "community"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Pokupi jedan siguran komad smeća",
+          "summary": "Ostavi zajednički prostor malo urednijim.",
+          "imageAlt": "Pokupi jedan siguran komad smeća",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi papir ili praznu bocu na sigurnom mjestu.",
+            "Koristi rukavice ili hvataljku; ne diraj oštre i sumnjive predmete.",
+            "Odloži u odgovarajuću kantu i operi ruke."
+          ],
+          "equipment": [
+            "Rukavice ili hvataljka za smeće"
+          ],
+          "genres": [
+            "zajednica"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 5,
+      "intensity": "low",
+      "equipment": [
+        "Gloves or litter picker"
+      ],
+      "steps": [
+        "Choose ordinary paper or an empty bottle in a safe location.",
+        "Use gloves or a litter picker; do not touch sharps or suspicious waste.",
+        "Put it in a suitable bin and wash your hands."
+      ],
+      "company": "solo",
+      "genres": [
+        "community"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "donate-three-items",
+    "input": {
+      "category": "GO",
+      "title": "Set aside three items to donate",
+      "summary": "Give useful clothing a chance to be worn again.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-donate-three-items.webp",
+        "alt": "Set aside three items to donate",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Set aside three items to donate",
+          "summary": "Give useful clothing a chance to be worn again.",
+          "imageAlt": "Set aside three items to donate",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "Choose three clean, usable items you no longer need.",
+            "Check what a local charity or collection point currently accepts.",
+            "Pack them neatly and arrange an accepted drop-off; do not leave bags beside bins."
+          ],
+          "equipment": [],
+          "genres": [
+            "community"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Odvoji tri stvari za donaciju",
+          "summary": "Pruži očuvanoj odjeći priliku da je neko ponovo nosi.",
+          "imageAlt": "Odvoji tri stvari za donaciju",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Izaberi tri čiste i upotrebljive stvari koje ti više ne trebaju.",
+            "Provjeri šta lokalna organizacija ili sabirno mjesto trenutno prima.",
+            "Spakuj ih i predaj na dogovoreno mjesto; ne ostavljaj vreće pored kontejnera."
+          ],
+          "equipment": [],
+          "genres": [
+            "zajednica"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 15,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "Choose three clean, usable items you no longer need.",
+        "Check what a local charity or collection point currently accepts.",
+        "Pack them neatly and arrange an accepted drop-off; do not leave bags beside bins."
+      ],
+      "company": "solo",
+      "genres": [
+        "community"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  },
+  {
+    "slug": "feed-a-stray",
+    "input": {
+      "category": "GO",
+      "title": "Offer suitable food to a stray animal",
+      "summary": "Help calmly and follow local animal welfare advice.",
+      "language": "en",
+      "tags": [
+        "small-actions",
+        "kindness"
+      ],
+      "factsVerified": false,
+      "source": {
+        "url": "",
+        "label": "Salem’s GO ideas — 15 October 2026",
+        "checkedAt": "2026-10-15",
+        "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review."
+      },
+      "image": {
+        "path": "/media/go-feed-a-stray.webp",
+        "alt": "Offer suitable food to a stray animal",
+        "rightsConfirmed": false,
+        "generated": true
+      },
+      "translations": {
+        "en": {
+          "title": "Offer suitable food to a stray animal",
+          "summary": "Help calmly and follow local animal welfare advice.",
+          "imageAlt": "Offer suitable food to a stray animal",
+          "sourceLabel": "Salem’s GO ideas — 15 October 2026",
+          "rightsNote": "Original editorial adaptation of user-supplied ideas; generated illustration requires human review.",
+          "reviewed": false,
+          "steps": [
+            "If safe and allowed locally, choose species-appropriate cat or dog food.",
+            "Place a small amount in a safe spot away from traffic and keep your distance.",
+            "Remove packaging and leftovers; contact a rescue group if the animal appears ill or injured."
+          ],
+          "equipment": [],
+          "genres": [
+            "animals"
+          ],
+          "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+        },
+        "bs": {
+          "title": "Ponudi prikladnu hranu uličnoj životinji",
+          "summary": "Pomozi mirno i slijedi lokalne preporuke za brigu o životinjama.",
+          "imageAlt": "Ponudi prikladnu hranu uličnoj životinji",
+          "sourceLabel": "Salemove GO ideje — 15. oktobar 2026.",
+          "rightsNote": "Originalna urednička obrada korisničkih ideja; generisana ilustracija zahtijeva ljudski pregled.",
+          "reviewed": false,
+          "steps": [
+            "Ako je sigurno i lokalno dozvoljeno, izaberi hranu namijenjenu mačkama ili psima.",
+            "Ostavi malu količinu dalje od saobraćaja i zadrži razmak.",
+            "Ukloni ambalažu i ostatke; za bolesnu ili povrijeđenu životinju kontaktiraj udruženje."
+          ],
+          "equipment": [],
+          "genres": [
+            "životinje"
+          ],
+          "recommendationReason": "Za malu, praktičnu promjenu ritma danas. Trajanje je procjena, a ne obaveza."
+        }
+      },
+      "subtype": "kindness",
+      "durationMinutes": 10,
+      "intensity": "low",
+      "equipment": [],
+      "steps": [
+        "If safe and allowed locally, choose species-appropriate cat or dog food.",
+        "Place a small amount in a safe spot away from traffic and keep your distance.",
+        "Remove packaging and leftovers; contact a rescue group if the animal appears ill or injured."
+      ],
+      "company": "solo",
+      "genres": [
+        "animals"
+      ],
+      "recommendationReason": "For a small, practical change of pace today. Duration is an estimate, not a commitment."
+    }
+  }
+]

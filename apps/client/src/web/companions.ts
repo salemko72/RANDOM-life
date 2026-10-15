@@ -1,4 +1,4 @@
-import {localizeContent,type Locale} from '@random/shared';
+import {localizeContent,type Locale,type ContentRecord} from '@random/shared';
 import {demoCatalog} from './bilingualCatalog';
 import {valueLabel} from './ui-language';
 import {previewCatalog} from './catalog';
@@ -45,7 +45,12 @@ const englishWorks:Record<string,string>={
 };
 const bhsWorks:Record<string,string>={'21 Lessons for the 21st Century':'21 lekcija za 21. stoljeće','Der Zauberberg':'Čarobni brijeg','Der Tod in Venedig':'Smrt u Veneciji'};
 /** Match source genres and author names before applying display translations. */
-export function companionItems(item:{category:string;id:string;authors?:string[];genres?:string[]},locale:Locale='bs'):Companion[]{
+export function companionItems(item:{category:string;id:string;authors?:string[];genres?:string[]},locale:Locale='bs',catalog?:ContentRecord[]):Companion[]{
+ if(catalog){
+  const source=catalog.find(r=>r.id===item.id);
+  if(!source)return [];
+  return catalog.filter(r=>r.id!==item.id&&r.category===source.category&&r.category!=='EAT'&&(source.category==='BOOK'&&r.category==='BOOK'?r.authors.some(a=>source.authors.includes(a)):source.category==='WATCH'&&r.category==='WATCH'?r.genres.some(g=>source.genres.includes(g)):true)).slice(0,8).map(r=>{const d=localizeContent(r,locale);return{id:r.id,targetId:r.id,title:d.title,subtitle:d.summary,category:r.category as Companion['category']};});
+ }
  return sourceCompanionItems(item).map(companion=>{
   const source=demoCatalog.find(record=>record.id===companion.targetId);
   if(source){const display=localizeContent(source,locale);return {...companion,title:display.title,subtitle:display.category==='WATCH'?`${valueLabel(display.format,locale)} · ${display.genres.join(', ')}`:display.category==='MOVE'?`${display.durationMinutes} min · ${valueLabel(display.subtype,locale)}`:display.summary};}

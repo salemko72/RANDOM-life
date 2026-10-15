@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import type {Locale} from '@random/shared';
 const english:Record<string,string> = {
+ "Povezanost":"Connection", "Ljubaznost":"Kindness", "Briga o sebi":"Self-care", "Na otvorenom":"Outdoors", "Muzika":"Music", "Mali red u domu":"Home reset",
  "Prehrana s malo fosfora":"Low-phosphate diet",
  "Prikazujemo samo recepte s potvrđenom oznakom za ovaj režim. Ograničenja za bubrežne bolesnike su individualna.":"Only recipes with a verified low-phosphate classification are shown. Kidney dietary restrictions are individual.",
  " · prehrana s malo fosfora":" · low-phosphate diet",
@@ -201,7 +202,7 @@ const english:Record<string,string> = {
 const bhsOverrides:Record<string,string>={'Decide Less. Live More.':'Manje odluka. Više života.','Decide less.':'Manje odluka.','Live more.':'Više života.','Home':'Početna','Spin again':'Zavrti ponovo','COOK':'KUHAJ','LET’S COOK':'KUHAJMO','SPIN':'ZAVRTI','SPINNING':'OKREĆE SE','and go':'i kreni','TODAY’S PICK':'DANAŠNJI IZBOR','Choose':'Izaberi','category':'kategoriju','Gym':'Teretana','Trim':'Šetnja','Yoga':'Joga','Series':'Serija','Episodes':'Epizode','Miniseries':'Miniserija'};
 export function translate(text:string,locale:Locale):string {return locale==='en' ? (english[text]??text) : (bhsOverrides[text]??text);}
 export function categoryLabel(code:string,locale:Locale):string {const labels:Record<string,string>={EAT:'HRANA',READ:'KNJIGE',BOOK:'KNJIGE',WATCH:'GLEDAJ',MOVE:'POKRENI SE',GO:'IZAĐI',PLAY:'IGRAJ',CREATE:'STVARAJ',LEARN:'UČI'};return locale==='en'?(code==='BOOK'?'READ':code):labels[code]??code;}
-const values:Record<string,string>={milk:'Mlijeko',eggs:'Jaja',wheat:'Pšenica',nuts:'Orašasti plodovi',peanuts:'Kikiriki',soy:'Soja',fish:'Riba',shellfish:'Školjke',sesame:'Susam',mustard:'Senf',celery:'Celer',sulfites:'Sulfiti',lupin:'Lupina',lactose:'Laktoza',gluten:'Gluten',gym:'Gym',trim:'Trim',yoga:'Yoga',cinema:'Kino',theater:'Teatar',disco:'Ples',cafe:'Kafić'};
+const values:Record<string,string>={connection:'Povezanost',kindness:'Ljubaznost','self-care':'Briga o sebi',outdoors:'Na otvorenom',music:'Muzika','home-reset':'Mali red u domu',milk:'Mlijeko',eggs:'Jaja',wheat:'Pšenica',nuts:'Orašasti plodovi',peanuts:'Kikiriki',soy:'Soja',fish:'Riba',shellfish:'Školjke',sesame:'Susam',mustard:'Senf',celery:'Celer',sulfites:'Sulfiti',lupin:'Lupina',lactose:'Laktoza',gluten:'Gluten',gym:'Gym',trim:'Trim',yoga:'Yoga',cinema:'Kino',theater:'Teatar',disco:'Ples',cafe:'Kafić'};
 export function valueLabel(value:string,locale:Locale):string{return translate(values[value]??value,locale);}
 function loadLocale():Locale {try{return localStorage.getItem('random-life.locale.v1')==='bs'?'bs':'en';}catch{return 'en';}}
 const LanguageContext=createContext<{locale:Locale;setLocale:(locale:Locale)=>void}>({locale:'en',setLocale:()=>{}});

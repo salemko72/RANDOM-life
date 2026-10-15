@@ -50,3 +50,13 @@ test('every WATCH has thematic companions, with metadata-only dramas when no cat
  expect(companions.every(item=>item.category==='WATCH'&&item.subtitle.includes('Drama')&&!item.targetId)).toBe(true);
  expect(companionItems({category:'WATCH',id:'unknown',genres:[]})).toEqual([]);
 });
+
+test('uses only the supplied online catalog for app recommendations',()=>{
+ const source=watchCatalog[0];
+ expect(companionItems(source,'en',[])).toEqual([]);
+ expect(companionItems(source,'en',[source])).toEqual([]);
+ const other={...source,id:'online-other',title:'Online title'};
+ const candidates=companionItems(source,'en',[source,other]);
+ expect(candidates.map(c=>c.targetId)).toEqual(['online-other']);
+ expect(candidates[0].title).toBe('Online title');
+});

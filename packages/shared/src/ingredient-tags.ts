@@ -17,10 +17,37 @@ const rows=[
 export const ingredientDefinitions:IngredientDefinition[]=rows.flatMap((row,r)=>row.map((value,c)=>{const[id,name,aliases]=value.split('|');return{id,name,aliases:[name,id,...aliases.split(',')],row:r,column:c};}));
 ingredientDefinitions.push(...extensionIngredients.map(i=>({...i,aliases:[...i.aliases,i.id]})));
 ingredientDefinitions.push(...extension50Ingredients.map(i=>({...i,aliases:[...i.aliases,i.id]})));
+// These aliases share artwork only. Recipe names, preparation notes, allergens and
+// dietary assessments remain untouched; never infer medical suitability from an icon.
+const artworkAliases:Record<string,string[]>={
+ 'black-pepper':['Biber za kuhanje','Biber za salatu','Papar za kuhanje','Papar za salatu','Black pepper','Pepper for cooking','Pepper for salad','Black pepper for cooking','Black pepper for salad'],
+ 'wheat-flour':['Brašno za paniranje','Brašno za pohovanje','Flour','Wheat flour','Flour for coating','Flour for breading','Flour for dredging'],
+ 'red-chili':['Čili','Chili','Chilli'],
+ 'shrimp':['Kozice, sačuvati ljuske','Shrimp, reserve shells','Prawns, reserve shells'],
+ 'salt':['Krupna dimljena morska so','Morska so','Morska sol','Morska so u listićima','Sea salt','Flaky sea salt','Coarse smoked sea salt','Salt'],
+ 'lemon':['Limun za čišćenje artičoka','Lemon for cleaning artichokes','Lemon'],
+ 'extension-50-016':['Masline','Olives'],
+ 'milk':['Mlijeko za paniranje','Mlijeko za smjesu','Milk','Milk for breading','Milk for coating','Milk for the mixture','Milk for mixture'],
+ 'orange':['Narandža za sok','Naranča za sok','Orange for juice','Orange'],
+ 'extension-50-001':['Suho bijelo vino','Suvo belo vino','Dry white wine'],
+ 'tuna':['Tuna u ulju, ocijeđena','Tunjevina u ulju, ocijeđena','Tuna in oil, drained','Drained tuna in oil'],
+ 'tomato':['Velike zrele rajčice','Veliki zreli paradajz','Large ripe tomatoes','Tomatoes','Tomato'],
+};
+for(const [id,aliases]of Object.entries(artworkAliases)){
+ const entry=ingredientDefinitions.find(i=>i.id===id);
+ if(!entry)throw Error('Missing artwork alias target: '+id);
+ entry.aliases.push(...aliases);
+}
 const normalize=(name:string)=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');
 export function resolveIngredient(name:string,tag?:string):IngredientDefinition|undefined{
  if(tag){const tagged=ingredientDefinitions.find(i=>i.id===tag);if(tagged)return tagged;}
- const key=normalize(name);return ingredientDefinitions.find(i=>i.aliases.some(a=>normalize(a)===key));
+ const key=normalize(name);
+ const lookup=(value:string)=>ingredientDefinitions.find(i=>i.aliases.some(a=>normalize(a)===value));
+ const exact=lookup(key);if(exact)return exact;
+ // Strip only a known use, then require an exact known food name. Never strip
+ // qualifiers such as gluten-free, smoked, almond, fish, or lactose-free.
+ const base=key.replace(/\s+(?:za (?:kuhanje|pecenje|salatu|paniranje|pohovanje|smjesu|smesu|tijesto|testo|marinadu|posluzivanje)|for (?:cooking|baking|salad|coating|breading|dredging|the mixture|mixture|dough|marinade|serving))$/,'');
+ return base!==key?lookup(base):undefined;
 }
 export function tagIngredients<T extends {category:string;ingredients?:{name:string;tag?:string}[]}>(content:T):T{
  if(content.category!=='EAT'||!content.ingredients)return content;

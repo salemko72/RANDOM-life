@@ -20,3 +20,18 @@ test('second extension adds 50 unique cells without moving the first extension',
  for(const entry of fresh)expect(resolveIngredient(entry.name)).toBeTruthy();
  expect(new Set(ingredientDefinitions.map(i=>i.id)).size).toBe(224);
 });
+
+test('reuses ingredient artwork for cooking purposes without changing recipe wording',()=>{
+ const aliases:Record<string,string>={
+ 'Biber za kuhanje':'black-pepper','Biber za salatu':'black-pepper','Brašno za paniranje':'wheat-flour',
+ 'Čili':'red-chili','Kozice, sačuvati ljuske':'shrimp','Krupna dimljena morska so':'salt',
+ 'Limun za čišćenje artičoka':'lemon','Masline':'extension-50-016',
+ 'Mlijeko za paniranje':'milk','Mlijeko za smjesu':'milk','Morska so':'salt','Morska so u listićima':'salt',
+ 'Narandža za sok':'orange','Suho bijelo vino':'extension-50-001','Tuna u ulju, ocijeđena':'tuna','Velike zrele rajčice':'tomato',
+ 'Krompir za salatu':'potato','Maslinovo ulje za marinadu':'olive-oil','Flour for coating':'wheat-flour','Milk for the mixture':'milk','Black pepper for salad':'black-pepper'
+ };
+ for(const [name,id]of Object.entries(aliases))expect(resolveIngredient(name)?.id,name).toBe(id);
+ const recipe=tagIngredients({category:'EAT',ingredients:[{name:'Brašno za paniranje'}]});
+ expect(recipe.ingredients[0]).toMatchObject({name:'Brašno za paniranje',tag:'wheat-flour'});
+ for(const name of ['Soda bikarbona','Riblji temeljac','Jakobove kapice','Ljutika','Slatka paprika','Bademovo brašno za paniranje','Mlijeko bez laktoze za smjesu'])expect(resolveIngredient(name),name).toBeUndefined();
+});

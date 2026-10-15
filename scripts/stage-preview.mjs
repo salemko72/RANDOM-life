@@ -27,3 +27,8 @@ const atlas50Root=resolve('content/ingredient-atlas-extension-50');const atlas50
 // Keep the reviewed-format GO batch downloadable after future rebuilds.
 await mkdir(resolve(target,'downloads/recipes/go-actions'),{recursive:true});
 for(const name of ['RANDOM-GO-20-catalog.zip','RANDOM-GO-20-individual-zips.zip'])await cp(resolve('content/go-actions-2026-10-15',name),resolve(target,'downloads/recipes/go-actions',name));
+
+const atlas126Root=resolve('content/ingredient-atlas-extension-126');const atlas126Files={};
+for(const name of ['manifest.json','README.md','source.json'])atlas126Files[name]=new Uint8Array(await readFile(resolve(atlas126Root,name)));
+for(let page=1;page<=8;page++){const number=String(page).padStart(2,'0');atlas126Files[`atlas-${number}.png`]=new Uint8Array(await readFile(resolve('apps/client/src/web/assets',`ingredient-atlas-extension-126-${number}.png`)));}
+await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-126.zip'),zipSync(atlas126Files));

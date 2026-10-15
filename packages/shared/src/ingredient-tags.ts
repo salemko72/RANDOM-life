@@ -1,6 +1,7 @@
+import {extension126Ingredients} from './ingredient-atlas-extension-126';
 import {extension50Ingredients} from './ingredient-atlas-extension-50';
 import {extensionIngredients} from './ingredient-atlas-extension';
-export interface IngredientDefinition{id:string;name:string;aliases:string[];row:number;column:number;atlas?:'extension-74'|'extension-50'}
+export interface IngredientDefinition{id:string;name:string;aliases:string[];row:number;column:number;atlas?:'extension-74'|'extension-50'|`extension-126-${number}`;gridSize?:4|10;englishName?:string}
 // Ordered 10×10 atlas contract. Append a new atlas/version rather than reordering cells.
 const rows=[
  ['potato|Krompir|krumpir,krompiri','onion|Luk|crni luk','garlic|Bijeli luk|češnjak,beli luk','carrot|Mrkva|šargarepa,mrkve','tomato|Paradajz|rajčica,paradajzi','cucumber|Krastavac|krastavci','bell-pepper|Paprika|crvena paprika,babura','zucchini|Tikvica|tikvice','eggplant|Patlidžan|patlidžani','broccoli|Brokula|brokoli'],
@@ -38,6 +39,7 @@ for(const [id,aliases]of Object.entries(artworkAliases)){
  if(!entry)throw Error('Missing artwork alias target: '+id);
  entry.aliases.push(...aliases);
 }
+ingredientDefinitions.push(...extension126Ingredients.map(i=>({...i,aliases:[...i.aliases,i.id]})));
 const normalize=(name:string)=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim().replace(/\s+/g,' ');
 export function resolveIngredient(name:string,tag?:string):IngredientDefinition|undefined{
  if(tag){const tagged=ingredientDefinitions.find(i=>i.id===tag);if(tagged)return tagged;}

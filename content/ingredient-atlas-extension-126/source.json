@@ -1,0 +1,632 @@
+[
+  {
+    "number": 1,
+    "name": "Artičoke",
+    "english": "Artichokes"
+  },
+  {
+    "number": 2,
+    "name": "Balzamično sirće",
+    "english": "Balsamic vinegar"
+  },
+  {
+    "number": 3,
+    "name": "Bijela miso pasta bez dashija",
+    "english": "White miso paste without dashi"
+  },
+  {
+    "number": 4,
+    "name": "Bijela riža, suha",
+    "english": "Dry white rice"
+  },
+  {
+    "number": 5,
+    "name": "Bijeli luk u prahu",
+    "english": "Garlic powder"
+  },
+  {
+    "number": 6,
+    "name": "Bijeli špageti",
+    "english": "White spaghetti"
+  },
+  {
+    "number": 7,
+    "name": "Biljna mješavina začina bez soli",
+    "english": "Salt-free herb seasoning blend"
+  },
+  {
+    "number": 8,
+    "name": "Bjelanca",
+    "english": "Egg whites"
+  },
+  {
+    "number": 9,
+    "name": "Bjelance",
+    "english": "Egg white"
+  },
+  {
+    "number": 10,
+    "name": "Blaga curry pasta",
+    "english": "Mild curry paste"
+  },
+  {
+    "number": 11,
+    "name": "Bosiljak, čvrsto napunjen",
+    "english": "Basil, firmly packed"
+  },
+  {
+    "number": 12,
+    "name": "Breskva, oguljena i bez košpice",
+    "english": "Peach, peeled and pitted"
+  },
+  {
+    "number": 13,
+    "name": "Bukovače",
+    "english": "Oyster mushrooms"
+  },
+  {
+    "number": 14,
+    "name": "Butternut tikva",
+    "english": "Butternut squash"
+  },
+  {
+    "number": 15,
+    "name": "Celer, stabljika",
+    "english": "Celery stalk"
+  },
+  {
+    "number": 16,
+    "name": "Cherry paradajz",
+    "english": "Cherry tomatoes"
+  },
+  {
+    "number": 17,
+    "name": "Cherry rajčice",
+    "english": "Cherry tomatoes"
+  },
+  {
+    "number": 18,
+    "name": "Ciabatta ili rustikalni hljeb",
+    "english": "Ciabatta or rustic bread"
+  },
+  {
+    "number": 19,
+    "name": "Čili pahuljice",
+    "english": "Chili flakes"
+  },
+  {
+    "number": 20,
+    "name": "Čili u prahu, čisti",
+    "english": "Pure chili powder"
+  },
+  {
+    "number": 21,
+    "name": "Crne masline bez košpica",
+    "english": "Pitted black olives"
+  },
+  {
+    "number": 22,
+    "name": "Crvena leća, suha",
+    "english": "Dry red lentils"
+  },
+  {
+    "number": 23,
+    "name": "Crveno vinsko sirće",
+    "english": "Red wine vinegar"
+  },
+  {
+    "number": 24,
+    "name": "Curry u prahu s veganskom deklaracijom",
+    "english": "Curry powder with vegan labeling"
+  },
+  {
+    "number": 25,
+    "name": "Čvrsti tofu",
+    "english": "Firm tofu"
+  },
+  {
+    "number": 26,
+    "name": "Dižon senf",
+    "english": "Dijon mustard"
+  },
+  {
+    "number": 27,
+    "name": "Domaći pesto s malo natrijuma prema KNI",
+    "english": "Homemade low-sodium pesto following KNI"
+  },
+  {
+    "number": 28,
+    "name": "Doubanjiang s veganskom deklaracijom",
+    "english": "Doubanjiang with vegan labeling"
+  },
+  {
+    "number": 29,
+    "name": "Engleski krastavac",
+    "english": "English cucumber"
+  },
+  {
+    "number": 30,
+    "name": "Francuska zelena leća, suha",
+    "english": "Dry French green lentils"
+  },
+  {
+    "number": 31,
+    "name": "Garam masala, čista mješavina",
+    "english": "Pure garam masala blend"
+  },
+  {
+    "number": 32,
+    "name": "Hladna voda za humus",
+    "english": "Cold water for hummus"
+  },
+  {
+    "number": 33,
+    "name": "Integralni chapati",
+    "english": "Whole-wheat chapati"
+  },
+  {
+    "number": 34,
+    "name": "Jabuka, oguljena",
+    "english": "Peeled apple"
+  },
+  {
+    "number": 35,
+    "name": "Jabuka, oguljena i očišćena",
+    "english": "Peeled and cored apple"
+  },
+  {
+    "number": 36,
+    "name": "Jabukovo sirće",
+    "english": "Apple cider vinegar"
+  },
+  {
+    "number": 37,
+    "name": "Jabukovo sirće, vegansko",
+    "english": "Vegan apple cider vinegar"
+  },
+  {
+    "number": 38,
+    "name": "Jakobove kapice",
+    "english": "Scallops"
+  },
+  {
+    "number": 39,
+    "name": "Kapari, isprani",
+    "english": "Rinsed capers"
+  },
+  {
+    "number": 40,
+    "name": "Karfiol, u komadima",
+    "english": "Cauliflower florets"
+  },
+  {
+    "number": 41,
+    "name": "Kelj",
+    "english": "Kale"
+  },
+  {
+    "number": 42,
+    "name": "Kelj, sitno nasjeckan",
+    "english": "Finely chopped kale"
+  },
+  {
+    "number": 43,
+    "name": "Kikiriki, prženi",
+    "english": "Roasted peanuts"
+  },
+  {
+    "number": 44,
+    "name": "Kim",
+    "english": "Caraway seeds"
+  },
+  {
+    "number": 45,
+    "name": "Klice mung graha",
+    "english": "Mung bean sprouts"
+  },
+  {
+    "number": 46,
+    "name": "Kokosovo mlijeko",
+    "english": "Coconut milk"
+  },
+  {
+    "number": 47,
+    "name": "Kokosovo mlijeko iz konzerve",
+    "english": "Canned coconut milk"
+  },
+  {
+    "number": 48,
+    "name": "Komadi oraha",
+    "english": "Walnut pieces"
+  },
+  {
+    "number": 49,
+    "name": "Krem sir",
+    "english": "Cream cheese"
+  },
+  {
+    "number": 50,
+    "name": "Krompir, oguljen",
+    "english": "Peeled potatoes"
+  },
+  {
+    "number": 51,
+    "name": "Kuhane leblebije, ocijeđene",
+    "english": "Cooked chickpeas, drained"
+  },
+  {
+    "number": 52,
+    "name": "Kuhane leblebije, ocijeđene, za humus",
+    "english": "Cooked chickpeas, drained, for hummus"
+  },
+  {
+    "number": 53,
+    "name": "Kuhani bijeli grah, ocijeđen",
+    "english": "Cooked white beans, drained"
+  },
+  {
+    "number": 54,
+    "name": "Kuhani crni grah, ocijeđen",
+    "english": "Cooked black beans, drained"
+  },
+  {
+    "number": 55,
+    "name": "Kukuruz, ocijeđen",
+    "english": "Drained corn"
+  },
+  {
+    "number": 56,
+    "name": "Kukuruzne tortilje s veganskom deklaracijom",
+    "english": "Corn tortillas with vegan labeling"
+  },
+  {
+    "number": 57,
+    "name": "Kukuruzni škrob",
+    "english": "Cornstarch"
+  },
+  {
+    "number": 58,
+    "name": "Leblebije u konzervi, prije cijeđenja",
+    "english": "Canned chickpeas before draining"
+  },
+  {
+    "number": 59,
+    "name": "Linguine tjestenina",
+    "english": "Linguine pasta"
+  },
+  {
+    "number": 60,
+    "name": "Ljutika",
+    "english": "Shallots"
+  },
+  {
+    "number": 61,
+    "name": "Luk u prahu",
+    "english": "Onion powder"
+  },
+  {
+    "number": 62,
+    "name": "Masline, isprane",
+    "english": "Rinsed olives"
+  },
+  {
+    "number": 63,
+    "name": "Miješana mlada salata",
+    "english": "Mixed baby salad leaves"
+  },
+  {
+    "number": 64,
+    "name": "Mlijeko s 2% masti",
+    "english": "2% milk"
+  },
+  {
+    "number": 65,
+    "name": "Mrs. Dash garlic and herb mješavina bez soli",
+    "english": "Mrs. Dash salt-free garlic and herb seasoning"
+  },
+  {
+    "number": 66,
+    "name": "Nemasni grčki jogurt",
+    "english": "Nonfat Greek yogurt"
+  },
+  {
+    "number": 67,
+    "name": "Neobogaćeni rižin napitak bez fosfatnih aditiva",
+    "english": "Unfortified rice drink without phosphate additives"
+  },
+  {
+    "number": 68,
+    "name": "Nesoljeni maslac",
+    "english": "Unsalted butter"
+  },
+  {
+    "number": 69,
+    "name": "Obična bijela tjestenina",
+    "english": "Plain white pasta"
+  },
+  {
+    "number": 70,
+    "name": "Obične zobene pahuljice",
+    "english": "Plain rolled oats"
+  },
+  {
+    "number": 71,
+    "name": "Očišćena hobotnica",
+    "english": "Cleaned octopus"
+  },
+  {
+    "number": 72,
+    "name": "Očišćena sipa",
+    "english": "Cleaned cuttlefish"
+  },
+  {
+    "number": 73,
+    "name": "Oguljena tikvica",
+    "english": "Peeled zucchini"
+  },
+  {
+    "number": 74,
+    "name": "Padrón papričice",
+    "english": "Padrón peppers"
+  },
+  {
+    "number": 75,
+    "name": "Pak choi",
+    "english": "Pak choi"
+  },
+  {
+    "number": 76,
+    "name": "Pasta tamarinda, veganska",
+    "english": "Vegan tamarind paste"
+  },
+  {
+    "number": 77,
+    "name": "Pečene crvene paprike, ocijeđene",
+    "english": "Roasted red peppers, drained"
+  },
+  {
+    "number": 78,
+    "name": "Pileći bujon s malo natrijuma",
+    "english": "Low-sodium chicken broth"
+  },
+  {
+    "number": 79,
+    "name": "Povrtni bujon s malo natrijuma",
+    "english": "Low-sodium vegetable broth"
+  },
+  {
+    "number": 80,
+    "name": "Povrtni bujon sa smanjenom količinom soli",
+    "english": "Reduced-salt vegetable broth"
+  },
+  {
+    "number": 81,
+    "name": "Prokulice, naribane",
+    "english": "Shredded Brussels sprouts"
+  },
+  {
+    "number": 82,
+    "name": "Ramen rezanci bez jaja",
+    "english": "Egg-free ramen noodles"
+  },
+  {
+    "number": 83,
+    "name": "Riblji temeljac",
+    "english": "Fish stock"
+  },
+  {
+    "number": 84,
+    "name": "Rižini rezanci",
+    "english": "Rice noodles"
+  },
+  {
+    "number": 85,
+    "name": "Rižino sirće s veganskom deklaracijom",
+    "english": "Rice vinegar with vegan labeling"
+  },
+  {
+    "number": 86,
+    "name": "Rukola",
+    "english": "Arugula"
+  },
+  {
+    "number": 87,
+    "name": "Rukola, čvrsto napunjena",
+    "english": "Arugula, firmly packed"
+  },
+  {
+    "number": 88,
+    "name": "Šećer s veganskom deklaracijom",
+    "english": "Sugar with vegan labeling"
+  },
+  {
+    "number": 89,
+    "name": "Sečuanski biber, mljeveni",
+    "english": "Ground Sichuan pepper"
+  },
+  {
+    "number": 90,
+    "name": "Senf bez meda, veganski",
+    "english": "Vegan mustard without honey"
+  },
+  {
+    "number": 91,
+    "name": "Šeri sirće",
+    "english": "Sherry vinegar"
+  },
+  {
+    "number": 92,
+    "name": "Shiitake gljive, svježe",
+    "english": "Fresh shiitake mushrooms"
+  },
+  {
+    "number": 93,
+    "name": "Shishito papričice",
+    "english": "Shishito peppers"
+  },
+  {
+    "number": 94,
+    "name": "Sjeckani paradajz",
+    "english": "Chopped tomatoes"
+  },
+  {
+    "number": 95,
+    "name": "Sjeckani paradajz bez dodane soli",
+    "english": "Chopped tomatoes without added salt"
+  },
+  {
+    "number": 96,
+    "name": "Slatka paprika",
+    "english": "Sweet paprika"
+  },
+  {
+    "number": 97,
+    "name": "Smrznuta mješavina povrća",
+    "english": "Frozen mixed vegetables"
+  },
+  {
+    "number": 98,
+    "name": "So, samo ako je potrebna",
+    "english": "Salt, only if needed"
+  },
+  {
+    "number": 99,
+    "name": "Soda bikarbona",
+    "english": "Baking soda"
+  },
+  {
+    "number": 100,
+    "name": "Soja sos, veganski",
+    "english": "Vegan soy sauce"
+  },
+  {
+    "number": 101,
+    "name": "Sok limete",
+    "english": "Lime juice"
+  },
+  {
+    "number": 102,
+    "name": "Sok narandže",
+    "english": "Orange juice"
+  },
+  {
+    "number": 103,
+    "name": "Špageti bez jaja",
+    "english": "Egg-free spaghetti"
+  },
+  {
+    "number": 104,
+    "name": "Srednje čvrsti tofu",
+    "english": "Medium-firm tofu"
+  },
+  {
+    "number": 105,
+    "name": "Suha riža",
+    "english": "Dry rice"
+  },
+  {
+    "number": 106,
+    "name": "Suhe leblebije za falafel",
+    "english": "Dry chickpeas for falafel"
+  },
+  {
+    "number": 107,
+    "name": "Suhi bosiljak",
+    "english": "Dried basil"
+  },
+  {
+    "number": 108,
+    "name": "Suhi makaroni",
+    "english": "Dry macaroni"
+  },
+  {
+    "number": 109,
+    "name": "Suhi origano",
+    "english": "Dried oregano"
+  },
+  {
+    "number": 110,
+    "name": "Sušene brusnice",
+    "english": "Dried cranberries"
+  },
+  {
+    "number": 111,
+    "name": "Sušene shiitake gljive",
+    "english": "Dried shiitake mushrooms"
+  },
+  {
+    "number": 112,
+    "name": "Sušene zaslađene brusnice",
+    "english": "Sweetened dried cranberries"
+  },
+  {
+    "number": 113,
+    "name": "Svježi korijander",
+    "english": "Fresh cilantro"
+  },
+  {
+    "number": 114,
+    "name": "Svježi sok limete",
+    "english": "Fresh lime juice"
+  },
+  {
+    "number": 115,
+    "name": "Tamari sa smanjenom količinom soli",
+    "english": "Reduced-salt tamari"
+  },
+  {
+    "number": 116,
+    "name": "Tjestenina bez jaja",
+    "english": "Egg-free pasta"
+  },
+  {
+    "number": 117,
+    "name": "Ulje avokada",
+    "english": "Avocado oil"
+  },
+  {
+    "number": 118,
+    "name": "Usitnjeni bijeli luk",
+    "english": "Minced garlic"
+  },
+  {
+    "number": 119,
+    "name": "Veganski rustikalni hljeb",
+    "english": "Vegan rustic bread"
+  },
+  {
+    "number": 120,
+    "name": "Veganski rustikalni hljeb bez mlijeka, jaja i meda",
+    "english": "Vegan rustic bread without milk, eggs or honey"
+  },
+  {
+    "number": 121,
+    "name": "Voda za namakanje",
+    "english": "Water for soaking"
+  },
+  {
+    "number": 122,
+    "name": "Voda za namakanje i kuhanje",
+    "english": "Water for soaking and cooking"
+  },
+  {
+    "number": 123,
+    "name": "Voda za rižu",
+    "english": "Water for rice"
+  },
+  {
+    "number": 124,
+    "name": "Zelena boranija",
+    "english": "Green beans"
+  },
+  {
+    "number": 125,
+    "name": "Zelene masline bez košpica",
+    "english": "Pitted green olives"
+  },
+  {
+    "number": 126,
+    "name": "Žuti senf",
+    "english": "Yellow mustard"
+  }
+]

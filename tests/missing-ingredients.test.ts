@@ -16,9 +16,9 @@ it('removes resolved extension ingredients from the missing list without erasing
 });
 
 it('stops requesting illustrations for familiar cooking-purpose names but keeps distinct foods',()=>{
- const names=['Biber za kuhanje','Brašno za paniranje','Mlijeko za smjesu','Limun za čišćenje artičoka','Riblji temeljac','Soda bikarbona'];
+ const names=['Biber za kuhanje','Brašno za paniranje','Mlijeko za smjesu','Limun za čišćenje artičoka','Amarant','Ulje makadamije'];
  const entries=names.map(name=>({key:name,name,recipes:['Example'],firstSeen:'2026-10-15',lastSeen:'2026-10-15'}));
- expect(unresolvedIngredients(entries).map(e=>e.name)).toEqual(['Riblji temeljac','Soda bikarbona']);
+ expect(unresolvedIngredients(entries).map(e=>e.name)).toEqual(['Amarant','Ulje makadamije']);
  expect(entries).toHaveLength(6);
  const prompt=missingAtlasPrompt(entries);expect(prompt).toContain('Popis (2)');expect(prompt).not.toContain('Brašno za paniranje');
 });

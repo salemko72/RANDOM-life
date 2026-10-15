@@ -49,3 +49,5 @@ Only illustration lookup changes. All recipe names, quantities, preparation note
 Known stored tags and exact aliases retain precedence. BHS and ENG cooking-purpose suffixes (for cooking/coating/salad/mixture/marinade/serving, etc.) can be removed only when the remaining full name exactly matches an existing ingredient alias. No fuzzy matching or removal of dietary/cultivar qualifiers. For example, almond flour is never mapped to wheat flour, fish stock is never mapped to meat stock, and baking soda is never mapped to baking powder.
 
 The cumulative missing-ingredient history stays intact; resolved entries disappear from its displayed/copyable request list after reload. Prompt generation also independently removes resolved entries. No new artwork was generated in this optimization pass.
+
+The 14 new illustration candidates above are now covered by the subsequent `ingredient-atlas-extension-126` batch. The ambiguous unqualified “Slatka paprika” remains a manual choice. Do not regenerate those 14 solely from this historical audit.

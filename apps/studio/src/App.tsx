@@ -498,7 +498,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                           {displayValid?.category === 'EAT' ? displayValid.ingredients[index].name : ingredient.name}
                           <select aria-label={`${tx(tx("Ikona za"))} ${displayValid?.category === 'EAT' ? displayValid.ingredients[index].name : ingredient.name}`} value={definition?.id ?? ""} onChange={e => mapIngredient(index, e.target.value)}>
                             <option value="">{tx("Bez prepoznate oznake")}</option>
-                            {ingredientDefinitions.map(entry => <option key={entry.id} value={entry.id}>{locale==='en'?entry.id.replace(/-/g,' '):entry.name} · {entry.id}</option>)}
+                            {ingredientDefinitions.map(entry => <option key={entry.id} value={entry.id}>{locale==='en'?(entry.englishName??entry.id.replace(/-/g,' ')):entry.name} · {entry.id}</option>)}
                           </select>
                           <small className="input-help">{definition ? `Oznaka: ${definition.id}` : tx("Naziv nije prepoznat; izaberi ikonu ako postoji.")}</small>
                         </label>
@@ -506,9 +506,9 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
             })}
                   <details>
                     <summary>{locale==='en'?`Browse all ${ingredientDefinitions.length} ingredients`:`Pregled svih ${ingredientDefinitions.length} sastojaka`}</summary>
-                    <div className="ingredient-atlas-grid">{ingredientDefinitions.map(entry => <div key={entry.id} title={entry.id}><span className="ingredient-sprite" aria-hidden="true" data-ingredient-tag={entry.id} data-ingredient-atlas={entry.atlas??'original'} style={ingredientSpriteStyle(entry)}/><span>{locale==='en'?entry.id.replace(/-/g,' '):entry.name}</span></div>)}</div>
+                    <div className="ingredient-atlas-grid">{ingredientDefinitions.map(entry => <div key={entry.id} title={entry.id}><span className="ingredient-sprite" aria-hidden="true" data-ingredient-tag={entry.id} data-ingredient-atlas={entry.atlas??'original'} style={ingredientSpriteStyle(entry)}/><span>{locale==='en'?(entry.englishName??entry.id.replace(/-/g,' ')):entry.name}</span></div>)}</div>
                   </details>
-                  <button className="quiet" onClick={() => run(async () => { await navigator.clipboard.writeText(ingredientDefinitions.map(entry => `${entry.id}: ${locale==='en'?entry.id.replace(/-/g,' '):entry.name}`).join("\n")); setMessage(tx("Lista oznaka sastojaka je kopirana.")); })}>{tx("Kopiraj listu oznaka")}</button>
+                  <button className="quiet" onClick={() => run(async () => { await navigator.clipboard.writeText(ingredientDefinitions.map(entry => `${entry.id}: ${locale==='en'?(entry.englishName??entry.id.replace(/-/g,' ')):entry.name}`).join("\n")); setMessage(tx("Lista oznaka sastojaka je kopirana.")); })}>{tx("Kopiraj listu oznaka")}</button>
                 </section>)}
               {valid?.classification && <section className="copy-status"><strong>{locale==='en'?'AI category suggestion':'AI prijedlog kategorije'}: {valid.classification.suggestedCategory==='BOOK'?'READ':valid.classification.suggestedCategory}</strong><p>{valid.classification.reason[locale]}</p></section>}
               {valid?.dietaryAssessment && <section className="copy-status"><strong>{locale==='en'?'AI dietary suggestions · human confirmation required':'AI prijedlog ograničenja · čovjek potvrđuje'}</strong><p>Gluten: {valid.dietaryAssessment.gluten} · {locale==='en'?'Lactose':'Laktoza'}: {valid.dietaryAssessment.lactose}</p><p>{valid.dietaryAssessment.notes[locale]}</p></section>}

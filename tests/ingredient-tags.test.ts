@@ -12,13 +12,13 @@ test('extension maps all 74 cells while preserving original atlas tags',()=>{
 });
 
 test('second extension adds 50 unique cells without moving the first extension',()=>{
- const fresh=ingredientDefinitions.filter(i=>i.atlas==='extension-50');expect(fresh).toHaveLength(50);expect(ingredientDefinitions).toHaveLength(224);
+ const fresh=ingredientDefinitions.filter(i=>i.atlas==='extension-50');expect(fresh).toHaveLength(50);expect(ingredientDefinitions).toHaveLength(350);
  expect(resolveIngredient('Filet skuše')).toMatchObject({atlas:'extension-50',row:0,column:5});
  expect(resolveIngredient('Wasabi')).toMatchObject({atlas:'extension-50',row:4,column:7});
  expect(resolveIngredient('Žumanjak')).toMatchObject({atlas:'extension-50',row:4,column:9});
  expect(resolveIngredient('Tahini')).toMatchObject({atlas:'extension-74',row:6,column:6});
  for(const entry of fresh)expect(resolveIngredient(entry.name)).toBeTruthy();
- expect(new Set(ingredientDefinitions.map(i=>i.id)).size).toBe(224);
+ expect(new Set(ingredientDefinitions.map(i=>i.id)).size).toBe(350);
 });
 
 test('reuses ingredient artwork for cooking purposes without changing recipe wording',()=>{
@@ -33,5 +33,23 @@ test('reuses ingredient artwork for cooking purposes without changing recipe wor
  for(const [name,id]of Object.entries(aliases))expect(resolveIngredient(name)?.id,name).toBe(id);
  const recipe=tagIngredients({category:'EAT',ingredients:[{name:'Brašno za paniranje'}]});
  expect(recipe.ingredients[0]).toMatchObject({name:'Brašno za paniranje',tag:'wheat-flour'});
- for(const name of ['Soda bikarbona','Riblji temeljac','Jakobove kapice','Ljutika','Slatka paprika','Bademovo brašno za paniranje','Mlijeko bez laktoze za smjesu'])expect(resolveIngredient(name),name).toBeUndefined();
+ for(const name of ['Slatka paprika','Bademovo brašno za paniranje','Mlijeko bez laktoze za smjesu'])expect(resolveIngredient(name),name).toBeUndefined();
 });
+
+ test('126 new cells retain source order on eight 4x4 pages without overwriting old aliases',()=>{
+ const fresh=ingredientDefinitions.filter(i=>i.atlas?.startsWith('extension-126-'));expect(fresh).toHaveLength(126);
+ expect(new Set(fresh.map(i=>`${i.atlas}:${i.row}:${i.column}`)).size).toBe(126);
+ for(const [index,item]of fresh.entries()){
+ expect(item.id).toBe(`extension-126-${String(index+1).padStart(3,'0')}`);expect(item.gridSize).toBe(4);
+ expect(item.atlas).toBe(`extension-126-${String(Math.floor(index/16)+1).padStart(2,'0')}`);
+ expect(item.row).toBe(Math.floor(index%16/4));expect(item.column).toBe(index%4);
+ if(index!==95)expect(resolveIngredient(item.name)).toBeTruthy();
+ }
+ expect(resolveIngredient('Artičoke')?.id).toBe('extension-126-001');
+ expect(resolveIngredient('Cherry rajčice')?.id).toBe('extension-126-017');
+ expect(resolveIngredient('Riblji temeljac')?.id).toBe('extension-126-083');
+ expect(resolveIngredient('Soda bikarbona')?.id).toBe('extension-126-099');
+ expect(resolveIngredient('Kim')?.id).toBe('extension-126-044');expect(resolveIngredient('Kumin')?.id).toBe('cumin');
+ expect(resolveIngredient('Slatka paprika')).toBeUndefined();
+ expect(resolveIngredient('Voda')?.id).toBe('water');expect(resolveIngredient('Masline')?.id).toBe('extension-50-016');
+ });

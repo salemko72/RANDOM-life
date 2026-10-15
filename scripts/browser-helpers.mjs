@@ -4,8 +4,7 @@ export async function enterDemo(page,name='QA',locale='bs'){
  await page.getByRole('button',{name:locale==='en'?'ENG':'BHS',exact:true}).click();
  await page.locator('.onboarding-field input').first().fill(name);
  await page.getByRole('button',{name:locale==='en'?'CONTINUE':'NASTAVI',exact:true}).click();
- await page.getByRole('button',{name:locale==='en'?'CONTINUE':'NASTAVI',exact:true}).click();
- await page.getByRole('button',{name:locale==='en'?'ENTER RANDOM':'UĐI U RANDOM',exact:true}).click();
+ await page.getByRole('button',{name:locale==='en'?'Continue without profiling':'Nastavi bez profiliranja',exact:true}).click();
  await dialog.waitFor({state:'detached'});
 }
 // Seed legacy editor state for recovery tests; there is no manual JSON intake in the UI.

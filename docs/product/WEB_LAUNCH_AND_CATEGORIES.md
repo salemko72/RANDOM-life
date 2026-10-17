@@ -29,3 +29,18 @@ geometry and action placement at 320x568, 360x640, 375x667, 390x844 and 412x915,
 READ selection, fresh onboarding and the Studio exception. These are Chromium
 viewport checks, not physical Android/iOS tests. The previously reported Android
 startup crash remains a separate unresolved issue.
+
+## Full item images
+
+Tapping the exposed artwork on either an item or its detail view opens a native
+HTML dialog over the full viewport. It reuses the item's loaded image Blob URL,
+fits the complete artwork without cropping, and does not change the curved layout.
+The high-contrast close control is 60x60 pixels. Backdrop tap and Escape close it,
+restore focus and preserve the underlying detail screen. The viewer locks body
+scrolling and keyboard focus; unavailable images are not offered as full previews.
+No new libraries, image copies or download requests are required.
+
+`node scripts/smoke-image-viewer.mjs` verifies the exact image bytes/dimensions,
+containment, close-control geometry, focus, backdrop/Escape, favorites and details
+for all five categories, using mobile touch and desktop click at 320x568, 390x844
+and 1000x900. Mock image fixtures are used for deterministic checks.

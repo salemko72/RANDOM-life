@@ -37,3 +37,6 @@ await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-126.zip'),zipS
 try{await access('/workspace/shared/android-download');await cp('/workspace/shared/android-download',resolve(target,'downloads/android'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 
 // The Windows distribution lives on GitHub; keep its large image packs out of web deployments.
+
+const diagnosticsFiles={};for(const name of ['PRIKUPI-GRESKU.cmd','prikupi-gresku.mjs','PROCITAJ.txt'])diagnosticsFiles[name]=new Uint8Array(await readFile(resolve('scripts/android-diagnostics',name)));
+await writeFile(resolve(target,'downloads/RANDOM-Android-dijagnostika.zip'),zipSync(diagnosticsFiles));

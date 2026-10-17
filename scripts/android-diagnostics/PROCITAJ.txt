@@ -1,0 +1,23 @@
+RANDOM life - prikupljanje greske pri otvaranju Android aplikacije
+
+Ovaj paket NE pravi novi APK i ne brise podatke aplikacije ili D1.
+Potreban je Windows s Node.js 24 LTS i telefon sa instaliranim RANDOM APK-om.
+
+1. Raspakuj ZIP u novu mapu na racunaru.
+2. Na telefonu ukljuci Developer options i USB debugging.
+   Uobicajeno: Settings > About phone > Build number, tapni 7 puta.
+   Na Xiaomi telefonu obicno se tapka MIUI/HyperOS verzija.
+   Zatim Developer options > USB debugging.
+3. Spoji telefon USB kablom. Kada pita Allow USB debugging, potvrdi.
+4. Pokreni PRIKUPI-GRESKU.cmd. Alat preuzima sluzbeni Google ADB (8 MB)
+   i provjerava njegov sluzbeni checksum prije raspakivanja.
+5. Skripta zaustavi samo RANDOM, pokrene ga i snimi oko 20 sekundi loga
+   filtriranog po Android UID-u aplikacije. Ne biljezi broj telefona ili serial.
+6. Prilozi RANDOM-Android-report.txt iz iste mape u chat.
+
+Ako telefon nije detektovan, provjeri dozvolu na ekranu, USB kabl i Windows
+USB driver. Ako zapne, posalji poruku iz prozora lokalnom Codexu.
+Ako je USB debugging bio ukljucen samo za ovu provjeru, nakon nje ga mozes iskljuciti.
+
+Skripta je pripremljena i provjerena sintaksno; test na vasem Windowsu/telefonu
+tek treba izvrsiti. Ne treba Expo ni Cloudflare token.

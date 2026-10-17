@@ -39,10 +39,19 @@ export async function handle(request:Request,env:Env):Promise<Response>{
   return json({state:'ready',candidates});
  }
  if(category==='BOOK'){
-  const q=new URLSearchParams({title,limit:'40',fields:'key,title,author_name,cover_i,first_publish_year'});if(author)q.set('author',author);
-  let data=await remote(`https://openlibrary.org/search.json?${q}`,undefined,6000);
-  if(author&&!(data.docs??[]).some((x:any)=>x.cover_i)){q.delete('author');data=await remote(`https://openlibrary.org/search.json?${q}`,undefined,6000);}
-  const candidates=(data.docs??[]).filter((x:any)=>x.cover_i).slice(0,8).map((x:any)=>({id:x.key,title:x.title,author:(x.author_name??[]).join(', '),year:x.first_publish_year,imageUrl:`https://covers.openlibrary.org/b/id/${x.cover_i}-L.jpg`,sourceUrl:`https://openlibrary.org${x.key}`,provider:'Open Library',attribution:'Cover source: Open Library. Edition and image rights require editorial confirmation.',exact:norm(x.title)===norm(title)&&!!author&&(x.author_name??[]).some((v:string)=>norm(v)===norm(author))}));return json({state:'ready',candidates});
+  const alternateTitle=(u.searchParams.get('alternateTitle')??'').trim().slice(0,160),alternateAuthor=(u.searchParams.get('alternateAuthor')??author).trim().slice(0,160);
+  const identities=[{title,author},...(alternateTitle&&norm(alternateTitle)!==norm(title)?[{title:alternateTitle,author:alternateAuthor}]:[])];
+  const deadline=Date.now()+12000;
+  let data:any={docs:[]},matched={title,author};
+  for(const identity of identities){
+   const q=new URLSearchParams({title:identity.title,limit:'40',fields:'key,title,author_name,cover_i,first_publish_year'});if(identity.author)q.set('author',identity.author);
+   const lookup=()=>{const remaining=deadline-Date.now();if(remaining<=0)throw new DOMException('Book search timed out','TimeoutError');return remote(`https://openlibrary.org/search.json?${q}`,undefined,Math.min(4000,remaining));};
+   data=await lookup();
+   if(identity.author&&!(data.docs??[]).some((x:any)=>x.cover_i)){q.delete('author');data=await lookup();}
+   matched=identity;
+   if((data.docs??[]).some((x:any)=>x.cover_i))break;
+  }
+  const candidates=(data.docs??[]).filter((x:any)=>x.cover_i).slice(0,8).map((x:any)=>({id:x.key,title:x.title,author:(x.author_name??[]).join(', '),year:x.first_publish_year,imageUrl:`https://covers.openlibrary.org/b/id/${x.cover_i}-L.jpg`,sourceUrl:`https://openlibrary.org${x.key}`,provider:'Open Library',attribution:'Cover source: Open Library. Edition and image rights require editorial confirmation.',exact:norm(x.title)===norm(matched.title)&&!!matched.author&&(x.author_name??[]).some((v:string)=>norm(v)===norm(matched.author))}));return json({state:'ready',candidates});
  }
  return json({error:'Unsupported category'},400);
  }catch(error){if(error instanceof SourceError&&(error.status===401||error.status===403))return json({state:'authentication',candidates:[],message:'TMDB did not accept the configured credential.'});return json({state:'unavailable',candidates:[],code:error instanceof SourceError?`UPSTREAM_HTTP_${error.status}`:error instanceof Error&&error.name==='TimeoutError'?'UPSTREAM_TIMEOUT':'UPSTREAM_NETWORK',message:'Image source is temporarily unavailable. Existing content is preserved.'},502);}

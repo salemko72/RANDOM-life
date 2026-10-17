@@ -41,6 +41,37 @@ it('Studio sends English book metadata even when the base item uses BHS names',a
  const fetcher=vi.fn().mockResolvedValue(Response.json({state:'ready',candidates:[]}));vi.stubGlobal('fetch',fetcher);
  await findArtwork(item);const query=new URL(fetcher.mock.calls[0][0],'https://r.test').searchParams;
  expect(query.get('title')).toBe('Harry Potter and the Cursed Child');expect(query.get('author')).toBe('J. K. Rowling');
+ expect(query.get('alternateTitle')).toBe('Hari Poter');expect(query.get('alternateAuthor')).toBe('Dž. K. Rouling');
  delete item.translations.en.authors;await findArtwork(item);expect(new URL(fetcher.mock.calls[1][0],'https://r.test').searchParams.get('author')).toBe('');
  delete item.translations.en.title;expect((await findArtwork(item)).code).toBe('ENGLISH_TITLE_REQUIRED');expect(fetcher).toHaveBeenCalledTimes(2);
+});
+it('finds a local book cover when its English title is not indexed',async()=>{
+ const fetcher=vi.fn().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL19788023W',title:'Dvori od oraha',author_name:['Miljenko Jergović'],cover_i:8594507}]}));
+ vi.stubGlobal('fetch',fetcher);
+ const query=new URLSearchParams({category:'BOOK',title:'The Walnut Mansion',author:'Miljenko Jergovic',alternateTitle:'Dvori od oraha',alternateAuthor:'Miljenko Jergović'});
+ const response=await handle(new Request('https://r.test/api/artwork?'+query),env);
+ const data:any=await response.json();expect(data.candidates).toHaveLength(1);expect(data.candidates[0]).toMatchObject({title:'Dvori od oraha',exact:true});
+ expect(new URL(fetcher.mock.calls[0][0]).searchParams.get('title')).toBe('The Walnut Mansion');
+ expect(new URL(fetcher.mock.calls[2][0]).searchParams.get('title')).toBe('Dvori od oraha');
+});
+it('retains a local-title fallback even when the base item is already in English',async()=>{
+ const {findArtwork}=await import('../apps/studio/src/artwork');
+ const item:any=structuredClone(demoItems.find(i=>i.category==='BOOK')!);
+ item.title='The Walnut Mansion';item.translations.en.title='The Walnut Mansion';item.translations.bs.title='Dvori od oraha';item.authors=['Miljenko Jergović'];
+ const fetcher=vi.fn().mockResolvedValue(Response.json({state:'ready',candidates:[]}));vi.stubGlobal('fetch',fetcher);
+ await findArtwork(item);
+ expect(new URL(fetcher.mock.calls[0][0],'https://r.test').searchParams.get('alternateTitle')).toBe('Dvori od oraha');
+});
+it('does not query an alternate title when the English title already finds covers',async()=>{
+ const fetcher=vi.fn().mockResolvedValue(Response.json({docs:[{key:'/works/OL1W',title:'Atomic Habits',author_name:['James Clear'],cover_i:42}]}));vi.stubGlobal('fetch',fetcher);
+ const response=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Atomic%20Habits&author=James%20Clear&alternateTitle=Atomske%20navike'),env);
+ expect((await response.json() as any).candidates[0].exact).toBe(true);expect(fetcher).toHaveBeenCalledTimes(1);
+});
+it('does not automatically select a different author or repeat the same normalized title',async()=>{
+ const fetcher=vi.fn().mockResolvedValue(Response.json({docs:[]}));vi.stubGlobal('fetch',fetcher);
+ await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Dvori%20od%20oraha&author=Miljenko%20Jergovic&alternateTitle=Dvori%20od%20oraha'),env);
+ expect(fetcher).toHaveBeenCalledTimes(2);
+ fetcher.mockReset().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL1W',title:'Dvori od oraha',author_name:['Another Author'],cover_i:42}]}));
+ const response=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=The%20Walnut%20Mansion&author=Miljenko%20Jergovic&alternateTitle=Dvori%20od%20oraha'),env);
+ expect((await response.json() as any).candidates[0].exact).toBe(false);
 });

@@ -1,9 +1,11 @@
 # Studio image updates and publication feedback — 17 October 2026
 
 Replacing artwork in an existing item retains its ID/version and updates D1 through
-the ordinary guarded save. After saving, the existing item stays open, displaying
-its saved image and the returned version. A new item still clears the form, including
-when saved for review, as requested for consecutive imports.
+the ordinary guarded save. After successful publication, BOTH new and existing
+items clear the complete form, including source, image preview and selected ID.
+The saved title, ID/version and success confirmation remain visible beside Publish.
+New items also clear when saved for review, as requested for consecutive imports;
+existing items awaiting review stay editable with their outstanding issues.
 
 Publish now displays the outcome beside the action, with title, ID and version:
 published, saved for review with concrete server issues, duplicate, or save failure.
@@ -26,7 +28,7 @@ at the browser boundary and a real Miniflare D1 worker for media and content wri
 It reproduced the duplicate form/image loss before the fix. It checks preservation,
 explicit duplicate update, persisted replacement image, public media, stable ID,
 version increments and visible review issues. `smoke-access-links.mjs` also checks
-that existing items remain open after publication.
+that existing-item fields clear after successful publication.
 
 Production search probes found and downloaded Breaking Bad and Harry Potter
 covers. The exact movie query “Dunje” returned no candidates, with or without 1983.

@@ -207,8 +207,8 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         if(selected&&(selected as any).__storage==='local')throw Error(locale==='en'?'Migrate this LOCAL item to D1 before publishing.':'Prvo prebaci ovu LOCAL stavku u D1.');
         const editing=!!selected,result=await submitPreviewContent(input,selected?.id,selected?.version);
         if(!result.duplicate){
-          if(editing){setSelected(result.item);setJson(JSON.stringify(draftInput(result.item),null,2));setStaged(null);setOriginal(null);}
-          else resetEditor();
+          if(!editing||result.item.status==='published')resetEditor();
+          else{setSelected(result.item);setJson(JSON.stringify(draftInput(result.item),null,2));setStaged(null);setOriginal(null);}
         }
         // A duplicate is not an update: keep the pending image and approvals so
         // the editor can explicitly apply them to the existing record.

@@ -53,7 +53,7 @@ try{
  assert.equal(await editor.locator('.access-link-rows li').count(),3);
  await editor.locator('.access-link-rows li').last().getByRole('button',{name:'Edit',exact:true}).click();await editor.getByLabel('HTTPS URL',{exact:true}).fill('https://books.example/correct-edition');assert.equal(await editor.getByRole('checkbox').isChecked(),false);
  await editor.getByRole('checkbox').check();await editor.getByRole('button',{name:'Apply link to item',exact:true}).click();
- await page.locator('.publish-action button').click();await page.locator('.publish-feedback[data-outcome="published"]').waitFor();assert.equal(await page.locator('.access-links-editor').count(),1,'saved existing item stays open');
+ await page.locator('.publish-action button').click();await page.locator('.publish-feedback[data-outcome="published"]').waitFor();assert.equal(await page.locator('.access-links-editor').count(),0,'successful publish clears existing-item fields');
  const catalog=await(await mf.dispatchFetch(origin+'api/catalog')).json(),published=catalog.items.find(row=>row.id==='access-BOOK');
  assert.equal(published.status,'published');assert(published.accessLinks.some(link=>link.provider==='Local Books'&&link.verified&&link.url.endsWith('correct-edition')));
  const events=await db.prepare("SELECT * FROM random_events WHERE action='access-links-upgrade'").all();assert.equal(events.results.length,2);

@@ -40,7 +40,10 @@ try{
  // Editing an existing item must retain its identity and show the saved cover.
  await edit(stored,stored);const edited=JSON.parse(await page.locator('.package-data textarea').inputValue());await page.locator('.publish-action button').click();await page.locator('.publish-feedback[data-outcome="published"]').waitFor();
  stored=(await api('api/content')).items.find(row=>row.id===initial.id);assert.equal(stored.image.path,edited.image.path);assert.notEqual(stored.image.path,pending.image.path);assert.equal(stored.version,3);
- assert.equal(await page.locator('.review-preview').count(),1,'editing keeps the saved item in view');
+ assert.equal(await page.locator('.review-preview').count(),0,'successful existing-item publish clears the editor');
+ assert.equal(await page.locator('.package-data textarea').count(),0);
+ assert.equal(await page.locator('.image-file-details').count(),0);
+ const editorState=await page.evaluate(()=>JSON.parse(localStorage.getItem('random-life.studio-editor.v1')));assert.equal(editorState.json,'');assert.equal(editorState.source,'');assert.equal(editorState.selected,null);
  // A review save must explain why it is not published, without losing edits.
  const incomplete=structuredClone(stored);incomplete.translations.bs.reviewed=false;await edit(incomplete,incomplete);await page.locator('.publish-action button').click();await page.locator('.publish-feedback[data-outcome="review"]').waitFor();
  assert.match(await page.locator('.publish-feedback').innerText(),/BS translation requires human review/);

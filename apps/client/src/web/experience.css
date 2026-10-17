@@ -313,11 +313,6 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .random-header.result-header{pointer-events:none}
 .random-header.result-header button{pointer-events:auto}
 
-/* Keep printed covers rectangular and complete inside the organic backdrop. */
-.random-world .result-scene.category-read .feature-photo,.random-world .result-scene.category-watch .feature-photo{background-image:none!important;overflow:visible}
-.portrait-cover{position:absolute;inset:27px 32px 90px;display:block;background-size:contain;background-repeat:no-repeat;background-position:center top;pointer-events:none;filter:drop-shadow(0 10px 14px #68403440)}
-@media(max-height:740px) and (max-width:600px){.portrait-cover{inset:20px 30px 30px}}
-
 /* Full artwork and a single, persistent action row in the focused item. */
 .random-world .item-focused .details-screen{display:block;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(96px + var(--native-safe-bottom));touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .detail-hero{position:relative;margin:calc(24px + var(--native-safe-top)) 24px 0;height:clamp(230px,42svh,340px);isolation:isolate}
@@ -336,3 +331,17 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 @media(max-width:360px){.random-world .detail-action-bar{left:12px;right:12px;gap:7px}.random-world .detail-action-bar>.icon-button{flex-basis:46px;min-width:46px;width:46px;height:48px;min-height:48px}.detail-hero{margin-left:18px;margin-right:18px}}
 
 .random-world .detail-action-bar{padding:6px;border:1px solid #fffaf1;border-radius:36px;background:rgba(255,246,237,.97);box-shadow:0 8px 24px #68403438}
+
+/* The image itself fills the organic frame on both item pages. */
+.artwork-mask-definitions{position:absolute;pointer-events:none;overflow:hidden}
+.result-scene{--photo-mask:url(#item-artwork-eat)}
+.result-scene.category-read{--photo-mask:url(#item-artwork-read)}
+.result-scene.category-watch{--photo-mask:url(#item-artwork-watch)}
+.result-scene.category-move{--photo-mask:url(#item-artwork-move)}
+.result-scene.category-go{--photo-mask:url(#item-artwork-go)}
+.random-world .result-scene .feature-photo{background-size:cover;background-origin:border-box;background-clip:border-box;background-repeat:no-repeat;background-position:center top;padding:0;border-radius:0;clip-path:var(--photo-mask)}
+.random-world .result-scene.category-read .feature-photo,.random-world .result-scene.category-watch .feature-photo{background-size:cover;background-origin:border-box;background-clip:border-box;padding:0;border-radius:0;clip-path:var(--photo-mask)}
+.item-photo-ornament,.detail-photo-ornament{border-radius:0;clip-path:var(--photo-mask)}
+.detail-full-image{inset:0;background-size:cover;background-position:center top;clip-path:var(--photo-mask)}
+.detail-hero{margin-left:12px;margin-right:0}
+@media(max-width:360px){.detail-hero{margin-left:8px;margin-right:0}}

@@ -36,4 +36,4 @@ await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-126.zip'),zipS
 
 try{await access('/workspace/shared/android-download');await cp('/workspace/shared/android-download',resolve(target,'downloads/android'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 
-try{await access('/workspace/shared/expo-windows-download');await cp('/workspace/shared/expo-windows-download',resolve(target,'downloads/expo-windows'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
+// The Windows distribution lives on GitHub; keep its large image packs out of web deployments.

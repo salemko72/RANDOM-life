@@ -21,6 +21,7 @@ export default function Icon({ name, size = 24, ...props }: { name: string; size
     calendar: <><rect x="3" y="5" width="18" height="18" rx="3"/><path d="M7 2v6M17 2v6M3 11h18"/></>,
     chef: <><path d="M6 13a5 5 0 1 1 3-9 5 5 0 0 1 6 0 5 5 0 1 1 3 9v9H6v-9ZM6 18h12"/></>,
     people: <><circle cx="8" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M1 21v-4c0-6 14-6 14 0v4m0-9c4 0 8 1 8 5v4"/></>,
+    house: <path d="m3 11 9-8 9 8M5 10v13h5v-8h4v8h5V10"/>,
     home: <><rect x="2" y="2" width="6" height="6" rx="2"/><rect x="16" y="2" width="6" height="6" rx="2"/><rect x="2" y="16" width="6" height="6" rx="2"/><rect x="16" y="16" width="6" height="6" rx="2"/></>,
     profile: <><circle cx="12" cy="7" r="4"/><path d="M3 23v-3a9 9 0 0 1 18 0v3"/></>,
     chart: <><path d="M4 23V13h4v10M11 23V3h4v20M18 23V8h4v15"/></>,

@@ -7,7 +7,7 @@ const image=new Blob(['image'],{type:'image/webp'});
 beforeEach(()=>{vi.stubGlobal('createImageBitmap',async()=>({width:100,height:80,close(){}}));vi.stubGlobal('document',{createElement:()=>({width:0,height:0,getContext:()=>({drawImage(){}}),toBlob:(done:(blob:Blob)=>void)=>done(image)})});});
 afterEach(()=>vi.unstubAllGlobals());
 describe('online request contracts',()=>{
- it('uses cookie requests for auth, public catalog, save and versioned delete',async()=>{const fetch=vi.fn().mockResolvedValue(response({items:[],item:row()}));vi.stubGlobal('fetch',fetch);await onlineLogin('secret');await onlineLogout();await onlineCatalog(false);await onlineSubmit({title:'example'},'one',3);await onlineDelete('one',3);expect(fetch.mock.calls.map(c=>c[0])).toEqual(['/api/database/login','/api/database/logout','/api/catalog','/api/content','/api/content/one']);expect(fetch.mock.calls.every(c=>c[1].credentials==='same-origin')).toBe(true);expect(JSON.parse(fetch.mock.calls[3][1].body)).toEqual({input:{title:'example'},id:'one',version:3});expect(JSON.parse(fetch.mock.calls[4][1].body)).toEqual({version:3});});
+ it('uses cookies only for editorial requests, not the public catalog',async()=>{const fetch=vi.fn().mockImplementation(async()=>response({items:[],item:row()}));vi.stubGlobal('fetch',fetch);await onlineLogin('secret');await onlineLogout();await onlineCatalog(false);await onlineSubmit({title:'example'},'one',3);await onlineDelete('one',3);expect(fetch.mock.calls.map(c=>c[0])).toEqual(['/api/database/login','/api/database/logout','/api/catalog','/api/content','/api/content/one']);expect(fetch.mock.calls.map(c=>c[1].credentials)).toEqual(['same-origin','same-origin','omit','same-origin','same-origin']);expect(JSON.parse(fetch.mock.calls[3][1].body)).toEqual({input:{title:'example'},id:'one',version:3});expect(JSON.parse(fetch.mock.calls[4][1].body)).toEqual({version:3});});
  it('fails closed on absent auth and network failures',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(response({error:'Sign in'},401)));await expect(onlineSubmit({})).rejects.toThrow('Sign in');vi.stubGlobal('fetch',vi.fn().mockRejectedValue(Error('offline')));await expect(onlineSubmit({})).rejects.toThrow('unavailable');});
  it('uploads bounded WebP bytes and rejects traversal',async()=>{const fetch=vi.fn().mockResolvedValue(response({ok:true}));vi.stubGlobal('fetch',fetch);const blob=new Blob(['webp'],{type:'image/webp'});await onlinePutImage('/media/hash.webp',blob);expect(fetch.mock.calls[0][0]).toBe('/api/database/media/hash.webp');expect(fetch.mock.calls[0][1].body).toBe(blob);await expect(onlinePutImage('/media/../evil.webp',blob)).rejects.toThrow('safe');await expect(onlinePutImage('/media/hash.webp',new Blob([new Uint8Array(1024*1024+1)],{type:'image/webp'}))).rejects.toThrow('1 MB');});
 });
@@ -26,4 +26,18 @@ it('maps an incomplete migration to the existing online entry for image repair',
  const item=row(),online={...item,status:'review',approvedAt:null,approvedBy:null};
  vi.stubGlobal('fetch',vi.fn().mockResolvedValueOnce(response({configured:true,authenticated:true,ok:true})).mockResolvedValueOnce(response({items:[online]})));
  const report=await migrateLocalItems([item],async()=>null);expect(report.failed).toBe(1);expect(report.results[0].onlineId).toBe(item.id);expect(report.results[0].missingImage).toBe(true);
+});
+
+it('public catalog omits Studio cookies and recovers from one transient gateway failure',async()=>{
+ const fetcher=vi.fn().mockResolvedValueOnce(response({error:'gateway'},502)).mockResolvedValueOnce(response({items:[row()]}));vi.stubGlobal('fetch',fetcher);
+ expect(await onlineCatalog(false)).toHaveLength(1);
+ expect(fetcher.mock.calls[0][1].credentials).toBe('omit');expect(fetcher.mock.calls[0][1].cache).toBe('no-store');
+});
+it('public catalog reports an HTML challenge as a response error rather than an empty catalog',async()=>{
+ vi.stubGlobal('fetch',vi.fn().mockResolvedValue(new Response('<html>challenge</html>',{headers:{'Content-Type':'text/html'}})));
+ await expect(onlineCatalog(false)).rejects.toThrow('CATALOG_INVALID_JSON');
+});
+it('public catalog reports persistent network failure after a bounded retry',async()=>{
+ const fetcher=vi.fn().mockRejectedValue(new TypeError('Failed to fetch'));vi.stubGlobal('fetch',fetcher);
+ await expect(onlineCatalog(false)).rejects.toThrow('CATALOG_NETWORK');expect(fetcher).toHaveBeenCalledTimes(2);
 });

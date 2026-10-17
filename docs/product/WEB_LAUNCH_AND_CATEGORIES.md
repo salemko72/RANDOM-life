@@ -44,3 +44,11 @@ No new libraries, image copies or download requests are required.
 containment, close-control geometry, focus, backdrop/Escape, favorites and details
 for all five categories, using mobile touch and desktop click at 320x568, 390x844
 and 1000x900. Mock image fixtures are used for deterministic checks.
+
+## Entrance animation regression
+
+The base wheel previously retained `wheel-arrive`; removing `launch-reveal`
+therefore started another animation after `launch-wheel-in` finished. The base
+wheel now has no entrance animation. `node scripts/smoke-wheel-entrance.mjs`
+records animation-start events with normal and reduced motion, verifies exactly
+one entrance, and checks that settled opacity/position are not reset.

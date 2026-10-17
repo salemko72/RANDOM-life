@@ -14,9 +14,13 @@ await writeFile(resolve(target,'_routes.json'),JSON.stringify({version:1,include
 try{await access('/workspace/shared/downloads/recipes');await cp('/workspace/shared/downloads/recipes',resolve(target,'downloads/recipes'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 console.log('Staged Pages preview with artwork routes; static pages remain assets.');
 
-const contract=await build({stdin:{contents:"export {readContentPackage} from './apps/studio/src/content-package';export {createChatGPTPrompt} from './packages/shared/src/prompt';",resolveDir:resolve('.')},bundle:true,format:'esm',platform:'node',write:false});
-const kit=zipSync({'random-content-contract.mjs':contract.outputFiles[0].contents,'ahmed-content-import.mjs':new Uint8Array(await readFile('scripts/ahmed-content-import.mjs')),'README.md':new Uint8Array(await readFile('docs/AHMED_CONTENT_WORKFLOW.md')),'package.json':strToU8(JSON.stringify({name:'random-content-kit',private:true,type:'module',engines:{node:'>=22'},dependencies:{sharp:'^0.35.5'}}))});
+const contract=await build({stdin:{contents:"export {readContentPackage} from './apps/studio/src/content-package';export {createChatGPTPrompt} from './packages/shared/src/prompt';export {CONTENT_CONTRACT_VERSION,contentContract,defaultAccessLinks} from './packages/shared/src/access-links';",resolveDir:resolve('.')},bundle:true,format:'esm',platform:'node',write:false});
+const contractModule=await import('data:text/javascript;base64,'+Buffer.from(contract.outputFiles[0].contents).toString('base64'));
+const kit=zipSync({'random-content-contract.mjs':contract.outputFiles[0].contents,'content-contract.json':strToU8(JSON.stringify(contractModule.contentContract,null,2)),'ahmed-content-import.mjs':new Uint8Array(await readFile('scripts/ahmed-content-import.mjs')),'README.md':new Uint8Array(await readFile('docs/AHMED_CONTENT_WORKFLOW.md')),'CHATGPT-INSTRUCTIONS.txt':new Uint8Array(await readFile('docs/content/CHATGPT-INSTRUCTIONS.txt')),'CONTENT-FORMAT-v2.md':new Uint8Array(await readFile('docs/content/ACCESS_LINKS_V2.md')),'package.json':strToU8(JSON.stringify({name:'random-content-kit',version:'2.0.0',private:true,type:'module',engines:{node:'>=22'},dependencies:{sharp:'^0.35.5'}}))});
 await mkdir(resolve(target,'downloads'),{recursive:true});await writeFile(resolve(target,'downloads/RANDOM-Ahmed-content-kit.zip'),kit);
+await writeFile(resolve(target,'downloads/RANDOM-content-workflow.md'),await readFile('docs/AHMED_CONTENT_WORKFLOW.md'));
+await writeFile(resolve(target,'downloads/RANDOM-content-format-v2.md'),await readFile('docs/content/ACCESS_LINKS_V2.md'));
+await writeFile(resolve(target,'downloads/RANDOM-ChatGPT-instructions-v2.txt'),await readFile('docs/content/CHATGPT-INSTRUCTIONS.txt'));
 
 await import('./build-original-recovery.mjs');
 const atlasRoot=resolve('content/ingredient-atlas-extension-74');

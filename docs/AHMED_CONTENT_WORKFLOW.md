@@ -1,5 +1,14 @@
 # RANDOM life — uputstvo za Ahmeda i njegov Codex
 
+**Aktuelni ugovor: v2, 17. 10. 2026. — za oba ChatGPT/Codex toka.**
+Prije novog batcha provjeri https://random-life-preview.pages.dev/api/content-contract
+i preuzmi novi paket ako je tvoj stariji. Novo opciono polje `accessLinks` čuva
+servise, knjižare i biblioteke odvojeno od izvora opisa/postera.
+Detalji: https://random-life-preview.pages.dev/downloads/RANDOM-content-format-v2.md
+U oba ChatGPT projekta postavi `CHATGPT-INSTRUCTIONS.txt` iz paketa i koristi
+prompt iz aktuelnog Studija. Stari razgovori ne dobijaju nova pravila automatski.
+Stari ZIP-ovi nastavljaju raditi.
+
 Radimo u jednoj zajedničkoj Cloudflare D1 bazi `random-test-content`.
 Studio: https://random-life-preview.pages.dev/#studio
 Nove stavke nikada ne snimaj u browser IndexedDB ili lokalnu bazu kao konačno odredište.
@@ -17,6 +26,9 @@ nije zaseban ograničeni Ahmedov nalog. Dijeli je samo s pouzdanim urednikom.
 Preuzmi https://random-life-preview.pages.dev/downloads/RANDOM-Ahmed-content-kit.zip
 Raspakuj u svoju radnu mapu. Potreban je Node.js 22+.
 Pokreni `npm install` u toj mapi (na Windows PowerShellu `npm.cmd install`).
+Pokreni `node ahmed-content-import.mjs --check`; očekivano `contractVersion:2`.
+Pri ažuriranju zamijeni skriptu i `random-content-contract.mjs` zajedno i sačuvaj
+svoje ZIP-ove. Skripta prije novog batcha provjerava verziju servera.
 Postavi RANDOM_STUDIO_PASSWORD u privatno procesno okruženje. Ne upisuj vrijednost u
 chat, ZIP, Git, skriptu ili komandnu liniju. U Codex cloud okruženju koristi sigurnu
 konfiguraciju kredencijala za random-life-preview.pages.dev; provjeri da runtime

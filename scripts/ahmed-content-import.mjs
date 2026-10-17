@@ -7,12 +7,22 @@ let contract;
 async function contracts(){
  if(contract)return contract;
  try{contract=await import('./random-content-contract.mjs');}
- catch(error){if(error.code!=='ERR_MODULE_NOT_FOUND')throw error;const {build}=await import('esbuild');const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');const output=await build({stdin:{contents:"export {readContentPackage} from './apps/studio/src/content-package';export {createChatGPTPrompt} from './packages/shared/src/prompt';",resolveDir:root},bundle:true,format:'esm',platform:'node',write:false});contract=await import('data:text/javascript;base64,'+Buffer.from(output.outputFiles[0].text).toString('base64'));}
+ catch(error){if(error.code!=='ERR_MODULE_NOT_FOUND')throw error;const {build}=await import('esbuild');const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');const output=await build({stdin:{contents:"export {readContentPackage} from './apps/studio/src/content-package';export {createChatGPTPrompt} from './packages/shared/src/prompt';export {CONTENT_CONTRACT_VERSION} from './packages/shared/src/access-links';",resolveDir:root},bundle:true,format:'esm',platform:'node',write:false});contract=await import('data:text/javascript;base64,'+Buffer.from(output.outputFiles[0].text).toString('base64'));}
  return contract;
+}
+export async function checkContract({baseUrl='https://random-life-preview.pages.dev',fetcher=fetch}={}){
+ const response=await fetcher(new URL('/api/content-contract',baseUrl),{redirect:'error',signal:AbortSignal.timeout(15000)});
+ if(!response.ok)throw Error('Could not check the live content format. Retry before importing; no content was sent.');
+ const remote=await response.json(),local=(await contracts()).CONTENT_CONTRACT_VERSION??1;
+ if(!Number.isSafeInteger(remote.contractVersion))throw Error('Invalid live content contract. No content was sent.');
+ if(remote.contractVersion>local)throw Error('This content kit is outdated. Download https://random-life-preview.pages.dev/downloads/RANDOM-Ahmed-content-kit.zip before generating or importing a new batch.');
+ if(local>remote.contractVersion)throw Error('The server has not deployed this content format yet. Retry after the update; no content was sent.');
+ return {contractVersion:local,kitUrl:'https://random-life-preview.pages.dev/downloads/RANDOM-Ahmed-content-kit.zip'};
 }
 export async function importZip(file,{password,baseUrl='https://random-life-preview.pages.dev',fetcher=fetch,session}={}){
  if(!password)throw Error('Set RANDOM_STUDIO_PASSWORD securely before importing. Never put it in the command or ZIP.');
  const base=new URL(baseUrl);if(base.protocol!=='https:'&&!['localhost','127.0.0.1'].includes(base.hostname))throw Error('HTTPS is required.');
+ if(!session?.contractChecked)await checkContract({baseUrl,fetcher});
  if((await stat(file)).size>25*1024*1024)throw Error('ZIP exceeds 25 MB.');
  const {readContentPackage}=await contracts();const pack=readContentPackage(new Uint8Array(await readFile(file)),{repair:true});
  let image;
@@ -22,7 +32,7 @@ export async function importZip(file,{password,baseUrl='https://random-life-prev
   pack.input.image.path='/media/import-'+createHash('sha256').update(image).digest('hex')+'.webp';
  }
  // Parser resets all human approvals. An automated contributor can never mark these verified.
- const ownSession=!session;session??={};let cookie=session.cookie??'';
+ const ownSession=!session;session??={};session.contractChecked=true;let cookie=session.cookie??'';
  async function request(path,method,body,type='application/json'){
   const response=await fetcher(base.origin+path,{method,redirect:'error',headers:{Origin:base.origin,'Content-Type':type,...(cookie?{Cookie:cookie}:{})},body:type==='application/json'?JSON.stringify(body):body});
   if(!response.ok){const error=await response.json().catch(()=>({}));throw Error(`${response.status}: ${error.error??'Online request failed'}`);}
@@ -37,9 +47,10 @@ export async function importZip(file,{password,baseUrl='https://random-life-prev
 }
 async function main(){
  const args=process.argv.slice(2);
+ if(args[0]==='--check'){console.log(JSON.stringify(await checkContract()));return;}
  if(args[0]==='--prompt'){
   const [category,source,output='RANDOM-prompt.txt']=args.slice(1);if(!['EAT','BOOK','WATCH','MOVE','GO'].includes(category)||!source)throw Error('Usage: --prompt EAT|BOOK|WATCH|MOVE|GO "source or idea" [output.txt]');
-  await writeFile(output,(await contracts()).createChatGPTPrompt(category,source));console.log('Prompt saved: '+output);return;
+  await checkContract();await writeFile(output,(await contracts()).createChatGPTPrompt(category,source));console.log('Prompt saved (content contract v2): '+output);return;
  }
  if(!args.length){console.log('Usage: node ahmed-content-import.mjs item.zip [more.zip ...]\nGenerate prompt: node ahmed-content-import.mjs --prompt BOOK "Atomic Habits by James Clear"');return;}
  let failures=0;const session={};

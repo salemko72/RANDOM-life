@@ -1,4 +1,4 @@
-import {importZip} from './ahmed-content-import.mjs';
+import {importZip,checkContract} from './ahmed-content-import.mjs';
 import {Miniflare} from 'miniflare';
 import {build} from 'esbuild';
 import {zipSync,strToU8} from 'fflate';
@@ -17,6 +17,9 @@ try{
  const image=await sharp({create:{width:1800,height:1200,channels:3,background:'#b98965'}}).png().toBuffer();
  const file=join(folder,'recipe.zip');await writeFile(file,zipSync({'content.json':strToU8(JSON.stringify(input)),'image.png':image}));
  const options={password:'test-password',baseUrl:'https://studio.example',fetcher:(url,options)=>mf.dispatchFetch(url,options)};
+ assert.equal((await checkContract(options)).contractVersion,2);
+ await assert.rejects(checkContract({...options,fetcher:async()=>Response.json({contractVersion:3})}),/outdated/);
+ await assert.rejects(checkContract({...options,fetcher:async()=>Response.json({contractVersion:1})}),/has not deployed/);
  await assert.rejects(importZip(file,{...options,password:'wrong'}),/401/);
  const result=await importZip(file,options);assert.equal(result.status,'review');assert.equal(result.duplicate,false);
  const duplicate=await importZip(file,options);assert.equal(duplicate.id,result.id);assert.equal(duplicate.duplicate,true);
@@ -25,4 +28,10 @@ try{
  const cookie=login.headers.get('set-cookie').split(';')[0];const rows=await(await mf.dispatchFetch('https://studio.example/api/content',{headers:{Cookie:cookie}})).json();assert.equal(rows.items.length,1);
  const media=await mf.dispatchFetch('https://studio.example'+rows.items[0].image.path,{headers:{Cookie:cookie}});const metadata=await sharp(Buffer.from(await media.arrayBuffer())).metadata();assert.equal(metadata.width,1440);assert.equal(metadata.format,'webp');
  console.log('PASS contributor ZIP → optimized D1 image → review-only shared item → idempotent duplicate; wrong password rejected.');
+ const book=structuredClone(demoItems.find(i=>i.category==='BOOK'));book.accessLinks=[{provider:'Local Books',url:'https://books.example/edition',purpose:'buy',kind:'direct',checkedAt:'2026-10-17',verified:true}];
+ const bookFile=join(folder,'book.zip');await writeFile(bookFile,zipSync({'content.json':strToU8(JSON.stringify(book))}));
+ const bookResult=await importZip(bookFile,options);assert.equal(bookResult.status,'review');
+ const updated=await(await mf.dispatchFetch('https://studio.example/api/content',{headers:{Cookie:cookie}})).json();
+ const stored=updated.items.find(item=>item.id===bookResult.id);assert.equal(stored.accessLinks[0].provider,'Local Books');assert.equal(stored.accessLinks[0].verified,false);
+ console.log('PASS contributor version check rejects stale/ahead kits; BOOK link metadata reaches D1 with human approval reset.');
 }finally{await mf.dispose();await rm(folder,{recursive:true,force:true});}

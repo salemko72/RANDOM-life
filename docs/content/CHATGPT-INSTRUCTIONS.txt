@@ -1,0 +1,36 @@
+RANDOM life — oba ChatGPT/Codex toka — ugovor v2 (2026-10-17)
+
+Za svaki novi batch koristi prompt iz https://random-life-preview.pages.dev/#studio
+Aktuelni format: https://random-life-preview.pages.dev/api/content-contract
+Pravila: https://random-life-preview.pages.dev/downloads/RANDOM-content-format-v2.md
+Paket: https://random-life-preview.pages.dev/downloads/RANDOM-Ahmed-content-kit.zip
+
+Pripremi jedan content.json sa ENG (translations.en) i BHS (translations.bs).
+Konačna kategorija je EAT, BOOK (READ), WATCH, MOVE ili GO prema sadržaju.
+EAT/MOVE/GO: originalna generisana slika u ZIP-u. WATCH/BOOK: ne generiši
+plakat/naslovnicu, Studio koristi TMDB/Open Library uz ljudsku provjeru.
+ZIP ime mora sadržati prepoznatljiv naziv itema s najmanje 6 slova.
+URL izvora nije obavezan za originalnu ideju. Ne izmišljaj izvore ili činjenice.
+factsVerified, image.rightsConfirmed, prevodi reviewed i allergensVerified su false.
+Medicinske i prehrambene oznake zahtijevaju odgovarajuću ljudsku provjeru.
+
+NOVO: WATCH/BOOK mogu imati opcionalni accessLinks izvan translations:
+[{"provider":"stvarni servis ili knjižara","url":"stvarni javni HTTPS URL",
+"purpose":"watch","kind":"direct","verified":false}]
+purpose: jedna vrijednost watch, buy, borrow ili read.
+kind: direct (tačan naslov/izdanje) ili search (samo pretraga).
+Opcionalno region (ISO kod države) i checkedAt (datum stvarne provjere).
+Najviše 12 linkova. verified UVIJEK false; čovjek potvrđuje poslije uvoza.
+Ne izmišljaj URL, ID, cijene, izdanje, prevod naslova ili trenutnu dostupnost.
+Bez pouzdanog linka accessLinks:[] je potpuno prihvatljivo.
+Za pretragu koristi potvrđen ENG naslov i engleske autore ili ISBN knjige.
+source.url i image.provenance.sourceUrl nisu automatski link za gledanje/kupovinu.
+Promjena Netflix/regionalne ponude nije razlog za odbacivanje preporuke.
+Ne dodaj generička upozorenja o nedostajućim linkovima u opis itema.
+
+Codex: provjeri /api/content-contract prije batcha, koristi najnoviji content kit.
+node ahmed-content-import.mjs --check treba vratiti contractVersion:2.
+Snimaj na pregled u postojeću zajedničku D1 podržanom import skriptom.
+Bez lokalnog fallbacka, nove baze, automatske objave ili plaćenih API-ja.
+Lozinka ide isključivo kroz privatnu konfiguraciju, nikada u chat, ZIP ili Git.
+Vrati ID-jeve/status sa servera; lokalno napravljen ZIP nije dokaz upisa u D1.

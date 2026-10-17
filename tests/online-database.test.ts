@@ -11,6 +11,30 @@ async function call(path: string, method = 'GET', data?: unknown, auth = true, w
 beforeAll(async () => { const result = await build({ stdin: { contents: "import {handleDatabase} from './services/artwork/database'; export default {fetch:handleDatabase}", resolveDir: process.cwd() }, bundle: true, write: false, format: 'esm', platform: 'browser', target: 'es2022' }); mf = new Miniflare({ modules: true, script: result.outputFiles[0].text, compatibilityDate: '2026-08-01', d1Databases: ['CONTENT_DB'], bindings: { RANDOM_STUDIO_PASSWORD: 'only-for-tests' } }); const login = await call('/api/database/login', 'POST', { password: 'only-for-tests' }, false); expect(login.response.status).toBe(200); cookie = login.response.headers.get('set-cookie')!.split(';')[0]; bytes = await sharp({ create: { width: 8, height: 8, channels: 3, background: 'red' } }).webp().toBuffer(); }, 30000);
 afterAll(async () => { await mf?.dispose(); });
 async function upload(name: string) { return mf.dispatchFetch(origin + '/api/database/media/' + name, { method: 'PUT', headers: { Origin: origin, Cookie: cookie, 'Content-Type': 'image/webp' }, body: bytes }); }
+it('exposes the contributor contract publicly and rejects unauthenticated link upgrades',async()=>{
+ const contract=await call('/api/content-contract','GET',undefined,false);
+ expect(contract.response.status).toBe(200);expect(contract.data.contractVersion).toBe(2);
+ expect(contract.data.accessLinks.optional).toBe(true);
+ expect((await call('/api/database/upgrade-access-links','POST',{},false)).response.status).toBe(401);
+});
+it('backfills only missing book/watch links, preserving approval and media, idempotently',async()=>{
+ const db=await mf.getD1Database('CONTENT_DB');
+ const input=structuredClone(demoCatalog.find(i=>i.category==='BOOK')!);
+ const row={...input,id:'links-upgrade-book',status:'published',version:3,updatedAt:'2026-10-01T00:00:00Z',approvedBy:'human',approvedAt:'2026-10-01T00:00:00Z'};
+ await db.prepare('INSERT INTO random_items(id,dedup,category,data,status,version,updated_at,approved_by,approved_at,revision) VALUES (?,?,?,?,?,?,?,?,?,?)').bind(row.id,row.id,'BOOK',JSON.stringify(input),row.status,row.version,row.updatedAt,row.approvedBy,row.approvedAt,'original').run();
+ const before=await db.prepare('SELECT * FROM random_items WHERE id=?').bind(row.id).first<any>();
+ const result=await call('/api/database/upgrade-access-links','POST',{});
+ expect(result.response.status).toBe(200);expect(result.data.updated).toBe(1);
+ const after=await db.prepare('SELECT * FROM random_items WHERE id=?').bind(row.id).first<any>();
+ expect(after.status).toBe(before.status);expect(after.approved_by).toBe(before.approved_by);expect(after.approved_at).toBe(before.approved_at);expect(after.version).toBe(4);
+ const upgraded=JSON.parse(after.data);expect(upgraded.accessLinks).toHaveLength(2);
+ expect(upgraded.accessLinks.every((l:any)=>l.kind==='search'&&!l.verified)).toBe(true);
+ delete upgraded.accessLinks;expect(upgraded).toEqual(JSON.parse(before.data));
+ expect((await call('/api/database/upgrade-access-links','POST',{})).data.updated).toBe(0);
+ expect((await db.prepare("SELECT COUNT(*) AS n FROM random_events WHERE content_id=? AND action='access-links-upgrade'").bind(row.id).first<any>()).n).toBe(1);
+ // Keep the rest of this suite's established public-catalog counts independent.
+ await db.prepare('DELETE FROM random_items WHERE id=?').bind(row.id).run();
+});
 function record(id: string, path: string) { return { ...demoCatalog[0], id, version: 7, updatedAt: '2026-10-01T12:00:00.000Z', image: { ...demoCatalog[0].image, path }, status: 'published', approvedBy: 'human-editor', approvedAt: '2026-10-01T12:00:00.000Z' }; }
 it('enforces editor authentication and exact Origin', async () => { expect((await call('/api/content', 'GET', undefined, false)).response.status).toBe(401); expect((await call('/api/content', 'POST', { input: demoCatalog[0] }, true, false)).response.status).toBe(403); const status=await call('/api/database/status', 'GET', undefined, false); expect(status.data).toMatchObject({authenticated:false,configured:true,ok:true}); expect(status.response.headers.get('access-control-allow-origin')).toBeNull(); const catalog=await call('/api/catalog','GET',undefined,false); expect(catalog.response.headers.get('access-control-allow-origin')).toBe('*'); });
 it('migrates IDs and approval metadata, deduplicates, and preserves history', async () => { expect((await upload('shared.webp')).status).toBe(200); const item = record('local-record', '/media/shared.webp'); const events = [{ id: 'local-event', action: 'publish', actor: 'original-human', version: 7, snapshot: item, createdAt: item.updatedAt }, {item,action:'reviewed',at:item.updatedAt}]; const migrated = await call('/api/database/migrate', 'POST', { item, events }); expect(migrated.response.status).toBe(201); expect(migrated.data.item).toMatchObject({ id: item.id, version: 7, approvedBy: 'human-editor', __storage: 'd1' }); expect((await call('/api/database/migrate', 'POST', { item, events })).data.idempotent).toBe(true); expect((await call('/api/database/migrate', 'POST', { item: { ...item, id: 'duplicate' } })).data).toMatchObject({ duplicate: true, item: { id: item.id } }); expect((await call('/api/database/migrate', 'POST', { item: { ...item, summary: 'conflicting content' } })).response.status).toBe(409); const admin = await call('/api/content'); expect(admin.data.events.some((e: any) => e.id === 'local-event' && e.actor === 'original-human')).toBe(true); expect((await call('/api/catalog', 'GET', undefined, false)).data.items).toHaveLength(1); expect((await mf.dispatchFetch(origin + '/media/shared.webp')).status).toBe(200); });

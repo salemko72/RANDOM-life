@@ -9,6 +9,11 @@ const row=()=>({...structuredClone(demoItems[0]),id:'one',version:4,status:'publ
 const json=(items:ContentRecord[],media:unknown[]=[])=>strToU8(JSON.stringify({format:'RANDOM-catalog-v2',exportedAt:'2026-10-14',items,media}));
 beforeEach(()=>{local.items=[];local.media.clear();});
 describe('catalog merge review',()=>{
+ it('retains destination metadata on edits but resets human link approval',()=>{
+  const original={...row(),accessLinks:[{provider:'Books',url:'https://books.example/edition',purpose:'buy' as const,kind:'direct' as const,checkedAt:'2026-10-17',verified:true}]};
+  const plan=buildCatalogImportPlan([{...original,summary:'Changed summary'}],[original]);
+  expect(plan.records[0].accessLinks).toEqual([{...original.accessLinks[0],verified:false}]);
+ });
  it('retains identical published records and does not delete omitted records',()=>{const original=row(),other={...row(),id:'two',title:'Other'};const plan=buildCatalogImportPlan([original],[original,other]);expect(plan.counts).toEqual({add:0,update:0,unchanged:1,conflicts:0});expect(plan.records[0]).toEqual(original);expect(plan.snapshot).toHaveLength(2);});
  it('translation edits preserve IDs and invalidate publication approvals',()=>{const original=row(),edited=structuredClone(original);edited.translations!.en!.title='Corrected translation';const plan=buildCatalogImportPlan([edited],[original]);expect(plan.counts.update).toBe(1);expect(plan.records[0]).toMatchObject({id:'one',status:'review',version:4,factsVerified:false,approvedBy:null,approvedAt:null});expect(plan.records[0].translations!.en!.reviewed).toBe(false);expect(plan.changes[0].flags.length).toBeGreaterThan(0);expect(original.status).toBe('published');});
  it('detects stale versions, category changes and collisions rather than overwriting',()=>{const original=row();expect(buildCatalogImportPlan([{...original,version:3}],[original]).counts.conflicts).toBe(1);expect(buildCatalogImportPlan([{...original,id:'new'}],[original]).counts.conflicts).toBe(1);});

@@ -1,4 +1,4 @@
-import { supportedLocales } from '@random/shared';
+import { supportedLocales,accessLinkSchema } from '@random/shared';
 import { readContentPackage } from './content-package';
 
 type RecordValue = Record<string, unknown>;
@@ -40,6 +40,17 @@ export function repairStructure(raw: RecordValue): { corrections: string[]; revi
   if (raw.category === 'READ') change(raw,'category','BOOK','category');
   if (typeof raw.language === 'string') change(raw,'language',locale(raw.language),'language');
   arrays(raw,'');
+  // A bad optional destination must not make the rest of a valid ZIP unusable.
+  if(raw.accessLinks!==undefined){
+    const supplied=Array.isArray(raw.accessLinks)?raw.accessLinks:object(raw.accessLinks)?[raw.accessLinks]:[];
+    const links=supplied.slice(0,12).flatMap((link,index)=>{
+      const parsed=accessLinkSchema.safeParse(object(link)?{...link,verified:false}:link);
+      if(parsed.success)return [parsed.data];
+      corrections.push(`accessLinks.${index}: invalid optional link omitted; original retained in originalJson`);
+      return [];
+    });
+    change(raw,'accessLinks',links,'accessLinks');
+  }
   for (const key of ['servings','totalMinutes','durationMinutes','year','pageCount']) number(raw,key,key);
   change(raw,'factsVerified',false,'factsVerified');
   if (raw.category === 'EAT') change(raw,'allergensVerified',false,'allergensVerified');

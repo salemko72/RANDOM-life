@@ -1,3 +1,12 @@
+## 17 October 2026 — shared content contract v2
+
+WATCH/BOOK support optional accessLinks. Read docs/content/ACCESS_LINKS_V2.md.
+Both contributor accounts must use the current kit and Studio prompt; public contract
+at /api/content-contract. Old ZIPs remain compatible. Direct links require individual
+human approval; searches never assert availability. Existing D1 items are enriched
+idempotently via an authenticated Studio POST, preserving content and approvals.
+Do not create another database, pay for APIs, or use local storage as final destination.
+
 # RANDOM — razvojni handoff, 12.10.2026.
 
 Najnovije direktne odluke korisnika imaju prednost nad originalnim handoffom.

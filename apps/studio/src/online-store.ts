@@ -11,6 +11,15 @@ async function request<T>(path:string,method='GET',body?:unknown):Promise<T>{
 export type OnlineStorage={database:string;databaseBytes:number;mediaBytes:number;items:number;revisions:number;databaseLimitBytes:number;accountLimitBytes:number;measuredAt:string};
 export const onlineStorage=()=>request<OnlineStorage>('/api/database/storage');
 export const onlineStatus=()=>request<OnlineStatus>('/api/database/status');
+export async function onlineUpgradeAccessLinks(){
+ let updated=0;
+ for(let page=0;page<20;page++){
+  const result=await request<{updated:number;hasMore:boolean}>('/api/database/upgrade-access-links','POST',{});
+  updated+=result.updated;
+  if(!result.hasMore||!result.updated)break;
+ }
+ return updated;
+}
 export const onlineLogin=(password:string)=>request<OnlineStatus>('/api/database/login','POST',{password});
 export const onlineLogout=()=>request<unknown>('/api/database/logout','POST');
 let onlineDeletedIds=new Set<string>();

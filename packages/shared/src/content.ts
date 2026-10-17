@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {translationsSchema,bilingualIssues} from './localization';
 import {ingredientDefinitions} from "./ingredient-tags";
+import {accessLinkSchema} from './access-links';
 
 const text = z.string().trim().min(1).max(2000);
 export const allergenSchema = z.enum([
@@ -24,6 +25,7 @@ const base = {
   language: z.string().trim().min(2).max(16),
   tags: z.array(text.max(60)).max(30),
   factsVerified: z.boolean(),
+  accessLinks:z.array(accessLinkSchema).max(12).optional(),
   classification: z.object({requestedCategory:z.enum(['EAT','BOOK','READ','WATCH','MOVE','GO']),suggestedCategory:z.enum(['EAT','BOOK','WATCH','MOVE','GO']),confidence:z.enum(['low','medium','high']),reason:z.object({en:text,bs:text})}).optional(),
   dietaryAssessment:z.object({gluten:z.enum(['present','absent','uncertain']),lactose:z.enum(['present','absent','uncertain']),suggestedAllergens:z.array(allergenSchema).max(13),notes:z.object({en:text,bs:text})}).optional(),
   translations: translationsSchema.optional(),

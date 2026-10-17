@@ -1,6 +1,6 @@
 import { unzipSync } from 'fflate';
 import { repairStructure } from './structural-repair';
-import { bilingualIssues, contentSchema, ingredientDefinitions, resolveIngredient, type ContentInput } from '@random/shared';
+import { bilingualIssues, contentSchema, ingredientDefinitions, resolveIngredient, resetAccessLinkReviews, type ContentInput } from '@random/shared';
 
 const MB = 1024 * 1024;
 const decoder = new TextDecoder('utf-8', { fatal: true });
@@ -122,6 +122,7 @@ export function readContentPackage(bytes: Uint8Array, options: { repair?: boolea
     if (manifest.format !== 'RANDOM-content-package-v1' || manifest.content !== 'content.json' || manifest.image !== name || Object.keys(manifest).some(key=>!['format','content','image'].includes(key))) fail('manifest.json does not match this content package.');
   }
   input.factsVerified = false;
+  resetAccessLinkReviews(input);
   input.image.rightsConfirmed = false;
   for (const translation of Object.values(input.translations ?? {})) if (translation) translation.reviewed = false;
   if (input.category === 'EAT') {input.allergensVerified = false;if(input.phosphateAssessment)input.phosphateAssessment.reviewed=false;}

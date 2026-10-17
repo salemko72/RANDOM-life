@@ -1,4 +1,4 @@
-import { contentSchema, publicationIssues, type ContentRecord, type ContentInput } from '@random/shared';
+import { contentSchema, publicationIssues, contentContract,defaultAccessLinks,visibleAccessLinks,resetAccessLinkReviews, type ContentRecord, type ContentInput } from '@random/shared';
 export interface DatabaseEnv {
     CONTENT_DB?: D1Database;
     RANDOM_STUDIO_PASSWORD?: string;
@@ -63,6 +63,8 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
     const url = new URL(request.url), path = url.pathname, db = env.CONTENT_DB;
     try {
         const auth = await authenticated(request, env.RANDOM_STUDIO_PASSWORD);
+        if(path==='/api/content-contract'&&request.method==='GET')
+            return json(contentContract,200,{'Access-Control-Allow-Origin':'*'});
         if (path === '/api/database/status' || path === '/api/database/config') {
             let ok = false;
             if (db) { try { await db.prepare('SELECT 1').first(); ok = true; } catch {} }
@@ -94,7 +96,7 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
         const all = async () => (await db.prepare('SELECT * FROM random_items').all()).results.map(rowRecord);
         const publishable = (item: ContentRecord) => item.status === 'published' && !!item.approvedBy && !!item.approvedAt && !publicationIssues(item).length;
         if (path === '/api/catalog' && request.method === 'GET') {
-            const items = (await all()).filter(publishable).map(({ approvedBy, approvedAt, ...item }) => ({ ...item, translations: Object.fromEntries(Object.entries(item.translations ?? {}).filter(([, value]) => value.reviewed)) }));
+            const items = (await all()).filter(publishable).map(({ approvedBy, approvedAt, ...item }) => ({ ...item, ...((item.category==='BOOK'||item.category==='WATCH')?{accessLinks:visibleAccessLinks(item)}:{}), translations: Object.fromEntries(Object.entries(item.translations ?? {}).filter(([, value]) => value.reviewed)) }));
             return json({ items }, 200, auth ? {} : {'Access-Control-Allow-Origin':'*'});
         }
         if (mediaPath.test(path) && ['GET', 'HEAD'].includes(request.method)) {
@@ -107,6 +109,27 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
         }
         if (!auth)
             return json({ error: 'UNAUTHORIZED' }, 401);
+        if(path==='/api/database/upgrade-access-links'&&request.method==='POST'){
+            // Representation-only upgrade: add search destinations, never infer availability
+            // or rewrite editorial approvals. Each CAS update owns its audit event.
+            const rows=(await db.prepare("SELECT * FROM random_items WHERE category IN ('BOOK','WATCH') AND json_type(data,'$.accessLinks') IS NULL LIMIT 50").all()).results;
+            let updated=0;
+            for(const row of rows as any[]){
+                const original=JSON.parse(row.data),parsed=contentSchema.safeParse(original);
+                if(!parsed.success)continue;
+                const links=defaultAccessLinks(parsed.data);
+                if(!links.length)continue;
+                const revision=crypto.randomUUID(),now=new Date().toISOString();
+                const input={...original,accessLinks:links};
+                const snapshot={...input,id:row.id,status:row.status,version:row.version+1,updatedAt:now,approvedBy:row.approved_by,approvedAt:row.approved_at};
+                const result=await db.batch([
+                    db.prepare('UPDATE random_items SET data=?,version=version+1,updated_at=?,revision=? WHERE id=? AND version=?').bind(JSON.stringify(input),now,revision,row.id,row.version),
+                    db.prepare("INSERT INTO random_events(id,content_id,action,actor,version,snapshot,created_at) SELECT ?,?,'access-links-upgrade','system-contract-v2',?,?,? WHERE EXISTS(SELECT 1 FROM random_items WHERE id=? AND revision=?)").bind(crypto.randomUUID(),row.id,row.version+1,JSON.stringify(snapshot),now,row.id,revision),
+                ]);
+                updated+=result[0].meta.changes;
+            }
+            return json({updated,hasMore:rows.length===50});
+        }
         if (path === '/api/database/storage' && request.method === 'GET') {
             const measurement = await db.prepare('SELECT (SELECT COUNT(*) FROM random_items) AS items,(SELECT COALESCE(SUM(length(bytes)),0) FROM random_media) AS mediaBytes,(SELECT COUNT(*) FROM random_events) AS revisions').all();
             const row = measurement.results[0] as any;
@@ -130,7 +153,9 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
                     return json({error:'INVALID_IMPORT_RECORD'},400);
                 if (encoder.encode(JSON.stringify(source)).byteLength > 65536)
                     return json({error:'IMPORT_RECORD_TOO_LARGE',id:source.id},413);
-                const id = source.id, input = parsed.data, dedup = await identity(input);
+                const id = source.id, input = parsed.data;
+                if((input.category==='BOOK'||input.category==='WATCH')&&input.accessLinks===undefined)input.accessLinks=defaultAccessLinks(input);
+                const dedup = await identity(input);
                 if (ids.has(id) || identities.has(dedup)) return json({error:'IMPORT_DUPLICATE_ID_OR_CONTENT',id},409);
                 ids.add(id); identities.add(dedup);
                 const existing = await db.prepare('SELECT * FROM random_items WHERE id=?').bind(id).first<any>();
@@ -140,6 +165,7 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
                 if (await db.prepare('SELECT id FROM random_items WHERE dedup=? AND id<>?').bind(dedup,id).first())
                     return json({error:'IMPORT_DUPLICATE_CONTENT',id},409);
                 input.factsVerified = false;
+                resetAccessLinkReviews(input);
                 input.image.rightsConfirmed = false;
                 if (input.category === 'EAT') {
                     input.allergensVerified = false;
@@ -178,7 +204,9 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             if (!parsed.success)
                 return json({ error: 'INVALID_CONTENT', issues: parsed.error.issues }, 400);
             if (encoder.encode(JSON.stringify(source)).byteLength > 65536) return json({error:'CONTENT_TOO_LARGE'},413);
-            const input = parsed.data, dedup = await identity(input), id = migration ? source.id : data.id ?? crypto.randomUUID();
+            const input = parsed.data;
+            if((input.category==='BOOK'||input.category==='WATCH')&&input.accessLinks===undefined)input.accessLinks=defaultAccessLinks(input);
+            const dedup = await identity(input), id = migration ? source.id : data.id ?? crypto.randomUUID();
             if (typeof id !== 'string' || !id.length || id.length > 180)
                 return json({ error: 'INVALID_ID' }, 400);
             const existing = await db.prepare('SELECT * FROM random_items WHERE id=?').bind(id).first<any>();

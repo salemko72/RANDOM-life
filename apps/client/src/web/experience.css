@@ -276,3 +276,45 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
  .item-focused .detail-content{overflow:visible;padding-right:0}
  .item-focused .detail-controls{margin-top:22px;margin-bottom:8px}
 }
+
+/* Category-specific organic artwork, lifted behind the floating header. */
+.result-overview{display:contents}
+.result-scene{--photo-shape:48% 10% 18% 36% / 20% 12% 28% 34%;--ornament-shape:32% 44% 18% 50% / 18% 28% 16% 44%;--ornament-color:rgba(222,147,125,.38)}
+.result-scene.category-read{--photo-shape:22% 38% 14% 26% / 16% 22% 12% 30%;--ornament-shape:48% 20% 42% 18% / 28% 42% 22% 18%;--ornament-color:rgba(210,168,137,.36)}
+.result-scene.category-watch{--photo-shape:36% 8% 32% 12% / 18% 12% 24% 16%;--ornament-shape:42% 28% 18% 38% / 16% 36% 24% 20%;--ornament-color:rgba(174,126,140,.32)}
+.result-scene.category-move{--photo-shape:58% 8% 20% 34% / 34% 12% 18% 28%;--ornament-shape:18% 48% 34% 40% / 38% 18% 44% 22%;--ornament-color:rgba(160,167,126,.34)}
+.result-scene.category-go{--photo-shape:44% 40% 12% 30% / 32% 18% 26% 18%;--ornament-shape:26% 50% 40% 12% / 18% 28% 42% 34%;--ornament-color:rgba(220,175,116,.34)}
+.random-world .result-scene .feature-photo{top:calc(22px + var(--native-safe-top));left:38px;right:-10px;height:455px;border-radius:var(--photo-shape);background-position:center;z-index:1;animation:none}
+.item-photo-ornament{position:absolute;top:calc(44px + var(--native-safe-top));left:23px;right:4px;height:480px;z-index:0;background:var(--ornament-color);border-radius:var(--ornament-shape);transform:rotate(-4deg);pointer-events:none}
+.random-world .result-scene.category-read .feature-photo,.random-world .result-scene.category-watch .feature-photo{background-size:contain;background-repeat:no-repeat;background-color:transparent;background-origin:content-box;background-clip:content-box;padding:27px 32px 25px;box-sizing:border-box;box-shadow:none}
+.result-scene .result-copy{z-index:3}
+.random-world .result-scene .favorite-float{top:calc(130px + var(--native-safe-top))!important;z-index:5}
+.random-world .result-scene .completed-float{top:calc(194px + var(--native-safe-top))!important;z-index:5}
+@media(max-width:600px){
+ .random-world .result-scene .feature-photo{left:30px;height:410px}
+ .result-scene .item-photo-ornament{left:15px;height:442px;right:3px}
+ .random-world .result-scene .favorite-float{left:20px!important}
+ .random-world .result-scene .completed-float{left:25px!important}
+}
+/* Short screens scroll the image and copy together, preserving text sizes. */
+@media(max-height:740px) and (max-width:600px){
+ .result-overview{display:block;position:absolute;inset:0 0 calc(150px + var(--native-safe-bottom));overflow-y:auto;overflow-x:hidden;touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#976f604d transparent}
+ .random-world .result-scene .feature-photo{position:relative;display:block;top:auto;left:auto;right:auto;margin:22px 0 0 24px;width:calc(100% - 20px);height:280px}
+ .result-scene .item-photo-ornament{top:40px;left:12px;right:5px;height:300px}
+ .random-world .result-scene .result-copy{position:relative;inset:auto!important;margin:-24px 0 0;padding:27px 24px 24px;background:linear-gradient(140deg,#fff6ed,#faeee8);border-radius:12% 48% 0 0 / 20px 56px 0 0;min-height:140px}
+ .result-overview .result-copy:before{display:none}
+ .result-overview .result-copy-scroll{height:auto;overflow:visible;padding-right:0}
+ .result-overview .result-heading-row{display:block}
+ .result-overview .result-meta{display:flex;flex-direction:row;flex-wrap:wrap;gap:7px;margin:12px 0}
+ .result-overview .result-meta>span{width:auto;max-width:none}
+ .random-world .result-scene .favorite-float{top:96px!important}
+ .random-world .result-scene .completed-float{top:158px!important}
+}
+/* Only the floating header buttons intercept taps over the lifted photo. */
+.random-header.result-header{pointer-events:none}
+.random-header.result-header button{pointer-events:auto}
+
+/* Keep printed covers rectangular and complete inside the organic backdrop. */
+.random-world .result-scene.category-read .feature-photo,.random-world .result-scene.category-watch .feature-photo{background-image:none!important;overflow:visible}
+.portrait-cover{position:absolute;inset:27px 32px 90px;display:block;background-size:contain;background-repeat:no-repeat;background-position:center top;pointer-events:none;filter:drop-shadow(0 10px 14px #68403440)}
+@media(max-height:740px) and (max-width:600px){.portrait-cover{inset:20px 30px 30px}}

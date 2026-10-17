@@ -248,3 +248,9 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 /* Transparent heading space must not block taps on the exposed detail photo. */
 .details-screen .detail-heading{pointer-events:none}
 .detail-heading button,.detail-heading a,.detail-heading h2,.detail-heading p,.detail-heading .detail-meta{pointer-events:auto}
+
+/* The actual painted sector is the touch target, even after wheel rotation. */
+.wheel-sector-control{cursor:pointer;touch-action:manipulation;outline:none;pointer-events:all}
+.wheel-sector-control:hover{fill:rgba(255,245,232,.09)}
+.wheel-sector-control:focus-visible{fill:rgba(255,245,232,.15);stroke:#fff7e9;stroke-width:5}
+.wheel-sector-control[aria-disabled="true"]{pointer-events:none;cursor:default}

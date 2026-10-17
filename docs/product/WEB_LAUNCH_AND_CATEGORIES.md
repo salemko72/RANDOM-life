@@ -52,3 +52,17 @@ therefore started another animation after `launch-wheel-in` finished. The base
 wheel now has no entrance animation. `node scripts/smoke-wheel-entrance.mjs`
 records animation-start events with normal and reduced motion, verifies exactly
 one entrance, and checks that settled opacity/position are not reset.
+
+## Direct wheel category selection
+
+The category-mode SVG sectors are touch/click controls, each mapped to its own
+category through the same spin handler used by the side rail. Sector geometry
+rotates with the visual, so no screen-coordinate/category guessing is needed.
+Enter and Space activate focused sectors. Controls are disabled while spinning;
+the existing synchronous spin lock rejects repeated taps. Item-mode previews
+have no category controls. The center button still selects a random category.
+The hidden home scene is inert while an item is displayed.
+
+`node scripts/smoke-wheel-touch.mjs` verifies visible touch targets for all five
+categories on rotated wheels at 320x568, 390x844 and desktop 1000x900, double-tap
+locking, Enter/Space and the separate center random mode.

@@ -66,6 +66,10 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
     const [json, setJson] = useState(typeof initial.json === 'string' ? initial.json : "");
     const [selected, setSelected] = useState<ContentRecord | null>(()=>{try{if(initial.selected?.id){draftInput(initial.selected);return initial.selected;}}catch{}return null;});
     const [message, setMessage] = useState("");
+    const [publishResult,setPublishResult]=useState<{item:ContentRecord;duplicate:boolean;issues:string[]}|null>(null);
+    const [publishError,setPublishError]=useState('');
+    const publishFeedback=useRef<HTMLDivElement>(null);
+    useEffect(()=>{if(publishResult||publishError)publishFeedback.current?.scrollIntoView({block:'nearest',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});},[publishResult,publishError]);
     const [busy, setBusy] = useState(false);
     const [search, setSearch] = useState("");
     const [staged, setStaged] = useState<{
@@ -98,7 +102,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         rememberMissingIngredients(input).then(setMissing).catch(e => setStorageWarning(e.message));
     }
     catch { } }, 300); return () => clearTimeout(timer); }, [json]);
-    function resetEditor() { setArtwork(null); setZipUpload(null);setRecoveryBackup('');if(zipInput.current)zipInput.current.value='';setSelected(null); setJson(''); setSource(''); setCopied(null); setStaged(null); setOriginal(null); }
+    function resetEditor() { setPublishResult(null);setPublishError('');setArtwork(null); setZipUpload(null);setRecoveryBackup('');if(zipInput.current)zipInput.current.value='';setSelected(null); setJson(''); setSource(''); setCopied(null); setStaged(null); setOriginal(null); }
     function downloadLibrary() { const blob = new Blob([JSON.stringify({ format: 'RANDOM-content-backup-v1', exportedAt: new Date().toISOString(), items, missingIngredients: missing }, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'RANDOM-content-backup.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
     useEffect(() => () => {
         if (staged)
@@ -175,6 +179,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
       const local=await readLocalCatalog();const report=await migrateLocalItems(local,readPreviewImage,await readLocalEvents());setMigrationReport(report);setMigrationErrorsOpen(report.results.some(r=>r.status==='failed'||r.status==='conflict'));await refresh();if(selected){const online=(await onlineCatalog(true)).find(row=>row.id===report.mapping[selected.id]);if(online){setSelected(online);if(json.trim()){const draft=JSON.parse(json);if(draft.image.path===selected.image.path)draft.image.path=online.image.path;setJson(JSON.stringify(draft,null,2));}}}setMessage(locale==='en'?`D1 migration: ${report.added} added, ${report.skipped} already online, ${report.conflicts} conflicts, ${report.failed} need attention. Local backups were retained.`:`D1 migracija: ${report.added} dodano, ${report.skipped} već online, ${report.conflicts} sukoba, ${report.failed} traži pregled. Lokalni backup je sačuvan.`);
     }
     function openRecord(i:ContentRecord){
+        setPublishResult(null);setPublishError('');
         if(i.id.startsWith('__demo:')){const input=draftInput({...i,factsVerified:false,image:{...i.image,rightsConfirmed:false},translations:Object.fromEntries(Object.entries(i.translations??{}).map(([code,t])=>[code,{...t,reviewed:false}])),...(i.category==='EAT'?{allergensVerified:false}:{})});setSelected(null);setCategory(input.category);setSource(input.source.url);setJson(JSON.stringify(input,null,2));setStaged(null);setOriginal(null);setBrowse(false);setMessage(locale==='en'?'Demo opened as an unsaved editable copy.':'Demo je otvoren kao nesačuvana kopija za uređivanje.');return;}
 
         setSelected(i);setCategory(i.category);setSource(i.source.url||i.source.label);setCopied(null);setJson(JSON.stringify(draftInput(i),null,2));setStaged(null);setOriginal(null);setMessage('');setBrowse(false);
@@ -189,8 +194,29 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
         return tagIngredients(preview ? draftInput(JSON.parse(json)) : contentSchema.parse(JSON.parse(json)));
     }
     async function publishOne(){
+      setPublishResult(null);setPublishError('');
+      try{await performPublish();}catch(error){
+        const message=error instanceof Error?error.message:String(error);
+        setPublishError(/VERSION.*CONFLICT/.test(message)?(locale==='en'?'This item changed in another editor. Your changes are preserved here; reload the latest item before saving.':'Ovaj item je izmijenjen u drugom editoru. Tvoje izmjene su sačuvane u obrascu; prije snimanja treba učitati najnoviju verziju.'):message);
+        throw error;
+      }
+    }
+    async function performPublish(){
       const input=parsedInput();
-      if(preview){if(selected&&(selected as any).__storage==='local')throw Error(locale==='en'?'Migrate this LOCAL item to D1 before publishing.':'Prvo prebaci ovu LOCAL stavku u D1.');const result=await submitPreviewContent(input,selected?.id,selected?.version);await refresh();resetEditor();setMessage(result.duplicate?(locale==='en'?'Already saved; existing item unchanged.':'Već sačuvano; postojeća stavka nije izmijenjena.'):result.item.status==='published'?(locale==='en'?'Published and saved. Ready for the next item.':'Objavljeno i sačuvano. Spremno za novi unos.'):(locale==='en'?'Saved with a review flag. It stays in Studio until verified.':'Sačuvano s flagom za provjeru. Ostaje u Studiju do potvrde.'));return;}
+      if(preview){
+        if(selected&&(selected as any).__storage==='local')throw Error(locale==='en'?'Migrate this LOCAL item to D1 before publishing.':'Prvo prebaci ovu LOCAL stavku u D1.');
+        const editing=!!selected,result=await submitPreviewContent(input,selected?.id,selected?.version);
+        if(!result.duplicate){
+          if(editing){setSelected(result.item);setJson(JSON.stringify(draftInput(result.item),null,2));setStaged(null);setOriginal(null);}
+          else resetEditor();
+        }
+        // A duplicate is not an update: keep the pending image and approvals so
+        // the editor can explicitly apply them to the existing record.
+        setPublishResult({item:result.item,duplicate:!!result.duplicate,issues:result.issues??publicationIssues(result.item)});
+        setMessage('');
+        try{await refresh();}catch{setMessage(locale==='en'?'The item was saved, but the library could not refresh. Reload the library to see the latest list.':'Item je sačuvan, ali lista biblioteke nije osvježena. Ponovo učitaj biblioteku za najnoviji prikaz.');}
+        return;
+      }
       const result=await request(selected?`/admin/content/${selected.id}`:'/admin/content',selected?'PUT':'POST',input,selected?.version);
       let record=result.item;if(!result.duplicate){record=(await request(`/admin/content/${record.id}/review`,'POST',undefined,record.version)).item;if(!publicationIssues(input).length)record=(await request(`/admin/content/${record.id}/publish`,'POST',undefined,record.version)).item;}
       resetEditor();await refresh();setMessage(record.status==='published'?(locale==='en'?'Published.':'Objavljeno.'):(locale==='en'?'Saved for verification in Studio.':'Sačuvano za provjeru u Studiju.'));
@@ -252,6 +278,7 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
       if(exact.length===1){try{await applyArtwork(exact[0]!,input,editing);}catch(error){setArtwork({state:'unavailable',candidates:result.candidates,code:error instanceof Error&&/^IMAGE_[A-Z0-9_]+(?: · [^\r\n]{1,300})?$/.test(error.message)?error.message:error instanceof Error&&error.name==='InvalidStateError'?'IMAGE_DECODE_FAILED':'IMAGE_PROCESSING_FAILED'});}}
     }
     async function imageFile(file: File, packageInput?: ContentInput) {
+        setPublishResult(null);setPublishError('');
         if (!["image/png", "image/jpeg", "image/webp", "image/avif"].includes(file.type) ||
             file.size > 15 * 1024 * 1024)
             throw new Error("Izaberi PNG, JPG, WebP ili AVIF do 15 MB.");
@@ -535,6 +562,17 @@ export default function App({ preview = false, samples = demoItems, locale = 'en
                   {issues.map((i) => (<li key={i}>{tx(i)}</li>))}
                 </ul></details>)}
               <div className="actions publish-action"><button disabled={busy||!connected||!(preview?draftValid:valid)} onClick={()=>run(publishOne)}>{locale==='en'?'PUBLISH · save to library':'OBJAVI · snimi u bazu'}</button></div><p className="input-help">{locale==='en'?'Verified items become public. Items with a review flag are saved in Studio until confirmed.':'Potvrđene stavke postaju javne. Stavke s flagom se čuvaju u Studiju do potvrde.'}</p>
+              {(publishResult||publishError)&&<div ref={publishFeedback} className="publish-feedback" role={publishError?'alert':'status'} data-outcome={publishError?'error':publishResult?.duplicate?'duplicate':publishResult?.item.status}>
+                {publishError?<><strong>{locale==='en'?'Not saved':'Nije sačuvano'}</strong><p>{publishError}</p><p>{locale==='en'?'Your text and selected image remain in this editor.':'Tekst i odabrana slika ostaju u ovom editoru.'}</p></>:publishResult&&<>
+                  <strong>{publishResult.duplicate?(locale==='en'?'This title already exists — the new image has not been applied.':'Ovaj naslov već postoji — nova slika nije primijenjena.'):publishResult.item.status==='published'?(locale==='en'?'Published · content and image saved to D1':'Objavljeno · sadržaj i slika sačuvani u D1'):(locale==='en'?'Saved in D1 · still awaiting review':'Sačuvano u D1 · još čeka provjeru')}</strong>
+                  <p>{localizeContent(publishResult.item,locale).title}</p>
+                  <small>ID: {publishResult.item.id} · v{publishResult.item.version}</small>
+                  {publishResult.duplicate?<><p>{locale==='en'?'Your prepared changes are preserved. Apply them to the existing item, then publish again.':'Pripremljene izmjene su sačuvane u obrascu. Primijeni ih na postojeći item, pa ponovo objavi.'}</p><button type="button" className="quiet" onClick={()=>{setSelected(publishResult.item);setPublishResult(null);setMessage('');}}>{locale==='en'?'Apply these changes to the existing item':'Primijeni ove izmjene na postojeći item'}</button></>:<>
+                    {publishResult.item.status!=='published'&&publishResult.issues.length>0&&<ul>{publishResult.issues.map((issue,index)=><li key={index}>{tx(issue)}</li>)}</ul>}
+                    {!selected&&<button type="button" className="quiet" onClick={()=>openRecord(publishResult.item)}>{locale==='en'?'Open saved item':'Otvori sačuvani item'}</button>}
+                  </>}
+                </>}
+              </div>}
             </fieldset>
           </section>
           <section className="library card">

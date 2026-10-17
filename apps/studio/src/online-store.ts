@@ -30,7 +30,7 @@ export async function onlineCatalog(admin:boolean):Promise<ContentRecord[]>{
  if(admin)onlineDeletedIds=new Set(result.deletedIds??[]);
  return result.items;
 }
-export const onlineSubmit=(input:unknown,id?:string,version?:number)=>request<{item:ContentRecord;duplicate?:boolean}>('/api/content','POST',{input,...(id?{id,version}:{})});
+export const onlineSubmit=(input:unknown,id?:string,version?:number)=>request<{item:ContentRecord;duplicate?:boolean;issues?:string[]}>('/api/content','POST',{input,...(id?{id,version}:{})});
 export async function onlineDelete(id:string,version:number){await request(`/api/content/${encodeURIComponent(id)}`,'DELETE',{version});}
 export async function onlinePutImage(path:string,blob:Blob){
  if(!/^\/media\/[a-zA-Z0-9_-]+\.webp$/.test(path))throw Error('Online images require a safe /media/name.webp path.');

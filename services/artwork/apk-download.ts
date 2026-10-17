@@ -1,0 +1,13 @@
+type Assets={fetch(request:Request):Promise<Response>};
+type Manifest={bytes:number;sha256:string;parts:{path:string;bytes:number}[]};
+export async function downloadApk(request:Request,assets:Assets):Promise<Response>{
+ if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405,headers:{Allow:'GET, HEAD'}});
+ const metadata=await assets.fetch(new Request(new URL('/downloads/android/apk-manifest.json',request.url)));
+ if(!metadata.ok||!(metadata.headers.get('content-type')??'').includes('application/json'))return new Response('Android build is not available yet',{status:404});
+ let manifest:Manifest;try{manifest=await metadata.json() as Manifest;}catch{return new Response('Invalid build manifest',{status:503});}
+ if(!manifest||typeof manifest!=='object'||!Number.isSafeInteger(manifest.bytes)||manifest.bytes<1||manifest.bytes>250*1024*1024||!/^[a-f0-9]{64}$/.test(manifest.sha256)||!Array.isArray(manifest.parts)||!manifest.parts.length||manifest.parts.length>16||manifest.parts.some(p=>!p||typeof p!=='object'||!/^\/downloads\/android\/apk-[a-f0-9]{64}-part-\d{2}\.bin$/.test(p.path)||!Number.isSafeInteger(p.bytes)||p.bytes<1||p.bytes>24*1024*1024)||manifest.parts.reduce((n,p)=>n+p.bytes,0)!==manifest.bytes)return new Response('Invalid build manifest',{status:503});
+ const headers={'Content-Type':'application/vnd.android.package-archive','Content-Disposition':'attachment; filename="RANDOM-life-android.apk"','Content-Length':String(manifest.bytes),'Cache-Control':'no-cache','ETag':'"'+manifest.sha256+'"','X-Content-Type-Options':'nosniff'};
+ if(request.method==='HEAD')return new Response(null,{headers});
+ async function* chunks(){for(const part of manifest.parts){const response=await assets.fetch(new Request(new URL(part.path,request.url)));if(!response.ok||!response.body||(response.headers.get('content-type')??'').startsWith('text/html'))throw Error('APK part unavailable');const reader=response.body.getReader();let size=0;try{while(true){const next=await reader.read();if(next.done)break;size+=next.value.length;if(size>part.bytes)throw Error('APK part exceeds its declared size');yield next.value;}if(size!==part.bytes)throw Error('APK part is incomplete');}finally{await reader.cancel().catch(()=>{});reader.releaseLock();}}}
+ const iterator=chunks();return new Response(new ReadableStream<Uint8Array>({async pull(controller){try{const next=await iterator.next();if(next.done)controller.close();else controller.enqueue(next.value);}catch(error){controller.error(error);}},async cancel(){await iterator.return(undefined);}}),{headers});
+}

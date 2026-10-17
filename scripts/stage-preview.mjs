@@ -7,9 +7,10 @@ const source=resolve('apps/client/preview-dist');const target=resolve('apps/clie
 await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
 for(const file of ['index.html','studio.html','standalone.js','standalone.css'])await cp(resolve(source,file),resolve(target,file));
 await cp(resolve(source,'assets'),resolve(target,'assets'),{recursive:true});
+for(const file of ['privacy.html','delete-data.html'])await cp(resolve('apps/client/public/legal',file),resolve(target,file));
 await writeFile(resolve(target,'_headers'),'/*\n  Cache-Control: no-cache\n  X-Content-Type-Options: nosniff\n');
 await build({entryPoints:['services/artwork/worker.ts'],bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:resolve(target,'_worker.js')});
-await writeFile(resolve(target,'_routes.json'),JSON.stringify({version:1,include:['/api/*','/media/*'],exclude:[]}));
+await writeFile(resolve(target,'_routes.json'),JSON.stringify({version:1,include:['/api/*','/media/*','/downloads/RANDOM-life-android.apk'],exclude:[]}));
 try{await access('/workspace/shared/downloads/recipes');await cp('/workspace/shared/downloads/recipes',resolve(target,'downloads/recipes'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 console.log('Staged Pages preview with artwork routes; static pages remain assets.');
 
@@ -32,3 +33,7 @@ const atlas126Root=resolve('content/ingredient-atlas-extension-126');const atlas
 for(const name of ['manifest.json','README.md','source.json'])atlas126Files[name]=new Uint8Array(await readFile(resolve(atlas126Root,name)));
 for(let page=1;page<=8;page++){const number=String(page).padStart(2,'0');atlas126Files[`atlas-${number}.png`]=new Uint8Array(await readFile(resolve('apps/client/src/web/assets',`ingredient-atlas-extension-126-${number}.png`)));}
 await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-126.zip'),zipSync(atlas126Files));
+
+try{await access('/workspace/shared/android-download');await cp('/workspace/shared/android-download',resolve(target,'downloads/android'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
+
+try{await access('/workspace/shared/expo-windows-download');await cp('/workspace/shared/expo-windows-download',resolve(target,'downloads/expo-windows'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}

@@ -7,8 +7,8 @@ import {WebView} from 'react-native-webview';
 import preview from './src/generated/preview.json';
 import {applyStorageMessage, createSnapshotWriter, LocalState, NATIVE_STATE_KEY, readSnapshot, seedPreviewHtml} from './src/native/profile-bridge';
 
-// Temporary Expo Go preview bridge. The browser UI is embedded locally;
-// this is not the final native implementation and does not call a backend.
+// Expo shell embeds the current UI and keeps device preferences across launches.
+// Published content and images are loaded from the shared Cloudflare D1 service.
 export default function App(){return <SafeAreaProvider style={{flex:1,backgroundColor:'#fbefe7'}}><NativeExperience/></SafeAreaProvider>;}
 function NativeExperience(){
  const insets=useSafeAreaInsets();
@@ -39,7 +39,7 @@ function NativeExperience(){
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.startsWith('https://random-preview.invalid/')}
-   onError={()=>setError('Preview se nije učitao. Zatvori i ponovo otvori RANDOM u Expo Go.')}
+   onError={()=>setError('RANDOM se nije učitao. Zatvori i ponovo otvori aplikaciju.')}
    onMessage={event=>{
     const next=applyStorageMessage(state.current,event.nativeEvent.data);
     if(next){state.current=next;void writer.current(next);}

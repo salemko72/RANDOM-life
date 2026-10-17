@@ -6,7 +6,7 @@ import{zipSync,strToU8}from'fflate';
 const env:Env={ASSETS:{fetch:async()=>new Response('asset')}};afterEach(()=>vi.unstubAllGlobals());
 it('accepts only fixed cover hosts and image paths',()=>{expect(allowedImage('https://covers.openlibrary.org/b/id/123-L.jpg')).toBe(true);expect(allowedImage('https://image.tmdb.org/t/p/w780/abc.jpg')).toBe(true);for(const u of ['http://127.0.0.1/a.jpg','https://covers.openlibrary.org.evil.com/b/id/1-L.jpg','https://image.tmdb.org/a','https://user@image.tmdb.org/t/p/w780/a.jpg'])expect(allowedImage(u)).toBe(false);});
 it('missing TMDB connection is a setup state, not a failed import',async()=>{const r=await handle(new Request('https://random.test/api/artwork?category=WATCH&title=Dark'),env);expect((await r.json() as any).state).toBe('setup');});
-it('book identity requires both title and author; offers ambiguous candidates',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({docs:[{key:'/works/OL1W',title:'Sapiens',author_name:['Yuval Noah Harari'],cover_i:42},{key:'/works/OL2W',title:'Sapiens',author_name:['Another Author'],cover_i:43}]})));const r=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Sapiens&author=Yuval%20Noah%20Harari'),env);const data:any=await r.json();expect(data.candidates[0].exact).toBe(true);expect(data.candidates[1].exact).toBe(false);});
+it('book identity excludes unrelated authors',async()=>{vi.stubGlobal('fetch',vi.fn().mockResolvedValue(Response.json({docs:[{key:'/works/OL1W',title:'Sapiens',author_name:['Yuval Noah Harari'],cover_i:42},{key:'/works/OL2W',title:'Sapiens',author_name:['Another Author'],cover_i:43}]})));const r=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Sapiens&author=Yuval%20Noah%20Harari'),env);const data:any=await r.json();expect(data.candidates[0].exact).toBe(true);expect(data.candidates).toHaveLength(1);});
 it('source failure preserves content with retry state',async()=>{vi.stubGlobal('fetch',vi.fn().mockRejectedValue(Error('network')));const r=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Sapiens'),env);expect((await r.json() as any).state).toBe('unavailable');});
 it('accepts text-only BOOK ZIP and leaves image rights unconfirmed',()=>{const item=structuredClone(demoItems.find(i=>i.category==='BOOK')!);const p=readContentPackage(zipSync({'content.json':strToU8(JSON.stringify(item))}));expect(p.needsArtwork).toBe(true);expect(p.input.image.generated).toBe(false);expect(p.input.image.rightsConfirmed).toBe(false);});
 it('WATCH ZIP without platform is accepted without inventing a service',()=>{const item:any=structuredClone(demoItems.find(i=>i.category==='BOOK')!);Object.assign(item,{category:'WATCH',format:'Film',year:2011,durationLabel:'123 min'});delete item.platform;for(const t of Object.values(item.translations) as any[])t.durationLabel='123 min';const p=readContentPackage(zipSync({'content.json':strToU8(JSON.stringify(item))}));expect(p.input.category==='WATCH'&&p.input.platform).toBe('');});
@@ -28,7 +28,7 @@ it('image delivery depends on final classification for every initial category',(
 it('accepts original content without a URL but rejects malformed supplied links',()=>{const item:any=structuredClone(demoItems.find(i=>i.category==='BOOK')!);delete item.source.url;const pack=()=>zipSync({'content.json':strToU8(JSON.stringify(item))});expect(readContentPackage(pack()).input.source.url).toBe('');item.source.url=null;expect(readContentPackage(pack()).input.source.url).toBe('');item.source.url='http://example.com';expect(()=>readContentPackage(pack())).toThrow();item.source.url='not a link';expect(()=>readContentPackage(pack())).toThrow();});
 
 it('retries a book by English title alone when an author spelling finds no covers',async()=>{
- const fetcher=vi.fn().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL3W',title:'Harry Potter and the Cursed Child',author_name:['Jack Thorne'],cover_i:123}]}));
+ const fetcher=vi.fn().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL3W',title:'Harry Potter and the Cursed Child',author_name:['Dž. K. Rouling'],cover_i:123}]}));
  vi.stubGlobal('fetch',fetcher);
  const response=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Harry%20Potter%20and%20the%20Cursed%20Child&author=D%C5%BE.%20K.%20Rouling'),env);
  expect((await response.json() as any).candidates).toHaveLength(1);
@@ -46,13 +46,13 @@ it('Studio sends English book metadata even when the base item uses BHS names',a
  delete item.translations.en.title;expect((await findArtwork(item)).code).toBe('ENGLISH_TITLE_REQUIRED');expect(fetcher).toHaveBeenCalledTimes(2);
 });
 it('finds a local book cover when its English title is not indexed',async()=>{
- const fetcher=vi.fn().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL19788023W',title:'Dvori od oraha',author_name:['Miljenko Jergović'],cover_i:8594507}]}));
+ const fetcher=vi.fn().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL19788023W',title:'Dvori od oraha',author_name:['Miljenko Jergović'],cover_i:8594507}]}));
  vi.stubGlobal('fetch',fetcher);
  const query=new URLSearchParams({category:'BOOK',title:'The Walnut Mansion',author:'Miljenko Jergovic',alternateTitle:'Dvori od oraha',alternateAuthor:'Miljenko Jergović'});
  const response=await handle(new Request('https://r.test/api/artwork?'+query),env);
  const data:any=await response.json();expect(data.candidates).toHaveLength(1);expect(data.candidates[0]).toMatchObject({title:'Dvori od oraha',exact:true});
  expect(new URL(fetcher.mock.calls[0][0]).searchParams.get('title')).toBe('The Walnut Mansion');
- expect(new URL(fetcher.mock.calls[2][0]).searchParams.get('title')).toBe('Dvori od oraha');
+ expect(new URL(fetcher.mock.calls[3][0]).searchParams.get('title')).toBe('Dvori od oraha');
 });
 it('retains a local-title fallback even when the base item is already in English',async()=>{
  const {findArtwork}=await import('../apps/studio/src/artwork');
@@ -68,10 +68,25 @@ it('does not query an alternate title when the English title already finds cover
  expect((await response.json() as any).candidates[0].exact).toBe(true);expect(fetcher).toHaveBeenCalledTimes(1);
 });
 it('does not automatically select a different author or repeat the same normalized title',async()=>{
- const fetcher=vi.fn().mockResolvedValue(Response.json({docs:[]}));vi.stubGlobal('fetch',fetcher);
+ const fetcher=vi.fn().mockImplementation(async()=>Response.json({docs:[]}));vi.stubGlobal('fetch',fetcher);
  await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Dvori%20od%20oraha&author=Miljenko%20Jergovic&alternateTitle=Dvori%20od%20oraha'),env);
- expect(fetcher).toHaveBeenCalledTimes(2);
- fetcher.mockReset().mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[]})).mockResolvedValueOnce(Response.json({docs:[{key:'/works/OL1W',title:'Dvori od oraha',author_name:['Another Author'],cover_i:42}]}));
+ expect(fetcher).toHaveBeenCalledTimes(3);
+ fetcher.mockReset().mockImplementation(async()=>Response.json({docs:[{key:'/works/OL1W',title:'Dvori od oraha',author_name:['Another Author'],cover_i:42}]}));
  const response=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=The%20Walnut%20Mansion&author=Miljenko%20Jergovic&alternateTitle=Dvori%20od%20oraha'),env);
- expect((await response.json() as any).candidates[0].exact).toBe(false);
+ expect((await response.json() as any).candidates).toEqual([]);
+});
+
+it('finds Money under Harari initials without offering unrelated authors',async()=>{
+ const unrelated={key:'/works/wrong',title:'Money',author_name:['Tony Robbins'],cover_i:1};
+ const fetcher=vi.fn().mockImplementation(async(url:string)=>{
+  const author=new URL(url).searchParams.get('author');
+  return Response.json({docs:author==='Harari'?[{key:'/works/OL20876082W',title:'Money',author_name:['Y. N. Harari'],cover_i:10198158}]:author?[]:[unrelated]});
+ });vi.stubGlobal('fetch',fetcher);
+ const response=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Money&author=Yuval%20Noah%20Harari'),env);
+ const data:any=await response.json();expect(data.candidates).toHaveLength(1);expect(data.candidates[0]).toMatchObject({id:'/works/OL20876082W',author:'Y. N. Harari',exact:false});
+});
+it('never offers the same book title by an unrelated author',async()=>{
+ vi.stubGlobal('fetch',vi.fn().mockImplementation(async()=>Response.json({docs:[{key:'/works/wrong',title:'Money',author_name:['Tony Robbins'],cover_i:1}]})));
+ const response=await handle(new Request('https://r.test/api/artwork?category=BOOK&title=Money&author=Yuval%20Noah%20Harari'),env);
+ expect((await response.json() as any).candidates).toEqual([]);
 });

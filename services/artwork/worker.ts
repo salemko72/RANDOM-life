@@ -3,6 +3,14 @@ import {handleDatabase,type DatabaseEnv} from './database';
 export type Env=DatabaseEnv&{ASSETS:{fetch(request:Request):Promise<Response>};TMDB_READ_TOKEN?:string};
 const json=(data:unknown,status=200)=>Response.json(data,{status});
 const norm=(s:string)=>s.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/[^\p{L}\p{N}]+/gu,' ').trim();
+// Initials are useful for discovery, but never sufficient for automatic selection.
+function compatibleAuthor(expected:string,actual:string){
+ const a=norm(expected).split(' ').filter(Boolean),b=norm(actual).split(' ').filter(Boolean);
+ if(a.length<2||b.length<2)return norm(expected)===norm(actual);
+ if(a.at(-1)!==b.at(-1))return false;
+ const compatible=(x:string,y:string)=>x===y||(x.length===1||y.length===1)&&x[0]===y[0];
+ return a.length===b.length?a.every((v,i)=>compatible(v,b[i])):compatible(a[0],b[0]);
+}
 export function allowedImage(value:string){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&((u.hostname==='image.tmdb.org'&&/^\/t\/p\/w780\/[^/]+\.(jpg|png)$/.test(u.pathname))||(u.hostname==='covers.openlibrary.org'&&/^\/b\/id\/\d+-L.jpg$/.test(u.pathname)));}catch{return false;}}
 export function allowedCoverRedirect(value:string,origin:string){
  if(allowedImage(value))return true;
@@ -46,10 +54,16 @@ export async function handle(request:Request,env:Env):Promise<Response>{
   for(const identity of identities){
    const q=new URLSearchParams({title:identity.title,limit:'40',fields:'key,title,author_name,cover_i,first_publish_year'});if(identity.author)q.set('author',identity.author);
    const lookup=()=>{const remaining=deadline-Date.now();if(remaining<=0)throw new DOMException('Book search timed out','TimeoutError');return remote(`https://openlibrary.org/search.json?${q}`,undefined,Math.min(4000,remaining));};
+   const relevant=(x:any)=>x.cover_i&&norm(x.title)===norm(identity.title)&&(!identity.author||(x.author_name??[]).some((v:string)=>compatibleAuthor(identity.author,v)));
    data=await lookup();
-   if(identity.author&&!(data.docs??[]).some((x:any)=>x.cover_i)){q.delete('author');data=await lookup();}
+   if(identity.author&&!(data.docs??[]).some(relevant)){q.delete('author');data=await lookup();}
+   const surname=norm(identity.author).split(' ').at(-1)??'';
+   if(identity.author&&surname!==norm(identity.author)&&!(data.docs??[]).some(relevant)){
+    q.set('author',identity.author.trim().split(/\s+/).at(-1)!);data=await lookup();
+   }
+   data={docs:(data.docs??[]).filter(relevant)};
    matched=identity;
-   if((data.docs??[]).some((x:any)=>x.cover_i))break;
+   if(data.docs.length)break;
   }
   const candidates=(data.docs??[]).filter((x:any)=>x.cover_i).slice(0,8).map((x:any)=>({id:x.key,title:x.title,author:(x.author_name??[]).join(', '),year:x.first_publish_year,imageUrl:`https://covers.openlibrary.org/b/id/${x.cover_i}-L.jpg`,sourceUrl:`https://openlibrary.org${x.key}`,provider:'Open Library',attribution:'Cover source: Open Library. Edition and image rights require editorial confirmation.',exact:norm(x.title)===norm(matched.title)&&!!matched.author&&(x.author_name??[]).some((v:string)=>norm(v)===norm(matched.author))}));return json({state:'ready',candidates});
  }

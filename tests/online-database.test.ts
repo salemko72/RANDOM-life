@@ -92,3 +92,12 @@ it('reports authenticated D1 size including retained media and history',async()=
  expect(stats.data.items).toBeGreaterThan(0);expect(stats.data.databaseLimitBytes).toBe(500000000);
  expect(stats.data.measuredAt).toBeTruthy();
 });
+
+it('serves a published image without parsing unrelated legacy records',async()=>{
+ await upload('isolated.webp');const item={...record('isolated-media','/media/isolated.webp'),title:'Isolated published media'};
+ expect((await call('/api/database/migrate','POST',{item})).response.status).toBe(201);
+ const db=await mf.getD1Database('CONTENT_DB');
+ await db.prepare('INSERT INTO random_items(id,dedup,category,data,status,version,updated_at,revision) VALUES (?,?,?,?,?,?,?,?)').bind('legacy-unrelated','legacy-unrelated','EAT','{}','draft',1,'2026-10-01','old').run();
+ try{const r=await mf.dispatchFetch(origin+'/media/isolated.webp');expect(r.status).toBe(200);expect(new Uint8Array(await r.arrayBuffer())).toEqual(new Uint8Array(bytes));}
+ finally{await db.prepare('DELETE FROM random_items WHERE id IN (?,?)').bind('legacy-unrelated','isolated-media').run();}
+});

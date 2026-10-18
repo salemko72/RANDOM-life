@@ -100,8 +100,10 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             return json({ items }, 200, auth ? {} : {'Access-Control-Allow-Origin':'*'});
         }
         if (mediaPath.test(path) && ['GET', 'HEAD'].includes(request.method)) {
-            if (!auth && !(await all()).some(item => publishable(item) && item.image.path === path))
-                return json({ error: 'NOT_FOUND' }, 404);
+            if (!auth) {
+                const references = (await db.prepare("SELECT * FROM random_items WHERE status='published' AND json_extract(data,'$.image.path')=?").bind(path).all()).results;
+                if (!references.some(row => publishable(rowRecord(row)))) return json({ error: 'NOT_FOUND' }, 404);
+            }
             const media = await db.prepare('SELECT * FROM random_media WHERE path=?').bind(path).first<any>();
             if (!media)
                 return json({ error: 'NOT_FOUND' }, 404);

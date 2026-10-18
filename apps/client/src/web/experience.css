@@ -375,3 +375,7 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 /* Streaming source stays on the poster, clear of the floating save action. */
 .result-scene.category-watch .feature-photo>.streaming-badge{top:90px;right:24px}
 .item-focused .category-watch .detail-photo>.streaming-badge{top:88px;right:20px}
+
+/* A quiet source indicator; it never intercepts touches or opens a dialog. */
+.backup-status{position:absolute;z-index:30;top:calc(7px + var(--native-safe-top));left:50%;transform:translateX(-50%);max-width:calc(100% - 24px);padding:3px 8px;border-radius:12px;background:rgba(255,247,239,.87);color:#836c60;font:400 9px/1.4 RandomSans,sans-serif;letter-spacing:.15px;white-space:nowrap;pointer-events:none}
+.catalog-backup{color:#8b725f}

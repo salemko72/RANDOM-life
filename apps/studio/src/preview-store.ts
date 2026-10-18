@@ -1,3 +1,4 @@
+import {readConsumerCatalog,consumerCatalogStatus,hasBundledImage,readBundledImage} from '../../client/src/web/bundled-catalog';
 import {getOnlineDeletedIds,onlineCatalog,onlineSubmit,onlineDelete,onlinePutImage,onlineStatus} from './online-store';
 import {draftInput,prepareTranslationBatch,legacyRecordMetadata} from './import-recovery';
 import {collectMissing, type MissingIngredient} from './missing-ingredients';
@@ -121,9 +122,14 @@ export async function restoreLocalBackup(raw:unknown):Promise<{added:number;skip
 export async function submitPreviewContent(raw:unknown,id?:string,version?:number){const result=await onlineSubmit(draftInput(raw),id,version);window.dispatchEvent(new Event('random-content-updated'));return result;}
 
 export async function deletePreviewContent(id:string,version:number){await onlineDelete(id,version);window.dispatchEvent(new Event('random-content-updated'));}
-export async function readPreviewCatalog(){return onlineCatalog(false);}
+export async function readPreviewCatalog(force=false){return readConsumerCatalog(force);}
 export async function readStudioCatalog(){const local=(await readLocalCatalog()).map(i=>({...i,__storage:'local'}));let remote:ContentRecord[]=[];try{remote=await onlineCatalog(true);}catch{}const deleted=getOnlineDeletedIds();const ids=new Set(remote.map(i=>i.id)),keys=new Set(remote.map(i=>`${i.category}|${i.source.url}|${i.title.trim().toLowerCase()}`));return [...remote,...local.filter(i=>!deleted.has(i.id)&&!ids.has(i.id)&&!keys.has(`${i.category}|${i.source.url}|${i.title.trim().toLowerCase()}`))];}
-export async function readPreviewImage(path:string):Promise<Blob|null>{try{const response=await fetch(mediaAddress(path),{credentials:'same-origin'});if(response.ok&&(response.headers.get('content-type')??'').startsWith('image/'))return response.blob();}catch{}return readLocalImage(path);}
+export async function readPreviewImage(path:string):Promise<Blob|null>{
+ if(consumerCatalogStatus().source==='backup'&&hasBundledImage(path)){const bundled=await readBundledImage(path);if(bundled)return bundled;}
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4000);
+ try{const response=await fetch(mediaAddress(path),{credentials:'same-origin',signal:controller.signal});if(response.ok&&(response.headers.get('content-type')??'').startsWith('image/'))return response.blob();}catch{}finally{clearTimeout(timer);}
+ return await readBundledImage(path)??readLocalImage(path);
+}
 function mediaAddress(path:string){return typeof window!=='undefined'&&(window.location.hostname==='random-preview.invalid'||window.location.protocol==='file:')?'https://random-life-preview.pages.dev'+path:path;}
 export async function putPreviewImage(path:string,blob:Blob){await onlinePutImage(path,blob);}
 export async function previewRequest(path:string,method='GET',body?:unknown,version?:number):Promise<any>{if(path==='/admin/content'&&method==='GET')return{items:await readStudioCatalog()};if(method==='POST'&&path==='/admin/content')return submitPreviewContent(body);if(method==='PUT'&&path.startsWith('/admin/content/'))return submitPreviewContent(body,path.split('/')[3],version);throw Error('This operation requires the online Studio editor.');}

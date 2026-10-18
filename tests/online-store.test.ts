@@ -41,3 +41,7 @@ it('public catalog reports persistent network failure after a bounded retry',asy
  const fetcher=vi.fn().mockRejectedValue(new TypeError('Failed to fetch'));vi.stubGlobal('fetch',fetcher);
  await expect(onlineCatalog(false)).rejects.toThrow('CATALOG_NETWORK');expect(fetcher).toHaveBeenCalledTimes(2);
 });
+it('allows a short single public attempt for the installed reserve without changing default requests',async()=>{
+ const fetcher=vi.fn().mockRejectedValue(new TypeError('offline'));vi.stubGlobal('fetch',fetcher);
+ await expect(onlineCatalog(false,{timeoutMs:3500,retries:0})).rejects.toThrow('CATALOG_NETWORK');expect(fetcher).toHaveBeenCalledTimes(1);
+});

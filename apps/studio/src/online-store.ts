@@ -24,9 +24,10 @@ export const onlineLogin=(password:string)=>request<OnlineStatus>('/api/database
 export const onlineLogout=()=>request<unknown>('/api/database/logout','POST');
 let onlineDeletedIds=new Set<string>();
 export function getOnlineDeletedIds():Set<string>{return new Set(onlineDeletedIds);}
-async function publicCatalogRequest(path:string):Promise<{items:ContentRecord[];deletedIds?:string[]}>{
- for(let attempt=0;attempt<2;attempt++){
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+export type PublicCatalogOptions={timeoutMs?:number;retries?:0|1};
+async function publicCatalogRequest(path:string,options:PublicCatalogOptions={}):Promise<{items:ContentRecord[];deletedIds?:string[]}>{
+ for(let attempt=0;attempt<(options.retries??1)+1;attempt++){
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),options.timeoutMs??12000);
   try{
    let response:Response;
    try{response=await fetch(path,{method:'GET',credentials:'omit',cache:'no-store',signal:controller.signal});}
@@ -36,15 +37,15 @@ async function publicCatalogRequest(path:string):Promise<{items:ContentRecord[];
    if(!data||!Array.isArray(data.items))throw new OnlineError('CATALOG_INVALID_RESPONSE',response.status);
    return data;
   }catch(error){
-   if(attempt===0&&error instanceof OnlineError&&[0,502,503,504].includes(error.status))continue;
+   if(attempt<(options.retries??1)&&error instanceof OnlineError&&[0,502,503,504].includes(error.status))continue;
    throw error;
   }finally{clearTimeout(timer);}
  }
  throw new OnlineError('CATALOG_NETWORK',0);
 }
-export async function onlineCatalog(admin:boolean):Promise<ContentRecord[]>{
+export async function onlineCatalog(admin:boolean,options:PublicCatalogOptions={}):Promise<ContentRecord[]>{
  const path=admin?'/api/content':(typeof window!=='undefined'&&(window.location.hostname==='random-preview.invalid'||window.location.protocol==='file:')?'https://random-life-preview.pages.dev/api/catalog':'/api/catalog');
- const result=admin?await request<{items:ContentRecord[];deletedIds?:string[]}>(path):await publicCatalogRequest(path);
+ const result=admin?await request<{items:ContentRecord[];deletedIds?:string[]}>(path):await publicCatalogRequest(path,options);
  if(admin)onlineDeletedIds=new Set(result.deletedIds??[]);
  return result.items;
 }

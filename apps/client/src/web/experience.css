@@ -398,3 +398,5 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .shared-world .shared-stage{padding:0;margin:0;box-sizing:border-box}.shared-world .detail-heading{display:block}.shared-world h1,.shared-world h2{font-family:RandomDisplay,Georgia,serif;overflow-wrap:anywhere}.random-world .item-social-actions>button{background:#ab8578!important;color:#fff8ef!important}.random-world .item-social-actions>.favorite-float{background:#ba7b74!important}.random-world .item-social-actions>.marked{background:#7e8b77!important}
 /* Keep all three photo controls above the reading surface on short phones. */
 .item-focused .detail-hero{min-height:calc(340px + var(--native-safe-top))}
+/* Let the action circles straddle the organic photo's left edge. */
+.result-overview>.item-social-actions{left:calc(16% + 8px)}

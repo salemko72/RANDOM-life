@@ -43,9 +43,9 @@ export function createSnapshotWriter(write: (value: string) => Promise<unknown>,
   return queue;
  };
 }
-export function seedPreviewHtml(html: string, state: LocalState): string {
+export function profileBootstrapScript(state: LocalState): string {
  const safeState = JSON.stringify(readSnapshot(JSON.stringify(state))).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
- const bootstrap = `<script>(function(){
+ return `(function(){
  var seed=${safeState}, memory=Object.create(null), nativeStore=null;
  var allowed=function(k){return k==="random-life.sfx.v1"||k===${JSON.stringify(PROFILE_KEY)}||k===${JSON.stringify(LOCALE_KEY)}||(k.indexOf(${JSON.stringify(EXPERIENCE_PREFIX)})===0&&k.length<=200);};
  try {nativeStore=window.localStorage;var probe='random-life.bridge-probe';nativeStore.setItem(probe,'1');nativeStore.removeItem(probe);}catch(e){nativeStore=null;}
@@ -55,7 +55,10 @@ export function seedPreviewHtml(html: string, state: LocalState): string {
  var facade={getItem:function(k){k=String(k);if(allowed(k))return Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null;try{return nativeStore?nativeStore.getItem(k):(Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null);}catch(e){return null;}},setItem:function(k,v){k=String(k);v=String(v);memory[k]=v;try{if(nativeStore)nativeStore.setItem(k,v);}catch(e){}if(allowed(k))send('set',k,v);},removeItem:function(k){k=String(k);delete memory[k];try{if(nativeStore)nativeStore.removeItem(k);}catch(e){}if(allowed(k))send('remove',k);},clear:function(){memory=Object.create(null);try{if(nativeStore)nativeStore.clear();}catch(e){}send('clear');},key:function(i){var keys=Object.keys(memory);return keys[i]||null;}};
  Object.defineProperty(facade,'length',{get:function(){return Object.keys(memory).length;}});
  Object.defineProperty(window,'localStorage',{configurable:true,value:facade});
-})();</script>`;
+})();`;
+}
+export function seedPreviewHtml(html: string, state: LocalState): string {
+ const bootstrap = `<script>${profileBootstrapScript(state)}</script>`;
  const firstScript = html.search(/<script\b/i);
  if (firstScript >= 0) return html.slice(0, firstScript) + bootstrap + html.slice(firstScript);
  return html + bootstrap;

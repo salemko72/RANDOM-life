@@ -1,44 +1,44 @@
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
-import React, {useEffect, useRef, useState, useMemo} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
-import preview from './src/generated/preview.json';
-import {applyStorageMessage, createSnapshotWriter, LocalState, NATIVE_STATE_KEY, readSnapshot, seedPreviewHtml} from './src/native/profile-bridge';
+import {Asset} from 'expo-asset';
+import * as FileSystem from 'expo-file-system/legacy';
+import {applyStorageMessage, createSnapshotWriter, LocalState, NATIVE_STATE_KEY, readSnapshot} from './src/native/profile-bridge';
+import {prepareNativePreview} from './src/native/preview-assets';
 
 // Expo shell embeds the current UI and keeps device preferences across launches.
-// Published content and images are loaded from the shared Cloudflare D1 service.
+// D1 is primary; the installed UI includes its own reserve catalog and images.
 export default function App(){return <SafeAreaProvider style={{flex:1,backgroundColor:'#fbefe7'}}><NativeExperience/></SafeAreaProvider>;}
 function NativeExperience(){
  const insets=useSafeAreaInsets();
  const [error,setError]=useState('');
- const [html,setHtml]=useState<string | null>(null);
+ const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
   let active=true;
-  AsyncStorage.getItem(NATIVE_STATE_KEY).then(raw=>{
+  AsyncStorage.getItem(NATIVE_STATE_KEY).then(async raw=>{
    if(!active)return;
    state.current=readSnapshot(raw);
-   setHtml(seedPreviewHtml(preview.html,state.current));
-  }).catch(()=>{if(active)setError('Lokalni podaci nisu dostupni. Ponovo otvori RANDOM.');});
+   const asset=Asset.fromModule(require('./src/generated/preview.html'));
+   const local=await prepareNativePreview(asset,FileSystem,state.current,insets);
+   if(active)setUri(local);
+  }).catch(()=>{if(active)setError('RANDOM se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};
- },[]);
- const renderedHtml=useMemo(()=>{
-  if(html===null)return null;
-  const safe=seedPreviewHtml(preview.html,state.current);
-  const css=`<style>html,body{background:#fbefe7}</style><script>document.documentElement.style.setProperty('--native-safe-top','${insets.top}px');document.documentElement.style.setProperty('--native-safe-bottom','${insets.bottom}px');</script>`;
-  return safe.replace('</head>',css+'</head>').replace('initial-scale=1','initial-scale=1,viewport-fit=cover');
- },[html,insets.top,insets.bottom]);
+ },[insets.top,insets.bottom]);
  return <View style={styles.screen}>
   <StatusBar style="dark"/>
-  {error?<View style={styles.error}><Text>{error}</Text></View>:html===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
-   source={{html:renderedHtml??'',baseUrl:'https://random-preview.invalid/'}}
-   originWhitelist={['https://random-preview.invalid']}
+  {error?<View style={styles.error}><Text>{error}</Text></View>:uri===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
+   source={{uri}}
+   originWhitelist={['file://*']}
+   allowFileAccess
+   allowingReadAccessToURL={uri.slice(0,uri.lastIndexOf('/')+1)}
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
-   onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.startsWith('https://random-preview.invalid/')}
+   onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.split('#')[0]===uri}
    onError={()=>setError('RANDOM se nije učitao. Zatvori i ponovo otvori aplikaciju.')}
    onMessage={event=>{
     const next=applyStorageMessage(state.current,event.nativeEvent.data);

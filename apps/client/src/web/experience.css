@@ -400,3 +400,14 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .item-focused .detail-hero{min-height:calc(340px + var(--native-safe-top))}
 /* Let the action circles straddle the organic photo's left edge. */
 .result-overview>.item-social-actions{left:calc(16% + 8px)}
+/* Wider metadata pills; wrap between words, never inside a genre or label. */
+.result-heading-row{grid-template-columns:minmax(0,1fr) 126px;gap:14px}
+.result-heading-row .result-meta{align-items:stretch}
+.result-heading-row .result-meta>span{width:100%;max-width:none;min-height:34px;padding:8px 10px;gap:6px;font-size:10px;box-sizing:border-box}
+.result-heading-row .result-meta svg{width:15px;height:15px;flex:0 0 15px}
+.result-meta .badge-label{overflow-wrap:normal;word-break:normal;hyphens:none;line-height:1.4}
+@media(max-width:480px),(max-height:740px) and (max-width:600px){
+ .result-heading-row{display:block}
+ .result-heading-row .result-meta{flex-direction:row;flex-wrap:wrap;gap:8px;margin-top:12px;padding-top:0}
+ .result-heading-row .result-meta>span{width:auto;min-width:100px;max-width:100%}
+}

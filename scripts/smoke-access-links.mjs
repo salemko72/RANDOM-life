@@ -58,5 +58,26 @@ try{
  assert.equal(published.status,'published');assert(published.accessLinks.some(link=>link.provider==='Local Books'&&link.verified&&link.url.endsWith('correct-edition')));
  const events=await db.prepare("SELECT * FROM random_events WHERE action='access-links-upgrade'").all();assert.equal(events.results.length,2);
  console.log('PASS Studio login → idempotent D1 upgrade → manual link checks/edit reset → publish → public direct link; prior approvals preserved.');
+ // Cover fallback is explicit, preserves the edited record, and uses the same
+ // authenticated upload/review/publish path as an ordinary cover replacement.
+ async function openMissingBook(){
+  const stored=await db.prepare('SELECT * FROM random_items WHERE id=?').bind('access-BOOK').first();const data=JSON.parse(stored.data);data.image.path='/media/missing-book-cover.webp';
+  await db.prepare('UPDATE random_items SET data=?,version=version+1 WHERE id=?').bind(JSON.stringify(data),stored.id).run();
+  const record={...data,id:stored.id,status:stored.status,version:stored.version+1,updatedAt:stored.updated_at,approvedBy:stored.approved_by,approvedAt:stored.approved_at};
+  await page.evaluate(record=>localStorage.setItem('random-life.studio-editor.v1',JSON.stringify({selected:record,json:JSON.stringify(record),category:'BOOK'})),record);await page.reload();await page.getByRole('button',{name:'Use placeholder',exact:true}).waitFor();return record;
+ }
+ const absent=await openMissingBook();const beforeCount=await db.prepare('SELECT COUNT(*) AS n FROM random_items').first();
+ await page.getByRole('button',{name:'Use placeholder',exact:true}).click();await page.waitForFunction(()=>{const e=JSON.parse(localStorage.getItem('random-life.studio-editor.v1'));return e?.selected?.id==='access-BOOK'&&JSON.parse(e.json).image.path.startsWith('/media/book-placeholder-');});
+ const prepared=await page.evaluate(()=>JSON.parse(JSON.parse(localStorage.getItem('random-life.studio-editor.v1')).json));
+ assert.equal(prepared.title,absent.title);assert.deepEqual(prepared.authors,absent.authors);assert.equal(prepared.image.rightsConfirmed,false);assert.equal(prepared.translations.en.reviewed,false);assert.equal(prepared.translations.bs.reviewed,false);assert.equal(await page.getByRole('button',{name:'Use placeholder',exact:true}).count(),0);
+ const unchanged=await db.prepare('SELECT * FROM random_items WHERE id=?').bind(absent.id).first();assert.equal(JSON.parse(unchanged.data).image.path,absent.image.path,'preparing a placeholder must not change the item before publish');
+ await page.getByRole('checkbox',{name:'I have reviewed the ENG translation',exact:true}).check();await page.getByRole('checkbox',{name:'I have reviewed the BHS translation',exact:true}).check();await page.getByRole('checkbox',{name:'I confirm the image rights',exact:true}).check();await page.locator('.publish-action button').click();await page.locator('.publish-feedback[data-outcome="published"]').waitFor();
+ const saved=await db.prepare('SELECT * FROM random_items WHERE id=?').bind(absent.id).first();assert.equal(saved.status,'published');assert(JSON.parse(saved.data).image.path.startsWith('/media/book-placeholder-'));assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM random_items').first()).n,beforeCount.n);
+ assert.equal((await mf.dispatchFetch(origin+JSON.parse(saved.data).image.path.slice(1))).status,200);
+ await openMissingBook();await page.getByLabel('Choose your standard placeholder image',{exact:true}).setInputFiles({name:'my-placeholder.webp',mimeType:'image/webp',buffer:bytes});await page.waitForFunction(()=>JSON.parse(JSON.parse(localStorage.getItem('random-life.studio-editor.v1')).json).image.path.startsWith('/media/book-placeholder-'));
+ assert(await db.prepare('SELECT * FROM random_media WHERE path=?').bind('/media/book-placeholder-template.webp').first());
+ await openMissingBook();await page.waitForFunction(()=>document.querySelector('.book-placeholder-option>img')?.naturalWidth===80);
+ console.log('PASS missing cover → explicit placeholder → same book ID → manual image/translation review → published D1 image; custom template remembered for future books.');
+
  await page.close();
 }finally{await browser.close();await mf.dispose();}

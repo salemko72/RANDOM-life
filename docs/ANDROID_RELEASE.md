@@ -2,6 +2,13 @@
 
 Project: `@salemko/random`, package `com.salemko.randomlife`.
 
+Builds submitted from source commit `74def48`:
+
+- APK: https://expo.dev/accounts/salemko/projects/random/builds/84c48d4c-54e4-45e5-9f47-37690be7b3fe
+- AAB: https://expo.dev/accounts/salemko/projects/random/builds/e02b886a-51fc-42cd-9436-8df551ceb32f
+
+Check each Expo page for its actual completion status before downloading.
+
 The web correction smooths the READ image silhouette. Native startup now loads
 the installed HTML asset from a local file instead of importing a 49 MB JSON
 string into Hermes and sending it as a WebView property. The Android export has

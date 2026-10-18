@@ -379,3 +379,22 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 /* A quiet source indicator; it never intercepts touches or opens a dialog. */
 .backup-status{position:absolute;z-index:30;top:calc(7px + var(--native-safe-top));left:50%;transform:translateX(-50%);max-width:calc(100% - 24px);padding:3px 8px;border-radius:12px;background:rgba(255,247,239,.87);color:#836c60;font:400 9px/1.4 RandomSans,sans-serif;letter-spacing:.15px;white-space:nowrap;pointer-events:none}
 .catalog-backup{color:#8b725f}
+
+/* One consistent set of item actions, shared by preview and focused pages. */
+.item-social-actions{position:absolute;top:calc(130px + var(--native-safe-top));left:20px;z-index:6;display:flex;flex-direction:column;gap:11px}
+.random-world .item-social-actions>button{position:static!important;inset:auto!important;width:46px!important;height:46px!important;min-width:46px;min-height:46px;border:1px solid #fff6ed55;border-radius:50%;background:#ac8a7c;color:#fff8ef;display:grid;place-items:center;padding:0;box-shadow:0 5px 14px #68403426;cursor:pointer}
+.random-world .item-social-actions>.favorite-float{background:#bc827b}
+.item-social-actions .saved svg{fill:currentColor}.random-world .item-social-actions>.marked{background:#7e8b77;box-shadow:0 0 0 2px #fff6ed}
+.detail-hero .item-social-actions{top:calc(96px + var(--native-safe-top));left:20px}
+.share-notice{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);z-index:90;background:#fff6ed;color:#684d43;padding:12px 18px;border:1px solid #d7b6aa;border-radius:20px;font-size:13px;box-shadow:0 5px 20px #68403433}
+.share-link-dialog{position:fixed;z-index:110;top:30%;left:5%;width:90%;max-width:500px;box-sizing:border-box;padding:28px;background:#fff6ed;border:1px solid #c89a8b;border-radius:24px;box-shadow:0 0 0 100vmax #38232488;color:#684d43}.share-link-dialog>button{width:60px;height:60px;border:0;border-radius:50%;float:right;background:#edd6cb;color:#684d43}.share-link-dialog input{width:100%;box-sizing:border-box;padding:14px;font-size:14px}
+@media(max-height:740px) and (max-width:600px){.item-social-actions{top:80px;gap:8px}.random-world .item-social-actions>button{width:42px!important;height:42px!important;min-height:42px;min-width:42px}}
+/* Shared links render one complete item, never the app's shell or navigation. */
+.shared-world .random-card{height:auto;min-height:0;overflow:hidden}.shared-world .shared-stage{position:relative;inset:auto;width:100%;height:auto;min-height:0;overflow:visible}.shared-article{position:relative;display:block}.shared-world .detail-hero{height:clamp(300px,48svh,440px)}.shared-world .detail-reading-surface{display:block;position:relative;margin-top:-80px;padding-top:55px;z-index:3;background:linear-gradient(135deg,#fbefe7,#fbede6);border-radius:0 64% 0 0 / 0 80px 0 0}.shared-world .detail-heading{margin:0 24px 20px!important}.shared-world .detail-sheet{padding:0 24px 28px!important;background:none;box-shadow:none}.shared-world h1{font-family:RandomSerif,serif;font-size:34px;line-height:1.12;margin:12px 0;color:#302222}.shared-world h2{font-family:RandomSerif,serif;font-size:25px;margin:24px 0 14px}.shared-world .detail-photo{cursor:zoom-in}.shared-world .detail-full-image{bottom:-40px!important;filter:none}.shared-world .detail-meta{display:flex;flex-direction:row;gap:14px}.shared-summary,.shared-ingredients{font-size:15px;line-height:1.7;color:#896e62}.shared-ingredients{padding-left:22px}.shared-ingredients li{padding:4px 0}.shared-brand{padding:18px;text-align:center;color:#9e7264;font-size:14px;letter-spacing:2px}.shared-world .detail-content{overflow:visible!important}.shared-unavailable{padding:50px 28px!important;box-sizing:border-box}
+@media(max-width:600px){.shared-world{min-height:100svh}.shared-world .random-card{min-height:100svh}.shared-world .detail-heading h1{font-size:32px}}
+
+.random-world .item-social-actions>button{opacity:1!important;pointer-events:auto!important}
+
+.shared-world .shared-stage{padding:0;margin:0;box-sizing:border-box}.shared-world .detail-heading{display:block}.shared-world h1,.shared-world h2{font-family:RandomDisplay,Georgia,serif;overflow-wrap:anywhere}.random-world .item-social-actions>button{background:#ab8578!important;color:#fff8ef!important}.random-world .item-social-actions>.favorite-float{background:#ba7b74!important}.random-world .item-social-actions>.marked{background:#7e8b77!important}
+/* Keep all three photo controls above the reading surface on short phones. */
+.item-focused .detail-hero{min-height:calc(340px + var(--native-safe-top))}

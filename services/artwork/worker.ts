@@ -1,4 +1,5 @@
 import {downloadApk} from './apk-download';
+import {sharedPage} from './shared-page';
 import {handleDatabase,type DatabaseEnv} from './database';
 export type Env=DatabaseEnv&{ASSETS:{fetch(request:Request):Promise<Response>};TMDB_READ_TOKEN?:string};
 const json=(data:unknown,status=200)=>Response.json(data,{status});
@@ -26,7 +27,8 @@ class SourceError extends Error{constructor(public status:number){super('Source 
 export function tmdbAuth(token:string){const clean=token.trim().replace(/^Bearer\s+/i,'');return /^[a-fA-F0-9]{32}$/.test(clean)?{key:clean,headers:undefined}:{key:undefined,headers:{Authorization:`Bearer ${clean}`}};}
 async function remote(url:string,headers?:HeadersInit,timeout=12000){const r=await fetch(url,{headers,signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new SourceError(r.status);return r.json() as Promise<any>;}
 export async function handle(request:Request,env:Env):Promise<Response>{
- const u=new URL(request.url);if(u.pathname==='/downloads/RANDOM-life-android.apk')return downloadApk(request,env.ASSETS);if(u.pathname.startsWith('/api/database/')||u.pathname==='/api/content-contract'||u.pathname==='/api/catalog'||u.pathname==='/api/content'||u.pathname.startsWith('/api/content/')||u.pathname.startsWith('/media/'))return handleDatabase(request,env);if(!u.pathname.startsWith('/api/artwork'))return env.ASSETS.fetch(request);
+ if(new URL(request.url).pathname.startsWith('/item/'))return sharedPage(request,env);
+ const u=new URL(request.url);if(u.pathname==='/downloads/RANDOM-life-android.apk')return downloadApk(request,env.ASSETS);if(u.pathname.startsWith('/api/database/')||u.pathname==='/api/content-contract'||u.pathname==='/api/catalog'||u.pathname.startsWith('/api/shared-item/')||u.pathname==='/api/content'||u.pathname.startsWith('/api/content/')||u.pathname.startsWith('/media/'))return handleDatabase(request,env);if(!u.pathname.startsWith('/api/artwork'))return env.ASSETS.fetch(request);
  if(request.method!=='GET')return json({error:'Method not allowed'},405);
  try{
  if(u.pathname==='/api/artwork-image'){

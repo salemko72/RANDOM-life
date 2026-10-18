@@ -95,6 +95,16 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             return json({ authenticated: false }, 200, { 'Set-Cookie': `${cookieName}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0` });
         const all = async () => (await db.prepare('SELECT * FROM random_items').all()).results.map(rowRecord);
         const publishable = (item: ContentRecord) => item.status === 'published' && !!item.approvedBy && !!item.approvedAt && !publicationIssues(item).length;
+        if(path.startsWith('/api/shared-item/')&&request.method==='GET'){
+            const id=path.slice('/api/shared-item/'.length);
+            if(!/^[a-zA-Z0-9_-]{1,180}$/.test(id))return json({error:'NOT_FOUND'},404);
+            const row=await db.prepare('SELECT * FROM random_items WHERE id=? AND status=?').bind(id,'published').first();
+            if(!row)return json({error:'NOT_FOUND'},404);
+            let item:ContentRecord;try{item=rowRecord(row);}catch{return json({error:'NOT_FOUND'},404);}
+            if(!publishable(item))return json({error:'NOT_FOUND'},404);
+            const {approvedBy,approvedAt,...publicItem}=item;
+            return json({item:{...publicItem,...((item.category==='BOOK'||item.category==='WATCH')?{accessLinks:visibleAccessLinks(item)}:{}),translations:Object.fromEntries(Object.entries(item.translations??{}).filter(([,v])=>v.reviewed))}},200,{'Access-Control-Allow-Origin':'*'});
+        }
         if (path === '/api/catalog' && request.method === 'GET') {
             const items = (await all()).filter(publishable).map(({ approvedBy, approvedAt, ...item }) => ({ ...item, ...((item.category==='BOOK'||item.category==='WATCH')?{accessLinks:visibleAccessLinks(item)}:{}), translations: Object.fromEntries(Object.entries(item.translations ?? {}).filter(([, value]) => value.reviewed)) }));
             return json({ items }, 200, auth ? {} : {'Access-Control-Allow-Origin':'*'});

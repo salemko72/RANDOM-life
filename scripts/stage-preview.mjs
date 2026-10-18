@@ -10,7 +10,7 @@ await cp(resolve(source,'assets'),resolve(target,'assets'),{recursive:true});
 for(const file of ['privacy.html','delete-data.html','terms.html'])await cp(resolve('apps/client/public/legal',file),resolve(target,file));
 await writeFile(resolve(target,'_headers'),'/*\n  Cache-Control: no-cache\n  X-Content-Type-Options: nosniff\n');
 await build({entryPoints:['services/artwork/worker.ts'],bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:resolve(target,'_worker.js')});
-await writeFile(resolve(target,'_routes.json'),JSON.stringify({version:1,include:['/api/*','/media/*','/downloads/RANDOM-life-android.apk'],exclude:[]}));
+await writeFile(resolve(target,'_routes.json'),JSON.stringify({version:1,include:['/item/*','/api/*','/media/*','/downloads/RANDOM-life-android.apk'],exclude:[]}));
 try{await access('/workspace/shared/downloads/recipes');await cp('/workspace/shared/downloads/recipes',resolve(target,'downloads/recipes'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 console.log('Staged Pages preview with artwork routes; static pages remain assets.');
 

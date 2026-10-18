@@ -1,6 +1,7 @@
 import React from 'react';
 export default function Icon({ name, size = 24, ...props }: { name: string; size?: number; className?: string }) {
   const paths: Record<string, React.ReactNode> = {
+    share: <><path d="M12 17V2m-5 5 5-5 5 5M6 11H3v13h18V11h-3"/></>,
     mail: <><rect x="2" y="5" width="20" height="16" rx="3"/><path d="m3 7 9 7 9-7"/></>,
     food: <><path d="M5 3v7a3 3 0 0 0 6 0V3M8 3v19M19 3c-4 2-4 10 0 10V3Zm0 10v9"/></>,
     move: <><circle cx="15" cy="4" r="2"/><path d="m10 9 4-2 3 4 4 1M10 9l-4 4-4-1m12-5-3 9 5 3-1 4M11 16l-5 2-3 5"/></>,

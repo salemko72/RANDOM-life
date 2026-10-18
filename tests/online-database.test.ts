@@ -101,3 +101,11 @@ it('serves a published image without parsing unrelated legacy records',async()=>
  try{const r=await mf.dispatchFetch(origin+'/media/isolated.webp');expect(r.status).toBe(200);expect(new Uint8Array(await r.arrayBuffer())).toEqual(new Uint8Array(bytes));}
  finally{await db.prepare('DELETE FROM random_items WHERE id IN (?,?)').bind('legacy-unrelated','isolated-media').run();}
 });
+it('shares only the requested approved published record without editorial identities',async()=>{
+ const db=await mf.getD1Database('CONTENT_DB'),input=structuredClone(demoCatalog.find(i=>i.category==='EAT')!);
+ await db.prepare('INSERT INTO random_items(id,dedup,category,data,status,version,updated_at,approved_by,approved_at,revision) VALUES (?,?,?,?,?,?,?,?,?,?)').bind('share-test','share-test','EAT',JSON.stringify(input),'published',1,'2026-10-18T00:00:00Z','private-editor','2026-10-18T00:00:00Z','first').run();
+ const result=await call('/api/shared-item/share-test','GET',undefined,false);expect(result.response.status).toBe(200);expect(result.data.item.id).toBe('share-test');expect(result.data.items).toBeUndefined();expect(result.data.item.approvedBy).toBeUndefined();expect(result.data.item.approvedAt).toBeUndefined();
+ await db.prepare("UPDATE random_items SET status='review' WHERE id='share-test'").run();expect((await call('/api/shared-item/share-test','GET',undefined,false)).response.status).toBe(404);
+ expect((await call('/api/shared-item/unknown-id','GET',undefined,false)).response.status).toBe(404);
+ await db.prepare("UPDATE random_items SET status='published',approved_by=NULL WHERE id='share-test'").run();expect((await call('/api/shared-item/share-test','GET',undefined,false)).response.status).toBe(404);
+});

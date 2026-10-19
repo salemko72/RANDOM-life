@@ -445,8 +445,8 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .lifeshuffler-logo{display:block;width:260px;max-width:100%;aspect-ratio:1400/251;background:url('./assets/brand/lifeshuffler-wordmark.webp') center/contain no-repeat}
 .splash-wordmark{width:100%;max-width:390px}
 .splash-wordmark h1{width:100%;text-shadow:none}
-.splash-wordmark .lifeshuffler-logo{width:100%}
+.splash-wordmark .lifeshuffler-logo{width:85%}
 .wordmark h1{display:block;letter-spacing:0}
-.wordmark .lifeshuffler-logo{width:clamp(170px,50vw,260px)}
+.wordmark .lifeshuffler-logo{width:clamp(145px,42.5vw,221px)}
 .onboarding-content .welcome-brand{letter-spacing:0}
 .onboarding-content .welcome-brand .lifeshuffler-logo{width:260px}

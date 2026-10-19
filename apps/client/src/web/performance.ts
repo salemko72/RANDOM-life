@@ -13,7 +13,7 @@ export function installPerformance(){
 export async function exportPerformance(){
  if(bridge()){bridge()!.postMessage(JSON.stringify({type:'random-life.performance.export.v1'}));return;}
  const report=JSON.stringify({schema:1,version:'0.20.0',exportedAt:new Date().toISOString(),viewport:{width:innerWidth,height:innerHeight},events:log.rows},null,2);
- const url=URL.createObjectURL(new Blob([report],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='RANDOM-diagnostics.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ const url=URL.createObjectURL(new Blob([report],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='LifeShuffler-diagnostics.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 export function summarizeFrames(frames:number[],hidden:boolean,reduced:boolean,durationMs:number){
  const sorted=[...frames].sort((a,b)=>a-b);return{durationMs,frames:frames.length,p95Ms:sorted[Math.max(0,Math.ceil(sorted.length*.95)-1)]??0,maxMs:sorted.at(-1)??0,slowFrames:frames.filter(ms=>ms>34).length,hidden:Number(hidden),reduced:Number(reduced)};

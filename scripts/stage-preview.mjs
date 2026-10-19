@@ -7,6 +7,7 @@ const source=resolve('apps/client/preview-dist');const target=resolve('apps/clie
 await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
 for(const file of ['index.html','studio.html','standalone.js','standalone.css'])await cp(resolve(source,file),resolve(target,file));
 await cp(resolve(source,'assets'),resolve(target,'assets'),{recursive:true});
+await cp(resolve('apps/client/assets/favicon.png'),resolve(target,'favicon.png'));
 for(const file of ['privacy.html','delete-data.html','terms.html'])await cp(resolve('apps/client/public/legal',file),resolve(target,file));
 await writeFile(resolve(target,'_headers'),'/*\n  Cache-Control: no-cache\n  X-Content-Type-Options: nosniff\n');
 await build({entryPoints:['services/artwork/worker.ts'],bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:resolve(target,'_worker.js')});

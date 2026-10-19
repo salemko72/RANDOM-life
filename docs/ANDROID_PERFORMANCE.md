@@ -1,5 +1,12 @@
 # Android performance testing — 0.20.0 (3)
 
+Build source: `96f5416`.
+
+- APK: https://expo.dev/accounts/salemko/projects/random/builds/1065fef0-3d2c-4ffe-83d3-68dda3c284a9
+- AAB: https://expo.dev/accounts/salemko/projects/random/builds/bc7e59d5-2747-4298-9e84-c719b56f6d0f
+
+Check Expo for the actual completion status before downloading.
+
 This build includes the latest wheel, category photography, consumer navigation,
 item sharing and Studio placeholder changes. APK and AAB use the existing signing
 credentials and package name; neither build submits the application to Play.

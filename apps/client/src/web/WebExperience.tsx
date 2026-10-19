@@ -71,6 +71,7 @@ function Wheel({ rotor, tick, spinning, onSpin, onSpinCategory, choices }: {roto
         </g>
         {!choices&&<path className="wheel-sector-control" d={sector(i)} fill="transparent" role="button" tabIndex={spinning?-1:0} aria-label={locale==='en'?`Spin in ${label}`:`Zavrti kategoriju ${label}`} aria-disabled={spinning} data-wheel-category={WHEEL_CATEGORIES[i].id} onClick={event=>{event.stopPropagation();if(!spinning)onSpinCategory(WHEEL_CATEGORIES[i].id);}} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();if(!spinning)onSpinCategory(WHEEL_CATEGORIES[i].id);}}}><title>{label}</title></path>}
       </g>;})}
+      {!choices&&<g className="wheel-category-dividers" pointerEvents="none" aria-hidden="true" stroke="#fff4eb" strokeWidth="3" strokeLinecap="round">{WHEEL_CATEGORIES.map((c,i)=>{const angle=(i*72-126)*Math.PI/180;return <line key={c.id} x1="300" y1="300" x2={300+286*Math.cos(angle)} y2={300+286*Math.sin(angle)}/>;})}</g>}
       <circle cx="300" cy="300" r="288" fill="none" stroke="#fff4eb" strokeWidth="5"/>
     </svg></div>
     <div className="wheel-pointer" key={tick}><svg viewBox="0 0 60 66"><path d="M9 4h42q7 0 4 8L35 56q-5 10-10 0L5 12Q2 4 9 4Z" fill="#ae6b69" stroke="#e8c4bc" strokeWidth="4"/></svg></div>

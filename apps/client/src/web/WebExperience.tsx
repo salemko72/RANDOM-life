@@ -23,6 +23,12 @@ import {loadExperience,saveExperience} from './experience-state';
 import {deleteDeviceProfile} from './delete-profile';
 import { WHEEL_CATEGORIES, itemWheelChoices, coast, landingRotation, sectorAtRotation, type WheelCategory, type ActiveCategory } from './wheel';
 
+const approvedCatalogs=new WeakMap<ContentRecord[],ContentRecord[]>();
+function approvedCatalog(rows:ContentRecord[]){
+ let approved=approvedCatalogs.get(rows);
+ if(!approved){approved=rows.filter(r=>r.status==='published'&&!publicationIssues(r).length);approvedCatalogs.set(rows,approved);}
+ return approved;
+}
 function uiCategory(r:PreviewRecord):UiCategory{return r.category==='BOOK'?'READ':r.category;}
 function completedLabel(r:PreviewRecord,locale:import("@random/shared").Locale){const t=(text:string)=>translate(text,locale);return r.category==='BOOK'?t("Već čitao/la"):r.category==='WATCH'?t("Već gledao/la"):r.category==='MOVE'?t("Već radio/la"):r.category==='GO'?t("Već bio/la"):t("Već probao/la");}
 function action(r:PreviewRecord,locale:import("@random/shared").Locale){const t=(text:string)=>translate(text,locale);return r.category==='EAT'?t("Skuhaj"):r.category==='BOOK'?t("Pročitaj"):r.category==='WATCH'?t("Pogledaj"):r.category==='MOVE'?t("Pokreni se"):t("Izađi");}
@@ -107,7 +113,7 @@ function Experience(){
  const [published,setPublished]=useState<ContentRecord[]>([]);const [uploadedImage,setUploadedImage]=useState<string|null>(null);const [imageExpanded,setImageExpanded]=useState(false);
  useEffect(()=>setImageExpanded(false),[item?.id,studio]);
  useEffect(()=>{if(details)detailHomeButton.current?.focus({preventScroll:true});else if(wasDetails.current)mainMenuButton.current?.focus({preventScroll:true});wasDetails.current=details;},[details]);
- const records:PreviewRecord[]=[...published];
+ const records:PreviewRecord[]=published;
  const [soundEnabled,setSoundEnabled]=useState(loadSfx);const sfx=useRef<InterfaceSfx|null>(null);
  useEffect(()=>{
   if(studio){setLaunchPhase('ready');return;}
@@ -125,7 +131,7 @@ function Experience(){
  useEffect(()=>{const sync=()=>setStudio(location.hash==='#studio');window.addEventListener('hashchange',sync);return()=>window.removeEventListener('hashchange',sync);},[]);
  useEffect(()=>{
   let live=true;
-  const load=()=>readPreviewCatalog(true).then(rows=>{if(live){setPublished(rows.filter(r=>r.status==='published'&&!publicationIssues(r).length));setCatalogState(consumerCatalogStatus().source);setCatalogError('');}}).catch(error=>{if(live){setCatalogState('error');setCatalogError(catalogFailure(error));}});
+  const load=()=>readPreviewCatalog(true).then(rows=>{if(live){setPublished(approvedCatalog(rows));setCatalogState(consumerCatalogStatus().source);setCatalogError('');}}).catch(error=>{if(live){setCatalogState('error');setCatalogError(catalogFailure(error));}});
   void load();
   const timer=setInterval(()=>{if(consumerCatalogStatus().source==='backup')void load();},30000);
   window.addEventListener('random-content-updated',load);window.addEventListener('focus',load);window.addEventListener('pageshow',load);window.addEventListener('online',load);
@@ -143,14 +149,15 @@ function Experience(){
   if(locked.current)return;void sfx.current?.unlock();locked.current=true;setBusy(true);setPanel(null);setMessage('');setDetails(false);
   let currentProfile=profile;
   if(scene==='result'&&item&&!profile.completedIds.includes(item.id)&&!profile.events.some(e=>e.itemId===item.id&&e.kind==='accept')){currentProfile=recordSignal(profile,item,'skip');setProfile(currentProfile);}
-  let current:ContentRecord[];try{current=await readPreviewCatalog();setPublished(current.filter(r=>r.status==='published'&&!publicationIssues(r).length));setCatalogState(consumerCatalogStatus().source);setCatalogError('');}catch(error){const code=catalogFailure(error);setCatalogState('error');setCatalogError(code);setMessage((locale==='en'?'Online library could not be loaded.':'Online biblioteka se nije učitala.')+' · '+code);locked.current=false;setBusy(false);return;}
-  const catalog:PreviewRecord[]=[...current.filter(r=>r.status==='published'&&!publicationIssues(r).length)];
+  let current:ContentRecord[];try{current=await readPreviewCatalog();setPublished(approvedCatalog(current));setCatalogState(consumerCatalogStatus().source);setCatalogError('');}catch(error){const code=catalogFailure(error);setCatalogState('error');setCatalogError(code);setMessage((locale==='en'?'Online library could not be loaded.':'Online biblioteka se nije učitala.')+' · '+code);locked.current=false;setBusy(false);return;}
+  const catalog:PreviewRecord[]=approvedCatalog(current);
   const eligible=cycleCandidates(catalog,currentProfile,seenIds);
   const selected=target??choosePersonalizedCategory(eligible,currentProfile,lastCategory.current);
   if(!selected){setMessage("Nema novih odobrenih ONLINE izbora za tvoje preference. Provjeri objave u Studiju ili vrati prethodne prijedloge.");locked.current=false;setBusy(false);return;}
   const targetIndex=WHEEL_CATEGORIES.findIndex(c=>c.id===selected);lastCategory.current=selected;
-  const recommendation=selectPersonalized(cycleCandidates(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds),currentProfile,[]);
-  const visualChoices=target&&recommendation?itemWheelChoices(cycleCandidates(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds),recommendation):null;
+  const categoryCandidates=cycleCandidates(catalog.filter(r=>uiCategory(r)===selected),currentProfile,seenIds);
+  const recommendation=selectPersonalized(categoryCandidates,currentProfile,[]);
+  const visualChoices=target&&recommendation?itemWheelChoices(categoryCandidates,recommendation):null;
   setWheelChoices(visualChoices);setPointerChoice(0);
   const landingIndex=visualChoices?visualChoices.findIndex(r=>r.id===recommendation?.id):targetIndex;const segmentCount=visualChoices?.length??WHEEL_CATEGORIES.length;
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;

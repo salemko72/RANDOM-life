@@ -71,3 +71,13 @@ bridge messages are sent. Diagnostic storage failure does not block the UI.
 
 Tests use the same prepared installed HTML via local HTTP because managed browser
 policy prevents file:// navigation. Physical device testing remains necessary.
+
+## Minimal follow-up (not included in the APK/AAB linked above)
+
+Consumer reads reuse the last loaded online catalog. After 30 seconds a spin can
+start with that snapshot while one shared refresh runs in the background. Forced
+reads still wait for the server; a valid empty result replaces the snapshot, and
+network failure still activates the reserve. Approved-record validation is reused
+for each immutable response array; category candidates are prepared once per spin.
+Native startup timing resets for each initialization instead of counting time since
+a prior mount. Splash/spin durations, artwork and preference rules are unchanged.

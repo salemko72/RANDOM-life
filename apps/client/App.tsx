@@ -1,6 +1,5 @@
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
 import appConfig from './app.json';
-const nativeStartedAt=Date.now();
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -18,6 +17,7 @@ import {parseNativeShare} from './src/web/item-share';
 export default function App(){return <SafeAreaProvider style={{flex:1,backgroundColor:'#fbefe7'}}><NativeExperience/></SafeAreaProvider>;}
 function NativeExperience(){
  const insets=useSafeAreaInsets();
+ const nativeStartedAt=useRef(Date.now());
  const diagnostics=useRef(new PerformanceLog());
  const diagnosticQueue=useRef<Promise<unknown>>(Promise.resolve());
  const diagnosticsLoaded=useRef(false);
@@ -25,7 +25,7 @@ function NativeExperience(){
   if(!diagnosticsLoaded.current){diagnosticsLoaded.current=true;diagnosticQueue.current=AsyncStorage.getItem(PERFORMANCE_KEY).then(raw=>{diagnostics.current=new PerformanceLog(raw);}).catch(()=>{});}
   diagnosticQueue.current=diagnosticQueue.current.then(async()=>{diagnostics.current.add(event);await AsyncStorage.setItem(PERFORMANCE_KEY,JSON.stringify(diagnostics.current.rows));}).catch(()=>{});
  }
- function nativeMetric(name:string){recordDiagnostic({name,at:Date.now(),metrics:{elapsedMs:Date.now()-nativeStartedAt}});}
+ function nativeMetric(name:string){recordDiagnostic({name,at:Date.now(),metrics:{elapsedMs:Date.now()-nativeStartedAt.current}});}
  async function shareDiagnostics(){
   await diagnosticQueue.current;
   const constants=Platform.constants as unknown as Record<string,unknown>;
@@ -38,7 +38,7 @@ function NativeExperience(){
  const state=useRef<LocalState>({});
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
-  let active=true;nativeMetric('native_start');
+  let active=true;nativeStartedAt.current=Date.now();nativeMetric('native_start');
   AsyncStorage.getItem(NATIVE_STATE_KEY).then(async raw=>{
    if(!active)return;
    state.current=readSnapshot(raw);nativeMetric('profile_loaded');

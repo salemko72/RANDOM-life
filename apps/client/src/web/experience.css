@@ -424,3 +424,15 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 /* Keep the expensive shadow on a stationary layer during rotation. */
 .wheel-stage::before{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 12px 28px #aa807060;pointer-events:none}
 .wheel-rotor{filter:none;backface-visibility:hidden}
+
+/* Keep the description attached to its title and let it flow around the pills. */
+.result-overview .result-heading-row{display:block}
+.result-heading-row::after{content:"";display:block;clear:both}
+.result-heading-row .result-meta{float:right;width:110px;margin:0 0 8px 18px;padding-top:6px;flex-direction:column;flex-wrap:nowrap}
+.result-heading-row .result-summary{margin-top:8px;max-width:none}
+@media(max-width:480px),(max-height:740px) and (max-width:600px){
+ .result-overview .result-heading-row{display:flex;flex-direction:column;gap:0}
+ .result-heading-row .result-title-block{order:1;width:100%}
+ .result-heading-row .result-summary{order:2;width:100%}
+ .result-heading-row .result-meta{order:3;float:none;width:100%;margin:12px 0 0;padding-top:0;flex-direction:row;flex-wrap:wrap}
+}

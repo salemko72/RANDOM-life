@@ -5,7 +5,15 @@ Build source: `96f5416`.
 - APK: https://expo.dev/accounts/salemko/projects/random/builds/1065fef0-3d2c-4ffe-83d3-68dda3c284a9
 - AAB: https://expo.dev/accounts/salemko/projects/random/builds/bc7e59d5-2747-4298-9e84-c719b56f6d0f
 
-Check Expo for the actual completion status before downloading.
+Both Expo builds finished successfully on 19 October 2026.
+
+- APK: 80.5 MB
+- AAB: 57.0 MB
+
+Validation: 220 unit tests, type checking, Expo dependency check, Android Metro
+export, offline/native bootstrap and share smoke, wheel touch/keyboard smoke
+and eight full-motion diagnostic summaries passed. Both remote builds passed
+21/21 Expo Doctor checks. Physical-device speed improvements remain to be measured.
 
 This build includes the latest wheel, category photography, consumer navigation,
 item sharing and Studio placeholder changes. APK and AAB use the existing signing

@@ -22,9 +22,9 @@ const english:Record<string,string> = {
  "KRENIMO": "LET’S GO",
  "ISPLANIRAJ IZLAZAK": "PLAN YOUR OUTING",
  "USKORO": "COMING SOON",
- "Wheel se okreće": "Wheel is spinning",
+ "Shuffle je u toku": "Shuffling",
  "Nema novih odobrenih ONLINE izbora za tvoje preference. Provjeri objave u Studiju ili vrati prethodne prijedloge.":"No new approved online items match your preferences. Check Studio publications or reset previously seen suggestions.",
- "Zavrti wheel": "Spin the wheel",
+ "Pokreni Shuffle": "Shuffle the wheel",
  "nešto dobro dolazi": "something good is coming",
  "Lako": "Easy",
  "Gym": "Gym",
@@ -69,11 +69,11 @@ const english:Record<string,string> = {
  "Glavna navigacija": "Main navigation",
  "Home": "Home",
  "Favoriti": "Favorites",
- "Historija spinova": "Spin history",
+ "Historija izbora": "Shuffle history",
  "Profil i ograničenja": "Profile and restrictions",
  "Vrati prethodne prijedloge": "Restore previous suggestions",
  "Vrati se na wheel": "Return to the wheel",
- "Spin again": "Spin again",
+ "Shuffle again": "Shuffle again",
  "Otvori Content Studio": "Open Content Studio",
  "Uskoro": "Coming soon",
  "Sastojci": "Ingredients",
@@ -110,7 +110,7 @@ const english:Record<string,string> = {
  "Sačuvaj ono dobro.": "Save the good things.",
  "Tvoji dosadašnji izbori.": "Your picks so far.",
  "Ne odgovara tvojim ograničenjima": "Does not meet your restrictions",
- "Još nema izbora. Zavrtimo nešto dobro.": "No picks yet. Let’s spin something good.",
+ "Još nema izbora. Isprobaj Shuffle.": "No picks yet. Let’s shuffle something good.",
  "Otkaži uređivanje profila": "Cancel profile editing",
  "Originalne demo ilustracije · probni profil na uređaju.": "Original demo illustrations · trial profile on this device.",
  "Uredi probni profil": "Edit trial profile",
@@ -179,8 +179,8 @@ const english:Record<string,string> = {
  "Tema odgovara tvojim odabranim interesima.": "The topic matches your selected interests.",
  "Iz kategorije koju voliš, uz malo iznenađenja.": "From a category you enjoy, with a little surprise.",
  "Nešto drugačije među dostupnim prijedlozima.": "Something different among available suggestions.",
- "SPIN": "SPIN",
- "SPINNING": "SPINNING",
+ "SHUFFLE": "SHUFFLE",
+ "SHUFFLING": "SHUFFLING",
  "and go": "and go",
  "TODAY’S PICK": "TODAY’S PICK",
  "Choose": "Choose",
@@ -199,7 +199,7 @@ const english:Record<string,string> = {
  "Ograničenja": "Restrictions",
  "Intolerancije": "Intolerances"
 };
-const bhsOverrides:Record<string,string>={'Decide Less. Live More.':'Manje dilema, više života','Decide less.':'Manje odluka.','Live more.':'Više života.','Home':'Početna','Spin again':'Zavrti ponovo','COOK':'KUHAJ','LET’S COOK':'KUHAJMO','SPIN':'ZAVRTI','SPINNING':'OKREĆE SE','and go':'i kreni','TODAY’S PICK':'DANAŠNJI IZBOR','Choose':'Izaberi','category':'kategoriju','Gym':'Teretana','Trim':'Šetnja','Yoga':'Joga','Series':'Serija','Episodes':'Epizode','Miniseries':'Miniserija'};
+const bhsOverrides:Record<string,string>={'Decide Less. Live More.':'Manje dilema, više života','Decide less.':'Manje odluka.','Live more.':'Više života.','Home':'Početna','Shuffle again':'Shuffle ponovo','COOK':'KUHAJ','LET’S COOK':'KUHAJMO','SHUFFLE':'SHUFFLE','SHUFFLING':'MIJEŠAMO','and go':'i kreni','TODAY’S PICK':'DANAŠNJI IZBOR','Choose':'Izaberi','category':'kategoriju','Gym':'Teretana','Trim':'Šetnja','Yoga':'Joga','Series':'Serija','Episodes':'Epizode','Miniseries':'Miniserija'};
 export function translate(text:string,locale:Locale):string {return locale==='en' ? (english[text]??text) : (bhsOverrides[text]??text);}
 export function categoryLabel(code:string,locale:Locale):string {const labels:Record<string,string>={EAT:'HRANA',READ:'KNJIGE',BOOK:'KNJIGE',WATCH:'GLEDAJ',MOVE:'POKRENI SE',GO:'IZAĐI',PLAY:'IGRAJ',CREATE:'STVARAJ',LEARN:'UČI'};return locale==='en'?(code==='BOOK'?'READ':code):labels[code]??code;}
 const values:Record<string,string>={connection:'Povezanost',kindness:'Ljubaznost','self-care':'Briga o sebi',outdoors:'Na otvorenom',music:'Muzika','home-reset':'Mali red u domu',milk:'Mlijeko',eggs:'Jaja',wheat:'Pšenica',nuts:'Orašasti plodovi',peanuts:'Kikiriki',soy:'Soja',fish:'Riba',shellfish:'Školjke',sesame:'Susam',mustard:'Senf',celery:'Celer',sulfites:'Sulfiti',lupin:'Lupina',lactose:'Laktoza',gluten:'Gluten',gym:'Gym',trim:'Trim',yoga:'Yoga',cinema:'Kino',theater:'Teatar',disco:'Ples',cafe:'Kafić'};

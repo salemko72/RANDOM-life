@@ -28,9 +28,6 @@ function action(r:PreviewRecord,locale:import("@random/shared").Locale){const t=
 function actionLabel(r:PreviewRecord,locale:import("@random/shared").Locale){const t=(text:string)=>translate(text,locale);return r.category==='EAT'?t("LET’S COOK"):r.category==='BOOK'?t("PROČITAJ OVU KNJIGU"):r.category==='WATCH'?t("POGLEDAJ DETALJE"):r.category==='MOVE'?t("KRENIMO"):t("ISPLANIRAJ IZLAZAK");}
 function actionIcon(r:PreviewRecord){return r.category==='EAT'?'food':r.category==='BOOK'?'book':r.category==='WATCH'?'watch':r.category==='MOVE'?'move':'pin';}
 function imageClass(item:PreviewRecord) { if(['WATCH','MOVE','GO'].includes(item.category))return `photo-${item.id}`; if(item.category==='BOOK')return 'photo-reading';const photos:Record<string,string>={'/media/lentil-soup.png':'photo-soup','/media/potato-salad.png':'photo-potato-salad','/media/swedish-meatballs.png':'photo-swedish-meatballs','/media/menemen.png':'photo-menemen','/media/moussaka.png':'photo-moussaka'};return photos[item.image.path]??'photo-soup'; }
-function CategoryPhoto({ category, className='' }: {category:WheelCategory;className?:string}) {
-  return <span className={`category-photo category-${category.toLowerCase()} ${className}`} />;
-}
 function AppSplash({leaving=false}:{leaving?:boolean}){
  const {locale,t}=useLanguage();
  return <section className={`app-splash ${leaving?'is-leaving':''}`} aria-hidden={leaving} inert={leaving} aria-label={locale==='en'?'Opening RANDOM life':'Otvaranje RANDOM life'}>
@@ -51,16 +48,9 @@ function SavedPhoto({record}:{record:PreviewRecord}){
  return <span className="saved-photo" data-item-image={record.image.path} aria-hidden="true" style={{backgroundImage:url?`url("${url}")`:'none'}}>{!url&&<Icon name={actionIcon(record)} size={22}/>}</span>;
 }
 function choiceLines(text:string){const lines:string[]=[];let line='';for(const word of text.split(/\s+/)){if(line&&line.length+word.length>17){lines.push(line);line=word;}else line+=(line?' ':'')+word;}if(line)lines.push(line);return lines.slice(0,3).map((l,i)=>i===2&&lines.length>3?l.slice(0,15)+'…':l);}
-// Fixed vector illustrations: available immediately, including without D1 or network.
+// Bundled generic photography: independent of D1 and available offline.
 function WheelCategoryArtwork({category,index}:{category:WheelCategory;index:number}){
- const art:Record<WheelCategory,React.ReactNode>={
-  EAT:<><ellipse cx="300" cy="151" rx="93" ry="63" fill="#f4dbc1"/><ellipse cx="300" cy="151" rx="73" ry="47" fill="#bf7754"/><path d="M254 151q46-61 92 0-46 60-92 0" fill="#dca659"/><path d="m284 143 18 22 22-41" fill="none" stroke="#708364" strokeWidth="13" strokeLinecap="round"/></>,
-  READ:<><path d="M218 87q45-14 82 10 37-24 82-10v128q-45-13-82 9-37-22-82-9Z" fill="#f8ead8"/><path d="M300 97v127M236 119l45 9m-45 17 45 9m38-26 45-9m-45 35 45-9" stroke="#a57463" strokeWidth="5" fill="none"/><path d="m329 90 18-4v64l-9-10-9 13Z" fill="#b76c69"/></>,
-  WATCH:<><rect x="212" y="91" width="176" height="123" rx="15" fill="#715b59"/><rect x="224" y="104" width="152" height="96" rx="8" fill="#e6c4a6"/><path d="m283 124 44 28-44 28Z" fill="#b57268"/><path d="M260 229h80" stroke="#715b59" strokeWidth="8" strokeLinecap="round"/></>,
-  MOVE:<><circle cx="324" cy="91" r="17" fill="#f5dfc7"/><path d="m277 139 34-22 30 36 35 10m-65-46-21 61 34 27-9 34m-25-61-43 25-16 35m46-99-30 27-29-8" fill="none" stroke="#f5dfc7" strokeWidth="15" strokeLinecap="round" strokeLinejoin="round"/></>,
-  GO:<><path d="m205 221 52-73 35 39 41-67 64 101Z" fill="#819080"/><path d="m233 221 61-55 63 55" fill="#c4b799"/><path d="M332 76c-30 0-41 30-28 52l28 35 28-35c13-22 2-52-28-52" fill="#b87069"/><circle cx="332" cy="108" r="13" fill="#f8e7d4"/></>
- };
- return <g data-category-artwork={category} transform={`rotate(${index*72} 300 300)`} aria-hidden="true"><circle cx="300" cy="147" r="118" fill="#fff2df" opacity=".18"/>{art[category]}</g>;
+ return <g data-category-artwork={category} transform={`rotate(${index*72} 300 300)`} aria-hidden="true"><foreignObject x="120" y="0" width="360" height="330"><div className={`wheel-default-photo wheel-default-${category.toLowerCase()}`}/></foreignObject></g>;
 }
 function Wheel({ rotor, tick, spinning, onSpin, onSpinCategory, choices }: {rotor:React.RefObject<HTMLDivElement|null>;tick:number;spinning:boolean;onSpin:()=>void;onSpinCategory:(category:ActiveCategory)=>void;choices:PreviewRecord[]|null}) {
   const {t,category,locale}=useLanguage();
@@ -71,10 +61,11 @@ function Wheel({ rotor, tick, spinning, onSpin, onSpinCategory, choices }: {roto
       <circle cx="300" cy="300" r="299" fill="#f6e3dd"/>
       {segments.map((c,i)=>{const record=choices?.[i];const label=record?localizeContent(record,locale).title:category(c.id);const icon=record?actionIcon(record):WHEEL_CATEGORIES[i].icon;return <g key={c.id} clipPath={`url(#sector-${i})`} data-choice-id={record?.id} data-choice-title={record?label:undefined}>
         <path d={sector(i)} fill={i%2===0?'#ba7d79':'#e9d2c9'} stroke="#f9eee8" strokeWidth="2"/>
-        {record&&<foreignObject x="0" y="0" width="600" height="600">{record?<WheelChoicePhoto record={record}/>:<CategoryPhoto category={WHEEL_CATEGORIES[i].id} className="wheel-sector-photo"/>}</foreignObject>}
-        {record&&<path d={sector(i)} fill="#382324" opacity={record?'.48':'.32'}/>}
+        {record&&<foreignObject x="0" y="0" width="600" height="600"><WheelChoicePhoto record={record}/></foreignObject>}
+
         {!record&&<WheelCategoryArtwork category={WHEEL_CATEGORIES[i].id} index={i}/>}
-        <g transform={`rotate(${i*degrees} 300 300)`} fill={record||i%2===0?'#fff6ee':'#251e20'}>
+        <path d={sector(i)} fill="#382324" opacity={record?'.48':'.22'}/>
+        <g transform={`rotate(${i*degrees} 300 300)`} fill="#fff6ee">
           {record&&<foreignObject x="273" y="75" width="54" height="60"><div className={`sector-icon ${record||i%2===0?'light':''}`}><Icon name={icon} size={record?32:42}/></div></foreignObject>}
           <text x="300" y={record?159:62} textAnchor="middle" fontSize={record?17:19} fontFamily="RandomSans">{record?choiceLines(label).map((line,n)=><tspan key={n} x="300" dy={n?22:0}>{line}</tspan>):label}</text>
         </g>

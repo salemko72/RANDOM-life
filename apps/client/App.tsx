@@ -31,7 +31,7 @@ function NativeExperience(){
   await diagnosticQueue.current;
   const constants=Platform.constants as unknown as Record<string,unknown>;
   const message=JSON.stringify({schema:1,version:appConfig.expo.version,build:appConfig.expo.android.versionCode,exportedAt:new Date().toISOString(),device:{os:Platform.OS,android:Platform.Version,model:constants.Model??null,manufacturer:constants.Manufacturer??null},events:diagnostics.current.rows},null,2);
-  await Share.share({title:'LifeShuffler diagnostic log',message});
+  await Share.share({title:'LifeSpinner diagnostic log',message});
  }
 
  const [error,setError]=useState('');
@@ -46,7 +46,7 @@ function NativeExperience(){
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
    const local=await prepareNativePreview(asset,FileSystem,state.current,insets);
    nativeMetric('assets_ready');if(active)setUri(local);
-  }).catch(()=>{if(active)setError('LifeShuffler se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
+  }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};
  },[insets.top,insets.bottom]);
  return <View style={styles.screen}>
@@ -60,7 +60,7 @@ function NativeExperience(){
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.split('#')[0]===uri}
    onLoadEnd={()=>nativeMetric('webview_loaded')}
-   onError={()=>{nativeMetric('page_error');setError('LifeShuffler se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
+   onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
     const raw=event.nativeEvent.data;
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}

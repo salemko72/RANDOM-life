@@ -1,5 +1,8 @@
 # LifeShuffler 0.21.0 (versionCode 4)
 
+**CANCELED on user request on 19 October 2026.** Neither build was submitted to
+Google Play. The current brand direction is LifeSpinner; these are historical links.
+
 Build source: `67dc231`. Package `com.salemko.randomlife`, existing Expo project
 `@salemko/random` and existing Android keystore. Display name: LifeShuffler.
 

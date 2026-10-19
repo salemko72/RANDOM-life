@@ -67,7 +67,7 @@ function Wheel({ rotor, tick, spinning, onSpin, onSpinCategory, choices }: {roto
         <path d={sector(i)} fill="#382324" opacity={record?'.48':'.22'}/>
         <g transform={`rotate(${i*degrees} 300 300)`} fill="#fff6ee">
           {record&&<foreignObject x="273" y="75" width="54" height="60"><div className={`sector-icon ${record||i%2===0?'light':''}`}><Icon name={icon} size={record?32:42}/></div></foreignObject>}
-          <text x="300" y={record?159:94} textAnchor="middle" fontSize={record?17:19} fontFamily="RandomSans">{record?choiceLines(label).map((line,n)=><tspan key={n} x="300" dy={n?22:0}>{line}</tspan>):label}</text>
+          <text x="300" y={record?159:c.id==='READ'?72:94} textAnchor="middle" fontSize={record?17:19} fontFamily="RandomSans">{record?choiceLines(label).map((line,n)=><tspan key={n} x="300" dy={n?22:0}>{line}</tspan>):label}</text>
         </g>
         {!choices&&<path className="wheel-sector-control" d={sector(i)} fill="transparent" role="button" tabIndex={spinning?-1:0} aria-label={locale==='en'?`Spin in ${label}`:`Zavrti kategoriju ${label}`} aria-disabled={spinning} data-wheel-category={WHEEL_CATEGORIES[i].id} onClick={event=>{event.stopPropagation();if(!spinning)onSpinCategory(WHEEL_CATEGORIES[i].id);}} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();if(!spinning)onSpinCategory(WHEEL_CATEGORIES[i].id);}}}><title>{label}</title></path>}
       </g>;})}

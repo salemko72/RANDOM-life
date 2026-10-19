@@ -1,5 +1,6 @@
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
 import appConfig from './app.json';
+const PERFORMANCE_STORAGE_KEY=`${PERFORMANCE_KEY}.${appConfig.expo.version}.${appConfig.expo.android.versionCode}`;
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -22,8 +23,8 @@ function NativeExperience(){
  const diagnosticQueue=useRef<Promise<unknown>>(Promise.resolve());
  const diagnosticsLoaded=useRef(false);
  function recordDiagnostic(event:PerformanceEvent){
-  if(!diagnosticsLoaded.current){diagnosticsLoaded.current=true;diagnosticQueue.current=AsyncStorage.getItem(PERFORMANCE_KEY).then(raw=>{diagnostics.current=new PerformanceLog(raw);}).catch(()=>{});}
-  diagnosticQueue.current=diagnosticQueue.current.then(async()=>{diagnostics.current.add(event);await AsyncStorage.setItem(PERFORMANCE_KEY,JSON.stringify(diagnostics.current.rows));}).catch(()=>{});
+  if(!diagnosticsLoaded.current){diagnosticsLoaded.current=true;diagnosticQueue.current=AsyncStorage.getItem(PERFORMANCE_STORAGE_KEY).then(raw=>{diagnostics.current=new PerformanceLog(raw);}).catch(()=>{});}
+  diagnosticQueue.current=diagnosticQueue.current.then(async()=>{diagnostics.current.add(event);await AsyncStorage.setItem(PERFORMANCE_STORAGE_KEY,JSON.stringify(diagnostics.current.rows));}).catch(()=>{});
  }
  function nativeMetric(name:string){recordDiagnostic({name,at:Date.now(),metrics:{elapsedMs:Date.now()-nativeStartedAt.current}});}
  async function shareDiagnostics(){

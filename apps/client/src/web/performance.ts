@@ -1,3 +1,4 @@
+import appConfig from '../../app.json';
 import {PerformanceLog,PERFORMANCE_KEY} from '../native/performance-log';
 const log=new PerformanceLog();let longTasksLogged=0;
 const bridge=()=> (window as Window&{ReactNativeWebView?:{postMessage:(data:string)=>void}}).ReactNativeWebView;
@@ -12,7 +13,7 @@ export function installPerformance(){
 }
 export async function exportPerformance(){
  if(bridge()){bridge()!.postMessage(JSON.stringify({type:'random-life.performance.export.v1'}));return;}
- const report=JSON.stringify({schema:1,version:'0.20.0',exportedAt:new Date().toISOString(),viewport:{width:innerWidth,height:innerHeight},events:log.rows},null,2);
+ const report=JSON.stringify({schema:1,version:appConfig.expo.version,build:appConfig.expo.android.versionCode,exportedAt:new Date().toISOString(),viewport:{width:innerWidth,height:innerHeight},events:log.rows},null,2);
  const url=URL.createObjectURL(new Blob([report],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='LifeShuffler-diagnostics.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 export function summarizeFrames(frames:number[],hidden:boolean,reduced:boolean,durationMs:number){

@@ -37,3 +37,6 @@ Store listing title changes are separate from the launcher display name.
 Store-name availability has not been verified: access to Google Play and Apple's
 search service is restricted in this environment. Do not interpret the successful
 build or selected brand as evidence of name availability or trademark clearance.
+
+Google Play listing artwork: `/downloads/LifeShuffler-Google-Play-512.png`
+provides the current square 512px PNG icon separately from the AAB launcher icon.

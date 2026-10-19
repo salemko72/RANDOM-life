@@ -33,6 +33,12 @@ try{
  await page.locator('.backup-status').waitFor();
  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('random-life.local-profile.v1')).name),'Native QA');
  assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).getPropertyValue('--native-safe-top')),'24px');
+ await page.waitForFunction(()=>window.__nativeMessages.some(raw=>{const m=JSON.parse(raw);return m.type==='random-life.performance.v1'&&m.name==='ui_ready';}));
+ await page.locator('.menu-button').click();await page.getByRole('button',{name:'Share diagnostic log',exact:true}).click();
+ assert(await page.evaluate(()=>window.__nativeMessages.some(raw=>JSON.parse(raw).type==='random-life.performance.export.v1')));
+ const metrics=await page.evaluate(()=>window.__nativeMessages.map(raw=>JSON.parse(raw)).filter(m=>m.type==='random-life.performance.v1'));
+ assert(metrics.some(m=>m.name==='web_boot'));assert(metrics.some(m=>m.name==='catalog'&&m.metrics.backup===1));assert(!JSON.stringify(metrics).includes('Native QA'));
+ await page.keyboard.press('Escape');
  await page.locator('[data-nav="favorites"]').click();await page.locator('.saved-item').click();
  await page.waitForFunction(()=>document.querySelector('.feature-photo')?.disabled===false);
  await mkdir('/workspace/shared/android-startup',{recursive:true});
@@ -43,5 +49,5 @@ try{
  await page.locator('.favorite-float').click();
  assert(await page.evaluate(()=>window.__nativeMessages.some(raw=>JSON.parse(raw).operation==='set')));
  assert.deepEqual(errors,[]);
- console.log('PASS installed-file layout via local HTTP: bootstrap before app, profile/language/safe area, D1 outage reserve, correct book image and native state messages. Physical Android file:// launch remains a device check.');
+ console.log('PASS installed-file layout via local HTTP: bootstrap before app, profile/language/safe area, D1 outage reserve, correct book image, native state messages, startup/catalog diagnostic events and native report sharing. Physical Android file:// launch remains a device check.');
 }finally{await browser.close();server.closeAllConnections();await new Promise(done=>server.close(done));await rm(directory,{recursive:true,force:true});}

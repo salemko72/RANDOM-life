@@ -1,7 +1,10 @@
+import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
+import appConfig from './app.json';
+const nativeStartedAt=Date.now();
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, Share, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, Platform, Share, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
 import {Asset} from 'expo-asset';
@@ -15,18 +18,33 @@ import {parseNativeShare} from './src/web/item-share';
 export default function App(){return <SafeAreaProvider style={{flex:1,backgroundColor:'#fbefe7'}}><NativeExperience/></SafeAreaProvider>;}
 function NativeExperience(){
  const insets=useSafeAreaInsets();
+ const diagnostics=useRef(new PerformanceLog());
+ const diagnosticQueue=useRef<Promise<unknown>>(Promise.resolve());
+ const diagnosticsLoaded=useRef(false);
+ function recordDiagnostic(event:PerformanceEvent){
+  if(!diagnosticsLoaded.current){diagnosticsLoaded.current=true;diagnosticQueue.current=AsyncStorage.getItem(PERFORMANCE_KEY).then(raw=>{diagnostics.current=new PerformanceLog(raw);}).catch(()=>{});}
+  diagnosticQueue.current=diagnosticQueue.current.then(async()=>{diagnostics.current.add(event);await AsyncStorage.setItem(PERFORMANCE_KEY,JSON.stringify(diagnostics.current.rows));}).catch(()=>{});
+ }
+ function nativeMetric(name:string){recordDiagnostic({name,at:Date.now(),metrics:{elapsedMs:Date.now()-nativeStartedAt}});}
+ async function shareDiagnostics(){
+  await diagnosticQueue.current;
+  const constants=Platform.constants as unknown as Record<string,unknown>;
+  const message=JSON.stringify({schema:1,version:appConfig.expo.version,build:appConfig.expo.android.versionCode,exportedAt:new Date().toISOString(),device:{os:Platform.OS,android:Platform.Version,model:constants.Model??null,manufacturer:constants.Manufacturer??null},events:diagnostics.current.rows},null,2);
+  await Share.share({title:'RANDOM diagnostic log',message});
+ }
+
  const [error,setError]=useState('');
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
-  let active=true;
+  let active=true;nativeMetric('native_start');
   AsyncStorage.getItem(NATIVE_STATE_KEY).then(async raw=>{
    if(!active)return;
-   state.current=readSnapshot(raw);
+   state.current=readSnapshot(raw);nativeMetric('profile_loaded');
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
    const local=await prepareNativePreview(asset,FileSystem,state.current,insets);
-   if(active)setUri(local);
+   nativeMetric('assets_ready');if(active)setUri(local);
   }).catch(()=>{if(active)setError('RANDOM se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};
  },[insets.top,insets.bottom]);
@@ -40,9 +58,13 @@ function NativeExperience(){
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.split('#')[0]===uri}
-   onError={()=>setError('RANDOM se nije učitao. Zatvori i ponovo otvori aplikaciju.')}
+   onLoadEnd={()=>nativeMetric('webview_loaded')}
+   onError={()=>{nativeMetric('page_error');setError('RANDOM se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
-    const share=parseNativeShare(event.nativeEvent.data);
+    const raw=event.nativeEvent.data;
+    if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
+    const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}
+    const share=parseNativeShare(raw);
     if(share){void Share.share({title:share.title,message:share.message}).catch(()=>{});return;}
     const next=applyStorageMessage(state.current,event.nativeEvent.data);
     if(next){state.current=next;void writer.current(next);}

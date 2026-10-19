@@ -420,3 +420,7 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .wheel-default-move{background-image:url('./assets/wheel/move.webp')}
 .wheel-default-go{background-image:url('./assets/wheel/go.webp')}
 .category-wheel .wheel-svg text{paint-order:stroke;stroke:#38232480;stroke-width:2px;font-weight:600}
+
+/* Keep the expensive shadow on a stationary layer during rotation. */
+.wheel-stage::before{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 12px 28px #aa807060;pointer-events:none}
+.wheel-rotor{filter:none;backface-visibility:hidden}

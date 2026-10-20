@@ -1,15 +1,13 @@
 import {performanceEvent} from './performance';
 /// <reference path="./image-assets.d.ts" />
-import {onlineCatalog} from '../../../studio/src/online-store';
+import {PersistentCatalog,createCatalogTransport} from './consumer-catalog-cache';
+import {consumerCatalogStorage} from './consumer-catalog-storage';
 import {reserveItems,reserveMetadata} from './backup/catalog';
 import {bundledImageFiles} from './backup/images';
-import {CatalogFailover} from './catalog-failover';
 
-const catalog=new CatalogFailover(reserveItems,()=>{
- if(typeof navigator!=='undefined'&&navigator.onLine===false)return Promise.reject(Error('CATALOG_NETWORK'));
- return onlineCatalog(false,{timeoutMs:3500,retries:0});
-});
-export const readConsumerCatalog=async(force=false)=>{const began=performance.now();try{const items=await catalog.load(force);performanceEvent('catalog',{durationMs:performance.now()-began,count:items.length,backup:Number(catalog.status.source==='backup')});return items;}catch(error){performanceEvent('catalog',{durationMs:performance.now()-began,failed:1});throw error;}};
+
+const catalog=new PersistentCatalog({reserve:reserveItems,storage:consumerCatalogStorage,fetchSnapshot:createCatalogTransport(globalThis.fetch,()=>Date.now(),bytes=>performanceEvent('catalog_sync',{downloadBytes:bytes,count:1})),onUpdate:()=>{if(typeof window!=='undefined')window.dispatchEvent(new Event('random-catalog-updated'));}});
+export const readConsumerCatalog=async(force=false)=>{const began=performance.now();try{const items=await catalog.load(force);performanceEvent('catalog',{durationMs:performance.now()-began,count:items.length,backup:Number(catalog.status.source==='backup'),cached:Number(catalog.status.source==='cached')});return items;}catch(error){performanceEvent('catalog',{durationMs:performance.now()-began,failed:1});throw error;}};
 export const consumerCatalogStatus=()=>catalog.status;
 export {reserveMetadata};
 export function hasBundledImage(path:string){return Object.prototype.hasOwnProperty.call(bundledImageFiles,path);}

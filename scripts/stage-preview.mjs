@@ -48,6 +48,12 @@ for(let page=1;page<=7;page++){const number=String(page).padStart(2,'0');atlas17
 atlas173Files['ingredient-atlas-extension-173.ts']=new Uint8Array(await readFile(resolve('packages/shared/src/ingredient-atlas-extension-173.ts')));
 await writeFile(resolve(target,'downloads/LifeSpinner-ingredient-atlas-173.zip'),zipSync(atlas173Files));
 
+const cacheHandoff={};
+for(const name of ['CONSUMER_CATALOG_V1.md','CONSUMER_CACHE_CLIENT.md'])cacheHandoff[name]=new Uint8Array(await readFile(resolve('docs/contracts',name)));
+await writeFile(resolve(target,'downloads/LifeSpinner-R2-Codex-handoff.zip'),zipSync(cacheHandoff));
+await cp(resolve('docs/contracts/CONSUMER_CATALOG_V1.md'),resolve(target,'downloads/LifeSpinner-R2-Codex-instructions.txt'));
+
+
 
 try{await access('/workspace/shared/android-download');await cp('/workspace/shared/android-download',resolve(target,'downloads/android'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 

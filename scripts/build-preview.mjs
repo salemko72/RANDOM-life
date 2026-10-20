@@ -33,5 +33,5 @@ await mkdir(resolve('apps/client/src/generated'),{recursive:true});
 await writeFile(resolve('apps/client/src/generated/preview.json'),JSON.stringify({html}));
 // Metro treats HTML as an installed asset, keeping it out of the Hermes bundle
 // and the React Native view-property transport. Only local state is bootstrapped.
-await writeFile(resolve('apps/client/src/generated/preview.html'),html.replace('initial-scale=1','initial-scale=1,viewport-fit=cover').replace('</head>','<script src="./native-state.js"></script></head>'));
+await writeFile(resolve('apps/client/src/generated/preview.html'),html.replace('initial-scale=1','initial-scale=1,viewport-fit=cover').replace('</head>','<script src="./native-state.js"></script><script src="./catalog-cache.js"></script></head>'));
 console.log('Built browser preview and self-contained interactive HTML (fonts and original images included).');

@@ -1,0 +1,17 @@
+# Consumer cache — client implementation
+
+Text-only phase, no APK/AAB build. Public consumer catalog is separate from Studio's editorial database, user profile, per-user seen/favorite history and the packaged 100-item reserve. All published candidates remain available for local filtering/selection; cache presence does not imply exposure and never limits selection to previously seen items.
+
+Web storage: dedicated `random-life-consumer-catalog` IndexedDB, one atomic snapshot replacement. Android storage: separate public-data files in the document directory with two alternating slots and a small AsyncStorage committed pointer. The installed UI restores this through `catalog-cache.js`, not a large WebView React prop or the profile bridge. Browser storage failure retains the native bootstrap when available. A failed native write/pointer commit retains the previously committed slot. Uninstall/app-data clearing removes local data as expected; filesystem eviction/persistence behavior still needs physical Android verification.
+
+Cached data renders immediately. Normal version checks are throttled to 30 minutes and concurrent requests deduplicate. Error backoff is 60 seconds. Explicit editorial updates/retry can force a check. While visible, the UI checks the local manager periodically; it does not poll D1 every 30 seconds. The next selection uses the updated catalog after a background sync; the currently open item is not silently replaced.
+
+Protocol: `CONSUMER_CATALOG_V1.md`. Same version downloads only the small manifest. Changed version downloads and hashes a full snapshot before replacing the previous one, including [] and removed items. All records are validated against current contentSchema/publicationIssues before acceptance, IDs must be unique and published. Malformed/partial responses, bad checksums and HTTP failures preserve last known good data. Empty successful catalogs never activate the built-in reserve. Cached content can be outdated while offline; immediate server withdrawals cannot reach an offline device.
+
+Migration compatibility: manifest 404/405/501 or an old SPA's HTML response uses `/api/catalog`. The full legacy catalog is still persisted and checked only periodically. Invalid JSON manifests and server 5xx do not trigger an extra D1 read. Until the second Codex implements the manifest/R2 endpoints, consumers still use this fallback. Existing APKs retain their old behavior until a new build includes this client.
+
+Diagnostics: `catalog` has numeric cached/backup flags; `catalog_sync` records request count and uncompressed response byte length. These events contain no titles, profiles, URLs or tokens. Native logs keep their existing bounded capacity.
+
+Not included yet: persistent/predictive image downloads, image eviction/budgeting, native background jobs, R2 provisioning, D1 data migration or server deployment. Public images continue to use existing readPreviewImage/HTTP cache behavior until the coordinated server phase. No claims of measured device speed or billing savings before real-device/Cloudflare measurements.
+
+Checks: unit tests for persistence, atomic native commits, backoff, integrity, empty authority, legacy compatibility; browser smoke script `scripts/smoke-consumer-cache.mjs` covers reloads, removals, no-network cached start, fallback, and native bootstrap with IndexedDB unavailable. Root/native TypeScript and installed HTML build required. Physical Android cold-start/update/storage behavior must be checked in the next authorized test build.

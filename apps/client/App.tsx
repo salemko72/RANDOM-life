@@ -1,3 +1,4 @@
+import {createNativeCatalogStorage,parseCatalogMessage} from './src/native/catalog-storage';
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
 import appConfig from './app.json';
 const PERFORMANCE_STORAGE_KEY=`${PERFORMANCE_KEY}.${appConfig.expo.version}.${appConfig.expo.android.versionCode}`;
@@ -37,6 +38,7 @@ function NativeExperience(){
  const [error,setError]=useState('');
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
+ const catalogStorage=useRef(createNativeCatalogStorage(FileSystem,AsyncStorage));
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
   let active=true;nativeStartedAt.current=Date.now();nativeMetric('native_start');
@@ -44,7 +46,7 @@ function NativeExperience(){
    if(!active)return;
    state.current=readSnapshot(raw);nativeMetric('profile_loaded');
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
-   const local=await prepareNativePreview(asset,FileSystem,state.current,insets);
+   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read());
    nativeMetric('assets_ready');if(active)setUri(local);
   }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};
@@ -63,6 +65,7 @@ function NativeExperience(){
    onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
     const raw=event.nativeEvent.data;
+    const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}
     const share=parseNativeShare(raw);

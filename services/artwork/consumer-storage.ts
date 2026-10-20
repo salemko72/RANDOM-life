@@ -1,4 +1,4 @@
-import {publicationIssues,visibleAccessLinks,type ContentRecord} from '@random/shared';
+import {contentSchema,publicationIssues,visibleAccessLinks,type ContentRecord} from '@random/shared';
 
 export interface ConsumerEnv {CONTENT_DB?:D1Database;CONTENT_BUCKET?:R2Bucket}
 export const consumerSchema=[
@@ -11,8 +11,10 @@ export const consumerSchema=[
 const encode=new TextEncoder();
 export async function digest(bytes:Uint8Array){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes as BufferSource)),b=>b.toString(16).padStart(2,'0')).join('');}
 export function approvedPublic(item:ContentRecord){
- if(item.status!=='published'||!item.approvedAt||!item.approvedBy||!Number.isSafeInteger(item.version)||item.version<1||!item.id||publicationIssues(item).length)return null;
- const{approvedBy,approvedAt,__storage,...safe}=item as ContentRecord&{__storage?:string};
+ const parsed=contentSchema.safeParse(item);
+ if(!parsed.success||item.status!=='published'||!item.approvedAt||!item.approvedBy||!Number.isSafeInteger(item.version)||item.version<1||!item.id||publicationIssues(parsed.data).length)return null;
+ // Whitelist schema fields, not an arbitrary D1 payload that happens to validate.
+ const safe={...parsed.data,id:item.id,status:item.status,version:item.version,updatedAt:item.updatedAt};
  return {...safe,...((item.category==='BOOK'||item.category==='WATCH')?{accessLinks:visibleAccessLinks(item)}:{}),translations:Object.fromEntries(Object.entries(item.translations??{}).filter(([,t])=>t.reviewed))};
 }
 export function publicStatement(db:D1Database,item:ContentRecord,revision:string){

@@ -1,7 +1,9 @@
 import { contentSchema, publicationIssues, contentContract,defaultAccessLinks,visibleAccessLinks,resetAccessLinkReviews, type ContentRecord, type ContentInput } from '@random/shared';
+import {consumerSchema,consumerRead,r2Media,copyMedia,publicStatement,rebuildCatalog,invalidateConsumer} from './consumer-storage';
 export interface DatabaseEnv {
     CONTENT_DB?: D1Database;
     RANDOM_STUDIO_PASSWORD?: string;
+    CONTENT_BUCKET?: R2Bucket;
 }
 const encoder = new TextEncoder();
 const cookieName = 'random_studio';
@@ -62,7 +64,9 @@ else if (kind === 'VP8L' && bytes[20] === 47) {
 export async function handleDatabase(request: Request, env: DatabaseEnv): Promise<Response> {
     const url = new URL(request.url), path = url.pathname, db = env.CONTENT_DB;
     try {
+        const consumer=await consumerRead(request,env);if(consumer)return consumer;
         const auth = await authenticated(request, env.RANDOM_STUDIO_PASSWORD);
+        if(mediaPath.test(path)&&['GET','HEAD'].includes(request.method)&&env.CONTENT_BUCKET){const r=await r2Media(request,env,auth);if(r)return r;}
         if(path==='/api/content-contract'&&request.method==='GET')
             return json(contentContract,200,{'Access-Control-Allow-Origin':'*'});
         if (path === '/api/database/status' || path === '/api/database/config') {
@@ -73,7 +77,7 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
         if (!db)
             return json({ error: 'DATABASE_NOT_CONFIGURED' }, 503);
         await db.prepare('SELECT 1').first();
-        await db.batch(schema.map(sql => db.prepare(sql)));
+        await db.batch([...schema,...consumerSchema].map(sql => db.prepare(sql)));
         if (path === '/api/database/health')
             return json({ ok: true, database: true });
         if (request.method !== 'GET' && request.method !== 'HEAD' && request.headers.get('origin') !== url.origin)
@@ -121,6 +125,9 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
         }
         if (!auth)
             return json({ error: 'UNAUTHORIZED' }, 401);
+        if(path==='/api/database/rebuild-catalog'&&request.method==='POST'){
+            await rebuildCatalog(env);await invalidateConsumer(request);return json({rebuilt:true});
+        }
         if(path==='/api/database/upgrade-access-links'&&request.method==='POST'){
             // Representation-only upgrade: add search destinations, never infer availability
             // or rewrite editorial approvals. Each CAS update owns its audit event.
@@ -137,9 +144,11 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
                 const result=await db.batch([
                     db.prepare('UPDATE random_items SET data=?,version=version+1,updated_at=?,revision=? WHERE id=? AND version=?').bind(JSON.stringify(input),now,revision,row.id,row.version),
                     db.prepare("INSERT INTO random_events(id,content_id,action,actor,version,snapshot,created_at) SELECT ?,?,'access-links-upgrade','system-contract-v2',?,?,? WHERE EXISTS(SELECT 1 FROM random_items WHERE id=? AND revision=?)").bind(crypto.randomUUID(),row.id,row.version+1,JSON.stringify(snapshot),now,row.id,revision),
+                    publicStatement(db,snapshot as ContentRecord,revision),
                 ]);
                 updated+=result[0].meta.changes;
             }
+            if(updated){await rebuildCatalog(env);await invalidateConsumer(request);}
             return json({updated,hasMore:rows.length===50});
         }
         if (path === '/api/database/storage' && request.method === 'GET') {
@@ -149,8 +158,20 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             if (!Number.isFinite(databaseBytes) || databaseBytes <= 0) return json({error:'STORAGE_MEASUREMENT_UNAVAILABLE'},503);
             return json({database:'random-test-content',databaseBytes,mediaBytes:Number(row.mediaBytes),items:Number(row.items),revisions:Number(row.revisions),databaseLimitBytes:500000000,accountLimitBytes:5000000000,measuredAt:new Date().toISOString()});
         }
-        if (path === '/api/content' && request.method === 'GET')
-            return json({ items: await all(), deletedIds: (await db.prepare("SELECT DISTINCT content_id FROM random_events WHERE action='delete' AND NOT EXISTS(SELECT 1 FROM random_items WHERE random_items.id=random_events.content_id)").all()).results.map((row:any)=>row.content_id), events: (await db.prepare('SELECT * FROM random_events ORDER BY created_at,id').all()).results.map((event: any) => ({ ...event, snapshot: JSON.parse(event.snapshot) })) });
+        if (path === '/api/content' && request.method === 'GET') {
+            // Stored JSON was validated on writes. Do not re-run Zod on the entire
+            // library or parse/stringify every historical snapshot on every reload.
+            const rows=(await db.prepare('SELECT * FROM random_items').all()).results as any[];
+            const deletedIds=(await db.prepare("SELECT DISTINCT content_id FROM random_events WHERE action='delete' AND NOT EXISTS(SELECT 1 FROM random_items WHERE random_items.id=random_events.content_id)").all()).results.map((r:any)=>r.content_id);
+            const events=(await db.prepare('SELECT * FROM random_events ORDER BY created_at,id').all()).results as any[];
+            const stream=new ReadableStream<Uint8Array>({start(controller){
+                const emit=(s:string)=>controller.enqueue(encoder.encode(s));
+                emit('{"items":[');rows.forEach((r,n)=>{if(n)emit(',');const metadata=JSON.stringify({id:r.id,status:r.status,version:r.version,updatedAt:r.updated_at,approvedBy:r.approved_by,approvedAt:r.approved_at,__storage:'d1'});emit(r.data.slice(0,-1)+','+metadata.slice(1));});
+                emit('],"deletedIds":'+JSON.stringify(deletedIds)+',"events":[');
+                events.forEach((e,n)=>{if(n)emit(',');const{snapshot,...metadata}=e;emit(JSON.stringify(metadata).slice(0,-1)+',"snapshot":'+snapshot+'}');});emit(']}');controller.close();
+            }});
+            return new Response(stream,{headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'}});
+        }
         if (path === '/api/database/import-batch' && request.method === 'POST') {
             const data = await body(request, 15 * 1024 * 1024);
             if (!Array.isArray(data.items) || data.items.length < 1 || data.items.length > 1000)
@@ -192,9 +213,12 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
                 changes.push(existing
                     ? db.prepare('UPDATE random_items SET dedup=?,category=?,data=?,status=?,version=?,updated_at=?,approved_by=NULL,approved_at=NULL,revision=? WHERE id=? AND version=?').bind(dedup,input.category,JSON.stringify(input),'review',item.version,now,revision,id,expected)
                     : db.prepare('INSERT INTO random_items(id,dedup,category,data,status,version,updated_at,approved_by,approved_at,revision) VALUES (?,?,?,?,?,?,?,?,?,?)').bind(id,dedup,input.category,JSON.stringify(input),'review',item.version,now,null,null,revision));
+                changes.push(publicStatement(db,item,revision));
                 events.push(db.prepare('INSERT INTO random_events(id,content_id,action,actor,version,snapshot,created_at) VALUES (?,?,?,?,?,?,?)').bind(crypto.randomUUID(),id,'catalog-import','studio-editor',item.version,JSON.stringify(item),now));
             }
             await db.batch([...guards,...changes,...events,db.prepare('DELETE FROM random_batch_guards WHERE id LIKE ?').bind(token+':%')]);
+            await rebuildCatalog(env);
+            await invalidateConsumer(request,items.map(i=>i.image.path));
             return json({items:items.map(item=>({...item,__storage:'d1'}))});
         }
         if (path.startsWith('/api/database/media/') && request.method === 'PUT') {
@@ -205,6 +229,7 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             if (!webp(bytes))
                 return json({ error: 'INVALID_WEBP_OR_DIMENSIONS' }, 400);
             const digest = await hash(bytes);
+            if(env.CONTENT_BUCKET){const key=target.slice(1),old=await env.CONTENT_BUCKET.head(key);if(old){const oldHash=old.customMetadata?.sha256??await hash(new Uint8Array(await(await env.CONTENT_BUCKET.get(key))!.arrayBuffer()));if(oldHash!==digest)return json({error:'MEDIA_CONFLICT'},409);}else await env.CONTENT_BUCKET.put(key,bytes,{httpMetadata:{contentType:'image/webp'},customMetadata:{sha256:digest}});}
             await db.prepare('INSERT OR IGNORE INTO random_media(path,bytes,mime,hash) VALUES (?,?,?,?)').bind(target, bytes.buffer, 'image/webp', digest).run();
             const existing = await db.prepare('SELECT hash FROM random_media WHERE path=?').bind(target).first<any>();
             if (existing.hash !== digest)
@@ -234,6 +259,7 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
                 return json({ error: 'INVALID_RECORD' }, 400);
             const status = migration ? (source.status === 'published' && (!source.approvedBy || !source.approvedAt || issues.length) ? 'review' : source.status) : (issues.length ? 'review' : 'published');
             const item: ContentRecord = { ...input, id, status, version: migration ? source.version : existing ? existing.version + 1 : 1, updatedAt: migration ? source.updatedAt : now, approvedBy: status === 'published' ? (migration ? source.approvedBy : 'studio-editor') : null, approvedAt: status === 'published' ? (migration ? source.approvedAt : now) : null };
+            if(status==='published')await copyMedia(env,input.image.path);
             const revision = crypto.randomUUID();
             if (migration && existing) {
                 const current = rowRecord(existing);
@@ -250,7 +276,7 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             const events = migration && Array.isArray(data.events) ? data.events : [];
             if (events.length > 100)
                 return json({ error: 'TOO_MANY_EVENTS' }, 400);
-            const statements = [change, event(migration ? 'migrate' : existing ? 'update' : 'create', item)];
+            const statements = [change, event(migration ? 'migrate' : existing ? 'update' : 'create', item),publicStatement(db,item,revision)];
             for (const e of events) {
                 const snapshot = e.snapshot ?? e.item ?? item;
                 if (encoder.encode(JSON.stringify(snapshot)).byteLength > 65536) return json({error:'EVENT_SNAPSHOT_TOO_LARGE'},413);
@@ -269,7 +295,8 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
                     return json({ item: rowRecord(collision), duplicate: true });
                 return json({ error: 'VERSION_OR_ID_CONFLICT' }, 409);
             }
-            return json({ item: { ...item, __storage: 'd1' }, issues }, existing ? 200 : 201);
+            let catalogPending=false;try{await rebuildCatalog(env);}catch{catalogPending=true;}await invalidateConsumer(request,[input.image.path,...(existing?[JSON.parse(existing.data).image.path]:[])]);
+            return json({ item: { ...item, __storage: 'd1' }, issues,...(catalogPending?{catalogPending:true}:{} ) }, existing ? 200 : 201);
         }
         const deletion = /^\/api\/content\/([^/]+)$/.exec(path);
         if (deletion && request.method === 'DELETE') {
@@ -282,7 +309,8 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             if (existing.version !== data.version)
                 return json({ error: 'VERSION_CONFLICT' }, 409);
             const revision = crypto.randomUUID(), now = new Date().toISOString(), snapshot = { ...rowRecord(existing), version: existing.version + 1, deleted: true };
-            const results = await db.batch([db.prepare('UPDATE random_items SET revision=? WHERE id=? AND version=?').bind(revision, id, data.version), db.prepare('INSERT INTO random_events(id,content_id,action,actor,version,snapshot,created_at) SELECT ?,?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM random_items WHERE id=? AND revision=?)').bind(crypto.randomUUID(), id, 'delete', 'studio-editor', snapshot.version, JSON.stringify(snapshot), now, id, revision), db.prepare('DELETE FROM random_items WHERE id=? AND revision=?').bind(id, revision)]);
+            const results = await db.batch([db.prepare('UPDATE random_items SET revision=? WHERE id=? AND version=?').bind(revision, id, data.version), db.prepare('INSERT INTO random_events(id,content_id,action,actor,version,snapshot,created_at) SELECT ?,?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM random_items WHERE id=? AND revision=?)').bind(crypto.randomUUID(), id, 'delete', 'studio-editor', snapshot.version, JSON.stringify(snapshot), now, id, revision),db.prepare('DELETE FROM random_public_items WHERE id=? AND EXISTS(SELECT 1 FROM random_items WHERE id=? AND revision=?)').bind(id,id,revision), db.prepare('DELETE FROM random_items WHERE id=? AND revision=?').bind(id, revision)]);
+            if(results[0].meta.changes){await rebuildCatalog(env);await invalidateConsumer(request,[JSON.parse(existing.data).image.path]);}
             return results[0].meta.changes ? json({ deleted: true, id }) : json({ error: 'VERSION_CONFLICT' }, 409);
         }
         return json({ error: 'NOT_FOUND' }, 404);

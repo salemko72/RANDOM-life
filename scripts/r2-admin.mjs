@@ -41,6 +41,14 @@ if(task==='backup'){
  await put(`catalog/snapshots/${version}.json`,body,'application/json; charset=utf-8');if(sha(await get(`catalog/snapshots/${version}.json`))!==version)throw Error('Snapshot verification failed');await put(`catalog/legacy/${version}.json`,Buffer.from('{"items":['+ordered.map(r=>r.data).join(',')+']}'),'application/json; charset=utf-8');
  const now=s.version===version?s.generated_at:new Date().toISOString();const updated=await query('UPDATE random_catalog_state SET version=?,generated_at=?,item_count=?,published_generation=? WHERE id=1 AND generation=?',[version,now,ordered.length,s.generation,s.generation]);if(updated.meta.changes!==1)throw Error('Concurrent edit; retry snapshot initialization');
  const manifest={schema:1,version,generatedAt:now,snapshotPath:`/api/catalog/snapshots/${version}.json`,itemCount:ordered.length};await fs.writeFile(path.join(dir,'manifest.json'),JSON.stringify(manifest,null,2));await fs.writeFile(path.join(dir,'snapshot.json'),body);console.log(JSON.stringify({manifest,snapshotBytes:body.length,rejected:0}));
+}else if(task==='verify'){
+ const before=JSON.parse(await fs.readFile(path.join(dir,'items-before.json'))),rows=(await query('SELECT * FROM random_items ORDER BY id')).results;
+ const media=(await query('SELECT path,mime,hash,length(bytes) AS bytes FROM random_media ORDER BY path')).results;
+ const originalMedia=JSON.parse(await fs.readFile(path.join(dir,'media-before.json')));
+ const unchanged=JSON.stringify(rows)===JSON.stringify(before),mediaUnchanged=JSON.stringify(media)===JSON.stringify(originalMedia);
+ const state=(await query('SELECT * FROM random_catalog_state WHERE id=1')).results[0],p=await api(`/pages/projects/${project}`),domain=await api(`/r2/buckets/${bucket}/domains/managed`);
+ const report={contentRowsUnchanged:unchanged,d1MediaUnchanged:mediaUnchanged,items:rows.length,d1Images:media.length,state,managedDomain:domain,deployment:{id:p.canonical_deployment.id,url:p.canonical_deployment.url,commit:p.canonical_deployment.deployment_trigger?.metadata?.commit_hash},bindings:{d1:p.deployment_configs.production.d1_databases,r2:p.deployment_configs.production.r2_buckets,secrets:Object.keys(p.deployment_configs.production.env_vars??{})}};
+ await fs.writeFile(path.join(dir,'cloud-final-verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));if(!unchanged||!mediaUnchanged||domain.enabled)throw Error('Preservation/private bucket check failed');
 }else if(task==='bind'){
  await api(`/pages/projects/${project}`,'PATCH',{deployment_configs:{production:{r2_buckets:{CONTENT_BUCKET:{name:bucket}}},preview:{d1_databases:{CONTENT_DB:{id:database}},r2_buckets:{CONTENT_BUCKET:{name:bucket}}}}});console.log('Bound private R2 bucket and existing D1 to Pages; preserved existing secret bindings.');
 }else throw Error('Unknown task');

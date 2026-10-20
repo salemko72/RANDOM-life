@@ -41,6 +41,14 @@ for(const name of ['manifest.json','README.md','source.json'])atlas126Files[name
 for(let page=1;page<=8;page++){const number=String(page).padStart(2,'0');atlas126Files[`atlas-${number}.png`]=new Uint8Array(await readFile(resolve('apps/client/src/web/assets',`ingredient-atlas-extension-126-${number}.png`)));}
 await writeFile(resolve(target,'downloads/RANDOM-ingredient-atlas-126.zip'),zipSync(atlas126Files));
 
+// Append-only atlas 173: compact exports keep the review package downloadable.
+const atlas173Root=resolve('content/ingredient-atlas-extension-173');const atlas173Files={};
+for(const name of ['manifest.json','README.md','source.tsv','legacy-baseline.json'])atlas173Files[name]=new Uint8Array(await readFile(resolve(atlas173Root,name)));
+for(let page=1;page<=7;page++){const number=String(page).padStart(2,'0');atlas173Files[`atlas-${number}.webp`]=new Uint8Array(await sharp(resolve('apps/client/src/web/assets',`ingredient-atlas-extension-173-${number}.png`)).webp({quality:90,effort:4}).toBuffer());}
+atlas173Files['ingredient-atlas-extension-173.ts']=new Uint8Array(await readFile(resolve('packages/shared/src/ingredient-atlas-extension-173.ts')));
+await writeFile(resolve(target,'downloads/LifeSpinner-ingredient-atlas-173.zip'),zipSync(atlas173Files));
+
+
 try{await access('/workspace/shared/android-download');await cp('/workspace/shared/android-download',resolve(target,'downloads/android'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 
 // The Windows distribution lives on GitHub; keep its large image packs out of web deployments.

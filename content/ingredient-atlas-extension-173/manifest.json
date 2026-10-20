@@ -1,0 +1,1810 @@
+{
+  "version": 1,
+  "count": 173,
+  "pageGrid": 5,
+  "pageCount": 7,
+  "order": "row-major, pages 01–07",
+  "unchangedPreviousAtlases": true,
+  "status": "visually-reviewed",
+  "ingredients": [
+    {
+      "number": 1,
+      "name": "Aleppo čili pahuljice",
+      "english": "Aleppo chili flakes",
+      "id": "extension-173-001",
+      "atlas": "extension-173-01",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 2,
+      "name": "Arborio riža",
+      "english": "Arborio rice",
+      "id": "extension-173-002",
+      "atlas": "extension-173-01",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 3,
+      "name": "Banana, oguljena",
+      "english": "Peeled banana",
+      "id": "extension-173-003",
+      "atlas": "extension-173-01",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 4,
+      "name": "Basmati riža, suha",
+      "english": "Dry basmati rice",
+      "id": "extension-173-004",
+      "atlas": "extension-173-01",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 5,
+      "name": "Bijela dugozrna riža",
+      "english": "Long-grain white rice",
+      "id": "extension-173-005",
+      "atlas": "extension-173-01",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 6,
+      "name": "Bijela riba za sirovu konzumaciju, prethodno profesionalno smrznuta",
+      "english": "White fish for raw consumption, previously professionally frozen",
+      "id": "extension-173-006",
+      "atlas": "extension-173-01",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 7,
+      "name": "Bijelo vinsko sirće",
+      "english": "White wine vinegar",
+      "id": "extension-173-007",
+      "atlas": "extension-173-01",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 8,
+      "name": "Biljni jogurt od badema bez fosfatnih aditiva",
+      "english": "Almond plant-based yogurt without phosphate additives",
+      "id": "extension-173-008",
+      "atlas": "extension-173-01",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 9,
+      "name": "Biljni napitak od badema bez fosfatnih aditiva",
+      "english": "Almond drink without phosphate additives",
+      "id": "extension-173-009",
+      "atlas": "extension-173-01",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 10,
+      "name": "Brašno od lana",
+      "english": "Flaxseed meal",
+      "id": "extension-173-010",
+      "atlas": "extension-173-01",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 11,
+      "name": "Catalina dresing",
+      "english": "Catalina dressing",
+      "id": "extension-173-011",
+      "atlas": "extension-173-01",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 12,
+      "name": "Cheddar sir",
+      "english": "Cheddar cheese",
+      "id": "extension-173-012",
+      "atlas": "extension-173-01",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 13,
+      "name": "Čili u prahu",
+      "english": "Chili powder",
+      "id": "extension-173-013",
+      "atlas": "extension-173-01",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 14,
+      "name": "Čisti javorov sirup",
+      "english": "Pure maple syrup",
+      "id": "extension-173-014",
+      "atlas": "extension-173-01",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 15,
+      "name": "Čokoladno-lješnjakov namaz s mlijekom i sojom",
+      "english": "Chocolate hazelnut spread with milk and soy",
+      "id": "extension-173-015",
+      "atlas": "extension-173-01",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 16,
+      "name": "Crne masline",
+      "english": "Black olives",
+      "id": "extension-173-016",
+      "atlas": "extension-173-01",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 17,
+      "name": "Crvena i zelena paprika",
+      "english": "Red and green bell peppers",
+      "id": "extension-173-017",
+      "atlas": "extension-173-01",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 18,
+      "name": "Crvena salsa",
+      "english": "Red salsa",
+      "id": "extension-173-018",
+      "atlas": "extension-173-01",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 19,
+      "name": "Crveno vino",
+      "english": "Red wine",
+      "id": "extension-173-019",
+      "atlas": "extension-173-01",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 20,
+      "name": "Curry u prahu",
+      "english": "Curry powder",
+      "id": "extension-173-020",
+      "atlas": "extension-173-01",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 21,
+      "name": "Čvrsti tofu, ocijeđen",
+      "english": "Firm tofu, drained",
+      "id": "extension-173-021",
+      "atlas": "extension-173-01",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 22,
+      "name": "Dimljena paprika, opcionalno",
+      "english": "Smoked paprika, optional",
+      "id": "extension-173-022",
+      "atlas": "extension-173-01",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 23,
+      "name": "Doritos Nacho Cheese čips",
+      "english": "Doritos Nacho Cheese chips",
+      "id": "extension-173-023",
+      "atlas": "extension-173-01",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 24,
+      "name": "Dugozrna bijela riža",
+      "english": "Long-grain white rice",
+      "id": "extension-173-024",
+      "atlas": "extension-173-01",
+      "row": 4,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 25,
+      "name": "Džem od jagode",
+      "english": "Strawberry jam",
+      "id": "extension-173-025",
+      "atlas": "extension-173-01",
+      "row": 4,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 26,
+      "name": "Ekstrakt badema",
+      "english": "Almond extract",
+      "id": "extension-173-026",
+      "atlas": "extension-173-02",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 27,
+      "name": "Ekstrakt vanilije",
+      "english": "Vanilla extract",
+      "id": "extension-173-027",
+      "atlas": "extension-173-02",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 28,
+      "name": "Evaporirano nezaslađeno mlijeko",
+      "english": "Unsweetened evaporated milk",
+      "id": "extension-173-028",
+      "atlas": "extension-173-02",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 29,
+      "name": "Farfalle od pšenice, bez jaja",
+      "english": "Wheat farfalle without eggs",
+      "id": "extension-173-029",
+      "atlas": "extension-173-02",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 30,
+      "name": "Gotovo lisnato tijesto s puterom, rashlađeno",
+      "english": "Ready-made butter puff pastry, chilled",
+      "id": "extension-173-030",
+      "atlas": "extension-173-02",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 31,
+      "name": "Gouda sir",
+      "english": "Gouda cheese",
+      "id": "extension-173-031",
+      "atlas": "extension-173-02",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 32,
+      "name": "Goveđi temeljac sa celerom",
+      "english": "Beef stock with celery",
+      "id": "extension-173-032",
+      "atlas": "extension-173-02",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 33,
+      "name": "Grčki jogurt",
+      "english": "Greek yogurt",
+      "id": "extension-173-033",
+      "atlas": "extension-173-02",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 34,
+      "name": "Grožđice",
+      "english": "Raisins",
+      "id": "extension-173-034",
+      "atlas": "extension-173-02",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 35,
+      "name": "Gusti paradajz sos",
+      "english": "Thick tomato sauce",
+      "id": "extension-173-035",
+      "atlas": "extension-173-02",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 36,
+      "name": "Iceberg salata",
+      "english": "Iceberg lettuce",
+      "id": "extension-173-036",
+      "atlas": "extension-173-02",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 37,
+      "name": "Integralno pšenično brašno za peciva",
+      "english": "Whole-wheat pastry flour",
+      "id": "extension-173-037",
+      "atlas": "extension-173-02",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 38,
+      "name": "Jabuke, očišćene",
+      "english": "Cored apples",
+      "id": "extension-173-038",
+      "atlas": "extension-173-02",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 39,
+      "name": "Jagode bez peteljki, svježe ili smrznute",
+      "english": "Hulled strawberries, fresh or frozen",
+      "id": "extension-173-039",
+      "atlas": "extension-173-02",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 40,
+      "name": "Jalapeño",
+      "english": "Jalapeño",
+      "id": "extension-173-040",
+      "atlas": "extension-173-02",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 41,
+      "name": "Juneći ramstek, tanke trakice",
+      "english": "Beef rump steak, thin strips",
+      "id": "extension-173-041",
+      "atlas": "extension-173-02",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 42,
+      "name": "Kalamata masline bez košpica",
+      "english": "Pitted Kalamata olives",
+      "id": "extension-173-042",
+      "atlas": "extension-173-02",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 43,
+      "name": "Kapari, ocijeđeni",
+      "english": "Capers, drained",
+      "id": "extension-173-043",
+      "atlas": "extension-173-02",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 44,
+      "name": "Kecap manis sa sojom i pšenicom",
+      "english": "Kecap manis with soy and wheat",
+      "id": "extension-173-044",
+      "atlas": "extension-173-02",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 45,
+      "name": "Kipuća voda",
+      "english": "Boiling water",
+      "id": "extension-173-045",
+      "atlas": "extension-173-02",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 46,
+      "name": "Kiseli krastavac s koprom",
+      "english": "Dill pickle",
+      "id": "extension-173-046",
+      "atlas": "extension-173-02",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 47,
+      "name": "Kiselo vrhnje",
+      "english": "Sour cream",
+      "id": "extension-173-047",
+      "atlas": "extension-173-02",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 48,
+      "name": "Kocke leda",
+      "english": "Ice cubes",
+      "id": "extension-173-048",
+      "atlas": "extension-173-02",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 49,
+      "name": "Komadi ananasa, svježi ili smrznuti",
+      "english": "Pineapple chunks, fresh or frozen",
+      "id": "extension-173-049",
+      "atlas": "extension-173-02",
+      "row": 4,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 50,
+      "name": "Korijander",
+      "english": "Fresh coriander leaves (cilantro)",
+      "id": "extension-173-050",
+      "atlas": "extension-173-02",
+      "row": 4,
+      "column": 4,
+      "status": "visually-reviewed",
+      "clarification": "Current four published recipes use cilantro in English; fresh leaves, not seeds or powder."
+    },
+    {
+      "number": 51,
+      "name": "Krompirovi njoki s pšenicom i jajima",
+      "english": "Potato gnocchi with wheat and eggs",
+      "id": "extension-173-051",
+      "atlas": "extension-173-03",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 52,
+      "name": "Kruška, naribana",
+      "english": "Grated pear",
+      "id": "extension-173-052",
+      "atlas": "extension-173-03",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 53,
+      "name": "Kuhana char siu svinjetina",
+      "english": "Cooked char siu pork",
+      "id": "extension-173-053",
+      "atlas": "extension-173-03",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 54,
+      "name": "Kuhana piletina, usitnjena",
+      "english": "Cooked shredded chicken",
+      "id": "extension-173-054",
+      "atlas": "extension-173-03",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 55,
+      "name": "Kuhana riža, brzo ohlađena i čuvana u frižideru",
+      "english": "Cooked rice, rapidly cooled and refrigerated",
+      "id": "extension-173-055",
+      "atlas": "extension-173-03",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 56,
+      "name": "Kuhana šunka",
+      "english": "Cooked ham",
+      "id": "extension-173-056",
+      "atlas": "extension-173-03",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 57,
+      "name": "Kuhani losos, usitnjen",
+      "english": "Cooked flaked salmon",
+      "id": "extension-173-057",
+      "atlas": "extension-173-03",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 58,
+      "name": "Kukuruzne taco školjke",
+      "english": "Corn taco shells",
+      "id": "extension-173-058",
+      "atlas": "extension-173-03",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 59,
+      "name": "Kukuruzne tortilje",
+      "english": "Corn tortillas",
+      "id": "extension-173-059",
+      "atlas": "extension-173-03",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 60,
+      "name": "Kukuruzni čips",
+      "english": "Corn chips",
+      "id": "extension-173-060",
+      "atlas": "extension-173-03",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 61,
+      "name": "Kukuruzni tortilja čips",
+      "english": "Corn tortilla chips",
+      "id": "extension-173-061",
+      "atlas": "extension-173-03",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 62,
+      "name": "Limeta, sok",
+      "english": "Lime juice",
+      "id": "extension-173-062",
+      "atlas": "extension-173-03",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 63,
+      "name": "Limunova korica",
+      "english": "Lemon zest",
+      "id": "extension-173-063",
+      "atlas": "extension-173-03",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 64,
+      "name": "Listovi bosiljka, čvrsto utisnuti u mjernu šolju",
+      "english": "Basil leaves, firmly packed in a measuring cup",
+      "id": "extension-173-064",
+      "atlas": "extension-173-03",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 65,
+      "name": "Listovi rukole, čvrsto utisnuti u mjernu šolju",
+      "english": "Arugula leaves, firmly packed in a measuring cup",
+      "id": "extension-173-065",
+      "atlas": "extension-173-03",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 66,
+      "name": "Ljutika, tanko narezana",
+      "english": "Shallot, thinly sliced",
+      "id": "extension-173-066",
+      "atlas": "extension-173-03",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 67,
+      "name": "Luk, tanko narezan",
+      "english": "Onion, thinly sliced",
+      "id": "extension-173-067",
+      "atlas": "extension-173-03",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 68,
+      "name": "Majoneza s jajima i senfom",
+      "english": "Mayonnaise with eggs and mustard",
+      "id": "extension-173-068",
+      "atlas": "extension-173-03",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 69,
+      "name": "Mali luk",
+      "english": "Small onion",
+      "id": "extension-173-069",
+      "atlas": "extension-173-03",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 70,
+      "name": "Manji pileći bataci i zabataci s kostima",
+      "english": "Small bone-in chicken drumsticks and thighs",
+      "id": "extension-173-070",
+      "atlas": "extension-173-03",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 71,
+      "name": "Miješano lisnato povrće",
+      "english": "Mixed leafy greens",
+      "id": "extension-173-071",
+      "atlas": "extension-173-03",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 72,
+      "name": "Mini čokoladne kapljice",
+      "english": "Mini chocolate chips",
+      "id": "extension-173-072",
+      "atlas": "extension-173-03",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 73,
+      "name": "Mirin",
+      "english": "Mirin",
+      "id": "extension-173-073",
+      "atlas": "extension-173-03",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 74,
+      "name": "Miso pasta od soje",
+      "english": "Soybean miso paste",
+      "id": "extension-173-074",
+      "atlas": "extension-173-03",
+      "row": 4,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 75,
+      "name": "Mješavina začina za perad",
+      "english": "Poultry seasoning blend",
+      "id": "extension-173-075",
+      "atlas": "extension-173-03",
+      "row": 4,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 76,
+      "name": "Mlaćenica",
+      "english": "Buttermilk",
+      "id": "extension-173-076",
+      "atlas": "extension-173-04",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 77,
+      "name": "Mljevena kajenska paprika",
+      "english": "Ground cayenne pepper",
+      "id": "extension-173-077",
+      "atlas": "extension-173-04",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 78,
+      "name": "Mljevena svinjetina",
+      "english": "Ground pork",
+      "id": "extension-173-078",
+      "atlas": "extension-173-04",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 79,
+      "name": "Mljeveni klinčić",
+      "english": "Ground cloves",
+      "id": "extension-173-079",
+      "atlas": "extension-173-04",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 80,
+      "name": "Mozzarella, dobro ocijeđena",
+      "english": "Mozzarella, well drained",
+      "id": "extension-173-080",
+      "atlas": "extension-173-04",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 81,
+      "name": "Mrs. Dash biljna mješavina začina",
+      "english": "Mrs. Dash herb seasoning blend",
+      "id": "extension-173-081",
+      "atlas": "extension-173-04",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 82,
+      "name": "Narezane jagode",
+      "english": "Sliced strawberries",
+      "id": "extension-173-082",
+      "atlas": "extension-173-04",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 83,
+      "name": "Naribana limunova korica",
+      "english": "Grated lemon zest",
+      "id": "extension-173-083",
+      "atlas": "extension-173-04",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 84,
+      "name": "Naribana mrkva",
+      "english": "Grated carrot",
+      "id": "extension-173-084",
+      "atlas": "extension-173-04",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 85,
+      "name": "Nesoljeni puter",
+      "english": "Unsalted butter",
+      "id": "extension-173-085",
+      "atlas": "extension-173-04",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 86,
+      "name": "Neutralno ulje",
+      "english": "Neutral oil",
+      "id": "extension-173-086",
+      "atlas": "extension-173-04",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 87,
+      "name": "Neutralno ulje za prženje",
+      "english": "Neutral frying oil",
+      "id": "extension-173-087",
+      "atlas": "extension-173-04",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 88,
+      "name": "Nezačinjeno rižino sirće",
+      "english": "Unseasoned rice vinegar",
+      "id": "extension-173-088",
+      "atlas": "extension-173-04",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 89,
+      "name": "Nezaslađena kaša od jabuke",
+      "english": "Unsweetened applesauce",
+      "id": "extension-173-089",
+      "atlas": "extension-173-04",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 90,
+      "name": "Nezaslađeno evaporirano mlijeko",
+      "english": "Unsweetened evaporated milk",
+      "id": "extension-173-090",
+      "atlas": "extension-173-04",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 91,
+      "name": "Očišćene sirove kozice",
+      "english": "Peeled raw shrimp",
+      "id": "extension-173-091",
+      "atlas": "extension-173-04",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 92,
+      "name": "Panko od pšenice",
+      "english": "Wheat panko breadcrumbs",
+      "id": "extension-173-092",
+      "atlas": "extension-173-04",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 93,
+      "name": "Paradajz iz konzerve",
+      "english": "Canned tomatoes",
+      "id": "extension-173-093",
+      "atlas": "extension-173-04",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 94,
+      "name": "Pasirani kuhani grah",
+      "english": "Mashed cooked beans",
+      "id": "extension-173-094",
+      "atlas": "extension-173-04",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 95,
+      "name": "Pasta tamarinda",
+      "english": "Tamarind paste",
+      "id": "extension-173-095",
+      "atlas": "extension-173-04",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 96,
+      "name": "Pelat paradajz",
+      "english": "Whole peeled tomatoes",
+      "id": "extension-173-096",
+      "atlas": "extension-173-04",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 97,
+      "name": "Penne od pšenice, bez jaja",
+      "english": "Wheat penne without eggs",
+      "id": "extension-173-097",
+      "atlas": "extension-173-04",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 98,
+      "name": "Pileća prsa, dva manja fileta",
+      "english": "Chicken breast, two small fillets",
+      "id": "extension-173-098",
+      "atlas": "extension-173-04",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 99,
+      "name": "Pileća prsa, kocke",
+      "english": "Chicken breast, cubes",
+      "id": "extension-173-099",
+      "atlas": "extension-173-04",
+      "row": 4,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 100,
+      "name": "Pileća prsa, kockice",
+      "english": "Chicken breast, small cubes",
+      "id": "extension-173-100",
+      "atlas": "extension-173-04",
+      "row": 4,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 101,
+      "name": "Pileća prsa, tanki fileti",
+      "english": "Chicken breast, thin fillets",
+      "id": "extension-173-101",
+      "atlas": "extension-173-05",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 102,
+      "name": "Pileća prsa, trakice",
+      "english": "Chicken breast, strips",
+      "id": "extension-173-102",
+      "atlas": "extension-173-05",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 103,
+      "name": "Pileći bataci i zabataci s kostima",
+      "english": "Bone-in chicken drumsticks and thighs",
+      "id": "extension-173-103",
+      "atlas": "extension-173-05",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 104,
+      "name": "Pileći temeljac sa celerom",
+      "english": "Chicken stock with celery",
+      "id": "extension-173-104",
+      "atlas": "extension-173-05",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 105,
+      "name": "Pinto grah, kuhan i ocijeđen",
+      "english": "Pinto beans, cooked and drained",
+      "id": "extension-173-105",
+      "atlas": "extension-173-05",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 106,
+      "name": "Plavi sir",
+      "english": "Blue cheese",
+      "id": "extension-173-106",
+      "atlas": "extension-173-05",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 107,
+      "name": "Povrtna kocka za supu s malo soli",
+      "english": "Low-salt vegetable stock cube",
+      "id": "extension-173-107",
+      "atlas": "extension-173-05",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 108,
+      "name": "Povrtni temeljac s malo soli",
+      "english": "Low-salt vegetable stock",
+      "id": "extension-173-108",
+      "atlas": "extension-173-05",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 109,
+      "name": "Povrtni temeljac sa celerom",
+      "english": "Vegetable stock with celery",
+      "id": "extension-173-109",
+      "atlas": "extension-173-05",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 110,
+      "name": "Prženi kikiriki",
+      "english": "Roasted peanuts",
+      "id": "extension-173-110",
+      "atlas": "extension-173-05",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 111,
+      "name": "Pšenična peciva",
+      "english": "Wheat bread rolls",
+      "id": "extension-173-111",
+      "atlas": "extension-173-05",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 112,
+      "name": "Pšenične prezle",
+      "english": "Wheat breadcrumbs",
+      "id": "extension-173-112",
+      "atlas": "extension-173-05",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 113,
+      "name": "Pšenične tortilje",
+      "english": "Wheat tortillas",
+      "id": "extension-173-113",
+      "atlas": "extension-173-05",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 114,
+      "name": "Pšenični fettuccine bez jaja",
+      "english": "Wheat fettuccine without eggs",
+      "id": "extension-173-114",
+      "atlas": "extension-173-05",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 115,
+      "name": "Pšenični hljeb",
+      "english": "Wheat bread",
+      "id": "extension-173-115",
+      "atlas": "extension-173-05",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 116,
+      "name": "Pšenični hljeb od kiselog tijesta",
+      "english": "Wheat sourdough bread",
+      "id": "extension-173-116",
+      "atlas": "extension-173-05",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 117,
+      "name": "Pšenični makaroni bez jaja",
+      "english": "Wheat macaroni without eggs",
+      "id": "extension-173-117",
+      "atlas": "extension-173-05",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 118,
+      "name": "Pšenični ramen rezanci s jajima",
+      "english": "Wheat ramen noodles with eggs",
+      "id": "extension-173-118",
+      "atlas": "extension-173-05",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 119,
+      "name": "Punomasni obični grčki jogurt",
+      "english": "Full-fat plain Greek yogurt",
+      "id": "extension-173-119",
+      "atlas": "extension-173-05",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 120,
+      "name": "Puter, omekšan",
+      "english": "Softened butter",
+      "id": "extension-173-120",
+      "atlas": "extension-173-05",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 121,
+      "name": "Riblji sos",
+      "english": "Fish sauce",
+      "id": "extension-173-121",
+      "atlas": "extension-173-05",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 122,
+      "name": "Ricotta",
+      "english": "Ricotta",
+      "id": "extension-173-122",
+      "atlas": "extension-173-05",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 123,
+      "name": "Rižini vermicelli rezanci",
+      "english": "Rice vermicelli noodles",
+      "id": "extension-173-123",
+      "atlas": "extension-173-05",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 124,
+      "name": "Rižino sirće",
+      "english": "Rice vinegar",
+      "id": "extension-173-124",
+      "atlas": "extension-173-05",
+      "row": 4,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 125,
+      "name": "Sake",
+      "english": "Sake",
+      "id": "extension-173-125",
+      "atlas": "extension-173-05",
+      "row": 4,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 126,
+      "name": "Šećer u prahu",
+      "english": "Powdered sugar",
+      "id": "extension-173-126",
+      "atlas": "extension-173-06",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 127,
+      "name": "Senf u prahu",
+      "english": "Mustard powder",
+      "id": "extension-173-127",
+      "atlas": "extension-173-06",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 128,
+      "name": "Shiitake gljive",
+      "english": "Shiitake mushrooms",
+      "id": "extension-173-128",
+      "atlas": "extension-173-06",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 129,
+      "name": "Sirove kozice u ljusci, očišćene",
+      "english": "Raw shell-on shrimp, cleaned",
+      "id": "extension-173-129",
+      "atlas": "extension-173-06",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 130,
+      "name": "Sitni luk",
+      "english": "Small onion",
+      "id": "extension-173-130",
+      "atlas": "extension-173-06",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 131,
+      "name": "Sitno narezan luk",
+      "english": "Finely chopped onion",
+      "id": "extension-173-131",
+      "atlas": "extension-173-06",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 132,
+      "name": "Sitno narezane crvene, žute i narandžaste paprike",
+      "english": "Finely diced red, yellow and orange bell peppers",
+      "id": "extension-173-132",
+      "atlas": "extension-173-06",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 133,
+      "name": "Slatka paprika",
+      "english": "Sweet paprika",
+      "id": "extension-173-133",
+      "atlas": "extension-173-06",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed",
+      "clarification": "User confirmed ground sweet paprika powder."
+    },
+    {
+      "number": 134,
+      "name": "Smeđe pivo od ječma",
+      "english": "Brown barley beer",
+      "id": "extension-173-134",
+      "atlas": "extension-173-06",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 135,
+      "name": "Smeđi šećer",
+      "english": "Brown sugar",
+      "id": "extension-173-135",
+      "atlas": "extension-173-06",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 136,
+      "name": "Smrznuti grašak",
+      "english": "Frozen peas",
+      "id": "extension-173-136",
+      "atlas": "extension-173-06",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 137,
+      "name": "So, opcionalno",
+      "english": "Salt, optional",
+      "id": "extension-173-137",
+      "atlas": "extension-173-06",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 138,
+      "name": "Soja sos s malo natrijuma",
+      "english": "Low-sodium soy sauce",
+      "id": "extension-173-138",
+      "atlas": "extension-173-06",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 139,
+      "name": "Soja sos s pšenicom",
+      "english": "Soy sauce with wheat",
+      "id": "extension-173-139",
+      "atlas": "extension-173-06",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 140,
+      "name": "Sok limuna",
+      "english": "Lemon juice",
+      "id": "extension-173-140",
+      "atlas": "extension-173-06",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 141,
+      "name": "Srednja glavica karfiola",
+      "english": "Medium head of cauliflower",
+      "id": "extension-173-141",
+      "atlas": "extension-173-06",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 142,
+      "name": "Stabljike celera",
+      "english": "Celery stalks",
+      "id": "extension-173-142",
+      "atlas": "extension-173-06",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 143,
+      "name": "Suha crvena leća",
+      "english": "Dry red lentils",
+      "id": "extension-173-143",
+      "atlas": "extension-173-06",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 144,
+      "name": "Suha tjestenina bez jaja",
+      "english": "Dry pasta without eggs",
+      "id": "extension-173-144",
+      "atlas": "extension-173-06",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 145,
+      "name": "Suhi čili",
+      "english": "Dried chili",
+      "id": "extension-173-145",
+      "atlas": "extension-173-06",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 146,
+      "name": "Suhi kopar",
+      "english": "Dried dill",
+      "id": "extension-173-146",
+      "atlas": "extension-173-06",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 147,
+      "name": "Suhi timijan",
+      "english": "Dried thyme",
+      "id": "extension-173-147",
+      "atlas": "extension-173-06",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 148,
+      "name": "Svježa ili smrznuta zelena boranija",
+      "english": "Fresh or frozen green beans",
+      "id": "extension-173-148",
+      "atlas": "extension-173-06",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 149,
+      "name": "Svježa kadulja",
+      "english": "Fresh sage",
+      "id": "extension-173-149",
+      "atlas": "extension-173-06",
+      "row": 4,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 150,
+      "name": "Svježi čili",
+      "english": "Fresh chili",
+      "id": "extension-173-150",
+      "atlas": "extension-173-06",
+      "row": 4,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 151,
+      "name": "Svježi pšenični tortelini s jajima i sirom",
+      "english": "Fresh wheat tortellini with eggs and cheese",
+      "id": "extension-173-151",
+      "atlas": "extension-173-07",
+      "row": 0,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 152,
+      "name": "Svježi sir",
+      "english": "Fresh cheese",
+      "id": "extension-173-152",
+      "atlas": "extension-173-07",
+      "row": 0,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 153,
+      "name": "Svježi sok limuna",
+      "english": "Fresh lemon juice",
+      "id": "extension-173-153",
+      "atlas": "extension-173-07",
+      "row": 0,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 154,
+      "name": "Taco začin",
+      "english": "Taco seasoning",
+      "id": "extension-173-154",
+      "atlas": "extension-173-07",
+      "row": 0,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 155,
+      "name": "Tajlandski bosiljak",
+      "english": "Thai basil",
+      "id": "extension-173-155",
+      "atlas": "extension-173-07",
+      "row": 0,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 156,
+      "name": "Tortilje od čistog kukuruza",
+      "english": "Pure corn tortillas",
+      "id": "extension-173-156",
+      "atlas": "extension-173-07",
+      "row": 1,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 157,
+      "name": "Tvrdo kuhana jaja",
+      "english": "Hard-boiled eggs",
+      "id": "extension-173-157",
+      "atlas": "extension-173-07",
+      "row": 1,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 158,
+      "name": "Ulje u spreju za kalup",
+      "english": "Cooking oil spray for the pan",
+      "id": "extension-173-158",
+      "atlas": "extension-173-07",
+      "row": 1,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 159,
+      "name": "Već kuhane mini hrenovke",
+      "english": "Pre-cooked mini frankfurters",
+      "id": "extension-173-159",
+      "atlas": "extension-173-07",
+      "row": 1,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 160,
+      "name": "Već pečena char siu svinjetina",
+      "english": "Roasted char siu pork",
+      "id": "extension-173-160",
+      "atlas": "extension-173-07",
+      "row": 1,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 161,
+      "name": "Veganska majoneza",
+      "english": "Vegan mayonnaise",
+      "id": "extension-173-161",
+      "atlas": "extension-173-07",
+      "row": 2,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 162,
+      "name": "Vegetarijanski tvrdi sir italijanskog tipa",
+      "english": "Vegetarian Italian-style hard cheese",
+      "id": "extension-173-162",
+      "atlas": "extension-173-07",
+      "row": 2,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 163,
+      "name": "Velika jaja",
+      "english": "Large eggs",
+      "id": "extension-173-163",
+      "atlas": "extension-173-07",
+      "row": 2,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 164,
+      "name": "Velike pšenične tortilje",
+      "english": "Large wheat tortillas",
+      "id": "extension-173-164",
+      "atlas": "extension-173-07",
+      "row": 2,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 165,
+      "name": "Veliki luk, sitno nasjeckan",
+      "english": "Large onion, finely chopped",
+      "id": "extension-173-165",
+      "atlas": "extension-173-07",
+      "row": 2,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 166,
+      "name": "Veliki russet krompir, oguljen",
+      "english": "Large russet potato, peeled",
+      "id": "extension-173-166",
+      "atlas": "extension-173-07",
+      "row": 3,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 167,
+      "name": "Višnje bez košpica, odmrznute i ocijeđene",
+      "english": "Pitted sour cherries, thawed and drained",
+      "id": "extension-173-167",
+      "atlas": "extension-173-07",
+      "row": 3,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 168,
+      "name": "Vlasac",
+      "english": "Chives",
+      "id": "extension-173-168",
+      "atlas": "extension-173-07",
+      "row": 3,
+      "column": 2,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 169,
+      "name": "Voda za kuhanje graška",
+      "english": "Water for cooking peas",
+      "id": "extension-173-169",
+      "atlas": "extension-173-07",
+      "row": 3,
+      "column": 3,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 170,
+      "name": "Worcestershire sos s inćunima",
+      "english": "Worcestershire sauce with anchovies",
+      "id": "extension-173-170",
+      "atlas": "extension-173-07",
+      "row": 3,
+      "column": 4,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 171,
+      "name": "Zelena curry pasta s ribom i kozicama",
+      "english": "Green curry paste with fish and shrimp",
+      "id": "extension-173-171",
+      "atlas": "extension-173-07",
+      "row": 4,
+      "column": 0,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 172,
+      "name": "Zelena paprika",
+      "english": "Green bell pepper",
+      "id": "extension-173-172",
+      "atlas": "extension-173-07",
+      "row": 4,
+      "column": 1,
+      "status": "visually-reviewed"
+    },
+    {
+      "number": 173,
+      "name": "Žive dagnje u ljusci",
+      "english": "Live mussels in shells",
+      "id": "extension-173-173",
+      "atlas": "extension-173-07",
+      "row": 4,
+      "column": 2,
+      "status": "visually-reviewed"
+    }
+  ],
+  "reviewedAt": "2026-10-20T07:01:51.363Z",
+  "reviewScope": "Illustration identity, ordering, cell separation and text-free presentation; not dietary or safety certification.",
+  "pages": [
+    {
+      "atlas": "extension-173-01",
+      "file": "atlas-01.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-01.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-4d1c13df-ecee-468e-be3d-297f5a40e23a.png",
+      "sha256": "ef912a619f8f61409940f609ac538a0202ccc78e807488eebeeeed5119b1f43d"
+    },
+    {
+      "atlas": "extension-173-02",
+      "file": "atlas-02.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-02.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-58917073-79af-487c-98ef-078a5e65473d.png",
+      "sha256": "8ae4a5f58c27253b1aae2ecd2af9259dd35107d3e3cf29d0de3c4bfb8be156db"
+    },
+    {
+      "atlas": "extension-173-03",
+      "file": "atlas-03.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-03.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-d509215c-850b-4db5-b99a-cd40034b5df4.png",
+      "sha256": "7fae5b1aa143c01e568edbe67a1884617b61811d5ee659e2d11b78a9e548f428"
+    },
+    {
+      "atlas": "extension-173-04",
+      "file": "atlas-04.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-04.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-cdbc16ad-44a5-400b-bea1-b78f86e11302.png",
+      "sha256": "7610a714cc791e2a2a803099d4216d32fea1edd2aa912c3c1dbe0043f7c15317"
+    },
+    {
+      "atlas": "extension-173-05",
+      "file": "atlas-05.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-05.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-7bd02104-97b3-43dd-bb19-60c042ff75a9.png",
+      "sha256": "ff8cf73970e27a79de2e82f07923400d599473cf5570f395a35c20c2d75c2529"
+    },
+    {
+      "atlas": "extension-173-06",
+      "file": "atlas-06.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-06.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-079d3ce1-7330-4496-b10b-3145f057b96f.png",
+      "sha256": "817f42a16af3d255921806b551a95b9d8a6861c5c6438303882e3aaff0cea794"
+    },
+    {
+      "atlas": "extension-173-07",
+      "file": "atlas-07.webp",
+      "sourcePng": "apps/client/src/web/assets/ingredient-atlas-extension-173-07.png",
+      "width": 1250,
+      "height": 1250,
+      "sourceGeneration": "exec-02c51cb6-3881-4f49-8094-d530051bd949.png",
+      "sha256": "67ee3bc4da3e432f95dbe9c9826dee3d5d18ebd20f20c5564ea2aeec33d2c25e"
+    }
+  ]
+}

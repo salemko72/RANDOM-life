@@ -1,4 +1,4 @@
-import {createNativeCatalogStorage,parseCatalogMessage} from './src/native/catalog-storage';
+import {createNativeCatalogStorage,parseCatalogMessage,parseCatalogClearMessage} from './src/native/catalog-storage';
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
 import appConfig from './app.json';
 const PERFORMANCE_STORAGE_KEY=`${PERFORMANCE_KEY}.${appConfig.expo.version}.${appConfig.expo.android.versionCode}`;
@@ -38,6 +38,7 @@ function NativeExperience(){
  const [error,setError]=useState('');
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
+ const webView=useRef<WebView>(null);
  const catalogStorage=useRef(createNativeCatalogStorage(FileSystem,AsyncStorage));
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
@@ -54,6 +55,7 @@ function NativeExperience(){
  return <View style={styles.screen}>
   <StatusBar style="dark"/>
   {error?<View style={styles.error}><Text>{error}</Text></View>:uri===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
+   ref={webView}
    source={{uri}}
    originWhitelist={['file://*']}
    allowFileAccess
@@ -65,6 +67,7 @@ function NativeExperience(){
    onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
     const raw=event.nativeEvent.data;
+    const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');void catalogStorage.current.clear().then(()=>FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','')).then(()=>notify(true)).catch(()=>notify(false));return;}
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}

@@ -450,3 +450,15 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .wordmark .lifespinner-logo{width:clamp(145px,42.5vw,221px)}
 .onboarding-content .welcome-brand{letter-spacing:0}
 .onboarding-content .welcome-brand .lifespinner-logo{width:260px}
+
+/* The wheel caption is transient and must never intercept category taps. */
+.wheel-caption{pointer-events:none}
+.profile-catalog{margin-top:20px;padding-top:17px;border-top:1px solid #dbc4b766}
+.profile-catalog h4{font:500 12px/1.5 RandomSans,sans-serif;color:#765c50;margin:0 0 10px}
+.random-world .profile-cache-clear{padding:10px 14px;border:1px solid #cba99777;border-radius:15px;color:#795548;background:#fff8f044;font:500 11px/1.5 RandomSans,sans-serif;max-width:100%}
+.random-world .profile-cache-clear:disabled{opacity:.6;cursor:wait}
+.profile-cache-note,.profile-cache-notice{font:400 10px/1.6 RandomSans,sans-serif;color:#8c7468;margin:8px 0 12px}
+.profile-cache-notice{color:#71584b}
+.profile-connection-status{margin:0;font:400 10px/1.6 RandomSans,sans-serif;color:#8c7468}
+.profile-connection-status>div{display:flex;justify-content:space-between;gap:16px;margin:5px 0}
+.profile-connection-status dt{flex:0 1 48%}.profile-connection-status dd{margin:0;text-align:right;overflow-wrap:anywhere;flex:0 1 52%}

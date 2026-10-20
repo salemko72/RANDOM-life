@@ -9,6 +9,8 @@ import {bundledImageFiles} from './backup/images';
 const catalog=new PersistentCatalog({reserve:reserveItems,storage:consumerCatalogStorage,fetchSnapshot:createCatalogTransport(globalThis.fetch,()=>Date.now(),bytes=>performanceEvent('catalog_sync',{downloadBytes:bytes,count:1})),onUpdate:()=>{if(typeof window!=='undefined')window.dispatchEvent(new Event('random-catalog-updated'));}});
 export const readConsumerCatalog=async(force=false)=>{const began=performance.now();try{const items=await catalog.load(force);performanceEvent('catalog',{durationMs:performance.now()-began,count:items.length,backup:Number(catalog.status.source==='backup'),cached:Number(catalog.status.source==='cached')});return items;}catch(error){performanceEvent('catalog',{durationMs:performance.now()-began,failed:1});throw error;}};
 export const consumerCatalogStatus=()=>catalog.status;
+export const consumerCatalogInfo=()=>catalog.info();
+export async function clearConsumerCatalog(){await catalog.clear();return readConsumerCatalog(true);}
 export {reserveMetadata};
 export function hasBundledImage(path:string){return Object.prototype.hasOwnProperty.call(bundledImageFiles,path);}
 export async function readBundledImage(path:string):Promise<Blob|null>{

@@ -1,10 +1,10 @@
 # Server handoff — 20 October 2026
 
-Implemented from frontend commit `c7b8df9347dbc8347c9f39f2f33a51e0aee25b5a` on **codex/r2-versioned-catalog**. Deployed implementation commit **48430435a3ce89e0fa170e5aaecea2312684ca22**. Frontend/native/shared schema files are unchanged. No APK/AAB build or store submission.
+Implemented from frontend commit `c7b8df9347dbc8347c9f39f2f33a51e0aee25b5a` on **codex/r2-versioned-catalog**. Final deployed implementation commit **81caea48d2e1fd664d9339946cb9198feb0ebaf6** (initial implementation 4843043). Frontend/native/shared schema files are unchanged. No APK/AAB build or store submission.
 
 ## Actual deployments and endpoints
 
-- Production deployment: `532ce6bc-080a-4a82-939f-77462468f33b`, https://532ce6bc.random-life-preview.pages.dev
+- Final production deployment: `42db61bd-a2d4-4b42-b4f3-10d1d025e86e`, https://42db61bd.random-life-preview.pages.dev (initial server rollout: 532ce6bc).
 - Production origin: https://random-life-preview.pages.dev
 - Preview validation deployment: `33c85da0` at https://33c85da0.random-life-preview.pages.dev (the final commit also atomizes access-link index upgrades; final full suite re-run before production).
 - Manifest: https://random-life-preview.pages.dev/api/catalog/manifest
@@ -28,7 +28,7 @@ The snapshot response is **1,854,711 uncompressed UTF-8 bytes**. Independently d
 
 ## Checks actually run
 
-`npx vitest run`: **32 files / 251 tests passed**. `npx tsc --noEmit -p tsconfig.json`: passed. `git diff --check`: passed.
+Final `npx vitest run`: **32 files / 252 tests passed**, including schema-field whitelisting against private metadata. `npx tsc --noEmit -p tsconfig.json`: passed. `git diff --check`: passed.
 
 Local Miniflare covers publication, edited content, withdrawal and authoritative empty catalog, deletion, no-op version/timestamp, concurrent publication, missing-R2 fallback with equal original bytes, anonymous draft denial, private/no-store reads, conditional image response, warm cache instrumentation and origin failure returning 503.
 
@@ -54,6 +54,7 @@ These counters cover explicit tool queries, not internal SQL-export work, all Wo
 - Server authorization/pointer caches have at most 60-second normal convergence across POPs. Only the current snapshot is publicly routed. Old snapshot objects stay private for rollback. Browser immutable caches and offline/native cached data cannot be immediately revoked; agreed client refresh is 30 minutes.
 - Studio history wire shape is unchanged and still potentially large. A paginated history endpoint should be coordinated with frontend rather than silently truncating events.
 - Artificially dirtying the production derivative index solely for a test was rejected by automatic safety review; it was **not executed**. Regeneration/concurrency/empty/withdrawal/failure tests ran locally. Production content was not edited to force those cases. Future production write CPU-budget performance is not inferred from unlimited local runtime tests.
+- Cause of the historical 1102 remains unconfirmed. The observed error page established a Worker resource-limit failure, not which CPU/memory operation exceeded it. Sanitized runtime tails recorded the former `/api/catalog` at **80 ms CPU / 288 ms runtime wall time**, and the new `/api/catalog/manifest` at **1 ms CPU / 33 ms runtime wall time**, both `outcome:ok`, HTTP 200. These are individual requests to different payload paths, not a benchmark distribution or retrospective CPU proof of the earlier failure. No confirming exception was captured. Do not report the history implementation as a proven root cause or paid-plan exhaustion without the failed invocation's metrics/logs.
 
 ## Rollback
 

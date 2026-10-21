@@ -1,0 +1,21 @@
+import React,{useEffect,useState}from'react';
+import{shareListen}from'./listen-share';
+import Icon from './Icon';
+export const listenTracks=[
+ {id:'0ofHAoxe9vBkTCp2UQIavz',title:'Dreams',artist:'Fleetwood Mac',mood:'calm'},
+ {id:'11dFghVXANMlKmJXsNCbNl',title:'Cutting Shapes',artist:'Don Diablo',mood:'energy'},
+ {id:'4uLU6hMCjMI75M1A2tKUQC',title:'Never Gonna Give You Up',artist:'Rick Astley',mood:'happy'},
+] as const;
+export function chooseTrack(previous=-1,mood='surprise',random=Math.random()){
+ const candidates=listenTracks.map((t,i)=>({t,i})).filter(({t,i})=>i!==previous&&(mood==='surprise'||t.mood===mood));
+ const pool=candidates.length?candidates:listenTracks.map((t,i)=>({t,i})).filter(({t})=>mood==='surprise'||t.mood===mood);
+ return pool[Math.floor(Math.max(0,Math.min(.999999,Number.isFinite(random)?random:0))*pool.length)]?.i??0;
+}
+export const listenKey=(index:number)=>'listen:'+listenTracks[index].id;
+export const listenIndexFor=(id:string)=>listenTracks.findIndex(t=>'listen:'+t.id===id);
+export default function Listen({locale,index,liked,completed,onLike,onCompleted,onChoose}:{locale:'en'|'bs';index:number;liked:boolean;completed:boolean;onLike:()=>void;onCompleted:()=>void;onChoose:(mood:string)=>void}){
+ const[online,setOnline]=useState(()=>navigator.onLine);useEffect(()=>{const sync=()=>setOnline(navigator.onLine);window.addEventListener('online',sync);window.addEventListener('offline',sync);return()=>{window.removeEventListener('online',sync);window.removeEventListener('offline',sync);};},[]);
+ const[notice,setNotice]=useState('');const[expanded,setExpanded]=useState(false);const en=locale==='en',track=listenTracks[index];
+ const moods=[['energy',en?'More energy':'Više energije'],['calm',en?'Something calmer':'Nešto mirnije'],['happy',en?'Something happier':'Nešto veselije'],['surprise',en?'Surprise me':'Iznenadi me']];
+ return <article className="listen-card" aria-label={en?'Music suggestion':'Muzički prijedlog'}><p className="eyebrow">{en?'TODAY’S PICK · LISTEN':'DANAŠNJI IZBOR · SLUŠAJ'}</p><h2>{track.title}</h2><p className="listen-artist">{track.artist}</p><div className="listen-actions" role="group" aria-label={en?'Song actions':'Akcije za pjesmu'}><button aria-label={en?'Like':'Sviđa mi se'} aria-pressed={liked} onClick={onLike}><Icon name="heart"/></button><button aria-label={en?'Share':'Podijeli'} onClick={()=>void shareListen(track.title+' — '+track.artist,track.id).then(result=>setNotice(result==='copied'?(en?'Link copied':'Link kopiran'):result==='manual'?(en?'Copy the Spotify link below.':'Kopiraj Spotify link ispod.'):'')).catch(()=>setNotice(en?'Sharing unavailable. Use the Spotify link.':'Dijeljenje nije dostupno. Koristi Spotify link.'))}><Icon name="share"/></button><button aria-label={en?'Already listened':'Već poslušano'} aria-pressed={completed} onClick={onCompleted}><Icon name="seen"/></button></div><p role="status" className="listen-share-status">{notice}</p><p className="listen-intro">{en?'A song for this moment. Press play and see where it takes you.':'Pjesma za ovaj trenutak. Pritisni play i poslušaj.'}</p>{online?<iframe key={track.id} title={`Spotify · ${track.title} — ${track.artist}`} src={`https://open.spotify.com/embed/track/${track.id}?utm_source=generator&theme=0`} width="100%" height="352" allow="encrypted-media; fullscreen; picture-in-picture" loading="eager"/>:<p className="listen-offline" role="status">{en?'You are offline. Connect to the internet to load the Spotify player.':'Nema mrežne veze. Poveži se na internet za Spotify player.'}</p>}<a className="listen-service-link" href={`https://open.spotify.com/track/${track.id}`} target="_blank" rel="noopener noreferrer">{en?'Open in Spotify ↗':'Otvori u Spotifyju ↗'}</a><button type="button" className="listen-vibe" aria-expanded={expanded} onClick={()=>setExpanded(v=>!v)}>{en?'Different vibe?':'Drugačiji vibe?'}</button>{expanded&&<div className="listen-moods" aria-label={en?'Choose a vibe':'Izaberi raspoloženje'}>{moods.map(([mood,label])=><button key={mood} onClick={()=>{onChoose(mood);setExpanded(false);}}>{label}</button>)}</div>}<p className="listen-prototype-note">{en?'Preview · 3 sample tracks. Playback requires internet; Spotify controls availability.':'Prototip · 3 probne pjesme. Slušanje traži internet; dostupnost određuje Spotify.'}</p></article>;
+}

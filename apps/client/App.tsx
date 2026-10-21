@@ -1,3 +1,5 @@
+import{parseListenShare}from'./src/web/listen-share';
+import{allowWebNavigation}from'./src/native/web-navigation';
 import {createNativeCatalogStorage,parseCatalogMessage,parseCatalogClearMessage} from './src/native/catalog-storage';
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
 import appConfig from './app.json';
@@ -57,12 +59,12 @@ function NativeExperience(){
   {error?<View style={styles.error}><Text>{error}</Text></View>:uri===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
    ref={webView}
    source={{uri}}
-   originWhitelist={['file://*']}
+   originWhitelist={['file://*','https://open.spotify.com']}
    allowFileAccess
    allowingReadAccessToURL={uri.slice(0,uri.lastIndexOf('/')+1)}
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
-   onShouldStartLoadWithRequest={r=>r.url==='about:blank'||r.url.split('#')[0]===uri}
+   onShouldStartLoadWithRequest={r=>allowWebNavigation(r,uri)}
    onLoadEnd={()=>nativeMetric('webview_loaded')}
    onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
@@ -71,7 +73,7 @@ function NativeExperience(){
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}
-    const share=parseNativeShare(raw);
+    const share=parseNativeShare(raw)??parseListenShare(raw);
     if(share){void Share.share({title:share.title,message:share.message}).catch(()=>{});return;}
     const next=applyStorageMessage(state.current,event.nativeEvent.data);
     if(next){state.current=next;void writer.current(next);}

@@ -8,6 +8,10 @@ const source=resolve('apps/client/preview-dist');const target=resolve('apps/clie
 await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
 for(const file of ['index.html','studio.html','standalone.js','standalone.css'])await cp(resolve(source,file),resolve(target,file));
 await cp(resolve(source,'assets'),resolve(target,'assets'),{recursive:true});
+await mkdir(resolve(target,'auth/spotify'),{recursive:true});
+const callbackHtml=(await readFile(resolve(source,'index.html'),'utf8')).replaceAll('./standalone','/standalone').replace('<head>','<head><meta name="referrer" content="no-referrer">');
+await writeFile(resolve(target,'auth/spotify/callback.html'),callbackHtml);
+
 await cp(resolve('apps/client/assets/favicon.png'),resolve(target,'favicon.png'));
 for(const file of ['privacy.html','delete-data.html','terms.html'])await cp(resolve('apps/client/public/legal',file),resolve(target,file));
 await writeFile(resolve(target,'_headers'),'/*\n  Cache-Control: no-cache\n  X-Content-Type-Options: nosniff\n');

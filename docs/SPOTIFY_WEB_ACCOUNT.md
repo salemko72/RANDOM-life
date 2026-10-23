@@ -25,3 +25,7 @@ Local diagnostics (no account/device IDs, track names or tokens): `spotify_playe
 A connected Premium account prepares one silent SDK player before the first LISTEN spin. Capture-phase clicks on spin and music controls activate that existing player during the browser user gesture; the track request still waits until the spin completes. No song starts merely from signing in. Stopping music pauses and cancels pending playback while retaining the silent prepared device; disconnecting the account tears it down. Browsers and Spotify may still reject autoplay, so manual Play remains available.
 
 Outside the full LISTEN view, a small upper-right control opens the song, pauses/resumes, or stops playback. The existing provider instance stays mounted; the large embed and transport no longer occupy the lower content area or shift the recipe action bar.
+
+### Playlist contexts
+
+The LISTEN selector now passes full validated `spotify:playlist:<id>` URIs. Premium playback sends a `context_uri` request, preserving Spotify's own queue. Existing saved songs pass validated `spotify:track:<id>` URIs and retain individual-track requests. No playlist-content API, new OAuth scope, audio caching or song recommendation endpoint is used. Playlist favorites and direct share links are distinct from legacy track favorites. SDK state supplies metadata for each subsequent song without another application play request. See `LISTEN_PROTOTYPE.md` for the live-verification gate and network limitation.

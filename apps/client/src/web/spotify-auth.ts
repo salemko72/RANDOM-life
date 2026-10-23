@@ -43,6 +43,11 @@ export async function spotifyAccessToken():Promise<string>{
  const s=session();if(!s)throw Error('SPOTIFY_LOGIN_REQUIRED');if(s.expiresAt>Date.now()+60000)return s.accessToken;if(refreshing)return refreshing;const gen=generation;
  refreshing=(async()=>{try{const tokens=await tokenRequest({grant_type:'refresh_token',refresh_token:s.refreshToken},s);if(gen!==generation||s.owner!==owner())throw Error('SPOTIFY_LOGIN_REQUIRED');sessionStorage.setItem(AUTH_KEY,JSON.stringify({...s,...tokens}));signal();return tokens.accessToken;}catch(e){if(gen===generation&&e instanceof Error&&e.message==='SPOTIFY_LOGIN_REQUIRED')disconnectSpotify();throw e;}finally{if(gen===generation)refreshing=undefined;}})();return refreshing;
 }
-export async function spotifyPlayTrack(id:string,deviceId:string){
- if(!/^[A-Za-z0-9]{22}$/.test(id)||!deviceId||deviceId.length>200)throw Error('SPOTIFY_INVALID_TRACK');const token=await spotifyAccessToken();const r=await spotifyFetch('https://api.spotify.com/v1/me/player/play?device_id='+encodeURIComponent(deviceId),{method:'PUT',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({uris:['spotify:track:'+id]}),referrerPolicy:'no-referrer'});if(!r.ok)throw Error(r.status===403?'SPOTIFY_ACCESS':r.status===401?'SPOTIFY_LOGIN_REQUIRED':'SPOTIFY_PLAYBACK');
+export async function spotifyPlayTarget(uri:string,deviceId:string){
+ const match=/^spotify:(track|playlist):([A-Za-z0-9]{22})$/.exec(uri);
+ if(!match||!deviceId||deviceId.length>200)throw Error('SPOTIFY_INVALID_TARGET');
+ const token=await spotifyAccessToken();
+ const body=match[1]==='playlist'?{context_uri:uri}:{uris:[uri]};
+ const r=await spotifyFetch('https://api.spotify.com/v1/me/player/play?device_id='+encodeURIComponent(deviceId),{method:'PUT',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify(body),referrerPolicy:'no-referrer'});
+ if(!r.ok)throw Error(r.status===403?'SPOTIFY_ACCESS':r.status===401?'SPOTIFY_LOGIN_REQUIRED':'SPOTIFY_PLAYBACK');
 }

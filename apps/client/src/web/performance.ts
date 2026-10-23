@@ -9,7 +9,7 @@ export function performanceEvent(name:string,metrics:Record<string,number>={}){
  const event={name,at:Date.now(),metrics};log.add(event);try{sessionStorage.setItem(sessionKey,JSON.stringify(log.rows));}catch{}try{bridge()?.postMessage(JSON.stringify({type:PERFORMANCE_KEY,...event}));}catch{}
 }
 export function installPerformance(){
- performanceEvent('web_boot',{elapsedMs:performance.now(),width:innerWidth,height:innerHeight,reduced:Number(motionReduced()),revision:2});
+ performanceEvent('web_boot',{elapsedMs:performance.now(),width:innerWidth,height:innerHeight,reduced:Number(motionReduced()),revision:3});
  try{if(PerformanceObserver.supportedEntryTypes?.includes('longtask')){const observer=new PerformanceObserver(list=>{for(const entry of list.getEntries())if(longTasksLogged++<20)performanceEvent('long_task',{durationMs:entry.duration});});observer.observe({entryTypes:['longtask']});}}catch{}
  window.addEventListener('error',()=>performanceEvent('page_error',{count:1}));
  window.addEventListener('unhandledrejection',()=>performanceEvent('page_error',{count:1}));

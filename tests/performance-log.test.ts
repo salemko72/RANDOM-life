@@ -13,3 +13,7 @@ it('reports slow frames without claiming a frame rate for hidden or reduced-moti
  expect(summarizeFrames([16,17,50,100],true,false,4800)).toEqual({durationMs:4800,frames:4,p95Ms:100,maxMs:100,slowFrames:2,hidden:1,reduced:0});
  expect(summarizeFrames([],false,true,0)).toMatchObject({frames:0,maxMs:0,p95Ms:0,reduced:1});
 });
+
+it('preserves Spotify lifecycle numbers without retaining SDK messages, tokens or device IDs',()=>{
+ const event=parsePerformanceMessage(JSON.stringify({type:'random-life.performance.v1',name:'spotify_player',at:2,metrics:{source:1,stage:5,paused:1,positionMs:450,token:'private',message:'private account',device_id:'private'}}));expect(event).toEqual({name:'spotify_player',at:2,metrics:{source:1,stage:5,paused:1,positionMs:450}});
+});

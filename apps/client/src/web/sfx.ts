@@ -1,10 +1,11 @@
+import{performanceEvent}from'./performance';
 export const SFX_KEY='random-life.sfx.v1';
 export function loadSfx(){try{return localStorage.getItem(SFX_KEY)!=='off';}catch{return true;}}
 /** Original synthesized UI sounds; no downloaded recordings or audio dependencies. */
 export class InterfaceSfx{
  private context:AudioContext|undefined;private enabled=true;private lastTick=-Infinity;private disposed=false;private welcomePlayed=false;private wheelSource:AudioBufferSourceNode|undefined;
  setEnabled(value:boolean){this.enabled=value;try{localStorage.setItem(SFX_KEY,value?'on':'off');}catch{}if(!value)this.pause();}
- async unlock(){if(!this.enabled||this.disposed||document.visibilityState==='hidden')return;try{const Constructor=window.AudioContext??(window as any).webkitAudioContext;if(!Constructor)return;this.context??=new Constructor();if(this.context!.state==='suspended')await this.context!.resume();}catch{/* Silent fallback on devices without audio access. */}}
+ async unlock(){if(!this.enabled||this.disposed||document.visibilityState==='hidden')return;try{const Constructor=window.AudioContext??(window as any).webkitAudioContext;if(!Constructor)return;if(!this.context){this.context=new Constructor();performanceEvent('audio_focus',{stage:1});}if(this.context!.state==='suspended'){performanceEvent('audio_focus',{stage:2});await this.context!.resume();}}catch{/* Silent fallback on devices without audio access. */}}
  pause(){this.stopWheel();if(this.context?.state==='running')void this.context.suspend().catch(()=>{});}
  dispose(){this.stopWheel();this.disposed=true;if(this.context)void this.context.close().catch(()=>{});}
  private tone(frequency:number,duration:number,volume:number,type:OscillatorType='sine',delay=0,glide=true){const c=this.context;if(!this.enabled||this.disposed||!c||c.state!=='running'||document.visibilityState==='hidden')return;try{const t=c.currentTime+delay,o=c.createOscillator(),g=c.createGain();o.type=type;o.frequency.setValueAtTime(frequency,t);if(glide)o.frequency.exponentialRampToValueAtTime(frequency*.65,t+duration);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(Math.min(.15,volume*1.5),t+(glide?.003:.025));g.gain.exponentialRampToValueAtTime(.0001,t+duration);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+duration+.01);o.onended=()=>{o.disconnect();g.disconnect();};}catch{}}

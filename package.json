@@ -26,7 +26,8 @@
     "deploy:preview": "npm run build:preview && node scripts/stage-preview.mjs && wrangler pages deploy apps/client/preview-site --project-name random-life-preview --branch main",
     "smoke:bilingual": "npm run build:preview && node scripts/smoke-bilingual.mjs",
     "smoke:iteration-eight": "npm run build:preview && node scripts/smoke-iteration-eight.mjs && node scripts/smoke-studio-batches.mjs",
-    "backup:refresh": "node --use-env-proxy scripts/refresh-backup-catalog.mjs"
+    "backup:refresh": "node --use-env-proxy scripts/refresh-backup-catalog.mjs",
+    "prepare:ios": "npm run build:preview && npm run export:ios -w @random/client"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261012.1",

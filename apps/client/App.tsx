@@ -1,9 +1,7 @@
-import{parseListenShare}from'./src/web/listen-share';
 import{allowWebNavigation}from'./src/native/web-navigation';
 import {createNativeCatalogStorage,parseCatalogMessage,parseCatalogClearMessage} from './src/native/catalog-storage';
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
 import appConfig from './app.json';
-const PERFORMANCE_STORAGE_KEY=`${PERFORMANCE_KEY}.${appConfig.expo.version}.${appConfig.expo.android.versionCode}`;
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,6 +13,9 @@ import * as FileSystem from 'expo-file-system/legacy';
 import {applyStorageMessage, createSnapshotWriter, LocalState, NATIVE_STATE_KEY, readSnapshot} from './src/native/profile-bridge';
 import {prepareNativePreview} from './src/native/preview-assets';
 import {parseNativeShare} from './src/web/item-share';
+
+const nativeBuild=Platform.OS==='ios'?appConfig.expo.ios.buildNumber:appConfig.expo.android.versionCode;
+const PERFORMANCE_STORAGE_KEY=`${PERFORMANCE_KEY}.${appConfig.expo.version}.${nativeBuild}`;
 
 // Expo shell embeds the current UI and keeps device preferences across launches.
 // D1 is primary; the installed UI includes its own reserve catalog and images.
@@ -33,7 +34,7 @@ function NativeExperience(){
  async function shareDiagnostics(){
   await diagnosticQueue.current;
   const constants=Platform.constants as unknown as Record<string,unknown>;
-  const message=JSON.stringify({schema:1,version:appConfig.expo.version,build:appConfig.expo.android.versionCode,exportedAt:new Date().toISOString(),device:{os:Platform.OS,android:Platform.Version,model:constants.Model??null,manufacturer:constants.Manufacturer??null},events:diagnostics.current.rows},null,2);
+  const message=JSON.stringify({schema:1,version:appConfig.expo.version,build:nativeBuild,exportedAt:new Date().toISOString(),device:{os:Platform.OS,osVersion:Platform.Version,...(Platform.OS==='android'?{android:Platform.Version}:{ios:Platform.Version}),model:constants.Model??null,manufacturer:constants.Manufacturer??null},events:diagnostics.current.rows},null,2);
   await Share.share({title:'LifeSpinner diagnostic log',message});
  }
 
@@ -59,7 +60,7 @@ function NativeExperience(){
   {error?<View style={styles.error}><Text>{error}</Text></View>:uri===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
    ref={webView}
    source={{uri}}
-   originWhitelist={['file://*','https://open.spotify.com']}
+   originWhitelist={['file://*']}
    allowFileAccess
    allowingReadAccessToURL={uri.slice(0,uri.lastIndexOf('/')+1)}
    javaScriptEnabled domStorageEnabled startInLoadingState
@@ -73,7 +74,7 @@ function NativeExperience(){
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}
-    const share=parseNativeShare(raw)??parseListenShare(raw);
+    const share=parseNativeShare(raw);
     if(share){void Share.share({title:share.title,message:share.message}).catch(()=>{});return;}
     const next=applyStorageMessage(state.current,event.nativeEvent.data);
     if(next){state.current=next;void writer.current(next);}

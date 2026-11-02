@@ -1,6 +1,4 @@
-/** Keep the application document local; only Spotify's track/playlist embed may load in a subframe. */
+/** The installed application document stays local; external pages are never loaded in its WebView. */
 export function allowWebNavigation(request:{url:string;isTopFrame?:boolean},localUri:string){
- if(request.url==='about:blank'||request.url.split('#')[0]===localUri)return true;
- if(request.isTopFrame!==false)return false;
- try{const u=new URL(request.url);return u.origin==='https://open.spotify.com'&&/^\/embed\/(track|playlist)\/[A-Za-z0-9]{22}$/.test(u.pathname)&&!u.username&&!u.password;}catch{return false;}
+ return request.url==='about:blank'||request.url.split('#')[0]===localUri;
 }

@@ -1,0 +1,59 @@
+# LifeSpinner iOS / TestFlight preparation
+
+Prepared 2026-11-02 while Apple Developer enrollment is pending. This is build preparation, not a signed IPA or a TestFlight submission.
+
+## Release identity
+
+- Display name: LifeSpinner; Expo project/owner unchanged (`random`, `salemko`).
+- Version 0.23.0; iOS build 1; bundle identifier `com.salemko.randomlife`.
+- iPhone and iPad, portrait/full-screen. Generated Expo iOS project targets iOS 16.4 or newer. Existing Xcode compatibility must satisfy this Expo SDK; do not lower deployment targets by hand.
+- iOS icon: `apps/client/assets/ios-icon.png`, 1024×1024 RGB PNG, no alpha; derived from the existing approved icon with a solid brand background. No new logo design.
+- Standard HTTPS encryption declaration: ITSAppUsesNonExemptEncryption=false. Native generated ATS blocks arbitrary insecure network loads.
+- EAS `testflight`: store distribution, physical-device iOS build. `ios-simulator`: simulator build, not installable on an iPhone or uploadable to TestFlight.
+- Android's next source version code is 8 to match the next common app version; no Android build is requested or started.
+
+## Product state
+
+LISTEN/Spotify is parked: five wheel categories and no music controls, Spotify login, SDK load or OAuth callback in shipping JS. Old music favourites/history are retained locally but hidden. Archive: `docs/archived-features/LISTEN.md` and branch `codex/listen-playlists` at 0a688c1. Archived tests/modules remain available without being imported by the application.
+
+The application retains installed local UI/assets, device-local profile and history, catalogue cache/reserve, native share and native diagnostics export. iOS diagnostic build/OS fields now report iOS values instead of Android's version code. No new telemetry, trackers, app permissions or backend schema changes.
+
+## Reproduce on the Mac
+
+From the repository root, with the configured compatible Node/npm versions:
+
+```sh
+npm ci
+npm run prepare:ios
+cd apps/client
+npx expo prebuild --platform ios
+npm run ios
+```
+
+The prebuild installs CocoaPods on macOS and generates `ios/LifeSpinner.xcworkspace`. Open the workspace, not only the xcodeproj. `npm run ios` compiles/launches the local simulator; it is not TestFlight distribution. Simulator testing does not require paid membership activation. Testing on a physical phone may require choosing your Apple development team and configuring signing in Xcode.
+
+Native ios/android folders and build outputs are intentionally ignored by git; EAS regenerates the native project from app.json. Root npm postinstall rebuilds the embedded UI so the generated local HTML is available during cloud builds. Do not submit the Hermes export directory as an IPA.
+
+## When membership is Active
+
+1. Sign in to App Store Connect, accept pending agreements and confirm your Apple team. Do not share passwords or signing certificates in chat.
+2. Register/confirm the bundle identifier above under that team. Create the LifeSpinner iOS app record in App Store Connect using that same identifier (SKU can be `lifespinner-ios`). App-name availability is not yet verified.
+3. From `apps/client`, run `npx eas-cli build --platform ios --profile testflight`. Complete Apple's interactive signing/2FA in your authenticated session, or use approved App Store Connect credentials. Never invent a Team ID, ASC App ID or signing profile. If a local EAS token is not available, sign in to the existing salemko Expo account rather than creating a different project.
+4. After a successful signed store build, run `npx eas-cli submit --platform ios --latest` and select the correct app/team. Upload is not public App Store publication; TestFlight processing/compliance and external testing review are separate.
+5. Confirm processing in App Store Connect → TestFlight, provide test information, and invite internal testers first. Build 1 has not been uploaded. Increase ios.buildNumber for every subsequent upload of this version.
+
+Remaining account dependencies: active membership; correct Apple team; app record; distribution certificate/provisioning; final App Privacy, content rating and tester/review details. The Apple team, ASC app ID and certificates are intentionally not guessed or stored in source.
+
+## Verification and device checklist
+
+Run root `npm test`, `npm run typecheck`, `npm run prepare:ios`, `node scripts/smoke-ios-preparation.mjs`, `node scripts/smoke-wheel-touch.mjs`, and `node scripts/smoke-native-file.mjs`. Browser viewport checks are not Safari, Simulator or physical iOS runs. iOS prebuild without CocoaPods on Linux is project generation only; Hermes export is JS/assets only, not an Xcode native compilation.
+
+On an actual iPhone/iPad: first launch/splash, five sectors and spin animation, touch/back navigation, notch/home-indicator safe areas, profile persistence after force-close, fresh/cached/offline content, photo expansion, recipe/details scrolling, favourites/history, native share, diagnostics export and dynamic network changes. Check iPad portrait layout separately. No purchase/subscription, Spotify or tracking controls should be present.
+
+Do not claim all users tested, a signed build, Apple approval, or a TestFlight upload based on the source/export/browser checks alone. No web/backend deployment is part of this preparation task.
+
+## Recorded preparation results
+
+Expo dependency check passed after the SDK-recommended patch update from 57.0.30 to 57.0.31 (no SDK major upgrade). 273 unit tests/36 files and root/native TypeScript passed. The iOS Hermes/assets export, iOS prebuild without pod installation, five-category interaction checks, hidden/retained music favourites checks, cache/profile checks and native-file bootstrap smoke passed. The generated project reports iOS 16.4, version 0.23.0/build 1, opaque 1024px icon and arbitrary HTTP loads disabled. Prebuild emitted a non-fatal note that top-level backgroundColor integration requires expo-system-ui; the app already paints its own warm native root/loading views. No Xcode compilation, Simulator/device run, signed IPA, Apple credential generation, submission or production deployment was performed.
+
+The old `smoke-d1.mjs` is not a release gate for this source-only iOS preparation: it previously stalled on retired Studio publication text and contains retired consumer Studio selectors. Backend files were not changed. Do not describe that legacy script as passing.

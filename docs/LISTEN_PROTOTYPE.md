@@ -1,3 +1,5 @@
+> Archived feature as of 2026-11-02: removed from the shipping app. See `archived-features/LISTEN.md`. Descriptions below document the parked implementation, not the current release. UI smoke/verification tools now live under `scripts/archive/listen/`.
+
 # LISTEN playlist integration
 
 LISTEN / SLUŠAJ remains the sixth UI category; GO stays. The selector uses fifteen existing Spotify playlist references (name, ID, mood), three each for energy, ambient/chill, feel-good classics, upbeat, and mellow/wistful. No playlist tracks, audio, artwork catalog, or additional metadata are imported into D1/R2. The four old demo track references are retained only so existing saved/history entries still open.

@@ -19,6 +19,18 @@
       "android": {
         "buildType": "app-bundle"
       }
+    },
+    "testflight": {
+      "extends": "production",
+      "ios": {
+        "simulator": false
+      }
+    },
+    "ios-simulator": {
+      "extends": "preview",
+      "ios": {
+        "simulator": true
+      }
     }
   }
 }

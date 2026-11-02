@@ -16,3 +16,5 @@ local-media/
 apps/client/src/generated/
 
 preview-site/
+
+dist-ios/

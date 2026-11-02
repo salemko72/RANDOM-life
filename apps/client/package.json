@@ -10,7 +10,7 @@
     "@expo-google-fonts/manrope": "^0.4.2",
     "@random/shared": "*",
     "@react-native-async-storage/async-storage": "^2.2.0",
-    "expo": "57.0.30",
+    "expo": "57.0.31",
     "expo-asset": "57.0.20",
     "expo-file-system": "57.0.7",
     "expo-font": "~57.0.4",
@@ -31,11 +31,12 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
-    "ios": "expo start --ios",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "build:web": "expo export --platform web",
     "check": "expo install --check",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "export:ios": "expo export --platform ios --output-dir dist-ios"
   },
   "private": true
 }

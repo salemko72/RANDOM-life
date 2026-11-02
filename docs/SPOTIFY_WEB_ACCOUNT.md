@@ -1,3 +1,5 @@
+> Archived feature as of 2026-11-02: removed from the shipping app. See `archived-features/LISTEN.md`. Descriptions below document the parked implementation, not the current release. UI smoke/verification tools now live under `scripts/archive/listen/`.
+
 # Spotify web account integration
 
 The user supplied public Client ID `9c28494375a04e8c8667b2629dab6515` and registered this exact HTTPS redirect:

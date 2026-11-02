@@ -2,12 +2,19 @@
   "expo": {
     "name": "LifeSpinner",
     "slug": "random",
-    "version": "0.22.0",
+    "version": "0.23.0",
     "orientation": "portrait",
     "icon": "./icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.salemko.randomlife",
+      "buildNumber": "1",
+      "icon": "./assets/ios-icon.png",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "requireFullScreen": true
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +25,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.salemko.randomlife",
-      "versionCode": 7
+      "versionCode": 8
     },
     "web": {
       "favicon": "./assets/favicon.png"

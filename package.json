@@ -28,7 +28,7 @@
     "smoke:iteration-eight": "npm run build:preview && node scripts/smoke-iteration-eight.mjs && node scripts/smoke-studio-batches.mjs",
     "backup:refresh": "node --use-env-proxy scripts/refresh-backup-catalog.mjs",
     "prepare:ios": "npm run build:preview && npm run export:ios -w @random/client",
-    "update:ios": "npm run build:preview && npm run update:testflight -w @random/client"
+    "update:ios": "node scripts/update-ios.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261012.1",

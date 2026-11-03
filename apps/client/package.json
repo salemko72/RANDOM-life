@@ -37,7 +37,7 @@
     "check": "expo install --check",
     "typecheck": "tsc --noEmit",
     "export:ios": "expo export --platform ios --output-dir dist-ios",
-    "update:testflight": "npx --yes eas-cli@27.3.0 build --platform ios --profile testflight --auto-submit"
+    "update:testflight": "node ../../scripts/update-ios.mjs"
   },
   "private": true
 }

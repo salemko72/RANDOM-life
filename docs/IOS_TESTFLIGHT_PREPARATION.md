@@ -1,6 +1,6 @@
 # LifeSpinner iOS / TestFlight preparation
 
-Prepared 2026-11-02 while Apple Developer enrollment is pending. This is build preparation, not a signed IPA or a TestFlight submission.
+Initial preparation: 2026-11-02. Membership was subsequently activated. User confirmed successful build 0.23.0 (1), upload to App Store Connect and installation through TestFlight on 2026-11-03.
 
 ## Release identity
 
@@ -57,3 +57,13 @@ Do not claim all users tested, a signed build, Apple approval, or a TestFlight u
 Expo dependency check passed after the SDK-recommended patch update from 57.0.30 to 57.0.31 (no SDK major upgrade). 273 unit tests/36 files and root/native TypeScript passed. The iOS Hermes/assets export, iOS prebuild without pod installation, five-category interaction checks, hidden/retained music favourites checks, cache/profile checks and native-file bootstrap smoke passed. The generated project reports iOS 16.4, version 0.23.0/build 1, opaque 1024px icon and arbitrary HTTP loads disabled. Prebuild emitted a non-fatal note that top-level backgroundColor integration requires expo-system-ui; the app already paints its own warm native root/loading views. No Xcode compilation, Simulator/device run, signed IPA, Apple credential generation, submission or production deployment was performed.
 
 The old `smoke-d1.mjs` is not a release gate for this source-only iOS preparation: it previously stalled on retired Studio publication text and contains retired consumer Studio selectors. Backend files were not changed. Do not describe that legacy script as passing.
+
+## Updating after the first successful TestFlight installation
+
+Apple Team ID: MNQY6SH96C. ASC app ID: 6830084481. EAS retains the distribution credentials and the App Manager API key created in the user’s authenticated session; their private contents are not stored in this repository. The testflight submit profile selects that app/team explicitly.
+
+For each new upload, the release operator increments ios.buildNumber (the input/zoom fix is build 2), runs the checks, then uses root `npm run update:ios`. This rebuilds the embedded UI and runs EAS Build with `--auto-submit`. Noninteractive authorized agents can add `--non-interactive --no-wait --json` to the underlying EAS command. Build/submission results must still be checked; a queued job is not a completed upload. This is a one-command build/submit flow, not a scheduled GitHub Actions deployment or EAS Update/OTA setup.
+
+Apple still processes the uploaded binary. Testers update through TestFlight; automatic updates depend on their TestFlight settings. New signing logins should not be necessary while EAS credentials remain valid, but expiration/revocation or new permissions can require the account owner again. Public App Store review/release remains separate.
+
+Build 2 fixes sub-16px consumer form inputs (the name field was 12px), which can trigger iOS focus zoom. Installed native HTML locks page zoom with min/max scale 1 and user-scalable=no, and Android WebView zoom controls are disabled. Browser HTML keeps user zoom available. The separate full-image dialog remains functional; this does not disable iOS system accessibility magnification. Browser regression checks verify CSS, viewport policy and input/blur flow; the reported iOS keyboard issue must be confirmed on the real device after updating.

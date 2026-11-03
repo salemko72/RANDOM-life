@@ -462,3 +462,8 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .profile-connection-status{margin:0;font:400 9px/1.5 RandomSans,sans-serif;color:#8c7468}
 .profile-connection-status>div{display:flex;justify-content:space-between;gap:10px;margin:3px 0}
 .profile-connection-status dt{flex:0 1 48%}.profile-connection-status dd{margin:0;text-align:right;overflow-wrap:anywhere;flex:0 1 52%}
+
+/* iOS zooms focused editable controls below 16px and may retain that scale after blur.
+   Keep text legible instead of disabling the user's manual/pinch zoom. */
+.random-world input:not([type="checkbox"]):not([type="radio"]),
+.random-world textarea,.random-world select{font-size:16px}

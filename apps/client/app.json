@@ -9,12 +9,13 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.salemko.randomlife",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "icon": "./assets/ios-icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
-      "requireFullScreen": true
+      "requireFullScreen": true,
+      "appleTeamId": "MNQY6SH96C"
     },
     "android": {
       "adaptiveIcon": {

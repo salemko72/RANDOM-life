@@ -62,6 +62,8 @@ function NativeExperience(){
    source={{uri}}
    originWhitelist={['file://*']}
    allowFileAccess
+   setBuiltInZoomControls={false}
+   setDisplayZoomControls={false}
    allowingReadAccessToURL={uri.slice(0,uri.lastIndexOf('/')+1)}
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}

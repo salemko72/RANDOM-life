@@ -32,5 +32,13 @@
         "simulator": true
       }
     }
+  },
+  "submit": {
+    "testflight": {
+      "ios": {
+        "ascAppId": "6830084481",
+        "appleTeamId": "MNQY6SH96C"
+      }
+    }
   }
 }

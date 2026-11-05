@@ -1,3 +1,4 @@
+import{appShareUrl}from'./app-share';
 import React,{useEffect,useState} from 'react';
 import {localizeContent,type ContentRecord,type Locale} from '@random/shared';
 import ItemActions from './ItemActions';
@@ -19,6 +20,6 @@ export default function SharedItem(){
   <div className="detail-sheet"><div className="detail-content">{d.category==='EAT'&&<section><h2>{en?'Ingredients':'Sastojci'}</h2><ul className="shared-ingredients">{d.ingredients.map((i,n)=><li key={n}>{i.quantity!==null?`${i.quantity} `:''}{i.unit} {i.name}</li>)}</ul></section>}
    {d.category==='EAT'||d.category==='MOVE'||d.category==='GO'?<section><h2>{d.category==='EAT'?(en?'Preparation':'Priprema'):(en?'Your plan':'Tvoj plan')}</h2>{d.steps.map((step,i)=><div className="recipe-step" key={i}><span>{i+1}</span><p>{step}</p></div>)}</section>:<section><h2>{d.category==='BOOK'?(en?'About this book':'O ovoj knjizi'):(en?'About this title':'O ovom naslovu')}</h2><p className="reading-reason">{d.recommendationReason}</p><div className="genre-tags">{d.genres.map(g=><span key={g}>{g}</span>)}</div></section>}
    <AccessLinks item={item} locale={locale}/>{d.image.provenance&&<p className="cover-credit">{d.image.provenance.provider} · {d.image.provenance.attribution}</p>}
-  </div></div></div><footer className="shared-brand">RANDOM <em>life</em></footer></article>
+  </div></div></div><footer className="shared-brand"><a href={appShareUrl(locale)}>LifeSpinner · {en?'Get the app':'Preuzmi aplikaciju'}</a></footer></article>
  </main></div>{expanded&&<ImageViewer src={d.image.path} alt={d.title} title={d.title} locale={locale} onClose={()=>setExpanded(false)}/>}</div>;
 }

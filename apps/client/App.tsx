@@ -1,3 +1,5 @@
+import{nativeBackScript,parseBackResult}from'./src/native/back-navigation';
+import{parseAppShare}from'./src/web/app-share';
 import{allowWebNavigation}from'./src/native/web-navigation';
 import {createNativeCatalogStorage,parseCatalogMessage,parseCatalogClearMessage} from './src/native/catalog-storage';
 import {PerformanceLog,PERFORMANCE_KEY,parsePerformanceMessage,type PerformanceEvent} from './src/native/performance-log';
@@ -5,7 +7,7 @@ import appConfig from './app.json';
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, Platform, Share, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, BackHandler, Platform, Share, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
 import {Asset} from 'expo-asset';
@@ -42,6 +44,8 @@ function NativeExperience(){
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
  const webView=useRef<WebView>(null);
+ const pendingBack=useRef<string|null>(null),backSequence=useRef(0);
+ useEffect(()=>{if(Platform.OS!=='android')return;const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webView.current||!uri||error)return false;const requestId='back-'+(++backSequence.current);pendingBack.current=requestId;webView.current.injectJavaScript(nativeBackScript(requestId));return true;});return()=>subscription.remove();},[uri,error]);
  const catalogStorage=useRef(createNativeCatalogStorage(FileSystem,AsyncStorage));
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
@@ -72,11 +76,12 @@ function NativeExperience(){
    onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
     const raw=event.nativeEvent.data;
+    const back=parseBackResult(raw,pendingBack.current);if(back!==null){pendingBack.current=null;if(!back&&Platform.OS==='android')BackHandler.exitApp();return;}
     const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');void catalogStorage.current.clear().then(()=>FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','')).then(()=>notify(true)).catch(()=>notify(false));return;}
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}
-    const share=parseNativeShare(raw);
+    const share=parseNativeShare(raw)??parseAppShare(raw);
     if(share){void Share.share({title:share.title,message:share.message}).catch(()=>{});return;}
     const next=applyStorageMessage(state.current,event.nativeEvent.data);
     if(next){state.current=next;void writer.current(next);}

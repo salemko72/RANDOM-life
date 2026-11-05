@@ -22,3 +22,10 @@ it('has a real optimized local picture for every item and fits the 10 MiB budget
  for(const file of new Set(files)){const b=await readFile('apps/client/src/web/backup/images/'+file),info=await sharp(b).metadata();bytes+=b.length;expect(info.format).toBe('webp');expect(info.width).toBeLessThanOrEqual(720);expect(info.height).toBeLessThanOrEqual(960);}
  expect(bytes).toBe(reserveMetadata.imageBytes);expect(bytes+Buffer.byteLength(await readFile('apps/client/src/web/backup/catalog.json'))).toBeLessThan(10*1024*1024);
 });
+it('has real tagged alternatives for gluten, lactose and their combination on a cold offline start',()=>{
+ const food=reserveItems.filter(r=>r.category==='EAT');
+ for(const intolerances of [['gluten'],['lactose'],['gluten','lactose']]){
+  const profile={...createProfile(),intolerances},pool=food.filter(r=>eligibleForProfile(r,profile));expect(pool.length).toBeGreaterThanOrEqual(3);
+  for(const row of pool){for(const i of intolerances)expect(row.dietaryTags).toContain(i==='gluten'?'gluten-free':'lactose-free');}
+ }
+});

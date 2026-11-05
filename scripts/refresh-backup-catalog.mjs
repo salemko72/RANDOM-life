@@ -1,3 +1,4 @@
+import{prioritizeReserveFood,assertReserveFoodCoverage}from'./lib/reserve-food-selection.mjs';
 import {build} from 'esbuild';
 import sharp from 'sharp';
 import {createHash,randomInt} from 'node:crypto';
@@ -16,9 +17,7 @@ if(!Array.isArray(items))throw Error('Public catalog response has no items');
 const groups=new Map(['EAT','BOOK','WATCH','MOVE','GO'].map(category=>[category,[]]));
 for(const row of items){if(row.status!=='published'||!row.id)continue;const parsed=contentSchema.safeParse(row);if(!parsed.success||publicationIssues(parsed.data).length)continue;groups.get(row.category)?.push({...parsed.data,id:row.id,status:'published',version:row.version,updatedAt:row.updatedAt,approvedAt:null,approvedBy:null});}
 for(const rows of groups.values())for(let i=rows.length-1;i>0;i--){const j=randomInt(i+1);[rows[i],rows[j]]=[rows[j],rows[i]];}
-const food=groups.get('EAT'),prioritized=[];
-for(const [predicate,count]of [[r=>r.phosphateAssessment?.reviewed&&r.phosphateAssessment.suitability==='low'&&r.dietaryTags.includes('low-phosphate'),7],[r=>r.dietaryTags.includes('vegan'),7]])for(const row of food.filter(predicate).slice(0,count))if(!prioritized.includes(row))prioritized.push(row);
-groups.set('EAT',[...prioritized,...food.filter(row=>!prioritized.includes(row))]);
+groups.set('EAT',prioritizeReserveFood(groups.get('EAT')));
 await rm(temporary,{recursive:true,force:true});await mkdir(temporary+'/images',{recursive:true});
 const records=[],assets=[],skipped=[];let imageBytes=0;const cache=resolve(tmpdir(),'random-reserve-downloads');await mkdir(cache,{recursive:true});
 try{
@@ -34,7 +33,7 @@ try{
  }catch(error){skipped.push({id:row.id,title:row.title,error:error.message});console.warn(category,row.title,error.message);}}
  if(count!==20)throw Error(`Only ${count} usable ${category} items; need 20. Existing backup is untouched.`);
  }
- if(records.filter(r=>r.category==='EAT'&&r.dietaryTags.includes('vegan')).length<7||records.filter(r=>r.category==='EAT'&&r.dietaryTags.includes('low-phosphate')&&r.phosphateAssessment?.reviewed&&r.phosphateAssessment.suitability==='low').length<7)throw Error('Reserve needs seven verified low-phosphate and seven vegan choices');
+ assertReserveFoodCoverage(records.filter(r=>r.category==='EAT'));
  const manifest={version:1,generatedAt:new Date().toISOString(),source:origin+'/api/catalog',counts:Object.fromEntries([...groups.keys()].map(category=>[category,records.filter(r=>r.category===category).length])),imageBytes,items:records};
  const json=JSON.stringify(manifest);if(Buffer.byteLength(json)+imageBytes>10*1024*1024)throw Error('Backup exceeds the 10 MiB budget');
  await writeFile(temporary+'/catalog.json',json);

@@ -467,3 +467,5 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
    Keep text legible instead of disabling the user's manual/pinch zoom. */
 .random-world input:not([type="checkbox"]):not([type="radio"]),
 .random-world textarea,.random-world select{font-size:16px}
+
+.share-app-control .profile-reset{display:flex;align-items:center;gap:8px}.share-app-control .panel-note{margin:4px 0;font-size:11px}

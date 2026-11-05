@@ -1,17 +1,22 @@
+import{useNativeBack}from'./useNativeBack';
 import BrandLogo from './BrandLogo';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Icon from './Icon';
 import {LanguageChooser, useLanguage} from './ui-language';
 import {setPersonalization,type Profile,type UiCategory} from './preferences';
 const categories:UiCategory[]=['EAT','READ','WATCH','MOVE','GO'];
 const topics=['Roman','Historija','Nauka','Misterija','Sci-fi','Drama','gym','trim','yoga'];
 const allergies=[['milk','Mlijeko'],['eggs','Jaja'],['wheat','Pšenica'],['nuts','Orašasti plodovi'],['peanuts','Kikiriki'],['soy','Soja'],['fish','Riba'],['shellfish','Školjke'],['sesame','Susam'],['mustard','Senf'],['celery','Celer'],['sulfites','Sulfiti'],['lupin','Lupina']];
-export default function Onboarding({profile,onComplete,leaving=false,editing=false}:{profile:Profile;onComplete:(profile:Profile)=>void;leaving?:boolean;editing?:boolean}){
+export default function Onboarding({profile,onComplete,leaving=false,editing=false,onCancel}:{profile:Profile;onComplete:(profile:Profile)=>void;leaving?:boolean;editing?:boolean;onCancel?:()=>void}){
  const {t,category,value,locale}=useLanguage();
  const text=(en:string,bs:string)=>locale==='en'?en:bs;
  const [draft,setDraft]=useState(profile);const [step,setStep]=useState(0);
  function update<K extends keyof Profile>(key:K,value:Profile[K]){setDraft(p=>({...p,[key]:value}));}
  function toggle(key:'topics'|'allergens'|'interests'|'intolerances',value:string){setDraft(p=>({...p,[key]:p[key].includes(value as never)?p[key].filter(x=>x!==value):[...p[key],value]} as Profile));}
+ const dirty=JSON.stringify(draft)!==JSON.stringify(profile);
+ function cancelEdit(){if(!dirty||window.confirm(text('Discard unsaved profile changes?','Odbaciti nespremljene izmjene profila?')))onCancel?.();}
+ useEffect(()=>{if(!editing)return;window.addEventListener('lifespinner.profile-cancel',cancelEdit);return()=>window.removeEventListener('lifespinner.profile-cancel',cancelEdit);},[editing,dirty,onCancel]);
+ useNativeBack(()=>{if(step>0){setStep(step===3&&!draft.personalization?1:step-1);return true;}if(editing){cancelEdit();return true;}return dirty&&!window.confirm(text('Discard what you entered and exit?','Odbaciti unesene podatke i izaći?'));},{capture:true,enabled:!leaving});
  function submit(e:React.FormEvent){e.preventDefault();if(step===0)setStep(1);else if(step===2)setStep(3);else if(step===3)onComplete({...draft,name:draft.name.trim(),onboarded:true});}
  return <section className={`welcome-screen onboarding-screen ${leaving?'welcome-leaving':''} ${editing?'editing-profile':''}`} role="dialog" aria-modal="true" aria-label={editing?t("Uredi probni profil"):t("Probna registracija u LifeSpinner")}>
   <div className="welcome-photo photo-reading"/><div className="onboarding-content"><LanguageChooser/><p className="welcome-brand"><BrandLogo/></p><div className="onboarding-progress" aria-label={`${t("Korak")} ${step+1} ${t("od")} ${step<2?2:4}`}>{(step<2?[0,1]:[0,1,2,3]).map(n=><span key={n} className={n<=step?'done':''}/>)}</div>

@@ -1,7 +1,7 @@
-# Bundled reserve catalog
+# Bundled reserve catalogue
 
-Generated from published public D1 items by npm run backup:refresh.
+EAT refreshed 2026-11-05T20:29:24.774Z from approved public snapshot 026e09e98ea6d0ad3b70f815991789b34faac053e88eb24416d5363362dfacd6.
 
-100 items, 20 per category. Images: 3403670 bytes; metadata: 449939 bytes.
+100 records, 20 per category. Eighty non-food records are retained. No dietary labels inferred or D1 writes performed.
 
-IDs, diet assessments, translations and rights provenance are preserved. Private approval identities are not exported by the public API and remain null. This snapshot is read-only and is never imported into Studio or D1.
+Images: 3261934 bytes. Metadata plus images remain below 10 MiB. See scripts/refresh-backup-food.mjs and scripts/audit-dietary-catalog.mjs.

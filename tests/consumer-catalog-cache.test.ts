@@ -26,3 +26,7 @@ test('clearing catalog waits for in-flight writes and discards the old version b
 });
 test('clearing never persists the bundled reserve after an offline refresh',async()=>{const storage=memory(snapshot()),fetchSnapshot=vi.fn().mockRejectedValue(Error('offline')),c=new PersistentCatalog({storage,fetchSnapshot,reserve:items(),now:()=>100});await c.load();await c.clear();expect(await c.load(true)).toEqual(items());expect(c.status.source).toBe('backup');expect(storage.write).not.toHaveBeenCalled();});
 test('profile status distinguishes fresh local storage from a successful or failed service check',async()=>{const c=new PersistentCatalog({storage:memory(snapshot(100)),fetchSnapshot:vi.fn().mockRejectedValue(Error('offline')),reserve:[],now:()=>100});await c.load();expect(c.info()).toMatchObject({source:'cached',service:'unknown',count:1});await c.load(true);expect(c.info()).toMatchObject({source:'cached',service:'failed',count:1});});
+test('retries a failed service check after backoff even when the retained snapshot is still fresh',async()=>{
+ let now=100;const fetchSnapshot=vi.fn().mockRejectedValueOnce(Error('offline')).mockResolvedValueOnce(snapshot(60101));const c=new PersistentCatalog({storage:memory(snapshot(100)),fetchSnapshot,reserve:[],now:()=>now});
+ await c.load(true);expect(c.status.service).toBe('failed');now=60101;await c.load();await tick();expect(fetchSnapshot).toHaveBeenCalledTimes(2);expect(c.status.source).toBe('online');
+});

@@ -1,0 +1,392 @@
+{
+  "checkedAt": "2026-11-05T20:43:29.333Z",
+  "publicVersion": "026e09e98ea6d0ad3b70f815991789b34faac053e88eb24416d5363362dfacd6",
+  "readOnly": true,
+  "scope": "Schema/publication flags and hard-filter/selection/cache behavior. Not independent clinical/ingredient certification.",
+  "reports": [
+    {
+      "label": "live-public",
+      "total": 467,
+      "recipes": 147,
+      "publicationIssues": [],
+      "counts": [
+        {
+          "filter": "allergy:milk",
+          "eligible": 80
+        },
+        {
+          "filter": "allergy:eggs",
+          "eligible": 103
+        },
+        {
+          "filter": "allergy:wheat",
+          "eligible": 68
+        },
+        {
+          "filter": "allergy:nuts",
+          "eligible": 137
+        },
+        {
+          "filter": "allergy:peanuts",
+          "eligible": 142
+        },
+        {
+          "filter": "allergy:soy",
+          "eligible": 128
+        },
+        {
+          "filter": "allergy:fish",
+          "eligible": 138
+        },
+        {
+          "filter": "allergy:shellfish",
+          "eligible": 138
+        },
+        {
+          "filter": "allergy:sesame",
+          "eligible": 133
+        },
+        {
+          "filter": "allergy:mustard",
+          "eligible": 132
+        },
+        {
+          "filter": "allergy:celery",
+          "eligible": 122
+        },
+        {
+          "filter": "allergy:sulfites",
+          "eligible": 124
+        },
+        {
+          "filter": "allergy:lupin",
+          "eligible": 147
+        },
+        {
+          "filter": "gluten-free",
+          "eligible": 24
+        },
+        {
+          "filter": "lactose-free",
+          "eligible": 56
+        },
+        {
+          "filter": "gluten-and-lactose-free",
+          "eligible": 19
+        },
+        {
+          "filter": "vegan",
+          "eligible": 38
+        },
+        {
+          "filter": "vegetarian",
+          "eligible": 62
+        },
+        {
+          "filter": "reviewed-low-phosphate",
+          "eligible": 17
+        },
+        {
+          "filter": "vegan-gluten-lactose",
+          "eligible": 11
+        },
+        {
+          "filter": "milk-allergy-and-lactose",
+          "eligible": 56
+        },
+        {
+          "filter": "all-declared-allergens",
+          "eligible": 15
+        }
+      ]
+    },
+    {
+      "label": "installed-reserve",
+      "total": 100,
+      "recipes": 20,
+      "publicationIssues": [],
+      "counts": [
+        {
+          "filter": "allergy:milk",
+          "eligible": 19
+        },
+        {
+          "filter": "allergy:eggs",
+          "eligible": 20
+        },
+        {
+          "filter": "allergy:wheat",
+          "eligible": 12
+        },
+        {
+          "filter": "allergy:nuts",
+          "eligible": 17
+        },
+        {
+          "filter": "allergy:peanuts",
+          "eligible": 20
+        },
+        {
+          "filter": "allergy:soy",
+          "eligible": 16
+        },
+        {
+          "filter": "allergy:fish",
+          "eligible": 19
+        },
+        {
+          "filter": "allergy:shellfish",
+          "eligible": 19
+        },
+        {
+          "filter": "allergy:sesame",
+          "eligible": 18
+        },
+        {
+          "filter": "allergy:mustard",
+          "eligible": 16
+        },
+        {
+          "filter": "allergy:celery",
+          "eligible": 15
+        },
+        {
+          "filter": "allergy:sulfites",
+          "eligible": 14
+        },
+        {
+          "filter": "allergy:lupin",
+          "eligible": 20
+        },
+        {
+          "filter": "gluten-free",
+          "eligible": 3
+        },
+        {
+          "filter": "lactose-free",
+          "eligible": 15
+        },
+        {
+          "filter": "gluten-and-lactose-free",
+          "eligible": 3
+        },
+        {
+          "filter": "vegan",
+          "eligible": 13
+        },
+        {
+          "filter": "vegetarian",
+          "eligible": 15
+        },
+        {
+          "filter": "reviewed-low-phosphate",
+          "eligible": 8
+        },
+        {
+          "filter": "vegan-gluten-lactose",
+          "eligible": 2
+        },
+        {
+          "filter": "milk-allergy-and-lactose",
+          "eligible": 15
+        },
+        {
+          "filter": "all-declared-allergens",
+          "eligible": 3
+        }
+      ]
+    },
+    {
+      "label": "cached-after-network-loss",
+      "total": 467,
+      "recipes": 147,
+      "publicationIssues": [],
+      "counts": [
+        {
+          "filter": "allergy:milk",
+          "eligible": 80
+        },
+        {
+          "filter": "allergy:eggs",
+          "eligible": 103
+        },
+        {
+          "filter": "allergy:wheat",
+          "eligible": 68
+        },
+        {
+          "filter": "allergy:nuts",
+          "eligible": 137
+        },
+        {
+          "filter": "allergy:peanuts",
+          "eligible": 142
+        },
+        {
+          "filter": "allergy:soy",
+          "eligible": 128
+        },
+        {
+          "filter": "allergy:fish",
+          "eligible": 138
+        },
+        {
+          "filter": "allergy:shellfish",
+          "eligible": 138
+        },
+        {
+          "filter": "allergy:sesame",
+          "eligible": 133
+        },
+        {
+          "filter": "allergy:mustard",
+          "eligible": 132
+        },
+        {
+          "filter": "allergy:celery",
+          "eligible": 122
+        },
+        {
+          "filter": "allergy:sulfites",
+          "eligible": 124
+        },
+        {
+          "filter": "allergy:lupin",
+          "eligible": 147
+        },
+        {
+          "filter": "gluten-free",
+          "eligible": 24
+        },
+        {
+          "filter": "lactose-free",
+          "eligible": 56
+        },
+        {
+          "filter": "gluten-and-lactose-free",
+          "eligible": 19
+        },
+        {
+          "filter": "vegan",
+          "eligible": 38
+        },
+        {
+          "filter": "vegetarian",
+          "eligible": 62
+        },
+        {
+          "filter": "reviewed-low-phosphate",
+          "eligible": 17
+        },
+        {
+          "filter": "vegan-gluten-lactose",
+          "eligible": 11
+        },
+        {
+          "filter": "milk-allergy-and-lactose",
+          "eligible": 56
+        },
+        {
+          "filter": "all-declared-allergens",
+          "eligible": 15
+        }
+      ]
+    },
+    {
+      "label": "cold-offline-reserve",
+      "total": 100,
+      "recipes": 20,
+      "publicationIssues": [],
+      "counts": [
+        {
+          "filter": "allergy:milk",
+          "eligible": 19
+        },
+        {
+          "filter": "allergy:eggs",
+          "eligible": 20
+        },
+        {
+          "filter": "allergy:wheat",
+          "eligible": 12
+        },
+        {
+          "filter": "allergy:nuts",
+          "eligible": 17
+        },
+        {
+          "filter": "allergy:peanuts",
+          "eligible": 20
+        },
+        {
+          "filter": "allergy:soy",
+          "eligible": 16
+        },
+        {
+          "filter": "allergy:fish",
+          "eligible": 19
+        },
+        {
+          "filter": "allergy:shellfish",
+          "eligible": 19
+        },
+        {
+          "filter": "allergy:sesame",
+          "eligible": 18
+        },
+        {
+          "filter": "allergy:mustard",
+          "eligible": 16
+        },
+        {
+          "filter": "allergy:celery",
+          "eligible": 15
+        },
+        {
+          "filter": "allergy:sulfites",
+          "eligible": 14
+        },
+        {
+          "filter": "allergy:lupin",
+          "eligible": 20
+        },
+        {
+          "filter": "gluten-free",
+          "eligible": 3
+        },
+        {
+          "filter": "lactose-free",
+          "eligible": 15
+        },
+        {
+          "filter": "gluten-and-lactose-free",
+          "eligible": 3
+        },
+        {
+          "filter": "vegan",
+          "eligible": 13
+        },
+        {
+          "filter": "vegetarian",
+          "eligible": 15
+        },
+        {
+          "filter": "reviewed-low-phosphate",
+          "eligible": 8
+        },
+        {
+          "filter": "vegan-gluten-lactose",
+          "eligible": 2
+        },
+        {
+          "filter": "milk-allergy-and-lactose",
+          "eligible": 15
+        },
+        {
+          "filter": "all-declared-allergens",
+          "eligible": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 # RANDOM / Random Life
 
+> **Aktuelni početak za saradnike (11.11.2026.):** zajednička grana je `main`. Pročitaj [AGENTS](AGENTS.md), [STATUS](collaboration/STATUS.md), [TASKS](collaboration/TASKS.md) i [kompletno uputstvo za AdMob na Androidu/iOS-u i saradnju](docs/ADMOB_AND_COLLABORATION_HANDOFF.md) ([Word](docs/ADMOB_AND_COLLABORATION_HANDOFF.docx)). AdMob WIP ostaje na zasebnoj grani; nije stabilno izdanje.
+>
+> Stariji razvojni/demo opisi ispod su historijski i nisu dokaz trenutnog build/deploy stanja. Za tačne source SHA i artefakte koristi [RELEASE_HANDOFF](docs/RELEASE_HANDOFF.md).
+
+
 Decide Less. Live More. EAT recepti i BOOK preporuke knjiga; jedan SPIN daje jednu preporuku iz pregledanog kataloga.
 
 Prvi razvojni tok: Expo Android/iOS/web klijent, lokalni privatni Content Studio, Workers API i D1 migracija. Najnovije odluke su u [docs/handoff/READ_FIRST_LATEST_DECISIONS.md](docs/handoff/READ_FIRST_LATEST_DECISIONS.md).

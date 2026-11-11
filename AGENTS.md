@@ -19,6 +19,8 @@ Postojeća pravila se zadržavaju: [originalne Codex instrukcije](docs/handoff/0
 9. Lozinke, tokene, privatne ključeve, cookies, potpisane download URL-ove i lične podatke korisnika nikada ne stavljaj u Git, PR ili zapisnik. Ne ispisuj cijeli Cloudflare project JSON: može sadržavati tajne. Koristi samo odabrana sigurna polja. Ne prenosi credentials između accounta kroz chat; svaki operator uređuje vlastito ovlaštenje.
 10. Svaki Codex piše svoj `collaboration/sessions/YYYY-MM-DD-ime-NN.md`; zajedničke fajlove ažurira kratko i uz provjeru konflikata. Ne označavaj tuđi zadatak završenim bez dokaza i predaje.
 
+Nova zajednička stabilna osnova je `main`; AdMob WIP je zasebno. Za ADS-001 čitaj [kompletno uputstvo](docs/ADMOB_AND_COLLABORATION_HANDOFF.md): najnoviji opseg obuhvata **Android i iOS**, ne samo Android.
+
 ## Pravila ovog projekta
 
 - Koristi postojeći `salemko72/RANDOM-life`. Ne praviti novu aplikaciju, D1 bazu, bucket ili paralelni backend radi zaobilaženja problema pristupa.

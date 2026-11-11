@@ -51,8 +51,16 @@ Samo potvrđeno označiti `DECIDED`; prijedlog je `OPEN`. Najnovija izričita ko
 - **Odluka/razlog:** native interstitial na prirodnim pauzama, bez bannera, bez targeting-a iz zdravstvenih podataka; testni oglasi tokom razvoja/testa.
 - **Posljedice:** početni prijedlog šest uspješnih spinova, dvije aktivne minute, tri minute razmaka i najviše tri/30 minuta ostaje podesiv režim za provjeru, ne dokazana politika prihoda. UMP, store izjave, publika i prava moraju biti usklađeni; iOS build 2 nema oglase.
 
-## D-008 — Integration/default grana nije još odlučena
+## D-008 — Nova zajednička main, bez miješanja starog Androida i WIP-a
 
-- **Datum/status/owner:** 11.11.2026., `OPEN`, vlasnik repozitorija.
-- **Problem/opcije:** stari GitHub default i aktuelna source historija nemaju merge-base. Moguće je odabrati aktuelnu integracijsku granu bez brisanja arhive; ne spajati historije naslijepo.
-- **Preporuka/posljedice:** početni docs PR cilja `codex/generic-artwork-v1`; trajna default/integration odluka čeka korisnika. Ne mijenjati GitHub postavku ili raditi merge pod izgovorom dokumentacije.
+- **Datum/status/owner:** 11.11.2026., `DECIDED`, korisnik je nakon prvog prijedloga izričito odobrio novu osnovu i uklanjanje starih Android grana.
+- **Problem/opcije:** stari default i aktuelni source nemaju merge-base; nedovršeni AdMob ne smije u stabilnu verziju.
+- **Odluka/razlog:** nova `main` iz posljednjeg predatog sourcea i saradničkih dokumenata. WIP ostaje na zasebnoj grani. Samo stare Android radne grane arhivirati tagovima pa ukloniti; ne raditi unrelated-history merge ili force push.
+- **Posljedice:** `android-play-test-ready` je obrisan; `android-expo-windows` čeka promjenu GitHub defaulta. Ne tvrditi da je default već promijenjen bez provjere. Historijski početni docs PR je pripremljen prema generičkoj source grani; stvarno otvaranje PR-ova i dalje zavisi od pristupa API-ju ili browsera.
+
+## D-009 — AdMob obuhvata obje platforme
+
+- **Datum/status/owner:** 11.11.2026., `DECIDED`, najnoviji izričit nalog korisnika.
+- **Problem/opcije:** početni WIP je Android-only; korisnik želi oglase i u iOS-u.
+- **Odluka/razlog:** ADS-001 se dodjeljuje drugom Codexu uz Ahmeda za **Android i iOS** iz zajedničkog sourcea, sa odvojenim platformskim ID-ovima i testovima.
+- **Posljedice:** iOS no-op/autolink zabrana u WIP-u moraju biti dovršeni, ne predstavljeni kao gotova integracija. Novi buildovi, ista zamrznuta source osnova, zasebni fizički QA, UMP/ATT/privatnost/store izjave. Postojeći iOS build 2 ostaje neizmijenjen. Bez automatske produkcijske objave.

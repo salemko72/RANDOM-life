@@ -15,13 +15,13 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 
 ## COLLAB-002 — Dogovoriti zajedničku integration/default granu
 
-- **Odgovorni:** nije preuzeto; odluka vlasnika repozitorija.
+- **Odgovorni:** korisnik je potvrdio odluku; izvršenje koordinira `salem-collab`.
 - **Grana:** nije kreirana; koristiti `codex/<ime>-integration-base` nakon dogovora.
-- **Status:** `open`.
-- **Opis:** Aktuelni source i GitHub default imaju odvojene historije. Odabrati gdje se PR-ovi dugoročno spajaju; ne raditi automatski merge ili zamjenu defaulta.
+- **Status:** `in_progress` — nova main je objavljena; promjena GitHub defaulta još čeka browser potvrdu.
+- **Opis:** Korisnik je odabrao novu main iz aktuelnog sourcea, bez spajanja stare Android historije.
 - **Datoteke:** nakon dogovora `collaboration/STATUS.md`, `collaboration/README.md`, vlastiti sesijski zapis; eventualne GitHub postavke samo uz zasebno odobrenje.
 - **Kriteriji prihvatanja:** dokumentovana base grana i source SHA, očuvane stare grane, saradnici mogu otvoriti PR s razumljivim diffom; nikakav neodobren force push.
-- **Zavisnosti:** `COLLAB-001`, vlasnik projekta; nije odobreno izvršenje GitHub promjene defaulta.
+- **Zavisnosti:** `COLLAB-003`; GitHub API 403 blokira promjenu defaulta iz ovog okruženja. Korisnik je sada odobrio novu osnovu/uklanjanje starih Android grana.
 
 ## RIGHTS-001 — Provjera porijekla tekstova/podataka nakon zamjene slika
 
@@ -56,9 +56,9 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 ## ANDROID-001 — Predaja i dovršavanje postojećeg AdMob WIP-a
 
 - **Odgovorni:** `salem-android-wip` (postojeći lokalni rad, nije nova GitHub predaja).
-- **Grana:** namjenska grana još nije objavljena; **ne nastavljati iz docs PR-a kao da sadrži SDK kod**.
-- **Status:** `blocked_handoff`.
-- **Opis:** Objaviti postojeći AdMob rad na svojoj grani s novom provjerom i PR-om prije nastavka na drugom accountu. Ahmed je potvrdio objavljene UMP poruke; to nije dokaz ponašanja SDK-a na telefonu.
+- **Grana:** `codex/salem-admob-handoff`, code SHA `d4d0a6a150baa71591a2c427223aea69e8bcf17d`; **nije u mainu**.
+- **Status:** `blocked_pr` — WIP code push je potvrđen; scope nastavka sada je ADS-001 za obje platforme.
+- **Opis:** Postojeći AdMob rad sada je objavljen na zasebnoj grani; završiti pregled kroz PR i nastaviti prema ADS-001. Ahmed je potvrdio objavljene UMP poruke; to nije dokaz ponašanja SDK-a na telefonu.
 - **Datoteke:** rezervisani AdMob fajlovi iz STATUS; `package-lock.json`; `tests/ads-*.test.ts`; poseban release handoff i sesija.
 - **Kriteriji prihvatanja:** source/PR dostupni drugom Codexu, testne jedinice u testnim profilima, consent prije oglasa, korisničke preference se ne šalju SDK-u, prirodna pauza/frekvencijski limiti, fizički Android QA, stvarni AAB i tačan source SHA. Build/objava nisu izvršeni samo zato što kod postoji.
 - **Zavisnosti:** `RIGHTS-001`, potvrđena publika/Privacy/Data safety/Contains ads/app-ads.txt; zasebno odobrenje za release. Preklapanje s IOS-001 i PREF-001 dogovoriti prije rada.
@@ -80,7 +80,7 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Grana:** `codex/salem-collaboration-setup` za koordinaciju; nova `main` kao zajednička stabilna osnova; `codex/salem-admob-handoff` isključivo za postojeći WIP.
 - **Status:** `in_progress` — claim prije promjene remote refova i predaje WIP-a.
 - **Opis:** Sačuvati posljednji source bez miješanja AdMob-a, arhivirati/ukloniti samo stare Android radne grane, pripremiti kompletne upute u Markdown/Word formatu za drugi account i Ahmeda.
-- **Datoteke:** postojeći saradnički dokumenti; `docs/ADMOB_AND_COLLABORATION_HANDOFF.md`, `.docx`; poseban sesijski zapis za WIP. AdMob kod se ne stavlja u main/docs commit.
+- **Datoteke:** postojeći saradnički dokumenti; `docs/ADMOB_AND_COLLABORATION_HANDOFF.md`, `.docx`, početni linkovi u `README.md`; poseban sesijski zapis za WIP. AdMob kod se ne stavlja u main/docs commit.
 - **Kriteriji prihvatanja:** nova main dostupna na GitHubu; stari Android vrhovi sačuvani tagovima prije brisanja; default-brancha blokada iskreno navedena; WIP dostupna na zasebnoj grani sa tačnim SHA; kompletan vodič uključuje Android i iOS, test/prod razliku, vlasnike, saglasnosti, store obaveze i fizički QA.
 - **Zavisnosti:** GitHub default trenutno blokira brisanje android-expo-windows; API 403 može zahtijevati vlasnikov browser korak. Korisnik je odobrio kreiranje nove osnove i brisanje starih Android grana, ne produkcijski deploy ili store submission.
 

@@ -1,6 +1,6 @@
 # Upute drugom Codexu / drugom accountu
 
-Ovaj dokument je dovoljan početak bez pristupa Salemovom chatu. Ne traži slanje tokena, lozinki ili privatnih ključeva. Nisi ovim dokumentom dobio odobrenje za merge, produkcijski deploy, promjenu baze ili slanje trgovini.
+Ovaj dokument je početak bez pristupa Salemovom chatu. Detaljan zadatak za Ahmeda/drugi Codex je [AdMob i saradnja](ADMOB_AND_COLLABORATION_HANDOFF.md), uz [Word kopiju](ADMOB_AND_COLLABORATION_HANDOFF.docx). Ne traži slanje tokena, lozinki ili privatnih ključeva. Nisi ovim dokumentom dobio odobrenje za merge, produkcijski deploy, promjenu baze ili slanje trgovini.
 
 ## Čovjek prvo povezuje svoj GitHub i Codex
 
@@ -11,28 +11,28 @@ Ovaj dokument je dovoljan početak bez pristupa Salemovom chatu. Ne traži slanj
 
 ## Koju granu otvoriti
 
-**Ulaz za saradnju trenutno je `codex/salem-collaboration-setup`.** Dok docs PR nije merged, AGENTS i collaboration folder nisu na starom defaultu. Aktuelni aplikacijski base je **`codex/generic-artwork-v1`**, source **`d54e69f6a24a327b526f21936681818164c9d1e8`**. Stari default `android-expo-windows` nije dobra osnova za novi posao: historije nemaju merge-base.
+**Ulaz i zajednička stabilna osnova je `main`.** Ona sadrži posljednji predati source sa generičkim slikama i dokumente saradnje, bez AdMob WIP-a. Dok GitHub default još pokazuje stari `android-expo-windows`, biraj main izričito. Ne miješati nepovezanu staru Android historiju s novim sourceom.
 
-Otvori [AGENTS na bootstrap grani](https://github.com/salemko72/RANDOM-life/blob/codex/salem-collaboration-setup/AGENTS.md), zatim [STATUS](https://github.com/salemko72/RANDOM-life/blob/codex/salem-collaboration-setup/collaboration/STATUS.md) i [TASKS](https://github.com/salemko72/RANDOM-life/blob/codex/salem-collaboration-setup/collaboration/TASKS.md).
+Otvori [AGENTS](https://github.com/salemko72/RANDOM-life/blob/main/AGENTS.md), [STATUS](https://github.com/salemko72/RANDOM-life/blob/main/collaboration/STATUS.md), [TASKS](https://github.com/salemko72/RANDOM-life/blob/main/collaboration/TASKS.md) i [kompletno AdMob + saradnja uputstvo](https://github.com/salemko72/RANDOM-life/blob/main/docs/ADMOB_AND_COLLABORATION_HANDOFF.md).
 
-U postojećem checkoutu prvo `git status --short` i zaštita lokalnog rada. U **novom praznom direktoriju**, kada nema postojećeg checkouta:
+U postojećem checkoutu prvo `git status --short` i zaštita lokalnog rada. U **novom praznom direktoriju**, kada nema checkouta:
 
 ```sh
-git clone --branch codex/salem-collaboration-setup https://github.com/salemko72/RANDOM-life.git
+git clone --branch main https://github.com/salemko72/RANDOM-life.git
 cd RANDOM-life
 git fetch origin --prune 'refs/heads/*:refs/remotes/origin/*'
 git status --short
 ```
 
-Ne klonirati preko postojeće radne kopije. U nekim cloud okruženjima treba koristiti već pripremljeni `/workspace/RANDOM-life`; ne pretpostavljati da moraš praviti drugi checkout.
+Ne klonirati preko postojeće radne kopije. U cloud okruženju često već postoji `/workspace/RANDOM-life`; provjeri ga prije pravljenja novog checkouta.
 
 ## Prvi zadatak u tvom chatu
 
 Možeš mu dati ovaj nalog:
 
-> Radiš na postojećem salemko72/RANDOM-life. Prvo provjeri lokalne izmjene i remote stanje. Na grani codex/salem-collaboration-setup pročitaj AGENTS.md, collaboration/STATUS.md, TASKS.md, README.md, DECISIONS.md i docs/RELEASE_HANDOFF.md. Ne prepisuj lokalni rad. Predloži slobodan task i potvrdi njegov file scope; prije implementacije objavi svoj claim commit na posebnoj codex/<ime>-<zadatak> grani i provjeri druge claimove/PR-ove. Ne mergeaj, ne deployaj i ne piši u produkciju bez odgovarajućeg odobrenja. Sve potrebne rezultate predaj kroz sesijski zapis, commit, push i PR. Nema novih plaćenih usluga.
+> Radiš na postojećem salemko72/RANDOM-life. Prvo provjeri lokalne izmjene i remote stanje. Na grani main pročitaj AGENTS.md, collaboration/STATUS.md, TASKS.md, README.md, DECISIONS.md i docs/RELEASE_HANDOFF.md. Ne prepisuj lokalni rad. Predloži slobodan task i potvrdi njegov file scope; prije implementacije objavi svoj claim commit na posebnoj codex/<ime>-<zadatak> grani i provjeri druge claimove/PR-ove. Ne mergeaj, ne deployaj i ne piši u produkciju bez odgovarajućeg odobrenja. Sve potrebne rezultate predaj kroz sesijski zapis, commit, push i PR. Nema novih plaćenih usluga.
 
-Ako još nema dodijeljenog posla, počni **read-only** pregledom RIGHTS-001 ili predloži drugi slobodan task. ANDROID-001 je rezervisan i blokiran dok lokalni WIP ne bude predat; IOS-001/PREF-001 se s njim preklapaju. Ne započinjati ih paralelno bez podjele.
+Korisnik je zadao drugom Codexu da pomogne Ahmedu s **ADS-001 za Android i iOS**. Upute, javni ID-ovi, WIP source i kriteriji su u kompletnom vodiču. IOS-001/PREF-001 i prava se s njim usklađuju; ne uređivati iste fajlove paralelno. WIP code je objavljen, ali još nije gotova multiplatform integracija.
 
 ## Predaja prema postojećem dogovoru
 
@@ -56,6 +56,6 @@ Prije komande provjeri postoji li već isti PR (`gh pr list` ili GitHub UI), da 
 
 - Web/katalog: 15 generičkih slika, 273 ažurirane BOOK/WATCH stavke, ukupno 467 pri zadnjoj provjeri. Source i rollback ograničenja su u release handoffu.
 - iOS 0.23.0 (2): stari stvarni build, bez oglasa i novih offline slika; Apple traži dodatne informacije/video. Nije odobrena objava.
-- AdMob: postoje samo ranije potvrđeni account/ID-ovi i **nepredat lokalni WIP**. Ovo nije već buildano izdanje s reklamama.
+- AdMob: postoje samo ranije potvrđeni account/ID-ovi i **predat Android-first WIP na zasebnoj grani**. Ovo nije već buildano izdanje s reklamama.
 - Korisnik želi iPhone portrait, lokalne **promjenjive preference**, pet rubrika bez LISTEN-a i bez dodatnih troškova.
 - Privatni backupi/credentials nisu u Git-u. Ne izmišljaj da ih imaš; za opravdanu operaciju zatraži svoje minimalno ovlaštenje od vlasnika i koristi odgovarajući task/handoff.

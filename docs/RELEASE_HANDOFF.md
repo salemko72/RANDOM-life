@@ -1,6 +1,6 @@
 # LifeSpinner — release handoff
 
-**Stanje: 11.11.2026. Ovo nije odobrenje za build, deploy, merge ili store submission.** Prije izdanja pročitati [AGENTS](../AGENTS.md), [STATUS](../collaboration/STATUS.md), [TASKS](../collaboration/TASKS.md) i provjeriti šta se u međuvremenu promijenilo.
+**Stanje: 11.11.2026. Ovo nije odobrenje za build, deploy, merge ili store submission.** Zajednička stabilna grana je `main`; AdMob ostaje zasebno dok ne bude pregledan. Prije izdanja pročitati [AGENTS](../AGENTS.md), [STATUS](../collaboration/STATUS.md), [TASKS](../collaboration/TASKS.md) i provjeriti šta se u međuvremenu promijenilo.
 
 ## 1. Source provenance — ne miješati verziju, source i artefakt
 
@@ -11,7 +11,7 @@
 | iOS TestFlight build 2 | **`1e6f8efc1d0e3ccfb0daf4df6e234f8761992683`**, EAS **`a73b11b1-93e0-4af5-b12c-70b77a6a185c`** | Verzija **0.23.0 (2)**; build/submission ranije potvrđeni, fizička instalacija i kasniji Apple upit prijavljeni od korisnika. Nema novih generičkih offline slika ni oglasa. |
 | Naredni Android/iOS release | **NIJE ODABRAN** | Nakon reviewa prihvaćenih PR-ova zamrznuti jedan čist source SHA za obje platforme, pa upisati posebne build rezultate. Ne izmišljati artefakt. |
 
-Committed `apps/client/app.json` na d54: version **0.23.0**, Android versionCode **8**, iOS buildNumber **2**, portrait i **supportsTablet: true**. To su source vrijednosti, ne dokaz da je novi build napravljen. Lokalni AdMob WIP ima Android **9** i SDK izmjene, ali nije u d54 niti u ovom docs PR-u.
+Committed `apps/client/app.json` na d54: version **0.23.0**, Android versionCode **8**, iOS buildNumber **2**, portrait i **supportsTablet: true**. To su source vrijednosti, ne dokaz da je novi build napravljen. Predati AdMob WIP ima Android **9** i SDK izmjene, ali nije u d54 niti u stabilnom mainu. Source: `d4d0a6a150baa71591a2c427223aea69e8bcf17d`, grana `codex/salem-admob-handoff`; 300 testova i TypeScript prolaze, bez potvrđenih novih binarnih artefakata. iOS je u tom WIP-u još no-op. Novi nalog ADS-001 obuhvata obje platforme; vidi [kompletno uputstvo](ADMOB_AND_COLLABORATION_HANDOFF.md).
 
 ### Provjerljivi web artefakti
 

@@ -4,9 +4,9 @@ Ovi dokumenti služe za rad na jednom LifeSpinner repozitoriju bez zajedničkog 
 
 ## Izaberi ispravnu osnovu
 
-GitHub default `android-expo-windows` trenutno pokazuje stari Windows/Android snapshot i nema zajednički merge-base s aktuelnom razvojnom historijom. **Ne počinji novi posao iz default grane samo zato što ju je GitHub otvorio.** Potvrđena source osnova za ovaj bootstrap je `codex/generic-artwork-v1` na `d54e69f6a24a327b526f21936681818164c9d1e8`.
+Korisnik je potvrdio novu zajedničku osnovu **`main`**, iz posljednjeg sourcea sa generičkim slikama i saradničkim dokumentima. AdMob WIP **nije** u mainu. Stari default `android-expo-windows` je nepovezani Windows snapshot; dok vlasnik ne promijeni GitHub default, izričito biraj main, ne automatski HEAD.
 
-Dok početni dokumentacijski PR nije merged, saradnički dokumenti su na `codex/salem-collaboration-setup`. To je ulaz za čitanje pravila, a ne automatsko odobrenje da mijenjaš njegov sadržaj ili deployaš. Vlasnik projekta kasnije bira zajedničku integracijsku/default granu; ova predaja ne spaja nepovezane historije.
+AdMob nastavak je poseban ADS-001 zadatak: vidi [kompletan vodič](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md). WIP je na `codex/salem-admob-handoff` (`d4d0a6a150baa71591a2c427223aea69e8bcf17d`); ne raditi direktno na mainu ili tuđoj grani. Stare Android grane se arhiviraju tagovima, ne miješaju s novim sourceom.
 
 ## 1. Pregled prije rada
 
@@ -22,19 +22,19 @@ Ako origin URL sadrži credentials, ne kopiraj njegov ispis u chat/zapisnik. Nek
 
 Ako postoji lokalni rad, utvrdi čiji je. Ne prebacuj granu ako bi izmjene bile izgubljene ili prenesene u pogrešan PR. Koristi odobren čist checkout/izolaciju ili dogovor s vlasnikom. Nema `reset --hard`, `clean -fd`, automatskog stasha ili uključivanja tuđih fajlova u svoj commit.
 
-Pročitaj AGENTS, STATUS, TASKS, DECISIONS i relevantnu sesiju. Ako lokalna grana još nema dokumente, prvo ih pročitaj s bootstrap grane:
+Pročitaj AGENTS, STATUS, TASKS, DECISIONS i relevantnu sesiju. Ako lokalna grana još nema dokumente, prvo ih pročitaj s main grane:
 
 ```sh
-git show origin/codex/salem-collaboration-setup:AGENTS.md
-git show origin/codex/salem-collaboration-setup:collaboration/STATUS.md
-git show origin/codex/salem-collaboration-setup:collaboration/TASKS.md
+git show origin/main:AGENTS.md
+git show origin/main:collaboration/STATUS.md
+git show origin/main:collaboration/TASKS.md
 ```
 
 ## 2. Preuzimanje zadatka prije implementacije
 
 1. Provjeri TASKS na zajedničkoj osnovi **i u drugim nedavno objavljenim granama**. Provjeri otvorene PR-ove (`gh pr list --repo salemko72/RANDOM-life --state open`) ili GitHub UI. Ako API nije dostupan, zabilježi nepoznato stanje i uskladi preklapanje s korisnikom.
 2. Izaberi slobodan ID ili dodaj novi; ne dodjeljuj sebi tuđi `in_progress` zadatak. Odgovorni Codex neka bude stabilna oznaka, npr. `ahmed-backend` ili `salem-ios`, bez emaila.
-3. Napravi vlastitu granu iz **potvrđene osnove** u čistom checkoutu. Dok bootstrap nije merged, čitljivi početak s pravilima je `git switch -c codex/ahmed-catalog-review origin/codex/salem-collaboration-setup`; takav PR je zavisan od docs PR-a i cilja bootstrap granu dok se base ne uskladi. Poslije prihvatanja docs PR-a koristi novu potvrđenu integration osnovu. Ne cherry-pickaj zajednički TASKS preko tuđih claimova.
+3. Napravi vlastitu granu iz **potvrđene osnove main** u čistom checkoutu, npr. `git switch -c codex/ahmed-catalog-review origin/main`. Za ADS-001 nakon objavljenog claima prenesi samo tačan WIP code commit prema kompletnom vodiču. Ne cherry-pickaj zajednički TASKS preko tuđih claimova.
 4. Upiši opis, odgovornog, granu, status, datoteke, kriterije prihvatanja i zavisnosti. Commit i push **claim prije programskih izmjena**.
 5. Ponovo fetch i provjeri je li drugi claim nastao u međuvremenu. Ako postoji preklapanje, stani na preklapajućim fajlovima i dogovorite granice. Zapis u različitim granama nije atomski lock.
 6. Otvori draft PR rano kada je moguće. Link dostavi korisniku/koordinatoru; drugi Codex ne dobija automatski obavijest iz ovog chata.

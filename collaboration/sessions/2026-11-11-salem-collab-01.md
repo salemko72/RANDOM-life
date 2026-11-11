@@ -6,7 +6,7 @@
 - **PR base:** `codex/generic-artwork-v1`.
 - **Aplikacijski base SHA:** `d54e69f6a24a327b526f21936681818164c9d1e8`.
 - **Claim SHA:** `800c93f7e6aa33784ea50cc3b352fca7cf514925`, push potvrđen prije implementacije ostalih dokumenata.
-- **Dokumentacijski implementacijski SHA:** popunjava se nakon prvog implementacijskog commita u završnom evidencijskom commitu; SHA se ne može uključiti u samog sebe.
+- **Dokumentacijski implementacijski SHA:** `d9c8073aab1b580a46417306fc3f0d4d54c9341d`.
 - **PR:** još nije potvrđen; API provjera/otvaranje blokirani. [Compare, nije već PR](https://github.com/salemko72/RANDOM-life/compare/codex/generic-artwork-v1...codex/salem-collaboration-setup?expand=1).
 
 ## Šta je promijenjeno
@@ -41,3 +41,8 @@ GitHub Git transport radi; REST/GraphQL preko `api.github.com` vraća 403. Poku�
 Drugi ovlašteni operator može provjeriti postojeće PR-ove i otvoriti početni kroz compare link ili `gh pr create` komandu u [ulaznim uputama](../../docs/SECOND_CODEX_START_HERE.md). Nakon toga ažurirati stvarni PR broj i TASKS/STATUS. Nema automatskog mergea.
 
 Sljedeće čitati: [AGENTS](../../AGENTS.md), [STATUS](../STATUS.md), [TASKS](../TASKS.md), [DECISIONS](../DECISIONS.md), [RELEASE_HANDOFF](../../docs/RELEASE_HANDOFF.md). Predloženi read-only naredni posao je RIGHTS-001; prvo objaviti vlastiti claim i provjeriti preklapanje. IOS-001/PREF-001/ANDROID-001 dijele fajlove i traže dogovor vlasnika.
+
+
+## Kasnija dopuna / nova korisnička odluka
+
+Ovaj zapis opisuje početnu docs fazu. Dokumentacijski linkovi, SHA identiteti, osam fajlova i početni 23 lokalna fingerprinta su provjereni. Korisnik je zatim odobrio novu main, arhiviranje starih Android grana i zasebnu predaju AdMob WIP-a; opseg oglasa proširio je na Android i iOS. Vidi sesiju 02 i kompletan vodič. WIP više nije samo lokalni: d4d0a6a150baa71591a2c427223aea69e8bcf17d. Nije merged u main i nije produkcijski deployan. Početni PR pokušaj i dalje je vraćao403, bez potvrđenog PR broja.

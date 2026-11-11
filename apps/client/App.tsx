@@ -1,3 +1,5 @@
+import {createAdsRuntime} from './src/native/ads-runtime';
+import {parseAdMessage} from './src/native/ads-policy';
 import{nativeBackScript,parseBackResult}from'./src/native/back-navigation';
 import{parseAppShare}from'./src/web/app-share';
 import{allowWebNavigation}from'./src/native/web-navigation';
@@ -7,7 +9,7 @@ import appConfig from './app.json';
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, BackHandler, Platform, Share, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, AppState, BackHandler, Platform, Share, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
 import {Asset} from 'expo-asset';
@@ -40,6 +42,8 @@ function NativeExperience(){
   await Share.share({title:'LifeSpinner diagnostic log',message});
  }
 
+ const ads=useRef<ReturnType<typeof createAdsRuntime>|null>(null);
+ useEffect(()=>{if(Platform.OS!=='android')return;const runtime=createAdsRuntime();ads.current=runtime;runtime.active(AppState.currentState==='active');const listener=AppState.addEventListener('change',next=>runtime.active(next==='active'));return()=>{listener.remove();runtime.dispose();ads.current=null;};},[]);
  const [error,setError]=useState('');
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
@@ -54,7 +58,7 @@ function NativeExperience(){
    if(!active)return;
    state.current=readSnapshot(raw);nativeMetric('profile_loaded');
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
-   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read());
+   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'});
    nativeMetric('assets_ready');if(active)setUri(local);
   }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};
@@ -72,10 +76,12 @@ function NativeExperience(){
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>allowWebNavigation(r,uri)}
+   onLoadStart={()=>ads.current?.resetDocument()}
    onLoadEnd={()=>nativeMetric('webview_loaded')}
    onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
    onMessage={event=>{
     const raw=event.nativeEvent.data;
+    const adMessage=parseAdMessage(raw);if(adMessage){ads.current?.receive(adMessage);return;}
     const back=parseBackResult(raw,pendingBack.current);if(back!==null){pendingBack.current=null;if(!back&&Platform.OS==='android')BackHandler.exitApp();return;}
     const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');void catalogStorage.current.clear().then(()=>FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','')).then(()=>notify(true)).catch(()=>notify(false));return;}
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}

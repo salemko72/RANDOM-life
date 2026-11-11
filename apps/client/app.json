@@ -26,7 +26,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.salemko.randomlife",
-      "versionCode": 8
+      "versionCode": 9
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -37,6 +37,9 @@
         "projectId": "04bf570d-5e7b-4c51-b1ae-65e6fc60cf5a"
       }
     },
-    "backgroundColor": "#fbefe7"
+    "backgroundColor": "#fbefe7",
+    "plugins": [
+      "./plugins/with-android-admob.cjs"
+    ]
   }
 }

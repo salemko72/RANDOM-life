@@ -109,3 +109,24 @@ it('shares only the requested approved published record without editorial identi
  expect((await call('/api/shared-item/unknown-id','GET',undefined,false)).response.status).toBe(404);
  await db.prepare("UPDATE random_items SET status='published',approved_by=NULL WHERE id='share-test'").run();expect((await call('/api/shared-item/share-test','GET',undefined,false)).response.status).toBe(404);
 });
+
+it('uses owned generic artwork on new BOOK writes without fetching or publishing the supplied external cover',async()=>{
+ const {reserveItems}=await import('../apps/client/src/web/backup/catalog');const {genericArtworkPath}=await import('../packages/shared/src/generic-artwork');
+ const original=structuredClone(reserveItems.find(x=>x.category==='BOOK')!);const id='generic-book-write-test';
+ original.image={path:'/media/external-cover-not-uploaded.webp',alt:'External cover',generated:false,rightsConfirmed:true,provenance:{provider:'Open Library',sourceUrl:'https://openlibrary.org/works/example',imageUrl:'https://covers.openlibrary.org/b/id/1-L.jpg',externalId:'example',attribution:'External'}};
+ const expected=genericArtworkPath({...original,id})!;expect((await upload(expected.slice(7))).status).toBe(200);
+ const result=await call('/api/content','POST',{id,input:original});expect(result.response.status).toBe(201);expect(result.data.item.status).toBe('published');expect(result.data.item.image).toMatchObject({path:expected,generated:true,rightsConfirmed:true});expect(result.data.item.image.provenance).toBeUndefined();expect(result.data.item.title).toBe(original.title);expect(result.data.item.translations.en.imageAlt).toContain('Generic');
+});
+
+it('migrates generic artwork in bounded batches while preserving approval, source, title and content',async()=>{
+ const {reserveItems}=await import('../apps/client/src/web/backup/catalog');const db=await mf.getD1Database('CONTENT_DB');
+ const input=structuredClone(reserveItems.find(x=>x.category==='BOOK')!);input.image={path:'/media/legacy-cover.webp',alt:'Old',generated:false,rightsConfirmed:true};
+ const id='generic-migration-preserve-test',approvedAt='2026-10-01T00:00:00Z';
+ await db.prepare('INSERT INTO random_items(id,dedup,category,data,status,version,updated_at,approved_by,approved_at,revision) VALUES (?,?,?,?,?,?,?,?,?,?)').bind(id,id,'BOOK',JSON.stringify(input),'published',3,approvedAt,'human',approvedAt,'legacy').run();
+ const before=await db.prepare('SELECT * FROM random_items WHERE id=?').bind(id).first<any>();
+ const dry=await call('/api/database/use-generic-artwork','POST',{dryRun:true});expect(dry.data.pending).toBeGreaterThanOrEqual(1);expect((await db.prepare('SELECT * FROM random_items WHERE id=?').bind(id).first<any>()).version).toBe(3);
+ const result=await call('/api/database/use-generic-artwork','POST',{});expect(result.response.status).toBe(200);expect(result.data.updated).toBeGreaterThanOrEqual(1);
+ const after=await db.prepare('SELECT * FROM random_items WHERE id=?').bind(id).first<any>();expect(after.version).toBe(4);expect(after.status).toBe(before.status);expect(after.approved_by).toBe(before.approved_by);expect(after.approved_at).toBe(before.approved_at);const data=JSON.parse(after.data);expect(data.image.path).toMatch(/^\/media\/generic-book-/);expect(data.title).toBe(input.title);expect(data.source).toEqual(input.source);expect(data.tags).toEqual(input.tags);
+ expect((await call('/api/database/use-generic-artwork','POST',{})).data.updated).toBe(0);
+ expect((await call('/api/database/use-generic-artwork','POST',{},false)).response.status).toBe(401);
+});

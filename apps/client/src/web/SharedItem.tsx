@@ -1,3 +1,4 @@
+import {withGenericArtwork} from '../../../../packages/shared/src/generic-artwork';
 import{appShareUrl}from'./app-share';
 import React,{useEffect,useState} from 'react';
 import {localizeContent,type ContentRecord,type Locale} from '@random/shared';
@@ -10,7 +11,7 @@ import {loadExperience,saveExperience} from './experience-state';
 
 export default function SharedItem(){
  const [payload]=useState<{item:ContentRecord|null;locale:Locale}>(()=>{try{return JSON.parse(document.getElementById('random-shared-item')?.textContent??'null')??{item:null,locale:'bs'};}catch{return{item:null,locale:'bs'};}});
- const {item,locale}=payload,en=locale==='en';const [profile,setProfile]=useState(loadProfile),[experience,setExperience]=useState(()=>loadExperience(profile.id)),[expanded,setExpanded]=useState(false);
+ const item=payload.item?withGenericArtwork(payload.item):null,locale=payload.locale,en=locale==='en';const [profile,setProfile]=useState(loadProfile),[experience,setExperience]=useState(()=>loadExperience(profile.id)),[expanded,setExpanded]=useState(false);
  useEffect(()=>{saveProfile(profile);},[profile]);useEffect(()=>{saveExperience(profile.id,experience);},[profile.id,experience]);
  if(!item)return <div className="random-world shared-world"><main className="random-card shared-unavailable"><h1>{en?'Item unavailable':'Item nije dostupan'}</h1><p>{en?'This shared item is currently unavailable.':'Ovaj podijeljeni item trenutno nije dostupan.'}</p><span>LifeSpinner</span></main></div>;
  const d=localizeContent(item,locale),category=d.category.toLowerCase(),liked=experience.favorites.includes(item.id);

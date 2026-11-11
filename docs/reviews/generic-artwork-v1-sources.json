@@ -1,0 +1,77 @@
+[
+  {
+    "key": "film-01-popcorn",
+    "source": "/workspace/generated_images/exec-25d60bf4-a645-445f-a5fa-7b43de6bec9f.png",
+    "path": "/media/generic-film-01-popcorn-v1.webp"
+  },
+  {
+    "key": "film-02-cinema",
+    "source": "/workspace/generated_images/exec-0674f026-6ca5-4dae-bc83-84fb53b41e43.png",
+    "path": "/media/generic-film-02-cinema-v1.webp"
+  },
+  {
+    "key": "film-03-seats",
+    "source": "/workspace/generated_images/exec-0eb8ab16-860e-4834-8373-31680bfbb426.png",
+    "path": "/media/generic-film-03-seats-v1.webp"
+  },
+  {
+    "key": "film-04-filmstrip",
+    "source": "/workspace/generated_images/exec-60c2a757-2a99-4c24-82e4-3dade7f63911.png",
+    "path": "/media/generic-film-04-filmstrip-v1.webp"
+  },
+  {
+    "key": "film-05-projector",
+    "source": "/workspace/generated_images/exec-a8cb3d2f-b29e-46e2-9380-38c928163a8a.png",
+    "path": "/media/generic-film-05-projector-v1.webp"
+  },
+  {
+    "key": "series-01-retro-tv",
+    "source": "/workspace/generated_images/exec-64826401-66f2-4d3f-8612-ab72eec11c98.png",
+    "path": "/media/generic-series-01-retro-tv-v1.webp"
+  },
+  {
+    "key": "series-02-remote",
+    "source": "/workspace/generated_images/exec-ced59c77-0e42-4478-8234-76fcccb6660d.png",
+    "path": "/media/generic-series-02-remote-v1.webp"
+  },
+  {
+    "key": "series-03-lcd",
+    "source": "/workspace/generated_images/exec-a507484b-940c-435b-8c8b-9cf9c3b37cb7.png",
+    "path": "/media/generic-series-03-lcd-v1.webp"
+  },
+  {
+    "key": "series-04-sofa",
+    "source": "/workspace/generated_images/exec-e2512cda-3d94-45e3-9164-d14f3c59d956.png",
+    "path": "/media/generic-series-04-sofa-v1.webp"
+  },
+  {
+    "key": "series-05-evening",
+    "source": "/workspace/generated_images/exec-908dc90c-fcfd-46b3-9e0c-431bf5b79dbb.png",
+    "path": "/media/generic-series-05-evening-v1.webp"
+  },
+  {
+    "key": "book-01-stack",
+    "source": "/workspace/generated_images/exec-923943c1-5d25-4d01-94cf-9888d50c2805.png",
+    "path": "/media/generic-book-01-stack-v1.webp"
+  },
+  {
+    "key": "book-02-library",
+    "source": "/workspace/generated_images/exec-353f2558-29bd-473d-858c-69889b034679.png",
+    "path": "/media/generic-book-02-library-v1.webp"
+  },
+  {
+    "key": "book-03-window",
+    "source": "/workspace/generated_images/exec-bb209ecd-4fba-462a-908e-bd4d44f00d22.png",
+    "path": "/media/generic-book-03-window-v1.webp"
+  },
+  {
+    "key": "book-04-reading",
+    "source": "/workspace/generated_images/exec-3bf61c11-5865-4ebd-9990-f0b5bbdb8969.png",
+    "path": "/media/generic-book-04-reading-v1.webp"
+  },
+  {
+    "key": "book-05-modern",
+    "source": "/workspace/generated_images/exec-a473b1be-634b-4d57-89fc-311037b120fe.png",
+    "path": "/media/generic-book-05-modern-v1.webp"
+  }
+]

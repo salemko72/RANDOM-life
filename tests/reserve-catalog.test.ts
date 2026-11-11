@@ -16,10 +16,12 @@ it('includes verified dietary alternatives without weakening profile safety',()=
  for(const r of renal)expect(r.phosphateAssessment).toMatchObject({reviewed:true,suitability:'low'});
 });
 it('has a real optimized local picture for every item and fits the 10 MiB budget',async()=>{
- const source=await readFile('apps/client/src/web/backup/images.ts','utf8'),files=[...source.matchAll(/from '\.\/images\/([^']+)'/g)].map(m=>m[1]);let bytes=0;
- expect(files).toHaveLength(100);
- for(const row of reserveItems)expect(source).toContain(JSON.stringify(row.image.path)+':');
- for(const file of new Set(files)){const b=await readFile('apps/client/src/web/backup/images/'+file),info=await sharp(b).metadata();bytes+=b.length;expect(info.format).toBe('webp');expect(info.width).toBeLessThanOrEqual(720);expect(info.height).toBeLessThanOrEqual(960);}
+ const source=await readFile('apps/client/src/web/backup/images.ts','utf8'),generic=await readFile('apps/client/src/web/generic-images.ts','utf8');
+ const files=[...source.matchAll(/from '\.\/images\/([^']+)'/g)].map(m=>'apps/client/src/web/backup/images/'+m[1]);
+ const genericFiles=[...generic.matchAll(/from '\.\/assets\/generic\/([^']+)'/g)].map(m=>'apps/client/src/web/assets/generic/'+m[1]);let bytes=0;
+ expect(files).toHaveLength(60);expect(genericFiles).toHaveLength(15);
+ for(const row of reserveItems){expect(source+generic).toContain(JSON.stringify(row.image.path)+':');if(['BOOK','WATCH'].includes(row.category)){expect(row.image.path).toMatch(/^\/media\/generic-/);expect(row.image.provenance).toBeUndefined();}}
+ for(const file of new Set([...files,...genericFiles])){const b=await readFile(file),info=await sharp(b).metadata();bytes+=b.length;expect(info.format).toBe('webp');expect(info.width).toBeLessThanOrEqual(1024);expect(info.height).toBeLessThanOrEqual(1024);}
  expect(bytes).toBe(reserveMetadata.imageBytes);expect(bytes+Buffer.byteLength(await readFile('apps/client/src/web/backup/catalog.json'))).toBeLessThan(10*1024*1024);
 });
 it('has real tagged alternatives for gluten, lactose and their combination on a cold offline start',()=>{

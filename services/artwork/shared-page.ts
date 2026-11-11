@@ -1,3 +1,4 @@
+import {withGenericArtwork} from '../../packages/shared/src/generic-artwork';
 import {localizeContent,type ContentRecord} from '@random/shared';
 import {handleDatabase,type DatabaseEnv} from './database';
 const escape=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
@@ -6,6 +7,7 @@ export async function sharedPage(request:Request,env:DatabaseEnv):Promise<Respon
  const url=new URL(request.url),id=url.pathname.slice('/item/'.length),locale=url.searchParams.get('lang')==='en'?'en':'bs';
  let item:ContentRecord|undefined,status=404;
  try{const response=await handleDatabase(new Request(new URL('/api/shared-item/'+id,url.origin)),env);if(response.ok)item=(await response.json() as {item:ContentRecord}).item;else status=response.status===404?404:503;}catch{status=503;}
+ if(item)item=withGenericArtwork(item);
  const d=item?localizeContent(item,locale):null,title=d?.title??(locale==='en'?'Item unavailable':'Item nije dostupan'),summary=d?.summary??(locale==='en'?'This item is no longer available.':'Ovaj item više nije dostupan.');
  const canonical=new URL(url.pathname,url.origin);canonical.searchParams.set('lang',locale);
  const image=d?new URL(d.image.path,url.origin).href:null;

@@ -1,3 +1,4 @@
+import {withGenericArtwork} from '../../packages/shared/src/generic-artwork';
 import { contentSchema, publicationIssues, contentContract,defaultAccessLinks,visibleAccessLinks,resetAccessLinkReviews, type ContentRecord, type ContentInput } from '@random/shared';
 import {consumerSchema,consumerRead,r2Media,copyMedia,publicStatement,rebuildCatalog,invalidateConsumer} from './consumer-storage';
 export interface DatabaseEnv {
@@ -128,6 +129,31 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
         if(path==='/api/database/rebuild-catalog'&&request.method==='POST'){
             await rebuildCatalog(env);await invalidateConsumer(request);return json({rebuilt:true});
         }
+        if(path==='/api/database/use-generic-artwork'&&request.method==='POST'){
+            // A bounded representation migration; editorial approval and content stay unchanged.
+            const filter="category IN ('BOOK','WATCH') AND json_extract(data,'$.image.path') NOT LIKE '/media/generic-%-v1.webp'";
+            const pending=Number((await db.prepare('SELECT COUNT(*) AS n FROM random_items WHERE '+filter).first<any>())?.n??0);
+            const options=await body(request);
+            if(options.dryRun===true)return json({pending,updated:0});
+            const rows=(await db.prepare('SELECT * FROM random_items WHERE '+filter+' LIMIT 5').all()).results as any[];
+            const statements:D1PreparedStatement[]=[];const paths:string[]=[];
+            for(const row of rows){
+                const original=JSON.parse(row.data),record=rowRecord(row),generic=withGenericArtwork(record);
+                const input={...original,image:generic.image,translations:generic.translations};
+                const revision=crypto.randomUUID(),now=new Date().toISOString();
+                const snapshot={...input,id:row.id,status:row.status,version:row.version+1,updatedAt:now,approvedBy:row.approved_by,approvedAt:row.approved_at};
+                statements.push(
+                    db.prepare('UPDATE random_items SET data=?,version=version+1,updated_at=?,revision=? WHERE id=? AND version=?').bind(JSON.stringify(input),now,revision,row.id,row.version),
+                    db.prepare("INSERT INTO random_events(id,content_id,action,actor,version,snapshot,created_at) SELECT ?,?,'generic-artwork-v1','studio-editor',?,?,? WHERE EXISTS(SELECT 1 FROM random_items WHERE id=? AND revision=?)").bind(crypto.randomUUID(),row.id,row.version+1,JSON.stringify(snapshot),now,row.id,revision),
+                    publicStatement(db,snapshot as ContentRecord,revision),
+                );paths.push(record.image.path,generic.image.path);
+            }
+            const result=statements.length?await db.batch(statements):[];
+            const updated=result.filter((_,n)=>n%3===0).reduce((n,r)=>n+r.meta.changes,0);
+            let catalogPending=false;try{await rebuildCatalog(env);}catch{catalogPending=true;}
+            await invalidateConsumer(request,paths);
+            return json({updated,pending:Math.max(0,pending-updated),catalogPending});
+        }
         if(path==='/api/database/upgrade-access-links'&&request.method==='POST'){
             // Representation-only upgrade: add search destinations, never infer availability
             // or rewrite editorial approvals. Each CAS update owns its audit event.
@@ -251,6 +277,10 @@ export async function handleDatabase(request: Request, env: DatabaseEnv): Promis
             const duplicate = await db.prepare('SELECT * FROM random_items WHERE dedup=? AND id<>?').bind(dedup, id).first<any>();
             if (duplicate)
                 return migration || !data.id ? json({ item: rowRecord(duplicate), duplicate: true }) : json({ error: 'DUPLICATE_CONTENT' }, 409);
+            if(input.category==='BOOK'||input.category==='WATCH'){
+                const generic=withGenericArtwork({...input,id} as ContentRecord);
+                input.image=generic.image;input.translations=generic.translations;
+            }
             const now = new Date().toISOString();
             const issues = publicationIssues(input);
             if (!await db.prepare('SELECT path FROM random_media WHERE path=?').bind(input.image.path).first())

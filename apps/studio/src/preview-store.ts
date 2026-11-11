@@ -125,6 +125,7 @@ export async function deletePreviewContent(id:string,version:number){await onlin
 export async function readPreviewCatalog(force=false){return readConsumerCatalog(force);}
 export async function readStudioCatalog(){const local=(await readLocalCatalog()).map(i=>({...i,__storage:'local'}));let remote:ContentRecord[]=[];try{remote=await onlineCatalog(true);}catch{}const deleted=getOnlineDeletedIds();const ids=new Set(remote.map(i=>i.id)),keys=new Set(remote.map(i=>`${i.category}|${i.source.url}|${i.title.trim().toLowerCase()}`));return [...remote,...local.filter(i=>!deleted.has(i.id)&&!ids.has(i.id)&&!keys.has(`${i.category}|${i.source.url}|${i.title.trim().toLowerCase()}`))];}
 export async function readPreviewImage(path:string):Promise<Blob|null>{
+ if(path.startsWith('/media/generic-'))return readBundledImage(path);
  if(consumerCatalogStatus().source==='backup'&&hasBundledImage(path)){const bundled=await readBundledImage(path);if(bundled)return bundled;}
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4000);
  try{const response=await fetch(mediaAddress(path),{credentials:'same-origin',signal:controller.signal});if(response.ok&&(response.headers.get('content-type')??'').startsWith('image/'))return response.blob();}catch{}finally{clearTimeout(timer);}

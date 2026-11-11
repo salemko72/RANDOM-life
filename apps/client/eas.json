@@ -10,6 +10,9 @@
       "environment": "preview",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_LIFESPINNER_ADS_MODE": "test"
       }
     },
     "production": {
@@ -18,6 +21,9 @@
       "environment": "production",
       "android": {
         "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_LIFESPINNER_ADS_MODE": "test"
       }
     },
     "testflight": {
@@ -30,6 +36,18 @@
       "extends": "preview",
       "ios": {
         "simulator": true
+      }
+    },
+    "play-ads-test": {
+      "extends": "production",
+      "env": {
+        "EXPO_PUBLIC_LIFESPINNER_ADS_MODE": "test"
+      }
+    },
+    "play-ads-live": {
+      "extends": "production",
+      "env": {
+        "EXPO_PUBLIC_LIFESPINNER_ADS_MODE": "live"
       }
     }
   },

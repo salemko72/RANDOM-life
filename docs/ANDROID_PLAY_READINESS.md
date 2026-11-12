@@ -36,7 +36,9 @@ Korisnik je izričito potvrdio:
 - nakon korištenja pojavio se oglas;
 - Profil → Privatnost oglasa prikazuje poruku „Za tvoju regiju nije potreban dodatni obrazac za oglase“.
 
-To je korisnikov izvještaj, ne automatizovani SDK test ili kompletna QA matrica. Model/OS, video/screenshot, tačan broj/vrijeme spinova, test-ad oznaka i testna UMP regija nisu još evidentirani. Nisu potvrđeni accept/reject/change tok u regiji koja traži obrazac, restart/cap/cooldown, background/resume, offline/no-fill, Android Back kroz sve ekrane ili kompletni dietary filteri. Ne tvrditi da odsustvo regionalnog obrasca samo po sebi predstavlja grešku ili punu consent provjeru.
+Naknadno je korisnik potvrdio uređaj **Xiaomi Redmi Note 14**, **Android16**, OS build **BP2A.250605.031.A3**, i da je na prikazanom oglasu pisalo **Test Ad / Testni oglas**. Time je korisnički potvrđena testna oznaka na ovom telefonu; to nije test Play-generisanog APK-a niti dokaz prihoda od live oglasa.
+
+To je korisnikov izvještaj, ne automatizovani SDK test ili kompletna QA matrica. Video/screenshot, tačan broj/vrijeme spinova i testna UMP regija nisu još evidentirani. Nisu potvrđeni accept/reject/change tok u regiji koja traži obrazac, restart/cap/cooldown, background/resume, offline/no-fill, Android Back kroz sve ekrane ili kompletni dietary filteri. Ne tvrditi da odsustvo regionalnog obrasca samo po sebi predstavlja grešku ili punu consent provjeru.
 
 ## Direktno provjereno u Play Consoleu
 

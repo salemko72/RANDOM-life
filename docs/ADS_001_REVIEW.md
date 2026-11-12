@@ -2,6 +2,8 @@
 
 Stanje 12.11.2026. Implementacijski source: `e1228ed725d63a56e280e00d3c840ab5890311b6`, grana `codex/ahmed-admob-finish`, osnova main `2c98dea77951048e00649e8f72cb7e0a848c1bf2`. Ovo je source predaja za review i pripremu testnih izdanja. ADS-001 nije završen: nema novih potpisanih APK/AAB/IPA artefakata niti fizičkog SDK QA.
 
+[Draft PR #1](https://github.com/salemko72/RANDOM-life/pull/1) je kreiran i potvrđen kroz API. Dokumentacijski commit `0ac302dfda8a71b7d29e6421c07da437923b3edd` prati implementacijski source; kasniji dokumentacijski commitovi ne mijenjaju testirani aplikacijski kod.
+
 ## Implementirano ponašanje
 
 Android i iOS sada biraju zajednički native runtime i controller; iOS više nije no-op niti isključen autolink konfiguracijom. Web runtime ostaje no-op i web release paket ne uključuje native GMA modul. Jedan Expo plugin iz zaključane biblioteke postavlja oba App ID-a, Android classic backend, odgođenu measurement inicijalizaciju i Google SKAdNetwork identifikator. Ne uvodimo mediation partnere.

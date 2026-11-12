@@ -4,6 +4,8 @@
 
 ## ADS-001 nastavak 12.11.
 
+Source i predaja su objavljeni u [draft PR #1 prema mainu](https://github.com/salemko72/RANDOM-life/pull/1). Status je in_review za source, s otvorenim release uslovima; nema mergea.
+
 `ahmed-admob` je objavio claim i prenio samo WIP code commit na vlastitu `codex/ahmed-admob-finish` granu iz maina. Novi implementacijski source **`e1228ed725d63a56e280e00d3c840ab5890311b6`** uključuje zajednički Android/iOS runtime, iOS autolink/config, iPhone-only konfiguraciju, testne profile i staged app-ads/support/privacy ispravke. **328 testova/43 fajla PASS**, TypeScript, Expo compatibility, release exports i browser smoke PASS. Detalji i ograničenja su u [ADS-001 pregledu](../docs/ADS_001_REVIEW.md).
 
 GitHub write/API pristup ove sesije je potvrđen; ranija API403 blokada ispod opisuje prethodni account/okruženje. Expo prijava nije dostupna, kvota/signing/remote brojevi nisu provjereni. Nema novih APK/AAB/IPA, fizičkog SDK QA, web deploya ili store submissiona. Publika 16+ i tačan publisher red potvrđeni su od Ahmeda. Javni /app-ads.txt i /support.html još vraćaju HTML fallback; pripremljeni source to popravlja tek nakon posebno odobrenog deploya s očuvanim downloads. ADS-001 nije završen; main je neizmijenjen. Preostali odjeljci bilježe osnovu i prethodnu predaju od 11.11.

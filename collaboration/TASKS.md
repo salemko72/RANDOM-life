@@ -95,3 +95,13 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
+
+## RELEASE-002 — Salem: testni buildovi i provjere PR #1
+
+- **Odgovorni:** `salem-release`, po korisnikovom nalogu 12.11.2026. da završi dostupni dio i pripremi nastavak za Ahmedov Codex.
+- **Grana:** `codex/salem-ads-release-check`, base PR #1 `5a603da71b1716143887fcdb3a8dec3614a1a016`.
+- **Status:** `claimed`; prije izvršenja objaviti ovaj claim.
+- **Datoteke:** samo ovaj novi task, `docs/ADS_002_RELEASE_CHECK.md`, `docs/AHMED_CODEX_NEXT_STEPS.md`, `docs/APPLE_REVIEW_RESPONSE_DRAFT.md`, `docs/superpowers/plans/2026-11-12-ads-release-check.md`, vlastiti `collaboration/sessions/2026-11-12-salem-release-01.md`. Ahmed zadržava ADS-001 aplikacijski kod, konfiguraciju i web datoteke; bez njihovog uređivanja u ovom zadatku.
+- **Opis:** ponoviti provjere i pripremiti testni APK/AAB/iOS iz istog čistog sourcea uz postojeći signing i besplatnu kvotu. Bez auto-submit, mergea, novih ključeva, dodatnog troška, produkcijskog deploya ili DB izmjena.
+- **Kriteriji prihvatanja:** tačni SHA i EAS rezultati ili konkretne blokade; rezultati native/static/web provjera jasno razdvojeni od fizičkog QA; Apple Notes nacrt bez izmišljenog videa/licenci; drugi Codex ima precizne korake.
+- **Zavisnosti:** ADS-001 ostaje in_review; Play/ASC brojevi nisu potvrđeni iz konzola. Brojevi 9/3 su samo testni kandidati, ne dozvola za upload. Build-only pokušaj dopušten je sadašnjim nalogom ako nema troška; blokirati upload do konačne konzolne provjere. Fizički uređaji i operator konzola nisu dostupni ovom procesu.

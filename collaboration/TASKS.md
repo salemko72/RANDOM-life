@@ -86,9 +86,9 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 
 ## ADS-001 — Dovršiti AdMob za Android i iOS (zamjenjuje Android-only opseg ANDROID-001)
 
-- **Odgovorni:** Ahmed + Codex na njegovom accountu; stvarna oznaka/claim upisuje se pri preuzimanju.
-- **Grana:** vlastita `codex/ahmed-admob-finish`, iz predatog `codex/salem-admob-handoff`; PR prema najnovijem `main`.
-- **Status:** `open` — dodijeljen smjer, ali drugi Codex još nije objavio svoj claim.
+- **Odgovorni:** `ahmed-admob`, Codex uz Ahmeda, preuzimanje 12.11.2026. prema korisnikovom nalogu za izvršenje handoffa.
+- **Grana:** `codex/ahmed-admob-finish`, iz `origin/main` na `2c98dea77951048e00649e8f72cb7e0a848c1bf2`; nakon objavljenog claima prenijeti samo WIP `d4d0a6a150baa71591a2c427223aea69e8bcf17d`.
+- **Status:** `claimed` lokalno; objava claima i provjera write pristupa slijede prije implementacije. Remote TASKS pregledan na svim granama koje ga sadrže; otvoreni PR-ovi nisu potvrđeni zbog TLS greške API pristupa.
 - **Opis:** Zajednički AdMob source za obje native aplikacije. Postojeći WIP je Android-first, ne gotova iOS integracija. Ne mijenjati već poslani build 2.
 - **Datoteke:** App.tsx, app.json, eas.json, native ads moduli/plugin/autolink, ads bridge, WebExperience.tsx, dependencies/lock, ads testovi, privacy/support/app-ads hosting i release handoff prema dogovoru.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.

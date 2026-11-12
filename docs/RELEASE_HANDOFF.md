@@ -1,5 +1,13 @@
 # LifeSpinner — release handoff
 
+## Nastavak ADS-001 od 12.11.2026.
+
+Najnoviji implementacijski kandidat na `codex/ahmed-admob-finish` je **`e1228ed725d63a56e280e00d3c840ab5890311b6`**; oba native runtimea su pripremljena u sourceu, iOS više nije no-op. **328 testova/43 fajla**, TypeScript, Expo dependency check, release JS exports i browser smoke prolaze. [Kompletan pregled i tačne granice](ADS_001_REVIEW.md) razlikuju Android generated manifest od konačnog merged manifest-a, iOS introspekciju od Xcode/Pod/device builda, i staging od live deploya.
+
+Nema novih potpisanih artefakata: Expo CLI vraća Not logged in, kvota/signing/remote build brojevi nisu potvrđeni. Kandidati Android code9/iOS build3 nisu rezervisani remote brojevi. Nije zamrznut konačni release SHA. Potrebni su signing/build-only tok iz jednog čistog sourcea i zasebni fizički QA; zatim posebno odobrenje za slanje trgovinama. Ahmed je potvrdio publiku16+ i publisher red; app-ads/support/privacy su pripremljeni, ali javne prve dvije putanje još vraćaju HTML fallback. Nema web deploya; prije njega sačuvati stvarne downloads/bindinge. Main, produkcijski backend i stari iOS build2 ostaju neizmijenjeni.
+
+Sljedeći tekst čuva prethodnu predaju od 11.11.; za novi AdMob kandidat čitati prvo gornji pregled.
+
 **Stanje: 11.11.2026. Ovo nije odobrenje za build, deploy, merge ili store submission.** Zajednička stabilna grana je `main`; AdMob ostaje zasebno dok ne bude pregledan. Prije izdanja pročitati [AGENTS](../AGENTS.md), [STATUS](../collaboration/STATUS.md), [TASKS](../collaboration/TASKS.md) i provjeriti šta se u međuvremenu promijenilo.
 
 ## 1. Source provenance — ne miješati verziju, source i artefakt

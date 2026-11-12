@@ -2,6 +2,10 @@
 
 **Ažurirano: 12.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
 
+## Privacy i Data safety nastavak
+
+Data safety je dovršen završnim Save korakom; Publishing overview potvrđuje njegov red među6neposlanih promjena. Nije poslan na review. Nova ENG/BHS ads politika i statički patch s hashovima su pripremljeni/pregledani. Web objava čeka ovlašten pristup postojećem Pages projektu: korisnički odobrena nova prijava i retry rade, ali vide samo Ahmedov račun s0Pagesprojekata. Javni GET još pokazuje staru politiku i support/appads fallback. [Aktuelni audit](../docs/PRIVACY_DATA_SAFETY_RELEASE.md) zamjenjuje ranije navode da je Data safety samo radni draft; nema web deploya ili app rollouta.
+
 ## Android Play nastavak nakon Salemovih buildova
 
 **Najnoviji rezultat provjere:** nakon korisnikovog pauziranja ranijih testnih trackova, Play Preview više ne prikazuje AD_ID error. Ostao je samo deobfuscation warning; Save and publish je enabled i nije pritisnut. Interni draft ostaje neobjavljen. Ovo zamjenjuje ranije navode aktivne AD_ID blokade ispod; privacy/web/QA/prava ostaju otvoreni.

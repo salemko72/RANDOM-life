@@ -2,6 +2,12 @@
 
 **Ažurirano: 12.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
 
+## Android Play nastavak nakon Salemovih buildova
+
+[Najnoviji Android Play audit](../docs/ANDROID_PLAY_READINESS.md): lokalni APK0.23.0/code9 je hashiran, validanv2potpis i finalni manifest/SDKmetadata su pregledani. Korisnik potvrđuje normalan rad, pojavu oglasa i regionalnu poruku bez dodatnog privacy obrasca; kompletna fizička QA još nije provedena. Salemova zasebna grana dokumentuje završene APK/AAB/IPA buildove na `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`; to nadopunjuje raniji zapis ove grane bez native buildova.
+
+Direktni Play pregled potvrđuje production access i bundle codes5/6/7; code9 nije u inventaru3/3. Publika16–17/18+ već je ispravna. Sačuvane su neposlane Ads=Yes i privacyURL=/privacy.html promjene, AdvertisingID=Yes te radni Data safety draft. Ništa nije poslano na review/rollout. AAB nije lokalno preuzet zbog nedostajućeg Expo pristupa kroz trenutni prikaz, a upload-key fingerprint match još nije potvrđen. Web privacy/app-ads/support deploy i prava na tekstove ostaju otvoreni. Prethodni odjeljci ispod čuvaju ranije stanje implementacije.
+
 ## ADS-001 nastavak 12.11.
 
 Source i predaja su objavljeni u [draft PR #1 prema mainu](https://github.com/salemko72/RANDOM-life/pull/1). Status je in_review za source, s otvorenim release uslovima; nema mergea.

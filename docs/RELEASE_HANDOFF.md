@@ -1,5 +1,11 @@
 # LifeSpinner — release handoff
 
+## Najnovija Android Play priprema 12.11.2026.
+
+[APK audit i Play readiness](ANDROID_PLAY_READINESS.md) sada evidentiraju preuzeti APK0.23.0/code9, SHA256/validanpotpis/finalni manifest i GMA25.5.0/UMP4.0.0. Korisnik potvrđuje pojavu oglasa i regionalnu privacy-options poruku; ostali fizički scenariji su otvoreni. Salemova remote grana `codex/salem-ads-release-check` dokumentuje tri završena builda na `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`. Nisu pokrenuti duplikati.
+
+Play access i potpuni inventar3/3 (codes5,6,7) provjereni su direktno; code9 nije zauzet u tom trenutku. Pripremljene su neposlane promjene Containsads/AdvertisingID/tačan privacyURL i Data safety radni draft. Nema review submissiona ili rollouta. AAB i match upload-certifikata još su blokirani preuzimanjem/pristupom; nema tvrdnje da je APK potpis jednak Play upload ključu. Nema novog web deploya ili potpune fizičke QA. Ranije sekcije ispod su historijske i čitaju se uz ovaj nastavak.
+
 ## Nastavak ADS-001 od 12.11.2026.
 
 Najnoviji implementacijski kandidat na `codex/ahmed-admob-finish` je **`e1228ed725d63a56e280e00d3c840ab5890311b6`**; oba native runtimea su pripremljena u sourceu, iOS više nije no-op. **328 testova/43 fajla**, TypeScript, Expo dependency check, release JS exports i browser smoke prolaze. [Kompletan pregled i tačne granice](ADS_001_REVIEW.md) razlikuju Android generated manifest od konačnog merged manifest-a, iOS introspekciju od Xcode/Pod/device builda, i staging od live deploya.

@@ -12,3 +12,5 @@
 - **Blokade:** artifact redirect wf-artifacts.eascdn.net403, pa nema lokalnog APK/AAB/IPA, checksuma ni package audita. GitHub PR API403. Mrežni draft update nije sačuvan: draft_not_editable. Prijedlog hostova sačuvan lokalno u /workspace/shared/ads-release-check-2026-11-12/NETWORK_ACCESS_REQUEST.md.
 - **Nastavak:** docs/AHMED_CODEX_NEXT_STEPS.md; preuzeti postojeće buildove bez duplikata, uporediti potpise/brojeve u konzolama, finalni manifest/ATT i fizički QA, store izjave, prava na sadržaj i Apple fizički video. Notes nacrt ima eksplicitne nepopunjene stavke.
 - **Ovlaštenje:** završiti dostupne provjere i testne buildove bez dodatnog troška; nema mergea, force pusha, produkcijskog deploya/DB izmjene, live oglasa, auto-submit ili store uploada.
+
+- **Dokumentacijski commit predaje:** `74f0af26424d45be72d8b683cca460791a8bee80`; push na vlastitu granu potvrđen. Naknadni sesijski dodatak ne mijenja pinovani build source.

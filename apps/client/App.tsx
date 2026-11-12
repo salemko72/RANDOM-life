@@ -43,7 +43,7 @@ function NativeExperience(){
  }
 
  const ads=useRef<ReturnType<typeof createAdsRuntime>|null>(null);
- useEffect(()=>{if(Platform.OS!=='android')return;const runtime=createAdsRuntime();ads.current=runtime;runtime.active(AppState.currentState==='active');const listener=AppState.addEventListener('change',next=>runtime.active(next==='active'));return()=>{listener.remove();runtime.dispose();ads.current=null;};},[]);
+ useEffect(()=>{if(Platform.OS!=='android'&&Platform.OS!=='ios')return;const runtime=createAdsRuntime();ads.current=runtime;runtime.active(AppState.currentState==='active');const listener=AppState.addEventListener('change',next=>runtime.active(next==='active'));return()=>{listener.remove();runtime.dispose();ads.current=null;};},[]);
  const [error,setError]=useState('');
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
@@ -58,7 +58,7 @@ function NativeExperience(){
    if(!active)return;
    state.current=readSnapshot(raw);nativeMetric('profile_loaded');
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
-   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'});
+   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'||Platform.OS==='ios'});
    nativeMetric('assets_ready');if(active)setUri(local);
   }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};

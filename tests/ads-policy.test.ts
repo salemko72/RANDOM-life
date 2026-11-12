@@ -1,6 +1,6 @@
 import {describe,it,expect} from 'vitest';
 import {AdPolicy,parseAdMessage} from '../apps/client/src/native/ads-policy';
-describe('Android interstitial placement policy',()=>{
+describe('Shared native interstitial placement policy',()=>{
  it('rejects profile payloads, unknown events, oversized and invalid sequence messages',()=>{
   expect(parseAdMessage(JSON.stringify({type:'lifespinner.ads.v1',event:'spin',seq:1}))).toEqual({event:'spin',seq:1});
   for(const data of [{type:'lifespinner.ads.v1',event:'spin',seq:1,name:'Alex'},{type:'lifespinner.ads.v1',event:'start',seq:1},{type:'lifespinner.ads.v1',event:'home',seq:-1},{type:'lifespinner.ads.v1',event:'spin',seq:1.3}])expect(parseAdMessage(JSON.stringify(data))).toBeNull();

@@ -7,9 +7,9 @@
     "icon": "./icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.salemko.randomlife",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "icon": "./assets/ios-icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -39,7 +39,18 @@
     },
     "backgroundColor": "#fbefe7",
     "plugins": [
-      "./plugins/with-android-admob.cjs"
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidSdk": "classic",
+          "androidAppId": "ca-app-pub-8395430021391101~6926064985",
+          "iosAppId": "ca-app-pub-8395430021391101~6486035105",
+          "delayAppMeasurementInit": true,
+          "optimizeInitialization": true,
+          "optimizeAdLoading": true,
+          "skAdNetworkItems": ["cstr6suwn9.skadnetwork"]
+        }
+      ]
     ]
   }
 }

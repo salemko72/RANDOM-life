@@ -101,6 +101,8 @@ Sljedeći spisak opisuje stanje prije korisnikove dostave AAB-a; nastavak ispod 
 
 ## Dostavljeni AAB i spremljeni interni nacrt
 
+**Naknadna provjera nakon korisnikovog pauziranja prethodnih testnih trackova:** osvježen je Preview and confirm istog internog drafta. AD_ID error više ne postoji; prikazuje se samo1warning za nedostajući deobfuscation fajl. Save and publish je sada enabled, uz poruku da bi promjene odmah bile objavljene na Google Play. Dugme nije pritisnuto. Time je prethodna AD_ID blokada ispod razriješena, bez izmjene novog AAB-a ili isključivanja provjera od strane ove sesije. Korisnik je prijavio pauziranje trackova; pojedinačne track status promjene nisu zasebno pregledane. Ostale privacy/web/QA/rights release obaveze ostaju otvorene.
+
 Korisnik je zatim dostavio postojeći `application-665b90e5-16f0-44aa-8115-823e57403b4f.aab`. Nije rađen novi build. Nezavisni pregled lokalnih bajtova daje:
 
 | Stavka | Rezultat |

@@ -4,6 +4,8 @@
 
 ## Android Play nastavak nakon Salemovih buildova
 
+**Najnoviji rezultat provjere:** nakon korisnikovog pauziranja ranijih testnih trackova, Play Preview više ne prikazuje AD_ID error. Ostao je samo deobfuscation warning; Save and publish je enabled i nije pritisnut. Interni draft ostaje neobjavljen. Ovo zamjenjuje ranije navode aktivne AD_ID blokade ispod; privacy/web/QA/prava ostaju otvoreni.
+
 **Najnoviji nastavak:** dostavljeni AAB0.23.0/code9 je hashiran, jarsigner/bundletool provjere prolaze, signer odgovara APK-u; glavni JS i WebView HTML identični su testiranom APK-u. Play je prihvatio upload i sačuvao interno izdanje kao draft, bez objave. Code9 je sada zauzet. Preview blokira AD_ID greška jednog aktivnog artefakta, iako novi AAB dozvolu ima; stariji aktivni buildovi traže pregled. Data safety/web/QA/prava ostaju otvoreni. [Sesija03](sessions/2026-11-12-ahmed-admob-03.md) i završni odjeljak audita zamjenjuju raniju AAB-download blokadu u odlomcima ispod.
 
 [Najnoviji Android Play audit](../docs/ANDROID_PLAY_READINESS.md): lokalni APK0.23.0/code9 je hashiran, validanv2potpis i finalni manifest/SDKmetadata su pregledani. Korisnik potvrđuje normalan rad, pojavu oglasa i regionalnu poruku bez dodatnog privacy obrasca; kompletna fizička QA još nije provedena. Salemova zasebna grana dokumentuje završene APK/AAB/IPA buildove na `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`; to nadopunjuje raniji zapis ove grane bez native buildova.

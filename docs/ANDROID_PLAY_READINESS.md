@@ -84,11 +84,11 @@ Ponovljen stvarni HTTP GET:
 
 Privacy URL u Play nacrtu zato je ispravljen na root putanju. Nova ads politika, support i publisher fajl i dalje čekaju odobren deploy uz očuvanje stvarnog produkcijskog downloads inventara i bindinga. Ovaj nalaz nije potvrda AdMob crawler statusa. Nema Cloudflare deploya ili DB promjena.
 
-## AAB blokada i sljedeći koraci
+## AAB preuzimanje — prethodno stanje
 
 Postojeći AAB build ID je `665b90e5-16f0-44aa-8115-823e57403b4f`, source `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`, prema Salemovoj predaji FINISHED. Nije napravljen novi build. Anonimna EAS stranica store builda kaže da nema internal-distribution builda na tom URL-u; projektna lista kaže da nema dozvole. To ne dokazuje da AAB nedostaje, nego da taj anonimni prikaz nije ovlašten za store artefakt. Korisniku je zatražena Expo prijava s pristupom ili lokalni AAB koji preuzme Salem. Nema traženja/dijeljenja tokena.
 
-Za nastavak:
+Sljedeći spisak opisuje stanje prije korisnikove dostave AAB-a; nastavak ispod ga ažurira:
 
 1. Preuzeti **postojeći** AAB kroz ovlašteni račun, hashirati i provjeriti JAR potpis/finalni manifest. Upload certificate fingerprint iz Play upload-key odjeljka usporediti s AAB certifikatom; ne s Play app-signing ključem.
 2. AAB/test profil ostaje kandidat za testni track, ne production s live oglasima. Nema automatskog uploada/rollouta. Za produkcijske live oglase dogovoriti odgovarajući source/profile/versionCode i eventualno novi build tek uz kvotu i potrebu.
@@ -96,3 +96,34 @@ Za nastavak:
 4. Dovršiti/odobriti Data safety i sadržajni rating prema stvarnom SDK/katalogu; RIGHTS-001 nije zatvoren.
 5. Pripremiti konkretan siguran web deploy paket s aktualnim downloads/bindingima, pa tražiti odobrenje. Tek poslije provjeriti javne putanje i AdMob/store linking/readiness.
 6. Pregledati konačni neposlani skup u Publishing overview prije bilo kakvog slanja Googleu. Promjene nisu već objavljene samo zato što su sačuvane.
+
+## Dostavljeni AAB i spremljeni interni nacrt
+
+Korisnik je zatim dostavio postojeći `application-665b90e5-16f0-44aa-8115-823e57403b4f.aab`. Nije rađen novi build. Nezavisni pregled lokalnih bajtova daje:
+
+| Stavka | Rezultat |
+|---|---|
+| Veličina | 65.894.561 bajt |
+| SHA256 | `af4a755d6c9c8a72834522b8fc22f0f8067c79980f1e0a6243b13c70886c620d` |
+| JAR potpis | jarsigner: jar verified; SHA256withRSA, RSA2048 |
+| Signer SHA256 | `67768f6f56b3d542ab700b91e3e2dce6f0682c4798fa908927d53593cde6ed6e`, identičan APK signeru |
+| Bundletool validate | PASS, službeni Google bundletool1.18.3 |
+| Paket/verzija | com.salemko.randomlife, 0.23.0/code9, min24/target36/compile36 |
+| Finalni manifest | AD_ID i AdServices dozvole prisutne, tačan AdMob App ID, delayed-measurement flag true, portrait |
+| SDK metadata | GMA25.5.0 i UMP4.0.0 |
+
+Self-signed/no timestamp upozorenja jarsignera nisu neuspješan potpis Android upload artefakta. Potpis certifikata važi do 2054-03-02. Korišten je postojeći JBR21; službeni bundletool jar preuzet je iz google/bundletool GitHub releasea, uz SHA256 `a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29` jednak objavljenom asset digestu. Alat i binarni artefakti nisu u Git-u.
+
+APK i AAB sadrže byte-identičan glavni Hermes JS bundle (1.472.236 bajtova, SHA256 `f61cb3489646e33aea520e666aa65fada640bf086445537e46e77ef7a6c945d2`) i ugrađeni WebView HTML (13.545.802 bajta, SHA256 `cfa14df1f53b039d63af290b3b53e5f83ad0c3d11de8565acac4f043cbbd4bd5`). Ovo nije tvrdnja o fizičkom testiranju Play-generisanog APK-a ili svim native razlikama APK/AAB kontejnera.
+
+Play Console je prihvatio i obradio upload code9 bez greške upload potpisa. Time je potvrđena prihvatljivost konkretnog upload artefakta; zasebno kopiranje fingerprinta iz Play upload-key odjeljka i dalje nije urađeno. Code9 je sada zauzet učitanim AAB-om, više nije slobodan broj.
+
+Sačuvan je **internal testing draft**, release2 na postojećem internom tracku, naziv **0.23.0 (9) - AdMob internal test**. Play je prikazao potvrdu Changes saved. Bilješke izričito kažu Google test ads i traže provjeru navigacije, privacy kontrola i offline preporuka. Prethodni interni code5 nije uključen u novi nacrt. Nije pritisnut Save and publish; nema distribucije testerima ili production rollouta.
+
+Pregled Preview and confirm pokazuje:
+
+- **1 error:** Advertising ID izjava kaže Yes, ali jedan od aktivnih artefakata nema `com.google.android.gms.permission.AD_ID`. Novi code9 tu dozvolu dokazano ima. Stariji aktivni codes5/7 su kandidati za uzrok; konkretan problematični artefakt nije još nezavisno identifikovan. Ne mijenjati istinitu izjavu u No i ne tvrditi da treba rebuild9 zbog nedostajuće dozvole.
+- **1 warning:** nije priložen deobfuscation mapping fajl. Ovo je dijagnostičko upozorenje, zasebno od blokirajuće AD_ID greške; ne izmišljati mapping fajl ako R8 nije korišten.
+- Save and publish je disabled. Dugme Release without permission nije pritisnuto i release-error provjere nisu isključene.
+
+Sljedeće: pregledati dozvole starijih aktivnih track artefakata i pripremiti njihovu odgovarajuću zamjenu/deaktivaciju prije odobrene distribucije; konačnu odluku uskladiti sa stvarnim trackovima. Dovršiti Data safety, javnu ads privacy/support/app-ads objavu s očuvanim downloads/bindingima, fizičku QA i RIGHTS-001. Ovaj ads-test-store AAB ostaje kandidat za interni test. Production sa stvarnim oglasima zahtijeva eksplicitno odabran live profil, novi nezauzeti versionCode i potrebne provjere/odobrenje. Nema mergea, store-review submissiona, web deploya ili dodatnog EAS troška.

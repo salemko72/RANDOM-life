@@ -2,6 +2,8 @@
 
 ## Najnovija Android Play priprema 12.11.2026.
 
+**Nastavak nakon dostave AAB-a:** postojeći build665b90e5 preuzet je preko korisnika, lokalno provjeren (SHA256 `af4a755d6c9c8a72834522b8fc22f0f8067c79980f1e0a6243b13c70886c620d`, jarsigner/bundletool PASS, signer jednak APK-u). Play je prihvatio AAB0.23.0/code9 i sačuvan je interni draft release2. Code9 je sada zauzet. Nema objave/slanja na review. Preview blokira AD_ID greška jednog aktivnog artefakta; novi AAB dozvolu ima, a stariji aktivni codes5/7 traže pregled. Nije korišten Release without permission. AAB download blokada u ranijim odlomcima je razriješena; puna QA, Data safety, web i RIGHTS-001 ostaju otvoreni. Detalji i byte-identičan JS/HTML u [readiness nastavku](ANDROID_PLAY_READINESS.md#dostavljeni-aab-i-spremljeni-interni-nacrt).
+
 [APK audit i Play readiness](ANDROID_PLAY_READINESS.md) sada evidentiraju preuzeti APK0.23.0/code9, SHA256/validanpotpis/finalni manifest i GMA25.5.0/UMP4.0.0. Korisnik potvrđuje pojavu oglasa i regionalnu privacy-options poruku; ostali fizički scenariji su otvoreni. Salemova remote grana `codex/salem-ads-release-check` dokumentuje tri završena builda na `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`. Nisu pokrenuti duplikati.
 
 Play access i potpuni inventar3/3 (codes5,6,7) provjereni su direktno; code9 nije zauzet u tom trenutku. Pripremljene su neposlane promjene Containsads/AdvertisingID/tačan privacyURL i Data safety radni draft. Nema review submissiona ili rollouta. AAB i match upload-certifikata još su blokirani preuzimanjem/pristupom; nema tvrdnje da je APK potpis jednak Play upload ključu. Nema novog web deploya ili potpune fizičke QA. Ranije sekcije ispod su historijske i čitaju se uz ovaj nastavak.

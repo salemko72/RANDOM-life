@@ -1,5 +1,13 @@
 # Zajednički zadaci
 
+## PRIVACY-REL-001 — Objaviti ads privacy i dovršiti Play Data safety
+
+- **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1.
+- **Status:** claimed, 12.11.2026.; korisnik izričito traži novu javnu politiku privatnosti i dovršavanje Data safety izjave.
+- **Scope:** apps/client/public/legal/privacy.html i povezane legal/support/app-ads statičke putanje; vlastiti release audit/sesija04 i kratki TASKS/STATUS/RELEASE_HANDOFF. Samo potrebni deployment pomoćni alati; nema izmjena native aplikacije, novog builda, DB migracije ili Play rollouta.
+- **Kriteriji:** pregledati stvarne SDK/server podatke i Google kategorije; sačuvati kompletan aktuelni javni download inventar i Pages bindinge prije konkretnog odobrenog web deploya; provjeriti live privacy sadržaj i dovršeni neposlani Data safety obrazac. Ne tvrditi da je izjava objavljena na Playu bez submission/review dokaza. Korisnikov nalog odobrava ovu web objavu; ne odobrava automatski objavu aplikacije ili slanje svih drugih store promjena.
+- **Zavisnosti:** ovlašten pristup postojećem random-life-preview Pages projektu; bez širenja account ovlasti ili troška. Salemovi RELEASE-002 dokumenti ostaju izvan ovog scopea.
+
 ## ANDROID-REL-001 — Ahmedov APK audit i Google Play priprema
 
 - **AD_ID blokada razriješena:** nakon korisnikovog pauziranja starih testnih trackova, direktno osvježeni Preview prikazuje samo1deobfuscation warning i omogućeno Save and publish. Nema objave; preostale privacy/web/QA/rights obaveze ostaju otvorene. Raniji zapisi AD_ID errora ispod su historijski.

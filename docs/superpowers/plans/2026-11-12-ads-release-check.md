@@ -19,9 +19,11 @@
 - Browser smoke nije fizički QA.
 
 ## Koraci
-- [ ] Objaviti claim i ponovo provjeriti remote head.
-- [ ] Provjeriti kvotu, credentials metadata i EAS historiju; pinovati čist SHA.
-- [ ] Pokrenuti testne APK/AAB/iOS build-only pokušaje i pratiti ishod; bez slijepih retry petlji.
-- [ ] Provjeriti lokalni preview, native config i browser tokove; pregledati dostupne native build dokaze.
-- [ ] Napisati release nalaz, Apple odgovor i precizne zadatke za Ahmedov Codex.
-- [ ] Provjeriti dokumente, commit/push i pokušati PR; jasno navesti eventualni API403.
+- [x] Objaviti claim i ponovo provjeriti remote head.
+- [x] Provjeriti kvotu, credentials metadata i EAS historiju; pinovati čist SHA.
+- [x] Pokrenuti testne APK/AAB/iOS build-only pokušaje i pratiti ishod; bez slijepih retry petlji.
+- [x] Provjeriti lokalni preview, native config i browser tokove; pregledati dostupne native build dokaze.
+- [x] Napisati release nalaz, Apple odgovor i precizne zadatke za Ahmedov Codex.
+- [x] Provjeriti dokumente, commit/push i pokušati PR; jasno navesti eventualni API403.
+
+Izvršeno bez aplikacijskih izmjena.3 EAS builda FINISHED; lokalni download/package audit i otvaranje PR-a imaju konkretne mrežne blokade, opisane u ADS_002_RELEASE_CHECK. Nema deploya ili store submissiona.

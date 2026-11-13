@@ -2,6 +2,8 @@
 
 ## PRIVACY-REL-001 — Objaviti ads privacy i dovršiti Play Data safety
 
+- **13.11. nastavak:** logout/login je razriješio pristup Salemovom projektu; canonical manifest236/236assets sačuvan i hashiran, uključujući56downloadova. Kompletan kandidat spreman,235postojećih fajlova identično i samo privacy izmijenjen. Preview pokušaj odbijen automatskom approval provjerom prije izvršenja; čeka izričito odobrenje preview/production web objave. Nema deploya. Vidi [nastavak audita](../docs/PRIVACY_DATA_SAFETY_RELEASE.md) i [sesiju05](sessions/2026-11-13-ahmed-admob-05.md); ranija access blokada ispod je historijska.
+
 - **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1.
 - **Status:** in_review za source i Play pripremu; završni Data safety Save potvrđen (neposlano), ENG/BHS politika i statički patch spremni. Javna objava čeka pristup stvarnom Pages projektu; nova odobrena prijava vidi samo Ahmedov račun bez projekata. [Detalji](../docs/PRIVACY_DATA_SAFETY_RELEASE.md), [sesija04](sessions/2026-11-12-ahmed-admob-04.md).
 - **Scope:** apps/client/public/legal/privacy.html i povezane legal/support/app-ads statičke putanje; vlastiti release audit/sesija04 i kratki TASKS/STATUS/RELEASE_HANDOFF. Samo potrebni deployment pomoćni alati; nema izmjena native aplikacije, novog builda, DB migracije ili Play rollouta.

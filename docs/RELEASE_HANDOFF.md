@@ -2,6 +2,8 @@
 
 ## Privacy/Data safety najnoviji nastavak
 
+**13.11.:** Pages pristup radi nakon logout/login.236/236canonical statičkih fajlova (uključujući56downloadova) backupovano i hashirano. Kompletni privacy kandidat čuva235postojećih fajlova i mijenja samo politiku, uz dodatne support/app-ads/alias putanje; backend source isti, worker ponovo sastavljen. Preview deploy je odbijen automatskom approval provjerom prije izvršenja; čeka izričito odobrenje. Nema novog deploy ID-a. [Dokaz i ograničenja](PRIVACY_DATA_SAFETY_RELEASE.md), [sesija05](../collaboration/sessions/2026-11-13-ahmed-admob-05.md).
+
 [PRIVACY-REL-001 audit](PRIVACY_DATA_SAFETY_RELEASE.md): nova ENG/BHS politika i statički patch spremni, Data safety završni Save potvrđen kao neposlana promjena. Publishing overview ima6promjena, uključujući odvojene country/track izmjene; Submit nije pritisnut. Javna politika još nije objavljena: Cloudflare prijava s odobrenim Pages scopeom vidi samo Ahmedov račun bez projekata, i nakon korisnikovog retry zahtjeva. Treba pristup stvarnom random-life-preview, potpuni aktuelni asset/download/binding inventar i očuvanje prije deploya. Nema novog native builda, DB promjena, mergea ili store objave.
 
 ## Najnovija Android Play priprema 12.11.2026.

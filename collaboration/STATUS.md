@@ -4,6 +4,8 @@
 
 ## Privacy i Data safety nastavak
 
+**13.11.:** nova OAuth prijava sada vidi Salemov račun i Pages projekt. Svi236canonical statička fajla i56downloadova su sačuvani i provjereni; kompletan privacy kandidat spreman bez promjene postojećeg aplikacijskog JS/CSS. Automatski approval je odbio javni preview prije izvršenja; traženo izričito preview/production odobrenje. Nema novog web deploya. [Sesija05](sessions/2026-11-13-ahmed-admob-05.md) zamjenjuje raniju access blokadu, Data safety ostaje sačuvan/neposlan.
+
 Data safety je dovršen završnim Save korakom; Publishing overview potvrđuje njegov red među6neposlanih promjena. Nije poslan na review. Nova ENG/BHS ads politika i statički patch s hashovima su pripremljeni/pregledani. Web objava čeka ovlašten pristup postojećem Pages projektu: korisnički odobrena nova prijava i retry rade, ali vide samo Ahmedov račun s0Pagesprojekata. Javni GET još pokazuje staru politiku i support/appads fallback. [Aktuelni audit](../docs/PRIVACY_DATA_SAFETY_RELEASE.md) zamjenjuje ranije navode da je Data safety samo radni draft; nema web deploya ili app rollouta.
 
 ## Android Play nastavak nakon Salemovih buildova

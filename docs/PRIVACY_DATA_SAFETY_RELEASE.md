@@ -1,5 +1,24 @@
 # Privacy i Data safety — 12.11.2026.
 
+## Objavljeno 13.11.2026. — PRIVACY-REL-001 završen u odobrenom scopeu
+
+Korisnik je izričito odgovorio: **Da, odobravam preview i zatim produkcijsku web objavu**. Ranija approval blokada u historijskim odjeljcima ispod time je razriješena. Prije oba koraka provjereni su nepromijenjeni canonical deployment7f9ee8fc i konfiguracijski fingerprint te svi sačuvani fajlovi kandidata. Izvršeni su:
+
+- Preview `f16ac453-a96c-42b9-b635-5d039993bfe9`, https://f16ac453.random-life-preview.pages.dev, s kompletnom HTTP/hash provjerom i browser pregledom prije produkcije.
+- Production **`75f058a1-a191-4edd-a416-868c6e39332b`**, branch main postojećeg Pages projekta, javna adresa https://random-life-preview.pages.dev. Pages branch main ovdje nije Git merge; nema izmjene main grane.
+
+Javno provjereni novi ENG/BHS [privacy](https://random-life-preview.pages.dev/privacy.html) i [legal alias](https://random-life-preview.pages.dev/legal/privacy.html), [support](https://random-life-preview.pages.dev/support.html), deletion stranice i tačan [app-ads.txt](https://random-life-preview.pages.dev/app-ads.txt) uz Content-Type text/plain; SHA256 svakog sadržaja odgovara kandidatu. App-ads je59bajtova (publisher red plus završeci reda), nije HTML fallback. Browser pregled produkcijske BHS politike i screenshot sačuvani su lokalno.
+
+**Svi236postojeći statički URL-ovi su ponovo preuzeti/provjereni na preview i produkciji**:235su byte-identični prethodnoj produkciji, a privacy odgovara novoj politici. Posebno56/56downloadova je očuvano,37.684.247bajta. Produkcijski API manifest sada ima241statički fajl:235starih hash referenci, jednu promijenjenu privacy referencu i pet novih putanja (support/app-ads/tri legal aliasa). Nema privatnih backup fajlova u objavljenom paketu.
+
+Katalog/manifest vraćaju200,467stavki i isti version `59a712e7856e411d0d1b11e7c7c681cdb0e4e769522ccdbcd84a502df53eebf8` u preview i production provjerama. Database status200/ok=true/databaseConfigured=true; produkcija i dalje ima passwordConfigured=true i neprijavljeni auth=false. GET uredničkog `/api/content` vraća401. Nije testirana prijava lozinkom niti izvršena urednička ili DB migracijska radnja. Preview bez password bindinga je očekivano imao passwordConfigured=false, uz blokiran urednički API.
+
+Konfiguracijski fingerprint poslije deploya ostaje **`14c15d9022e4c98e2b5d678e4efaf913d391bcb63989459c9cad42fce0a3a237`**, jednak prethodnom; production/preview bindingi i secret konfiguracija nisu mijenjani. Rollback referenca je **`7f9ee8fc-8f34-4330-bc3b-46783ecc4bbe`**; stari deployment nije obrisan. Rollback nije izvršen i ne vraća DB sadržaj.
+
+Provenance je **složena**: legal source `e9ad94304d6da429718cdbc86fa3605c60ff2368`, neizmijenjeni statički assets iz tačnog7f9ee8fc immutable manifesta, i ponovo sastavljen neizmijenjeni backend source opisan ispod. Git SHA u deployment metadata nije dokaz da cijeli sačuvani web paket odgovara jednom čistom checkoutu tog SHA. Native aplikacija nije rebuildana, main nije mergean. [Mašinski čitljiv release dokaz](reviews/privacy-web-release-2026-11-13.json) sadrži sigurne rezultate, ne tajne.
+
+Data safety je već dovršen i sačuvan u Playu iz prethodne sesije. Ovaj nalog **nije uključivao Google Play submission/rollout**, pa izjava i druge pripremljene store promjene nisu poslane ovim radom. AdMob crawler/readiness i produkcijski live-ad native build nisu potvrđeni ovom web objavom. Globalni ADS-001/RIGHTS/QA uslovi ostaju zasebni.
+
 ## Nastavak 13.11.2026. — pristup radi, kandidat spreman
 
 Nakon stvarnog logout/login ciklusa i korisnikove potvrde Authorization granted to Wrangler, nova OAuth prijava vidi i Salemov račun `21db5c0516fc09fed9e4b49aed03f06d`. Wrangler pages deployment list za random-life-preview prolazi; nema potrebe za novim API tokenom ili širim admin ulogama. Prethodna autorizacijska blokada ispod je razriješena.

@@ -1,8 +1,10 @@
 # Trenutno stanje
 
-**Ažurirano: 12.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
+**Ažurirano: 13.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
 
 ## Privacy i Data safety nastavak
+
+**OBJAVLJENO13.11.:** korisnik odobrio preview→production, oba provjerena. Novi canonical deploy **75f058a1-a191-4edd-a416-868c6e39332b** javno služi novu ENG/BHS privacy politiku, support i tačan text/plain app-ads; svi56downloadova i235neizmijenjenih statičkih fajlova očuvani, binding/config fingerprint isti. Katalog467/health/auth401 PASS. PRIVACY-REL-001 done, Data safety dovršen/sačuvan bez Google review submissiona. [Sesija06](sessions/2026-11-13-ahmed-admob-06.md) i [dokaz](../docs/reviews/privacy-web-release-2026-11-13.json) zamjenjuju ranije neobjavljeno/access/approval navode ispod. Main nije mergean, native live-ad build i druge release obaveze ostaju otvoreni.
 
 **13.11.:** nova OAuth prijava sada vidi Salemov račun i Pages projekt. Svi236canonical statička fajla i56downloadova su sačuvani i provjereni; kompletan privacy kandidat spreman bez promjene postojećeg aplikacijskog JS/CSS. Automatski approval je odbio javni preview prije izvršenja; traženo izričito preview/production odobrenje. Nema novog web deploya. [Sesija05](sessions/2026-11-13-ahmed-admob-05.md) zamjenjuje raniju access blokadu, Data safety ostaje sačuvan/neposlan.
 

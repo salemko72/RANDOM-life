@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-13",
+  "task": "PRIVACY-REL-001",
+  "authorization": "Explicit user approval for preview, then production privacy/support/app-ads web publication after passing checks; Google Play excluded",
+  "project": "random-life-preview",
+  "account": "21db5c0516fc09fed9e4b49aed03f06d",
+  "policySource": "e9ad94304d6da429718cdbc86fa3605c60ff2368",
+  "provenance": "Composite: exact old canonical static assets preserved except privacy; legal additions from policy source; rebuilt unchanged services/artwork+packages/shared source. Deployment commit metadata is not a claim that the entire preserved site equals that Git SHA.",
+  "rollbackDeployment": "7f9ee8fc-8f34-4330-bc3b-46783ecc4bbe",
+  "productionDeployment": "75f058a1-a191-4edd-a416-868c6e39332b",
+  "previewDeployment": "f16ac453-a96c-42b9-b635-5d039993bfe9",
+  "configurationSha256": "14c15d9022e4c98e2b5d678e4efaf913d391bcb63989459c9cad42fce0a3a237",
+  "configurationPreserved": true,
+  "preservation": {
+    "deployment": "75f058a1-a191-4edd-a416-868c6e39332b",
+    "files": 241,
+    "preservedHashReferences": 235,
+    "changed": [
+      "/privacy.html"
+    ],
+    "added": [
+      "/app-ads.txt",
+      "/legal/delete-data.html",
+      "/legal/privacy.html",
+      "/legal/support.html",
+      "/support.html"
+    ],
+    "downloadReferencesPreserved": 56
+  },
+  "previewChecks": {
+    "url": "https://f16ac453.random-life-preview.pages.dev",
+    "label": "preview",
+    "checks": [
+      {
+        "path": "/privacy.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "0703ba052178b43b356099ca9e4c34e80d74249a42629dc13a51bf893774d5ac",
+        "pass": true
+      },
+      {
+        "path": "/legal/privacy.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "0703ba052178b43b356099ca9e4c34e80d74249a42629dc13a51bf893774d5ac",
+        "pass": true
+      },
+      {
+        "path": "/support.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "8e29ee87aaf34f74318018ad21378e7e48e76619bce59c1ba4f91ba8ab8f9f8b",
+        "pass": true
+      },
+      {
+        "path": "/legal/support.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "8e29ee87aaf34f74318018ad21378e7e48e76619bce59c1ba4f91ba8ab8f9f8b",
+        "pass": true
+      },
+      {
+        "path": "/delete-data.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "872a866173076c9049b429a427218993ac05a4cbdf4839e692da86e09050977e",
+        "pass": true
+      },
+      {
+        "path": "/legal/delete-data.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "872a866173076c9049b429a427218993ac05a4cbdf4839e692da86e09050977e",
+        "pass": true
+      },
+      {
+        "path": "/app-ads.txt",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "sha256": "2003b64a676312a7ff52a6afc7415b4cdbe55cb8773918f90f7e89e398f6abde",
+        "pass": true
+      }
+    ],
+    "existingAssetsVerified": 236,
+    "downloadsVerified": 56,
+    "database": {
+      "status": 200,
+      "databaseConfigured": true,
+      "passwordConfigured": false,
+      "authenticated": false,
+      "ok": true
+    },
+    "catalog": {
+      "status": 200,
+      "manifestStatus": 200,
+      "itemCount": 467,
+      "version": "59a712e7856e411d0d1b11e7c7c681cdb0e4e769522ccdbcd84a502df53eebf8",
+      "sha256": "ecf7d178d9b634c82c9e113365f29eb95c4702a7a004666cf1392a21b66744f9"
+    },
+    "editorialUnauthenticatedStatus": 401,
+    "failures": []
+  },
+  "productionChecks": {
+    "url": "https://random-life-preview.pages.dev",
+    "label": "production",
+    "checks": [
+      {
+        "path": "/privacy.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "0703ba052178b43b356099ca9e4c34e80d74249a42629dc13a51bf893774d5ac",
+        "pass": true
+      },
+      {
+        "path": "/legal/privacy.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "0703ba052178b43b356099ca9e4c34e80d74249a42629dc13a51bf893774d5ac",
+        "pass": true
+      },
+      {
+        "path": "/support.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "8e29ee87aaf34f74318018ad21378e7e48e76619bce59c1ba4f91ba8ab8f9f8b",
+        "pass": true
+      },
+      {
+        "path": "/legal/support.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "8e29ee87aaf34f74318018ad21378e7e48e76619bce59c1ba4f91ba8ab8f9f8b",
+        "pass": true
+      },
+      {
+        "path": "/delete-data.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "872a866173076c9049b429a427218993ac05a4cbdf4839e692da86e09050977e",
+        "pass": true
+      },
+      {
+        "path": "/legal/delete-data.html",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sha256": "872a866173076c9049b429a427218993ac05a4cbdf4839e692da86e09050977e",
+        "pass": true
+      },
+      {
+        "path": "/app-ads.txt",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "sha256": "2003b64a676312a7ff52a6afc7415b4cdbe55cb8773918f90f7e89e398f6abde",
+        "pass": true
+      }
+    ],
+    "existingAssetsVerified": 236,
+    "downloadsVerified": 56,
+    "database": {
+      "status": 200,
+      "databaseConfigured": true,
+      "passwordConfigured": true,
+      "authenticated": false,
+      "ok": true
+    },
+    "catalog": {
+      "status": 200,
+      "manifestStatus": 200,
+      "itemCount": 467,
+      "version": "59a712e7856e411d0d1b11e7c7c681cdb0e4e769522ccdbcd84a502df53eebf8",
+      "sha256": "ecf7d178d9b634c82c9e113365f29eb95c4702a7a004666cf1392a21b66744f9"
+    },
+    "editorialUnauthenticatedStatus": 401,
+    "failures": []
+  }
+}

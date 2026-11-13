@@ -2,6 +2,10 @@
 
 **Ažurirano: 13.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
 
+## Android AAB s pravim oglasnim jedinicama
+
+Korisnik je zatražio novi Android build-only AAB s pravim oglasnim jedinicama. Kandidat0.23.0/code10 uz postojeći ads-live profil je pripremljen;328tests/TypeScript/live JS export prolaze, ID/NPA/literal live provjereni. Play inventar4/4 sadrži9/7/6/5. EAS whoami nije prijavljen; pokrenut browser login čeka korisnika, pa EAS inventar/kvota/signing i remote build nisu još potvrđeni. Nema novog AAB-a, troška ili store slanja. [Sesija07](sessions/2026-11-13-ahmed-admob-07.md).
+
 ## Privacy i Data safety nastavak
 
 **OBJAVLJENO13.11.:** korisnik odobrio preview→production, oba provjerena. Novi canonical deploy **75f058a1-a191-4edd-a416-868c6e39332b** javno služi novu ENG/BHS privacy politiku, support i tačan text/plain app-ads; svi56downloadova i235neizmijenjenih statičkih fajlova očuvani, binding/config fingerprint isti. Katalog467/health/auth401 PASS. PRIVACY-REL-001 done, Data safety dovršen/sačuvan bez Google review submissiona. [Sesija06](sessions/2026-11-13-ahmed-admob-06.md) i [dokaz](../docs/reviews/privacy-web-release-2026-11-13.json) zamjenjuju ranije neobjavljeno/access/approval navode ispod. Main nije mergean, native live-ad build i druge release obaveze ostaju otvoreni.

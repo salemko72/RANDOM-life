@@ -1,5 +1,9 @@
 # LifeSpinner — release handoff
 
+## Android live AAB kandidat13.11.
+
+ANDROID-LIVE-001: korisnik traži build-only AAB s pravim jedinicama. Android candidate code10 (Play inventar trenutno9/7/6/5), postojeći ads-live profil;328tests/typecheck i live JS export PASS. Čeka Expo browser login, EAS kvotu/inventar i stvarni remote build. Ovo još nije potpisani AAB niti production approval. [Sesija07](../collaboration/sessions/2026-11-13-ahmed-admob-07.md); nema Play uploada/submissiona/rollouta ili novog web deploya.
+
 ## Privacy/Data safety najnoviji nastavak
 
 **OBJAVLJENO13.11.:** previewf16ac453-a96c-42b9-b635-5d039993bfe9 i production**75f058a1-a191-4edd-a416-868c6e39332b** prošli provjere uz izričito korisničko odobrenje. Nova privacy/support/app-ads stvarno javni,235starih statičkih hash referenci i56downloadova očuvani; novi manifest241assets. Backend source neizmijenjen/rebuilt, config fingerprint isti, katalog467 i auth401 PASS. Rollback referenca7f9ee8fc-8f34-4330-bc3b-46783ecc4bbe. [Release dokaz](reviews/privacy-web-release-2026-11-13.json), [sesija06](../collaboration/sessions/2026-11-13-ahmed-admob-06.md); ranije blokade ispod su historijske. Data safety sačuvan, nema Google Play submissiona/rollouta, native builda ili mergea.

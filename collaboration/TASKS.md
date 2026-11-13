@@ -3,7 +3,7 @@
 ## ANDROID-LIVE-001 — Novi AAB s pravim oglasnim jedinicama
 
 - **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1,13.11.2026.
-- **Status:** claimed prije implementacije; korisnik izričito traži pripremu novog AAB-a s pravim oglasima. To nije nalog za Play upload/submission/rollout.
+- **Status:** in_progress; source kandidat Android0.23.0/code10 pripremljen,328tests/TypeScript/live release export PASS. Play4/4 inventar9/7/6/5 potvrđen; EAS pristup/inventar/kvota čekaju browser login. Nema remote builda ili AAB-a još. [Sesija07](sessions/2026-11-13-ahmed-admob-07.md). Korisnikov nalog nije Play upload/submission/rollout.
 - **Scope:** apps/client/app.json (novi slobodan Android versionCode), postojeći eksplicitni ads-live EAS profil i potrebne release provjere/dokumentacija; vlastita sesija07 i kratki status/handoff. Bez nepotrebnih SDK/runtime promjena, iOS builda, web deploya ili novog signera.
 - **Kriteriji:** potvrditi postojeću Expo autorizaciju i besplatnu EAS kvotu prije builda; provjeriti EAS/Play brojeve, zamrznuti čist source SHA, provjeriti live mode/NPA i tačne Android ID-ove, napraviti samo Android AAB bez auto-submit. Preuzeti postojeći rezultat, provjeriti finalni manifest/potpis/SHA256 i predati artefakt+GitHub dokaz. Ako pristup ili kvota nedostaju, ne izmišljati build i ne pokretati naplativu zamjenu.
 - **Korisničke potvrde:** screenshot AdMob Android AppID odgovara sourceu, ad-unit ID podudaran po korisniku, Published European regulations/Android/policy/choices korisnički potvrđeni. Manualno dodavanje testnog uređaja korisnik odgodio; novi AAB nije time fizički QA ili AdMob Ready potvrđen. RIGHTS-001 i druge store release obaveze ostaju otvorene.

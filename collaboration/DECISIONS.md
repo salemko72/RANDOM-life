@@ -2,6 +2,13 @@
 
 Samo potvrđeno označiti `DECIDED`; prijedlog je `OPEN`. Najnovija izričita korisnička odluka ima prednost. Sačuvati historiju, datum, razlog i posljedice; stare dokumente ne prepravljati tako da izgledaju kao da je nova odluka oduvijek važila.
 
+## D-010 — Publika 16+ i publisher izjava za ADS-001
+
+- **Datum/status/owner:** 12.11.2026., `DECIDED`, Ahmed kroz izričit odgovor u ovoj sesiji.
+- **Problem/opcije:** handoff traži potvrdu namjeravane publike i tačan app-ads.txt red; publisher ID sam nije dovoljan za izmišljanje cijele izjave.
+- **Odluka/razlog:** namjeravana publika **16+**; dostavljen red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`.
+- **Posljedice:** source/staging sadrže taj red i aplikacija se ne označava child-directed. Stvarna dob i under-age consent status ne zaključuju se iz publike. Ahmed/Salem usklađuju store upitnike, UMP i stvarne SDK izjave; nema automatskog live builda, deploya ili store submissiona. Live /app-ads.txt još nije ispravan niti crawler potvrđen.
+
 ## D-001 — Saradnja kroz isti repo i zasebne grane
 
 - **Datum/status/owner:** 11.11.2026., `DECIDED`, korisnik; operativni vlasnik se navodi po tasku.

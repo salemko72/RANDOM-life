@@ -1,6 +1,36 @@
 # Trenutno stanje
 
-**Ažurirano: 11.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
+**Ažurirano: 13.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
+
+## Android AAB s pravim oglasnim jedinicama
+
+Korisnik je zatražio novi Android build-only AAB s pravim oglasnim jedinicama. Kandidat0.23.0/code10 uz postojeći ads-live profil je pripremljen;328tests/TypeScript/live JS export prolaze, ID/NPA/literal live provjereni. Play inventar4/4 sadrži9/7/6/5. EAS whoami nije prijavljen; pokrenut browser login čeka korisnika, pa EAS inventar/kvota/signing i remote build nisu još potvrđeni. Nema novog AAB-a, troška ili store slanja. [Sesija07](sessions/2026-11-13-ahmed-admob-07.md).
+
+## Privacy i Data safety nastavak
+
+**OBJAVLJENO13.11.:** korisnik odobrio preview→production, oba provjerena. Novi canonical deploy **75f058a1-a191-4edd-a416-868c6e39332b** javno služi novu ENG/BHS privacy politiku, support i tačan text/plain app-ads; svi56downloadova i235neizmijenjenih statičkih fajlova očuvani, binding/config fingerprint isti. Katalog467/health/auth401 PASS. PRIVACY-REL-001 done, Data safety dovršen/sačuvan bez Google review submissiona. [Sesija06](sessions/2026-11-13-ahmed-admob-06.md) i [dokaz](../docs/reviews/privacy-web-release-2026-11-13.json) zamjenjuju ranije neobjavljeno/access/approval navode ispod. Main nije mergean, native live-ad build i druge release obaveze ostaju otvoreni.
+
+**13.11.:** nova OAuth prijava sada vidi Salemov račun i Pages projekt. Svi236canonical statička fajla i56downloadova su sačuvani i provjereni; kompletan privacy kandidat spreman bez promjene postojećeg aplikacijskog JS/CSS. Automatski approval je odbio javni preview prije izvršenja; traženo izričito preview/production odobrenje. Nema novog web deploya. [Sesija05](sessions/2026-11-13-ahmed-admob-05.md) zamjenjuje raniju access blokadu, Data safety ostaje sačuvan/neposlan.
+
+Data safety je dovršen završnim Save korakom; Publishing overview potvrđuje njegov red među6neposlanih promjena. Nije poslan na review. Nova ENG/BHS ads politika i statički patch s hashovima su pripremljeni/pregledani. Web objava čeka ovlašten pristup postojećem Pages projektu: korisnički odobrena nova prijava i retry rade, ali vide samo Ahmedov račun s0Pagesprojekata. Javni GET još pokazuje staru politiku i support/appads fallback. [Aktuelni audit](../docs/PRIVACY_DATA_SAFETY_RELEASE.md) zamjenjuje ranije navode da je Data safety samo radni draft; nema web deploya ili app rollouta.
+
+## Android Play nastavak nakon Salemovih buildova
+
+**Najnoviji rezultat provjere:** nakon korisnikovog pauziranja ranijih testnih trackova, Play Preview više ne prikazuje AD_ID error. Ostao je samo deobfuscation warning; Save and publish je enabled i nije pritisnut. Interni draft ostaje neobjavljen. Ovo zamjenjuje ranije navode aktivne AD_ID blokade ispod; privacy/web/QA/prava ostaju otvoreni.
+
+**Najnoviji nastavak:** dostavljeni AAB0.23.0/code9 je hashiran, jarsigner/bundletool provjere prolaze, signer odgovara APK-u; glavni JS i WebView HTML identični su testiranom APK-u. Play je prihvatio upload i sačuvao interno izdanje kao draft, bez objave. Code9 je sada zauzet. Preview blokira AD_ID greška jednog aktivnog artefakta, iako novi AAB dozvolu ima; stariji aktivni buildovi traže pregled. Data safety/web/QA/prava ostaju otvoreni. [Sesija03](sessions/2026-11-12-ahmed-admob-03.md) i završni odjeljak audita zamjenjuju raniju AAB-download blokadu u odlomcima ispod.
+
+[Najnoviji Android Play audit](../docs/ANDROID_PLAY_READINESS.md): lokalni APK0.23.0/code9 je hashiran, validanv2potpis i finalni manifest/SDKmetadata su pregledani. Korisnik potvrđuje normalan rad, pojavu oglasa i regionalnu poruku bez dodatnog privacy obrasca; kompletna fizička QA još nije provedena. Salemova zasebna grana dokumentuje završene APK/AAB/IPA buildove na `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`; to nadopunjuje raniji zapis ove grane bez native buildova.
+
+Direktni Play pregled potvrđuje production access i bundle codes5/6/7; code9 nije u inventaru3/3. Publika16–17/18+ već je ispravna. Sačuvane su neposlane Ads=Yes i privacyURL=/privacy.html promjene, AdvertisingID=Yes te radni Data safety draft. Ništa nije poslano na review/rollout. AAB nije lokalno preuzet zbog nedostajućeg Expo pristupa kroz trenutni prikaz, a upload-key fingerprint match još nije potvrđen. Web privacy/app-ads/support deploy i prava na tekstove ostaju otvoreni. Prethodni odjeljci ispod čuvaju ranije stanje implementacije.
+
+## ADS-001 nastavak 12.11.
+
+Source i predaja su objavljeni u [draft PR #1 prema mainu](https://github.com/salemko72/RANDOM-life/pull/1). Status je in_review za source, s otvorenim release uslovima; nema mergea.
+
+`ahmed-admob` je objavio claim i prenio samo WIP code commit na vlastitu `codex/ahmed-admob-finish` granu iz maina. Novi implementacijski source **`e1228ed725d63a56e280e00d3c840ab5890311b6`** uključuje zajednički Android/iOS runtime, iOS autolink/config, iPhone-only konfiguraciju, testne profile i staged app-ads/support/privacy ispravke. **328 testova/43 fajla PASS**, TypeScript, Expo compatibility, release exports i browser smoke PASS. Detalji i ograničenja su u [ADS-001 pregledu](../docs/ADS_001_REVIEW.md).
+
+GitHub write/API pristup ove sesije je potvrđen; ranija API403 blokada ispod opisuje prethodni account/okruženje. Expo prijava nije dostupna, kvota/signing/remote brojevi nisu provjereni. Nema novih APK/AAB/IPA, fizičkog SDK QA, web deploya ili store submissiona. Publika 16+ i tačan publisher red potvrđeni su od Ahmeda. Javni /app-ads.txt i /support.html još vraćaju HTML fallback; pripremljeni source to popravlja tek nakon posebno odobrenog deploya s očuvanim downloads. ADS-001 nije završen; main je neizmijenjen. Preostali odjeljci bilježe osnovu i prethodnu predaju od 11.11.
 
 ## Zajednička osnova i predaja
 

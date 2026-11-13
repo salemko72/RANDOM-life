@@ -1,5 +1,35 @@
 # LifeSpinner — release handoff
 
+## Android live AAB kandidat13.11.
+
+ANDROID-LIVE-001: korisnik traži build-only AAB s pravim jedinicama. Android candidate code10 (Play inventar trenutno9/7/6/5), postojeći ads-live profil;328tests/typecheck i live JS export PASS. Čeka Expo browser login, EAS kvotu/inventar i stvarni remote build. Ovo još nije potpisani AAB niti production approval. [Sesija07](../collaboration/sessions/2026-11-13-ahmed-admob-07.md); nema Play uploada/submissiona/rollouta ili novog web deploya.
+
+## Privacy/Data safety najnoviji nastavak
+
+**OBJAVLJENO13.11.:** previewf16ac453-a96c-42b9-b635-5d039993bfe9 i production**75f058a1-a191-4edd-a416-868c6e39332b** prošli provjere uz izričito korisničko odobrenje. Nova privacy/support/app-ads stvarno javni,235starih statičkih hash referenci i56downloadova očuvani; novi manifest241assets. Backend source neizmijenjen/rebuilt, config fingerprint isti, katalog467 i auth401 PASS. Rollback referenca7f9ee8fc-8f34-4330-bc3b-46783ecc4bbe. [Release dokaz](reviews/privacy-web-release-2026-11-13.json), [sesija06](../collaboration/sessions/2026-11-13-ahmed-admob-06.md); ranije blokade ispod su historijske. Data safety sačuvan, nema Google Play submissiona/rollouta, native builda ili mergea.
+
+**13.11.:** Pages pristup radi nakon logout/login.236/236canonical statičkih fajlova (uključujući56downloadova) backupovano i hashirano. Kompletni privacy kandidat čuva235postojećih fajlova i mijenja samo politiku, uz dodatne support/app-ads/alias putanje; backend source isti, worker ponovo sastavljen. Preview deploy je odbijen automatskom approval provjerom prije izvršenja; čeka izričito odobrenje. Nema novog deploy ID-a. [Dokaz i ograničenja](PRIVACY_DATA_SAFETY_RELEASE.md), [sesija05](../collaboration/sessions/2026-11-13-ahmed-admob-05.md).
+
+[PRIVACY-REL-001 audit](PRIVACY_DATA_SAFETY_RELEASE.md): nova ENG/BHS politika i statički patch spremni, Data safety završni Save potvrđen kao neposlana promjena. Publishing overview ima6promjena, uključujući odvojene country/track izmjene; Submit nije pritisnut. Javna politika još nije objavljena: Cloudflare prijava s odobrenim Pages scopeom vidi samo Ahmedov račun bez projekata, i nakon korisnikovog retry zahtjeva. Treba pristup stvarnom random-life-preview, potpuni aktuelni asset/download/binding inventar i očuvanje prije deploya. Nema novog native builda, DB promjena, mergea ili store objave.
+
+## Najnovija Android Play priprema 12.11.2026.
+
+**Posljednja Play provjera:** korisnik je pauzirao prethodne testne trackove; osvježeni Preview internog release2 više nema AD_ID error. Samo deobfuscation warning ostaje, Save and publish enabled. Nije pritisnut; poruka izričito najavljuje neposrednu objavu nakon tog koraka. Ostale obaveze nisu time riješene. Ovo zamjenjuje navode AD_ID blokade u ranijim odlomcima.
+
+**Nastavak nakon dostave AAB-a:** postojeći build665b90e5 preuzet je preko korisnika, lokalno provjeren (SHA256 `af4a755d6c9c8a72834522b8fc22f0f8067c79980f1e0a6243b13c70886c620d`, jarsigner/bundletool PASS, signer jednak APK-u). Play je prihvatio AAB0.23.0/code9 i sačuvan je interni draft release2. Code9 je sada zauzet. Nema objave/slanja na review. Preview blokira AD_ID greška jednog aktivnog artefakta; novi AAB dozvolu ima, a stariji aktivni codes5/7 traže pregled. Nije korišten Release without permission. AAB download blokada u ranijim odlomcima je razriješena; puna QA, Data safety, web i RIGHTS-001 ostaju otvoreni. Detalji i byte-identičan JS/HTML u [readiness nastavku](ANDROID_PLAY_READINESS.md#dostavljeni-aab-i-spremljeni-interni-nacrt).
+
+[APK audit i Play readiness](ANDROID_PLAY_READINESS.md) sada evidentiraju preuzeti APK0.23.0/code9, SHA256/validanpotpis/finalni manifest i GMA25.5.0/UMP4.0.0. Korisnik potvrđuje pojavu oglasa i regionalnu privacy-options poruku; ostali fizički scenariji su otvoreni. Salemova remote grana `codex/salem-ads-release-check` dokumentuje tri završena builda na `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`. Nisu pokrenuti duplikati.
+
+Play access i potpuni inventar3/3 (codes5,6,7) provjereni su direktno; code9 nije zauzet u tom trenutku. Pripremljene su neposlane promjene Containsads/AdvertisingID/tačan privacyURL i Data safety radni draft. Nema review submissiona ili rollouta. AAB i match upload-certifikata još su blokirani preuzimanjem/pristupom; nema tvrdnje da je APK potpis jednak Play upload ključu. Nema novog web deploya ili potpune fizičke QA. Ranije sekcije ispod su historijske i čitaju se uz ovaj nastavak.
+
+## Nastavak ADS-001 od 12.11.2026.
+
+Najnoviji implementacijski kandidat na `codex/ahmed-admob-finish` je **`e1228ed725d63a56e280e00d3c840ab5890311b6`**; oba native runtimea su pripremljena u sourceu, iOS više nije no-op. **328 testova/43 fajla**, TypeScript, Expo dependency check, release JS exports i browser smoke prolaze. [Kompletan pregled i tačne granice](ADS_001_REVIEW.md) razlikuju Android generated manifest od konačnog merged manifest-a, iOS introspekciju od Xcode/Pod/device builda, i staging od live deploya.
+
+Nema novih potpisanih artefakata: Expo CLI vraća Not logged in, kvota/signing/remote build brojevi nisu potvrđeni. Kandidati Android code9/iOS build3 nisu rezervisani remote brojevi. Nije zamrznut konačni release SHA. Potrebni su signing/build-only tok iz jednog čistog sourcea i zasebni fizički QA; zatim posebno odobrenje za slanje trgovinama. Ahmed je potvrdio publiku16+ i publisher red; app-ads/support/privacy su pripremljeni, ali javne prve dvije putanje još vraćaju HTML fallback. Nema web deploya; prije njega sačuvati stvarne downloads/bindinge. Main, produkcijski backend i stari iOS build2 ostaju neizmijenjeni.
+
+Sljedeći tekst čuva prethodnu predaju od 11.11.; za novi AdMob kandidat čitati prvo gornji pregled.
+
 **Stanje: 11.11.2026. Ovo nije odobrenje za build, deploy, merge ili store submission.** Zajednička stabilna grana je `main`; AdMob ostaje zasebno dok ne bude pregledan. Prije izdanja pročitati [AGENTS](../AGENTS.md), [STATUS](../collaboration/STATUS.md), [TASKS](../collaboration/TASKS.md) i provjeriti šta se u međuvremenu promijenilo.
 
 ## 1. Source provenance — ne miješati verziju, source i artefakt

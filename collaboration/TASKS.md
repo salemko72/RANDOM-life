@@ -1,5 +1,38 @@
 # Zajednički zadaci
 
+## ANDROID-LIVE-001 — Novi AAB s pravim oglasnim jedinicama
+
+- **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1,13.11.2026.
+- **Status:** in_progress; source kandidat Android0.23.0/code10 pripremljen,328tests/TypeScript/live release export PASS. Play4/4 inventar9/7/6/5 potvrđen; EAS pristup/inventar/kvota čekaju browser login. Nema remote builda ili AAB-a još. [Sesija07](sessions/2026-11-13-ahmed-admob-07.md). Korisnikov nalog nije Play upload/submission/rollout.
+- **Scope:** apps/client/app.json (novi slobodan Android versionCode), postojeći eksplicitni ads-live EAS profil i potrebne release provjere/dokumentacija; vlastita sesija07 i kratki status/handoff. Bez nepotrebnih SDK/runtime promjena, iOS builda, web deploya ili novog signera.
+- **Kriteriji:** potvrditi postojeću Expo autorizaciju i besplatnu EAS kvotu prije builda; provjeriti EAS/Play brojeve, zamrznuti čist source SHA, provjeriti live mode/NPA i tačne Android ID-ove, napraviti samo Android AAB bez auto-submit. Preuzeti postojeći rezultat, provjeriti finalni manifest/potpis/SHA256 i predati artefakt+GitHub dokaz. Ako pristup ili kvota nedostaju, ne izmišljati build i ne pokretati naplativu zamjenu.
+- **Korisničke potvrde:** screenshot AdMob Android AppID odgovara sourceu, ad-unit ID podudaran po korisniku, Published European regulations/Android/policy/choices korisnički potvrđeni. Manualno dodavanje testnog uređaja korisnik odgodio; novi AAB nije time fizički QA ili AdMob Ready potvrđen. RIGHTS-001 i druge store release obaveze ostaju otvorene.
+
+## PRIVACY-REL-001 — Objaviti ads privacy i dovršiti Play Data safety
+
+- **Završeno13.11.:** uz izričito odobren preview→production, privacy/support/app-ads javno objavljeni na deployu75f058a1-a191-4edd-a416-868c6e39332b. Preview i production HTTP/hash/backend provjere PASS,56downloadova/235neizmijenjenih assets i binding fingerprint očuvani. Data safety dovršen/sačuvan, nije poslan Googleu. [Release dokaz](../docs/reviews/privacy-web-release-2026-11-13.json), [sesija06](sessions/2026-11-13-ahmed-admob-06.md). Ovim je razriješena ranija approval/access blokada.
+
+- **13.11. nastavak:** logout/login je razriješio pristup Salemovom projektu; canonical manifest236/236assets sačuvan i hashiran, uključujući56downloadova. Kompletan kandidat spreman,235postojećih fajlova identično i samo privacy izmijenjen. Preview pokušaj odbijen automatskom approval provjerom prije izvršenja; čeka izričito odobrenje preview/production web objave. Nema deploya. Vidi [nastavak audita](../docs/PRIVACY_DATA_SAFETY_RELEASE.md) i [sesiju05](sessions/2026-11-13-ahmed-admob-05.md); ranija access blokada ispod je historijska.
+
+- **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1.
+- **Status:** done za ovaj odobreni scope; javna politika/support/app-ads i dovršen neposlani Data safety potvrđeni. Source PR ostaje draft, opći ADS-001/native-release uslovi nisu ovim zatvoreni. [Detalji](../docs/PRIVACY_DATA_SAFETY_RELEASE.md).
+- **Scope:** apps/client/public/legal/privacy.html i povezane legal/support/app-ads statičke putanje; vlastiti release audit/sesija04 i kratki TASKS/STATUS/RELEASE_HANDOFF. Samo potrebni deployment pomoćni alati; nema izmjena native aplikacije, novog builda, DB migracije ili Play rollouta.
+- **Kriteriji:** pregledati stvarne SDK/server podatke i Google kategorije; sačuvati kompletan aktuelni javni download inventar i Pages bindinge prije konkretnog odobrenog web deploya; provjeriti live privacy sadržaj i dovršeni neposlani Data safety obrazac. Ne tvrditi da je izjava objavljena na Playu bez submission/review dokaza. Korisnikov nalog odobrava ovu web objavu; ne odobrava automatski objavu aplikacije ili slanje svih drugih store promjena.
+- **Zavisnosti:** ovlašten pristup postojećem random-life-preview Pages projektu; bez širenja account ovlasti ili troška. Salemovi RELEASE-002 dokumenti ostaju izvan ovog scopea.
+
+## ANDROID-REL-001 — Ahmedov APK audit i Google Play priprema
+
+- **AD_ID blokada razriješena:** nakon korisnikovog pauziranja starih testnih trackova, direktno osvježeni Preview prikazuje samo1deobfuscation warning i omogućeno Save and publish. Nema objave; preostale privacy/web/QA/rights obaveze ostaju otvorene. Raniji zapisi AD_ID errora ispod su historijski.
+
+- **Nastavak dostavljenog AAB-a:** lokalni AAB provjeren i prihvaćen u Playu; interno izdanje0.23.0(9) sačuvano kao draft, nije objavljeno. Novi scope uključuje AAB audit i `collaboration/sessions/2026-11-12-ahmed-admob-03.md`. Ranija download blokada ispod je razriješena. Otvoreni su AD_ID release error aktivnog artefakta (code9 ima dozvolu), finalne izjave/web/QA/prava. Nema promjene aplikacijskog sourcea ili novog builda.
+
+- **Odgovorni:** `ahmed-admob`, nastavak po korisnikovom nalogu da se pripremi Google Play izdanje.
+- **Grana / PR:** `codex/ahmed-admob-finish`, postojeći PR #1.
+- **Status:** `in_review` za audit/pripremu; [APK i Play nalazi](../docs/ANDROID_PLAY_READINESS.md) su pripremljeni. AAB download i upload-certificate match još čekaju ovlašten pristup/lokalni fajl; fizički QA nije potpun. Ovo je nastavak ADS-001, ne preuzimanje Salemovih RELEASE-002 fajlova.
+- **Scope:** vlastiti `docs/ANDROID_PLAY_READINESS.md`, `collaboration/sessions/2026-11-12-ahmed-admob-02.md`, kratke dopune TASKS/STATUS/RELEASE_HANDOFF; read-only lokalni APK/manifest/potpis i Play inventar, priprema Play deklaracija kao neposlanih promjena/nacrta. Bez promjene aplikacijskog sourcea.
+- **Kriteriji:** zabilježiti APK hash/potpis/verziju/dozvole, stvarne Play brojeve, razlikovati korisnikov izvještaj s telefona od kompletne fizičke QA matrice, sačuvati tačne nacrte i blokade AAB/credentials/potpisa/weba. Ništa ne poslati Googleu niti objaviti produkcijski release bez konkretnog odobrenja.
+- **Zavisnosti:** postojeći EAS build source `bfc71733de64d8f7f30fb3831b6b19af64bfc1a7`; AAB treba ovlašteno preuzeti, konačni potpis usporediti s Play upload certifikatom. Postojeći ADS-001 aplikacijski file scope ostaje isti; RIGHTS-001 ostaje otvoren.
+
 Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja provjeri najnovije udaljene grane, claim commitove i otvorene PR-ove. Ne preuzimaj tuđi aktivni zadatak bez dogovora. Vidi [postupak](README.md).
 
 ## COLLAB-001 — Postaviti saradnju između Codex accounta
@@ -86,10 +119,12 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 
 ## ADS-001 — Dovršiti AdMob za Android i iOS (zamjenjuje Android-only opseg ANDROID-001)
 
-- **Odgovorni:** Ahmed + Codex na njegovom accountu; stvarna oznaka/claim upisuje se pri preuzimanju.
-- **Grana:** vlastita `codex/ahmed-admob-finish`, iz predatog `codex/salem-admob-handoff`; PR prema najnovijem `main`.
-- **Status:** `open` — dodijeljen smjer, ali drugi Codex još nije objavio svoj claim.
+- **Odgovorni:** `ahmed-admob`, Codex uz Ahmeda, preuzimanje 12.11.2026. prema korisnikovom nalogu za izvršenje handoffa.
+- **Grana:** `codex/ahmed-admob-finish`, iz `origin/main` na `2c98dea77951048e00649e8f72cb7e0a848c1bf2`; nakon objavljenog claima prenijeti samo WIP `d4d0a6a150baa71591a2c427223aea69e8bcf17d`.
+- **Status:** `in_review` — [draft PR #1](https://github.com/salemko72/RANDOM-life/pull/1) prema mainu, potvrđen kroz GitHub API. Claim `25e817e36cce4014256d055d49d78e2b02825203` objavljen prije cherry-picka/koda; implementacija `e1228ed725d63a56e280e00d3c840ab5890311b6`. Signed buildovi i fizički SDK QA nisu urađeni; task nije done. [Pregled i release blokade](../docs/ADS_001_REVIEW.md).
 - **Opis:** Zajednički AdMob source za obje native aplikacije. Postojeći WIP je Android-first, ne gotova iOS integracija. Ne mijenjati već poslani build 2.
 - **Datoteke:** App.tsx, app.json, eas.json, native ads moduli/plugin/autolink, ads bridge, WebExperience.tsx, dependencies/lock, ads testovi, privacy/support/app-ads hosting i release handoff prema dogovoru.
+- **Dodatni scope provjera:** scripts/check-ads-native-config.mjs, check-ads-release-output.mjs, smoke-ads-bridge.mjs i postojeće dvije smoke skripte za Windows putanju preglednika; stage-preview.mjs i vlastita dokumentacija. IOS-001 source konfiguracija je dio istog app.json scopea; fizički dio IOS-001 ostaje otvoren. PREF-001 i RIGHTS-001 nisu preuzeti niti proglašeni završenim.
+- **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.

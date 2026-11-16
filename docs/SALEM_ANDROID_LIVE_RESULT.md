@@ -1,6 +1,12 @@
 # Salem — Android live AAB: preflight16.11.2026.
 
-## Aktuelno: jedan zajednički build pokrenuo je Ahmedov Codex
+## Aktuelno: live Android AAB build10 FINISHED
+
+Nezavisna provjera EAS build:view potvrđuje **FINISHED**, bez prijavljene greške, za **ff9cee28-f381-454b-9954-ec0bb63b1546**: Android STORE, ads-live,0.23.0/code10, gitCommitHash **1d334308483d9064fb853aa106ec3a9e49b8046e**. Pregledani EAS log potvrđuje **BUILD SUCCESSFUL in10m30s**. Ovo je isti jedan build koji je pokrenuo Ahmed; Salem nije potrošio kvotu na duplikat.
+
+**Download/artefakt audit ovdje blokiran:** pokušaj preuzimanja završnog AAB-a vraćaHTTP403. Nema potvrđenih lokalnih AAB bajtova, AAB SHA256, jarsigner/bundletool/finalnog manifest rezultata u Salemovom okruženju. Ne zamijeniti JS export hash ispod za AAB checksum. Primarna finalna validacija i isporuka ostaju kod Ahmedovog Codexa, prema njegovom izvršavanju/sesiji09. AAB ne stavljati u Git ili javni web downloads radi zaobilaženja pristupa.
+
+## Jedan zajednički build pokrenuo je Ahmedov Codex
 
 Korisnik je odgovorio “idemo10”. Neposredni fetch je otkrio novu Ahmedovu predaju210a120: poslije obnove Developer pristupa on je po korisnikovom nalogu već pokrenuo **ff9cee28-f381-454b-9954-ec0bb63b1546**. Aktuelni EAS inventar i build:view potvrđuju isti pin1d334308483d9064fb853aa106ec3a9e49b8046e, ads-live, Android STORE0.23.0/code10. **Salem nije pokrenuo duplikat.** Ahmedova sesija09 potvrđuje i neposredni Play pregled16.11: samo9/7/6/5 prije kreiranja. Time je ranija blokada Play potvrde ispod razriješena. Ahmed zadržava izvršavanje i primarnu finalnu AAB validaciju/isporuku; Salemove provjere su nezavisni preflight dokaz.
 
@@ -42,3 +48,9 @@ Predaja [SALEM_ANDROID_LIVE_BUILD](SALEM_ANDROID_LIVE_BUILD.md) zahtijeva: “Pr
 Grana codex/salem-android-live-build. Claim objavljen prije izvršavanja preflighta. Ahmed zadržava aplikacijski scope. GitHub API provjera PR1 i dalje vraća403; direktno otvoren PR nije potvrđen. Git fetch/push rade. [Compare samo dokumentacionih dopuna](https://github.com/salemko72/RANDOM-life/compare/codex/ahmed-admob-finish...codex/salem-android-live-build?expand=1) nije PR niti automatska chat obavijest.
 
 Bez Play upload/submission/rollouta, iOS builda, mergea ili web deploya. Fizički QA, prava na tekstove i finalna store spremnost ostaju zasebni od build-only naloga.
+
+## Završna saradnička predaja
+
+Salem je završio nezavisni source/live preflight, identifikovao postojeći build i potvrdio uspješan EAS rezultat. Ahmed treba dopuniti svoju finalnu predaju stvarnim AAB fajlom, SHA256, jarsigner/cert/bundletool/finalnim manifest i SDK/live nalazom. Ako je to već uradio na svojoj grani, koristiti njegov novi dokumentovani rezultat umjesto novih buildova ili ponavljanja provjera bez razloga. Ova sesija nije objavila aplikaciju, poslala AAB Googleu, mergeala PR, promijenila aplikacijski source ili deployala web.
+
+Poslije završetka account:usage potvrđuje ukupno6/30, Android3/15, overage0centi, estimated total0centi. Jedan zajednički build stao je u Free kvotu.

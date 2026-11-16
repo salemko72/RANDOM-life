@@ -134,7 +134,7 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 ## ANDROID-LIVE-002 — Salemovo izvršavanje zamrznutog Android live builda
 
 - **Odgovorni/grana:** salem-live-build; `codex/salem-android-live-build`, korisnikov nalog16.11.2026.
-- **Status:** in_review — Salemov preflight PASS; korisnik potvrdio “idemo10”. Novo fetchovano Ahmedovo preuzimanje i aktivni build ff9cee28-f381-454b-9954-ec0bb63b1546 spriječili su duplikat. Ahmed vodi izvršavanje/isporuku, Salem prati isti rezultat i predaje nezavisne provjere. Play dokaz16.11 je u Ahmedovoj sesiji09; docs/SALEM_ANDROID_LIVE_RESULT.md.
+- **Status:** blocked_pr — nezavisni preflight i praćenje završeni: zajednički build ff9cee28-f381-454b-9954-ec0bb63b1546 je FINISHED, ads-live0.23.0/code10 na traženom pinu. Nema duplikata. AAB download ovdje403, pa lokalni checksum/finalni package audit nisu potvrđeni. Ahmed vodi primarnu isporuku; ne označava se njegov task done. GitHub PR/API403, commit/push dokazi na ovoj grani; docs/SALEM_ANDROID_LIVE_RESULT.md.
 - **Source:** build isključivo čist `1d334308483d9064fb853aa106ec3a9e49b8046e`; dokumentacioni branch polazi od predaje52c72b8 i ne mijenja build pin.
 - **Scope:** novi task, `docs/SALEM_ANDROID_LIVE_RESULT.md`, vlastita `collaboration/sessions/2026-11-16-salem-live-01.md`. Ahmed zadržava sve aplikacijske/config/web fajlove.
 - **Kriteriji:** aktuelni Expo pristup/free kvota/EAS i Play inventar te signer potvrđeni prije jednog ads-live Android AAB builda; postojeći signer; source/profile/verzija/broj i live/NPA provjere; stvarni AAB/hash/potpis/manifest ili tačna blokada; commit/push/PR bez mergea.

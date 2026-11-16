@@ -1,8 +1,10 @@
 # Trenutno stanje
 
-**Ažurirano: 13.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
+**Ažurirano: 16.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
 
 ## Android AAB s pravim oglasnim jedinicama
+
+**16.11.:** Expo CLI login radi kao ahmochera, ali READ postojećeg @salemko/random odbijen. Korisnik bira da build izvrši Salem; [tačne upute](../docs/SALEM_ANDROID_LIVE_BUILD.md) imaju pinned source1d334308483d9064fb853aa106ec3a9e49b8046e, code10/ads-live, kvotu/signing/validation/isporuku. [Sesija08](sessions/2026-11-16-ahmed-admob-08.md). Nema novog AAB-a ili troška; raniji tekst da login nije završen ispod sada je historijski.
 
 Korisnik je zatražio novi Android build-only AAB s pravim oglasnim jedinicama. Kandidat0.23.0/code10 uz postojeći ads-live profil je pripremljen;328tests/TypeScript/live JS export prolaze, ID/NPA/literal live provjereni. Play inventar4/4 sadrži9/7/6/5. EAS whoami nije prijavljen; pokrenut browser login čeka korisnika, pa EAS inventar/kvota/signing i remote build nisu još potvrđeni. Nema novog AAB-a, troška ili store slanja. [Sesija07](sessions/2026-11-13-ahmed-admob-07.md).
 

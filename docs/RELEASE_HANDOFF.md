@@ -2,6 +2,8 @@
 
 ## Android live AAB kandidat13.11.
 
+**Nastavak16.11.:** nova Expo prijava ahmochera uspješna, project READ odbijen. Korisnik je odabrao Salemovo izvršavanje builda; [SALEM_ANDROID_LIVE_BUILD](SALEM_ANDROID_LIVE_BUILD.md) je operativni handoff sa zamrznutim sourceom1d334308483d9064fb853aa106ec3a9e49b8046e. Nema remote builda/checksum-a u ovoj sesiji. Scope build-only, besplatna kvota i postojeći signer, bez Play slanja.
+
 ANDROID-LIVE-001: korisnik traži build-only AAB s pravim jedinicama. Android candidate code10 (Play inventar trenutno9/7/6/5), postojeći ads-live profil;328tests/typecheck i live JS export PASS. Čeka Expo browser login, EAS kvotu/inventar i stvarni remote build. Ovo još nije potpisani AAB niti production approval. [Sesija07](../collaboration/sessions/2026-11-13-ahmed-admob-07.md); nema Play uploada/submissiona/rollouta ili novog web deploya.
 
 ## Privacy/Data safety najnoviji nastavak

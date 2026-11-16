@@ -2,6 +2,8 @@
 
 ## ANDROID-LIVE-001 — Novi AAB s pravim oglasnim jedinicama
 
+- **16.11. predaja za izvršavanje:** Expo login uspješan kao ahmochera, ali project READ odbijen. Korisnik izričito bira da **Salem pokrene build**; [kompletne upute](../docs/SALEM_ANDROID_LIVE_BUILD.md), [sesija08](sessions/2026-11-16-ahmed-admob-08.md). Build source pin ostaje1d334308483d9064fb853aa106ec3a9e49b8046e; nijedan novi build nije pokrenut. Ahmed zadržava aplikacijske fajlove, Salem preuzima samo build izvršavanje i vlastiti dokumentacioni claim nakon čitanja uputa.
+
 - **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1,13.11.2026.
 - **Status:** in_progress; source kandidat Android0.23.0/code10 pripremljen,328tests/TypeScript/live release export PASS. Play4/4 inventar9/7/6/5 potvrđen; EAS pristup/inventar/kvota čekaju browser login. Nema remote builda ili AAB-a još. [Sesija07](sessions/2026-11-13-ahmed-admob-07.md). Korisnikov nalog nije Play upload/submission/rollout.
 - **Scope:** apps/client/app.json (novi slobodan Android versionCode), postojeći eksplicitni ads-live EAS profil i potrebne release provjere/dokumentacija; vlastita sesija07 i kratki status/handoff. Bez nepotrebnih SDK/runtime promjena, iOS builda, web deploya ili novog signera.

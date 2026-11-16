@@ -1,0 +1,112 @@
+{
+  "date": "2026-11-16",
+  "build": {
+    "id": "ff9cee28-f381-454b-9954-ec0bb63b1546",
+    "status": "FINISHED",
+    "profile": "ads-live",
+    "platform": "ANDROID",
+    "distribution": "STORE",
+    "source": "1d334308483d9064fb853aa106ec3a9e49b8046e",
+    "version": "0.23.0",
+    "versionCode": 10,
+    "url": "https://expo.dev/accounts/salemko/projects/random/builds/ff9cee28-f381-454b-9954-ec0bb63b1546"
+  },
+  "artifact": {
+    "name": "LifeSpinner-0.23.0-10-live.aab",
+    "bytes": 65894590,
+    "sha256": "26b5d59e387987392f1574520af473a310ec98fdac4fbec5a145e8e342e5cd47",
+    "bundle": {
+      "bytes": 1472236,
+      "sha256": "75a15014d3a14e22ef868495fd3f2f5129ef4f0e879041b6e630ebd0f2e9c84a"
+    }
+  },
+  "validation": {
+    "bundletool": "PASS",
+    "manifest": {
+      "package": "com.salemko.randomlife",
+      "version": "0.23.0",
+      "versionCode": 10,
+      "minSdk": 24,
+      "targetSdk": 36,
+      "appId": "ca-app-pub-8395430021391101~6926064985",
+      "AD_ID": true,
+      "delayedMeasurement": true,
+      "portrait": true,
+      "permissions": [
+        "android.permission.INTERNET",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.VIBRATE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.WAKE_LOCK",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "com.google.android.gms.permission.AD_ID",
+        "android.permission.ACCESS_ADSERVICES_AD_ID",
+        "android.permission.ACCESS_ADSERVICES_ATTRIBUTION",
+        "android.permission.ACCESS_ADSERVICES_TOPICS",
+        "android.permission.FOREGROUND_SERVICE",
+        "com.salemko.randomlife.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ]
+    },
+    "signature": {
+      "verified": true,
+      "sha256": "67768f6f56b3d542ab700b91e3e2dce6f0682c4798fa908927d53593cde6ed6e",
+      "sameSignerAsAcceptedCode9": true,
+      "publicKeyType": "rsa",
+      "validTo": "Mar  2 15:20:30 2054 GMT",
+      "selfSignedWarning": true,
+      "timestampWarning": true
+    },
+    "sdk": {
+      "GMA": "25.5.0",
+      "UMP": "4.0.0"
+    }
+  },
+  "ads": {
+    "mode": "live",
+    "androidInterstitial": "ca-app-pub-8395430021391101/6024046858",
+    "nonPersonalized": true,
+    "evidence": "Frozen source + explicit EAS ads-live environment with no production env overrides + verified live Metro export. Final Hermes bundle parses and contains createAdsRuntime, SDK adapter, unit and NPA path. Mode is not inferred solely from presence of live/test strings.",
+    "liveExport": {
+      "liveLiteral": true,
+      "noRuntimeEnvLookup": true,
+      "androidLiveUnitCorrect": true,
+      "NPA": true,
+      "AppId": "ca-app-pub-8395430021391101~6926064985",
+      "version": "0.23.0",
+      "versionCode": 10,
+      "profile": "ads-live",
+      "distribution": "store",
+      "type": "app-bundle",
+      "exportFile": "index-34f7a5b9f3c3462efe763f4e15d2c981.js",
+      "bytes": 1154204,
+      "sha256": "6fa52a11bfce628ef80f972afb9592c29ab49866c56fcf3e00dc6f78fe320451"
+    }
+  },
+  "quota": {
+    "plan": "Free",
+    "before": {
+      "totalUsed": 5,
+      "totalLimit": 30,
+      "androidUsed": 2,
+      "androidLimit": 15
+    },
+    "after": {
+      "totalUsed": 6,
+      "totalLimit": 30,
+      "androidUsed": 3,
+      "androidLimit": 15
+    },
+    "overageCount": 0,
+    "overageCostCents": 0,
+    "estimatedTotalCents": 0
+  },
+  "limits": {
+    "playUploaded": false,
+    "playSubmitted": false,
+    "playPublished": false,
+    "physicalLiveCandidateQA": false,
+    "adMobReadinessConfirmed": false,
+    "rightsAuditComplete": false
+  }
+}

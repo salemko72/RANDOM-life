@@ -1,5 +1,9 @@
 # LifeSpinner — release handoff
 
+## Završeni Android live AAB16.11.
+
+**FINISHED i lokalno provjeren:** EASff9cee28-f381-454b-9954-ec0bb63b1546, Android0.23.0/code10, ads-live STORE, čist source1d334308483d9064fb853aa106ec3a9e49b8046e. AAB65.894.590bajta, SHA256**26b5d59e387987392f1574520af473a310ec98fdac4fbec5a145e8e342e5cd47**, potpis/certifikat jednak prihvaćenom code9, bundletool/manifest/SDK PASS. [Rezultat](ANDROID_LIVE_AAB_RESULT.md), [JSON dokaz](reviews/android-live-aab-2026-11-16.json), [sesija09](../collaboration/sessions/2026-11-16-ahmed-admob-09.md). Besplatna kvota potvrđena; jedan build bez novih ključeva. Koristiti postojeći AAB, ne duplirati. Nema Play upload/submission/rollouta, fizičkog QA novog live kandidata ili potvrđenog AdMob Ready/RIGHTS audita. Ranije pripreme i blokade ispod su historijske.
+
 ## Android live AAB kandidat13.11.
 
 **Nastavak16.11.:** nova Expo prijava ahmochera uspješna, project READ odbijen. Korisnik je odabrao Salemovo izvršavanje builda; [SALEM_ANDROID_LIVE_BUILD](SALEM_ANDROID_LIVE_BUILD.md) je operativni handoff sa zamrznutim sourceom1d334308483d9064fb853aa106ec3a9e49b8046e. Nema remote builda/checksum-a u ovoj sesiji. Scope build-only, besplatna kvota i postojeći signer, bez Play slanja.

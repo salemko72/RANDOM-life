@@ -1,8 +1,14 @@
 # Salem — Android live AAB: preflight16.11.2026.
 
-## Trenutni status: čeka današnji Play inventar
+## Aktuelno: jedan zajednički build pokrenuo je Ahmedov Codex
 
-Predaja [SALEM_ANDROID_LIVE_BUILD](SALEM_ANDROID_LIVE_BUILD.md) zahtijeva: “Provjeri i Play brojeve kroz ovlaštenog operatora” i ako uslov nije potvrđen, “vrati tačnu blokadu”. Zadnji repo dokaz Play inventara9/7/6/5 je od13.11.2026. Današnja potvrda je zatražena od korisnika; screenshot aktivnog Expo članstva nije Play provjera. **Novi remote build nije pokrenut**, nema novog AAB-a, troška ili slanja trgovinama.
+Korisnik je odgovorio “idemo10”. Neposredni fetch je otkrio novu Ahmedovu predaju210a120: poslije obnove Developer pristupa on je po korisnikovom nalogu već pokrenuo **ff9cee28-f381-454b-9954-ec0bb63b1546**. Aktuelni EAS inventar i build:view potvrđuju isti pin1d334308483d9064fb853aa106ec3a9e49b8046e, ads-live, Android STORE0.23.0/code10. **Salem nije pokrenuo duplikat.** Ahmedova sesija09 potvrđuje i neposredni Play pregled16.11: samo9/7/6/5 prije kreiranja. Time je ranija blokada Play potvrde ispod razriješena. Ahmed zadržava izvršavanje i primarnu finalnu AAB validaciju/isporuku; Salemove provjere su nezavisni preflight dokaz.
+
+[Pratiti postojeći Expo build](https://expo.dev/accounts/salemko/projects/random/builds/ff9cee28-f381-454b-9954-ec0bb63b1546). Ne kreirati drugi code10 build dok ovaj nije provjeren.
+
+## Historijski preflight prije korisnikove potvrde
+
+Predaja [SALEM_ANDROID_LIVE_BUILD](SALEM_ANDROID_LIVE_BUILD.md) zahtijeva: “Provjeri i Play brojeve kroz ovlaštenog operatora” i ako uslov nije potvrđen, “vrati tačnu blokadu”. Zadnji repo dokaz Play inventara9/7/6/5 je od13.11.2026. Tada je potvrda bila zatražena od korisnika; screenshot aktivnog Expo članstva nije Play provjera. U tom preflight trenutku Salem nije pokrenuo remote build; aktuelno stanje je u odjeljku iznad.
 
 ## Potvrđeno ovim izvršavanjem
 

@@ -134,7 +134,7 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 ## ANDROID-LIVE-002 — Salemovo izvršavanje zamrznutog Android live builda
 
 - **Odgovorni/grana:** salem-live-build; `codex/salem-android-live-build`, korisnikov nalog16.11.2026.
-- **Status:** claimed — ovaj claim se objavljuje prije builda.
+- **Status:** blocked — claim objavljen; Expo/free kvota/signing/EAS inventar i328tests/typecheck/live export PASS. Čeka današnja potvrda Play inventara za code10; screenshot Expo članstva nije taj dokaz. Remote build još nije pokrenut. Vidi docs/SALEM_ANDROID_LIVE_RESULT.md.
 - **Source:** build isključivo čist `1d334308483d9064fb853aa106ec3a9e49b8046e`; dokumentacioni branch polazi od predaje52c72b8 i ne mijenja build pin.
 - **Scope:** novi task, `docs/SALEM_ANDROID_LIVE_RESULT.md`, vlastita `collaboration/sessions/2026-11-16-salem-live-01.md`. Ahmed zadržava sve aplikacijske/config/web fajlove.
 - **Kriteriji:** aktuelni Expo pristup/free kvota/EAS i Play inventar te signer potvrđeni prije jednog ads-live Android AAB builda; postojeći signer; source/profile/verzija/broj i live/NPA provjere; stvarni AAB/hash/potpis/manifest ili tačna blokada; commit/push/PR bez mergea.

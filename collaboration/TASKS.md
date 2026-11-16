@@ -130,3 +130,13 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
+
+## ANDROID-LIVE-002 — Salemovo izvršavanje zamrznutog Android live builda
+
+- **Odgovorni/grana:** salem-live-build; `codex/salem-android-live-build`, korisnikov nalog16.11.2026.
+- **Status:** claimed — ovaj claim se objavljuje prije builda.
+- **Source:** build isključivo čist `1d334308483d9064fb853aa106ec3a9e49b8046e`; dokumentacioni branch polazi od predaje52c72b8 i ne mijenja build pin.
+- **Scope:** novi task, `docs/SALEM_ANDROID_LIVE_RESULT.md`, vlastita `collaboration/sessions/2026-11-16-salem-live-01.md`. Ahmed zadržava sve aplikacijske/config/web fajlove.
+- **Kriteriji:** aktuelni Expo pristup/free kvota/EAS i Play inventar te signer potvrđeni prije jednog ads-live Android AAB builda; postojeći signer; source/profile/verzija/broj i live/NPA provjere; stvarni AAB/hash/potpis/manifest ili tačna blokada; commit/push/PR bez mergea.
+- **Granice:** samo build; bez iOS-a, Play slanja/objave, web deploya, novih ključeva/resursa ili dodatnog troška. Ako10 zauzet ili inventar nije potvrđen, ne mijenjati source ili broj na svoju ruku.
+- **Zavisnosti:** ANDROID-LIVE-001 predaja i docs/SALEM_ANDROID_LIVE_BUILD.md; aktuelna Play potvrda čeka ovlaštenog operatora.

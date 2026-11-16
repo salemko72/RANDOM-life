@@ -2,6 +2,8 @@
 
 ## ANDROID-LIVE-001 — Novi AAB s pravim oglasnim jedinicama
 
+- **16.11. ponovo preuzima Ahmedov Codex:** korisnik je nakon prihvatanja Expo invitationa izričito zatražio da ovaj Codex napravi AAB. Pristup ahmochera/Developer sada potvrđen. Free kvota5/30 ukupno, Android2/15, overage0; EAS inventar nema live/code10 ili aktivan Android build, a Play4/4 i dalje9/7/6/5. Salemov zasebni ANDROID-LIVE-002 claim na8b3db30 je primijećen; nije mijenjan niti proglašen završenim. Ovaj najnoviji korisnički nalog vraća izvršavanje ovdje; neposredno prije kreiranja ponovo provjeriti EAS i koristiti postojeći odgovarajući build ako se pojavi. Pin1d334308483d9064fb853aa106ec3a9e49b8046e ostaje, aplikacijski fajlovi se ne mijenjaju. Vlastiti rezultat/session09, bez Play objave.
+
 - **16.11. predaja za izvršavanje:** Expo login uspješan kao ahmochera, ali project READ odbijen. Korisnik izričito bira da **Salem pokrene build**; [kompletne upute](../docs/SALEM_ANDROID_LIVE_BUILD.md), [sesija08](sessions/2026-11-16-ahmed-admob-08.md). Build source pin ostaje1d334308483d9064fb853aa106ec3a9e49b8046e; nijedan novi build nije pokrenut. Ahmed zadržava aplikacijske fajlove, Salem preuzima samo build izvršavanje i vlastiti dokumentacioni claim nakon čitanja uputa.
 
 - **Odgovorni/grana/PR:** ahmed-admob; codex/ahmed-admob-finish; postojeći draft PR1,13.11.2026.

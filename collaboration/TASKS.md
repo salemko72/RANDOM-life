@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## SPIN-AGAIN-002 — Zadržati posljednju kategoriju pri povratku Home
+
+- **Odgovorni/grana:** salem-spin-home / codex/salem-spin-again-home.
+- **Status:** claimed; push prije koda. Korisnik prijavio FOOD→Spin again→MOVE u fizičkom testu; build/verzija i tačan put zatraženi, čekaju potvrdu. Ne tvrditi da je već dokazan isti fizički uzrok.
+- **Scope:** apps/client/src/web/WebExperience.tsx rail-respin handler, scripts/smoke-spin-again-category.mjs, vlastiti session i ovaj task. Osnova objavljena grana codex/salem-offline-build5, bez promjene iOS5 artefakta ili online baze.
+- **Dokaz:** test na build5 kodu reproducira FOOD→Home→Spin again prelazak u opći wheel (expected items, actual categories). Prethodni test je pogrešno očekivao general za Home rail-respin; direktni result repeat je prošao. Ovo je konkretna preostala rupa, ne potvrda instaliranog iOS broja.
+- **Kriteriji:** rail Spin again ponavlja kategoriju zadnjeg prikazanog itema i nakon Home ili recipe detail→Home; cold Home bez itema i centralni hub ostaju general. Pet kategorija/ENG+BHS/seen cycle i postojeći filteri sačuvani.
+- **Granice:** samo source fix i testovi. Nema novog native builda/ZIP promjene/store slanja dok se ne uskladi fizički nalaz i novi zajednički release source. Ne mijenjati Ahmedove grane ili postojeće pina/source artefakte.
+
 ## OFFLINE-RECIPES-005 — Zajednički paket s novim receptima i iOS5
 
 - **Odgovorni/grana:** salem-offline / codex/salem-offline-build5; korisnik17.11. izričito traži offline korekciju, zamjenski ZIP i odmah TestFlight build5.

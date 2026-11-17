@@ -3,7 +3,7 @@
 ## IOS-TF-UPDATE-001 — Onboarding i Spin again iOS TestFlight kandidat
 
 - **Odgovorni/grana:** salem-ios-release / codex/salem-ios-testflight-update.
-- **Status:** claimed; korisnik17.11. traži sve korekcije, ZIP i zatim iOS TestFlight. Push prije integracije.
+- **Status:** building iOS; zajednički source ded4bf65474d88e129afb391ff40ea492727f68d, verzija1.0.1/iOS4/Android kandidat11. EAS d42fa459-d386-42fb-a29f-646bc0efbad2 IN_PROGRESS; ZIP i docs/IOS_TESTFLIGHT_UPDATE.md objavljeni. Nema još potvrde native završetka ili TestFlight slanja. Claim51670a0 pushan prije integracije.
 - **Scope:** vlastiti kandidat s CSS850fce3fdaa2a12760c8508bf50c077dee624d21 i Spin321b9460851629f00271433c7a4c66cb19127de7, apps/client/app.json iOS build broj nakon provjere i Android kandidat11 prema nalogu za zajednički ZIP, vlastiti docs/IOS_TESTFLIGHT_UPDATE.md, ZIP/patch u downloads/, vlastita collaboration/sessions/2026-11-17-salem-tf-01.md i ovaj task.
 - **Kriteriji:** isti čist source s oba UI popravka; test ads; iPhone-only/portrait; besplatna kvota i postojeći signing; EAS i ASC broj provjeren prije builda; objavljen ZIP sa source SHA/patchom i uputama; remote native build i TestFlight slanje samo uz ove provjere. Native build uspjeh/submission/Apple processing odvojeno evidentirati.
 - **Granice:** bez PR/main mergea, produkcijskog deploya, App Store review slanja ili plaćenih resursa. Nema novih/rotiranih signing ključeva. RIGHTS/ATT pitanja ostaju dokumentovana; fizički QA/video radi korisnik. Korisnik potvrdio iOS4 i verziju1.0.1; svježi EAS1/2/3 i ASC screenshot1/2. Android kandidat11 nije potvrđen u Play konzoli; Ahmed ga provjerava prije svog builda. Ne mijenjati receptnu bazu ili tuđe handoffe.

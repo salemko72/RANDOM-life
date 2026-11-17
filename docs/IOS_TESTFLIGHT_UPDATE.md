@@ -30,7 +30,7 @@
 - Svježa Free kvota: iOS3/15, ukupno6/30, overage0. Postojeći APP_STORE cert/profil aktivan, expiration3.11.2027.09:10:33UTC; postojeći ASC APP_MANAGER submit ključ dostupan. Nisu kreirani/rotirani ključevi.
 - Clean detached worktree tačnog sourcea; nema tuđih untracked fajlova u build arhivi. Lokalno korištene zavisnosti iz ranijeg npm ci sa identičnim package-lock hashom i Expo57.0.32; nije ponovljen novi npm ci za ove tekst/CSS/config izmjene. Cloud build instalira iz locka.
 - TestFlight: `eas build --platform ios --profile testflight --freeze-credentials --non-interactive --no-wait --json` iz **apps/client**, bez auto-submit. Nakon native uspjeha ide provjera broja/sourcea i zasebni `eas submit --platform ios --id BUILD_ID --profile testflight --non-interactive`. Korisnikov nalog pokriva TestFlight, ne App Store review ili javno izdanje.
-- Trenutno: lokalne provjere završene, build arhiva se priprema za EAS; native build/IPA/TestFlight processing nisu još potvrđeni. Konačni build ID/rezultat dopisati u nastavku, ne zaključivati iz source broja.
+- **EAS build pokrenut:** d42fa459-d386-42fb-a29f-646bc0efbad2, status IN_PROGRESS,1.0.1(4), testflight/STORE, server potvrđuje gitCommitHash ded4bf65474d88e129afb391ff40ea492727f68d. [Build](https://expo.dev/accounts/salemko/projects/random/builds/d42fa459-d386-42fb-a29f-646bc0efbad2). Native završetak/IPA/TestFlight processing još nisu potvrđeni; rezultat dopisati, ne zaključivati iz source broja.
 
 ## Izvršene provjere i granice
 

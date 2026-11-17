@@ -148,8 +148,10 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 ## UI-ONBOARD-001 — Jasnija tri dugmeta za izbor personalizacije
 
 - **Odgovorni/grana:** salem-ui; codex/salem-onboarding-buttons; korisnikov screenshot i nalog17.11.2026.
-- **Status:** claimed; claim objaviti prije CSS izmjene.
+- **Status:** blocked_pr — CSS implementiran i mobilni ENG/BHS browser QA PASS; code commit850fce3fdaa2a12760c8508bf50c077dee624d21. Git fetch/push radi; GitHub API403 blokira PR provjeru/otvaranje. Nema native builda ili deploya.
 - **Scope:** samo apps/client/src/web/experience.css, ovaj task i vlastita collaboration/sessions/2026-11-17-salem-ui-01.md. Bez Onboarding.tsx/SDK/config ili tuđih aktivnih fajlova. Base je Ahmedov najnoviji40f1bc4 s iOS dokumentacijskim claimom; taj zadatak ne mijenja ovaj stylesheet.
 - **Opis:** veći tekst Personalize my suggestions; dvije sekundarne radnje kao puna, svjetlija zaobljena dugmad. ENG/BHS i male iPhone širine bez clippinga. Postojeći click handleri ostaju.
 - **Kriteriji:** scoped stil za consent-actions pobjeđuje globalni button reset/mobile font; čitljiv glavni tekst; dvije svjetlije pune tipke; mobilni screenshot i stvarni tokovi tri izbora prolaze. Bez native builda/deploya ili store slanja.
 - **Zavisnosti:** zajednički source za iOS/Android; stari instalirani build neće dobiti stil dok se ne napravi/distribuira novi kandidat. Pregledati claims prije izmjena; nema automatske chat obavijesti.
+
+- **RIGHTS-001 dopuna17.11. (otvoreno, nije audit):** korisnik je pitao za recepte s kidney-health/udruga web stranica u low-phosphorus filteru. Po stavci provjeriti licencu i komercijalnu upotrebu tekstova/fotografija, porijeklo sadržaja, nutritivne dokaze i zdravstvene tvrdnje. Atribucija/preformulisanje/disclaimer nisu automatsko pravno rješenje. Nema utvrđenja povrede niti potvrde zakonitosti za konkretne izvore u ovoj UI sesiji. Ne mijenjati hard filtere ili produkcijske recepte bez zasebnog opsega.

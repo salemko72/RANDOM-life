@@ -1,5 +1,13 @@
 # Zajednički zadaci
 
+## BUILD-LABEL-001 — Sitna verzija/build u gornjem meniju
+
+- **Odgovorni/grana:** salem-build-label / codex/salem-build-label.
+- **Status:** claimed; push prije implementacije. Korisnik17.11. traži sitan build u top meniju nakon zamjene instaliranog3sa5.
+- **Scope:** apps/client/App.tsx, src/native/preview-assets.ts, src/web/build-info.ts/WebExperience.tsx/experience.css; tests/build-info.test.ts i native-preview-assets.test.ts; browser check i vlastita sesija/TASKS.
+- **Kriteriji:** native bootstrap prenosi kompajliranu verziju i platformski broj instalirane aplikacije (iOS/Android), UI ih sitno pokazuje u vrhu i meniju bez hardkodiranja5; browser bez native metapodataka ne pokazuje izmišljeni native build; sigurni validation/escaping i unit/browser provjere. Bez oslanjanja na online bazu.
+- **Granice:** kod za naredni zajednički kandidat, ne mijenja već uploadani5. Nasljeđuje zasebno potvrđen Home-path spin fix; prijavljeni direktni spin bio je stari instalirani3. Nema novog builda/ZIP-a/store slanja ili main mergea dok korisnik ne završi tekući test i zatraži novo izdanje. Ne dirati Ahmedovu granu.
+
 ## SPIN-AGAIN-002 — Zadržati posljednju kategoriju pri povratku Home
 
 - **Odgovorni/grana:** salem-spin-home / codex/salem-spin-again-home.

@@ -161,3 +161,11 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Scope:** content/recipe-wording-2026-11-17/ (JSON bounded tekstualni patch i čitljiv pregled), vlastita collaboration/sessions/2026-11-17-salem-recipes-01.md i ovaj task. Ne dirati Ahmedove pravne/audit fajlove, UI ili SDK.
 - **Kriteriji:** samostalni sažeci/upute ENG/BHS za17 trenutno low-phosphate recepata; bez promjene sastojaka, količina, porcija, nutritivnih vrijednosti, izvora, slika, filtera ili odobrenja. Postojeće kulinarske radnje, vremena/temperature i napomene sačuvati po značenju. Pripremiti reviewable minimalni patch s originalnim version/source hash i before/after tekstom. Bez tvrdnje da je copyright clearance dovršen.
 - **Granice:** nema automatskog brisanja izvora ili produkcijskog importa/objave, deploya, native builda ili troška. Studio/import operator treba konkretni patch i postojeće ovlaštenje; ne izvlačiti ili dijeliti lozinke.
+
+## RIGHTS-002 — Preostali copyright tragovi, read-only inventar
+
+- **Odgovorni/grana:** salem-rights / codex/salem-rights-residual-audit.
+- **Status:** claimed, objaviti prije pisanja izvještaja; korisnički nalog17.11.
+- **Opis/scope:** javni katalog, lokalni offline katalog, runtime artwork putevi i uključeni fontovi. Vlastiti docs/reviews/2026-11-17-residual-rights-audit.md i .json, vlastita collaboration/sessions/2026-11-17-salem-rights-01.md, ovaj task. Ne mijenjati Ahmedov handoff/RIGHTS-001-K audit niti sadržaj baze.
+- **Kriteriji:** tačni brojevi i konkretni ID/source/path primjeri, odvojeno potvrđeno i nepoznato, praktičan redoslijed preostalih korekcija; bez tvrdnje o završenoj pravnoj provjeri ili o dokazanom kršenju samo na osnovu URL-a.
+- **Zavisnosti/granice:** nastavlja se na objavljeni RECIPE-TEXT-001 draft0863aea3ae2ba0ca5e1f6ff49b3374634af0b977; RIGHTS-001 ostaje open. Bez produkcijskih izmjena, builda/deploya, plaćenih resursa ili kontakta s trećima. GitHub API/PR stanje nije dostupno zbog mrežnog403; remote claimovi pročitani kroz Git.

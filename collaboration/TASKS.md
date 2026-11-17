@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## OFFLINE-RECIPES-005 — Zajednički paket s novim receptima i iOS5
+
+- **Odgovorni/grana:** salem-offline / codex/salem-offline-build5; korisnik17.11. izričito traži offline korekciju, zamjenski ZIP i odmah TestFlight build5.
+- **Status:** claimed; push prije implementacije. Build4 d42fa459 FINISHED iz ded4bf6, nije poslan Appleu: scheduling odbijen zbog Enterprise-only changelog parametra. Nema ponavljanja plaćenog parametra, upgradea ili build4 slanja.
+- **Scope:** apps/client/src/web/recipe-wording*.ts, bundled-catalog.ts, backup/catalog.json/.ts/README.md, tests/recipe-wording.test.ts, content/recipe-wording-2026-11-17/ javni paket, apps/client/app.json iOS5 (Android11 kandidat ostaje), vlastiti docs/BUILD5_SHARED_HANDOFF.md i session, zamjenski ZIP.
+- **Kriteriji:** primijeniti pripremljene ENG/BHS tekstove na svih8 prisutnih reserve recepata; svih17 bounded corrections u consumer boundary za matching old online/cache verzije, bez prepisivanja novijih uredničkih verzija i bez promjene sastojaka/filtera/nutritivnih podataka. Cache snapshot byte/hash ostaje serverov, izmjena je lokalna projekcija.100stavki/20po kategoriji, postojeća dietary coverage i slike ostaju. Testovi/protected-field check, zajednički source SHA, iOS1.0.1(5) test ads i novi ZIP za Ahmeda.
+- **Saradnja:** Ahmed ima claim BUILD4-KOREKCIJE-001 na svojoj grani za primjenu starog ZIP-a; ne mijenjati njegovu granu ili sesiju. Novi handoff izričito zamjenjuje ded4bf6/build4 ZIP i traži preuzimanje novog istog SHA. Android11 se provjerava prije builda.
+- **Granice:** normalna online baza još zahtijeva ovlašteni Studio operator pristup; nema Studio credentials u ovom okruženju, ne izvlačiti password iz Cloudflarea ili zaobilaziti SQL-om. Ne tvrditi da su online podaci objavljeni. Lokalna projekcija omogućuje nove tekstove i pri starom cacheu/bazi. Bez App Store reviewa/Play slanja, PR mergea, web deploya ili troška. Korisnik odobrio TestFlight upload5.
+
 ## IOS-TF-UPDATE-001 — Onboarding i Spin again iOS TestFlight kandidat
 
 - **Odgovorni/grana:** salem-ios-release / codex/salem-ios-testflight-update.

@@ -1,5 +1,13 @@
 # Zajednički zadaci
 
+## IOS-TF-UPDATE-001 — Onboarding i Spin again iOS TestFlight kandidat
+
+- **Odgovorni/grana:** salem-ios-release / codex/salem-ios-testflight-update.
+- **Status:** claimed; korisnik17.11. traži sve korekcije, ZIP i zatim iOS TestFlight. Push prije integracije.
+- **Scope:** vlastiti kandidat s CSS850fce3fdaa2a12760c8508bf50c077dee624d21 i Spin321b9460851629f00271433c7a4c66cb19127de7, apps/client/app.json iOS build broj nakon provjere, vlastiti docs/IOS_TESTFLIGHT_UPDATE.md, ZIP/patch u downloads/, vlastita collaboration/sessions/2026-11-17-salem-tf-01.md i ovaj task.
+- **Kriteriji:** isti čist source s oba UI popravka; test ads; iPhone-only/portrait; besplatna kvota i postojeći signing; EAS i ASC broj provjeren prije builda; objavljen ZIP sa source SHA/patchom i uputama; remote native build i TestFlight slanje samo uz ove provjere. Native build uspjeh/submission/Apple processing odvojeno evidentirati.
+- **Granice:** bez PR/main mergea, produkcijskog deploya, App Store review slanja ili plaćenih resursa. Nema novih/rotiranih signing ključeva. RIGHTS/ATT pitanja ostaju dokumentovana; fizički QA/video radi korisnik. Čeka se korisnikova potvrda najvećeg ASC build broja. Ne mijenjati receptnu bazu ili tuđe handoffe.
+
 ## SPIN-AGAIN-001 — Ponovni spin unutar kategorije prikazanog rezultata
 
 - **Odgovorni/grana:** salem-spin / codex/salem-spin-again-category; korisnički nalog17.11.

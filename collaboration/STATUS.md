@@ -1,6 +1,11 @@
 # Trenutno stanje
 
-**Ažurirano: 16.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
+## iOS AdMob predaja 17.11.2026.
+
+[IOS_ADMOB_HANDOFF](../docs/IOS_ADMOB_HANDOFF.md) i [sesija10](sessions/2026-11-17-ahmed-admob-10.md): iOS AppID/unit potvrđeni source+AdMob; Published EU poruka uključuje iOS, EEA/UK/CH, Consent/Do not consent/Manage options. **UMP privacy URL još vodi na FiftyFifty politiku — otvoren nesklad, bez izmjene.** Nema aktivnog objavljenog IDFA explainera u pregledanom inventaru; ATT/native audit ostaje otvoren. iOS Requires review/limited serving/Add shop/storeID prazno; iOS app-ads crawl nije potvrđen (javni fajl ispravan, crawler red samo Google Play). 37 ciljanih testova PASS; nema novog builda ili promjene režima. Aplikacijski pin1d334308483d9064fb853aa106ec3a9e49b8046e ostaje; novi iOS test/live izbor nije potvrđen. Raniji testni IPA3 nije novi kandidat niti store objava; Salem preuzima native/privacy/broj/kvotu/signing/pripremu, ASC i fizički video. RIGHTS-001 ostaje open uz javni source-domain inventar. Ovaj novi nalaz zamjenjuje ranije neprovjerene iOS konzolne tvrdnje, bez zatvaranja ADS-001.
+
+
+**Ažurirano: 17.11.2026.** Prije rada fetch i provjeri stvarne headove/PR-ove. Vidi [kompletno uputstvo za AdMob i saradnju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.md) i [Word kopiju](../docs/ADMOB_AND_COLLABORATION_HANDOFF.docx).
 
 ## Android AAB s pravim oglasnim jedinicama
 

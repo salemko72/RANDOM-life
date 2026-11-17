@@ -3,7 +3,7 @@
 ## IOS-ADMOB-HANDOFF-001 — Ahmedova dokumentovana predaja Salemu
 
 - **Odgovorni / grana:** ahmed-admob / `codex/ahmed-admob-finish`; korisnikov nalog 17.11.2026.; postojeći draft PR #1.
-- **Status:** claimed; claim commit/push prije audit dokumentacije. Base `44576897c06f50e807dff1c34ba94974dd47a582`; aplikacijski/build source `1d334308483d9064fb853aa106ec3a9e49b8046e`.
+- **Status:** in_review; claim `40f1bc461305ab1485ec3962641090e01668b691` pushan prije audit dokumentacije. [Predaja](../docs/IOS_ADMOB_HANDOFF.md), [sesija10](sessions/2026-11-17-ahmed-admob-10.md), postojeći PR #1. iOS UMP privacy URL nesklad/ATT/readiness/crawl i RIGHTS ostaju otvoreni; nema native release odobrenja. Base `44576897c06f50e807dff1c34ba94974dd47a582`; aplikacijski/build source `1d334308483d9064fb853aa106ec3a9e49b8046e`.
 - **Datoteke:** novi `docs/IOS_ADMOB_HANDOFF.md`, vlastita `collaboration/sessions/2026-11-17-ahmed-admob-10.md`, kratke dopune ovog TASKS i STATUS. Bez uređivanja Salemovih release fajlova ili aplikacijskog koda.
 - **Kriteriji:** read-only iOS AdMob ID/UMP/regional/IDFA/store/readiness/app-ads provjera s potvrđeno/otvoreno dokazima; poznati SDK podaci i ATT pitanja; konačni Android10 hash/signer/manifest/live nalaz; RIGHTS-001 preostali izvori; commit/push i PR/compare predaja.
 - **Saradnja:** fetch i otvoreni PR #1 provjereni 17.11.; Salemove remote grane ANDROID-LIVE-002 i RELEASE-002 pročitane, njihovi scopeovi ostaju netaknuti. Ovo je nastavak vlastitog ADS-001 rada na istoj grani, nije novi native release.
@@ -143,4 +143,3 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
-

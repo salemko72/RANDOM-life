@@ -38,3 +38,11 @@ describe('installed UI startup',()=>{
   expect(fs.writeAsStringAsync).not.toHaveBeenCalled();
  });
 });
+
+it('passes installed package version/build to the WebView independently from catalog data',async()=>{
+ const fs={cacheDirectory:'file:///cache/',makeDirectoryAsync:vi.fn(),getInfoAsync:vi.fn().mockResolvedValue({exists:true}),copyAsync:vi.fn(),writeAsStringAsync:vi.fn()};
+ const info={version:'1.0.1',build:'5',platform:'ios'};
+ await prepareNativePreview({hash:'abc123',localUri:'file:///bundle/ui.html',downloadAsync:vi.fn()},fs,{}, {top:0,bottom:0},null,{ads:true,buildInfo:info} as any);
+ const window:any={},css=vi.fn();runInNewContext(fs.writeAsStringAsync.mock.calls[0][1],{window,document:{documentElement:{style:{setProperty:css}}}});
+ expect(window.__lifespinnerBuild).toEqual(info);expect(window.__lifespinnerAds).toBe(true);
+});

@@ -58,7 +58,7 @@ function NativeExperience(){
    if(!active)return;
    state.current=readSnapshot(raw);nativeMetric('profile_loaded');
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
-   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'||Platform.OS==='ios'});
+   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'||Platform.OS==='ios',buildInfo:Platform.OS==='ios'||Platform.OS==='android'?{version:appConfig.expo.version,build:String(nativeBuild),platform:Platform.OS}:undefined});
    nativeMetric('assets_ready');if(active)setUri(local);
   }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};

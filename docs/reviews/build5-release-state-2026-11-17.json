@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-11-17T17:23:23+01:00",
-  "state": "native_finished_submission_in_queue",
+  "checkedAt": "2026-11-17T20:01:39.972718+01:00",
+  "state": "native_finished_submission_finished",
   "sourceSha": "4a567c339a7efeff625ccecf1024887c7e9c9cd4",
   "version": "1.0.1",
   "iosBuild": "5",
@@ -8,8 +8,8 @@
   "easBuildId": "f1644fa5-f626-4963-9eda-e8be438f6a4e",
   "nativeBuildStatus": "FINISHED",
   "submissionId": "795ff8f0-4f2c-4d09-a62d-4d75e410cf8c",
-  "submissionStatus": "IN_QUEUE",
-  "appleReceiptConfirmed": false,
+  "submissionStatus": "FINISHED",
+  "appleReceiptConfirmed": true,
   "ipaSha256": null,
   "artifactDownload": "HTTP403 in this environment",
   "quota": {
@@ -36,5 +36,8 @@
     "path": "downloads/LIFE-SPINNER-1.0.1-build5-ZAMJENA.zip",
     "bytes": 991329,
     "sha256": "0c3b51e9cdb7efd1a1bb7a9285ec58d6cc3f9828f3e2117480243c637dbd031c"
-  }
+  },
+  "submissionCompletedAt": "2026-11-17T18:15:08.535000+01:00",
+  "appleProcessingVerified": false,
+  "testerAvailabilityVerified": false
 }

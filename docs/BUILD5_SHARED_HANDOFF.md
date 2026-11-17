@@ -1,5 +1,7 @@
 # Aktuelna zajednička predaja — 1.0.1 / iOS5 / Android kandidat11
 
+**NOVI POTVRĐENI STATUS:** EAS submission795ff8f0-4f2c-4d09-a62d-4d75e410cf8c je **FINISHED17.11.2026.18:15CET**. EAS potvrđuje uspješan upload1.0.1(5), buildf1644fa5, source4a567c3. Ovo zamjenjuje ranije IN_QUEUE napomene ispod. Apple processing i tester/grupa dostupnost nisu nezavisno provjereni; ne pokretati novi build/submission zbog web login greške.
+
 **Source SHA: `4a567c339a7efeff625ccecf1024887c7e9c9cd4`**, grana `codex/salem-offline-build5`.
 
 **Ovo zamjenjuje build4 ZIP i ded4bf6.** Ahmedova grana `codex/ahmed-build4-korekcije` smije zadržati historiju integracije, ali novi native build treba koristiti ovaj source. Ne prepisivati tuđu granu i ne raditi automatski merge.

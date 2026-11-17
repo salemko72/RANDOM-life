@@ -9,6 +9,15 @@
 - **Saradnja:** fetch i otvoreni PR #1 provjereni 17.11.; Salemove remote grane ANDROID-LIVE-002 i RELEASE-002 pročitane, njihovi scopeovi ostaju netaknuti. Ovo je nastavak vlastitog ADS-001 rada na istoj grani, nije novi native release.
 - **Granice:** bez builda, mode/config/UMP izmjena, mergea, deploya, store slanja ili troška. Novi iOS test/live izbor nije potvrđen. Salemov Codex preuzima native/privacy audit, broj, kvotu, signing i pripremu builda; Salem ASC i fizički iPhone video. RIGHTS-001 ostaje open.
 
+## IOS-UMP-URL-001 — Ispraviti samo LifeSpinner UMP privacy linkove
+
+- **Odgovorni/grana:** ahmed-admob, `codex/ahmed-admob-finish`; nastavak korisnikovog naloga17.11.2026.; base `15c07f0971e19c0dbddc6cdfa85c49b9c0209b34`, PR #1.
+- **Status:** claimed; claim commit/push prije AdMob promjene i dokumentacije.
+- **Scope:** u AdMobu per-app privacy URL samo LifeSpinner iOS/Android na `https://random-life-preview.pages.dev/privacy.html`, očuvati oba FiftyFifty URL-a i ostale postavke; `docs/IOS_ADMOB_HANDOFF.md`, vlastita `collaboration/sessions/2026-11-17-ahmed-admob-11.md`, kratke TASKS/STATUS dopune i konkretni RIGHTS-001 recipe audit zadaci.
+- **Kriteriji:** ponovnim otvaranjem objavljene poruke potvrditi oba LifeSpinner linka i oba neizmijenjena FiftyFifty linka; pregledati PR2 head/diff/clean konflikt status i zabilježiti buduću integraciju; razdvojiti iOS listing/readiness/crawl blokade; receptni licence/media/nutrition/low-phosphorus zadaci bez izmjene podataka; commit/push i puni SHA.
+- **Saradnja:** fetch pokazuje Salemov IOS-PRIVACY-001 claim `a5c9766254b3c4d2bd4fbac430667041f4d77810`, koji izričito ostavlja Ahmedov handoff/UMP netaknutim; PR2 `b775efabb179a9cd5830281b2f9a2889f50b5d5a` mijenja CSS i vlastite zapise. Njihov scope se ne preuzima. Novi claim dodan na kraj radi očuvanja PR2 početnog taska.
+- **Granice:** konkretna UMP URL korekcija sada je izričito odobrena; nema drugih UMP/ATT/test-live izmjena, builda, mergea, web deploya, store slanja, novih ključeva ili troška. Salemov Codex zadržava ATT/native audit, novi source pin, broj, kvotu i signing. RIGHTS-001 ostaje open.
+
 ## ANDROID-LIVE-001 — Novi AAB s pravim oglasnim jedinicama
 
 - **BUILD ZAVRŠEN — ne praviti duplikat:** EAS `ff9cee28-f381-454b-9954-ec0bb63b1546`, FINISHED, ads-live, Android STORE0.23.0/code10, source1d334308483d9064fb853aa106ec3a9e49b8046e. Stvarni AAB preuzet, SHA25626b5d59e387987392f1574520af473a310ec98fdac4fbec5a145e8e342e5cd47; manifest/bundletool/signature/cert/SDK provjere PASS. Salemov ANDROID-LIVE-002 claim nije automatski označen done; za oba operatora koristi se ovaj jedan rezultat. [Rezultat](../docs/ANDROID_LIVE_AAB_RESULT.md), [sesija09](sessions/2026-11-16-ahmed-admob-09.md). Nema Play uploada/slanja/objave.
@@ -143,12 +152,3 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
-
-## IOS-UMP-URL-001 — Ispraviti samo LifeSpinner UMP privacy linkove
-
-- **Odgovorni/grana:** ahmed-admob, `codex/ahmed-admob-finish`; nastavak korisnikovog naloga17.11.2026.; base `15c07f0971e19c0dbddc6cdfa85c49b9c0209b34`, PR #1.
-- **Status:** claimed; claim commit/push prije AdMob promjene i dokumentacije.
-- **Scope:** u AdMobu per-app privacy URL samo LifeSpinner iOS/Android na `https://random-life-preview.pages.dev/privacy.html`, očuvati oba FiftyFifty URL-a i ostale postavke; `docs/IOS_ADMOB_HANDOFF.md`, vlastita `collaboration/sessions/2026-11-17-ahmed-admob-11.md`, kratke TASKS/STATUS dopune i konkretni RIGHTS-001 recipe audit zadaci.
-- **Kriteriji:** ponovnim otvaranjem objavljene poruke potvrditi oba LifeSpinner linka i oba neizmijenjena FiftyFifty linka; pregledati PR2 head/diff/clean konflikt status i zabilježiti buduću integraciju; razdvojiti iOS listing/readiness/crawl blokade; receptni licence/media/nutrition/low-phosphorus zadaci bez izmjene podataka; commit/push i puni SHA.
-- **Saradnja:** fetch pokazuje Salemov IOS-PRIVACY-001 claim `a5c9766254b3c4d2bd4fbac430667041f4d77810`, koji izričito ostavlja Ahmedov handoff/UMP netaknutim; PR2 `b775efabb179a9cd5830281b2f9a2889f50b5d5a` mijenja CSS i vlastite zapise. Njihov scope se ne preuzima. Novi claim dodan na kraj radi očuvanja PR2 početnog taska.
-- **Granice:** konkretna UMP URL korekcija sada je izričito odobrena; nema drugih UMP/ATT/test-live izmjena, builda, mergea, web deploya, store slanja, novih ključeva ili troška. Salemov Codex zadržava ATT/native audit, novi source pin, broj, kvotu i signing. RIGHTS-001 ostaje open.

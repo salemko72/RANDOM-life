@@ -169,3 +169,11 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Opis/scope:** javni katalog, lokalni offline katalog, runtime artwork putevi i uključeni fontovi. Vlastiti docs/reviews/2026-11-17-residual-rights-audit.md i .json, vlastita collaboration/sessions/2026-11-17-salem-rights-01.md, ovaj task. Ne mijenjati Ahmedov handoff/RIGHTS-001-K audit niti sadržaj baze.
 - **Kriteriji:** tačni brojevi i konkretni ID/source/path primjeri, odvojeno potvrđeno i nepoznato, praktičan redoslijed preostalih korekcija; bez tvrdnje o završenoj pravnoj provjeri ili o dokazanom kršenju samo na osnovu URL-a.
 - **Zavisnosti/granice:** nastavlja se na objavljeni RECIPE-TEXT-001 draft0863aea3ae2ba0ca5e1f6ff49b3374634af0b977; RIGHTS-001 ostaje open. Bez produkcijskih izmjena, builda/deploya, plaćenih resursa ili kontakta s trećima. GitHub API/PR stanje nije dostupno zbog mrežnog403; remote claimovi pročitani kroz Git.
+
+## MAC-SYNC-001 — Mac ZIP za lokalno ažuriranje GitHub kopija
+
+- **Odgovorni/grana:** salem-mac / codex/salem-mac-updater.
+- **Status:** claimed; objaviti prije implementacije.
+- **Scope:** tools/mac-updater/, tests/mac-updater.integration.sh, vlastita collaboration/sessions/2026-11-17-salem-mac-01.md i ovaj task; ZIP artefakt izvan source checkouta.
+- **Kriteriji:** dvoklik .command na Mac Bash3.2; odvojeni folderi za main, Ahmed AdMob, onboarding i dvije sadržajne predaje; clone/fetch i isključivo fast-forward vlastitih čistih kopija. Dirty/diverged/wrong-branch/wrong-origin folder ostaje netaknut. Lokalni Git integration test za clone/update i zaštite; ZIP izvršne dozvole provjerene; upute i log bez tajni.
+- **Granice:** bez push/merge PR-ova, reset/clean/stash, brisanja starih kopija, npm instalacija, builda, produkcijskih promjena, troška ili promjene Codex okruženja. Ne spajati neodobrene grane. Korisnik potvrdio MAC.

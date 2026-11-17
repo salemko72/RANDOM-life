@@ -1,0 +1,429 @@
+{
+  "observedDate": "2026-11-17",
+  "source": "1d334308483d9064fb853aa106ec3a9e49b8046e",
+  "handoff": "15c07f0971e19c0dbddc6cdfa85c49b9c0209b34",
+  "auditScope": "read-only; no new native build or submission",
+  "eas": {
+    "iosBuilds": [
+      {
+        "id": "734be437-bd03-4453-a125-3d019062c03c",
+        "status": "FINISHED",
+        "appVersion": "0.23.0",
+        "appBuildVersion": "3",
+        "gitCommitHash": "bfc71733de64d8f7f30fb3831b6b19af64bfc1a7",
+        "createdAt": "2026-11-12T11:18:19.488Z",
+        "buildProfile": "ads-test-store"
+      },
+      {
+        "id": "a73b11b1-93e0-4af5-b12c-70b77a6a185c",
+        "status": "FINISHED",
+        "appVersion": "0.23.0",
+        "appBuildVersion": "2",
+        "gitCommitHash": "1e6f8efc1d0e3ccfb0daf4df6e234f8761992683",
+        "createdAt": "2026-11-03T09:48:52.269Z",
+        "buildProfile": "testflight"
+      },
+      {
+        "id": "c5acb3e5-b9c9-4b49-a59e-3b756c71d362",
+        "status": "FINISHED",
+        "appVersion": "0.23.0",
+        "appBuildVersion": "1",
+        "gitCommitHash": "26f14a4a848b3f33686e0be73226c15839fa6ffc",
+        "createdAt": "2026-11-03T09:21:23.012Z",
+        "buildProfile": "testflight"
+      }
+    ],
+    "submissions": [
+      {
+        "status": "FINISHED",
+        "createdAt": "2026-11-03T09:49:02.473Z",
+        "submittedBuild": {
+          "id": "a73b11b1-93e0-4af5-b12c-70b77a6a185c",
+          "appVersion": "0.23.0",
+          "appBuildVersion": "2",
+          "gitCommitHash": "1e6f8efc1d0e3ccfb0daf4df6e234f8761992683"
+        }
+      },
+      {
+        "status": "FINISHED",
+        "createdAt": "2026-11-03T09:28:54.946Z",
+        "submittedBuild": {
+          "id": "c5acb3e5-b9c9-4b49-a59e-3b756c71d362",
+          "appVersion": "0.23.0",
+          "appBuildVersion": "1",
+          "gitCommitHash": "26f14a4a848b3f33686e0be73226c15839fa6ffc"
+        }
+      }
+    ],
+    "iosCredentialsMetadata": [
+      {
+        "iosAppBuildCredentialsList": [
+          {
+            "iosDistributionType": "APP_STORE",
+            "distributionCertificate": {
+              "validityNotAfter": "2027-11-03T09:10:33.000Z"
+            },
+            "provisioningProfile": {
+              "expiration": "2027-11-03T09:10:33.000Z",
+              "status": "active"
+            }
+          }
+        ]
+      }
+    ],
+    "quota": {
+      "plan": "Free",
+      "used": 3,
+      "limit": 15,
+      "overageCents": 0
+    }
+  },
+  "oldIpaDownload": {
+    "buildId": "734be437-bd03-4453-a125-3d019062c03c",
+    "status": "blocked_http_403",
+    "localIpaSha256": null,
+    "finalPackagedManifestAudit": "not_performed",
+    "transport": {
+      "curlExit": 56,
+      "finalHttpCode": "000",
+      "error": "curl: (56) CONNECT tunnel failed, response 403"
+    }
+  },
+  "generatedConfig": [
+    {
+      "file": "LifeSpinner/Info.plist",
+      "bundle": "$(PRODUCT_BUNDLE_IDENTIFIER)",
+      "version": "0.23.0",
+      "build": "3",
+      "appId": "ca-app-pub-8395430021391101~6486035105",
+      "delayMeasurement": true,
+      "orientations": [
+        "UIInterfaceOrientationPortrait",
+        "UIInterfaceOrientationPortraitUpsideDown"
+      ],
+      "attUsageDescriptionPresent": false,
+      "skAdNetworkIds": [
+        "cstr6suwn9.skadnetwork"
+      ]
+    }
+  ],
+  "targetFamilies": [
+    1
+  ],
+  "installedExpoVersion": "57.0.32",
+  "sdkManifests": {
+    "Google-Mobile-Ads-SDK": {
+      "version": "13.10.0",
+      "podDependencies": {
+        "GoogleUserMessagingPlatform": [
+          ">= 1.1"
+        ]
+      },
+      "sourceUrl": "https://dl.google.com/dl/cpdc/315996f6b746467c/Google-Mobile-Ads-SDK-13.10.0.tar.gz",
+      "arm64Manifests": [
+        {
+          "path": "./Frameworks/GoogleMobileAdsFramework/GoogleMobileAds.xcframework/ios-arm64/GoogleMobileAds.framework/PrivacyInfo.xcprivacy",
+          "sha256": "69fb112582fc23fc06c635c961d262a3f7b4b5654d284787491de3000dadf9d2",
+          "manifest": {
+            "NSPrivacyCollectedDataTypes": [
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeOtherDiagnosticData",
+                "NSPrivacyCollectedDataTypeLinked": false,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeAnalytics"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+                "NSPrivacyCollectedDataTypeLinked": true,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeAnalytics",
+                  "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+                "NSPrivacyCollectedDataTypeLinked": false,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeAnalytics"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCrashData",
+                "NSPrivacyCollectedDataTypeLinked": false,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeAnalytics"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeAdvertisingData",
+                "NSPrivacyCollectedDataTypeLinked": true,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeAnalytics"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+                "NSPrivacyCollectedDataTypeLinked": true,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeAnalytics",
+                  "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeDeviceID",
+                "NSPrivacyCollectedDataTypeLinked": true,
+                "NSPrivacyCollectedDataTypeTracking": true,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising",
+                  "NSPrivacyCollectedDataTypePurposeAnalytics",
+                  "NSPrivacyCollectedDataTypePurposeDeveloperAdvertising"
+                ]
+              }
+            ],
+            "NSPrivacyAccessedAPITypes": [
+              {
+                "NSPrivacyAccessedAPITypeReasons": [
+                  "35F9.1"
+                ],
+                "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime"
+              },
+              {
+                "NSPrivacyAccessedAPITypeReasons": [
+                  "CA92.1"
+                ],
+                "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults"
+              },
+              {
+                "NSPrivacyAccessedAPITypeReasons": [
+                  "E174.1"
+                ],
+                "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "GoogleUserMessagingPlatform": {
+      "version": "3.1.0",
+      "podDependencies": null,
+      "sourceUrl": "https://dl.google.com/dl/cpdc/70c87bb94f697e08/GoogleUserMessagingPlatform-3.1.0.tar.gz",
+      "arm64Manifests": [
+        {
+          "path": "./Frameworks/Release/UserMessagingPlatform.xcframework/ios-arm64/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy",
+          "sha256": "45b7adb99fcd2d962a1c800fbfcc1325b57a7fa4165f416182323bb5ffe9c900",
+          "manifest": {
+            "NSPrivacyCollectedDataTypes": [
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeCoarseLocation",
+                "NSPrivacyCollectedDataTypeLinked": false,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypePerformanceData",
+                "NSPrivacyCollectedDataTypeLinked": false,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+                ]
+              },
+              {
+                "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeProductInteraction",
+                "NSPrivacyCollectedDataTypeLinked": false,
+                "NSPrivacyCollectedDataTypeTracking": false,
+                "NSPrivacyCollectedDataTypePurposes": [
+                  "NSPrivacyCollectedDataTypePurposeAppFunctionality"
+                ]
+              }
+            ],
+            "NSPrivacyAccessedAPITypes": [
+              {
+                "NSPrivacyAccessedAPITypeReasons": [
+                  "CA92.1"
+                ],
+                "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "sourceFindings": {
+    "nativeNpaMapsTo": "npa=1",
+    "publisherFirstPartyIdNativeDefault": "enabled per SDK header",
+    "jsFirstPartyIdSetter": "no-op Promise.resolve",
+    "publisherPrivacyPersonalizationStateValidator": "not forwarded",
+    "applicationAttRequest": "absent",
+    "attConclusion": "not_closed; manifest/source do not establish actual cross-company tracking"
+  },
+  "tests": {
+    "command": "npx vitest run tests/ads-policy.test.ts tests/ads-controller.test.ts tests/google-ads-adapter.test.ts",
+    "passed": 37,
+    "files": 3,
+    "environment": "fresh npm ci --ignore-scripts on exact Git archive; preview postinstall run separately"
+  },
+  "lowPhosphorusSnapshot": {
+    "observedDate": "2026-11-17",
+    "eligibleRecipes": 17,
+    "withQuantitativeValue": 11,
+    "items": [
+      {
+        "id": "191538a0-ab4f-4f5c-a002-47a1594aac81",
+        "title": "Smrznuti jogurt s jagodama i čokoladom — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/strawberry-and-chocolate-frozen-yogurt-bark",
+        "phosphorusMgPerServing": 36,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "2f3dc6d8-f393-4c71-a3c3-d1d2ef0a1ea3",
+        "title": "Brza supa od povrća — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/ten-minute-veggie-soup",
+        "phosphorusMgPerServing": 70,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "3f21f4f2-3737-4697-a7b7-3e75bb000a3f",
+        "title": "Curry od tikve i leblebija — Kidney Care UK",
+        "evidenceUrl": "https://kidneycareuk.org/get-support/healthy-diet-support/kidney-kitchen/recipe-index/butternut-squash-and-chickpea-curry/",
+        "phosphorusMgPerServing": null,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "678aff01-e165-4764-90a2-2ad894ff3a15",
+        "title": "Salata od kelja i prokulica — DaVita",
+        "evidenceUrl": "https://davita.com/diet-nutrition/recipes/salads-dressings/kale-slaw/",
+        "phosphorusMgPerServing": 38,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "7208b38d-d14f-401a-9b11-d6e9874fb264",
+        "title": "Tjestenina s pestom od bosiljka i oraha — AKF",
+        "evidenceUrl": "https://kitchen.kidneyfund.org/recipe/creamy-pesto-pasta/",
+        "phosphorusMgPerServing": 112,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "8106f94a-8b5b-46af-8c55-2b383787d002",
+        "title": "Pire od karfiola — Almost Mashed Potatoes",
+        "evidenceUrl": "https://davita.com/diet-nutrition/recipes/vegetables/almost-mashed-potatoes/",
+        "phosphorusMgPerServing": 54,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "813f521a-885d-4f88-8865-f8a83a2b3e5c",
+        "title": "Lisnato povrće s tofuom i susamom — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/sesame-greens-tofu",
+        "phosphorusMgPerServing": 170,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "8236cc39-3ea9-49bd-a55d-41f37087d62a",
+        "title": "Rižoto s graškom i mentom — Kidney Care UK",
+        "evidenceUrl": "https://kidneycareuk.org/get-support/healthy-diet-support/kidney-kitchen/recipe-index/pea-and-mint-risotto/",
+        "phosphorusMgPerServing": null,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "85372e63-ddbd-4eb5-aeea-1c81563f8626",
+        "title": "Boranija s lješnjacima i brusnicama — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/green-beans-hazelnuts-and-dried-cranberries",
+        "phosphorusMgPerServing": 73,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "9d106338-9cec-49ac-b59f-20a1621a5f2d",
+        "title": "Male palačinke — NKF Kidney Cooking",
+        "evidenceUrl": "https://www.kidney.org/sites/default/files/docs/kidney_cookbook_lr.pdf",
+        "phosphorusMgPerServing": 64,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "a0053379-39f3-4178-879a-20d5fc7e5f98",
+        "title": "Salata od breskve i krastavca — AKF",
+        "evidenceUrl": "https://kitchen.kidneyfund.org/recipe/peach-cucumber-salad/",
+        "phosphorusMgPerServing": 36,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "a2b479dc-456f-4dad-882f-cf021a7bc9fd",
+        "title": "Salata od karfiola i krompira — KNI",
+        "evidenceUrl": "https://kidneynutritioninstitute.org/recipes/cauliflower-potato-salad/",
+        "phosphorusMgPerServing": null,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "a99d9c81-7df6-4c7a-a118-b101928e6c88",
+        "title": "Smuti od jagode i ananasa — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/strawberry-pineapple-plant-based-smoothie",
+        "phosphorusMgPerServing": null,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "bd086db2-7ef4-45ca-af12-65297cc6b18f",
+        "title": "Bolognese od crvene leće — Kidney Care UK",
+        "evidenceUrl": "https://kidneycareuk.org/get-support/healthy-diet-support/kidney-kitchen/recipe-index/red-lentil-bolognese/",
+        "phosphorusMgPerServing": null,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "bf5f9042-d1a0-45e5-976f-8bb1469ca705",
+        "title": "Pečene korpice od jaja, svinjetine i paprika — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/savory-sausage-and-pepper-egg-cups",
+        "phosphorusMgPerServing": 154,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "db0e1d46-7738-445b-bd6e-96b8b3a0059e",
+        "title": "Začinjeni hljeb s mrkvom i grožđicama — NKF",
+        "evidenceUrl": "https://www.kidney.org/nutrition/recipes/spiced-carrot-raisin-bread",
+        "phosphorusMgPerServing": 75,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      },
+      {
+        "id": "e80d9051-d084-4e69-a68c-c7e4cca6a037",
+        "title": "Kedgeree s lososom — Kidney Care UK",
+        "evidenceUrl": "https://kidneycareuk.org/get-support/healthy-diet-support/kidney-kitchen/recipe-index/salmon-kedgeree/",
+        "phosphorusMgPerServing": null,
+        "rightsStatus": "not_verified",
+        "clinicalVerification": "not_verified"
+      }
+    ]
+  },
+  "productionChanges": false,
+  "nativeBuildStarted": false
+}

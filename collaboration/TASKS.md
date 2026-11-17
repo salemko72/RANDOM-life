@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## BUILD4-KOREKCIJE-001 — Ahmedovo uključivanje dostavljenog source paketa
+
+- **Odgovorni/grana:** ahmed-admob / `codex/ahmed-build4-korekcije`; korisnički nalog 17.11.2026. za korekcije iz ZIP priloga.
+- **Status:** claimed; osnova `15bbcca506a1bce976bddd4d62f8fc896460e3de`, paket/source `ded4bf65474d88e129afb391ff40ea492727f68d`.
+- **Scope:** primijeniti pregledani `KOREKCIJE.patch` na apps/client/app.json, apps/client/src/web/WebExperience.tsx, apps/client/src/web/experience.css i scripts/smoke-spin-again-category.mjs; vlastita sesija12 i kratak STATUS. Nema drugih aplikacijskih promjena.
+- **Kriteriji:** provjeriti SHA256 svih paketnih fajlova i jednakost sourceu; git apply --check; testovi, typecheck, preview build, ENG/BHS browser regression svih kategorija/Home i onboarding vizuelna provjera; commit/push i PR prema `codex/ahmed-admob-finish`.
+- **Saradnja:** fetch i API inventar otvorenih PR1/PR2 potvrđeni; pročitani Salemovi IOS-TF-UPDATE-001/SPIN-AGAIN-001 claimovi. Preuzima se samo već predati patch prema korisničkom nalogu i PROCITAJ, bez uređivanja tuđe grane ili njihovih sesija. Salemov remote be3abe9 vodi zaseban iOS build; ovdje se ne duplira.
+- **Granice:** samo source integracija/review; bez mergea, EAS builda, store uploada/slanja, web deploya, promjena baze, oglasa ili troška. Android11 ostaje kandidat dok se prije builda ne provjere Play/EAS broj, besplatna kvota i signer.
+
 ## IOS-ADMOB-HANDOFF-001 — Ahmedova dokumentovana predaja Salemu
 
 - **Odgovorni / grana:** ahmed-admob / `codex/ahmed-admob-finish`; korisnikov nalog 17.11.2026.; postojeći draft PR #1.

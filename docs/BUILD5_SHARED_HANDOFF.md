@@ -47,6 +47,8 @@ Novi build prikazuje poznate korekcije i uz staru bazu/cache. Stari instalirani 
 
 Korisnik izričito odobrio build5 i TestFlight bez daljeg čekanja. EAS iOS prije builda4/15, ukupni overage/estimated total0; postoji besplatna kvota. Signing cert/profil postojeći aktivni do3.11.2027.09:10:33UTC. Bez rotacije ili novih credentials. Testflight profil koristi **testne oglase**.
 
-EAS build **f1644fa5-f626-4963-9eda-e8be438f6a4e**,1.0.1(5), source4a567c3, [build link](https://expo.dev/accounts/salemko/projects/random/builds/f1644fa5-f626-4963-9eda-e8be438f6a4e). Trenutno pokrenut; native završetak i TestFlight slanje dopisati nakon potvrde.
+EAS build **f1644fa5-f626-4963-9eda-e8be438f6a4e**,1.0.1(5), source4a567c3, [build link](https://expo.dev/accounts/salemko/projects/random/builds/f1644fa5-f626-4963-9eda-e8be438f6a4e). **Native FINISHED**, EAS potvrđuje1.0.1(5) i tačan source4a567c3. Standardni besplatni TestFlight submission **795ff8f0-4f2c-4d09-a62d-4d75e410cf8c** zakazan, trenutno IN_QUEUE; nije još potvrđen Apple upload/processing. [Submission](https://expo.dev/accounts/salemko/projects/random/submissions/795ff8f0-4f2c-4d09-a62d-4d75e410cf8c). Nema --what-to-test/Enterprise parametra ili novog plana.
 
 Build4 d42fa459 je FINISHED, ali prvi submit scheduling sa opcionalnim changelogom odbijen je kao Enterprise-only; nije kreiran Apple upload. Nema plaćenog upgradea. Za5 koristiti standardni submit profil testflight sa ascAppId6830084481, bez --what-to-test i drugih opcionalnih plaćenih dodataka. App Store review/javno izdanje nije dio ovog naloga. Konačni finalni IPA/ATT/fizički QA odvojeno evidentirati.
+
+IPA download iz ovog okruženja vraćaHTTP403 na artifact putanji; nema lokalnog IPA SHA256/finalnog package audita. To ne blokira serverski EAS Submit, koji preuzima svoj gotov artefakt. Ne prijavljivati hash Metro/HTML/source ZIP-a kao IPA hash.

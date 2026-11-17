@@ -1,4 +1,6 @@
-# Zajednička predaja 1.0.1 — iOS4 / Android kandidat11
+# Historijska predaja 1.0.1 — iOS4 / Android kandidat11
+
+**ZAMIJENJENO build5 paketom:** vidi [BUILD5_SHARED_HANDOFF](BUILD5_SHARED_HANDOFF.md). ded4bf6 i build4 ZIP nemaju recipe wording/offline korekcije; ne koristiti za novi Android build. iOS4 je FINISHED ali nije uploadan Appleu: submission scheduling s opcionalnim changelogom odbijen kao Enterprise-only. Nije kupljen upgrade i nema Apple submissiona za4.
 
 **Zamrznuti aplikacijski source: `ded4bf65474d88e129afb391ff40ea492727f68d`.** Grana `codex/salem-ios-testflight-update`. Ovo zamjenjuje stare0.23.0/1d3343 build upute samo za novi UI kandidat. Android10 postojeći AAB ostaje historijski artefakt, ne novi1.0.1 kandidat.
 

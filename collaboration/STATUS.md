@@ -1,5 +1,10 @@
 # Trenutno stanje
 
+## Aktuelno — build5 zamjenjuje build4, 17.11.2026.
+
+**Novi zajednički source4a567c339a7efeff625ccecf1024887c7e9c9cd4** na codex/salem-offline-build5 uključuje UI, Spin again i recipe offline/cache korekcije; [nova predaja/ZIP](../docs/BUILD5_SHARED_HANDOFF.md). iOS1.0.1(5) EASf1644fa5-f626-4963-9eda-e8be438f6a4e pokrenut, test ads; Android11 kandidat provjerava Ahmed. **Ne koristiti build4 ZIP/ded4bf6 za novi Android.** Rezerva100/20,8ispravljenih recepata u njoj i17bounded consumer korekcija. Online D1 nije publikovan ovim radom; vidi zaseban Studio operator korak.333tests/TypeScript/preview/ENG+BHS online→offline-cache PASS. iOS4 FINISHED, ali nije uploadan Appleu: scheduling odbijen zbog opcionalnog Enterprise changeloga; nema troška/upgradea. Nema PR mergea/web deploya/Play slanja. Ništa ovdje nije potvrda završenog RIGHTS/ATT audita.
+
+
 ## iOS nastavak — UMP URL korekcija, sesija11, 17.11.2026.
 
 **ISPRAVLJENO uz izričit nalog:** Published UMP per-app dodjela nakon Save/Confirm i punog reloada potvrđuje LifeSpinner iOS/Android `https://random-life-preview.pages.dev/privacy.html`; oba FiftyFifty URL-a očuvana. Ovo zamjenjuje otvoreni URL nesklad u početnom nalazu ispod. [Handoff](../docs/IOS_ADMOB_HANDOFF.md), [sesija11](sessions/2026-11-17-ahmed-admob-11.md). PR2 headb775efabb179a9cd5830281b2f9a2889f50b5d5a pregledan; CSS code850fce3fdaa2a12760c8508bf50c077dee624d21 treba u sljedeći zajednički source, nema mergea. Novi vlastiti claim raspoređen da merge-tree ostane čist. iOS store link/Requires review/limited serving i iOS crawl nisu zatvoreni: treba javni App Store listing/Developer Website preko Marketing URL-a, pa odgovarajuća AdMob verifikacija/readiness. RIGHTS-001 dopunjen s18konkretnih kidney-health itema i K1–K5 zadacima. Salemov zasebni IOS-PRIVACY-001 vodi ATT/native/pin/broj/kvotu/signing. Nema novog builda, mode promjene, web deploya, store slanja ili troška.

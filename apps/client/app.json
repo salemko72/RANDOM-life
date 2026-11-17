@@ -2,14 +2,14 @@
   "expo": {
     "name": "LifeSpinner",
     "slug": "random",
-    "version": "0.23.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.salemko.randomlife",
-      "buildNumber": "3",
+      "buildNumber": "4",
       "icon": "./assets/ios-icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -26,7 +26,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.salemko.randomlife",
-      "versionCode": 10
+      "versionCode": 11
     },
     "web": {
       "favicon": "./assets/favicon.png"

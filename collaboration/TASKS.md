@@ -144,3 +144,12 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
 
+
+## UI-ONBOARD-001 — Jasnija tri dugmeta za izbor personalizacije
+
+- **Odgovorni/grana:** salem-ui; codex/salem-onboarding-buttons; korisnikov screenshot i nalog17.11.2026.
+- **Status:** claimed; claim objaviti prije CSS izmjene.
+- **Scope:** samo apps/client/src/web/experience.css, ovaj task i vlastita collaboration/sessions/2026-11-17-salem-ui-01.md. Bez Onboarding.tsx/SDK/config ili tuđih aktivnih fajlova. Base je Ahmedov najnoviji40f1bc4 s iOS dokumentacijskim claimom; taj zadatak ne mijenja ovaj stylesheet.
+- **Opis:** veći tekst Personalize my suggestions; dvije sekundarne radnje kao puna, svjetlija zaobljena dugmad. ENG/BHS i male iPhone širine bez clippinga. Postojeći click handleri ostaju.
+- **Kriteriji:** scoped stil za consent-actions pobjeđuje globalni button reset/mobile font; čitljiv glavni tekst; dvije svjetlije pune tipke; mobilni screenshot i stvarni tokovi tri izbora prolaze. Bez native builda/deploya ili store slanja.
+- **Zavisnosti:** zajednički source za iOS/Android; stari instalirani build neće dobiti stil dok se ne napravi/distribuira novi kandidat. Pregledati claims prije izmjena; nema automatske chat obavijesti.

@@ -3,7 +3,7 @@
 ## SPIN-AGAIN-002 — Zadržati posljednju kategoriju pri povratku Home
 
 - **Odgovorni/grana:** salem-spin-home / codex/salem-spin-again-home.
-- **Status:** claimed; push prije koda. Korisnik prijavio FOOD→Spin again→MOVE u fizičkom testu; build/verzija i tačan put zatraženi, čekaju potvrdu. Ne tvrditi da je već dokazan isti fizički uzrok.
+- **Status:** source fix/browser PASS. Korisnik zatim potvrdio da je prijavljeni fizički problem bio na buildu3, a tek sada instalira5; ne označavati taj izvještaj kao dokaz greške direktnog spina u5. Nezavisno reproduciran Home povratak ostaje pripremljen za naredni kandidat, bez novog native builda. Claim19c0a3e objavljen prije koda.
 - **Scope:** apps/client/src/web/WebExperience.tsx rail-respin handler, scripts/smoke-spin-again-category.mjs, vlastiti session i ovaj task. Osnova objavljena grana codex/salem-offline-build5, bez promjene iOS5 artefakta ili online baze.
 - **Dokaz:** test na build5 kodu reproducira FOOD→Home→Spin again prelazak u opći wheel (expected items, actual categories). Prethodni test je pogrešno očekivao general za Home rail-respin; direktni result repeat je prošao. Ovo je konkretna preostala rupa, ne potvrda instaliranog iOS broja.
 - **Kriteriji:** rail Spin again ponavlja kategoriju zadnjeg prikazanog itema i nakon Home ili recipe detail→Home; cold Home bez itema i centralni hub ostaju general. Pet kategorija/ENG+BHS/seen cycle i postojeći filteri sačuvani.

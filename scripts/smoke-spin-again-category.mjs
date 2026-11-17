@@ -51,10 +51,15 @@ try{
   }
   await page.locator('.bottom-nav button').first().click();
   await page.locator('.rail-respin').click();await page.waitForTimeout(40);
-  assert.equal(await page.locator('[data-wheel-mode="categories"]').count(),1,'Home rail spin remains general');await result();
+  await page.waitForFunction(()=>document.querySelector('.wheel-stage')?.dataset.wheelMode==='items');await result();assert.equal(await current(),'GO','Home repeat retains the last displayed category');
+  await page.locator('.bottom-nav button').first().click();
+  await page.locator('.rail-category').first().click();await result();
+  await page.locator('.result-actions .pill-primary').click();await page.locator('.detail-home-button').click();
+  await page.locator('.rail-respin').click();await page.waitForFunction(()=>document.querySelector('.wheel-stage')?.dataset.wheelMode==='items');await result();
+  assert.equal(await current(),'EAT','Recipe detail to Home then Spin again retains FOOD');
   await page.locator('.bottom-nav button').first().click();
   await page.locator('.spin-hub').click();await page.waitForTimeout(40);
   assert.equal(await page.locator('[data-wheel-mode="categories"]').count(),1,'Central home spin remains general');await result();
-  await page.close();console.log(`PASS ${locale}: all five categories, repeat, unseen items, exhausted-cycle wrap, switching categories, and general home spins`);
+  await page.close();console.log(`PASS ${locale}: all five categories, repeat, unseen items, exhausted-cycle wrap, switching categories, Home/detail returns retain category, and central Home remains general`);
  }
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

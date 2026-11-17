@@ -20,3 +20,7 @@ preview-site/
 dist-ios/
 
 .ios-release.lock
+
+# Local native generation checks; EAS continues to use managed prebuild.
+.native-check/
+dist-android/

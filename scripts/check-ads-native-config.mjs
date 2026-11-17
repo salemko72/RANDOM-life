@@ -1,0 +1,36 @@
+import {readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+const require = createRequire(import.meta.url);
+const {IOSConfig} = require('@expo/config-plugins');
+const root = process.argv[2] || '.native-check';
+const config = JSON.parse(await readFile(`${root}/introspect.json`,'utf8'));
+const plist = config._internal.modResults.ios.infoPlist;
+const manifest = await readFile(`${root}/client/android/app/src/main/AndroidManifest.xml`,'utf8');
+const properties = await readFile(`${root}/client/android/gradle.properties`,'utf8');
+const androidAppId = 'ca-app-pub-8395430021391101~6926064985';
+const iosAppId = 'ca-app-pub-8395430021391101~6486035105';
+assert(manifest.includes(`android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="${androidAppId}"`));
+assert(manifest.includes('android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT" android:value="true"'));
+assert(manifest.includes('android:screenOrientation="portrait"'));
+assert.match(properties,/RNGMA_ANDROID_BACKEND=classic/);
+assert.equal(plist.GADApplicationIdentifier,iosAppId);
+assert.equal(plist.GADDelayAppMeasurementInit,true);
+assert.equal(config.ios.supportsTablet,false);
+assert.deepEqual(IOSConfig.DeviceFamily.getDeviceFamilies(config),[1]);
+assert(plist.UISupportedInterfaceOrientations.every(value => value.startsWith('UIInterfaceOrientationPortrait')));
+assert(plist.SKAdNetworkItems.some(value => value.SKAdNetworkIdentifier==='cstr6suwn9.skadnetwork'));
+assert.equal(plist.NSUserTrackingUsageDescription,undefined,'This edition does not request ATT authorization');
+for (const platform of ['ios','android']) {
+  const autolink = JSON.parse(await readFile(`${root}/autolink-${platform}.json`,'utf8'));
+  assert(autolink.dependencies['react-native-google-mobile-ads'].platforms[platform]);
+}
+const eas = JSON.parse(await readFile('apps/client/eas.json','utf8'));
+for (const profile of ['preview','production','ads-test-apk','ads-test-store']) assert.equal(eas.build[profile].env.EXPO_PUBLIC_LIFESPINNER_ADS_MODE,'test');
+assert.equal(eas.build['ads-live'].env.EXPO_PUBLIC_LIFESPINNER_ADS_MODE,'live');
+assert.equal(eas.build['ads-test-apk'].extends,'preview');
+assert.equal(eas.build['ads-test-store'].extends,'production');
+assert.equal(eas.build['ads-test-store'].ios.simulator,false);
+assert.equal((await readFile('apps/client/public/app-ads.txt','utf8')).trim(),'google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0');
+console.log('PASS generated Android manifest/Gradle, iOS introspection, native autolinks, test profiles and publisher statement');
+console.log('iOS device-family [1] is the Expo plugin result; Xcode target/pods and signed device builds still require macOS/EAS validation.');

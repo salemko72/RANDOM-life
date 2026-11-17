@@ -10,11 +10,13 @@ for(const file of ['index.html','studio.html','standalone.js','standalone.css'])
 await cp(resolve(source,'assets'),resolve(target,'assets'),{recursive:true});
 await cp(resolve('apps/client/assets/favicon.png'),resolve(target,'favicon.png'));
 await cp(resolve('apps/client/src/web/assets/generic'),resolve(target,'media'),{recursive:true});
-for(const file of ['privacy.html','delete-data.html','terms.html'])await cp(resolve('apps/client/public/legal',file),resolve(target,file));
+for(const file of ['privacy.html','delete-data.html','terms.html','support.html'])await cp(resolve('apps/client/public/legal',file),resolve(target,file));
+// Only stage the exact publisher statement once the operator supplies it.
+try{await access(resolve('apps/client/public/app-ads.txt'));await cp(resolve('apps/client/public/app-ads.txt'),resolve(target,'app-ads.txt'));}catch(error){if(error.code!=='ENOENT')throw error;}
 const distribution=JSON.parse(await readFile(resolve('apps/client/public/app-distribution.json'),'utf8'));
 for(const [key,origin]of [['android','https://play.google.com'],['ios','https://apps.apple.com']]){const value=distribution[key];const url=new URL(value.url);if(typeof value.public!=='boolean'||url.origin!==origin||url.username||url.password)throw Error('Invalid public distribution configuration');}
 await writeFile(resolve(target,'get-app.html'),(await readFile(resolve('apps/client/public/get-app.html'),'utf8')).replace('__DISTRIBUTION__',JSON.stringify(distribution).replaceAll('<','\\u003c')));
-await writeFile(resolve(target,'_headers'),'/*\n  Cache-Control: no-cache\n  X-Content-Type-Options: nosniff\n');
+await writeFile(resolve(target,'_headers'),'/*\n  Cache-Control: no-cache\n  X-Content-Type-Options: nosniff\n/app-ads.txt\n  Content-Type: text/plain; charset=utf-8\n');
 await build({entryPoints:['services/artwork/worker.ts'],bundle:true,format:'esm',platform:'browser',target:'es2022',outfile:resolve(target,'_worker.js')});
 await writeFile(resolve(target,'_routes.json'),JSON.stringify({version:1,include:['/item/*','/api/*','/media/*','/downloads/RANDOM-life-android.apk'],exclude:[]}));
 try{await access('/workspace/shared/downloads/recipes');await cp('/workspace/shared/downloads/recipes',resolve(target,'downloads/recipes'),{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}

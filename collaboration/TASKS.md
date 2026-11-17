@@ -4,9 +4,9 @@
 
 - **Odgovorni/grana:** salem-ios-release / codex/salem-ios-testflight-update.
 - **Status:** claimed; korisnik17.11. traži sve korekcije, ZIP i zatim iOS TestFlight. Push prije integracije.
-- **Scope:** vlastiti kandidat s CSS850fce3fdaa2a12760c8508bf50c077dee624d21 i Spin321b9460851629f00271433c7a4c66cb19127de7, apps/client/app.json iOS build broj nakon provjere, vlastiti docs/IOS_TESTFLIGHT_UPDATE.md, ZIP/patch u downloads/, vlastita collaboration/sessions/2026-11-17-salem-tf-01.md i ovaj task.
+- **Scope:** vlastiti kandidat s CSS850fce3fdaa2a12760c8508bf50c077dee624d21 i Spin321b9460851629f00271433c7a4c66cb19127de7, apps/client/app.json iOS build broj nakon provjere i Android kandidat11 prema nalogu za zajednički ZIP, vlastiti docs/IOS_TESTFLIGHT_UPDATE.md, ZIP/patch u downloads/, vlastita collaboration/sessions/2026-11-17-salem-tf-01.md i ovaj task.
 - **Kriteriji:** isti čist source s oba UI popravka; test ads; iPhone-only/portrait; besplatna kvota i postojeći signing; EAS i ASC broj provjeren prije builda; objavljen ZIP sa source SHA/patchom i uputama; remote native build i TestFlight slanje samo uz ove provjere. Native build uspjeh/submission/Apple processing odvojeno evidentirati.
-- **Granice:** bez PR/main mergea, produkcijskog deploya, App Store review slanja ili plaćenih resursa. Nema novih/rotiranih signing ključeva. RIGHTS/ATT pitanja ostaju dokumentovana; fizički QA/video radi korisnik. Čeka se korisnikova potvrda najvećeg ASC build broja. Ne mijenjati receptnu bazu ili tuđe handoffe.
+- **Granice:** bez PR/main mergea, produkcijskog deploya, App Store review slanja ili plaćenih resursa. Nema novih/rotiranih signing ključeva. RIGHTS/ATT pitanja ostaju dokumentovana; fizički QA/video radi korisnik. Korisnik potvrdio iOS4 i verziju1.0.1; svježi EAS1/2/3 i ASC screenshot1/2. Android kandidat11 nije potvrđen u Play konzoli; Ahmed ga provjerava prije svog builda. Ne mijenjati receptnu bazu ili tuđe handoffe.
 
 ## SPIN-AGAIN-001 — Ponovni spin unutar kategorije prikazanog rezultata
 
@@ -170,3 +170,5 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
+
+- **IOS-TF-UPDATE-001 dopuna opsega:** korisnik traži isti GitHub ZIP za Ahmedov novi Android build. Dodati Android versionCode kandidat11 prije zamrzavanja zajedničkog sourcea; Ahmed provjerava Play/EAS broj, kvotu/signer i gradi Android. iOS pre-upload CLI za raniji fab01bc zaustavljen tokom kompresije; prije novog pokušaja ponovo provjeriti da nije kreiran build. Nema duplog builda.

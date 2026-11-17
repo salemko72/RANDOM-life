@@ -1,5 +1,13 @@
 # Zajednički zadaci
 
+## IOS-PRIVACY-001 — Salemov read-only native/privacy preflight
+
+- **Odgovorni/grana:** salem-ios-audit; codex/salem-ios-privacy-audit, base15c07f0971e19c0dbddc6cdfa85c49b9c0209b34; korisnikov nalog “nastavi”17.11.2026.
+- **Status:** claimed; objaviti prije audit dokumentacije.
+- **Scope:** ovaj novi task, docs/IOS_NATIVE_PRIVACY_AUDIT.md, docs/reviews/ios-native-preflight-2026-11-17.json, vlastita collaboration/sessions/2026-11-17-salem-ios-01.md. Aplikacijski kod/config, Ahmedovi handoff/UMP i PR2 fajlovi ostaju netaknuti.
+- **Kriteriji:** postojeći IPA3 read-only download/package audit ako je dostupan; inače tačna blokada, nezavisan audit zaključanog SDK/source/generisane konfiguracije; aktuelni EAS brojevi/submissions/free kvota/credentials metadata; konkretni otvoreni ATT/disclosure/source-pin uslovi. Bez izmišljene fizičke/network QA ili automatskog zaključka NPA=no tracking.
+- **Granice:** nema novog builda, mergea, mode/UMP izmjene, novih signing ključeva, deploya/store slanja ili dodatnog troška. Stari IPA3 nije novi UI kandidat; kod850fce3 iz PR2 tek treba dogovoreno uključiti.
+
 ## IOS-ADMOB-HANDOFF-001 — Ahmedova dokumentovana predaja Salemu
 
 - **Odgovorni / grana:** ahmed-admob / `codex/ahmed-admob-finish`; korisnikov nalog 17.11.2026.; postojeći draft PR #1.

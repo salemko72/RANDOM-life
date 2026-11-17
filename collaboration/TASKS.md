@@ -153,3 +153,11 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Potvrde Ahmeda 12.11.:** ciljna publika 16+; publisher red `google.com, pub-8395430021391101, DIRECT, f08c47fec0942fa0`. Nisu potvrde live crawla, stvarne dobi korisnika, native QA ili store izjava.
 - **Kriteriji prihvatanja:** završena iOS i Android integracija; testni oglasi podrazumijevani; pravilno mapirani javni ID-ovi; UMP i kasnija promjena izbora; ATT odluka prema stvarnom trackingu; bez slanja zdravstvenih preferencija; rijetki oglasi na prirodnoj pauzi; fizički QA za obje platforme; isti zaključani source SHA i zasebni artefakti/testovi. Implementirano nije isto što i buildano ili objavljeno.
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
+
+## RECIPE-TEXT-001 — Samostalni kratki tekstovi low-phosphorus recepata
+
+- **Odgovorni/grana:** salem-recipe-text / codex/salem-recipe-wording; nalog korisnika17.11.
+- **Status:** claimed; claim objaviti prije pisanja.
+- **Scope:** content/recipe-wording-2026-11-17/ (JSON bounded tekstualni patch i čitljiv pregled), vlastita collaboration/sessions/2026-11-17-salem-recipes-01.md i ovaj task. Ne dirati Ahmedove pravne/audit fajlove, UI ili SDK.
+- **Kriteriji:** samostalni sažeci/upute ENG/BHS za17 trenutno low-phosphate recepata; bez promjene sastojaka, količina, porcija, nutritivnih vrijednosti, izvora, slika, filtera ili odobrenja. Postojeće kulinarske radnje, vremena/temperature i napomene sačuvati po značenju. Pripremiti reviewable minimalni patch s originalnim version/source hash i before/after tekstom. Bez tvrdnje da je copyright clearance dovršen.
+- **Granice:** nema automatskog brisanja izvora ili produkcijskog importa/objave, deploya, native builda ili troška. Studio/import operator treba konkretni patch i postojeće ovlaštenje; ne izvlačiti ili dijeliti lozinke.

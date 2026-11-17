@@ -12,10 +12,10 @@
 ## IOS-UMP-URL-001 — Ispraviti samo LifeSpinner UMP privacy linkove
 
 - **Odgovorni/grana:** ahmed-admob, `codex/ahmed-admob-finish`; nastavak korisnikovog naloga17.11.2026.; base `15c07f0971e19c0dbddc6cdfa85c49b9c0209b34`, PR #1.
-- **Status:** claimed; claim commit/push prije AdMob promjene i dokumentacije.
+- **Status:** in_review; claim `d2225a80c077898167eb5822797e61162eb0d22c` pushan prije izmjene. Oba LifeSpinner linka ispravljena, Save/Confirm i puni reload/ponovni pregled Published dodjele PASS; oba FiftyFifty linka očuvana. [Predaja](../docs/IOS_ADMOB_HANDOFF.md), [sesija11](sessions/2026-11-17-ahmed-admob-11.md). iOS/ATT/RIGHTS ostaju otvoreni; nije novi build/release.
 - **Scope:** u AdMobu per-app privacy URL samo LifeSpinner iOS/Android na `https://random-life-preview.pages.dev/privacy.html`, očuvati oba FiftyFifty URL-a i ostale postavke; `docs/IOS_ADMOB_HANDOFF.md`, vlastita `collaboration/sessions/2026-11-17-ahmed-admob-11.md`, kratke TASKS/STATUS dopune i konkretni RIGHTS-001 recipe audit zadaci.
 - **Kriteriji:** ponovnim otvaranjem objavljene poruke potvrditi oba LifeSpinner linka i oba neizmijenjena FiftyFifty linka; pregledati PR2 head/diff/clean konflikt status i zabilježiti buduću integraciju; razdvojiti iOS listing/readiness/crawl blokade; receptni licence/media/nutrition/low-phosphorus zadaci bez izmjene podataka; commit/push i puni SHA.
-- **Saradnja:** fetch pokazuje Salemov IOS-PRIVACY-001 claim `a5c9766254b3c4d2bd4fbac430667041f4d77810`, koji izričito ostavlja Ahmedov handoff/UMP netaknutim; PR2 `b775efabb179a9cd5830281b2f9a2889f50b5d5a` mijenja CSS i vlastite zapise. Njihov scope se ne preuzima. Novi claim dodan na kraj radi očuvanja PR2 početnog taska.
+- **Saradnja:** fetch pokazuje Salemov IOS-PRIVACY-001 claim `a5c9766254b3c4d2bd4fbac430667041f4d77810`, koji izričito ostavlja Ahmedov handoff/UMP netaknutim; PR2 `b775efabb179a9cd5830281b2f9a2889f50b5d5a` mijenja CSS i vlastite zapise. Njihov scope se ne preuzima. Vlastiti novi claim premješten s kraja na ovo mjesto u `1c1314d9c49bf789e6f4f1ecf79f18908c36f74e` radi čistog PR2 spajanja; merge-tree PASS. PR2/code `850fce3fdaa2a12760c8508bf50c077dee624d21` treba u sljedeći zajednički source, nije mergean ovom sesijom.
 - **Granice:** konkretna UMP URL korekcija sada je izričito odobrena; nema drugih UMP/ATT/test-live izmjena, builda, mergea, web deploya, store slanja, novih ključeva ili troška. Salemov Codex zadržava ATT/native audit, novi source pin, broj, kvotu i signing. RIGHTS-001 ostaje open.
 
 ## ANDROID-LIVE-001 — Novi AAB s pravim oglasnim jedinicama
@@ -85,6 +85,7 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Odgovorni:** nije preuzeto; drugi Codex može predložiti claim za read-only audit.
 - **Grana:** npr. `codex/ahmed-content-provenance` (primjer, nije postojeći claim).
 - **Status:** `open`.
+- **Kidney-health backlog17.11.:** [RIGHTS-001-K1–K5 u iOS predaji](../docs/IOS_ADMOB_HANDOFF.md#rights-001-kidney--konkretan-audit-backlog-bez-izmjene-recepata): pet izvora NKF/AKF/Kidney Care UK/KNI/DaVita,18javnih recepata od kojih17ima low-phosphate. Po itemu i ENG/BHS provjeriti komercijalnu/ads/offline/prevod licencu i tekst odvojeno od fotografije; tačno porijeklo nutritivnih podataka, formulaciju/porciju/preračune i osnov reviewed/low oznake; provjeriti navedene KNI majoneza, source-only oznake/raspone te NKF BHS boilerplate nesklade. Predati matricu dokaza i otvorenih stavki; vlasnik rights audita/nutritivnog reviewa tek se dodjeljuje. Nema automatskog brisanja, izmjene recepata/oznaka ili popuštanja filtera.
 - **Opis:** Utvrditi koje činjenice/opisi zavise od TMDB-a i drugih izvora; razdvojiti Open Library CC0 katalog od prava na omote. Ne zaključiti da je zamjena slika riješila sve licence.
 - **Datoteke:** vlastiti audit u `docs/reviews/`, `collaboration/DECISIONS.md`, vlastita sesija. Pristup produkciji najprije read-only i uz postojeće ovlaštenje; bez objavljivanja backupâ.
 - **Kriteriji prihvatanja:** dokaz po izvoru i kategoriji; odvojeno potvrđeno/nepoznato; konkretan plan bez plaćenih licenci/API-ja; nema automatskog brisanja ili izmišljenih dozvola.

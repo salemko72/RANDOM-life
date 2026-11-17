@@ -3,7 +3,7 @@
 ## BUILD4-KOREKCIJE-001 — Ahmedovo uključivanje dostavljenog source paketa
 
 - **Odgovorni/grana:** ahmed-admob / `codex/ahmed-build4-korekcije`; korisnički nalog 17.11.2026. za korekcije iz ZIP priloga.
-- **Status:** claimed; osnova `15bbcca506a1bce976bddd4d62f8fc896460e3de`, paket/source `ded4bf65474d88e129afb391ff40ea492727f68d`.
+- **Status:** in_review; [draft PR #3](https://github.com/salemko72/RANDOM-life/pull/3) prema `codex/ahmed-admob-finish`; claim `92a7dee7af08ea769501244a8dad9a926cb6efc6` pushan prije implementacije. Osnova `15bbcca506a1bce976bddd4d62f8fc896460e3de`, paket/source `ded4bf65474d88e129afb391ff40ea492727f68d`, identični aplikacijski fajlovi u implementaciji `814d0a164b81d2893fbbc95b85ce912401ff3fcd`. SHA256/328 testova/typecheck/preview/ENG+BHS respin/onboarding320+390 PASS; [sesija12](sessions/2026-11-17-ahmed-admob-12.md).
 - **Scope:** primijeniti pregledani `KOREKCIJE.patch` na apps/client/app.json, apps/client/src/web/WebExperience.tsx, apps/client/src/web/experience.css i scripts/smoke-spin-again-category.mjs; vlastita sesija12 i kratak STATUS. Nema drugih aplikacijskih promjena.
 - **Kriteriji:** provjeriti SHA256 svih paketnih fajlova i jednakost sourceu; git apply --check; testovi, typecheck, preview build, ENG/BHS browser regression svih kategorija/Home i onboarding vizuelna provjera; commit/push i PR prema `codex/ahmed-admob-finish`.
 - **Saradnja:** fetch i API inventar otvorenih PR1/PR2 potvrđeni; pročitani Salemovi IOS-TF-UPDATE-001/SPIN-AGAIN-001 claimovi. Preuzima se samo već predati patch prema korisničkom nalogu i PROCITAJ, bez uređivanja tuđe grane ili njihovih sesija. Salemov remote be3abe9 vodi zaseban iOS build; ovdje se ne duplira.

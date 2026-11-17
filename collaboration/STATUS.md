@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## Korekcije iz build4 ZIP paketa — Ahmed, 17.11.2026.
+
+Pregledani patch uključen na vlastitoj `codex/ahmed-build4-korekcije` grani, [draft PR #3](https://github.com/salemko72/RANDOM-life/pull/3) prema Ahmedovoj postojećoj integracijskoj grani; bez mergea. Implementacija `814d0a164b81d2893fbbc95b85ce912401ff3fcd` ima sva četiri aplikacijska fajla identična dostavljenom sourceu `ded4bf65474d88e129afb391ff40ea492727f68d`: onboarding dugmad, kategorijski Spin again, 1.0.1/iOS4/Android kandidat11. SHA256, 328/328 testova, typecheck, preview build, mobilni ENG/BHS spin regression i onboarding320/390 PASS. [Sesija12](sessions/2026-11-17-ahmed-admob-12.md). Ovo je source predaja: nema novog native builda, store uploada/slanja, deploya, promjene baze ili troška; Android broj11/kvota/signer tek se provjeravaju prije eventualnog builda. Salemov iOS build vodi se zasebno.
+
 ## iOS nastavak — UMP URL korekcija, sesija11, 17.11.2026.
 
 **ISPRAVLJENO uz izričit nalog:** Published UMP per-app dodjela nakon Save/Confirm i punog reloada potvrđuje LifeSpinner iOS/Android `https://random-life-preview.pages.dev/privacy.html`; oba FiftyFifty URL-a očuvana. Ovo zamjenjuje otvoreni URL nesklad u početnom nalazu ispod. [Handoff](../docs/IOS_ADMOB_HANDOFF.md), [sesija11](sessions/2026-11-17-ahmed-admob-11.md). PR2 headb775efabb179a9cd5830281b2f9a2889f50b5d5a pregledan; CSS code850fce3fdaa2a12760c8508bf50c077dee624d21 treba u sljedeći zajednički source, nema mergea. Novi vlastiti claim raspoređen da merge-tree ostane čist. iOS store link/Requires review/limited serving i iOS crawl nisu zatvoreni: treba javni App Store listing/Developer Website preko Marketing URL-a, pa odgovarajuća AdMob verifikacija/readiness. RIGHTS-001 dopunjen s18konkretnih kidney-health itema i K1–K5 zadacima. Salemov zasebni IOS-PRIVACY-001 vodi ATT/native/pin/broj/kvotu/signing. Nema novog builda, mode promjene, web deploya, store slanja ili troška.

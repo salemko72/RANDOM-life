@@ -157,7 +157,7 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 ## RECIPE-TEXT-001 — Samostalni kratki tekstovi low-phosphorus recepata
 
 - **Odgovorni/grana:** salem-recipe-text / codex/salem-recipe-wording; nalog korisnika17.11.
-- **Status:** claimed; claim objaviti prije pisanja.
+- **Status:** draft_ready; claim565c5f516e0608da62fb33c14bc74489cf67992b objavljen prije pisanja. Paket17 ENG/BHS recepata pripremljen; contentSchema17/17 i protected-field/hash provjere PASS. Nije primijenjen na bazu. Vidi content/recipe-wording-2026-11-17/README.md i vlastitu sesiju.
 - **Scope:** content/recipe-wording-2026-11-17/ (JSON bounded tekstualni patch i čitljiv pregled), vlastita collaboration/sessions/2026-11-17-salem-recipes-01.md i ovaj task. Ne dirati Ahmedove pravne/audit fajlove, UI ili SDK.
 - **Kriteriji:** samostalni sažeci/upute ENG/BHS za17 trenutno low-phosphate recepata; bez promjene sastojaka, količina, porcija, nutritivnih vrijednosti, izvora, slika, filtera ili odobrenja. Postojeće kulinarske radnje, vremena/temperature i napomene sačuvati po značenju. Pripremiti reviewable minimalni patch s originalnim version/source hash i before/after tekstom. Bez tvrdnje da je copyright clearance dovršen.
 - **Granice:** nema automatskog brisanja izvora ili produkcijskog importa/objave, deploya, native builda ili troška. Studio/import operator treba konkretni patch i postojeće ovlaštenje; ne izvlačiti ili dijeliti lozinke.

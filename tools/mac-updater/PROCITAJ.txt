@@ -1,0 +1,42 @@
+LIFE SPINNER — MAC GITHUB UPDATE
+
+1. Raspakuj ZIP u folder gdje zelis drzati nove lokalne kopije.
+2. Dvoklik na AZURIRAJ.command. Otvorit ce se Terminal.
+3. Sacekaj zavrsetak. Rezultat je u REPOZITORIJI, a izvjestaj u IZVJESTAJI.
+4. Istu skriptu pokreni ponovo kada zelis preuzeti nove promjene.
+
+Folderi:
+01-APP-ADMOB: Ahmedova zajednicka Android/iOS AdMob grana.
+02-STABILNI-MAIN: stabilna osnova main; ne znaci da sadrzi AdMob WIP.
+03-ONBOARDING-BUTTONS: zasebni prijedlog novih onboarding dugmadi (PR2).
+04-RECIPE-TEXT-DRAFT: 17 novih ENG/BHS tekstova, jos nisu primijenjeni u bazi.
+05-RIGHTS-AUDIT: pregled preostalih prava i izvora.
+
+Ovo su ODVOJENE grane, ne jedno objedinjeno izdanje. UI i tekstualne
+korekcije nisu automatski ukljucene u 01-APP-ADMOB. Integracija treba zasebnu
+predaju/review i odobrenje za merge. Ne pravi novi release direktno iz
+proizvoljne kopije. Svaki izvjestaj sadrzi tacan SHA preuzetog sourcea.
+
+Skripta preuzima kod i dokumentaciju. Ne pokrece npm install, build, deploy,
+store upload, PR merge ili push. Ne mijenja Cloudflare, Expo, TMDB tokene,
+Codex konfiguraciju ni online bazu. Ne rjesava gresku spremanja Codex okruzenja.
+GitHub HTTP API joj ne treba; koristi Git HTTPS, kao git fetch/clone.
+Repozitorij je trenutno javan, tako da za preuzimanje ne treba token.
+
+Postojece lokalne projekte izvan foldera ovog paketa ne dira. Unutar paketa
+azurira samo ciste checkoutove na ocekivanoj grani/originu, bez novih lokalnih
+commitova. Inace preskace taj folder i ostavlja rad sacuvan. Nema brisanja,
+reset --hard, stash ili force operacija. Ostale foldere nastavlja azurirati.
+Nemoj paralelno uredjivati ili pokretati drugu skriptu u istom checkoutu.
+Ako si nesto uredjivao, pregledaj izvjestaj i uskladi izmjene s Codexom.
+
+Ako Mac nema Git, skripta ce ispisati: xcode-select --install
+Pokreni tu naredbu u Terminalu da instaliras Apple Command Line Tools, pa
+ponovo pokreni skriptu. To nije kupovina pretplate niti trazi sudo skriptu.
+Ako macOS blokira dvoklik, desni klik > Open/Otvori. Alternativno u Terminal
+upisi bash i razmak, prevuci AZURIRAJ.command u Terminal i pritisni Enter.
+Ne iskljucuj globalnu sigurnosnu zastitu Maca.
+
+Kod greske preuzimanja provjeri internet i pristup github.com, pa pokreni
+ponovo. Ne salji lozinke/tokene kroz chat. Djelimicni neuspjeli clone ostaje
+u skrivenom .preuzimanje folderu radi pregleda; skripta ga ne brise.

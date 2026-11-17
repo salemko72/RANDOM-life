@@ -1,0 +1,29 @@
+CODEX OKRUZENJE — LISTA ZA RUCNU PROVJERU
+
+Na screenshotu su vec navedene ove domene:
+api.cloudflare.com
+api.expo.dev
+developers.cloudflare.com
+expo.dev
+mcp.cloudflare.com
+random-life-preview.pages.dev
+repo.reactnative.dev
+storage.googleapis.com
+
+Za rad s GitHubom i preuzimanje Expo artefakata provjeri i:
+github.com
+api.github.com
+raw.githubusercontent.com
+objects.githubusercontent.com
+wf-artifacts.eascdn.net
+
+api.github.com nedostaje na prikazanoj listi. To je relevantno za raniji
+CONNECT403 na GitHub API-ju; Git clone/push su vec radili.
+Odsustvo domene je moguce objasnjenje mreznog odbijanja, nije dokaz uzroka
+crvene greske spremanja Codex konfiguracije. Dodavanje domene ne garantuje
+pristup ako postoje dodatna ogranicenja ili nedovoljna GitHub ovlastenja.
+
+Ova skripta ne mijenja listu domena ili kljuceve automatski. API kljuceve
+ne treba rotirati samo radi mreznog CONNECT403. Najprije provjeriti da
+zahtjev uopce stize do servisa; potom provjeriti identitet i ovlastenja.
+Ne slati kljuceve, lozinke ili cookie podatke kroz chat.

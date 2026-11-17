@@ -173,7 +173,7 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 ## MAC-SYNC-001 — Mac ZIP za lokalno ažuriranje GitHub kopija
 
 - **Odgovorni/grana:** salem-mac / codex/salem-mac-updater.
-- **Status:** claimed; objaviti prije implementacije.
+- **Status:** implemented/tested; Mac ZIP pripremljen. Bash syntax i8 lokalnih Git scenarija PASS na Linuxu; stvarni Mac dvoklik nije testiran. Nema release/produkcijskih radnji. Claim b84bc8f objavljen prije implementacije.
 - **Scope:** tools/mac-updater/, tests/mac-updater.integration.sh, vlastita collaboration/sessions/2026-11-17-salem-mac-01.md i ovaj task; ZIP artefakt izvan source checkouta.
 - **Kriteriji:** dvoklik .command na Mac Bash3.2; odvojeni folderi za main, Ahmed AdMob, onboarding i dvije sadržajne predaje; clone/fetch i isključivo fast-forward vlastitih čistih kopija. Dirty/diverged/wrong-branch/wrong-origin folder ostaje netaknut. Lokalni Git integration test za clone/update i zaštite; ZIP izvršne dozvole provjerene; upute i log bez tajni.
 - **Granice:** bez push/merge PR-ova, reset/clean/stash, brisanja starih kopija, npm instalacija, builda, produkcijskih promjena, troška ili promjene Codex okruženja. Ne spajati neodobrene grane. Korisnik potvrdio MAC.

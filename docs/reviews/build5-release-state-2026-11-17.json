@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-11-17T17:23:23+01:00",
+  "state": "native_finished_submission_in_queue",
+  "sourceSha": "4a567c339a7efeff625ccecf1024887c7e9c9cd4",
+  "version": "1.0.1",
+  "iosBuild": "5",
+  "androidCandidateCode": 11,
+  "easBuildId": "f1644fa5-f626-4963-9eda-e8be438f6a4e",
+  "nativeBuildStatus": "FINISHED",
+  "submissionId": "795ff8f0-4f2c-4d09-a62d-4d75e410cf8c",
+  "submissionStatus": "IN_QUEUE",
+  "appleReceiptConfirmed": false,
+  "ipaSha256": null,
+  "artifactDownload": "HTTP403 in this environment",
+  "quota": {
+    "iosUsed": 5,
+    "iosLimit": 15,
+    "estimatedOverageCents": 0
+  },
+  "verification": {
+    "unitTestsPassed": 333,
+    "testFilesPassed": 44,
+    "typecheck": "PASS",
+    "preview": "PASS",
+    "recipeOnlineThenOfflineBrowserEnBs": "PASS",
+    "zipCrcAndManifest": "PASS",
+    "forwardPatchesBothBases": "PASS"
+  },
+  "content": {
+    "reserveCount": 100,
+    "correctedReserveRecipes": 8,
+    "boundedConsumerTextCorrections": 17,
+    "databasePublished": false
+  },
+  "zip": {
+    "path": "downloads/LIFE-SPINNER-1.0.1-build5-ZAMJENA.zip",
+    "bytes": 991329,
+    "sha256": "0c3b51e9cdb7efd1a1bb7a9285ec58d6cc3f9828f3e2117480243c637dbd031c"
+  }
+}

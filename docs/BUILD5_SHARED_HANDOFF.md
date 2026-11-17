@@ -52,3 +52,7 @@ EAS build **f1644fa5-f626-4963-9eda-e8be438f6a4e**,1.0.1(5), source4a567c3, [bui
 Build4 d42fa459 je FINISHED, ali prvi submit scheduling sa opcionalnim changelogom odbijen je kao Enterprise-only; nije kreiran Apple upload. Nema plaćenog upgradea. Za5 koristiti standardni submit profil testflight sa ascAppId6830084481, bez --what-to-test i drugih opcionalnih plaćenih dodataka. App Store review/javno izdanje nije dio ovog naloga. Konačni finalni IPA/ATT/fizički QA odvojeno evidentirati.
 
 IPA download iz ovog okruženja vraćaHTTP403 na artifact putanji; nema lokalnog IPA SHA256/finalnog package audita. To ne blokira serverski EAS Submit, koji preuzima svoj gotov artefakt. Ne prijavljivati hash Metro/HTML/source ZIP-a kao IPA hash.
+
+### Provjereno17.11.2026.17:23CET
+
+Submission795ff8f0 je i dalje **IN_QUEUE** nakon više od15min; EAS nije prijavio grešku i posao ostaje zakazan serverski. Apple upload/processing/tester dostupnost još nisu potvrđeni. Ne praviti duplikat: prvo provjeriti ovaj submission ID. Native build5 je završen. Kvota poslije builda5/15, estimated overage0. [Strukturirani dokaz](reviews/build5-release-state-2026-11-17.json).

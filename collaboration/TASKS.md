@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## SPIN-AGAIN-001 — Ponovni spin unutar kategorije prikazanog rezultata
+
+- **Odgovorni/grana:** salem-spin / codex/salem-spin-again-category; korisnički nalog17.11.
+- **Status:** claimed; push prije implementacije.
+- **Scope:** apps/client/src/web/WebExperience.tsx (isključivo rail-respin handler), scripts/smoke-spin-again-category.mjs, vlastita collaboration/sessions/2026-11-17-salem-spin-01.md i ovaj task.
+- **Kriteriji:** na rezultatu Spin again zadržava uiCategory(item), uključujući READ/BOOK mapiranje; ponovljeni klikovi ostaju u kategoriji; promjena kategorije bira novu; početni/opći spin ostaje opći. Postojeći hard filteri, seen-cycle, personalizacija i ad bridge ostaju u postojećem toku. Browser test prije/poslije, postojeći testovi/typecheck/preview build.
+- **Saradnja:** Ahmedov remote claim scope sada je dokumentacija/UMP; PR2 CSS odvojen. Osnova origin/codex/ahmed-admob-finish15bbcca506a1bce976bddd4d62f8fc896460e3de. GitHub API stanje blokirano, Git remote claimovi pregledani. Ne mijenjati postojeće release pinove ili druge sesije.
+- **Granice:** nema mergea, produkcijskog deploya, native builda ili store slanja; code fix tek treba integrisati u zajednički release.
+
 ## IOS-ADMOB-HANDOFF-001 — Ahmedova dokumentovana predaja Salemu
 
 - **Odgovorni / grana:** ahmed-admob / `codex/ahmed-admob-finish`; korisnikov nalog 17.11.2026.; postojeći draft PR #1.

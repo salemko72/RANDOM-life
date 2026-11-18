@@ -3,7 +3,7 @@
 ## I18N-PREVIEW-003 — Preuzimljiv zaseban pregled UI prijevoda
 
 - **Odgovorni/grana:** salem-i18n / codex/salem-language-preview, baseaa0f1d3; korisnik pita gdje može pogledati preview novih prijevoda.
-- **Status:** claimed; push prije implementacije.
+- **Status:** implemented/tested; review builder96983f36f4387034e7907a41266f19400fc072fb. [ZIP/upute](../review-previews/README.md); sva4jezika/izolacija storage/clear smoke PASS, full suite358PASS. GitHub predaja artefakta u ovoj grani; nije web deploy.
 - **Scope:** scripts/build-language-review.mjs, scripts/smoke-language-review.mjs; review-previews/README.md i zaseban ZIP/HTML artefakt; vlastita sesija i TASKS. Bez izmjene produkcijske ready liste/native izvoda/kataloga.
 - **Kriteriji:** samostalan HTML u ZIP-u za Mac/browser,6jezičkih izbora u preglednom bundleu; jasna oznaka draftUI/English katalog; blockedremote fetch/Studio/share; nema backend zahtjeva/upisa, tajni ili korisničkog profila u artefaktu; browser testsvih4novajezika i očuvan produkcijski en/bs build.
 - **Granice:** ovo nije web deploy/store/native build/aktivacija u produkciji.0dodatnih troškova; GitHub grana služi za preuzimanje artefakta.

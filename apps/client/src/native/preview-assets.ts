@@ -13,7 +13,7 @@ type Files={
 
 // HTML stays in the installed asset/file system. It never becomes a React prop
 // or a second 49 MB JavaScript string on its way to the native WebView.
-export async function prepareNativePreview(asset:InstalledAsset,files:Files,state:LocalState,insets:{top:number;bottom:number},catalog:string|null=null,features:{ads?:boolean;buildInfo?:InstalledBuildInfo;deviceLanguages?:readonly string[]}={}):Promise<string>{
+export async function prepareNativePreview(asset:InstalledAsset,files:Files,state:LocalState|(()=>LocalState),insets:{top:number;bottom:number},catalog:string|null=null,features:{ads?:boolean;buildInfo?:InstalledBuildInfo;deviceLanguages?:readonly string[]}={}):Promise<string>{
  await asset.downloadAsync();
  if(!asset.localUri?.startsWith('file://')||!files.cacheDirectory)throw new Error('Installed RANDOM UI is unavailable.');
  if(!asset.hash||!/^[a-f0-9]+$/i.test(asset.hash))throw new Error('Installed RANDOM UI has no content hash.');
@@ -21,7 +21,7 @@ export async function prepareNativePreview(asset:InstalledAsset,files:Files,stat
  await files.makeDirectoryAsync(directory,{intermediates:true});
  if(!(await files.getInfoAsync(uri)).exists)await files.copyAsync({from:asset.localUri,to:uri});
  const safe=(n:number)=>Number.isFinite(n)?Math.max(0,Math.min(200,n)):0;
- const script=`window.__lifespinnerAds=${features.ads===true};\nwindow.__lifespinnerBuild=${JSON.stringify(features.buildInfo??null)};\n`+deviceLanguageScript(features.deviceLanguages??[])+profileBootstrapScript(state)+`\ndocument.documentElement.style.setProperty('--native-safe-top','${safe(insets.top)}px');document.documentElement.style.setProperty('--native-safe-bottom','${safe(insets.bottom)}px');`;
+ const script=`window.__lifespinnerAds=${features.ads===true};\nwindow.__lifespinnerBuild=${JSON.stringify(features.buildInfo??null)};\n`+deviceLanguageScript(features.deviceLanguages??[])+profileBootstrapScript(typeof state==='function'?state():state)+`\ndocument.documentElement.style.setProperty('--native-safe-top','${safe(insets.top)}px');document.documentElement.style.setProperty('--native-safe-bottom','${safe(insets.bottom)}px');`;
  await files.writeAsStringAsync(directory+'native-state.js',script);
  await files.writeAsStringAsync(directory+'catalog-cache.js',catalog?'globalThis.__randomConsumerCatalog='+JSON.stringify(JSON.parse(catalog))+';':'');
  return uri;

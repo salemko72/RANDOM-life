@@ -2,7 +2,9 @@
 
 ## iOS povratak iz pozadine — 18.11.2026.
 
-IOS-RESUME-001 preuzet na `codex/salem-ios-resume-recovery`, izolovan iz uploadanog build5 source4a567c3. Nedostaje WKWebView process-termination recovery; obični reload bi mogao ponovo učitati zastarjeli native-state.js. Prvo testovi, zatim obnoviti bootstrap iz trenutnog native stanja prije remounta. Normalan foreground ne smije resetovati ekran. Fizički nalaz još nije potvrđen; nema novog builda ili produkcijskih radnji. Jezički/kataloški source ostaje zaseban na codex/salem-content-translations.
+**Source `9b5f097835cb4d5da44db2d418ce7df4a533492f`**, `codex/salem-ios-resume-recovery`, izolovan iz uploadanog build5 source4a567c3. Generacijski recovery za WKWebView termination, svjež bootstrap preferenci/historije/favorita i katalog, odgoda dok je background, ograničen retry i vidljiv ručni pokušaj. Normalan foreground ne resetuje ekran.346tests/45files, TS/preview, App.tsx lifecycle browser harness i lokalni iOS Hermes export PASS; nezavisni review završen. [Predaja i fizički QA](../docs/IOS_RESUME_RECOVERY.md).
+
+Nema novog IPA/EAS builda, Xcode/physical iPhone testa, mergea, deploya ili store slanja. Tačan fizički uzrok još nije potvrđen. Jezički/kataloški source ostaje zaseban na codex/salem-content-translations; prije zajedničkog izdanja prenijeti fix uz očuvanje novijeg language/build-info bridgea. TestFlight5 nije promijenjen. PR status i compare link su u sesiji.
 
 ## iOS nastavak — UMP URL korekcija, sesija11, 17.11.2026.
 

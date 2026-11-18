@@ -1,0 +1,17 @@
+# 18.11.2026. — salem-ios — sesija01
+
+- **Task / owner / branch:** IOS-RESUME-001 / salem-ios / `codex/salem-ios-resume-recovery`.
+- **Base:** installed TestFlight5 source `4a567c339a7efeff625ccecf1024887c7e9c9cd4`. Remote base branch later docs head `e0cc30c5f344005089a53d5bac5063631437f6ff` confirms finished upload. Separate worktree /workspace/lifespinner-ios-resume; translation worktree preserved.
+- **Claim:** `7a71cb9`, committed/pushed before implementation. Explicit all-head fetch performed; no resume claim found. GitHub API PR state could not be independently established from initial Git-only inspection.
+- **Application source:** `9b5f097835cb4d5da44db2d418ce7df4a533492f`.
+- **Change:** confirmed absent SDK process-termination handling now recreates the native WebView with fresh state/cache, defers background recovery and ignores old-generation events (including SDK destroy notifications). Healthy resume leaves document intact. Bounded two automatic attempts/minute and visible manual retry. Preserve ad runtime/counters. Retry transient startup storage read, not just a permanently rejected promise.
+- **Files:** App.tsx; native/webview-recovery, profile bootstrap via preview-assets getter, catalog-storage queue read, numeric performance names; four unit test files and scripts/smoke-native-resume.mjs. Existing preferences/filters/content and app build config unchanged.
+- **Checks:** npm test346/346,45files; TypeScript PASS; preview PASS; App.tsx ReactDOM/native-boundary-double browser harness PASS; local iOS Hermes/Metro export795modules PASS; diff whitespace PASS. Full output inspected. Initial missing generated preview.json typecheck failure was resolved by required build:preview; final typecheck passes. Local export generated ignored dist-ios artifacts, no IPA/native compile.
+- **Regression evidence:** saw latest-state bootstrap and queued-catalogue-read assertions fail before fixes; browser transient initial-storage-read retry failed before lazy-loader correction, passed after. Independent reviewer identified that issue, then re-reviewed with no important findings.
+- **Limits:** no physical iPhone reproduction/Xcode/Pod build. Static missing process-death recovery matches symptom but does not prove the exact device cause. No general heartbeat watchdog. Device QA matrix and source-integration instructions in [handoff](../../docs/IOS_RESUME_RECOVERY.md).
+- **Next Codex:** port application source commit into the chosen combined release branch, preserving newer getLocales/device-language/buildInfo bridges. Do not blindly replace newer App.tsx. Run full tests/harness and authorized build prerequisites with new unused native numbers; do not reuse5. New translations remain isolated/unbuilt on codex/salem-content-translations. No D1 change required for this bug.
+- **Authorization:** user reported bug and requested continue; repair/test/GitHub handoff only. No new build, store upload, production deployment, merge or cost.
+
+## GitHub predaja
+
+Application source pushed successfully. `gh pr create` (base codex/salem-offline-build5, own head, draft) returned **Forbidden** from https://api.github.com/graphql. No PR was created; status **blocked_pr**. No automatic merge attempted. [Exact compare / create PR link](https://github.com/salemko72/RANDOM-life/compare/codex/salem-offline-build5...codex/salem-ios-resume-recovery?expand=1). Source and handoff remain available through the published branch. This is API access failure, not an automatic approval-review rejection.

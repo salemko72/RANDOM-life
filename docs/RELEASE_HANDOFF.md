@@ -1,3 +1,5 @@
+> **18.11.2026. iOS resume hotfix — not built/uploaded:** source `9b5f097835cb4d5da44db2d418ce7df4a533492f` on `codex/salem-ios-resume-recovery`, isolated from installed build5.346tests/TS/preview/App lifecycle harness/local iOS Hermes export PASS. [Exact handoff, integration and physical QA](IOS_RESUME_RECOVERY.md). Native version/build unchanged; no new IPA, signing or EAS action. Port this application commit into the chosen combined release source while preserving newer language/build metadata bridges before freezing a new release SHA. GitHub PR creation blocked by GraphQL403; pushed branch available. Existing release records below remain historical.
+
 # LifeSpinner — release handoff
 
 ## Završeni Android live AAB16.11.

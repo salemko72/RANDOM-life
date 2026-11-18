@@ -475,5 +475,7 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .share-app-control .profile-reset{display:flex;align-items:center;gap:8px}.share-app-control .panel-note{margin:4px 0;font-size:11px}
 
 /* Installed package identity, supplied by the native shell. */
-.app-build-info{position:absolute;right:0;top:-16px;max-width:100%;font:400 10px/1.3 RandomSans,sans-serif;color:#80695d;white-space:nowrap;pointer-events:none}
-.menu-build-info{display:block;margin:0 0 10px;text-align:right;font:400 10px/1.3 RandomSans,sans-serif;color:#80695d}
+.menu-build-info{display:block;margin:10px 0 0;text-align:right;font:400 10px/1.3 RandomSans,sans-serif;color:#80695d}
+
+.menu-footer{margin-top:16px;padding-top:8px;border-top:1px solid rgba(175,108,104,.16)}
+.menu-footer .panel-menu-item{font-size:12px}

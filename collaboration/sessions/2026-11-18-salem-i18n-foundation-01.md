@@ -9,3 +9,5 @@ Ruling: Reuse random-life.locale.v1 with auto instead of a new persisted key. Ex
 Pre-flight: Task1 generic locale resolver supports Task3 ready-only Locale; Task2 optional native boot tags feed Task3 with browser fallback. No new Locale union activation is allowed while legacy en/else-BHS strings remain.
 
 Task1: pending. Task2: pending. Task3: pending.
+
+Task1 complete: focused RED showed5 expected behavior failures; implementation then full suite343/343 PASS. Shared helper keeps only reviewed locales active and preserves old manual choices. Task2 dependency installed with scripts disabled and shared npm cache (default home cache unavailable).

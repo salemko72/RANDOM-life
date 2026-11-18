@@ -1,0 +1,26 @@
+import{createServer}from'node:http';
+import{chromium}from'playwright-core';import{readFile,access}from'node:fs/promises';import{resolve,dirname}from'node:path';import assert from'node:assert/strict';
+const target=resolve(process.argv[2]||'/tmp/lifespinner-language-review/LifeSpinner-Translations.html');await access(target);
+const html=await readFile(target);const server=createServer((request,response)=>{if(request.url==='/seed'){response.end('<html></html>');return;}response.setHeader('Content-Type','text/html; charset=utf-8');response.end(html);});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin='http://127.0.0.1:'+server.address().port;
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});
+try{for(const[locale,code]of[['es','ESP'],['pt-BR','POR'],['de','DEU'],['it','ITA']]){
+ const dictionary=JSON.parse(await readFile('apps/client/src/web/i18n/'+locale+'.json','utf8'));
+ const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});await context.route(/^https?:/,route=>route.request().url().startsWith(origin+'/')?route.continue():route.abort());
+ const page=await context.newPage(),errors=[];page.on('pageerror',error=>errors.push(error.message));const now=Date.now();await page.clock.install({time:now});await page.clock.pauseAt(now+1000);
+ await page.goto(origin+'/seed');await page.evaluate(async()=>{localStorage.setItem('random-life.locale.v1','bs');sessionStorage.setItem('random-life.performance.v1.web.1.0.1','keep-performance');const request=indexedDB.open('random-life-consumer-catalog',1);await new Promise((resolve,reject)=>{request.onupgradeneeded=()=>request.result.createObjectStore('snapshot');request.onerror=()=>reject(request.error);request.onsuccess=()=>resolve();});const db=request.result;await new Promise((resolve,reject)=>{const tx=db.transaction('snapshot','readwrite');tx.objectStore('snapshot').put({sentinel:'keep-production-snapshot'},'current');tx.oncomplete=resolve;tx.onerror=reject;});db.close();});await page.goto(origin+'/');await page.locator('.app-splash').waitFor();await page.clock.runFor(2050);await page.locator('.main-stage').waitFor({state:'attached'});await page.clock.runFor(1100);
+ const setup=page.locator('.onboarding-screen'),chooser=setup.locator('.language-chooser');
+ assert.equal(await chooser.getByRole('button',{name:code,exact:true}).count(),1,`Review must expose ${code}`);await chooser.getByRole('button',{name:code,exact:true}).click();assert.equal(await page.locator('html').getAttribute('lang'),locale);
+ assert.equal(await setup.locator('.onboarding-intro').innerText(),dictionary['Add your name, then choose whether to personalize.']);
+ await setup.locator('.onboarding-field input').first().fill('Preview');await setup.locator('.onboarding-actions button[type="submit"]').click();assert.equal(await setup.locator('.consent-actions .pill-primary').innerText(),dictionary['Personalize my suggestions']);
+ await setup.locator('.onboarding-skip').last().click();assert.equal(await setup.locator('.preference-check').filter({hasText:dictionary['Low-phosphate diet']}).count(),1);
+ await setup.locator('.onboarding-actions button[type="submit"]').click();await page.clock.runFor(650);assert.equal(await setup.count(),0);
+ await page.locator('.menu-button').click();await page.clock.runFor(350);assert.equal(await page.locator('.menu-footer .panel-menu-item').innerText(),dictionary['Share diagnostic log']);
+ if(locale==='de')await page.screenshot({path:resolve(dirname(target),'German-preview.png')});
+ await page.locator('.floating-panel .panel-menu-item').filter({hasText:dictionary['My profile']}).click();await page.clock.runFor(350);await page.locator('.profile-cache-clear').click();await page.clock.runFor(500);
+ assert.equal(await page.evaluate(()=>fetch('https://example.org/no-request').then(response=>response.status)),503);
+ const dbValue=await page.evaluate(async()=>{const request=indexedDB.open('random-life-consumer-catalog',1);await new Promise(resolve=>request.onsuccess=resolve);const db=request.result;const value=await new Promise(resolve=>{const read=db.transaction('snapshot').objectStore('snapshot').get('current');read.onsuccess=()=>resolve(read.result);});db.close();return value;});assert.deepEqual(dbValue,{sentinel:'keep-production-snapshot'});
+ const cdp=await context.newCDPSession(page);for(const[isLocalStorage,key,value]of[[true,'random-life.locale.v1','bs'],[false,'random-life.performance.v1.web.1.0.1','keep-performance']]){const result=await cdp.send('DOMStorage.getDOMStorageItems',{storageId:{securityOrigin:origin,isLocalStorage}});assert.equal(new Map(result.entries).get(key),value,'Production browser state must survive review');}await cdp.detach();
+ assert.equal(await page.locator('#translation-review-note').count(),1);await page.evaluate(()=>location.hash='studio');await page.clock.runFor(350);assert.equal(await page.locator('.preview-studio-shell').count(),0);
+ assert.deepEqual(errors,[]);
+ await context.close();console.log(`PASS standalone ${locale}: setup, dietary labels, save, menu, review notice; Studio unavailable and no page errors`);
+}}finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

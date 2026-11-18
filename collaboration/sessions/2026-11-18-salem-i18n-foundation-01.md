@@ -11,3 +11,5 @@ Pre-flight: Task1 generic locale resolver supports Task3 ready-only Locale; Task
 Task1: pending. Task2: pending. Task3: pending.
 
 Task1 complete: focused RED showed5 expected behavior failures; implementation then full suite343/343 PASS. Shared helper keeps only reviewed locales active and preserves old manual choices. Task2 dependency installed with scripts disabled and shared npm cache (default home cache unavailable).
+
+Task2 native bridge: SDK-matched expo-localization installed, boot and foreground tags serialized through bounded shared sanitizer. Focused7tests PASS after RED; foreground changes dispatch an event without reload. Web tag-source helper implemented here because it shares sanitization tests with native bridge. No new storage key.

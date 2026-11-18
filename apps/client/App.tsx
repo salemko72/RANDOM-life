@@ -1,3 +1,5 @@
+import {getLocales} from 'expo-localization';
+import {deviceLanguageScript} from './src/native/device-language';
 import {createAdsRuntime} from './src/native/ads-runtime';
 import {parseAdMessage} from './src/native/ads-policy';
 import{nativeBackScript,parseBackResult}from'./src/native/back-navigation';
@@ -48,6 +50,7 @@ function NativeExperience(){
  const [uri,setUri]=useState<string | null>(null);
  const state=useRef<LocalState>({});
  const webView=useRef<WebView>(null);
+ useEffect(()=>{const listener=AppState.addEventListener('change',next=>{if(next==='active')webView.current?.injectJavaScript(deviceLanguageScript(getLocales().map(locale=>locale.languageTag),true));});return()=>listener.remove();},[]);
  const pendingBack=useRef<string|null>(null),backSequence=useRef(0);
  useEffect(()=>{if(Platform.OS!=='android')return;const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webView.current||!uri||error)return false;const requestId='back-'+(++backSequence.current);pendingBack.current=requestId;webView.current.injectJavaScript(nativeBackScript(requestId));return true;});return()=>subscription.remove();},[uri,error]);
  const catalogStorage=useRef(createNativeCatalogStorage(FileSystem,AsyncStorage));
@@ -58,7 +61,7 @@ function NativeExperience(){
    if(!active)return;
    state.current=readSnapshot(raw);nativeMetric('profile_loaded');
    const asset=Asset.fromModule(require('./src/generated/preview.html'));
-   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'||Platform.OS==='ios',buildInfo:Platform.OS==='ios'||Platform.OS==='android'?{version:appConfig.expo.version,build:String(nativeBuild),platform:Platform.OS}:undefined});
+   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{deviceLanguages:getLocales().map(locale=>locale.languageTag),ads:Platform.OS==='android'||Platform.OS==='ios',buildInfo:Platform.OS==='ios'||Platform.OS==='android'?{version:appConfig.expo.version,build:String(nativeBuild),platform:Platform.OS}:undefined});
    nativeMetric('assets_ready');if(active)setUri(local);
   }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
   return ()=>{active=false;};

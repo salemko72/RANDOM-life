@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## iOS povratak iz pozadine — 18.11.2026.
+
+IOS-RESUME-001 preuzet na `codex/salem-ios-resume-recovery`, izolovan iz uploadanog build5 source4a567c3. Nedostaje WKWebView process-termination recovery; obični reload bi mogao ponovo učitati zastarjeli native-state.js. Prvo testovi, zatim obnoviti bootstrap iz trenutnog native stanja prije remounta. Normalan foreground ne smije resetovati ekran. Fizički nalaz još nije potvrđen; nema novog builda ili produkcijskih radnji. Jezički/kataloški source ostaje zaseban na codex/salem-content-translations.
+
 ## iOS nastavak — UMP URL korekcija, sesija11, 17.11.2026.
 
 **ISPRAVLJENO uz izričit nalog:** Published UMP per-app dodjela nakon Save/Confirm i punog reloada potvrđuje LifeSpinner iOS/Android `https://random-life-preview.pages.dev/privacy.html`; oba FiftyFifty URL-a očuvana. Ovo zamjenjuje otvoreni URL nesklad u početnom nalazu ispod. [Handoff](../docs/IOS_ADMOB_HANDOFF.md), [sesija11](sessions/2026-11-17-ahmed-admob-11.md). PR2 headb775efabb179a9cd5830281b2f9a2889f50b5d5a pregledan; CSS code850fce3fdaa2a12760c8508bf50c077dee624d21 treba u sljedeći zajednički source, nema mergea. Novi vlastiti claim raspoređen da merge-tree ostane čist. iOS store link/Requires review/limited serving i iOS crawl nisu zatvoreni: treba javni App Store listing/Developer Website preko Marketing URL-a, pa odgovarajuća AdMob verifikacija/readiness. RIGHTS-001 dopunjen s18konkretnih kidney-health itema i K1–K5 zadacima. Salemov zasebni IOS-PRIVACY-001 vodi ATT/native/pin/broj/kvotu/signing. Nema novog builda, mode promjene, web deploya, store slanja ili troška.

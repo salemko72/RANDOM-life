@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## IOS-RESUME-001 — Oporavak nakon gašenja iOS WebView procesa
+
+- **Odgovorni/grana:** salem-ios / `codex/salem-ios-resume-recovery`; status `in_progress`, 18.11.2026.
+- **Osnova:** uploadani build5 source `4a567c339a7efeff625ccecf1024887c7e9c9cd4`, izolovan worktree. Novi jezički/kataloški rad ostaje na `codex/salem-content-translations`; ovaj hotfix ga ne aktivira.
+- **Scope:** apps/client/App.tsx, src/native/webview-recovery.ts, preview-assets.ts, performance-log.ts; odgovarajući tests; vlastiti plan, handoff i sesija, STATUS/TASKS.
+- **Kriteriji:** normalan foreground bez reloada; oporavak nakon process termination sa svježim lokalnim preferencama/historijom/favoritima i katalogom; bez stale/unmount restart petlje; odgoda dok je background; ograničen automatski retry i vidljiv ručni pokušaj na grešku; anonimni dijagnostički događaji. Unit regresije, puni testovi, TS i preview.
+- **Dokazi/granice:** potvrđen nedostajući termination handler u buildu5 i SDK-u; fizički uzrok prijavljenog slučaja još nepotvrđen. Git refs fetch pregledan, nema resume claima; PR API status nije potvrđen. Bez native builda, mergea, deploya, DB/store promjena i troška.
+
+
 ## OFFLINE-RECIPES-005 — Zajednički paket s novim receptima i iOS5
 
 - **Odgovorni/grana:** salem-offline / codex/salem-offline-build5; korisnik17.11. izričito traži offline korekciju, zamjenski ZIP i odmah TestFlight build5.

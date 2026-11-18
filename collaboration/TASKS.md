@@ -3,7 +3,7 @@
 ## I18N-CONTENT-004 — Prevod467stavki i100offline rezerve
 
 - **Odgovorni/grana:** salem-content / codex/salem-content-translations; base2b0ef74527b9f953c3f61aa05cab1d1f759fa042; nalog OK go18.11.2026.
-- **Status:** claimed, push prije koda/prevoda. Javni manifest467/snapshot59a712e7856e411d0d1b11e7c7c681cdb0e4e769522ccdbcd84a502df53eebf8; sve100offlineID prisutne online.
+- **Status:** implemented/tested, source/data priprema završena; sourceb8fa083ea010468a0cb42b67b540dc2516fa42d3, review20bc5d9657cb767c7bbf9b5004a755deb47e7f83.467×4=1868prevoda,100offline/400dodataka,376tests/58files+TypeScript/browserPASS. [Predaja](../docs/CONTENT_TRANSLATION_HANDOFF.md), [novi ZIP](../review-previews/README.md). Produkcijska D1/native aktivacija nije urađena; PR API ranije403.
 - **Scope:** content/i18n-2026-11-18/*, translation source/compile/validation scripts, shared localization/generic-art helpers i testovi; bounded consumer adapter/backup translations, isolated preview builder/tests/ZIP, vlastita sesija/plan/TASKS/STATUS. Nema native signer/config/build brojeva ili backend upisa.
 - **Podjela:** root jedini mijenja zajednički kod; po jedan locale worker za es/pt-BR/de/it mijenja samo svoj memory JSON. Claimovi drugih operatora provjereni fetchom; nema novog preklapanja sa source scopeom.
 - **Kriteriji:** pilot sve5kategorija(+film/series);1868draft record translations,100offline pokriveno; ID/version/data/array/number/proper-title invariants, guarded stale-source behavior, false review flags. Source raw hash nije fingerprint projekcije.

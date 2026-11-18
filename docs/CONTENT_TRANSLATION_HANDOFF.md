@@ -1,5 +1,7 @@
 # Predaja prijevoda sadržaja — 18.11.2026.
 
+App/catalogue source: **b8fa083ea010468a0cb42b67b540dc2516fa42d3**. Review builder/source: **20bc5d9657cb767c7bbf9b5004a755deb47e7f83**. Nije release/native build SHA.
+
 ## Rezultat
 
 Cijeli pinovani katalog467stavki ima es/pt-BR/de/it draftove:1868potpunih record translations,3038jedinstvenih tekstova×4. EAT147,BOOK172,WATCH101,MOVE27,GO20. Svih100offline stavki dobija400prijevoda kroz isti consumer adapter; originalni cache/snapshot byteovi i checksum nisu prepisani. UI365ključeva pojeziku naslijeđen je iz prethodne faze.

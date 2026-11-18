@@ -1,5 +1,12 @@
 # Trenutno stanje
 
+## Preveden katalog u sourceu i punom previewu — 18.11.2026.
+
+**App/catalogue sourceb8fa083ea010468a0cb42b67b540dc2516fa42d3**, review20bc5d9657cb767c7bbf9b5004a755deb47e7f83 na `codex/salem-content-translations`. Svih467zapisa×4jezika=1868potpunih draftova; svi100offline/400dodataka pokriveni.3038jedinstvenih tekstova pojeziku,365UIključeva.376tests/58files, TypeScript/preview i4jezika×5kategorija browserPASS; postojećiENG/BHS regresioni tokoviPASS. [Novi puni ZIP](../review-previews/README.md), [operator handoff](../docs/CONTENT_TRANSLATION_HANDOFF.md). StariUI-onlyZIP nije aktuelni paket u ovoj grani.
+
+**D1/live/native nisu ažurirani; aktivni sourceLocale/birač jošen/bs.** Svi novi reviewed flagovi false. Prije produkcije riješiti strictlegacy enum(pt-BR/it), canonical17recipe wording/version zavisnost, activation/share/native/legal/UMP i fizičkiQA. Nema mergea/productiondeploya/store slanja/EASbuilda/troška. Ovaj source nije novi releasebuild; TestFlight5 i Android11 ostaju raniji artefakti.
+
+
 ## UI prijevodi1B — 18.11.2026.
 
 `codex/salem-ui-translations`, aplikacijski source **2c0ce132f6dcfca7967143f880e0a949e40dae59**:365English-source ključeva i1460draft vrijednosti za es/pt-BR/de/it. Zajednički UI helperi i inline copy migracija;358tests/TypeScript/preview/static inventory i postojeće ENG/BHS browser regresije PASS, fresh review bez preostalih bitnih nalaza. [Predaja](../docs/UI_TRANSLATION_HANDOFF.md). Novi jezici **nisu aktivirani**; en/bs ostaje ready. Naredni korak stvarni5-category content pilot, pa467online/100offline i activation audit. Nema izmjene podataka/nutrition/filtera, native builda, D1/deploya/mergea/store slanja.

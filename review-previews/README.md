@@ -1,13 +1,17 @@
-# Pregled UI prijevoda na Macu
+# Novi puni preview — interfejs i467prevedenih stavki
 
-[Preuzmi ZIP](https://github.com/salemko72/RANDOM-life/raw/refs/heads/codex/salem-language-preview/review-previews/LifeSpinner-Languages-Preview.zip), raspakuj i dvoklikni **LifeSpinner-Translations.html**. Jezici su u početnom podešavanju i meniju: ENG/BHS/ESP/POR/DEU/ITA. Ne treba instalacija niti API ključ.
+[**Preuzmi novi ZIP za Mac**](https://github.com/salemko72/RANDOM-life/raw/refs/heads/codex/salem-content-translations/review-previews/LifeSpinner-Catalogue-Preview.zip). Raspakuj i otvori **LifeSpinner-Catalogue-Preview.html** u Chromeu/Safariju. Odaberi ESP/POR/DEU/ITA pri podešavanju ili u meniju. Ovaj ZIP ima drugačiji naziv od ranijeg UI-only paketa.
 
-Ovo je zaseban draft UI preview sa365tekstova po novom jeziku. Katalog za nove jezike ostaje English offline rezerva. Nema produkcijskog deploya, promjene objavljene aplikacije ili novog TestFlight/Android builda. Automatic u ovom preglednom paketu bira English.
+Sadrži147recepata,172knjige,101film/seriju,27aktivnosti i20izlazaka;467×4=1868novih record translations. Prevedeni su opisi, sastojci/jedinice/koraci, žanrovi i preporuke. Izvorni naslovi BOOK/WATCH i autori su sačuvani. Svih100offline stavki pokriveno je istim prijevodima. UI ima365ključeva pojeziku. Automatic u ovom review paketu bira English.
 
-Remote transport je blokiran; Studio i app/item sharing su isključeni. localStorage i sessionStorage imaju zaseban review namespace, katalog je memory-only: Clear catalog cache ne dira raniji IndexedDB. Paket ne sadrži korisničke profile ili tajne.
+Sve slike i fontovi su lokalno zapakovani, bez image generationa ili vanjskog prevodilačkog API-ja. Studio, app/item/LISTEN share i vanjska navigacija su blokirani. Review localStorage/sessionStorage su odvojeni, katalog memory-only; postojeći IndexedDBcache/profile nisu mijenjani. Source/data ne sadrže korisničke profile ili tajne.
 
-Testirano u Chromiumu preko lokalnog HTTP-a, sva4nova jezika: setup/prehrambene oznake/save/menu, cache clear i očuvanje postojećeg storage/IndexedDB sentinel stanja. Chrome ovog cloud okruženja blokira file:// politikom administratora, pa stvarni Mac/Safari/Chrome file-open ostaje ručna provjera. Ako lokalni HTML preglednik blokira, probaj Chrome; ne mijenjati sistemske sigurnosne postavke.
+**Produkcijska D1baza, AppStore/Play i native buildovi nisu ažurirani.** Ovo je pregledni jezički draft. Native/public Locale ostaje en/bs do activation koraka; šest jezika se izlaže samo u zasebnom review bundleu. [Operator predaja i važne compatibility/recipe-wording publikacijske zavisnosti](../docs/CONTENT_TRANSLATION_HANDOFF.md).
 
-App source2c0ce132f6dcfca7967143f880e0a949e40dae59; review builder96983f36f4387034e7907a41266f19400fc072fb. ZIP integritet/HTML bytes su provjereni, [SHA256](SHA256.txt). Reprodukcija: `node scripts/build-language-review.mjs /tmp/lifespinner-language-review` pa `node scripts/smoke-language-review.mjs /tmp/lifespinner-language-review/LifeSpinner-Translations.html`. Produkcijski preview-dist/native generated izvodi nisu prepisani.
+Provjere:376tests/58filesPASS, TypeScript i normalni previewPASS;4jezika×5kategorija za stvarni puni dataset, tekst/sastojci/koraci i artworkblobPASS. Providerlink click/Enter bez popup-a, sve3share funkcije cancellation-only. Review setup/profile/menu/cache clear čuva production storage sentinele. Cold reserve100/cached/draft400PASS. EN/BHS auto/profile/menu/SpinAgain/Home regresijePASS. Nije fizički Android/iPhone QA, ljudska lektura/medicinska validacija ili dokaz da su ranija prava na izvore riješena.
 
-![Njemački UI meni u zasebnom previewu](German-preview.png)
+CloudChrome blokira file:// politikom administratora; isti HTML byteovi testirani su preko127.0.0.1. Stvarni Mac file-open ostaje korisnička provjera (raniji samostalni paket je otvoren). Ne mijenjati sistemske sigurnosne postavke.
+
+App/catalogue source **b8fa083ea010468a0cb42b67b540dc2516fa42d3**; review source **20bc5d9657cb767c7bbf9b5004a755deb47e7f83**. ZIP integritet i identitet HTML-a provjereni; [SHA256](SHA256.txt). [Source/memories/patch](../content/i18n-2026-11-18/README.md).
+
+![Njemački recept u novom punom previewu](Catalogue-German-preview.png)

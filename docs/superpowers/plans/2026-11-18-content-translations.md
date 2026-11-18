@@ -27,3 +27,7 @@
 - Reworded English recipes and existing cache/reserve metadata must remain intact; no stale translation over newer editorial changes.
 - Generic artwork must remain generic in every language; no BHS alt fallback masquerading as new-language text.
 - Draft schema acceptance is not publication/medical review; all new flags false and production locale gating remains unchanged.
+
+## Completion18.11.2026.
+
+Preparation tasks1–5 complete: all467×4drafts and100offline, guarded adapter, full isolated catalogue review and376tests/TypeScript/browser verification. Codeb8fa083ea010468a0cb42b67b540dc2516fa42d3; standalone review20bc5d9657cb767c7bbf9b5004a755deb47e7f83. Production gating/publishing deliberately remains outside this preparation; exact blockers and next activation steps are in docs/CONTENT_TRANSLATION_HANDOFF.md. No paid resource, native build or external publication occurred.

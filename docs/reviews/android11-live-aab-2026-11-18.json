@@ -1,0 +1,52 @@
+{
+  "buildId": "23da768d-7126-4408-9597-1ce81bb58f99",
+  "status": "FINISHED",
+  "source": "4a567c339a7efeff625ccecf1024887c7e9c9cd4",
+  "profile": "ads-live",
+  "platform": "ANDROID",
+  "distribution": "STORE",
+  "version": "1.0.1",
+  "versionCode": 11,
+  "file": "LifeSpinner-1.0.1-11-live.aab",
+  "bytes": 65907033,
+  "sha256": "925422a1fb79d10b6d963717e717658aa7fe4510197989ae141bfd9aed596b86",
+  "buildUrl": "https://expo.dev/accounts/salemko/projects/random/builds/23da768d-7126-4408-9597-1ce81bb58f99",
+  "bundletool": "PASS",
+  "manifest": {
+    "package": "com.salemko.randomlife",
+    "minSdk": 24,
+    "targetSdk": 36,
+    "AD_ID": true,
+    "portrait": true,
+    "appId": "ca-app-pub-8395430021391101~6926064985",
+    "delayedMeasurement": true
+  },
+  "signature": {
+    "verified": true,
+    "sha256": "67768f6f56b3d542ab700b91e3e2dce6f0682c4798fa908927d53593cde6ed6e",
+    "matchesCode10": true
+  },
+  "sdk": {
+    "GMA": "25.5.0",
+    "UMP": "4.0.0"
+  },
+  "releaseExport": {
+    "liveLiteral": true,
+    "correctAndroidUnit": true,
+    "NPA": true,
+    "noRuntimeEnvLookup": true,
+    "sha256": "202b93824d56aec27535213b645641dd8b8872bda5d165c508ca6bc4d50c1011"
+  },
+  "embeddedHermes": {
+    "bytes": 1472236,
+    "sha256": "f30a97dff20a41f3a440dac48bfe1356a4841f31446a4ac7a4e0df32eaf5a4e4",
+    "disassembled": true
+  },
+  "physicalQA": false,
+  "uploadedToPlay": false,
+  "embeddedHTML": {
+    "bytes": 13596838,
+    "sha256": "b63cbe13ad09094fd0052d0f4dc1b41c5f97793d3ac079a06f1a205238a62cc5",
+    "matchesTestedLocalPreview": true
+  }
+}

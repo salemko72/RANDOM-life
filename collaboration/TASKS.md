@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## ANDROID11-LIVE-001 — AAB1.0.1/code11 s pravim oglasima
+
+- **Odgovorni/grana:** ahmed-admob / `codex/ahmed-android11-live`; korisnik18.11. izričito traži odmah AAB s pravim oglasima.
+- **Status:** done za build-only; [draft PR4](https://github.com/salemko72/RANDOM-life/pull/4), [rezultat](../docs/ANDROID11_LIVE_AAB_RESULT.md), [sesija13](sessions/2026-11-18-ahmed-admob-13.md). Jedan EAS `23da768d-7126-4408-9597-1ce81bb58f99` FINISHED18.11.10:04:53CET, ads-live/STORE1.0.1/code11, source `4a567c339a7efeff625ccecf1024887c7e9c9cd4`. AAB65,907,033bytes, SHA256 `925422a1fb79d10b6d963717e717658aa7fe4510197989ae141bfd9aed596b86` preuzet i lokalno provjeren. Bundletool/manifest/signature/GMA25.5+UMP4/Hermes parse PASS; embedded HTML byte-identičan testiranom previewu. Free9/30/Android4/15/overage0/estimated0. Nema Play uploada. Ne praviti duplikat; claim `de73cd4` i aktivni ID pushani prije izvršavanja/praćenja.333testa/typecheck/live export/ENG+BHS spin+recipe cache PASS.
+- **Scope:** bez aplikacijskih izmjena; postojeći ads-live profil, Android1.0.1/code11 kandidat, postojeći signer. Vlastiti `docs/ANDROID11_LIVE_AAB_RESULT.md`, `docs/reviews/android11-live-aab-2026-11-18.json`, `collaboration/sessions/2026-11-18-ahmed-admob-13.md` i kratke TASKS/STATUS dopune.
+- **Kriteriji:** Play/EAS broj i odsustvo duplikata, Free kvota/overage0, postojeći signer, live release export, čist source; jedan remote build, pratiti do kraja, preuzeti AAB, SHA256/bundletool/manifest/signature/SDK provjere, lokalni fajl i GitHub PR predaja.
+- **Saradnja:** fetch svih grana/API otvorenih PR1/2/3 potvrđeni; OFFLINE-RECIPES-005 i novi Home/build-label/menu source claimovi pročitani. Koristi se izričiti zajednički pin4a567c3 iz handoffa, bez tihog uključivanja novijeg WIP-a i bez izmjene Salemovih grana/sesija ili iOS builda. EAS preliminarno nema code11/aktivnog Android builda; Free8/30, Android3/15, overage0.
+- **Granice:** bez Play uploada/submissiona/objave, iOS builda, mergea, web deploya, novih ključeva, promjene baze ili dodatnog troška. Noviji WIP source nije automatski novo zajedničko izdanje.
+
 ## BUILD4-KOREKCIJE-001 — Ahmedovo uključivanje dostavljenog source paketa
 
 - **Odgovorni/grana:** ahmed-admob / `codex/ahmed-build4-korekcije`; korisnički nalog 17.11.2026. za korekcije iz ZIP priloga.

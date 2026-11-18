@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## Android1.0.1/code11 live AAB — 18.11.2026.
+
+**FINISHED/preuzet/provjeren:** EAS `23da768d-7126-4408-9597-1ce81bb58f99`, ads-live/STORE, tačan zajednički source `4a567c339a7efeff625ccecf1024887c7e9c9cd4` iz build5 predaje koja zamjenjuje stari build4 paket. Fajl `LifeSpinner-1.0.1-11-live.aab`,65,907,033bytes, SHA256 `925422a1fb79d10b6d963717e717658aa7fe4510197989ae141bfd9aed596b86`. Bundletool/manifest/signature/SDK PASS, signer jednak code10, ugrađeni HTML identičan testiranom source previewu;333testa/typecheck/browser/live export PASS. Free9/30/Android4/15/overage0. [Rezultat](../docs/ANDROID11_LIVE_AAB_RESULT.md), [sesija13](sessions/2026-11-18-ahmed-admob-13.md), [draft PR4](https://github.com/salemko72/RANDOM-life/pull/4). Ova sesija nije uploadala AAB na Play, nije pokrenula iOS niti merge/deploy. Današnji read-only Play inventar pokazuje code10 aktivan i ukupno10/9/7/6/5; stariji code10 build-only zapis ispod je historijski. Fizički SDK QA/RIGHTS/readiness ostaju odvojeni.
+
 ## Korekcije iz build4 ZIP paketa — Ahmed, 17.11.2026.
 
 Pregledani patch uključen na vlastitoj `codex/ahmed-build4-korekcije` grani, [draft PR #3](https://github.com/salemko72/RANDOM-life/pull/3) prema Ahmedovoj postojećoj integracijskoj grani; bez mergea. Implementacija `814d0a164b81d2893fbbc95b85ce912401ff3fcd` ima sva četiri aplikacijska fajla identična dostavljenom sourceu `ded4bf65474d88e129afb391ff40ea492727f68d`: onboarding dugmad, kategorijski Spin again, 1.0.1/iOS4/Android kandidat11. SHA256, 328/328 testova, typecheck, preview build, mobilni ENG/BHS spin regression i onboarding320/390 PASS. [Sesija12](sessions/2026-11-17-ahmed-admob-12.md). Ovo je source predaja: nema novog native builda, store uploada/slanja, deploya, promjene baze ili troška; Android broj11/kvota/signer tek se provjeravaju prije eventualnog builda. Salemov iOS build vodi se zasebno.

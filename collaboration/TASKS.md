@@ -3,7 +3,7 @@
 ## I18N-FOUNDATION-001 — Postepeno proširenje jezika, prvi osnovni korak
 
 - **Odgovorni/grana:** salem-i18n / codex/salem-i18n-foundation; korisnik18.11. prihvatio LANGUAGE_EXPANSION_PLAN i traži polako krenuti.
-- **Status:** claimed, push prije koda; izolovan worktree /workspace/lifespinner-i18n-foundation.
+- **Status:** implemented/tested, blocked_pr (GitHub API403). Source fdf3c25f0886873da39f77418c2c0ccfa0ebe5d4,347tests/TypeScript/preview/native config/browser PASS. Claim46bed383e4b6c32937895956f483662d39dfce21 objavljen prije koda; [sesija](sessions/2026-11-18-salem-i18n-foundation-01.md).
 - **Scope:** shared language-preference helper/export/test; ui-language/provider/chooser i CSS; native App/app.json/preview-assets/device-language helper; Expo localization dependency/lock; unit/browser tests; docs/superpowers/plans/2026-11-18-language-foundation.md, vlastita sesija i TASKS/STATUS/plan.
 - **Kriteriji:** native/browser device-language default, zapamćen ručni en/bs i povratak automatic, kompatibilnost postojećeg locale.v1/profile/history stanja; chooser u setup/edit/menu; platform/local storage i ordering/invalid-input regresije; nepotpuni ES/pt-BR/DE/IT još neaktivni. Generički resolver pripremljen za naredne dictionaries/pilot faze. PT-BR najavljena preporučena početna varijanta.
 - **Saradnja:** pročitan Ahmedov ANDROID11-LIVE-001 done, postojeći1.0.1/code11source4a567c3 nije diran ili dupliran; naš budući WIP nije izdanje. Nema preklapanja s njegovim dokumentacijskim claimom.

@@ -1,5 +1,10 @@
 # Trenutno stanje
 
+## Jezička osnova1A — 18.11.2026.
+
+`codex/salem-i18n-foundation`, aplikacijski source **fdf3c25f0886873da39f77418c2c0ccfa0ebe5d4** iz base9065ae8. Automatski uređaj/browser izbor i zapamćen ručni en/bs; zajednički chooser u setup/edit/menu, native boot/foreground bez reloada, en/bs sistemske deklaracije.347tests, TypeScript, preview, generated Expo config i browser auto/profile/footer PASS; svježi nezavisni review s2ispravke. Detalji/ograničenja u [sesiji](sessions/2026-11-18-salem-i18n-foundation-01.md). ES/pt-BR/DE/IT još nisu prevedeni/aktivirani; naredni korak dictionaries/inline migracija i content pilot. Nema native builda/deploya/D1/store slanja/mergea; TestFlight5 i Android11 ostaju stari artefakti. Git fetch/push radi; API403 blokira automatski PR.
+
+
 ## Source za naredni kandidat — meni/jezici,18.11.2026.
 
 Grana codex/salem-menu-language-prep, code53d50fdce0a7d722e48f35fec05bd73939efb7dc: Share diagnostic log u footeru, verzija/build posljednji na dnu popup-a, raniji header label uklonjen. Nasljeđuje dinamički native broj i zaseban Home-repeat fix.337tests/TypeScript/preview i footer+profile-language browser PASS. [Procjena4jezika](../docs/LANGUAGE_EXPANSION_PLAN.md):467stavki/1868novih prijevoda, aktivni jezici jošENG/BHS, PT varijanta otvorena; device-language+manual override preporuka, nije još implementirana. Nema novog native builda/D1/deploya/store slanja/mergea. TestFlight5 source4a567c3 je odvojen od ovog budućeg kandidata.

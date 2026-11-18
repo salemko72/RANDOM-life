@@ -21,3 +21,12 @@ Task3 implemented: one shared automatic/manual chooser in setup/edit/menu; ready
 Task2/3 final unit suite347/347 PASS, TypeScript and preview PASS. Generated Expo introspection PASS: CFBundleLocalizations en/bs, Android localeConfig reference and locale/layoutDirection configChanges; existing iPhone-only/portrait retained. Full `expo install --check` could not complete because CLI attempts unavailable /home/agent/.expo; direct installed-package comparison against Expo bundledNativeModules confirms expo-localization57.0.2 matches~57.0.2. Native Xcode/Gradle build and physical device language/settings tests remain for the next authorized native candidate.
 
 Ruling: Register only reviewed en/bs in native per-app language settings now, using the installed plugin's documented supportedLocales options; no unfinished locale declarations. Cost if wrong: platform behavior needs physical QA before release. app.json is added to this claim's scope; no parallel app config operator is active in reviewed claims.
+
+## Predaja
+
+- Base9065ae8a358c121f294dc2b0813a4f93ff7757d2; claim46bed383e4b6c32937895956f483662d39dfce21.
+- Task1 a7cdba3; Task2 83657c5; **konačni aplikacijski source fdf3c25f0886873da39f77418c2c0ccfa0ebe5d4**.
+- Final review: oba important nalaza ispravljena, malformed-tag regression RED→GREEN; generated native config PASS. Nema deferred minor nalaza. Unit347/347, TypeScript, preview; auto/browser storage failure/legacy/manual/draft, profile320/390 i footer320x568/320/390/430 PASS.
+- GitHub API provjera18.11. još403/Forbidden; [compare za ručno otvaranje PR-a](https://github.com/salemko72/RANDOM-life/compare/codex/salem-menu-language-prep...codex/salem-i18n-foundation?expand=1). Compare nije PR. Nema mergea.
+- Nema novog APK/AAB/IPA, EAS builda, TestFlight/Play uploada, promjene AdMob režima, D1 publikacije ili web deploya. Brojevi app.json ostaju5/11 i već su korišteni; prije narednog native builda inventar i novi source/brojevi/kvota.
+- Nastavak: proširiti full UI dictionaries i inline copy za ES/pt-BR/DE/IT, zatim pregledani5-category content pilot. Ne proširivati active Locale union prije potpunih UI prevoda. Sačuvati recipe-wording projekciju i offline100-item reserve, pravo porijekla/medicinski review ostaje zaseban zadatak. Native per-app localeConfig generisanje XML-a i fizički uređaji još se provjeravaju u budućem native kandidatu.

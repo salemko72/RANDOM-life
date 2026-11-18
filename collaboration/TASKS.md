@@ -1,5 +1,15 @@
 # Zajednički zadaci
 
+## I18N-CONTENT-004 — Prevod467stavki i100offline rezerve
+
+- **Odgovorni/grana:** salem-content / codex/salem-content-translations; base2b0ef74527b9f953c3f61aa05cab1d1f759fa042; nalog OK go18.11.2026.
+- **Status:** claimed, push prije koda/prevoda. Javni manifest467/snapshot59a712e7856e411d0d1b11e7c7c681cdb0e4e769522ccdbcd84a502df53eebf8; sve100offlineID prisutne online.
+- **Scope:** content/i18n-2026-11-18/*, translation source/compile/validation scripts, shared localization/generic-art helpers i testovi; bounded consumer adapter/backup translations, isolated preview builder/tests/ZIP, vlastita sesija/plan/TASKS/STATUS. Nema native signer/config/build brojeva ili backend upisa.
+- **Podjela:** root jedini mijenja zajednički kod; po jedan locale worker za es/pt-BR/de/it mijenja samo svoj memory JSON. Claimovi drugih operatora provjereni fetchom; nema novog preklapanja sa source scopeom.
+- **Kriteriji:** pilot sve5kategorija(+film/series);1868draft record translations,100offline pokriveno; ID/version/data/array/number/proper-title invariants, guarded stale-source behavior, false review flags. Source raw hash nije fingerprint projekcije.
+- **Granice:** nije dozvola za produkcijsku D1 publikaciju, deploy/merge/native build/store slanje ili plaćeni API. Aktivni produkcijski Locale ostaje en/bs do završene aktivacije/QA; draft preview je odvojen.
+
+
 ## I18N-PREVIEW-003 — Preuzimljiv zaseban pregled UI prijevoda
 
 - **Odgovorni/grana:** salem-i18n / codex/salem-language-preview, baseaa0f1d3; korisnik pita gdje može pogledati preview novih prijevoda.

@@ -1,3 +1,4 @@
+import {uiText,uiLocaleCode,type UiLocale} from './ui-copy';
 import React, {createContext, useContext, useState, useEffect} from 'react';
 import {chooseSupportedLocale,readLanguagePreference,LANGUAGE_PREFERENCE_KEY,type Locale} from '@random/shared';
 import {preferredDeviceLanguages} from './device-language';
@@ -201,10 +202,10 @@ const english:Record<string,string> = {
  "Intolerancije": "Intolerances"
 };
 const bhsOverrides:Record<string,string>={'Spin je u toku':'Okretanje je u toku','Pokreni Spin':'Zavrti','Još nema izbora. Isprobaj Spin.':'Još nema izbora. Zavrti točak.','Decide Less. Live More.':'Manje dilema, više života','Decide less.':'Manje odluka.','Live more.':'Više života.','Home':'Početna','Spin again':'Zavrti ponovo','COOK':'KUHAJ','LET’S COOK':'KUHAJMO','SPIN':'ZAVRTI','SPINNING':'OKREĆE SE','and go':'i kreni','TODAY’S PICK':'DANAŠNJI IZBOR','Choose':'Izaberi','category':'kategoriju','Gym':'Teretana','Trim':'Šetnja','Yoga':'Joga','Series':'Serija','Episodes':'Epizode','Miniseries':'Miniserija'};
-export function translate(text:string,locale:Locale):string {return locale==='en' ? (english[text]??text) : (bhsOverrides[text]??text);}
-export function categoryLabel(code:string,locale:Locale):string {const labels:Record<string,string>={EAT:'HRANA',READ:'KNJIGE',BOOK:'KNJIGE',WATCH:'GLEDAJ',MOVE:'POKRENI SE',GO:'IZAĐI',LISTEN:'SLUŠAJ',PLAY:'IGRAJ',CREATE:'STVARAJ',LEARN:'UČI'};return locale==='en'?(code==='BOOK'?'READ':code):labels[code]??code;}
+export function translate(text:string,locale:UiLocale):string {return locale==='bs'?(bhsOverrides[text]??text):uiText(english[text]??text,text,locale);}
+export function categoryLabel(code:string,locale:UiLocale):string {const labels:Record<string,string>={EAT:'HRANA',READ:'KNJIGE',BOOK:'KNJIGE',WATCH:'GLEDAJ',MOVE:'POKRENI SE',GO:'IZAĐI',LISTEN:'SLUŠAJ',PLAY:'IGRAJ',CREATE:'STVARAJ',LEARN:'UČI'};return uiText(code==='BOOK'?'READ':code,labels[code]??code,locale);}
 const values:Record<string,string>={connection:'Povezanost',kindness:'Ljubaznost','self-care':'Briga o sebi',outdoors:'Na otvorenom',music:'Muzika','home-reset':'Mali red u domu',milk:'Mlijeko',eggs:'Jaja',wheat:'Pšenica',nuts:'Orašasti plodovi',peanuts:'Kikiriki',soy:'Soja',fish:'Riba',shellfish:'Školjke',sesame:'Susam',mustard:'Senf',celery:'Celer',sulfites:'Sulfiti',lupin:'Lupina',lactose:'Laktoza',gluten:'Gluten',gym:'Gym',trim:'Trim',yoga:'Yoga',cinema:'Kino',theater:'Teatar',disco:'Ples',cafe:'Kafić'};
-export function valueLabel(value:string,locale:Locale):string{return translate(values[value]??value,locale);}
+export function valueLabel(value:string,locale:UiLocale):string{return translate(values[value]??value,locale);}
 // Only reviewed UI/content locales are selectable in this phase.
 const readyLocales=['en','bs'] as const;
 type Preference=Locale|'auto';
@@ -223,7 +224,7 @@ export function LanguageProvider({children}:{children:React.ReactNode}) {
  return <LanguageContext.Provider value={{locale,preference,setLocale:setPreference,setPreference}}>{children}</LanguageContext.Provider>;
 }
 export function useLanguage(){const context=useContext(LanguageContext);return {...context,t:(text:string)=>translate(text,context.locale),category:(code:string)=>categoryLabel(code,context.locale),value:(value:string)=>valueLabel(value,context.locale)};}
-export function LanguageChooser(){const {locale,preference,setPreference}=useLanguage();return <div className="language-chooser" role="group" aria-label={locale==='en'?'Language':'Jezik'}>
- <button type="button" aria-pressed={preference==='auto'} onClick={()=>setPreference('auto')}>{locale==='en'?'Automatic':'Automatski'}{preference==='auto'?` · ${locale==='en'?'ENG':'BHS'}`:''}</button>
+export function LanguageChooser(){const {locale,preference,setPreference}=useLanguage();return <div className="language-chooser" role="group" aria-label={uiText('Language','Jezik',locale)}>
+ <button type="button" aria-pressed={preference==='auto'} onClick={()=>setPreference('auto')}>{uiText('Automatic','Automatski',locale)}{preference==='auto'?` · ${uiLocaleCode(locale)}`:''}</button>
  {readyLocales.map(code=><button type="button" key={code} aria-pressed={preference===code} onClick={()=>setPreference(code)}>{code==='en'?'ENG':'BHS'}</button>)}
  </div>;}

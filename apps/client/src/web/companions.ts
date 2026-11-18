@@ -1,3 +1,4 @@
+import {uiText} from './ui-copy';
 import {localizeContent,type Locale,type ContentRecord} from '@random/shared';
 import {demoCatalog} from './bilingualCatalog';
 import {valueLabel} from './ui-language';
@@ -55,9 +56,9 @@ export function companionItems(item:{category:string;id:string;authors?:string[]
   const source=demoCatalog.find(record=>record.id===companion.targetId);
   if(source){const display=localizeContent(source,locale);return {...companion,title:display.title,subtitle:display.category==='WATCH'?`${valueLabel(display.format,locale)} · ${display.genres.join(', ')}`:display.category==='MOVE'?`${display.durationMinutes} min · ${valueLabel(display.subtype,locale)}`:display.summary};}
   const author=companion.id.startsWith('other-work-')?companion.subtitle.split(' · ')[0]:null;
-  return {...companion,title:(locale==='en'?englishWorks:bhsWorks)[companion.title]??companion.title,
-   subtitle:author?`${author} · ${locale==='en'?'another work; edition not specified':'drugo djelo; izdanje nije specificirano'}`:
-    companion.id==='related-the-crown'?(locale==='en'?'Series · Drama · personal challenges and responsibility':'Serija · Drama · lični izazovi i odgovornost'):
-    companion.id==='related-unorthodox'?(locale==='en'?'Miniseries · Drama · identity and independence':'Miniserija · Drama · identitet i samostalnost'):companion.subtitle};
+  return {...companion,title:(locale==='bs'?bhsWorks:englishWorks)[companion.title]??companion.title,
+   subtitle:author?`${author} · ${uiText("another work; edition not specified","drugo djelo; izdanje nije specificirano",locale)}`:
+    companion.id==='related-the-crown'?(uiText("Series · Drama · personal challenges and responsibility","Serija · Drama · lični izazovi i odgovornost",locale)):
+    companion.id==='related-unorthodox'?(uiText("Miniseries · Drama · identity and independence","Miniserija · Drama · identitet i samostalnost",locale)):companion.subtitle};
  });
 }

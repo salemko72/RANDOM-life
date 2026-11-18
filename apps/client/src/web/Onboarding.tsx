@@ -1,3 +1,4 @@
+import {uiText} from './ui-copy';
 import{useNativeBack}from'./useNativeBack';
 import BrandLogo from './BrandLogo';
 import React,{useState,useEffect} from 'react';
@@ -9,7 +10,7 @@ const topics=['Roman','Historija','Nauka','Misterija','Sci-fi','Drama','gym','tr
 const allergies=[['milk','Mlijeko'],['eggs','Jaja'],['wheat','Pšenica'],['nuts','Orašasti plodovi'],['peanuts','Kikiriki'],['soy','Soja'],['fish','Riba'],['shellfish','Školjke'],['sesame','Susam'],['mustard','Senf'],['celery','Celer'],['sulfites','Sulfiti'],['lupin','Lupina']];
 export default function Onboarding({profile,onComplete,leaving=false,editing=false,onCancel}:{profile:Profile;onComplete:(profile:Profile)=>void;leaving?:boolean;editing?:boolean;onCancel?:()=>void}){
  const {t,category,value,locale}=useLanguage();
- const text=(en:string,bs:string)=>locale==='en'?en:bs;
+ const text=(en:string,bs:string)=>uiText(en,bs,locale);
  const [draft,setDraft]=useState(profile);const [step,setStep]=useState(0);
  function update<K extends keyof Profile>(key:K,value:Profile[K]){setDraft(p=>({...p,[key]:value}));}
  function toggle(key:'topics'|'allergens'|'interests'|'intolerances',value:string){setDraft(p=>({...p,[key]:p[key].includes(value as never)?p[key].filter(x=>x!==value):[...p[key],value]} as Profile));}

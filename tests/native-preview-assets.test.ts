@@ -46,3 +46,10 @@ it('passes installed package version/build to the WebView independently from cat
  const window:any={},css=vi.fn();runInNewContext(fs.writeAsStringAsync.mock.calls[0][1],{window,document:{documentElement:{style:{setProperty:css}}}});
  expect(window.__lifespinnerBuild).toEqual(info);expect(window.__lifespinnerAds).toBe(true);
 });
+
+it('boots reviewed device preferences alongside existing build, ads and local profile state',async()=>{
+ const fs={cacheDirectory:'file:///cache/',makeDirectoryAsync:vi.fn(),getInfoAsync:vi.fn().mockResolvedValue({exists:true}),copyAsync:vi.fn(),writeAsStringAsync:vi.fn()};
+ await prepareNativePreview({hash:'abc123',localUri:'file:///bundle/ui.html',downloadAsync:vi.fn()},fs,{[PROFILE_KEY]:'kept'},{top:0,bottom:0},null,{ads:true,deviceLanguages:['bs_BA','en-US','</script>'],buildInfo:{version:'1.0.1',build:'5',platform:'ios'}});
+ const window:any={};runInNewContext(fs.writeAsStringAsync.mock.calls[0][1],{window,document:{documentElement:{style:{setProperty:vi.fn()}}}});
+ expect(Array.from(window.__lifespinnerDeviceLanguages)).toEqual(['bs-BA','en-US']);expect(window.localStorage.getItem(PROFILE_KEY)).toBe('kept');expect(window.__lifespinnerAds).toBe(true);expect(window.__lifespinnerBuild.build).toBe('5');
+});

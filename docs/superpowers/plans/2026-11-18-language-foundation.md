@@ -1,6 +1,6 @@
 # Language Foundation Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans inline. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans inline. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Implement the first independently testable language foundation: device-language default, remembered manual choice and return-to-automatic, ready for later ES/pt-BR/DE/IT UI/content batches.
 
@@ -34,30 +34,30 @@
 **Files:** Create packages/shared/src/language-preference.ts; tests/language-preference.test.ts. Export from shared index.
 **Interfaces:** chooseSupportedLocale<L extends string>(tags: readonly string[],available:readonly L[],fallback:L):L; readLanguagePreference<L extends string>(storage:{getItem:(key:string)=>string|null},available:readonly L[]):L|'auto'. Existing key random-life.locale.v1, new allowed value auto.
 
-- [ ] Write tests: ordered preferences, regional/case/underscore tags, pt-PT→pt-BR when only pt-BR available, BHS bs/hr/sr, unsupported locale fallback, malformed inputs, stored en/bs manual priority, stored auto persistence, unavailable/corrupt storage.
-- [ ] Run focused test and observe missing behavior failure.
-- [ ] Implement normalization/matching only against passed available list; never select an unfinished locale implicitly.
-- [ ] Focused and full suite PASS, commit and ledger result.
+- [x] Write tests: ordered preferences, regional/case/underscore tags, pt-PT→pt-BR when only pt-BR available, BHS bs/hr/sr, unsupported locale fallback, malformed inputs, stored en/bs manual priority, stored auto persistence, unavailable/corrupt storage.
+- [x] Run focused test and observe missing behavior failure.
+- [x] Implement normalization/matching only against passed available list; never select an unfinished locale implicitly.
+- [x] Focused and full suite PASS, commit and ledger result.
 
 ### Task2: Native language bridge
 
 **Files:** apps/client/package.json; package-lock.json; App.tsx; native/preview-assets.ts; native/device-language.ts; tests/native-preview-assets.test.ts; tests/device-language.test.ts.
 **Interfaces:** native helper language update script accepts readonly string[], safely serializes valid bounded BCP47 tags; features.deviceLanguages optional boot array. Native App reads getLocales() and updates WebView on foreground without reloading or resetting profile/spin state.
 
-- [ ] Test boot tags, foreground dispatch script, empty/malformed/hostile tags and retained ads/build/profile bootstrap before implementation.
-- [ ] Add SDK-matched Expo localization dependency with scripts disabled, inspect limited lock diff.
-- [ ] Implement native boot/update path; no new persisted key or expanded native profile allowlist.
-- [ ] Unit suite, TypeScript, preview and Expo config checks PASS, commit and ledger.
+- [x] Test boot tags, foreground dispatch script, empty/malformed/hostile tags and retained ads/build/profile bootstrap before implementation.
+- [x] Add SDK-matched Expo localization dependency with scripts disabled, inspect limited lock diff.
+- [x] Implement native boot/update path; no new persisted key or expanded native profile allowlist.
+- [x] Unit suite, TypeScript, preview and generated Expo config checks PASS, commit and ledger; full install --check is environment-blocked (see session).
 
 ### Task3: Provider/chooser and browser persistence
 
 **Files:** web/device-language.ts; ui-language.tsx; experience.css; scripts/smoke-auto-language.mjs; scripts/smoke-profile-language.mjs; tests/device-language.test.ts.
 **Interfaces:** LanguageContext adds preference/setPreference while retaining locale/setLocale compatibility. Native injected tags take priority over browser navigator.languages when valid; empty/malformed native value falls back to browser. Chooser exposes Automatic plus current ready en/bs; it is shared by Onboarding/edit/menu.
 
-- [ ] Browser regression: no saved value + bs-BA→BHS; unsupported de-DE/en-US→English while DE unfinished; manual English beats BHS device and survives reload; selecting automatic returns to device and survives another reload; legacy stored BHS wins over English device; profile edit retains draft while changing locale.
-- [ ] Implement resolver/provider with document.lang=resolved locale and preference value persisted, not resolved auto locale. Listen to languagechange; storage errors cannot crash rendering.
-- [ ] Preserve existing ENG/BHS buttons for existing flows, add accessible compact automatic control and resolved language indication; verify320×568 and390 screens and menu footer ordering.
-- [ ] Full suite/typecheck/preview, browser profile/footer/auto tests PASS, commit.
+- [x] Browser regression: no saved value + bs-BA→BHS; unsupported de-DE/en-US→English while DE unfinished; manual English beats BHS device and survives reload; selecting automatic returns to device and survives another reload; legacy stored BHS wins over English device; profile edit retains draft while changing locale.
+- [x] Implement resolver/provider with document.lang=resolved locale and preference value persisted, not resolved auto locale. Listen to languagechange; storage errors cannot crash rendering.
+- [x] Preserve existing ENG/BHS buttons for existing flows, add accessible compact automatic control and resolved language indication; verify320×568 and390 screens and menu footer ordering.
+- [x] Full suite/typecheck/preview, browser profile/footer/auto tests PASS, commit.
 
 ## Completion / next phases
 

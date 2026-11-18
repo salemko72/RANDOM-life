@@ -7,6 +7,7 @@ export function sanitizeLanguageTags(input:unknown):string[]{
   if(typeof raw!=='string'||raw.length>100)continue;
   const tag=raw.replace(/_/g,'-');
   if(!/^[a-z]{2,8}(?:-[a-z0-9]{1,8})*$/i.test(tag))continue;
+  try{Intl.getCanonicalLocales(tag);}catch{continue;}
   if(!result.some(value=>value.toLowerCase()===tag.toLowerCase()))result.push(tag);
  }
  return result;

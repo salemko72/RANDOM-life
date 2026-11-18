@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from 'react';
-import type {Locale} from '@random/shared';
+import {chooseSupportedLocale,readLanguagePreference,LANGUAGE_PREFERENCE_KEY,type Locale} from '@random/shared';
+import {preferredDeviceLanguages} from './device-language';
 const english:Record<string,string> = {
  "Povezanost":"Connection", "Ljubaznost":"Kindness", "Briga o sebi":"Self-care", "Na otvorenom":"Outdoors", "Muzika":"Music", "Mali red u domu":"Home reset",
  "Prehrana s malo fosfora":"Low-phosphate diet",
@@ -204,8 +205,25 @@ export function translate(text:string,locale:Locale):string {return locale==='en
 export function categoryLabel(code:string,locale:Locale):string {const labels:Record<string,string>={EAT:'HRANA',READ:'KNJIGE',BOOK:'KNJIGE',WATCH:'GLEDAJ',MOVE:'POKRENI SE',GO:'IZAĐI',LISTEN:'SLUŠAJ',PLAY:'IGRAJ',CREATE:'STVARAJ',LEARN:'UČI'};return locale==='en'?(code==='BOOK'?'READ':code):labels[code]??code;}
 const values:Record<string,string>={connection:'Povezanost',kindness:'Ljubaznost','self-care':'Briga o sebi',outdoors:'Na otvorenom',music:'Muzika','home-reset':'Mali red u domu',milk:'Mlijeko',eggs:'Jaja',wheat:'Pšenica',nuts:'Orašasti plodovi',peanuts:'Kikiriki',soy:'Soja',fish:'Riba',shellfish:'Školjke',sesame:'Susam',mustard:'Senf',celery:'Celer',sulfites:'Sulfiti',lupin:'Lupina',lactose:'Laktoza',gluten:'Gluten',gym:'Gym',trim:'Trim',yoga:'Yoga',cinema:'Kino',theater:'Teatar',disco:'Ples',cafe:'Kafić'};
 export function valueLabel(value:string,locale:Locale):string{return translate(values[value]??value,locale);}
-function loadLocale():Locale {try{return localStorage.getItem('random-life.locale.v1')==='bs'?'bs':'en';}catch{return 'en';}}
-const LanguageContext=createContext<{locale:Locale;setLocale:(locale:Locale)=>void}>({locale:'en',setLocale:()=>{}});
-export function LanguageProvider({children}:{children:React.ReactNode}) {const [locale,setLocale]=useState<Locale>(loadLocale);useEffect(()=>{try{localStorage.setItem('random-life.locale.v1',locale);}catch{}document.documentElement.lang=locale;},[locale]);return <LanguageContext.Provider value={{locale,setLocale}}>{children}</LanguageContext.Provider>;}
+// Only reviewed UI/content locales are selectable in this phase.
+const readyLocales=['en','bs'] as const;
+type Preference=Locale|'auto';
+function loadPreference():Preference {try{return readLanguagePreference(localStorage,readyLocales);}catch{return 'auto';}}
+function deviceLocale():Locale {
+ const native=(window as unknown as {__lifespinnerDeviceLanguages?:unknown}).__lifespinnerDeviceLanguages;
+ return chooseSupportedLocale(preferredDeviceLanguages(native,navigator),readyLocales,'en');
+}
+const LanguageContext=createContext<{locale:Locale;preference:Preference;setLocale:(locale:Locale)=>void;setPreference:(preference:Preference)=>void}>({locale:'en',preference:'auto',setLocale:()=>{},setPreference:()=>{}});
+export function LanguageProvider({children}:{children:React.ReactNode}) {
+ const [preference,setPreference]=useState<Preference>(loadPreference);
+ const [automaticLocale,setAutomaticLocale]=useState<Locale>(deviceLocale);
+ const locale=preference==='auto'?automaticLocale:preference;
+ useEffect(()=>{const update=()=>setAutomaticLocale(deviceLocale());window.addEventListener('languagechange',update);update();return()=>window.removeEventListener('languagechange',update);},[]);
+ useEffect(()=>{try{localStorage.setItem(LANGUAGE_PREFERENCE_KEY,preference);}catch{}document.documentElement.lang=locale;},[preference,locale]);
+ return <LanguageContext.Provider value={{locale,preference,setLocale:setPreference,setPreference}}>{children}</LanguageContext.Provider>;
+}
 export function useLanguage(){const context=useContext(LanguageContext);return {...context,t:(text:string)=>translate(text,context.locale),category:(code:string)=>categoryLabel(code,context.locale),value:(value:string)=>valueLabel(value,context.locale)};}
-export function LanguageChooser(){const {locale,setLocale}=useLanguage();return <div className="language-chooser" role="group" aria-label={locale==='en'?'Language':'Jezik'}>{(['en','bs'] as const).map(code=><button type="button" key={code} aria-pressed={locale===code} onClick={()=>setLocale(code)}>{code==='en'?'ENG':'BHS'}</button>)}</div>;}
+export function LanguageChooser(){const {locale,preference,setPreference}=useLanguage();return <div className="language-chooser" role="group" aria-label={locale==='en'?'Language':'Jezik'}>
+ <button type="button" aria-pressed={preference==='auto'} onClick={()=>setPreference('auto')}>{locale==='en'?'Automatic':'Automatski'}{preference==='auto'?` · ${locale==='en'?'ENG':'BHS'}`:''}</button>
+ {readyLocales.map(code=><button type="button" key={code} aria-pressed={preference===code} onClick={()=>setPreference(code)}>{code==='en'?'ENG':'BHS'}</button>)}
+ </div>;}

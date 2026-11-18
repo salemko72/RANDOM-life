@@ -39,6 +39,7 @@
     },
     "backgroundColor": "#fbefe7",
     "plugins": [
+      ["expo-localization", {"supportedLocales": ["en", "bs"], "allowDynamicLocaleChangesAndroid": true}],
       [
         "react-native-google-mobile-ads",
         {

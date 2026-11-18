@@ -16,3 +16,7 @@ test('valid native languages take priority, invalid native languages fall back t
  expect(preferredDeviceLanguages(null,{language:'bs-BA'})).toEqual(['bs-BA']);
  expect(preferredDeviceLanguages(null,{})).toEqual([]);
 });
+
+test('malformed-only native BCP47 preferences never override valid browser preferences',()=>{
+ for(const tag of ['bs-a','en-1','bs-abcdefghi','bs-u','en-US-u'])expect(preferredDeviceLanguages([tag],{languages:['en-US']})).toEqual(['en-US']);
+});

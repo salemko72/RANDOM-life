@@ -104,7 +104,7 @@
 
 .wordmark h1 em,.logo-life{font-family:RandomLife,Georgia,serif}
 /* Locale is a display preference; category and recommendation identifiers stay stable. */
-.language-chooser{display:flex;gap:6px;align-items:center;margin:0 42px 20px 0;position:relative;z-index:2}
+.language-chooser{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 42px 20px 0;position:relative;z-index:2}
 .language-chooser button{border:1px solid #ad7976;border-radius:999px;padding:8px 15px;background:transparent;color:#4b3334;font:600 12px RandomSans,sans-serif;letter-spacing:.08em;cursor:pointer}
 .language-chooser button[aria-pressed="true"]{background:#75494a;color:#fff5ee;border-color:#75494a}
 .language-chooser button:focus-visible{outline:3px solid #b97772;outline-offset:3px}

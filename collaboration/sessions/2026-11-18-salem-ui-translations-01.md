@@ -28,3 +28,5 @@ Fresh-context reviewer gpt-6.2-astra pregledao diff i sve4rječnike (ciljano ale
 - Konačno358/358tests,50fajlova; root/client TypeScript, preview i inventory362current/365stable PASS. Nakon review popravki ponovljeni auto/profile/footer/category browser checkovi; rezultati potvrđeni prije finalne predaje.
 - [Predaja za sljedeći Codex](../../docs/UI_TRANSLATION_HANDOFF.md); [compare prema foundation grani](https://github.com/salemko72/RANDOM-life/compare/codex/salem-i18n-foundation...codex/salem-ui-translations?expand=1). Git push nije PR ili merge. PR kreiranje provjeriti; API je ranije403.
 - Novi native build nije pokrenut, no cost, bez produkcijske publikacije i store slanja. Četiri kompletne jezičke verzije aplikacije nisu završene: ovo su UI draftovi/infrastruktura. Nastaviti content pilot, zatim katalog/offline i activation audit.
+
+Git push potvrđen: aplikacijski2c0ce13 i docs217b1ca dostupni na origin/codex/salem-ui-translations. Pokušaj draft PR-a prema codex/salem-i18n-foundation vraća GraphQL Forbidden(403); PR nije kreiran. Koristiti compare link iznad za ručno otvaranje. Nema preostalih lokalnih aplikacijskih izmjena.

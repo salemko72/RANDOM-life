@@ -1,5 +1,10 @@
 # Trenutno stanje
 
+## UI prijevodi1B — 18.11.2026.
+
+`codex/salem-ui-translations`, aplikacijski source **2c0ce132f6dcfca7967143f880e0a949e40dae59**:365English-source ključeva i1460draft vrijednosti za es/pt-BR/de/it. Zajednički UI helperi i inline copy migracija;358tests/TypeScript/preview/static inventory i postojeće ENG/BHS browser regresije PASS, fresh review bez preostalih bitnih nalaza. [Predaja](../docs/UI_TRANSLATION_HANDOFF.md). Novi jezici **nisu aktivirani**; en/bs ostaje ready. Naredni korak stvarni5-category content pilot, pa467online/100offline i activation audit. Nema izmjene podataka/nutrition/filtera, native builda, D1/deploya/mergea/store slanja.
+
+
 ## Jezička osnova1A — 18.11.2026.
 
 `codex/salem-i18n-foundation`, aplikacijski source **fdf3c25f0886873da39f77418c2c0ccfa0ebe5d4** iz base9065ae8. Automatski uređaj/browser izbor i zapamćen ručni en/bs; zajednički chooser u setup/edit/menu, native boot/foreground bez reloada, en/bs sistemske deklaracije.347tests, TypeScript, preview, generated Expo config i browser auto/profile/footer PASS; svježi nezavisni review s2ispravke. Detalji/ograničenja u [sesiji](sessions/2026-11-18-salem-i18n-foundation-01.md). ES/pt-BR/DE/IT još nisu prevedeni/aktivirani; naredni korak dictionaries/inline migracija i content pilot. Nema native builda/deploya/D1/store slanja/mergea; TestFlight5 i Android11 ostaju stari artefakti. Git fetch/push radi; API403 blokira automatski PR.

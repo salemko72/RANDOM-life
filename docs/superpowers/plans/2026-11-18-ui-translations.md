@@ -29,21 +29,21 @@
 ## Task1: Inventory and independent dictionaries
 
 Files: web/i18n/source.json,es.json,pt-BR.json,de.json,it.json; inventory script and tests.
-- [ ] Generate deterministic inventory from existing English map and literal bilingual expressions/functions; add stable placeholders for dynamic labels.
-- [ ] Write parity/nonempty/placeholder tests; observe missing dictionary failure.
-- [ ] Translate four isolated dictionary files, preserving key set and meaning; central spot review medical/privacy/dangerous actions.
-- [ ] Verify all source keys covered and no placeholder changes; commit.
+- [x] Generate deterministic inventory from existing English map and literal bilingual expressions/functions; add stable placeholders for dynamic labels.
+- [x] Write parity/nonempty/placeholder tests; observe missing dictionary failure.
+- [x] Translate four isolated dictionary files, preserving key set and meaning; central spot review medical/privacy/dangerous actions.
+- [x] Verify all source keys covered and no placeholder changes; commit.
 
 ## Task2: Translation interface and inline migration
 
 Files: web/ui-copy.ts,ui-language.tsx; active components Onboarding,WebExperience,SharedItem,AccessLinks,ItemActions,ImageViewer,CatalogControls,ShareAppControl; app-share,companions.
-- [ ] Regression tests for existing en/bs, new translated UI labels/warnings, placeholders and unsupported locale fallback; observe failure before integration.
-- [ ] Implement typed UiLocale and uiText/formatting; leave active ready locales en/bs.
-- [ ] Route inline copy through interface; no profile reset, filtering, IDs, navigation or sharing-host behavior changes.
-- [ ] Full tests,TypeScript,preview and existing auto/profile/menu/category browser checks; inspect residual ternaries and document inactive/archive exceptions.
+- [x] Regression tests for existing en/bs, new translated UI labels/warnings, placeholders and unsupported locale fallback; observe failure before integration.
+- [x] Implement typed UiLocale and uiText/formatting; leave active ready locales en/bs.
+- [x] Route inline copy through interface; no profile reset, filtering, IDs, navigation or sharing-host behavior changes.
+- [x] Full tests,TypeScript,preview and existing auto/profile/menu/category browser checks; inspect residual ternaries and document inactive/archive exceptions.
 
 ## Task3: Handoff and review
 
-- [ ] Fresh read-only review of whole diff; fix important issues with reproducing tests.
-- [ ] Record exact source, dictionary coverage, checks and activation limits; push own branch and attempt draft PR, or record API blocker/compare URL.
-- [ ] Next phase: reviewed five-category content pilot, then all467online +100offline records and contracts. Do not claim four complete language versions or physical QA.
+- [x] Fresh read-only review of whole diff; fix important issues with reproducing tests.
+- [x] Record exact source, dictionary coverage, checks and activation limits; push own branch and attempt draft PR, or record API blocker/compare URL.
+- [x] Next phase: reviewed five-category content pilot, then all467online +100offline records and contracts. Do not claim four complete language versions or physical QA.

@@ -3,7 +3,7 @@
 ## I18N-UI-002 — Četiri UI rječnika i uklanjanje implicitnog BHS fallbacka
 
 - **Odgovorni/grana:** salem-i18n / codex/salem-ui-translations, iz f4ae7e299a8a241220d05eee368fee3007f96c86.
-- **Status:** claimed; claim push prije implementacije. Korisnik18.11.: ok idemo prevod.
+- **Status:** implemented/tested, PR API blokada se provjerava; source2c0ce132f6dcfca7967143f880e0a949e40dae59.365ključeva×4=1460draft vrijednosti;358tests/TypeScript/preview/inventory i postojeće browser regresije PASS. [Predaja](../docs/UI_TRANSLATION_HANDOFF.md), [sesija](sessions/2026-11-18-salem-ui-translations-01.md). Korisnik18.11.: ok idemo prevod.
 - **Scope:** web/i18n/*, ui-copy.ts, ui-language.tsx, aktivne web komponente/bilingual helperi, inventory/coverage testovi i skripte; vlastiti plan/sesija/STATUS/TASKS. Ne dirati native signing/build config ili produkciju.
 - **Kriteriji:** es/pt-BR/de/it puni UI-source key parity i placeholders; medicinski/privacy smisao sačuvan; postojeći en/bs, draftovi i navigation/filteri nepromijenjeni; prijevodna infrastruktura bez automatskog aktiviranja nepotpunog kataloga. Ne tvrditi ljudsku lingvističku/medicinsku provjeru.
 - **Podjela:** četiri izolovana dictionary fajla mogu pripremati zasebni lokalni agenti; root jedini mijenja zajednički kod i dokumentaciju. Nema novih Ahmedovih source claimova u fetchu; njegov Android11 je odvojena predaja.

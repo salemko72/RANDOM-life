@@ -1,0 +1,420 @@
+[
+  {
+    "key": "fc77d7cf526d",
+    "en": "Ten Minute Veggie Soup — NKF",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc896e0855d0",
+    "en": "AI photograph: Apple Ginger Smoothie — Draft",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc8ad0ff1c09",
+    "en": "Cilantro",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc8de94b387c",
+    "en": "For viewers who enjoy court intrigue, family conflict and a fantasy setting. It rewards attention to names and relationships and includes explicit violence and difficult themes.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fccc2c2bf6f8",
+    "en": "A wealthy woman’s wedding plans become complicated when her former husband and reporters arrive. George Cukor uses romantic misunderstandings to explore pride, expectations and second chances.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fcd65d67ad81",
+    "en": "Choose this book for its particular focus: An illustrated investigation that asks readers to examine clues actively.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fcf9a0f83eb1",
+    "en": "Start with five minutes of easy walking and gentle mobility movements.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd1834302083",
+    "en": "Four narrative voices converge in Međimurje through an investigation, love and migration. The novel examines how prejudice and group identity shape relationships and can turn into violence.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd26db45a8b5",
+    "en": "lb",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd2d3d312956",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/muskat-limun-i-kurkuma-m2868.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd400703e7b0",
+    "en": "laylita.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd438b9cc10a",
+    "en": "Original workout from user brief",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd4410d6ecf8",
+    "en": "Growing up in Rio de Janeiro’s favelas unfolds through photography, crime and survival. Energetic storytelling follows an increasingly brutal cycle of violence.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd6aaa609c40",
+    "en": "Gorilla rows count total alternating pulls: ten means five per arm, two means one per arm. Split halos equally by direction. Totals are sixty per exercise; rows thirty per arm and halos thirty per direction.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fd89a84a31b5",
+    "en": "Add the lentils, tomatoes, basil, tomato purée, prepared stock and balsamic vinegar to the vegetables. Simmer for about 20 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fdb7712d5993",
+    "en": "A train journey creates an opportunity for connection and reconsidering a life. Ángel Martín combines humour and emotion in a novel about a moment that can change everything around it.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fdc576eb6a64",
+    "en": "Finish with easy walking. The thirty-minute estimate is not a time cap; adapt your pace and stop if pain or dizziness occurs.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fdd530fda53c",
+    "en": "Soaking and boiling water",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fddbaddfa1b9",
+    "en": "Step jacks: step sideways while raising arms, return and switch sides without jumping.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fddf4f8fb312",
+    "en": "Za’atar blend with sesame",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fe346f20f0f5",
+    "en": "Tabbouleh",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fe443d774a26",
+    "en": "Light soy sauce",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fe4cebdf20c1",
+    "en": "A young woman confronts loss and an unequal relationship. The novel explores emotional dependence, identity and the role of friendship in rebuilding a life.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fe72940d0d51",
+    "en": "Ossobuco alla Milanese",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fe81cf005d95",
+    "en": "A chance encounter at a railway station brings together two people who already have families. David Lean creates a restrained romantic drama about longing, responsibility and unspoken feelings.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fe958f9d4dbb",
+    "en": "“Hauzmajstor Šulc” is a poetry volume by Miljenko Jergović, first published in 2001. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "feb69dcd540b",
+    "en": "Court with a net",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "febe764f33c0",
+    "en": "Cut into wedges and serve.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fefe5d245cd0",
+    "en": "Return tofu and toss briefly. Scatter with spring onions and serve immediately.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ff401076633a",
+    "en": "A tense, layered drama with no easy villains. Through ordinary decisions, Farhadi explores family ties, social divisions and moral responsibility, allowing viewers to form their own judgments.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ff4f2c03b349",
+    "en": "oceano.mx",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ff69472e02d3",
+    "en": "Soak dried chickpeas in water for 12 hours, then drain and dry thoroughly. Do not use cooked or canned chickpeas for falafel.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ff70d3c74a91",
+    "en": "Add kale with tough stems removed and simmer for 25 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ff7d7ca7c24c",
+    "en": "Rest fifteen minutes, dust with icing sugar and slice.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ff8ed81d9661",
+    "en": "Plank jacks: from a high plank jump feet apart and together in small movements; step one foot at a time to scale.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ffc2cc4222fd",
+    "en": "Interconnected stories",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ffd6a8328ce9",
+    "en": "Exercise mat or non-slip surface",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fff9fa18b328",
+    "en": "Egg and mustard mayonnaise",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

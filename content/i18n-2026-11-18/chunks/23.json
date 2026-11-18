@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "de0b2ceee3c4",
+    "en": "Sour cream",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de10034c8ed0",
+    "en": "AI food photograph: Spaghetti alla Puttanesca — Vegan",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de3bca0b92f5",
+    "en": "planetadelibros.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de51a8bf3534",
+    "en": "Gather your change and choose an amount that suits you.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de6955b0e2e6",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/13730/ovo-vrijeme-sada . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de7630d48e66",
+    "en": "Capesante al Vino",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de7cea84e2b0",
+    "en": "Rice noodles with tofu, sprouts and peanuts in a tangy-sweet sauce. Made without eggs or fish sauce.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de8a8715c6a8",
+    "en": "Pause for a glass of water",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dea6588af6c9",
+    "en": "Medium-firm tofu",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "debba7b0ffdb",
+    "en": "Coat the pasta with pesto and make 4 servings. Keep the listed composition for this assessment: no added cheese and no replacement of the walnuts with other nuts or seeds.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ded224c59d13",
+    "en": "Rub warm toast with halved garlic; add tomato and serve immediately.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ded68f56680a",
+    "en": "Small pancakes made with an egg-and-milk batter.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "deeb4dbe08b4",
+    "en": "Beef Bulgogi",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "defdf69ae420",
+    "en": "Three full-body rounds: five exercises with forty seconds of work and twenty seconds of rest each. Fifteen minutes total, with no extra rest between rounds.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df094e91cdb5",
+    "en": "Pick one small surface and remove obvious rubbish.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df1ab310614c",
+    "en": "Squeeze grated cucumber dry; mix with yogurt, remaining lemon and garlic, and dill.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df33ca87eb1b",
+    "en": "Follow the five movements in order, working 45 seconds and resting 15 seconds after each, including the last. Complete three rounds without extra rest between rounds: fifteen minutes total.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df4940860302",
+    "en": "Season with salt, sugar and black pepper. Fold in the cooked scrambled eggs and sliced scallions. Serve immediately while hot.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df65bc5c92a6",
+    "en": "Mark it complete; if it is larger, do just the first clear step.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df73bc1d2601",
+    "en": "Wall push-ups: place your hands on a wall, keep your body aligned and bring your chest toward the wall. For a harder option, do floor push-ups.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df79fe7f32d4",
+    "en": "Send the link with one explanatory sentence, without promising an outcome.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df8f4e32705a",
+    "en": "Pitted Kalamata olives",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df92735fc7cc",
+    "en": "For viewers comfortable with absurdity, awkward humour and unpredictable tone. A choice for comedy that maintains a feeling that something is not quite right.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df9c63dafdc2",
+    "en": "For visually expressive drama that places life’s biggest questions within an unusual journey.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "df9f1f0d8579",
+    "en": "Table tennis combines light-to-moderate movement, hand–eye coordination and social play. This original session offers an easy starting point without competitive pressure; health claims in the source blog have not been independently verified.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dfa3f4b2f3da",
+    "en": "Knjižare Vulkan — Evro Book izdanje",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dfb85f636926",
+    "en": "Choose it when you want to examine how you make decisions. Read in short sections and treat the two-system framework as an explanatory model, not two literal parts of the brain.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dfc027c5321a",
+    "en": "The fourth Mindf*ck installment follows the collision between Lana’s revenge and her relationship with FBI agent Logan. Secrets from the past intensify the danger surrounding them.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dfcecb57307f",
+    "en": "Soften finely chopped onion and pepper in half the oil. Stir in chicken and spices; heat through.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dfd33074d591",
+    "en": "Cover and cook twenty to thirty minutes until rice is tender and chicken reaches 74°C; add water if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dff9dd8b6bd2",
+    "en": "Blue cheese",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e00979798e25",
+    "en": "Heat the oven to 200°C. Cut pita into triangles, brush with 10 ml oil and bake for 8–10 minutes until crisp.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e0113d7996ff",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/srdja-pjeva-u-sumrak-na-djuhove-k4639.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e03376305348",
+    "en": "Illustration of Falafel Wrap",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e05c08636f03",
+    "en": "Toss with butter and seasoning and roast at 210°C for about 25 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e08b66642a82",
+    "en": "sprigs",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e0abf3fdcd72",
+    "en": "Nimsdai Purja recounts his mission to climb all fourteen eight-thousand-metre peaks in under seven months. The memoir connects preparation, teamwork and his personal journey.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e0ac4fc888df",
+    "en": "Stay up to five minutes, or less if you prefer.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e0c0487a6a04",
+    "en": "The first graphic volume adapts the story of the emergence and rise of our species. Harari’s ideas about cooperation and shared stories take the form of dialogue, scenes and visual storytelling.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e0d847947d2f",
+    "en": "Wikipedia: The Gentlemen (2024 TV series)",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e0f7d08c6403",
+    "en": "Each following interval lasts thirty seconds.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e10f2de3e06c",
+    "en": "In a separate pan, cook the rice in water following the packet directions, about 20 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e115fe5006da",
+    "en": "Historical drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e1162d623190",
+    "en": "Short prose, essays and observations connect experiences of America and Sarajevo. Encounters, memories and everyday details become ways to explore time, return and changes in personal identity.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e12b26379e52",
+    "en": "Essayistic prose explores the Sarajevo assassination and its aftermath through multiple lives and perspectives. Personal stories open a space between historical facts, memory and narrative.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e14fae272b15",
+    "en": "High-knee march: walk in place and raise your knees to a comfortable height, avoiding heavy foot strikes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e156ce9d0c5e",
+    "en": "Vegetable soup with beans and seasonal produce.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e1782dd2d300",
+    "en": "Tabata",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e1816704a8dc",
+    "en": "castelvecchieditore.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e19a3bef1418",
+    "en": "Dried oregano",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e1b45e487b87",
+    "en": "TMDB — Blue Velvet",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e1bf5a229844",
+    "en": "Finish with ground Sichuan pepper and spring onions. Check that the paste contains no fish or shellfish.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e1f369d65d1e",
+    "en": "Preheat the oven to 175°C and grease 8 wells of a muffin tin.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2017b103779",
+    "en": "Heat 2 tablespoons of vegetable oil over medium-high heat. Softly scramble the eggs, then transfer them to a plate.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e20a95ffb5b0",
+    "en": "Almost Mashed Potatoes — DaVita",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e22532776f04",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://img2.libreriauniversitaria.it/BIT/500/575/9788842935759.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e226266b458c",
+    "en": "Three straightforward movement patterns create a repeatable test of muscular endurance and pacing. Try the same format again later to compare rounds, while always prioritizing movement quality over your score.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e23d071e03a9",
+    "en": "Soy and wheat kecap manis",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e27a7505c7ad",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://anahuang.com/wp-content/uploads/2023/05/EBOOK-8-scaled.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e289501b79ce",
+    "en": "Strength pyramid — about 15 minutes",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2a6612d159a",
+    "en": "justonecookbook.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2aa4750d8ce",
+    "en": "Orange for juice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2baaad74c7d",
+    "en": "A toasted bacon, lettuce and tomato sandwich.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2d2193c7807",
+    "en": "2% milk",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2ecb0855fbb",
+    "en": "For readers drawn to candid autobiographical writing that resists easy answers. Jergović connects a family story with collective memory, revealing how history continues to shape our closest relationships.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2eee8ff199e",
+    "en": "Ground Beef Tacos — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e2fcb23e5186",
+    "en": "“Historijska čitanka 2” is an essay collection by Miljenko Jergović, first published in 2004. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e32dfb9d6525",
+    "en": "Repeat the same sequence for three rounds in total. Rest as needed; keep the clock running during breaks.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e336eee05c95",
+    "en": "Ground beef",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e337ece7cb38",
+    "en": "Plank up-downs: move from forearms to hands and back, alternating the leading arm; use knee support if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e34801098d29",
+    "en": "An adult Harry and his son Albus confront family legacy and a returning past. Jack Thorne wrote the play from a story developed with J. K. Rowling and John Tiffany.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e3af746c18f6",
+    "en": "Marian Rojas Estapé considers attention, constant connectivity and the appeal of immediate rewards. The book presents her explanations and suggestions about digital habits and everyday life.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e3ce22b76a9d",
+    "en": "Fry chopped onion, garlic and chilli in some oil. Add sliced chicken and cook to 74°C.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e3ceee549509",
+    "en": "Walnut pieces",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e3eeff1f15eb",
+    "en": "Hummus bil Lahme",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e438b85669b4",
+    "en": "A hotel concierge and his young colleague become entangled in an inheritance and a stolen painting. Wes Anderson combines comedy, stylised adventure and memories of a vanished world.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e43a27f0f52c",
+    "en": "Soften chopped onion in oil for 6 minutes. Add garlic, ginger and curry powder.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e4569898d890",
+    "en": "Chicken braises in red wine with mushrooms, bacon and vegetables.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e46c26c2e410",
+    "en": "Original AI illustration: Patatas Bravas",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e4b2f1942b03",
+    "en": "Cool down (5 minutes): reduce the pace, walk gently and relax your forearms, shoulders and calves. Stop if you experience pain, dizziness or unusual breathlessness.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e4e282b91df4",
+    "en": "Soften pepper in oil for 5 minutes and add spring onions.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e4ebebc70a2b",
+    "en": "Cover and braise gently forty-five to sixty minutes until tender and at least 74°C.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e511375ccc28",
+    "en": "Butter Chicken",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e51f3b5fcb60",
+    "en": "Interval training",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e54d9ee1a132",
+    "en": "Savoury muffin-tin cups with eggs, pork, onion and peppers.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5551faede7f",
+    "en": "Brush with egg, cut small vents and bake at 200°C for twenty-five to thirty minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e55bf7b50023",
+    "en": "Greek Pasta with Feta and Olives — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5928e25b64a",
+    "en": "Once thick, reduce heat and stir in grated cheese, mustard and Worcestershire.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5b3884ffe94",
+    "en": "Wrap each frankfurter, leaving ends visible. Arrange on baking paper.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5cdbc387139",
+    "en": "Three rounds for time: a 400 m run, 21 kettlebell swings and 12 pull-ups. Prescribed kettlebell: men 53 lb, women 35 lb. The fifteen-minute card duration is an editorial estimate, not a prescribed duration.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5d712f0b40b",
+    "en": "Alternating backward steps — 2 min: step one foot backward and return, then switch legs. Use a stable support if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5db72fa6ef3",
+    "en": "A small decision to help, without pressure about the amount or making a special trip.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5dbc93bb1a3",
+    "en": "Check the weather and outdoor air; skip it if there is smoke or heavy pollution.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5e56a50a663",
+    "en": "A group of friends in Los Angeles reconnects after years apart. Ambition, relationships and changed circumstances test old connections and ideas of success.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5e618f89f65",
+    "en": "Finely grated lemon zest",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e5e9df9d4121",
+    "en": "From 0:00 to 4:00, perform burpees for twenty seconds, then rest for ten seconds, eight times. Rest until 5:00.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e611cd23072f",
+    "en": "Cooked black beans, drained",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e617695fecf2",
+    "en": "Halo: hold a light bell with both hands by the sides of the handle and circle slowly around your head without moving the trunk. Split the prescribed count equally between directions; one full circle is one repetition.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e647c31417ac",
+    "en": "Roll up, seal ends and place seam-side down on baking paper.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e64c9529d9ca",
+    "en": "Soften the shallots in the oil. Add the beans, cranberries and hazelnuts and heat together briefly. Finish with lemon zest and make 8 servings.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e6523be7550c",
+    "en": "Briefly warm garlic, ginger and chilli in the oil left in the pan. Add sauce and stir for 2 minutes until thickened.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e66044483754",
+    "en": "Coming-of-age drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e663cec1efdb",
+    "en": "Calisthenics",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e667162c8e7f",
+    "en": "The second graphic volume explores the shift to agriculture and the emergence of more complex societies. Visual storytelling raises questions about labour, social order and the costs of civilizational change.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e66952e1a8a7",
+    "en": "For readers willing to engage with demanding war fiction and a style that asks for patience. Best approached thoughtfully, with room to pause.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e69882df7fbf",
+    "en": "libreriauniversitaria.it",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e6af0e75694b",
+    "en": "Mix the za’atar with the remaining 60 ml oil. Heat the oven to 230°C and preheat a baking tray.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e6ec490f70ab",
+    "en": "“Kažeš anđeo” is a drama volume by Miljenko Jergović, first published in 2000. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e6f2dfbdfb55",
+    "en": "Sybil Van Antwerp stays connected to the world through letters. Her correspondence reveals everyday concerns, old losses and the possibility of changing her relationship with the past.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e6fb8e410786",
+    "en": "Pure chilli powder",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7141b19ea6a",
+    "en": "Push-ups",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e716ee0e6924",
+    "en": "Butter Chicken — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e749e3cc5f8c",
+    "en": "Grate cheese. Off heat, combine pasta, cheese and pepper; loosen with cooking water.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e74f85dd277c",
+    "en": "Serve immediately. Any bread served alongside is additional and may contain wheat.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7613e3a3a47",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/tusta-i-tma-k9994.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e76b10cc2bd6",
+    "en": "Kidney Nutrition Institute — Clarissa Paimanta, RD",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e77db5b8ed68",
+    "en": "Layer pasta, ragù, béchamel and cheese. Bake 40 min at 170°C; rest before slicing.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e79c4898c5a6",
+    "en": "Beef stock containing celery",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7a2cb64e998",
+    "en": "Mix soy sauce, mirin, sake and sugar. Cut chicken into even pieces and pat dry.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7a41c21a580",
+    "en": "Apple and Walnut Puff Pastry Strudel — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

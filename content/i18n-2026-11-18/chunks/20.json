@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "c0db23fce130",
+    "en": "Potatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c0e80db8ac5e",
+    "en": "Lettuce",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c0ef4dda4ce3",
+    "en": "For a tightly constructed film noir where a seductive arrangement becomes a trap.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c1088458f674",
+    "en": "20-Minute Bodyweight Challenge",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c109712becb5",
+    "en": "Original RANDOM life description based on bibliographic information about the book. No cover art is included; an editor must review image rights and all details before publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c113c20583e0",
+    "en": "Smashed cheeseburgers in buns.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c114942ff37e",
+    "en": "“Uči li noćas neko u ovom gradu japanski” is a poetry volume by Miljenko Jergović, first published in 1990. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c130bd368a0f",
+    "en": "Choose a safe spot and dress for the weather; shade is fine.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c168e9bd058e",
+    "en": "“Srda pjeva, u sumrak, na Duhove” is a literary fiction volume by Miljenko Jergović, first published in 2007. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c18088e56fbe",
+    "en": "Milk for filling",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c181502257f0",
+    "en": "User input: Home workout 15 min",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c1879b09d907",
+    "en": "Add finely chopped ginger, garlic and dried chilies. Stir briefly without letting them burn.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c193a20dfcaf",
+    "en": "Add the remaining tablespoon of oil, turn up the heat, and stir-fry the tomatoes and scallion for about one minute.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c1df1753f2a2",
+    "en": "For a satire of creativity, authorship and self-importance.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c1dfe9a0d574",
+    "en": "Call someone close to you",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c1fef273a97b",
+    "en": "Mix buttermilk, egg and half the salt. Add chicken and refrigerate two hours.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c221adc89769",
+    "en": "The first cookbook from Pinch of Nom collects one hundred home-cooking recipes with photographs, preparation times and calorie information. Vegetarian options are included.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c2387caab1cb",
+    "en": "Choose this book for its particular focus: Absurdity and a detective puzzle with a social undercurrent.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c265a6ce2000",
+    "en": "Cooked char siu pork",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c275483067ac",
+    "en": "Original summary and translation; AI illustration. The WODwell protocol was unavailable during preparation. Protocol corroborated at https://www.crossfit.com/benchmark/max-pullup Duration is an editorial estimate. Human review of facts, translations and rights is required.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c284ba3c7355",
+    "en": "Divide beef into four balls. Toast buns.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c28529efed48",
+    "en": "86 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c2c4d81b9622",
+    "en": "Side plank: support the forearm below the shoulder and lift hips; twenty seconds per side within one work interval. Bend the lower knee if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c2de1fdbee1a",
+    "en": "Cooked drained chickpeas for hummus",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c2e1ac42b5fe",
+    "en": "Rest the chicken for 5 minutes, then slice. Keep utensils used for raw chicken away from cooked food.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c2e63f357325",
+    "en": "Egg-free ramen noodles",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c2eb8cd9d956",
+    "en": "Attention",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3015a241473",
+    "en": "Brown sugar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c32ab2b479ac",
+    "en": "Choose a song that feels right today.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c32c838f797a",
+    "en": "Independently written concise recipe based on the linked source; original AI illustration. Facts, translations and rights await human review. Timing includes estimated potato cooling.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3320d3fe3a2",
+    "en": "Independently generated illustration, not an official still or series poster. Review facts, both translations and rights before publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c33a7a1ae825",
+    "en": "Creamy Garlic Mushroom Chicken",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c38fde48db57",
+    "en": "10-minute mobility and stretching",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3ba05b4ea59",
+    "en": "Dice the potato and boil in water for 5 minutes. Add the cauliflower florets and cook for about 5 more minutes, until tender. Drain and leave to cool.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3ccf9c3bd23",
+    "en": "Chicken Tikka Masala",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3ceea6cd264",
+    "en": "Choose this book for its particular focus: Companion stories for readers already familiar with Empyrean.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3dca152d9f3",
+    "en": "Adult animation",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3e1f18516fd",
+    "en": "Cleaned octopus",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3ecc57668be",
+    "en": "For a powerful character study and slowly gathering dramatic menace.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c3fa4da796c4",
+    "en": "For surreal horror and open-ended interpretation of unsettling imagery.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4008cd0ecba",
+    "en": "No-salt-added diced tomatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c412766bd77e",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.penguin.de/resource/responsive-image/4646026/280/4/hansen-dbroder-273286-jpg.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c415bc177fe2",
+    "en": "Garlic and Cheese Puff Pastry Sticks",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4165a8e5d49",
+    "en": "Cook on a hot grill or griddle, turning, for about 12–18 minutes. Check several thick pieces reach at least 74°C.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c41ca1521e78",
+    "en": "recipetineats.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c42f334fcb88",
+    "en": "Cinnamon",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c443da67a67e",
+    "en": "Once the rice is cooked, stir in the pea purée, butter, whole peas, remaining mint and cheese. Add pepper and serve in 4 portions.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c44e75caf313",
+    "en": "Dice the peeled, deseeded squash. Cook it in the oil for 2–3 minutes, then add the onion and curry paste for a further 3–4 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4654ffc2c02",
+    "en": "Spaghetti alla Puttanesca",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c47d6edb9815",
+    "en": "Cindy",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4b5d4e4c5f0",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://okf-cetinje.org/miljenko-jergovic-tango-bal-i-druge-price/ . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4d19b6f46a5",
+    "en": "Ella Rubinstein reconsiders her life while reading a manuscript about Rumi and Shams of Tabriz. A contemporary story and a historical strand connect love, spirituality and personal change.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4d5a1d3445c",
+    "en": "“Muškat, limun i kurkuma” is an essay collection by Miljenko Jergović, first published in 2011. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4ec579d77ee",
+    "en": "Original workout inspired by The Daily WOD topic",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c4f3da140c25",
+    "en": "Pan-fry tofu in oil in two batches for 10–12 minutes until crisp; remove.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c516c5c544bd",
+    "en": "Choose a business you have actually used.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c5198e9f6ce4",
+    "en": "TMDB — Alice in the Cities",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c51c70bb5750",
+    "en": "Vegetable oil",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c5299e34e897",
+    "en": "Shredded Brussels sprouts",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c572319d8523",
+    "en": "Bake at 200°C for twenty-five to thirty minutes until golden.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c57c5679575f",
+    "en": "From a train window, Rachel watches a couple whose life she imagines to be perfect. A disturbing glimpse draws her into an investigation where perception, memory and trust are unreliable guides.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c581957db2cd",
+    "en": "Heat the oven to 230°C. Prick the eggplants and place on a lined tray.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c5afe97cb1a5",
+    "en": "A man kidnaps an actress believing he can win her love. Almodóvar creates a provocative story about obsession, coercion and a relationship that unsettles romantic expectations. Directed by Pedro Almodóvar.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c5d2197fd4a3",
+    "en": "Penne all’Arrabbiata — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c5d77450658e",
+    "en": "Puff Pastry Cinnamon Rolls",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c5de520efb3b",
+    "en": "Crisp corn taco shells hold seasoned beef, lettuce, tomato and cheese. The filling comes together in one pan.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c60bfcd1677c",
+    "en": "TMDB — What Have I Done to Deserve This?",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c614055e8a47",
+    "en": "Creamy Vegan Tomato Soup",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6171781d65f",
+    "en": "cup",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6897b06b4d8",
+    "en": "Rice cooking water",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c691764805ca",
+    "en": "Comic mystery",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6c3bb5624d9",
+    "en": "Sugar Puff Pastry Palmiers",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6c5211a5079",
+    "en": "Pumpkin",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6dd28a30971",
+    "en": "Blueberry Rice-Milk Oatmeal. Prepare the stated quantities; servings: 1.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6e72a8ceb1f",
+    "en": "Independently written concise recipe based on the linked source; original AI illustration. Rights await human review.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c6fceeed9cf9",
+    "en": "Minute one: fifteen to twenty swings; minute two: ten clean-and-press repetitions, five per arm; minute three: twelve goblet squats. Start on the minute and rest for the remainder. Repeat four times through minute twelve.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c70ef9c4d9e2",
+    "en": "Ham and Cheese Puff Pastry Roll — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c711cb543dc1",
+    "en": "Gather only what it needs and complete it carefully.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c7171ea4c17d",
+    "en": "Stable chair",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c71ce8ccf3b4",
+    "en": "Nature",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c74347e4dcea",
+    "en": "Original home workout illustration: 10-minute Tabata cardio session.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c75e26d3f5fd",
+    "en": "Workout instructions were originally written for RANDOM life, inspired by the broad bodyweight-training topic on the linked website; this is not a copied daily WOD. The image was originally generated for this package. The source grants no assumed permission to reuse its images or descriptions. Editorial rights and wording review is pending.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c76d09f90911",
+    "en": "Onion, thinly sliced",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c792e2b4b026",
+    "en": "Finish rice with scallion and eggs; add sliced cucumber and tomato. Serve immediately.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c7957a7bc56b",
+    "en": "Green curry paste containing fish and shrimp",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c7c3cef1acb4",
+    "en": "Aglio e Olio Without Cheese. Prepare the stated quantities; servings: 4.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c7eb2f1e3d2c",
+    "en": "Equal-parts whole milk and heavy cream",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c7ef54b28546",
+    "en": "Strawberry jam",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c806cba7a6d7",
+    "en": "Cook pasta as directed, reserving water. Salt chicken, cook in oil to 74°C and slice.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c810eb0064ad",
+    "en": "Add olives, capers, vinegar and sugar, then fold in the eggplant.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c8638ca5962c",
+    "en": "Chickpeas in a thick tomato, ginger and spice sauce. A simple vegan home version without ghee.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c877f451d6ae",
+    "en": "Chicken Fajitas — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c8df645037e5",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.penguin.de/resource/responsive-image/4651404/280/4/abby-stmindfck-pain-4-274173-jpg.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c8dfc5d5c794",
+    "en": "Independently written concise recipe based on the linked source; original AI illustration. Facts, translations and rights await human review. About 10 slices; 2 per serving. Optional lime omitted.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c8ff68c7863b",
+    "en": "Record how far you got. The source lists 3:28 and thirty repetitions for the full song; do not extend the effort to four minutes. Stop for pain or dizziness.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c90d65ee7527",
+    "en": "Instant yeast",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c91cdf4589e7",
+    "en": "A writer and his estranged daughter build a cabin on the American East Coast. Their shared work opens questions about their relationship, home, return and the space needed for writing.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c92fb69d73de",
+    "en": "For sharp backstage drama about ambition, manipulation and the insecurity behind public success.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c94b412b760f",
+    "en": "Saffron risotto adapted to use prepared meat stock.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c94d4c446e5d",
+    "en": "Warm up, check the 400 m route and choose a suitable load and swing and pull-up standards with a coach.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c95788e84b8e",
+    "en": "173 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c9665c96a867",
+    "en": "Lime",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c979bd43f53f",
+    "en": "Illustrated book",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c9daddc9757c",
+    "en": "Follow the five exercises in order: 40 seconds of work, then 20 seconds of rest after each, including the last. Complete 3 rounds without extra rest between rounds. Total: 15 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c9e4cbec3396",
+    "en": "Blueberry Rice-Milk Oatmeal",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "c9f203a1eb6d",
+    "en": "This dramatisation of the Chernobyl disaster follows efforts to limit the explosion’s consequences and establish what happened. Scientific explanations collide with political silence and fear.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca120683fd76",
+    "en": "Melt butter, stir in flour and cook one minute. Gradually whisk in ale.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca15389788c6",
+    "en": "Egg Whites with Pepper and Scallion. Prepare the stated quantities; servings: 2.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca22e94b69e2",
+    "en": "Beat the eggs with the milk and listed salt. Stir in the pork, onion and peppers and distribute evenly between the wells.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca365f211c17",
+    "en": "Original illustration: Finish one small postponed task",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca531ebc3b1a",
+    "en": "Brown chopped mushrooms with butter, a little oil and garlic.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca68672a3163",
+    "en": "Rotten Tomatoes — Succession",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca702fca905b",
+    "en": "Chocolate Hazelnut Puff Pastry Crescents — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ca879a6328a7",
+    "en": "Heat the broth, tomatoes, basil and onion powder in a saucepan. Once simmering, add the macaroni and frozen vegetables.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "caa858911b37",
+    "en": "Toss greens, apple, cranberries and dressing just before serving.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cabdd39f4f4c",
+    "en": "cloves",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cacd4ea01c60",
+    "en": "For a quiet story about poetry, work and small rituals.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cad83673af25",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.arka-knjiga.hr/en/books/23796/preko-zaledjenog-mosta . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cadcace3378a",
+    "en": "Leached Roast Potatoes. Prepare the stated quantities; servings: 4.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cafc96d9cad0",
+    "en": "Whisk the remaining oil with lemon juice, sumac and salt to taste.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

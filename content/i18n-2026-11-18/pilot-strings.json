@@ -1,0 +1,666 @@
+[
+  {
+    "key": "01bea07c825a",
+    "en": "Memoir",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "04175db07172",
+    "en": "Take turns, stay behind the foul line and never step onto the oiled lane.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "084ac061e1e7",
+    "en": "Choose an amount you can give without pressure.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "145a8d941cb3",
+    "en": "Bowling ball of a comfortable weight",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "1f9ea4d5f77b",
+    "en": "Ser Duncan the Tall and his young squire Egg travel through Westeros roughly a century before Game of Thrones. Their modest partnership faces dangers beyond their status and experience.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "2863efda6eea",
+    "en": "For readers drawn to personal perspectives and memory. Take time with the fragments and consider how experience becomes narrative.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "2ae5d6e88e74",
+    "en": "Recreation",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "2ce81422c90b",
+    "en": "TMDB — Manchester by the Sea",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "334d727b3d43",
+    "en": "Bowling with friends",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "42b801bfbb87",
+    "en": "V.B.Z. — autorska bibliografija",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "4f0237f1194d",
+    "en": "For restrained, emotionally demanding drama about grief and family.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "53a954bd1bef",
+    "en": "Bowling shoes as required by the centre",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "542855513e4f",
+    "en": "Fantasy",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH",
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "5a81c1264411",
+    "en": "Bowling",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "5afb31d6d9c5",
+    "en": "An amount you choose to give",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "5c60af19f615",
+    "en": "Bowl Canada",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "610994098aa5",
+    "en": "US cup",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "62171e01f8f1",
+    "en": "US tsp",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "6bb65800061e",
+    "en": "Vanilla extract",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "6dd7b3db661d",
+    "en": "Kindness",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "6f506daad8c6",
+    "en": "After his brother’s death, withdrawn Lee must return home and care for his nephew. Everyday responsibilities reconnect him with a past he struggles to bear. Directed by Kenneth Lonergan.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "82750980648a",
+    "en": "Check the bill and how the venue accepts tips.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "83048ae4c6f9",
+    "en": "For a social get-together with some movement and a simple shared goal. There is no need to chase a high score: take turns and enjoy each attempt.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "86f406a1d4c8",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/8436/autoportret-s-torbom . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "8ddec318384f",
+    "en": "Distribute the strawberries and chocolate chips over the surface. Freeze for at least 3 hours, then cut into 32 pieces. Store the remaining pieces in the freezer.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "8fb1924ec521",
+    "en": "If you are paying for coffee or a meal, thank the person who served you and leave a tip that fits your budget.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "8ff9d88314b2",
+    "en": "A small gesture of attention in an everyday encounter; the amount does not measure sincerity.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "9a3c16424750",
+    "en": "Adventure",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "9baaa27c613d",
+    "en": "Original editorial content from the user brief; original AI illustration. Duration is estimated; no venue or time is booked. Facts, translations and rights await human review.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "9c2c03ef259e",
+    "en": "Agree on a centre and time, then check prices, availability and shoe rules; no booking is included.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "a06cc96ff5cc",
+    "en": "Stir the maple syrup and vanilla into the yogurt. Spread the mixture on parchment to make a sheet about 25 × 38 cm.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "a1d274284df0",
+    "en": "Take breaks and adapt the number of games to your group. Stop if pain occurs; the planned sixty minutes is optional.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "a4691b88b05f",
+    "en": "Original activity from the user brief",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "a9fa4ee5a75c",
+    "en": "Bowling lane",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "ad84da0573e1",
+    "en": "Strawberry and Chocolate Frozen Yogurt Bark",
+    "fields": [
+      "title",
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "b1fd86294e62",
+    "en": "Runtime not specified",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "b5c7ae4027e4",
+    "en": "Offer a brief, specific thank-you without expecting a particular reaction.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "b64102dc4357",
+    "en": "Original editorial text inspired by the linked article; AI-generated illustration. The plan and duration are editorial suggestions. Health claims and calorie figures are not reproduced. Human review of text, translations and rights is required.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "bb501d7877eb",
+    "en": "Community",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "bc37ce1015ee",
+    "en": "Rotten Tomatoes — A Knight of the Seven Kingdoms",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "bfee99987a6a",
+    "en": "Sliced strawberries",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "c29251c9c85d",
+    "en": "Daily rituals, reading, films and encounters assemble a fragmentary portrait of a writer abroad. Personal observations attend to details that easily pass unnoticed in an ordinary day.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "c4765e47a205",
+    "en": "Illustration of an adult releasing a bowling ball while friends watch.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "d19f33caddf2",
+    "en": "Original illustration: Leave a tip and say thank you",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "d888e04c737d",
+    "en": "Quantities follow the cited institutional source; summary and steps are written in original wording. Original AI illustration, not the source photograph. Human review is pending. On 20 October 2026 the human editor explicitly confirmed facts, both translations, illustrations, allergens and the low-phosphate assessment for the specified portions, including the disclosed caveats, and authorized publication of all ten recipes.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "da5af4398a0b",
+    "en": "Original editorial description based on the linked source. No poster copied. Year is the series debut; exact runtime is not verified. Facts, translations and rights await human review.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "da72bf5bbca4",
+    "en": "Drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH",
+      "BOOK"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "dd41a782f1dd",
+    "en": "Whole milk plain Greek yogurt",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "de32e4545f1b",
+    "en": "Mini chocolate chips",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "e5748de5bbd8",
+    "en": "Varies by episode",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "e5da6cc57ec4",
+    "en": "A frozen yogurt sheet with strawberries and chocolate, cut into small pieces.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "e789d1632615",
+    "en": "National Kidney Foundation",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "e87d2a624228",
+    "en": "Set aside an hour for recreational bowling and conversation between turns. Choose a comfortable ball weight and play at your own pace; the duration is a suggested plan, not a figure from the source.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "e8971de41ff0",
+    "en": "Pure maple syrup",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "e8d9078ff3e7",
+    "en": "Choose a ball you can hold comfortably and ask staff to demonstrate the basic approach and release.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "ecfff413d509",
+    "en": "Original editorial description based on the user selection, with title identity and TMDB candidate checks. Actual poster from TMDB; text, translations, facts and poster rights await human review. On 20 October 2026 the human editor confirmed reviewing facts, sources, both translations and poster rights, and authorized publication of this item among the specified 34 WATCH titles.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "f0a1e58d31be",
+    "en": "Leave a tip and say thank you",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "f4793dc1735d",
+    "en": "Generic original editorial illustration; not official cover or poster artwork.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "BOOK",
+      "WATCH"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "f9235977afb9",
+    "en": "US cups",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": true
+  },
+  {
+    "key": "fa03a2cf389e",
+    "en": "For Westeros fans seeking a story centred on a journey and two companions. Choose it for character, honour and adventure rather than an expansive map of alliances.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": true
+  }
+]

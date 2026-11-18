@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "e7aa3d191ea7",
+    "en": "Dice cucumber and pepper and slice olives.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7c42a7b092b",
+    "en": "The user supplied a draft based on a RecipeTin Eats recipe. Recipe text and translations were edited for RANDOM; no original photography was reused. Review the facts, adaptations and rights to the new illustration before publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7ca6743d567",
+    "en": "Choose this book for its particular focus: The author’s perspective on political connections in contemporary Spain.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7e44bf3f19a",
+    "en": "Butternut Squash and Chickpea Curry — Kidney Care UK",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7efb8355c4a",
+    "en": "Simmer at least 2 hours, stirring and adding stock as needed; season.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e7efd875c12b",
+    "en": "Run 5 km and record total elapsed time. Choose a measured route and a pace suited to your fitness. The thirty-minute card duration is an editorial planning estimate, not a required result or time cap.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e80cd33b7e75",
+    "en": "Toss lentils, vegetables and dressing. Serve lukewarm or chill in the refrigerator.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e81b6187df49",
+    "en": "Oil a 23 × 13 cm loaf tin and heat the oven to 190°C. Combine the dry ingredients in one bowl and the remaining ingredients in another.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e85557978b07",
+    "en": "Mung bean sprouts",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e85d848132b8",
+    "en": "Smoked paprika, optional",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e868b07d1bfd",
+    "en": "Rotten Tomatoes — Boardwalk Empire",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8698a3c5ded",
+    "en": "Soften chopped onion, carrot and celery in oil for 10 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e876a9fdc65a",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.crveniperistil.hr/proizvod/miljenko-jergovic-rodjenje-u-sumarevoj-kuci-bozicne-price/ . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e897c4ebb460",
+    "en": "Boydell Press",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8ada399c001",
+    "en": "Ask about their day. Listen and allow pauses.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8ce4fcac783",
+    "en": "Dry red lentils",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8cef1ce3a61",
+    "en": "Thai Green Chicken Curry",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8d731e94c6e",
+    "en": "Rinse rice, soak for 15 minutes and drain. Chop vegetables.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8f000eec857",
+    "en": "Mobility",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e8fddfa3958f",
+    "en": "Independently written concise recipe based on the linked source; original AI illustration. Facts, translations and rights await human review. Time includes sauce preparation and baking; estimated.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e90208f07928",
+    "en": "Cobb Salad",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e91655e55e49",
+    "en": "A person performing a squat in a bright living room with an exercise mat and plants in the background.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e91ac13be37b",
+    "en": "TMDB — No Country for Old Men",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9277a08c523",
+    "en": "Ketty Garat presents her investigation of political and business connections surrounding Pedro Sánchez and José Luis Ábalos. The book sets out the author’s journalistic analysis and allegations.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9725648faac",
+    "en": "Heat the oven to 220°C. Place the chicken on a lined tray and roast for about 20–30 minutes. Check the thickest part reaches at least 74°C.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9a5f268824c",
+    "en": "For a gentle road movie attentive to ordinary people.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9b0db5f3d3d",
+    "en": "Cook thinly sliced onion in oil for 15 minutes until golden. Reserve half for topping.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9bc8f47d4aa",
+    "en": "A small contribution to a shared space without needing to clean the whole neighbourhood.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9bebeb00069",
+    "en": "Meat stock with celery",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "e9fdce015396",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/drugi-krug-d2579.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea09b743b456",
+    "en": "Family fiction",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea17d853e557",
+    "en": "Puff pastry pockets hold a thick sour-cherry filling. Cooking and cooling the filling first helps keep the edges sealed.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea3a71799b9a",
+    "en": "Red or yellow onion",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea4379b6c9ad",
+    "en": "Back in her Kansas hometown, Sam tries to find a place for herself after a loss. Singing and unexpected friendships connect her with people who also struggle to fit in.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea607b187075",
+    "en": "For viewers who enjoy a crime puzzle entangled with uncomfortable relationships. Start with little extra information and let the circumstances unfold.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea87c14befc7",
+    "en": "Return chicken and cook gently to 74°C. Over low heat, stir in Parmesan and parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea8b1c69c821",
+    "en": "Tomato sauce",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ea91bfe9eef3",
+    "en": "TMDB — 21 Grams",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eaa247633dc4",
+    "en": "Leaf lettuce",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eaa26b371d40",
+    "en": "15-minute full-body HIIT",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eaa9db2a5326",
+    "en": "Divide the dough into four pieces. Roll into flat rounds and spread with the za’atar mixture, leaving a narrow edge.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eab9af67912e",
+    "en": "For viewers drawn to stylised, emotionally intense drama. It includes drugs, sexuality and violence rather than offering a light school story.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eac742444e71",
+    "en": "Lasagna alla Bolognese",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ead0ada7da33",
+    "en": "The second illustrated book for younger readers explores the emergence of inequality. Agriculture and social change provide a starting point for questions about fairness and the distribution of power.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eaf17b584d81",
+    "en": "Criterion — Citizen Kane",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eb00b515a342",
+    "en": "Tomato purée",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eb1c69df83cf",
+    "en": "Take a walk without checking your phone",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eb66335db9d3",
+    "en": "Brown Butter Sage Gnocchi — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eb786bb6d83b",
+    "en": "Pour into the prebaked shell and bake at 175°C (350°F) for about 50–55 minutes, until the center is just set.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eb81a112341f",
+    "en": "Thai Green Curry with Shrimp",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eb8753d6319f",
+    "en": "For an experienced exerciser prepared for higher volume and overhead movements. Each exercise totals sixty repetitions, with arms and directions split evenly.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eba3e26ec329",
+    "en": "Taco seasoning",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ebc90129ad1e",
+    "en": "Oil-packed tuna, drained",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ebcf98369534",
+    "en": "Honey",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ebe3ee789a62",
+    "en": "“Wilimowski” is a literary fiction volume by Miljenko Jergović, first published in 2016. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ebea8299aad4",
+    "en": "Drain falafel on absorbent paper. Serve in warmed flatbread with vegetables and tahini sauce. The 700 ml oil is frying medium, not the amount consumed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ebf281452132",
+    "en": "A badly injured frontiersman fights for his life in a harsh wilderness. Iñárritu’s drama connects physical survival with loss and revenge.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ebf8d3a7ece8",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://cdn.holtzbrinck-buchverlage.de/droemer/public/O82gmWn1sAlbzG9ijV5VsnlVtJIiHKzRQ207k0wSpE1/U1_978-3-426-28413-1.png?width=1200&fit=crop&quality=85&format=jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec258699fe0f",
+    "en": "Shakshuka — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec27877c4fe2",
+    "en": "Cut pastry into two sheets, prick and bake between baking paper and two trays at 200°C about twenty minutes. Cool.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec2d344dd49c",
+    "en": "Rice vermicelli noodles",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec517cff1580",
+    "en": "Cauliflower and Zucchini Soup. Prepare the stated quantities; servings: 4.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec5a914b9748",
+    "en": "Mix tamarind, soy sauce, sugar, water and lime juice.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec6efdac8d64",
+    "en": "Separately cook cuttlefish with oil and garlic about 10 min; add wine and simmer another 10 min.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec816f63b231",
+    "en": "Twisted puff pastry strips hold cheese, garlic and parsley. Baking in a single layer keeps the edges crisp.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ec88269f9030",
+    "en": "Cineteca di Bologna — programme — Breakfast at Tiffany's",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eca54aac838d",
+    "en": "Add coconut milk, fish sauce, sugar and vegetables; simmer six to eight minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ecaec8245303",
+    "en": "Heat oven to 200°C. Spread chips in a shallow ovenproof dish.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ecc52d872c54",
+    "en": "Cut pastry into eight squares and press into muffin cups. Prick bases and brush edges with egg.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ecdf8b43b253",
+    "en": "droemer-knaur.de",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ece1bf0aaf20",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/10771/sarajevo-plan-grada . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ece586d1772e",
+    "en": "Internet access",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed08b2e0e0ba",
+    "en": "slices",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed196638f820",
+    "en": "Miso Ramen — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed257ec03b76",
+    "en": "Brown pancetta, vegetables and beef; add wine, tomato and stock. Simmer at least 2 hours.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed2a6f7ed649",
+    "en": "Original illustration: Gently clean your phone and laptop screens",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed2c7609e141",
+    "en": "Drain eggs, place over yogurt and finish with chilli butter and dill.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed2d90fa6849",
+    "en": "Soak noodles as directed. Mix soy sauce, wine, curry powder and sugar.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed94445f0215",
+    "en": "129 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ed9cc43a1101",
+    "en": "Drain, cool briefly and slice. Clean and chop vegetables and avocado.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eda85887135e",
+    "en": "Apple Puff Pastry Tarte Tatin",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "edc15ff33ffa",
+    "en": "Follow the five exercises in order: 60 seconds of work, transitioning directly to the next. Complete 2 rounds without extra rest between rounds. Total: 10 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "edc66c3b8aa0",
+    "en": "Personal development",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ede5a7fd73a6",
+    "en": "Brush tortillas with half the oil; bake at 200°C for eight to twelve minutes until crisp.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "edeb61db41b3",
+    "en": "An accident connects three lives in a story of grief, guilt and attempts at redemption. Its nonlinear structure gradually reveals their relationships.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee093cf687af",
+    "en": "Mix vegetables, flour, egg white and pepper. Shape eight thin fritters.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee14b263ef64",
+    "en": "A rustic bowl of thick orange-red lentil soup with herbs and a lemon wedge on a wooden table.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee227ae913bc",
+    "en": "Fantasy manga",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee304c8b52b2",
+    "en": "For a quieter, warm story with humour rooted in relationships. Suits an evening spent with imperfect characters and the small changes in their lives.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee5488dc422e",
+    "en": "An upside-down puff pastry tart with caramelised apples.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee570101ffb8",
+    "en": "Add cilantro and serve immediately. For a safer version, cook fish to 63°C first; at-risk groups should avoid raw fish.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee6e57529fbf",
+    "en": "Ground pork",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ee759c9dced9",
+    "en": "Using clean utensils, dice fish and finely slice onion and chilli.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eec7a87d3a34",
+    "en": "Bake at 200°C for twenty-five to thirty minutes until golden and cooked underneath.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eedb0a722960",
+    "en": "Scallion",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "eef7caa53296",
+    "en": "Cut the peach and cucumber into pieces about 1 cm across. Halve the cherry tomatoes and finely chop the scallion and mint.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ef01c046760e",
+    "en": "Stir in lemon juice, adjust salt and thin with water if needed. Serve without yogurt or butter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ef1d83cab336",
+    "en": "Cherry tomatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ef2a561efaed",
+    "en": "Wheat breadcrumbs",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ef3f275e9604",
+    "en": "Place pastry on baking paper; add fruit in the centre, leaving a four-centimetre border.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ef4488901f1c",
+    "en": "Laguna / Noć knjige",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ef988360ba41",
+    "en": "Grated cheddar or Gruyère cheese",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "efa9a3729d47",
+    "en": "Fiction",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "efe7ec10b139",
+    "en": "Drug investigations in Baltimore open onto a wider portrait of the city. Police, the street, politics, schools and media gradually become parts of one story about institutions and the people within them.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "efec6b90ec85",
+    "en": "Original home workout illustration: 15-minute legs and glutes.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f031768d789b",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/7186/pamti-li-svijet-oscara-schmidta-projekti-skice-nacrti . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f04a138f4c00",
+    "en": "Cooked rice, promptly cooled and refrigerated",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f074e51f770b",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://storage1010.cdn-immedia.net/upload/assets/files/841,it,17111/21520-3.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f085ff246bbe",
+    "en": "Rest for 10–15 minutes. Scatter parsley or chives over the top if desired and cut into eight slices.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f08809abc83a",
+    "en": "Mix soy sauce, pear, sugar, sesame oil, minced garlic and ginger. Marinate beef in the refrigerator for twenty minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f0c91e9ecca9",
+    "en": "For viewers drawn to complex antiheroes and patient character development. Dark humour sits alongside violence, and family conversations can be as tense as criminal confrontations.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f0eb3ff1d427",
+    "en": "Cauliflower",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f1278b3727fc",
+    "en": "Remove from heat, add basil and carefully blend until smooth.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f128d7053c1a",
+    "en": "Cherry Tomato and Feta Puff Pastry Tatin",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f14a3410a4e2",
+    "en": "Add apple quarters; simmer ten to fifteen minutes until softened and juices reduced.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f163b79b37f7",
+    "en": "Choose this book for its particular focus: A comedy of mistaken identity at a recognisably tense school meeting.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f1954a88dc34",
+    "en": "Strawberry Puff Pastry Galette — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f1bc510dc0da",
+    "en": "Chicken breast",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f1c1f57728f9",
+    "en": "Eggs",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f1c474277aef",
+    "en": "Briefly warm minced garlic in butter. Add cream and two spoonfuls of pasta water.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

@@ -1,0 +1,1325 @@
+[
+  {
+    "key": "7e99aef0f640",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/14424/vjetrogonja-babukic-i-njegovo-doba . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7ea1d299eeae",
+    "en": "gimmesomeoven.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7ead8ed7a5f5",
+    "en": "Choose this book for its particular focus: An intricately illustrated fantasy world in a special Italian edition.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7ebed4da2c3c",
+    "en": "Thai Green Chicken Curry — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7ecafc447337",
+    "en": "A visually striking blend of detective mystery and questions about identity, empathy, and artificial life. Its deliberate pace, Vangelis score, and atmospheric futuristic city make it a compelling choice for viewers who enjoy thoughtful science fiction.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7eeaf61ad2ba",
+    "en": "A girl grows up in an American town as her lawyer father defends a Black man accused of a crime. Robert Mulligan connects a child’s perspective with racial prejudice and moral courage.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7efa0e89f6b2",
+    "en": "Pea and Mint Risotto",
+    "fields": [
+      "title",
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7f03b9bcb24d",
+    "en": "Raisins",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7f3dc05b0632",
+    "en": "Wash, dry thoroughly and pierce peppers to release steam.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7f40accf2d74",
+    "en": "Feta cheese",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7f4f726612bd",
+    "en": "Tear mushrooms into strips, coat in marinade and rest for 15 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7f5f7911600f",
+    "en": "The Little Tramp seeks work and a decent life in a world of machinery and economic insecurity. Charlie Chaplin uses physical comedy to explore industrial routines and the human need for companionship.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7fbf0e291168",
+    "en": "An exhausted housewife tries to keep her family going in a cramped Madrid apartment. Family conflict and eccentric neighbours turn daily pressure into dark comedy. Directed by Pedro Almodóvar.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "7fe65ebc31db",
+    "en": "Add chickpeas and blend until smooth. Gradually add the cold water; stop when the texture is creamy rather than runny.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "800840799f4e",
+    "en": "Add drained beans and cheese. Bake eight to ten minutes until melted.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80300964ed85",
+    "en": "Curry powder",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80421e0021c5",
+    "en": "Pineapple",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80423955d906",
+    "en": "Brief prose pieces consider chance encounters, loneliness, art and decisions that alter a life. Restrained storytelling leaves room for what the characters cannot quite say.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "804b24060944",
+    "en": "Potato gnocchi containing wheat and egg",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80507e9f8e3b",
+    "en": "For tense survival storytelling and a striking sense of space and isolation.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80628f2b84e0",
+    "en": "“Tušta i tma” is a collection of letters by Miljenko Jergović, first published in 2014. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80aa2cbae96f",
+    "en": "Baking soda",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80bc06cb4cb1",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/imenik-lijepih-vjestina-ii-eseji-kronike-clanci-d8901.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80c1d6b3bca3",
+    "en": "For lovers of elaborate costumes, social rituals and court politics without a literal court. Suits a mood for gradually developing relationships and conflicts over status.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80d76453b490",
+    "en": "Kettlebell",
+    "fields": [
+      "equipment",
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80e156481c20",
+    "en": "Fettuccine with chicken in a creamy Parmesan sauce.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80ebdc88b19f",
+    "en": "Brown both sides in oil. Transfer to a tray and top lightly with tomato sauce and mozzarella.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "80ef002cfa86",
+    "en": "Add a little sauce, mozzarella and ham without overloading.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81351da3c0e3",
+    "en": "High pull: hold one light bell with both hands, drive from the hips and draw it close toward the lower chest. Do not pull to the chin or raise elbows above shoulders. Lower with control.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "813d661815d5",
+    "en": "Brown remaining garlic; add shrimp and cook until opaque. Add vinegar and parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "815c7346ece0",
+    "en": "Stir in flour, add wine and simmer ten minutes. Add stock, herbs and chicken.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81674555ee05",
+    "en": "A good option for an active break with one other person. Start with gentle rallies and adjust the pace so that both players can enjoy the session.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "817208ba4088",
+    "en": "Cook the chopped bacon in a skillet until crisp. Remove it, then soften and lightly caramelize the diced onion in the rendered fat.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8172dc61b994",
+    "en": "A study of clandestine actions, sabotage, abductions and assassinations in medieval and early modern warfare. Selected cases examine the role of small operations in wider strategy and politics.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81834acb6150",
+    "en": "Knjižare Vulkan — Propolis Books izdanje",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8189b8409b18",
+    "en": "Milk",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8195e3b98516",
+    "en": "The Woks of Life — Egg Fried Rice (Bill Leung)",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81b473159f20",
+    "en": "Follow the five exercises in order: 45 seconds of work, then 15 seconds of rest after each, including the last. Complete 4 rounds without extra rest between rounds. Total: 20 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81bad304c81c",
+    "en": "For sharp dialogue and rivalry between two people connected by work and a shared past.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81bbb274e3f9",
+    "en": "This short-story collection returns to the world of dragons and riders from the Empyrean series. Companion stories offer additional perspectives on its established fantasy setting.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81c50887d204",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://ik.imagekit.io/panmac/tr:f-jpg,di-placeholder_portrait_aMjPtD9YZ.jpg,w-350/edition/9781447278856.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "81f6f32c42ed",
+    "en": "Broder Bahnsen becomes a veterinarian while his brother inherits the family farm. Returning to help brings questions of inheritance, responsibility and a changing rural world into focus.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "820a751c18d5",
+    "en": "10-minute kettlebell MetCon",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "822aa8a2bd85",
+    "en": "Chicken Quesadillas",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "822c38fd2a0f",
+    "en": "Burpee: place hands down from a squat, move into a plank, return feet and stand; step instead of jumping to scale. A push-up is optional in this draft.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8276895e4a6b",
+    "en": "Clean and press: clean the bell into a controlled rack against forearm and shoulder without banging the wrist, press overhead without arching your back and return. One clean plus one press counts as one repetition.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "82778e5ae171",
+    "en": "Old Fashioned Pancakes — NKF Kidney Cooking",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8282aa3a47e7",
+    "en": "Naklada Val",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8289a9844fd5",
+    "en": "Tomato",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "82c268188cd6",
+    "en": "Glass",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "82c697223357",
+    "en": "The first novel in this family saga follows Marthe Haller and her daughters around a village shop in the Taunus. Community ties and Frieda’s acting ambitions point toward different futures.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "831d216efc28",
+    "en": "12-minute kettlebell EMOM",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "83539884f59c",
+    "en": "Fry in hot oil in batches until softened, blistered and browned.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8379033f8c57",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.dtv.de/media/a0/ab/3b/1776420620/9783423221443__COVER_2D%20(2D%20Cover%20Web%20klein).jpg?ts=1776420620 . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "83880ead43b8",
+    "en": "Cream Cheese and Jam Puff Pastry Danish",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "83885e1110c6",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://knjiga.hr/knjiga/karivani-jergovic-miljenko-103959 . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "83ad9beaa22b",
+    "en": "Cook the onion in the olive oil for about 10 minutes, until soft. Meanwhile, cook the rice in a separate pan.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "83bdcff248c0",
+    "en": "Add cold rice and kecap manis. Stir-fry until piping hot and evenly coloured.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "83d1a7741b1a",
+    "en": "AI food photograph: Hummus with Homemade Falafel",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "84236665d53b",
+    "en": "Survivors from a damaged space freighter are stranded on a planet whose beauty is inseparable from danger. Encounters with unfamiliar life demand adaptation, observation and cooperation.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "84247c8aaf6d",
+    "en": "Eggplant",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "843bd2d7709d",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/14136/macka-covjek-pas . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8477ad57f464",
+    "en": "Add passata and stock. Cover; simmer fifteen to twenty minutes, adding peas for the final five.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "847abbc8b1bd",
+    "en": "Risotto with both puréed and whole peas, fresh mint, butter and cheese.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "848cfbc75d36",
+    "en": "Miljenko Jergović — bilješka o hebrejskom izboru",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "849149a0a8fa",
+    "en": "Childhood in Sarajevo, family relationships and later life away from the city connect Nezirović’s short autobiographical stories. Memories of people and places raise questions of belonging and loss.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "84ad688ed1e8",
+    "en": "Cyberpunk",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "84b5d1f7d95e",
+    "en": "Illustration of Mujadara",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "84c6eee85cdb",
+    "en": "Lower body",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85121b414b8e",
+    "en": "Add egg whites and stir over moderate heat until fully set with no liquid egg remaining.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "851d584a7ea7",
+    "en": "Illustrated puzzles",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "852649e919fd",
+    "en": "Crunchy salad with beef, beans, vegetables and chips.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85610de63635",
+    "en": "Original editorial description. Actual English-language edition cover, visually checked against title and author. Cover source: https://www.penguinrandomhouse.com/books/714481/unstoppable-us-volume-1-how-humans-took-over-the-world-by-yuval-noah-harari-illustrated-by-ricard-zaplana-ruiz/hardcover/ . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8570905d1201",
+    "en": "Add minced garlic and ginger, then spices; stir for 30 seconds.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "857c7961fb67",
+    "en": "A playwright arrives in Hollywood and struggles with a screenplay in an oppressive hotel. His convictions and ambitions collide with the entertainment industry and increasingly bizarre events. Directed by Joel Coen and Ethan Coen.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "858a032dda1e",
+    "en": "Sprinkle with oregano, brush edges with egg and bake at 200°C for twenty to twenty-five minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "858e4ba7a29f",
+    "en": "Pause",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "859615ed97ed",
+    "en": "Rest ten minutes, then carefully invert with protected hands onto a larger rimmed plate.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "859d0db98df4",
+    "en": "Side plank: bring the upper elbow and knee together; right, then left, in separate intervals.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "859e1dadd5fa",
+    "en": "Add filling, cover with remaining pastry and seal. Cut vents and brush with the other beaten egg.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85a0d4b22ef4",
+    "en": "125 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85d4363f66c6",
+    "en": "In an Egyptian-inspired fantasy world, Imet moves among embalming, religion and courtly danger. A desire for revenge collides with power and threats from the underworld.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85e0da60c319",
+    "en": "Clean bag",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85e9408dd288",
+    "en": "English cucumber",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85f1c8c8e324",
+    "en": "Comedy",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "85f3457fff6e",
+    "en": "Write two sentences about what was good; leave out other people’s private details.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "860b3ed9b514",
+    "en": "Choose this book for its particular focus: A literary perspective on dignity and life in a psychiatric institution.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "861dda65d41b",
+    "en": "Medical drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "86279b1841a5",
+    "en": "Tinned chickpeas, before draining",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "866965f51cb6",
+    "en": "Chilli powder",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "868da9d09646",
+    "en": "Joel and Ellie cross an America transformed by an outbreak that shattered society. Encounters with survivors and infected people test their trust and change the meaning of their journey.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8691f0be4b5c",
+    "en": "Google Play Movies — Double Indemnity",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "869c4fee0fda",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://cdn.holtzbrinck-buchverlage.de/rowohlt/public/D8HPoHwUuvSouY3UXtCZejilGM2vB0Z8sItVbhnPzpV/U1_978-3-644-02855-5.png?width=1200&fit=crop&quality=85&format=jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "86a0997281cf",
+    "en": "Sailor and Lula take to the road as threats from their past and family relationships follow them. Their romance becomes a violent, grotesque adventure. Directed by David Lynch.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "86ffdb100f5b",
+    "en": "Stir in rice, tomatoes and stock. Return chicken and bring to a simmer.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87046677cb08",
+    "en": "Add saffron near the end. Off heat, stir in cheese and remaining butter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87075736e871",
+    "en": "Cook rice. Soften chopped onion in butter; add twenty grams of flour and curry powder.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8712924cd3cf",
+    "en": "Chicken Katsu Curry — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87130c1a9f83",
+    "en": "Apples, cinnamon and walnuts are wrapped in ready-made puff pastry. Small cuts in the top let steam escape during baking.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87179a69de25",
+    "en": "Childhood memories on Lanzarote connect two sisters, family secrets and guilt. A lyrical voice explores what remains between play, loss and the unspoken.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87193bc0050c",
+    "en": "Fold over the other half, press gently and cut into strips.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "872389ebd7a6",
+    "en": "Shaoxing rice wine",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87434a72db48",
+    "en": "Add minced garlic, cumin, paprika and chilli, followed by tomatoes and salt. Simmer ten to fifteen minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87674776a09b",
+    "en": "Original summary and translation; AI illustration. The WODwell protocol was unavailable during preparation. Protocol corroborated at https://www.crossfit.com/helen Duration is an editorial estimate. Human review of facts, translations and rights is required.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "87868425b21b",
+    "en": "Jumping jacks: jump feet apart while raising your arms, then return; land softly.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "878c4efc3bb6",
+    "en": "As his mother Greta loses her memories, Tom tries to understand her past. His family investigation reaches back to wartime displacement, postwar Heidelberg and a forbidden relationship.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "8823a6964f78",
+    "en": "Padrón peppers",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "883897d36f41",
+    "en": "Clear just one surface",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "888848eeef8f",
+    "en": "Chemist Elizabeth Zott becomes a television cooking host in 1960s California. She uses science to challenge the expectations society places on women.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88a0bd50c782",
+    "en": "A mother and son spend a summer in France carrying the weight of their estrangement. Memory brings together anger, tenderness and loss in a story of seeing a loved one differently.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88a5dabfd60d",
+    "en": "Vegan Miso Ramen",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88a72a183ec9",
+    "en": "Unsalted butter",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88aa9d1afa93",
+    "en": "An expansive family narrative interweaves memory, documents and imaginative reconstruction. Ancestral lives become a means of exploring personal origins and the history of the places they inhabited.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88aabf5b7621",
+    "en": "Independently written editorial description based on the linked source. No excerpts or cover copied; facts, translations and rights await human review.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88aac4ef5e39",
+    "en": "Whole canned tomatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88b96cde804d",
+    "en": "Canned coconut milk",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88bfb6ab3419",
+    "en": "Harari studies changes in the cultural understanding of combat from the early modern period to the twentieth century. At its centre is the idea that war reveals a special truth about the self and the world.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88c08c95f606",
+    "en": "Warm up and check your push-up control first. If needed, choose an easier variation with a coach and record the modification.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88c26148a906",
+    "en": "Original AI illustration of Minestrone",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "88dfe9446d09",
+    "en": "Strawberry Pineapple Plant-Based Smoothie",
+    "fields": [
+      "title",
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

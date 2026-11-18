@@ -14,9 +14,17 @@ export function genericArtworkPath(item:Identity,seed=0):string|null{
  }else return null;
  return `/media/generic-${pool[hash(item.id+':'+seed)%pool.length]}-v1.webp`;
 }
+const genericAlts:Record<string,string>={
+ en:'Generic original editorial illustration; not official cover or poster artwork.',
+ bs:'Generička originalna urednička ilustracija; nije službeni omot ili poster.',
+ es:'Ilustración editorial original genérica; no es una portada ni un cartel oficial.',
+ 'pt-BR':'Ilustração editorial original genérica; não é uma capa ou um cartaz oficial.',
+ de:'Generische originale redaktionelle Illustration; kein offizielles Cover oder Filmplakat.',
+ it:'Illustrazione editoriale originale generica; non è una copertina o una locandina ufficiale.'
+};
 export function withGenericArtwork<T extends ContentRecord>(item:T,seed=0):T{
  const path=genericArtworkPath(item,seed);if(!path)return item;
  const en='Generic original editorial illustration; not official cover or poster artwork.';
  const bs='Generička originalna urednička ilustracija; nije službeni omot ili poster.';
- return {...item,image:{path,alt:bs,rightsConfirmed:true,generated:true},translations:Object.fromEntries(Object.entries(item.translations??{}).map(([locale,t])=>[locale,{...t,imageAlt:locale==='en'?en:bs}]))} as T;
+ return {...item,image:{path,alt:bs,rightsConfirmed:true,generated:true},translations:Object.fromEntries(Object.entries(item.translations??{}).map(([locale,t])=>[locale,{...t,imageAlt:Object.hasOwn(genericAlts,locale)?genericAlts[locale]:en}]))} as T;
 }

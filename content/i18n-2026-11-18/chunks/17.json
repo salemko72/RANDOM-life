@@ -1,0 +1,1323 @@
+[
+  {
+    "key": "9e6667c4f766",
+    "en": "For a slow road movie about male friendship and love of cinema.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9e674d7517ca",
+    "en": "Tuck jump: jump with control and land softly; reduce height as needed or use standing knee lifts without jumping.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9e87ba4dd07d",
+    "en": "Carrot",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9e8c9731465c",
+    "en": "clove",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9eaa00913893",
+    "en": "Crisp tofu in a sweet-spicy ginger and garlic sauce. The sauce uses water and soy sauce instead of chicken stock.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9eac76624b7b",
+    "en": "Warm garlic and chilli in oil for 30 seconds, add tomatoes and simmer for 12 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9ecaef32fcad",
+    "en": "Combine pasta, vegetables, olives, feta and dressing. Add parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9ecf6d17c311",
+    "en": "Wall push-ups — 2 min: place your palms against a wall at shoulder height, bend your elbows and press back. Keep your body straight.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9ed628811415",
+    "en": "Add drained peppers, pesto and broth. Simmer for 10–15 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9ed9b84aa0a7",
+    "en": "Mystery",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH",
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f18b5ad7769",
+    "en": "Original kettlebell workout illustration: 10-minute kettlebell MetCon.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f58fb187067",
+    "en": "“Psi na jezeru” is a literary fiction volume by Miljenko Jergović, first published in 2010. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f779586ce7e",
+    "en": "Jonathan Haidt examines the shift towards phone-based childhood and its possible relationship with young people’s mental health. He argues for changes in childhood, schooling and digital habits.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f79fa1d6946",
+    "en": "Choose this book for a longer encounter with a narrative voice. It offers a useful companion to the author’s shorter prose.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f7bf4a4eb21",
+    "en": "WODwell — fran / CrossFit",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f8552c9cb9c",
+    "en": "Choose this book for its particular focus: Relationships, boundaries and rebuilding a sense of identity.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f91161f4343",
+    "en": "leaf",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f9e9d525a15",
+    "en": "Cold water for hummus",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9f9ee2e52dec",
+    "en": "Sprinkle half the sugar on the worktop, add pastry and the remaining sugar. Press lightly with a rolling pin.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "9fb78732def1",
+    "en": "Stir in cooked chicken and cream; heat to 74°C without prolonged boiling. Add parsley and serve.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a01b52f94d78",
+    "en": "For readers drawn to personal testimony and an unvarnished voice. Expect difficult material involving war, addiction and self-destruction.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a01f49d3f4d7",
+    "en": "AI photograph: Apple Cranberry Green Salad",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a05763946404",
+    "en": "Choose this book for its particular focus: An entry into a series combining dragons, competition and romance.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0622e5484a1",
+    "en": "In a cycle of interconnected stories, Miljenko Jergović evokes childhood, family ties and a vanished Sarajevo, then follows lives scattered by war. Tenderness, humor and sorrow meet in a book about belonging, loss and the persistence of memory.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0a80c6158e9",
+    "en": "Choose it if you enjoy novels where place shapes the story and individual lives offer a way into another city and its rhythms.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0b05c6cddc8",
+    "en": "Add remaining oil; stir-fry sliced onion, garlic, ginger and pepper.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0bc62c76b25",
+    "en": "For oppressive atmosphere and storytelling that follows nightmare logic.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0c7b2e90075",
+    "en": "Remove leftovers and packaging afterwards; seek local help for an injured animal.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0ce6dc62351",
+    "en": "Vegan rustic bread",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0ec2e3cf4bd",
+    "en": "Fully cooked mini frankfurters",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a0f62f58c15a",
+    "en": "Satire",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a100b2657e95",
+    "en": "Salt chicken, brown in half the butter and remove. Cook sliced mushrooms and minced garlic in remaining butter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a12278fd1d2b",
+    "en": "Bake about 20 min at 200°C; grill the final 5 min, until scallops are cooked.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a12ca875fc74",
+    "en": "Milk for coating",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a13242b59b69",
+    "en": "Dried mint",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a14aec358163",
+    "en": "Zucchini and ricotta top a puff pastry base with lemon zest and basil. The zucchini is briefly sautéed before assembly.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a1640e539e69",
+    "en": "Add noodles, sauce, sprouts and spring onions. Toss for 2–3 minutes until sprouts are heated through; scatter with peanuts.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a17eb2836923",
+    "en": "Add the remaining garlic and the rest of the paprika, turmeric, garam masala, cumin, coriander, cardamom and cayenne pepper. Stir briefly until aromatic, without burning the spices.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a1b28f7c2d2f",
+    "en": "Peel and chunk potatoes. Mix tomato and vinegar.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a1c2e8e11437",
+    "en": "Two paddles",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a1d09cf40768",
+    "en": "A famous singer’s return intensifies her relationship with her daughter. Their family melodrama intertwines with romantic entanglements and a murder investigation. Directed by Pedro Almodóvar.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a20493c4f965",
+    "en": "Wash and dry lettuce and dice the apple.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a20e465972d0",
+    "en": "Plain white pasta",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a20e60b3bfdd",
+    "en": "For readers interested in literary correspondence and exchanges between writers. Letters provide a different route into their perspectives than individual prose.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a236f9a8273a",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.hachettebookgroup.com/wp-content/uploads/2026/10/9781454961796.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a23d77129e91",
+    "en": "Original wording based on the cited source; image is AI-generated, not taken from the website. An editor must review facts, translations and rights before publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a249f23302b8",
+    "en": "Vegan-labelled sugar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a253f37711a2",
+    "en": "Poultry seasoning",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a300e12a8cd5",
+    "en": "Sweet potatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a30ba06256e6",
+    "en": "Drinking water",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a315f308a81c",
+    "en": "Pitted sour cherries, thawed and drained",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a3227aadcd71",
+    "en": "15-minute kettlebell lower body and core",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a327cc20809c",
+    "en": "Space on baking paper and bake at 200°C for twenty to twenty-five minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a32d6f01c47f",
+    "en": "Cover for about 45 seconds, then uncover and toss with chopped scallion. Serve promptly while the potatoes still have some crunch.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a384110ffe6c",
+    "en": "sprig",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a3af75f50e80",
+    "en": "Thyme",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a3bb83d306b5",
+    "en": "Bicycle crunches: alternate bringing a shoulder toward the opposite knee, rotating the trunk without pulling your head.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a3c011e43f4c",
+    "en": "“Freelander” is a literary fiction volume by Miljenko Jergović, first published in 2007. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a3c397e997fb",
+    "en": "Choose this book for its particular focus: A poetic spiritual narrative for reading with pauses and reflection.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a3ef49d473ee",
+    "en": "Basil",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a40124dbe631",
+    "en": "Suitable dog or cat food",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a435048dfd6b",
+    "en": "Let the person carry on; they do not owe a response.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a450ea2a6c98",
+    "en": "Water for boiling peas",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a462d5c3b1cb",
+    "en": "Worcestershire sauce containing anchovies",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a499b0e8306a",
+    "en": "Chana Masala",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4a33bdd0bad",
+    "en": "The day before, soak dried chickpeas in plenty of cold water in the refrigerator for 18–24 hours. Drain and rinse. The stated 90 minutes excludes overnight soaking. Do not substitute cooked chickpeas in this version.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4bd55c1a5ac",
+    "en": "Original editorial description. Actual Durieux cover sourced from the Moderna vremena catalogue: https://mvinfo.hr/knjiga/1995/dunje-1983-izabrane-pjesme . Title and author checked against the image; On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4c1f8a2a15b",
+    "en": "Add the potatoes and finely sliced fresh hot pepper. Increase heat and stir-fry quickly for about 30 seconds.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4c78f4ced68",
+    "en": "For tense social drama about rumours and the collapse of trust.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4d871caeb64",
+    "en": "Cobb Salad — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4f96c723e81",
+    "en": "Inspired by the television game show, this book offers phrases and word challenges to solve. It brings a quiz-like rhythm to individual or shared play.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a4fe3d9a9645",
+    "en": "Sarajevo in the 1920s provides the setting for Ljubica Ignjatović’s story. Her love for Karel Dragutin Hart brings questions of trust, family expectations and hidden secrets into focus.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a520787cb02d",
+    "en": "AI food photograph: Vegan Miso Ramen",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a535acd1fc9e",
+    "en": "Original editorial description based on author and publisher documentation. No book text or promotional copy reproduced. Cover awaits matching in Studio; rights are unconfirmed.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a53f6e437e96",
+    "en": "Choose this book for its particular focus: Egyptian-inspired fantasy with themes of revenge and power.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a55039e77a45",
+    "en": "Penne in a spicy tomato, garlic and chilli sauce. The sauce simmers slowly for fuller flavour rather than rushing through a fifteen-minute shortcut.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a551919a59ee",
+    "en": "Place scallops in clean shells on a stable baking tray; season and top with sauce.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a572fa726959",
+    "en": "Whisk yolks, sugar, starch and a little milk. Gradually add heated remaining milk; return to heat, stirring until thick and bubbling, then cook one minute.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a5833d1441fb",
+    "en": "Add water and soy sauce. Simmer for 10 minutes, then add tofu, corn and bok choy for 4 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a5d6292a4b64",
+    "en": "Cut pastry into eight squares; score a one-centimetre border and prick centres.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a5ef4e5b2a33",
+    "en": "DaVita — renalna dijetetičarka Sara",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a5f836861e0e",
+    "en": "Uncover, reduce sauce briefly and stir in butter. Remove bay and thyme.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a602d09ce29e",
+    "en": "Return beef and its juices and finish cooking. Season and add parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6072dd81c2c",
+    "en": "“Herkul” is a literary fiction volume by Miljenko Jergović, first published in 2019. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a61ffb956ac3",
+    "en": "Warm tortillas. Fry eggs in remaining oil until whites and yolks set. Layer tortillas with beans, eggs, salsa and tomato.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a62985113749",
+    "en": "Autobiography",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a63c7296a029",
+    "en": "Doorman Chicky Diaz works in a luxury New York building whose residents and staff inhabit very different worlds. One tense night brings their secrets and class conflicts together.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6448dbb3a99",
+    "en": "Singapore Noodles",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a644b0de1113",
+    "en": "Slowly lift and lower your shoulders, then gently extend your arms.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6620324272b",
+    "en": "Pour the seasoned egg mixture over the rice and stir until the eggs are fully cooked. Add the peas and continue cooking until everything is heated evenly.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a667416cad9d",
+    "en": "Oil for frying",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6688d658b8b",
+    "en": "TMDB — Tie Me Up! Tie Me Down!",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6a3f26220de",
+    "en": "Off heat, combine pasta, rendered fat and yolk mixture; loosen with water.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6aacb39b622",
+    "en": "Choose this book for its particular focus: The opening of a saga about family, village life and large ambitions.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6c70d8ea542",
+    "en": "Soak or cook noodles according to the package and drain. Pat tofu dry and cut into cubes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6c8c27db0fc",
+    "en": "Gently warm minced garlic and chilli in olive oil without browning.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6d148745bf3",
+    "en": "A simple reminder to pause and notice what you need right now.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6e0ebee0f72",
+    "en": "Pike push-up: with hips raised, bend elbows and lower your head under control toward the space between hands; reduce depth if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a6f10bde1cb3",
+    "en": "Poetry",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a7081866d8fb",
+    "en": "AI photograph: Kale Slaw — DaVita",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a70bcb4dc2b0",
+    "en": "Eggs on corn tortillas with beans, salsa and tomato.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a71cc1167a76",
+    "en": "Choose this book for its particular focus: Popular psychology for reflecting on attention and digital everyday life.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a73278b9ee14",
+    "en": "Editorially rewritten and adapted from Sarah Leung’s public recipe on The Woks of Life; neither the original text nor photos were copied. The illustration was generated for RANDOM. Review facts and rights before publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a76090743236",
+    "en": "Black pepper",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a76df88f3fce",
+    "en": "Pancetta",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a77bd10ed9db",
+    "en": "Recall what the person is specifically looking for.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a784798a4d33",
+    "en": "Runtime varies by episode",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a79044da8ffd",
+    "en": "Tofu and leafy greens cooked with curry, rice vinegar and sesame.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a7ba2334df98",
+    "en": "Soften chopped onion and pepper in oil for about six minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a7bafa83b452",
+    "en": "For dark, atmospheric investigations and characters burdened by the past. Choose a season by the setting that interests you; violence and disturbing crimes are part of its approach.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a7bd9bb117af",
+    "en": "Original AI illustration of Ragù alla Bolognese",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a7be004f88bb",
+    "en": "CrossFit",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a80262b9a84a",
+    "en": "Move to the top of the push-up on the rising cue and to the bottom on the lowering cue.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a807fcd9a118",
+    "en": "Toss pasta with sauce, parsley and a little pasta water if needed. Taste before adding salt.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a84330aecdb8",
+    "en": "Two four-minute blocks with two minutes of rest between them. Each block has eight intervals: twenty seconds of work and ten of rest; cycle through four exercises twice.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a84cdf22b2ce",
+    "en": "Pour some water and take a brief pause. Sip according to thirst and your needs, without a prescribed large amount or promise of extra energy.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a86416f7bbf5",
+    "en": "An escape across the desert becomes a relentless fight against a tyrannical ruler. George Miller combines pursuit, survival and meticulously staged action.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a886723a800a",
+    "en": "Bring the two mixtures together with only brief mixing, then transfer to the tin. Bake for 45–60 minutes, until the centre is cooked through.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a88f08f5ee63",
+    "en": "For a tense psychological thriller best approached without knowing its twists.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "a8977f38c6f3",
+    "en": "Squash and chickpeas in a curry served with rice and chapati.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "053a2b958e8d",
+    "en": "Mix the remaining yogurt with the remaining crushed garlic and season. Wash and slice the tomatoes and lettuce.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "053c3dc6c85a",
+    "en": "138 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0545ce41052f",
+    "en": "Clear wall space",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0558a9767895",
+    "en": "Large onion, finely chopped",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "056bc46c2d77",
+    "en": "Salt, optional",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0578d718e8d3",
+    "en": "Cherry Tomato and Feta Puff Pastry Tatin — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0581f5f53efc",
+    "en": "Choose this book for its particular focus: Friendship and a turning point in life told with humour.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05a6b8d09398",
+    "en": "“Roman o Korini” is a short-story collection by Miljenko Jergović, first published in 2010. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05ae8c194683",
+    "en": "The Woks of Life – Chinese Tomato Egg Stir-fry",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05af0612360e",
+    "en": "Butter",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05c199aa9f35",
+    "en": "Drain excess oil; sprinkle with sea salt and serve.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05c85132e584",
+    "en": "For deeper reading on the sources of military history and the author’s early scholarship, with an emphasis on interpreting memoirs and their cultural assumptions.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05d3cfa7da95",
+    "en": "Remove from heat and carefully blend with an immersion blender. Season and add lemon.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05e17d947868",
+    "en": "Whole wheat pastry flour",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05ee3851cf25",
+    "en": "Slow-cooked meat sauce for pasta or lasagne.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "05f612562249",
+    "en": "For very slow pacing, silence and reflection on impermanence.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0616d15b25d1",
+    "en": "War fiction",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "061b34756e63",
+    "en": "“Volga, Volga” is a literary fiction volume by Miljenko Jergović, first published in 2009. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0623f79ec346",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://proassetspdlcom.cdnstatics2.com/usuaris/libros/thumbs/bf5098bf-4914-4250-8efb-619cc58ba39d/d_295_510/portada_la-intriga-del-funeral-inconveniente_eduardo-mendoza_202602051018.webp . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06419d222892",
+    "en": "Al Jazeera Balkans",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "066591d72355",
+    "en": "Athletic shoes",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06730ed2b83f",
+    "en": "Ground nutmeg",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0678f9f291da",
+    "en": "Stir in coconut milk, heat gently and remove from heat. Blend carefully.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06ab5c54b084",
+    "en": "Mix tomato paste, juices, minced garlic, paprika, cumin, oil and salt.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06b39b52520c",
+    "en": "Dice the tomatoes and thinly slice the spring onions.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06c598c607a3",
+    "en": "Heat the listed oil in a frying pan. Use a quarter-US-cup measure of batter per pancake and cook on both sides until golden and cooked through.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06c74b2d56fc",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.kupindo.com/Antikvarne-knjige/78344985_Miljenko-Jergovic-HIMMEL-COMANDO-1992-1-izdanje- . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06e2f0c48524",
+    "en": "Soften onion in olive oil; add tuna, then flour.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "06f4d559607c",
+    "en": "Add tomato paste and cumin, then lentils and water. Simmer for 20 minutes until completely soft.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0710c361b904",
+    "en": "Veal shanks",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07164e0243c0",
+    "en": "Add tomatoes, water and half the beans; mash and stir in the remaining beans.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0727f8613100",
+    "en": "Phone or computer",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07415c4d0649",
+    "en": "Toss eggplant cubes with 30 ml oil and roast at 220°C for about 25 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07463d84a2d0",
+    "en": "Peanut oil for frying",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "075289b26004",
+    "en": "Repeat the 5–10–15 sequence until time runs out. Take short breaks as needed, and stop for sharp pain, dizziness, or unusual weakness.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "076e9b86f378",
+    "en": "30-Minute Table Tennis for Two",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "079f456b32e4",
+    "en": "BFI Southbank programme notes — The Apartment",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07a07dd7708d",
+    "en": "Cut the tofu into cubes and pat them dry. Brown in the olive oil for 3–5 minutes, then lift out of the pan.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07be2d181b9a",
+    "en": "AI photograph: Old Fashioned Pancakes — NKF Kidney Cooking",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07ca15ac63b0",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.einaudi.it/content/uploads/2025/11/978885845002GRA.JPG . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "07d38d72c535",
+    "en": "Almond extract",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "081c0ed610ac",
+    "en": "IMDb — Blade Runner (1982)",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "082a826c2608",
+    "en": "Independently written editorial adaptation based on the linked recipe, with metric amounts and directions adjusted for this draft. Original artwork generated with the built-in imagegen tool; no source photograph used. This preparation has not kitchen-tested the recipe. Facts, both translations, allergens and rights await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and allergens and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "08413751263c",
+    "en": "Crisp tortillas enclose cooked chicken and melted cheese. This quick skillet version starts with chicken that is already cooked.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "084c64402edb",
+    "en": "Peach Cucumber Salad — AKF",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "089524fb4791",
+    "en": "Fold edges over fruit and brush with egg. Bake at 200°C for twenty-five to thirty minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "08a30c1d30a5",
+    "en": "Four three-minute rounds: fifteen squats, then ten to twelve push-ups, then eight burpees, each starting on its own minute. Rest for the remainder of each minute.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "08aa4512f397",
+    "en": "AI food photograph: Vegan Pad Thai",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "08e166952c7d",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://proassetspdlcom.cdnstatics2.com/usuaris/libros/thumbs/cde43954-83dc-4829-a6d6-c38d3b0f2d25/d_295_510/portada_recupera-tu-mente-reconquista-tu-vida_marian-rojas-estape_202402280801.webp . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "090b1e67a1b5",
+    "en": "Place the basil, arugula, walnuts and garlic in a processor. Run the machine while slowly pouring in the olive oil; add pepper once the mixture comes together.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "091a68c05499",
+    "en": "Choose this book for its particular focus: Dark romance in which a secret identity heightens the suspense.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0976dfb33b63",
+    "en": "Choose this book for its particular focus: Dark humour and literary play with time and mortality.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09896d5399ab",
+    "en": "A folk musician struggles to get by in the early-1960s New York scene. Performances, borrowed couches and an unusual trip reveal his talent and difficulties with intimacy. Directed by Joel Coen and Ethan Coen.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0992e1a513b1",
+    "en": "Uncover and cook briefly until the sauce thickens slightly. Serve warm, optionally over cooked rice (not included in the ingredients).",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09ba5bb21e19",
+    "en": "Original home workout illustration: 20-minute functional MetCon.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09db03526ab6",
+    "en": "Cover and cook about five to eight minutes, until the shrimp flesh is opaque.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09ddce54b69e",
+    "en": "Miso ramen with chicken, mushrooms, bok choy and a cooked egg.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09f1a281501d",
+    "en": "Detective drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09f6f1b2f580",
+    "en": "Pecorino Romano",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "09f8b8a78b51",
+    "en": "Choose a familiar path in a nearby park or woodland. Keep your phone with you on silent while paying attention to your surroundings.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a3683400a1e",
+    "en": "Shrimp Buzara",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a4b27a04571",
+    "en": "Large russet potato, peeled",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a52e061db04",
+    "en": "IMDb — A Separation (2011)",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a5985008bb5",
+    "en": "Forearm plank: brace your abdomen and glutes, breathe evenly and avoid sagging through your lower back. Lower your knees if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a59fb066ed0",
+    "en": "Shrimp, zucchini and pepper simmer briefly in coconut milk and green curry paste. Lime and basil brighten the rich sauce.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a71ad82a52b",
+    "en": "Criterion — It Happened One Night",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0a9a4e32f7f3",
+    "en": "Diced chicken breast",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0aa543379553",
+    "en": "Toast is covered with a thick cheddar, ale and mustard sauce, then briefly grilled. Worcestershire adds savoury depth.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0ab3a0e3d3b5",
+    "en": "Whisk oil, lemon, mustard, salt and pepper. Check that mustard contains no honey or dairy.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0ae90070799d",
+    "en": "Rotten Tomatoes — Scavengers Reign",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0b03442a8b00",
+    "en": "Heat frying oil to about 175°C in a suitable deep pan, leaving plenty of room. Fry small batches for around 5–7 minutes, turning, until golden and cooked through. Never leave hot oil unattended.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0b438c8abb4d",
+    "en": "Letters",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0b6754618fc5",
+    "en": "Vegan tamarind paste",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0b78e067f9d5",
+    "en": "Chicken strips, colourful peppers and onion are cooked with spices and served in warm tortillas, finished with lime juice.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0b9d994489fe",
+    "en": "This process concerns reduction of some potassium; it does not verify low phosphorus or portion safety.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0b9e428dcf9f",
+    "en": "Original recipe draft from user brief",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0ba323f36ab1",
+    "en": "Nasi Goreng — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0bc698c44880",
+    "en": "Drain on a rack and rest five minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0bd789c652b6",
+    "en": "Music-playing device",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0bde5b5d8dff",
+    "en": "Spread in a shallow dish and cool; refrigerate until firm enough to shape.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c005d306995",
+    "en": "For a dark view of Hollywood and the relationship between ambition, illusion and being forgotten.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c07b56a55a3",
+    "en": "Cayenne pepper",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c0e3cbb7b56",
+    "en": "lilluna.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c2404a852f9",
+    "en": "Over low heat, stir in remaining butter, return chicken and add parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c299bc5da74",
+    "en": "Reduced-sodium tamari",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c335800a5d0",
+    "en": "Dried red lentils",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c4aa9f70e21",
+    "en": "Ground Sichuan pepper",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c5b141e430b",
+    "en": "For short reading pauses or browsing together. It suits readers who find room for reflection in pictures and a few simple sentences.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c66e93b54b4",
+    "en": "In 1960s Salento, a family tailoring workshop becomes a setting for conflicts between obedience and freedom. Young women’s dreams and the appeal of cinema suggest possibilities beyond their father’s rules.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c6d354c4fd9",
+    "en": "Laguna",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0c7fd0c642d6",
+    "en": "Garam masala",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0cd44978ce8f",
+    "en": "Sarajevo before the Winter Olympics and a seventeen-year-old’s coming of age form the novel’s mosaic. Music, newspapers, cafés and fear of military service connect personal memory with late Yugoslavia.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0cddec15d0f3",
+    "en": "Garden peas",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0cdfab3b194b",
+    "en": "After a devastating diagnosis, chemistry teacher Walter White enters the criminal underworld with former student Jesse Pinkman. His attempt to provide for his family becomes a story of power, fear and moral compromise.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0d0636c98bb1",
+    "en": "For a New York romance that discovers loneliness and a need for acceptance behind the glamour.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0d2a573f47ac",
+    "en": "Mix the beaten egg with the flour, sugar and baking powder. Pour in the milk and water and stir to form a smooth batter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0d64bcf356fc",
+    "en": "White fish intended for raw consumption, previously commercially frozen",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0d68326612ce",
+    "en": "Chicken Souvlaki with Tzatziki",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0d9e088b4d79",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://proassetspdlcom.cdnstatics2.com/usuaris/libros/thumbs/e95eecd0-03ed-4711-adfb-9f0a1b160051/d_295_510/portada_el-llanto-de-los-muertos-los-crimenes-de-fjallbacka_camilla-lackberg_202605220941.webp . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0db98de9fa88",
+    "en": "Layers of eggplant, tomato and melted cheese.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e17925cc06e",
+    "en": "White wine",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e3fd84847e0",
+    "en": "Butternut squash",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e40553c13f0",
+    "en": "Barely cover macaroni with water. Simmer, stirring, until tender, adding water only if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e445ba6bdf0",
+    "en": "Toast the pine nuts in a dry pan for 2–3 minutes, stirring, then remove them.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e44ca415f14",
+    "en": "The second Sturmland novel returns to Cora and her life on Norderney. Work, love and an unresolved past collide in a historical family story.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e4a9e7ecd28",
+    "en": "Check the listing is current; get the owner’s permission before sharing a private number.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e593b53d9c7",
+    "en": "Guacamole with Tortilla Chips — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e5ef0554c72",
+    "en": "Rinse the lentils and rice separately. Thinly slice the onions.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e6391d5a682",
+    "en": "Melt butter with sage in a wide pan until lightly nutty, without burning.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e6c5cf295a6",
+    "en": "A dispute over succession to the Iron Throne divides House Targaryen. Dynastic decisions and old relationships escalate into a conflict that reaches far beyond the family.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e7696009337",
+    "en": "History",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e7a2708ae25",
+    "en": "Spend twenty minutes on gentle rallies over the net, taking breaks as needed. Avoid sudden dives for the shuttle.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e8e3eaee549",
+    "en": "Tony Soprano balances family life, running a criminal organisation and therapy. Conflicts at home and work expose how power, fear and self-justification shape his relationships.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e9227699c9c",
+    "en": "Soften sliced onion and mushrooms in butter. Stir in flour, then gradually add stock.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e9b512346f8",
+    "en": "Chicken and a dry mushroom filling are wrapped in puff pastry. Timing includes cooking and cooling the filling before baking.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0e9b6794dbe3",
+    "en": "Yellow onion",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0eb91e03e88a",
+    "en": "Naklada Neptun",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0ec17557f20b",
+    "en": "Criterion — The Philadelphia Story",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0edc469220dd",
+    "en": "A few minutes for a familiar sound and a memory of your choosing.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0eea00938c36",
+    "en": "Twist each strip, space on baking paper and brush with egg.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

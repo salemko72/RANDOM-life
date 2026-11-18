@@ -1,0 +1,1324 @@
+[
+  {
+    "key": "2f51a30d0cfa",
+    "en": "Discard the tough kale stems. Finely cut enough leaves to fill 3 US cups, grate 2 US cups of Brussels sprouts and chop the shallots.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2f76417fec26",
+    "en": "simonandschuster.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2f8143f3b4b8",
+    "en": "For reading in short sittings with attention to rhythm and imagery. This volume offers another perspective on the author’s poetry.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2f8471c8cdeb",
+    "en": "Octopus Catalan Style",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2f9df3be826b",
+    "en": "AI food photograph: Ribollita",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2fb2008879b6",
+    "en": "Combine cold rice, vegetables, oil, lemon and oregano. Keep refrigerated until serving.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2fbef2a13022",
+    "en": "43–58 min/episode",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2fc6f91cffe2",
+    "en": "Sesame Greens with Tofu",
+    "fields": [
+      "title",
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2fc81f0265aa",
+    "en": "Warm up and review thruster and pull-up technique with a coach. Select a load and movement variation you can control; prescribed weights are not appropriate for everyone.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2fdc2adfd086",
+    "en": "Choose this book for its particular focus: A concluding investigation for readers already following Elena Blanco.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2ff440a522f6",
+    "en": "Air the room briefly",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2ff931a8b07c",
+    "en": "tunue.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "2fface02956d",
+    "en": "Scallions",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30145081eb1a",
+    "en": "Slice chicken and coat with spices, salt and half the oil. Slice peppers and onion.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3017e2186596",
+    "en": "Set aside three garments to donate",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3025e5ffb749",
+    "en": "Finish with sesame and sliced scallion.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3033bdbce66e",
+    "en": "Toss vegetables and chopped herbs with the dressing.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30384aae1c81",
+    "en": "Choose this book for its particular focus: The origins of a trading family before its major rise.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "303c2fa8f43f",
+    "en": "Rinse capers; chop parsley and pitted olives.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3058d5eb8488",
+    "en": "Chicken Pad Thai — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3061e15723cf",
+    "en": "Write an honest positive review",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "306f0c399673",
+    "en": "Short stories",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30761718b557",
+    "en": "For readers who enjoy essays and a writer’s reflections. Read one piece at a time and leave space to discuss the questions it raises.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30804dde785b",
+    "en": "A young New York writer meets Holly Golightly, whose social glamour conceals uncertainty and a longing to belong. Blake Edwards blends romantic comedy with loneliness and the search for a place of one’s own.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30ac8d50916a",
+    "en": "Original illustration: Three minutes of gentle stretching",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30ce9e5f2427",
+    "en": "TMDB — Perfect Days",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30cebef0f674",
+    "en": "Original illustration: Send a friend a thank-you message",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "30e6781ba619",
+    "en": "An office clerk lends his apartment to executives to advance his career, but the arrangement threatens his feelings and dignity. Billy Wilder combines romance, satire and melancholy.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3103dd9f07a6",
+    "en": "Soften onion in oil. Add beef, paprika and salt; cook to 71°C and evaporate liquid. Cool.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3114e115bf21",
+    "en": "Green Beans, Hazelnuts, and Dried Cranberries",
+    "fields": [
+      "title",
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "313059f264dd",
+    "en": "Chicken Fajitas",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "313476a3665b",
+    "en": "Independently written concise recipe based on the linked source; original AI illustration. Facts, translations and rights await human review. Smoked salt per user request; optional lemon omitted.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "314484f27d26",
+    "en": "Peeled cored apple",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "315131c9448b",
+    "en": "Cook pasta al dente. Remove garlic; toss with sauce, olives and parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3166ec2569fa",
+    "en": "“Umrijeti u Tuluzu” is a selection of Jergović’s stories, published in Hebrew in a selection and translation by Dina Katan BenZion. Some contents may overlap with earlier collections.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "317443ce2f8d",
+    "en": "downshiftology.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3192f3c3dc39",
+    "en": "Simmer the lentils in 700 ml water for about 15 minutes; they should be partly tender. Add the rice, cumin and remaining onions.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "319d46f83eef",
+    "en": "Set the timer: each block has eight rounds of twenty seconds of work and ten seconds of rest, lasting four minutes. Add one minute of rest between blocks.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "31b2ce68b31b",
+    "en": "Warm up with gentle movement before the timed effort. Warm-up is not part of your score.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "31b80dcad563",
+    "en": "Thread onto metal skewers. If using wooden skewers, soak them first and follow the manufacturer’s instructions.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "31cfd10faea4",
+    "en": "Cut pastry into eight long triangles. Place a little spread at each wide end.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "31d51e50e5b0",
+    "en": "Bake on baking paper on the hot tray for 10–15 minutes, until the bases are cooked and edges golden. Serve warm.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "31ddd32ea386",
+    "en": "Puff Pastry Cinnamon Rolls — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "32561988b8ff",
+    "en": "Psychological drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "325d7b5f38fc",
+    "en": "Pan Macmillan / Bluebird",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "329967eb17f6",
+    "en": "Apple cider vinegar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "32d214d821cf",
+    "en": "Smash Burgers",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "32d8bef6c829",
+    "en": "Vegan Tacos Al Pastor",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "32e137e4f492",
+    "en": "Comic gags, wordplay and challenges turn reading into a playful activity. PERA TOONS combines brief visual humour with games and puzzles to solve.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "32fa51882484",
+    "en": "Illustration of an adult holding a forearm plank on a mat.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33045dae356f",
+    "en": "For bittersweet comedy about friendship and middle age.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33079d60e591",
+    "en": "AI photograph: Cauliflower and Zucchini Soup",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3307b928e0d0",
+    "en": "Baked corn chips with beans, cheese and fresh toppings.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "334a0846bce7",
+    "en": "Choose this book for its particular focus: Lyrical prose about sisterhood and the complexity of childhood memory.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "334be6043aba",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.penguin.de/resource/responsive-image/3094782/280/28/jacobs-ader-dorfladen-1-239293-jpg.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3350598e2cf1",
+    "en": "Homemade Chicken Shawarma",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33743eadd78a",
+    "en": "Creamy hummus and crisp falafel made from soaked dried chickpeas. Time includes 12 hours of soaking and chilling the mixture.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "337ebb5f9eb9",
+    "en": "Add wine, then parsley and cream; reduce to a creamy sauce.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33815b9d2d2f",
+    "en": "Warm up before timing. Breathe continuously; rest when alignment deteriorates and stop for pain or dizziness.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33868fd78a14",
+    "en": "Mozzarella, well drained",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "338717060a9a",
+    "en": "Two rounds of five exercises, sixty seconds each. The second round is an editorial addition to the user list so the session totals ten minutes. Move slowly without forcing range.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3391a3c57993",
+    "en": "Golden quiche Lorraine with an egg, cheese, onion and bacon filling, with one slice separated on a ceramic serving plate.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "339482979347",
+    "en": "Long-grain white rice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33a50bedaa4b",
+    "en": "Turn the device off and unplug it.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33b0f4de8164",
+    "en": "Briefly warm minced garlic and ginger in sesame oil. Add stock, mushrooms and thinly sliced chicken.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33d4784337be",
+    "en": "Hard-boil and cool eggs. Cook bacon until crisp.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "33fd004633eb",
+    "en": "As the elderly Michka loses words, expressing gratitude becomes increasingly difficult. Her relationships with Marie and speech therapist Jérôme shape a tender story about language, care and what we owe others.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "340539029926",
+    "en": "Cauliflower pieces",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "340b5c721567",
+    "en": "Three minutes of gentle stretching",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "340cc1824827",
+    "en": "Mozaik knjiga",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34235a2c502e",
+    "en": "piece",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "343115b92a8c",
+    "en": "Low-sodium chicken broth",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34519813cb60",
+    "en": "For a tender science-fiction romance about technology and loneliness.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3455c6004b62",
+    "en": "Salt, add parsley and fill baked cups just before serving.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34a16e74c8e2",
+    "en": "TMDB — Lost Highway",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34a8389646ce",
+    "en": "Cream cheese",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34c7297d79e2",
+    "en": "A smooth cauliflower mash finished with cream cheese and garlic.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34d4050c13e7",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://images2.penguinrandomhouse.com/cover/9780385547345 . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34f0f9fa95c3",
+    "en": "Yogurt-marinated chicken skewers with lemon and garlic. This home version includes refrigerated marinating time and a temperature check.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "34f4efa67a12",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://content.ullstein.de/product-action/download-cover/f71417fff579ee1fbe6058eef66e000c38e5b2a130f46fec20335f9efe28c6f3784208a781542/9783548073910.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3508106be8c6",
+    "en": "Tomato paste",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "352ccd6942fd",
+    "en": "118 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3540d528d233",
+    "en": "Eggplant, celery, olives and capers in sweet-and-sour tomato sauce. An original plant-based version of the Sicilian classic.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3543fcae43d8",
+    "en": "Place filling down the pastry centre, fold in sides and seal the roll seam-side down.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35594f5cefe1",
+    "en": "Near the end, cook penne as directed, reserving some pasta water.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "357243b21714",
+    "en": "Chicken fried rice with kecap manis and egg. Timing starts with rice already cooked.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "359960ac4b98",
+    "en": "For an expansive journey and a patient exploration of our relationship with images.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35a5ede71e2a",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781786071958/sweet-bean-paste-9781786071958_lg.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35b0098e4387",
+    "en": "Toss the salad with the dressing and refrigerate for at least 30 minutes. The stated yield is 6 servings of half a US cup each.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35b2e693dabd",
+    "en": "Once golden and hot throughout, rest ten minutes before slicing.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35c58db007cf",
+    "en": "konzerva od 14.5 oz",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35f989a5d541",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.littlebrown.co.uk/wp-content/uploads/2026/08/hbg-title-threshing-day-standard-edition-7.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "35fa87b2c12f",
+    "en": "A travelling cinema-projector repairman takes on a companion while visiting small cinemas. Their relationship develops through travel and conversation along the German border. Directed by Wim Wenders.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "360d42837919",
+    "en": "TMDB — Wild at Heart",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "36145c718a2e",
+    "en": "Boneless chicken thighs",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3626498cbb61",
+    "en": "Choose this book for its particular focus: Family memory and a community’s concealed history.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "362e35e42fa6",
+    "en": "Brown guanciale. Whisk yolks, cheese and pepper.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "36368bccf3a4",
+    "en": "TMDB — Amores Perros",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3643b063616b",
+    "en": "Original AI illustration of Lasagna alla Bolognese",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3663a0546938",
+    "en": "Chopped parsley or chives (optional)",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "36678f68d657",
+    "en": "Chair or another comfortable place",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "36ae8256d393",
+    "en": "Sugar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "36ff27177bf3",
+    "en": "“Autobus za Vavilon” is an essay collection by Miljenko Jergović, first published in 2017. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3701676ee617",
+    "en": "Rotten Tomatoes — The Sopranos",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3725ff994fa2",
+    "en": "Foods and Wines from Spain / ICEX",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3735e35dd2a9",
+    "en": "Pour over noodles and top with spring onions. Use fish-free miso and egg-free noodles.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "373dfa31ccf4",
+    "en": "Notes from 1995 and 1996 follow departure from Sarajevo and the search for a new beginning. Concise diary prose records the uncertainty of relocation between European and American cities.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "37575e093149",
+    "en": "Brush with beaten egg; bake at 200°C for twenty to twenty-five minutes until golden and hot throughout.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "37840e6b78ec",
+    "en": "Original workout from the user brief, editorially expanded and translated. Original AI illustration. No external source or medical approval; facts, translations and rights await human review.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "378d7f34ff69",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://oceano.mx/img/obra/ficha/27540.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "37b6882e57fb",
+    "en": "Soak saffron in warm stock. Soften onion in some butter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "37c50c935cd2",
+    "en": "Egg",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "37cddf12d58d",
+    "en": "117 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "37f30d192a8f",
+    "en": "Clearing a family apartment in Sarajevo releases stories held in objects, books and documents. Leaving a place becomes an expansive exploration of family memory.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3804110e8441",
+    "en": "Choose this book for its particular focus: A personal account of ambition, preparation and a mountaineering team.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "380b82dc6f3c",
+    "en": "Poems shaped by the American experience examine travel, distance and exile. Movement across space connects memories of an earlier life with an attempt to understand a new world.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "38134597bc69",
+    "en": "Blistered Shishitos with Smoked Salt",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "3822d094c794",
+    "en": "Original AI illustration: Spanish Croquetas — tuna",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "382f613dff21",
+    "en": "OceanMore",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "384da235e3e1",
+    "en": "Cut the tomatoes into small wedges and finely chop the scallion.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

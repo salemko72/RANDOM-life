@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "0ef7e9584a09",
+    "en": "Water for sauce",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0f143b090db0",
+    "en": "Smash in a hot skillet, salt and cook both sides to 71°C.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0f18ebad0937",
+    "en": "Plain wheat flour",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0f2a4f95fe61",
+    "en": "Independently written concise recipe based on the linked source; original AI illustration. Facts, translations and rights await human review. Servings and time are editorial estimates.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0f357908e3a3",
+    "en": "Anchovies in oil",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0f41cb1a7344",
+    "en": "Slow mountain climbers: from a high plank, bring one knee toward your chest at a time without bouncing. Easier option: brace against a wall.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0f750a0c23fd",
+    "en": "Stir in baking powder. Form small balls, around 3 cm across. Test one first; if the mixture crumbles, pulse it finer rather than adding large amounts of flour.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0faa029f0198",
+    "en": "Animal care",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "0ff1f71fa0c4",
+    "en": "Feta",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "104043a43da9",
+    "en": "Interval timer",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1068aa08b044",
+    "en": "A puff pastry roll encloses thinly sliced ham and cheese. A short rest after baking makes it easier to slice.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "10a0fcd8de32",
+    "en": "Mustard powder",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "10ba7629b982",
+    "en": "121 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "10d97d69a34e",
+    "en": "Poached eggs sit on thick garlic yogurt under warm chilli butter. A little dill adds a fresh finish.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "10e34f8b213f",
+    "en": "Epistolary fiction",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1105aebe41c4",
+    "en": "For readers who enjoy outlandish situations and school stories. Behind the wealth and jokes lies a familiar question: what do we need to feel less alone?",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1141ae9c0c9d",
+    "en": "A fresh salad of peach, cucumber, cherry tomatoes and mint.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "114506882883",
+    "en": "Fresh cilantro",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1150453c3d4f",
+    "en": "Add rice, peas, water and salt. Cover and cook gently for 15–18 minutes until water is absorbed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1150c8457124",
+    "en": "Sarajevo Publishing — Buybook izdanje",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "11534a189ffd",
+    "en": "Roll from the long side, chill briefly if soft and cut into eight spirals.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "115848bd1b62",
+    "en": "Spinach",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "11729636c3ee",
+    "en": "Side plank: lower and lift hips; right, then left, in separate intervals.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1178d2cdf668",
+    "en": "Garlic powder",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1198417b1bec",
+    "en": "Thinly slice apples; mix with sugar, cinnamon, starch and chopped walnuts.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "11a54d7c9524",
+    "en": "Russian twist: sit with bent knees and heels down, holding a light bell close to the torso. Rotate gently side to side through a small controlled range without jerking.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "11f482e69ddc",
+    "en": "TMDB — Children of Men",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1202bf747122",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/10181/knjiga-prozora . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1209e117fb44",
+    "en": "A sharp pick for an evening of fast-paced crime, British wit, eccentric characters and polished atmosphere. The clash between inherited privilege and the criminal underworld gives it a distinctive edge.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "12741bf79b6b",
+    "en": "Melt butter gently, add chilli and remove from heat.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "127909e8a6ec",
+    "en": "Rotten Tomatoes — Chernobyl",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "128ecf0ddcc2",
+    "en": "A chance to change position without an intense workout or a flexibility challenge.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1293c89af897",
+    "en": "Risotto alla Milanese",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "12a2e2ebebdb",
+    "en": "Original illustration: Step outside into daylight for five minutes",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "12baa8c557f2",
+    "en": "Veal shanks with marrow and gremolata.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "12cb0b34842a",
+    "en": "“Gloria in excelsis” is a literary fiction volume by Miljenko Jergović, first published in 2005. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1302479afd52",
+    "en": "Cool-down (3 min): walk easily for 1 minute, then breathe calmly and gently stretch the front and back of your legs. Stop if you feel pain, dizziness or unusual breathlessness.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1311b7d179f9",
+    "en": "Choose this book for its particular focus: Police investigation and the gradual exposure of hidden connections.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "131b0658b108",
+    "en": "Psychology",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "131b25e95aa5",
+    "en": "Solid wall",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13262d40cbd2",
+    "en": "Crisp tostadas with warm black beans, avocado and feta.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "132a1a391cce",
+    "en": "glass",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "132bc0424f9d",
+    "en": "Obtain fish from a reliable supplier and keep cold. Previous freezing does not eliminate every harmful germ.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "135093d1273f",
+    "en": "Grated pear",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1359911dc74f",
+    "en": "Tortilla de Patatas",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1361853942cb",
+    "en": "Olive oil",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13862f0abc36",
+    "en": "Support a local business by describing a genuinely good experience. For more privacy, check which name and details the platform displays publicly.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13a3b531eaf7",
+    "en": "Look around without looking directly at the sun.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13a8242c5653",
+    "en": "Add rice and tamari and heat through. Phosphorus in this draft has not been verified.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13b1886a9aa9",
+    "en": "Squat jump: jump from a shallow squat and land softly with bent knees; omit the jump if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13b35362850a",
+    "en": "Firm non-slip surface",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13b65b19b67b",
+    "en": "Add fish sauce and sugar. Remove from heat and finish with lime and basil.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13bcdc1b5c1a",
+    "en": "Large ripe tomatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "13c034ec5e0a",
+    "en": "General Tso's Tofu",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "140329b06869",
+    "en": "Mexican Red Rice — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "141d12ca129f",
+    "en": "Vegetable stock",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1424d8885a47",
+    "en": "Choose this book for its particular focus: A reported perspective on the value of sustained everyday work.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14377509f9e0",
+    "en": "Finely chop the onion, carrot, garlic and celery and soften in the oil for 10 minutes. Dissolve the stock cube in the listed amount of boiling water.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1442a5f6f92e",
+    "en": "Toast the hazelnuts in a 175°C oven for 10–15 minutes, then rub off the skins and chop.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14467992a20e",
+    "en": "Play a song from your childhood",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1457539e2a9a",
+    "en": "Creamy Turkish-style red lentil, carrot and mint soup. Olive oil replaces butter and water replaces meat stock.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1477ea6ee208",
+    "en": "Lebanese-style Hummus",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "147c246839b5",
+    "en": "Soften onion in oil, wilt spinach, then cool and squeeze dry.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14a883985775",
+    "en": "Pan-cooked chicken gets a glossy glaze of soy sauce, mirin and sake. Sesame and scallion finish this simple dish.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14d7f09bc7c9",
+    "en": "Fold both long edges repeatedly toward the centre, then fold together. Chill twenty minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14d7fa41b320",
+    "en": "Choose this book for its particular focus: A police pursuit with an intense threat in an urban setting.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14daa588fd6b",
+    "en": "tbsp",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "14f798603119",
+    "en": "Puff Pastry Custard Slices — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "150fe5514030",
+    "en": "Salt",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1519755f8e2d",
+    "en": "A creamy Turkish red lentil soup with mint, cumin and tomato, finished with fresh lemon. Cooking time and seasoning amounts are editorial estimates that need review before publication.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "156642a5a048",
+    "en": "Pitted green olives",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1578189301b2",
+    "en": "Add soy sauce, sugar, vinegar, sesame oil and stock or water. Season to taste and stir-fry for about one minute.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "158c38ff385a",
+    "en": "Spread ham and grated cheese over pastry, leaving a two-centimetre border.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15ae290f98fc",
+    "en": "Basmati rice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15b851d5a4c4",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.bibliofil.hr/hr/miljenko-jergovic-izabrane-pjesme-nane-mazutha . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15bb2f57ace2",
+    "en": "Tomato rice with carrots, peas and cumin.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15c3cbb6a1b0",
+    "en": "Combine chopped lettuce and vegetables with beans, olives, cheese and beef.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15c5a4b8246d",
+    "en": "Reverse lunges: step back alternately, bend your knees slightly, and return to standing. Hold the wall for support if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15c6184ba719",
+    "en": "Original editorial description based on bibliographic sources. No book text or publisher copy reproduced. Cover awaits matching in Studio; rights are unconfirmed.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15da35e9c90b",
+    "en": "For an emotional drama about dignity, compassion and the way we look at others.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "15eb812ee7e1",
+    "en": "Heat sugar and water in a small ovenproof pan to amber caramel. Remove and carefully stir in butter; it may splutter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "160187958c40",
+    "en": "An opportunity for one real completion without tackling your whole task list.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "160ba1eb7aa0",
+    "en": "UK tbsp",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1619645a2b71",
+    "en": "A chilled potato and cauliflower salad with dill and vegan mayonnaise.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "162aee2f56be",
+    "en": "Cheddar cheese",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "162b3f557dbd",
+    "en": "Add garlic, ginger and doubanjiang. Stir for 1 minute, then add mushroom liquid and soy sauce.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "16574bd78c43",
+    "en": "Creamy Basil Walnut Pesto Pasta — AKF",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "167a130833ec",
+    "en": "Pour in the stock and simmer under a lid for 15–20 minutes. Stir in the drained, rinsed chickpeas and tomatoes and cook for another 3–4 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "16c0f208713a",
+    "en": "Coat the chicken and refrigerate for at least 45 minutes. Longer marinating adds to the total time.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "16c92b3108b0",
+    "en": "Sweet potato cubes and spinach in a creamy coconut sauce. A mild curry without dairy cream or fish ingredients.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "16cefe373cc5",
+    "en": "Beef with pear, ginger and soy sauce is quickly seared. Timing includes marinating.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "16f6efb5724e",
+    "en": "Dried thyme",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17022f43aacc",
+    "en": "The fourth Kate Linville investigation combines police work with psychological suspense. Apparently separate lives become part of the same case as motives and histories emerge.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "175463999dd7",
+    "en": "Stir in spinach and cook for 2 minutes. Add lime and salt; ensure the curry blend has no animal ingredients.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1754df07eceb",
+    "en": "Moules Marinières",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1759dee97b92",
+    "en": "Meat stock",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "175c9664af90",
+    "en": "Add fresh mint and carefully blend until smooth. Serve with a lemon wedge.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1762dd2de41c",
+    "en": "Simmer until chicken reaches 74°C, adding bok choy for the final three minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17954f021c31",
+    "en": "Choose this book for its particular focus: A concise novel about parenthood, love and limited time.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17964cf0883a",
+    "en": "For focused viewing of a contained story about responsibility and concealment. Disturbing scenes of radiation injuries and disaster make this demanding material.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17a1035ccf5e",
+    "en": "Plain rolled oats",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17b279933bd0",
+    "en": "For reading by topic and discussing the forces shaping everyday life. A choice for exploring connections between politics, technology and personal decisions.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17c96348fa87",
+    "en": "Comfortable shoes",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17d78bdb4c7c",
+    "en": "Celery",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17e6382b8bd2",
+    "en": "The fifth Kingsbridge novel follows workers and families through industrial change and European warfare. New machinery transforms power, labour and everyday life.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "17f48a4414bf",
+    "en": "Sherry vinegar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "180f903dc35f",
+    "en": "Blend the sauce carefully until smooth. If using a jug blender, allow it to cool to a safe temperature first.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1818253f9985",
+    "en": "Fry in small batches at 175°C for about 4–5 minutes until deep golden and cooked inside. Drain and serve with hummus.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "182ed215b459",
+    "en": "Doritos Nacho Cheese chips",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "18461742a030",
+    "en": "At a suitable moment, say one specific sentence.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "184de0e37b93",
+    "en": "Choose this book for its particular focus: A romance continuation for readers already familiar with June and James.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1874a4d7941e",
+    "en": "Cut slices about one centimetre thick and space well apart on baking paper.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "188dcc0f8744",
+    "en": "Wall sit: rest your back against a solid wall, move feet forward and hold a comfortable depth while breathing.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "188e5e27c15b",
+    "en": "Vintage Classics",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1890d8ad9972",
+    "en": "Original home workout illustration: Strength pyramid — about 15 minutes.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "18aafd100534",
+    "en": "Roasted eggplant dip with tahini, lemon and garlic. Oven roasting makes a mellow version; a smoky flavour depends on the roasting method.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "18deb2e5054b",
+    "en": "Original summary and translation of the protocol from the user-provided screenshot of WODwell. The illustration is AI-generated; no source photograph was copied. Rights, accuracy and translations await human review.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "18e0af08f1ad",
+    "en": "Arroz con Pollo",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "1902a4129295",
+    "en": "Logic puzzles",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "19034229a18f",
+    "en": "For a wartime romance where emotional attachment and moral choices carry equal weight.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  }
+]

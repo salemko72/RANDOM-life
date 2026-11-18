@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "cb05b105a2a0",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://img2.libreriauniversitaria.it/BIT/500/185/9788855441858.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb39a489b17c",
+    "en": "For hummus, blend cooked chickpeas, tahini, lemon, remaining garlic, olive oil and cold water. Season.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb3e5a5685b4",
+    "en": "Gaeta olives",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb4e8c091b33",
+    "en": "Family saga",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb6997c14bd1",
+    "en": "Offer a sincere compliment",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb7487daf852",
+    "en": "Two kettlebells for gorilla rows; lighter bell for halos and presses if needed",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb77e8df52d9",
+    "en": "For dark neo-noir with disturbing depictions of sexual violence.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cb880222ede3",
+    "en": "Stopwatch",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cba39d1ce001",
+    "en": "KNI low-sodium homemade pesto",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cba5209e8c34",
+    "en": "Lemon for artichoke preparation",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cbb0404f0393",
+    "en": "Dry white rice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cbca708cb014",
+    "en": "Bring water with vinegar to a gentle simmer. Add eggs individually and poach until whites and yolks are set.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cbe6152e7f70",
+    "en": "Roasted red peppers, drained",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cbf306263aa9",
+    "en": "Lunge with rotation: support a hand beside the front foot and gently open your trunk; switch sides after thirty seconds without forcing depth.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc00253e08ac",
+    "en": "Soften chopped onion in oil for 7 minutes. Add garlic and cook for 30 seconds.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc0a51bda803",
+    "en": "Mix flour, yeast, sugar and salt. Add water and 20 ml oil, then knead for 8–10 minutes until smooth.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc0cc94ba838",
+    "en": "“Tango bal i druge priče” is a selection of Jergović’s stories, issued as a separate collection. Some contents may overlap with earlier collections.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc278ed65b2d",
+    "en": "Onion",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc3430679eac",
+    "en": "Zucchini, Ricotta and Lemon Puff Pastry Tart — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc357ebb4972",
+    "en": "Mini Puff Pastry Pizzas",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc35e3ffb461",
+    "en": "Grana Padano",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc3feace91b0",
+    "en": "Apples, peeled and cored",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc6cbe3d90d6",
+    "en": "Chicken Wellington in Puff Pastry — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc7d2651375e",
+    "en": "Original kettlebell workout illustration: Kettlebell strength pyramid — about 15 minutes.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cc85b325e79a",
+    "en": "Cut pastry into eight rectangles. Fill four, cover with the others and seal edges with a fork.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cca7fd59cb1e",
+    "en": "TMDB — The Place Beyond the Pines",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ccbca2cebe3d",
+    "en": "Warm cherries and sugar. Add starch mixed with water, boil until thick and cool.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ccca18175753",
+    "en": "Conversation",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cccaee920f95",
+    "en": "Writing as both doctor and storyteller, Tobino depicts women in a psychiatric institution. The book explores humanity, isolation and life within institutional walls.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cccf1217386d",
+    "en": "Add the pita chips immediately before serving so they remain crisp.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ccdb1c92bc52",
+    "en": "Put your phone in a pocket; stay aware of traffic and the path.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ccdcc1a8deb1",
+    "en": "Peruvian Fish Ceviche",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ccfc627b5c40",
+    "en": "Fried Padrón peppers with sea salt.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ccfda938f2c0",
+    "en": "An insurance salesman and an unhappy wife plot a murder for an insurance payout. Billy Wilder builds a film noir about attraction, greed and the shrinking possibility of escaping the consequences.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cd0aa9856147",
+    "en": "g",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cd10be550d10",
+    "en": "Fresh or frozen green beans",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cd8c084251fc",
+    "en": "Heat oil to 170°C in a deep pot, no more than half full. Fry in batches at 160–170°C until golden and 74°C in the thickest meat, without touching bone with the thermometer.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cd91b3839e4e",
+    "en": "AI food photograph: Caponata",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cdab1b915c7c",
+    "en": "Thread chicken onto skewers and grill, turning, until 74°C. Serve with chilled tzatziki.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cdbad658b414",
+    "en": "Peel and cut the potatoes into very fine matchsticks. Rinse in several changes of cold water until the water runs nearly clear, then drain well.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cdd32b9da583",
+    "en": "Brown chopped pancetta, then soften diced vegetables.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cdd96a0bd215",
+    "en": "TMDB — A Serious Man",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce01207b96de",
+    "en": "Large eggs",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce05caf75646",
+    "en": "Culinary heir Sebastian Laurent and marketing executive Maya Singh must work together despite their long rivalry. The sixth Kings of Sin novel turns conflict into romance.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce0920c0a6a6",
+    "en": "Boiling water",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce1e3ee871fb",
+    "en": "IMDb: The Odyssey (2026)",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce262bae871a",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/sarajevski-marlboro-karivani-i-djruge-price-1992-1996-k2504.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce2cc664d794",
+    "en": "Add tomatoes, chickpeas and water. Simmer uncovered for 20 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce4653227f5b",
+    "en": "Humour and comics",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce4e270ce034",
+    "en": "Vegan-labelled curry powder",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce512d5c8e8c",
+    "en": "Gratitude",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce54e603168d",
+    "en": "The card estimate is twelve minutes excluding warm-up; actual time varies. Prioritize technique, rest as needed and stop if pain or dizziness occurs.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce8dcefca80c",
+    "en": "Illustration of Tabbouleh",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce8f5e536ac9",
+    "en": "Tabata workout",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce953471655f",
+    "en": "Add herbs, fresh beans, pumpkin, potatoes and cauliflower; cover with water and cook until tender.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ce9d2a5dbf91",
+    "en": "Reduce heat and stir in miso loosened with broth. Pour over noodles; add eggs and scallion.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cea98905f45d",
+    "en": "Coq au Vin",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cead3373c8eb",
+    "en": "Impossible Fitness — Bring Sally Up",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ceb18540c35f",
+    "en": "Return the sauce to the pan. Stir in the cream, sugar and remaining 50 g of butter.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cebca35d1811",
+    "en": "Thin chicken cutlets in a lemon, butter and caper sauce.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cec50fd4cb13",
+    "en": "Chili",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cece9dfa77f4",
+    "en": "Poetry and short prose bear witness to everyday life in besieged Sarajevo. A personal perspective records people, fear and small scenes that resist reducing the city to wartime statistics.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ced3413cbe13",
+    "en": "Roll toward the point and place point-side down without crushing the layers.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ced97cc4a377",
+    "en": "Mint",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cee89f9e3015",
+    "en": "Rice noodles",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cefa7f218928",
+    "en": "Finely shred cabbage.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cf15c47b05ab",
+    "en": "bloomsbury.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cf22148c3fff",
+    "en": "A nineteen-minute interval workout with burpees, lunges, sit-ups and air squats. Each exercise has eight intervals of twenty seconds of work and ten seconds of rest, with one minute of rest between blocks.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cf30315d4ce9",
+    "en": "Shrimp, reserve shells",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cf4d271f2401",
+    "en": "Squat pulses: use small controlled up-and-down movements in a comfortable lower squat position.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cf556fd1822f",
+    "en": "Cherry Puff Pastry Turnovers",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cf635be1e558",
+    "en": "Fry chopped mushrooms and onion in remaining butter until dry; cool.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cfa7458268f6",
+    "en": "Make four hollows and add eggs. Cover and cook gently until whites and yolks are set.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cfb3418ab3eb",
+    "en": "Chicken Piccata",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "cff616006819",
+    "en": "Salt chicken, coat with a little oil and cook to 74°C. Rest five minutes and slice.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0003985b280",
+    "en": "Goblet squat: hold the bell with both hands close to your chest, lower hips with feet stable and knees tracking toes, then stand with control.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0225c1bfb66",
+    "en": "Cooked chickpeas, drained",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d04594a41455",
+    "en": "“Pamti li svijet Oscara Schmidta” is an essay collection by Miljenko Jergović, first published in 2010. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d04c69907a04",
+    "en": "Boneless chicken thigh",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d07491dc912c",
+    "en": "Long-grain rice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0824701a68d",
+    "en": "For subtle romance and conversations about possible lives.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d08eae118725",
+    "en": "Boil wine in the pan for two minutes. Add stock, lemon and capers; reduce briefly.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0a27dbb3e79",
+    "en": "giuntialpunto.it",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0b0ed78bcb2",
+    "en": "“Historijska čitanka” is an essay collection by Miljenko Jergović, first published in 2001. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0c04c353d24",
+    "en": "Flour for béchamel",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0cf75661cd6",
+    "en": "Laura Palmer’s final days reveal the pain and threats behind the series’ central mystery. The film follows her experience through grounded trauma and surreal scenes. Directed by David Lynch.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0e4bfc7d2c9",
+    "en": "Toast rice, add wine, then gradually stir in hot stock.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0ef30f090d2",
+    "en": "Poems, brief notes and drawings focus on people and seemingly minor objects. Small scenes of everyday life turn close observation into a way of preserving memory.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0f0612548a0",
+    "en": "Ricotta salata",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0f28cf23e91",
+    "en": "Crisp chickpea falafel in flatbread with fresh vegetables and tahini sauce. Plan ahead: dried chickpeas need overnight soaking, excluded from the stated preparation time.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d0f67bd6a697",
+    "en": "20-minute functional MetCon",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d14b3a9a006e",
+    "en": "Cut the chicken into even cubes. Mix yogurt, lemon juice, oil, crushed garlic, paprika, tomato paste and salt.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d1a504cc19da",
+    "en": "For a drama that examines adult moral responsibility through a child’s experience.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d1ba43e4951c",
+    "en": "Badminton shuttlecock",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d1ca8d8e3690",
+    "en": "“Opservatorija Varšava” is a poetry volume by Miljenko Jergović, first published in 1988. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d1e7211a06c1",
+    "en": "Play it at a comfortable volume that does not disturb others.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d21c87ba3491",
+    "en": "TMDB — Boyhood",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d22c09bca7df",
+    "en": "Avocado",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d22e8176350b",
+    "en": "Tuna béchamel croquettes; about 24 pieces.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d23c6f1f880e",
+    "en": "Choose this book for its particular focus: A historical saga continuation about belonging and escaping the past.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d277ade21fe9",
+    "en": "Remove fingerprints and dust with a cloth suitable for the device. Follow the cleaning method recommended for your particular model.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d2902304b8ce",
+    "en": "themediterraneandish.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d29060117c73",
+    "en": "Warm vegetable oil over medium heat. Briefly toast the Sichuan peppercorns until fragrant, then carefully remove the peppercorns from the oil.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d2c33b25e692",
+    "en": "thekitchn.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d2d48bfb0076",
+    "en": "Squat and punch: perform a controlled squat, then extend one arm forward while standing without locking the elbow; alternate arms.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d2f96e8ef193",
+    "en": "Kreativni centar",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d308c7dbc990",
+    "en": "Vegan-labelled rice vinegar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d316a1629186",
+    "en": "AI photograph: Braised Cabbage with Caraway — Draft",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d342c6232dec",
+    "en": "Top with chopped tomato, jalapeño, salsa and sour cream. Serve immediately.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d35c416a85b8",
+    "en": "large",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d372df2c9bff",
+    "en": "Two colleagues in a Budapest shop keep clashing, unaware that they are each other’s anonymous romantic correspondents. Ernst Lubitsch builds romance through words, misunderstandings and everyday encounters.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d379daee8f43",
+    "en": "Choose this book for its particular focus: A quiet story of food, friendship and social exclusion.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d37db9788605",
+    "en": "Cabbage",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d38444661bb9",
+    "en": "Simmer cauliflower and zucchini in water for about 15 minutes until tender.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d397c834610d",
+    "en": "Set up a stable table, net, two paddles and a ball. Clear space around the table, wear non-slip shoes and check the floor for hazards.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d3a872b58093",
+    "en": "TMDB — High Heels",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d3aa4c6908eb",
+    "en": "Pine nuts",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d3b4935fd68b",
+    "en": "Ground cinnamon",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d3b6897cce4d",
+    "en": "Double spirals of sugared puff pastry bake to a crisp caramelised finish. Brief chilling makes neat palmiers easier to slice.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d3bc3b0b09dc",
+    "en": "AI photograph: Zucchini Carrot Fritters — Draft",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "f1cf95965804",
+    "en": "Soften onion and pepper in remaining oil. Stir in beans and chicken.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f1fb99721250",
+    "en": "Octopus and vegetable salad with orange juice.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f239b5a48856",
+    "en": "Apple Ginger Smoothie. Prepare the stated quantities; servings: 1.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f23f6ac811c0",
+    "en": "Nasi Goreng",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f256b7bd1518",
+    "en": "Social drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f2c3073be4af",
+    "en": "Original recipe from user brief",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f2ddcafa0a01",
+    "en": "Pan con Tomate",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f30385c0f550",
+    "en": "Egg yolk",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f33e3af1e612",
+    "en": "Palgrave Macmillan / Springer Nature",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f36242ec783a",
+    "en": "Cooking cream",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f37173878f68",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.diogenes.ch/.imaging/diogenesMediaLarge/titel/bernhard-schlink/das-spaete-leben-9783257248081.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f376e4c91a86",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/rabija-i-sedjam-meleka-m0248.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f396753a4f07",
+    "en": "A thoughtful choice for readers drawn to intimate, layered stories about childhood and places that endure in memory. Jergović balances everyday humor with family bonds and historical upheaval, creating a moving portrait of lives transformed by displacement.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f396ce162a36",
+    "en": "Add stock and milk mixed with starch. Simmer briefly until thickened.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3a50a5b4a5a",
+    "en": "Chicken Katsu Curry",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3a545bfe176",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://impedimenta.es/wp-content/uploads/EL-VERANO-ED-ESPECIAL.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3a6320e79a8",
+    "en": "Rotten Tomatoes — The Pitt",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3abec3c3bb9",
+    "en": "99 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3b06de94a3d",
+    "en": "Cover octopus with cold water, bay and pepper. Bring to boil; simmer about 1 hour until tender.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3b1b7dc4f1c",
+    "en": "Ice cubes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3b979f31a96",
+    "en": "Heat neutral oil in a wide pan. Sear drained beef in small batches until browned.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3c89280b9b9",
+    "en": "Original AI illustration: Pan con Tomate",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3d2071814f0",
+    "en": "Original AI illustration: Gambas al Ajillo",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3ea887709e8",
+    "en": "Chop the apple and peel ginger.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3ec7894ec61",
+    "en": "Soften chopped onion in oil for about 5 minutes; add garlic for another 1–2 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3f63fe985b0",
+    "en": "“Imenik lijepih vještina” is an essay collection by Miljenko Jergović, first published in 2018. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f3fe1cc0df6d",
+    "en": "Cauliflower and Zucchini Soup",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f40afe07a628",
+    "en": "Original AI illustration: Octopus Catalan Style",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f416dd2da3e5",
+    "en": "Combine the ground pork with the listed seasonings and fry until its internal temperature reaches at least 71°C. Drain off excess fat.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4317ef37adf",
+    "en": "Choose this book for its particular focus: Bavarian local colour and humour alongside a detective puzzle.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f450d80fb1af",
+    "en": "Rally practice (5 minutes): exchange slow shots across the net with your partner, prioritizing control and placement before speed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f47a0bccb200",
+    "en": "Say something honest and warm; finish when it suits both of you.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4b783e51e3a",
+    "en": "Peruvian Fish Ceviche — original generated food illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4bdafddb9fc",
+    "en": "The third Empyrean novel continues Violet’s story in a world of dragons, war and complicated alliances. Love and responsibility place new demands on the returning characters.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4c1fbed9d41",
+    "en": "Coat chicken in remaining flour, egg and panko. Fry in oil at 170°C until golden and 74°C inside.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4cb6b853963",
+    "en": "A chauffeur’s daughter returns from Paris and attracts the attention of two wealthy brothers. Billy Wilder combines romance with comedy about class, business plans and personal desires.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4ccae29e1bb",
+    "en": "Running",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f4e730cb29d2",
+    "en": "For readers who prefer candid language and questions about priorities over motivational slogans. Expect profanity and a deliberately provocative style.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f5064278201e",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.dtv.de/media/c4/d7/70/1693476321/9783423220149__COVER_2D%20(Produktcover%20Web%20klein).jpg?ts=1756202712 . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f520670494a0",
+    "en": "AI photograph: Roasted Red Pepper Coconut Soup — KNI",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f5342baa93c0",
+    "en": "White fish, lime, red onion, chilli and cilantro make a fresh ceviche. Acid changes the fish’s texture but does not replace cooking.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f570ca2e76c4",
+    "en": "Chicken marinated in yogurt and spices, seared and simmered in a creamy tomato sauce, served with basmati rice. Allow at least three extra hours for marinating; this is not included in the listed preparation time.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f577a42ad29b",
+    "en": "Choose this book for its particular focus: A short, emotional novel about language and gratitude between people.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f5c23032c8ab",
+    "en": "Rinse lentils and simmer in water for 20–25 minutes until tender but holding their shape. Drain and cool slightly.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f60d94992b9b",
+    "en": "Action comedy",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f61b5fa5f120",
+    "en": "Risotto rice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f63538db4da2",
+    "en": "Choose three undamaged, clean and dry garments.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f636baf970bd",
+    "en": "Chicken Parmigiana — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f64de526b015",
+    "en": "For a romantic road trip, lively verbal sparring and comedy that finds intimacy in everyday mishaps.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f6506879c1d0",
+    "en": "Red and green bell pepper",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f66a9f1ef321",
+    "en": "Fattoush Salad",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f66c3eb8b38e",
+    "en": "Check what the local recipient accepts; deliver if already on your route or prepare the bag for handover.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f67024a32baa",
+    "en": "TMDB — Barton Fink",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f6805146cef5",
+    "en": "Criterion — 12 Angry Men",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f687bb990475",
+    "en": "Chicken Alfredo Pasta — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f6906c9d0826",
+    "en": "For intense action, practical stunt work and storytelling driven by movement.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f6e94a81934b",
+    "en": "Start the clock and run 5 km at a pace you can control. Any breaks count toward elapsed time.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f6ee7f407c5f",
+    "en": "anahuang.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f71bba7cde19",
+    "en": "In postwar Spain, a girl discovers a dark fairy-tale world amid real violence. Guillermo del Toro connects fantasy with political terror.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f71c81d689d1",
+    "en": "Young Nilo Vasciaveo grows up with a family secret tied to Sicily. Coming of age and love collide with an inherited threat in a novel that draws on horror.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f723d0630a43",
+    "en": "Autobiographical fiction",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f74342340190",
+    "en": "Ben’s grandmother seems ordinary at first, but the story of her past draws them into an unusual adventure involving jewels and pursuit. Humour accompanies Ben’s changing view of his granny.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f747e0e154da",
+    "en": "Mini Puff Pastry Pizzas — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f757fdc9ba98",
+    "en": "Warm caraway briefly in oil, add cabbage and stir for 3 minutes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f78172ab6e04",
+    "en": "For inventive, emotional storytelling about memory, intimacy and imperfect relationships.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f790586803f6",
+    "en": "TMDB — Kings of the Road",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f7eab4153510",
+    "en": "Illustration of Hummus bil Lahme",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f7fc74787951",
+    "en": "Listen, hum or move gently if you wish.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f870394c9eed",
+    "en": "A pursuit across several countries leads a woman to a mysterious traveller and an unusual image-recording device. A road movie becomes a reflection on seeing, dreams and dependence on images. Directed by Wim Wenders.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f879d25c1c06",
+    "en": "Mountain climbers: from a high plank alternate knees toward your chest without rocking your hips.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f88448600577",
+    "en": "“Dunje 1983” is a poetry volume by Miljenko Jergović, first published in 2005. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f8ab1d7668ad",
+    "en": "Zucchini Carrot Fritters",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f8ad5a7a854c",
+    "en": "Egg-free spaghetti",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f8cee119a49b",
+    "en": "Drained black beans",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f8fbf3575719",
+    "en": "Choose ten, eleven or twelve push-ups before starting. If no rest remains, reduce repetitions or scale the movement; do not carry unfinished reps into the next minute.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9029ee3005d",
+    "en": "Exercise mat",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9085e3ef93e",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://mvinfo.hr/knjiga/10283/levijeva-tkaonica-svile . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f90c466d3a7a",
+    "en": "Bay leaves",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f920b1d14de2",
+    "en": "Cold water",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f929c4ccb582",
+    "en": "Original editorial description. Actual English-language edition cover, visually checked against title and author. Cover source: https://www.penguinrandomhouse.com/books/787049/unstoppable-us-volume-3-how-enemies-become-friends-by-yuval-noah-harari-illustrated-by-ricard-zaplana-ruiz/ . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f939f1187112",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://www.knjiga.ba/bosna-i-hercegovina-budjucnost-nezavrsenog-rata-v2281.html . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f945cd13b584",
+    "en": "Whisk oil, vinegar and mustard.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9528cff077f",
+    "en": "rasamalaysia.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f971b9a7b2d9",
+    "en": "MetCon",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f97c989cc1ed",
+    "en": "Sea salt",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f98af9fe1d8d",
+    "en": "Znanje",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9919559be27",
+    "en": "A poor family gradually enters the household of wealthy employers. Bong Joon-ho combines dark humour, suspense and class conflict.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9b226d8ee0f",
+    "en": "Drain, slice and serve with rice and curry.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9b5fa931ba0",
+    "en": "Choose the swing count before starting. If no rest remains, reduce repetitions or load; do not carry unfinished reps into the next minute.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9c2249a4a7e",
+    "en": "Eggplants",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9c57637c9f0",
+    "en": "Brush with egg, slash the top and bake at 190°C for thirty to thirty-five minutes until golden.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "f9c5a51e5086",
+    "en": "For a serial mystery in which atmosphere and dreams become part of the investigation.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa0a83944655",
+    "en": "Discard the water, rinse and boil in fresh water for 10–15 minutes until nearly tender; drain.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa1b34d9d48d",
+    "en": "Independently written editorial adaptation based on the linked recipe, with metric quantities adjusted for this draft. Not kitchen-tested during preparation. Original artwork generated with the built-in imagegen tool; no source photograph used. Facts, both translations, allergens and rights await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and allergens and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa302f9b6c02",
+    "en": "Illustration of an adult at the top of a push-up beside a small speaker.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa336e3cbb5a",
+    "en": "Netflix – Breaking Bad (Vince Gilligan)",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa3ee53fa98f",
+    "en": "Fresh lime juice",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa6f4214a826",
+    "en": "For structured pacing and repetition tracking. Choose a count that leaves time to rest and record any reduction.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa95335efc80",
+    "en": "Red wine",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fa9f8ef26c87",
+    "en": "Finely dice carrots and steam for 5–7 minutes. Finely chop celery, onion and parsley.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fab014a33474",
+    "en": "A boy and three animal companions explore friendship, fear and kindness through brief conversations and drawings. Illustration and concise text share the storytelling in this modern fable.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fad427d94768",
+    "en": "Peeled raw shrimp",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb0443864a70",
+    "en": "Mixed leafy greens",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb155b2346b9",
+    "en": "Dried chillies",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb224b39a5a7",
+    "en": "Cool-down — 3 min: slow your walking, breathe steadily and gently stretch your calves, shoulders and back. Stop if you feel pain, dizziness or discomfort.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb3d650f3c37",
+    "en": "Original AI illustration of Pasta alla Norma",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb57bb53beb9",
+    "en": "Choose this book for its particular focus: Brief prose suited to slow reading and reflection.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb76d703c2a0",
+    "en": "Dry macaroni",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fb9588f120eb",
+    "en": "Spanish Croquetas — tuna",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fbbf2c890e75",
+    "en": "Four rounds of five exercises: forty-five seconds of work and fifteen of rest, twenty minutes total. This more demanding session includes jumps, a rotational push-up and plank jacks.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fbcd38c8e768",
+    "en": "Choose this book for its particular focus: A Scandinavian mystery in which the past remains active.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fbf791630ed6",
+    "en": "Wash and dry the vegetables and herbs. Chop lettuce, tomatoes and cucumber; thinly slice radishes.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fbfcbd853c72",
+    "en": "Warm curry paste in oil for one minute. Add coconut milk and sliced chicken.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc02e328f477",
+    "en": "Sit-ups: from lying with bent knees raise your trunk under control without jerking or pulling your neck; use a short crunch if needed.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc11d50d7801",
+    "en": "Soften peppers and onion in remaining oil. Return chicken and add lime juice.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc24f7d0a523",
+    "en": "A swimming-pool murder and a large cast of suspects invite the reader to investigate. Illustrated clues and challenges gradually narrow the field of possible culprits.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc41ce3708a0",
+    "en": "Aleppo chilli flakes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc46f7d87a9c",
+    "en": "Table tennis table with net",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc5a815daeaa",
+    "en": "For someone who already controls a basic plank and wants a varied short routine. Learn each variation first and adapt your support to your ability.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "fc5ee3c76865",
+    "en": "Fresh wheat and egg cheese tortellini",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

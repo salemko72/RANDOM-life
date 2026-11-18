@@ -1,8 +1,10 @@
 import {z} from 'zod';
 import type {ContentInput} from './content';
 import {resolveIngredient} from './ingredient-tags';
-export const supportedLocales=['en','bs','fr','de','es','zh-Hans','ar'] as const;
+export const supportedLocales=['en','bs','fr','de','es','zh-Hans','ar','pt-BR','it'] as const;
 export type Locale='en'|'bs';
+/** Accepted content translations; selectable UI locales are gated separately. */
+export type ContentLocale=typeof supportedLocales[number];
 const line=z.string().trim().min(1).max(2000);
 export const translationSchema=z.object({
  title:line.max(160),summary:line,imageAlt:line.max(300),sourceLabel:line.max(200),rightsNote:line,
@@ -31,12 +33,12 @@ export function bilingualIssues(item:ContentInput):string[]{
  }
  return issues;
 }
-export function resolveLocale(item:ContentInput,requested:Locale):string{
+export function resolveLocale(item:ContentInput,requested:ContentLocale):string{
  if(item.translations?.[requested])return requested;
  if(item.translations?.en)return 'en';
  return item.language;
 }
-export function localizeContent<T extends ContentInput>(item:T,requested:Locale):T{
+export function localizeContent<T extends ContentInput>(item:T,requested:ContentLocale):T{
  const t=item.translations?.[requested]??item.translations?.en;
  if(!t||!translationSchema.safeParse(t).success)return item;
  const result:any={...item,title:t.title,summary:t.summary,language:resolveLocale(item,requested),image:{...item.image,alt:t.imageAlt},source:{...item.source,label:t.sourceLabel,rightsNote:t.rightsNote}};

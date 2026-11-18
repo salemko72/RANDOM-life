@@ -1,0 +1,1322 @@
+[
+  {
+    "key": "d3e19fe89be6",
+    "en": "Add water and garlic powder, cover and braise for 15–20 minutes until tender.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d3ef2491f94d",
+    "en": "History of ideas",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d40ad50d7d97",
+    "en": "Wheat farfalle without egg",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d42accce7be7",
+    "en": "Mix soy sauce, vinegar, sugar, tomato paste, water and the remaining 10 g cornstarch.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d42d4b2b56a0",
+    "en": "Choose this book for its particular focus: Coming of age that combines intimacy, secrecy and menace.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d42e27bf815d",
+    "en": "For a witty story about rediscovering someone we think we already know.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d43baa6ea989",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.tunue.com/wp-content/uploads/2026/01/COVER_IL_GIOCO_DELLE_RISATE_B_rgb.jpg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d440ec7055d3",
+    "en": "For interwoven lives and intense drama; includes disturbing violence involving people and animals.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d446df6d6c02",
+    "en": "Chicken, peppers and peanuts in a tangy spicy stir-fry sauce, without noodles.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d44d9ddfd3dc",
+    "en": "Original illustration: Take a walk without checking your phone",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d45805feb30c",
+    "en": "TMDB — Paris, Texas",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d487a7a283e0",
+    "en": "ullstein.de",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d4aa7cda06e2",
+    "en": "Add crushed chips and dressing just before serving; toss.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d4c3b6f7add4",
+    "en": "Original editorial description. Actual regional-language edition cover, visually checked against title and author. Cover source: https://buybook.ba/products/pionirska-dolina-sarajevo . On 18 October 2026 the human editor explicitly confirmed reviewing the facts, both translations and cover rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d4c738804811",
+    "en": "Original illustration: Play a song from your childhood",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d4fdca427764",
+    "en": "Sesame oil",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d50f4df62073",
+    "en": "Button mushrooms",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d50fb4b7708a",
+    "en": "TMDB — Her",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d51484a52ff2",
+    "en": "Unseasoned rice vinegar",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d51ac3cef8c4",
+    "en": "rizzolilibri.it",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d52daf6d5472",
+    "en": "National Kidney Foundation — Ten Minute Veggie Soup",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d53977f3fff0",
+    "en": "Drained cooked black beans",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d5398ba40fe2",
+    "en": "Cream",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d54a24698f4d",
+    "en": "Add stock, diced carrot and potato. Simmer about twenty minutes until tender, then add soy sauce.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d578e5028802",
+    "en": "“Imenik lijepih vještina 2” is an essay collection by Miljenko Jergović, first published in 2020. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d57f136df8c0",
+    "en": "Helen — run, swings and pull-ups",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d584faf1ad4c",
+    "en": "110 min",
+    "fields": [
+      "durationLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d5acfd8330f5",
+    "en": "Society",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d5b83a3d333d",
+    "en": "Killerspin – Health Benefits of Table Tennis",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d5dce382300c",
+    "en": "Salt eggplant slices; after 15 min rinse and dry thoroughly.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d5ee6850327f",
+    "en": "Follow 10–8–6–4–2–2–4–6–8–10 across four exercises, resting as needed. Two bells are needed for gorilla rows. Fifteen minutes is only an estimate; both steps of two are retained.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d615416c44c7",
+    "en": "Wash the herbs thoroughly and dry well. Chop parsley and mint very finely.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d64c65185f32",
+    "en": "15-minute bodyweight upper body",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6554039140f",
+    "en": "Arrange the baby salad leaves on 4 plates and spoon the mixture over them. Add pepper, without adding honey or oil.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d672d7a83aed",
+    "en": "Combine pasta, sauce, eggplant and basil. Loosen with pasta water as needed, season and serve without cheese.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d68e09c1d721",
+    "en": "Main workout (14 min): complete 2 rounds of the next 7 exercises. Work for 40 seconds per exercise, followed by 20 seconds to recover and move on.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d697e319f63e",
+    "en": "Add gnocchi and a spoonful of water; toss briefly to coat.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d69ccc287e0a",
+    "en": "Gently clean your phone and laptop screens",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6af84bcf2f7",
+    "en": "“Buick Rivera” is a literary fiction volume by Miljenko Jergović, first published in 2002. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6badb0a2188",
+    "en": "Parmesan",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6c157b23ea0",
+    "en": "Tahini",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6dea8cc52fc",
+    "en": "Fresh shelled borlotti beans",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6dfb35c4c17",
+    "en": "Shape 24 croquettes. Coat in flour, egg with milk, then crumbs; fry until golden and hot through.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d6fb3cf0fcac",
+    "en": "maangchi.com",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d72c09610cca",
+    "en": "Paper or a phone note",
+    "fields": [
+      "equipment"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d7353e35cb3f",
+    "en": "Neutral frying oil",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d749adbd0dbc",
+    "en": "A standalone edition of Jergović’s story “Gurbet”, published in Tešanj in 2024 with translations into eleven languages. An option for readers interested in encountering one story across languages.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d74ea28e1cf9",
+    "en": "Original editorial content from the user brief; original AI illustration. Duration is estimated; no venue or time is booked. Facts, translations and rights await human review. Supporting reference: https://www.nhs.uk/mental-health/self-help/guides-tools-and-activities/breathing-exercises-for-stress/",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d77991847880",
+    "en": "Marla Lindberg attends a school reunion at an isolated Alpine hotel. A snowstorm and a threatening atmosphere turn the invitation into a question of whom she can trust.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d77e02a52553",
+    "en": "All-purpose flour",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d7c5ed7f3ff8",
+    "en": "A specific account can help others find good service without exaggeration or invention.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d7d4f59db48f",
+    "en": "pcs",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d817b694437b",
+    "en": "Political drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8463bd3ba4b",
+    "en": "pc",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d894a0ad0dae",
+    "en": "Toasted tortillas with chicken, rice, beans and cheese.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8c2f636e9c1",
+    "en": "Pope Leo XIV’s encyclical considers human dignity in the age of artificial intelligence. The religious and social text connects technological change with responsibility toward human beings.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8d1331c8124",
+    "en": "Rotten Tomatoes — Lanterns",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8defadccdad",
+    "en": "Chicken stock",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8e023f42eab",
+    "en": "Science fiction",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8f3c71e6d57",
+    "en": "Shakshuka",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8f59ab500da",
+    "en": "Two adults play table tennis in a bright room with paddles, a ball and a green table.",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d8f999a00863",
+    "en": "A reunion of school friends leads to an unusual agreement whose implications grow over time. Dark humour turns friendship, money and mortality into a literary game.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d921daec11e5",
+    "en": "Fold in sprouts and scallions briefly. Finish with peanuts and lime.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d922bbd95dc7",
+    "en": "Before starting, warm up gently and check your exercise technique. The warm-up is additional to the original nineteen-minute protocol.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9346fca8fbd",
+    "en": "Salt, only if needed",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9538cf97df1",
+    "en": "Pepper",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d957bf4f4e63",
+    "en": "Bring Sally Up — push-up challenge",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d95fcb17c463",
+    "en": "“Naci bonton” is an essay collection by Miljenko Jergović, first published in 1998. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9ad6fc2afd1",
+    "en": "Kettlebell strength pyramid — about 15 minutes",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9b2e57ace33",
+    "en": "An autobiographical account of wartime Sarajevo, addiction and rebuilding a life. Feđa Štukan turns his experiences into a direct narrative of setbacks, choices and survival.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9c514634078",
+    "en": "Bake at 200°C for twenty to twenty-five minutes; gently press down risen centres with a spoon.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9c7063df7dc",
+    "en": "Stop the clock after the full 5 km and record time, route and conditions. Note any combination of walking and running with your result.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9e4e62276f9",
+    "en": "Use the appropriate bin and wash your hands afterwards.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9fe37fec531",
+    "en": "Beef Puff Pastry Triangles — original generated illustration",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "d9fe884488c5",
+    "en": "Correspondence between Miljenko Jergović and Semezdin Mehmedinović connects distant everyday lives. Their exchange about literature, memory and living away from home is accompanied by photographs by Milomir Kovačević Strašni.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da2831f30255",
+    "en": "Stir in the tomato passata and water. Lower the heat, cover and simmer for about 15 minutes, stirring occasionally.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da31e78c0da7",
+    "en": "Choose this book for its particular focus: Personal and moral choices within a wider historical setting.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da62873dd881",
+    "en": "Russian twists: sit with bent knees and heels down, lean back slightly and rotate your trunk gently side to side.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da6435a09a80",
+    "en": "konzerva od 29 oz",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da6cbb47bcd8",
+    "en": "Peeled tomatoes",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da700a6e5d37",
+    "en": "“Imaginarni prijatelj” is an essay collection by Miljenko Jergović, first published in 2022. It is listed as a distinct book in the author’s bibliography.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da73a7774318",
+    "en": "For viewers most interested in the relationships within a survival story. Expect violence, loss and horror alongside quieter episodes and moral dilemmas.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "da8877e8d124",
+    "en": "Set aside change for a verified donation",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "daad5e783bd9",
+    "en": "Reverse lunge to knee drive: step back, return and lift that knee without jumping; alternate sides. This is not a single-leg pistol squat.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dad9534ca7ec",
+    "en": "Wheat bread",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "daf929e8e7cc",
+    "en": "to taste",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "db4c28ae8bb6",
+    "en": "AI food photograph: Vegan Tacos Al Pastor",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "db4d028c9ffa",
+    "en": "The card estimate is fifteen minutes excluding warm-up; actual time varies. Maintain controlled movement and stop if pain or dizziness occurs.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "db5a50b7227f",
+    "en": "Three rounds of five lower-body exercises. Work for forty-five seconds and rest for fifteen at each station; fifteen minutes total.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "db64849151f3",
+    "en": "Warm-up (3 min): march in place for 60 seconds, then alternate shoulder circles, easy squats and hip mobility movements for 30 seconds each.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "db7d302befd4",
+    "en": "Choose this book for its particular focus: Playful detective fiction featuring an unusual retired investigator.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dbc541f37742",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://www.chrispavone.com/wp-content/uploads/2025/04/Screen-Shot-2025-04-01-at-4.10.32-PM.jpeg . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dbc8e4eff01a",
+    "en": "Send a friend a thank-you message",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dbd9773f7ba1",
+    "en": "Independently written editorial description. Actual cover retrieved from: https://is1-ssl.mzstatic.com/image/thumb/Publication211/v4/7a/80/ad/7a80ad81-b058-c5dd-fbed-0340ac7f10d0/9788852029028.jpg/536x0w.webp . Usage rights, facts and both translations await human review. On 19 October 2026 the human editor explicitly confirmed reviewing facts, both translations, image rights and authorized publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc07100aaff3",
+    "en": "Vegan Pad Thai",
+    "fields": [
+      "title"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc084988bdd6",
+    "en": "Perform 15 bodyweight squats. Keep your feet planted, track knees in line with toes, and squat only as deep as you can control without pain.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc0ba88f20a6",
+    "en": "loaf",
+    "fields": [
+      "ingredientUnits"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc132132cdba",
+    "en": "High plank: alternate knees toward opposite elbows.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "MOVE"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc1e5e7b6fda",
+    "en": "Criterion — Seven Samurai",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc30424f4800",
+    "en": "For stylised melodrama about a mother, daughter and the need for recognition.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc40b05c6499",
+    "en": "Parmigiano Reggiano",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc5967295798",
+    "en": "Cook for 5–7 minutes, stirring, depending on the oats.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc75f8d5fe1b",
+    "en": "Vegan mayonnaise",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dc82ab4a4f07",
+    "en": "A brief pause to focus your attention without requiring an immediate change in mood.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dcb62e1034e0",
+    "en": "Add sliced onion and remaining marinade; boil the marinade and finish cooking the beef.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dcb7ac9103ed",
+    "en": "Tofu and finely chopped mushrooms in a spicy Sichuan-style sauce. A simplified plant-based version without meat or fish stock.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dcbee2b467f8",
+    "en": "Vegan-labelled doubanjiang",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dce54e07133b",
+    "en": "Short ridged pasta",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dcebcd094675",
+    "en": "Pat beef dry and sear briefly in hot oil, working in batches. Remove.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd026ac56ae3",
+    "en": "Money discovered after a violent confrontation triggers a relentless pursuit. The Coen brothers follow a fugitive, a killer and a sheriff confronting violence.",
+    "fields": [
+      "summary"
+    ],
+    "categories": [
+      "WATCH"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd1d069a4de8",
+    "en": "Cut eight pastry circles. Score a border and prick the centres.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd5edb7b5776",
+    "en": "Onions",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd64f5c4dc0a",
+    "en": "A chance to show someone what you appreciate without imposing a conversation.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "GO"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd81cff28075",
+    "en": "Spaghetti",
+    "fields": [
+      "ingredientNames"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd847d6c9b1e",
+    "en": "Original wording is an editorial adaptation of Bill Leung’s recipe on The Woks of Life; source prose was not copied. Artwork was originally AI-generated for RANDOM. Review rights, facts and both translations before publication.",
+    "fields": [
+      "rightsNote"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dd9ccb3dda68",
+    "en": "Comic drama",
+    "fields": [
+      "genres"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "ddd5a26a3b3b",
+    "en": "For readers who enjoy a fantastical premise exploring everyday choices. The novel includes depression and a suicidal crisis, so consider how those themes feel for you at present.",
+    "fields": [
+      "recommendationReason"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dde0edd00d02",
+    "en": "Once golden with bubbling juices, rest fifteen minutes before slicing.",
+    "fields": [
+      "steps"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "dde9ffd055b7",
+    "en": "sellerio.it",
+    "fields": [
+      "sourceLabel"
+    ],
+    "categories": [
+      "BOOK"
+    ],
+    "pilot": false
+  },
+  {
+    "key": "de027e903657",
+    "en": "Original AI illustration: Tortilla de Patatas",
+    "fields": [
+      "imageAlt"
+    ],
+    "categories": [
+      "EAT"
+    ],
+    "pilot": false
+  }
+]

@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## Source za naredni kandidat — meni/jezici,18.11.2026.
+
+Grana codex/salem-menu-language-prep, code53d50fdce0a7d722e48f35fec05bd73939efb7dc: Share diagnostic log u footeru, verzija/build posljednji na dnu popup-a, raniji header label uklonjen. Nasljeđuje dinamički native broj i zaseban Home-repeat fix.337tests/TypeScript/preview i footer+profile-language browser PASS. [Procjena4jezika](../docs/LANGUAGE_EXPANSION_PLAN.md):467stavki/1868novih prijevoda, aktivni jezici jošENG/BHS, PT varijanta otvorena; device-language+manual override preporuka, nije još implementirana. Nema novog native builda/D1/deploya/store slanja/mergea. TestFlight5 source4a567c3 je odvojen od ovog budućeg kandidata.
+
 ## Aktuelno — build5 zamjenjuje build4, 17.11.2026.
 
 **Novi zajednički source4a567c339a7efeff625ccecf1024887c7e9c9cd4** na codex/salem-offline-build5 uključuje UI, Spin again i recipe offline/cache korekcije; [nova predaja/ZIP](../docs/BUILD5_SHARED_HANDOFF.md). iOS1.0.1(5) EASf1644fa5-f626-4963-9eda-e8be438f6a4e FINISHED, test ads; submission795ff8f0-4f2c-4d09-a62d-4d75e410cf8c **FINISHED17.11.18:15CET** — EAS upload Appleu uspješan; Apple processing i dostupnost konkretnoj tester grupi nisu nezavisno provjereni; Android11 kandidat provjerava Ahmed. **Ne koristiti build4 ZIP/ded4bf6 za novi Android.** Rezerva100/20,8ispravljenih recepata u njoj i17bounded consumer korekcija. Online D1 nije publikovan ovim radom; vidi zaseban Studio operator korak.333tests/TypeScript/preview/ENG+BHS online→offline-cache PASS. iOS4 FINISHED, ali nije uploadan Appleu: scheduling odbijen zbog opcionalnog Enterprise changeloga; nema troška/upgradea. Nema PR mergea/web deploya/Play slanja. Ništa ovdje nije potvrda završenog RIGHTS/ATT audita.

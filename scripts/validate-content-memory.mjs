@@ -1,7 +1,8 @@
+import{contentNumericSignature}from'../packages/shared/src/content-numeric.ts';
 import{readFile}from'node:fs/promises';
 const root='content/i18n-2026-11-18',args=process.argv.slice(2),partial=args.includes('--partial'),locales=args.filter(arg=>!arg.startsWith('--'));
 const source=JSON.parse(await readFile(root+'/source-strings.json','utf8')),byKey=new Map(source.map(row=>[row.key,row]));
-const digits=text=>(text.match(/\d+(?:[.,]\d+)?|[¼½¾⅐⅑⅒⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞]/g)??[]).map(value=>value.replace(',','.')).sort();
+const digits=contentNumericSignature;
 const urls=text=>(text.match(/https?:\/\/[^\s]+/g)??[]).map(value=>value.replace(/[.,;:)]*$/,'')).sort();
 const limits={title:160,imageAlt:300,sourceLabel:200,rightsNote:2000,summary:2000,steps:2000,ingredientNames:160,ingredientUnits:40,genres:60,recommendationReason:2000,equipment:160,durationLabel:60};
 let failed=false;

@@ -1,3 +1,4 @@
+import{translatedContentUnit}from'../packages/shared/src/content-unit-glossary';
 import{expect,test}from'vitest';import{readFileSync}from'node:fs';
 import{contentSchema,localizeContent}from'@random/shared';
 import{contentDraftFingerprint,createContentDraftTranslator,contentDraftLocales,type ContentDraftEntry}from'../packages/shared/src/content-draft-translations';
@@ -9,7 +10,7 @@ function pilotEntry(record:any):ContentDraftEntry{
  const translations:any={};for(const locale of contentDraftLocales){const memory=JSON.parse(readFileSync('content/i18n-2026-11-18/memory/'+locale+'.json','utf8'));const translated:any={};for(const[field,value]of Object.entries(record.translations.en)){
   if(field==='reviewed'){translated[field]=false;continue;}
   if(field==='authors'||field==='title'&&['BOOK','WATCH'].includes(record.category)){translated[field]=value;continue;}
-  translated[field]=Array.isArray(value)?value.map(text=>memory[keyByText.get(text)!]):memory[keyByText.get(value as string)!];
+  translated[field]=Array.isArray(value)?value.map(text=>field==='ingredientUnits'?translatedContentUnit(text,locale):memory[keyByText.get(text)!]):memory[keyByText.get(value as string)!];
  }translations[locale]=translated;}
  return{id:record.id,expectedVersion:record.version,sourceFingerprint:contentDraftFingerprint(record),translations};
 }
@@ -43,4 +44,25 @@ test('numeric drift, missing US qualifiers, added fields and duplicate entries c
   expect(createContentDraftTranslator([{...entry,translations:{...entry.translations,de:altered}}])(recipe)).toBe(recipe);
  }
  expect(createContentDraftTranslator([entry,entry])(recipe)).toBe(recipe);
+});
+
+test('only explicitly pinned older offline revisions may share an unchanged translation',()=>{
+ const book=records.find((row:any)=>row.category==='BOOK'),entry=pilotEntry(book),old={...book,version:1,updatedAt:'2026-10-01T00:00:00.000Z'};
+ expect(createContentDraftTranslator([entry])(old)).toBe(old);
+ const allowed={...entry,alternateSources:[{expectedVersion:old.version,sourceFingerprint:contentDraftFingerprint(old)}]};
+ expect(createContentDraftTranslator([allowed])(old).translations.de).toBeDefined();
+ const unknown={...old,version:2};expect(createContentDraftTranslator([allowed])(unknown)).toBe(unknown);
+});
+
+test('fractions and unit dimensions cannot be swapped while keeping digit or US tokens',()=>{
+ const recipe=structuredClone(records.find((row:any)=>row.category==='EAT'));recipe.translations.en.steps[0]='Use 1/2 US tsp, then 2 US cups.';
+ const entry=pilotEntry(records.find((row:any)=>row.category==='EAT'));entry.sourceFingerprint=contentDraftFingerprint(recipe);for(const locale of contentDraftLocales)entry.translations[locale].steps![0]='Use 1/2 US tsp, then 2 US cups.';
+ expect(createContentDraftTranslator([entry])(recipe).translations.de).toBeDefined();
+ const swapped={...entry,translations:{...entry.translations,de:{...entry.translations.de,steps:['Use 2/1 US tsp, then 2 US cups.',...entry.translations.de.steps!.slice(1)]}}};expect(createContentDraftTranslator([swapped])(recipe)).toBe(recipe);
+ const badUnit=structuredClone(entry);badUnit.translations.de.ingredientUnits![0]=translatedContentUnit('US tsp','de')!;expect(createContentDraftTranslator([badUnit])(recipe)).toBe(recipe);
+});
+
+test('malformed null entries and null alternate baselines are ignored without interrupting catalog rendering',()=>{
+ const record=records[0],entry=pilotEntry(record);expect(()=>createContentDraftTranslator([null as any])(record)).not.toThrow();
+ const missing={...entry,sourceFingerprint:'wrong',alternateSources:[null as any]};expect(createContentDraftTranslator([missing])(record)).toBe(record);
 });

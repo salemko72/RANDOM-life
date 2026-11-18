@@ -1,5 +1,13 @@
 # Zajednički zadaci
 
+## MENU-LANG-PREP-001 — Donji tehnički dio menija i procjena4jezika
+
+- **Odgovorni/grana:** salem-menu-language / codex/salem-menu-language-prep; korisnički nalog18.11.2026.
+- **Status:** claimed; push prije izmjena.
+- **Scope:** WebExperience.tsx/experience.css, smoke-build-label.mjs i browser provjera postojećeg izbora jezika u kreiranju/uređivanju preferencija; docs/LANGUAGE_EXPANSION_PLAN.md, vlastita sesija i TASKS. Ne mijenjati aktivni Locale/content contract niti pokretati masovne prevode bez dogovorenog obima/varijante.
+- **Kriteriji:** Share diagnostic log poslije glavnih menu stavki, build/verzija ispod njega na dnu popup-a; ukloniti raniju header oznaku prema novom zahtjevu. Zadržati native dinamički build, accessibility/scroll/male ekrane i locale persistence. Provjeriti postojeći LanguageChooser u svim Onboarding koracima/edit toku i po povratku. Procjena realnog UI/content obima za es/pt/de/it i preporuka device language + ručni override, zemlja downloada nije implementirana kao nepouzdan proxy. PT-BR/PT-PT pitanje otvoreno.
+- **Saradnja/granice:** nasljeđuje prethodni build-label i Home-repeat source kandidat, ne mijenja uploadani1.0.1(5). Bez native builda, ZIP-a, mergea, deploya, D1 izmjena, store slanja ili novih troškova. Sačuvati Ahmedove grane i lokalni untracked rad. Claimovi pročitani preko Git; GitHub API PR status nije nezavisno provjeren.
+
 ## BUILD-LABEL-001 — Sitna verzija/build u gornjem meniju
 
 - **Odgovorni/grana:** salem-build-label / codex/salem-build-label.

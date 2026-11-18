@@ -1,6 +1,6 @@
 export const PERFORMANCE_KEY='random-life.performance.v1';
 export type PerformanceEvent={name:string;at:number;metrics:Record<string,number>};
-const names=new Set(['native_start','profile_loaded','assets_ready','webview_loaded','web_boot','ui_ready','catalog','catalog_sync','spin','spin_requested','spin_stage','spotify_player','audio_focus','long_task','page_error','image_loaded']);
+const names=new Set(['web_content_terminated','webview_prepared','webview_recovery_failed','native_background','native_foreground','native_start','profile_loaded','assets_ready','webview_loaded','web_boot','ui_ready','catalog','catalog_sync','spin','spin_requested','spin_stage','spotify_player','audio_focus','long_task','page_error','image_loaded']);
 const metrics=new Set(['durationMs','elapsedMs','frames','p95Ms','maxMs','slowFrames','hidden','count','backup','width','height','reduced','failed','launch','cached','downloadBytes','locked','targeted','stage','revision','paused','positionMs','source','code']);
 export function parsePerformanceMessage(raw:string):PerformanceEvent|null{
  if(raw.length>4000)return null;

@@ -1,3 +1,4 @@
+import {createWebViewRecovery,type WebViewSnapshot} from './src/native/webview-recovery';
 import {createAdsRuntime} from './src/native/ads-runtime';
 import {parseAdMessage} from './src/native/ads-policy';
 import{nativeBackScript,parseBackResult}from'./src/native/back-navigation';
@@ -9,7 +10,7 @@ import appConfig from './app.json';
 import {SafeAreaProvider,useSafeAreaInsets} from 'react-native-safe-area-context';
 import React, {useEffect, useRef, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, AppState, BackHandler, Platform, Share, StyleSheet, Text, View} from 'react-native';
+import {ActivityIndicator, AppState, BackHandler, Platform, Pressable, Share, StyleSheet, Text, View} from 'react-native';
 import {StatusBar} from 'expo-status-bar';
 import {WebView} from 'react-native-webview';
 import {Asset} from 'expo-asset';
@@ -45,27 +46,48 @@ function NativeExperience(){
  const ads=useRef<ReturnType<typeof createAdsRuntime>|null>(null);
  useEffect(()=>{if(Platform.OS!=='android'&&Platform.OS!=='ios')return;const runtime=createAdsRuntime();ads.current=runtime;runtime.active(AppState.currentState==='active');const listener=AppState.addEventListener('change',next=>runtime.active(next==='active'));return()=>{listener.remove();runtime.dispose();ads.current=null;};},[]);
  const [error,setError]=useState('');
- const [uri,setUri]=useState<string | null>(null);
+ const [view,setView]=useState<WebViewSnapshot>({generation:0,phase:'starting',uri:null});
+ const {uri,generation}=view;
+ const recovery=useRef<ReturnType<typeof createWebViewRecovery>|null>(null);
+ const currentInsets=useRef(insets);currentInsets.current=insets;
  const state=useRef<LocalState>({});
  const webView=useRef<WebView>(null);
  const pendingBack=useRef<string|null>(null),backSequence=useRef(0);
- useEffect(()=>{if(Platform.OS!=='android')return;const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webView.current||!uri||error)return false;const requestId='back-'+(++backSequence.current);pendingBack.current=requestId;webView.current.injectJavaScript(nativeBackScript(requestId));return true;});return()=>subscription.remove();},[uri,error]);
+ useEffect(()=>{if(Platform.OS!=='android')return;const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webView.current||!uri||error||!recovery.current?.current(generation))return false;const requestId='back-'+(++backSequence.current);pendingBack.current=requestId;webView.current.injectJavaScript(nativeBackScript(requestId));return true;});return()=>subscription.remove();},[uri,error,generation]);
  const catalogStorage=useRef(createNativeCatalogStorage(FileSystem,AsyncStorage));
  const writer=useRef(createSnapshotWriter(value=>AsyncStorage.setItem(NATIVE_STATE_KEY,value),()=>setError('Lokalni podaci nisu spremljeni. Provjeri slobodan prostor i ponovo otvori RANDOM.')));
  useEffect(()=>{
-  let active=true;nativeStartedAt.current=Date.now();nativeMetric('native_start');
-  AsyncStorage.getItem(NATIVE_STATE_KEY).then(async raw=>{
-   if(!active)return;
-   state.current=readSnapshot(raw);nativeMetric('profile_loaded');
-   const asset=Asset.fromModule(require('./src/generated/preview.html'));
-   const local=await prepareNativePreview(asset,FileSystem,state.current,insets,await catalogStorage.current.read(),{ads:Platform.OS==='android'||Platform.OS==='ios'});
-   nativeMetric('assets_ready');if(active)setUri(local);
-  }).catch(()=>{if(active)setError('LifeSpinner se nije mogao pokrenuti. Provjeri slobodan prostor i ponovo otvori aplikaciju.');});
-  return ()=>{active=false;};
- },[insets.top,insets.bottom]);
+  let mounted=true;nativeStartedAt.current=Date.now();nativeMetric('native_start');
+  // Read the persisted snapshot only at cold launch. Recovery must use the
+  // newer in-memory bridge state, even if its AsyncStorage write is queued.
+  let hydrated=false,loading:Promise<void>|null=null;
+  const loadState=()=>{
+   if(hydrated)return Promise.resolve();
+   if(!loading)loading=AsyncStorage.getItem(NATIVE_STATE_KEY).then(raw=>{
+    if(mounted){state.current=readSnapshot(raw);hydrated=true;nativeMetric('profile_loaded');}
+   }).catch(cause=>{loading=null;throw cause;});
+   return loading;
+  };
+  const controller=createWebViewRecovery({
+   active:AppState.currentState!=='background'&&AppState.currentState!=='inactive',
+   prepare:async()=>{
+    await loadState();
+    const catalog=await catalogStorage.current.read();
+    const asset=Asset.fromModule(require('./src/generated/preview.html'));
+    return prepareNativePreview(asset,FileSystem,()=>state.current,currentInsets.current,catalog,{ads:Platform.OS==='android'||Platform.OS==='ios'});
+   },
+   changed:next=>{if(mounted){if(next.phase!=='ready')pendingBack.current=null;setView(next);}},
+   metric:nativeMetric,
+  });
+  recovery.current=controller;
+  const listener=AppState.addEventListener('change',next=>{nativeMetric(next==='active'?'native_foreground':'native_background');controller.active(next==='active');});
+  controller.start();
+  return()=>{mounted=false;listener.remove();controller.dispose();recovery.current=null;};
+ },[]);
  return <View style={styles.screen}>
   <StatusBar style="dark"/>
-  {error?<View style={styles.error}><Text>{error}</Text></View>:uri===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
+  {error?<View style={styles.error}><Text>{error}</Text></View>:view.phase==='failed'?<View style={styles.error}><Text>LifeSpinner could not load. / LifeSpinner se nije učitao.</Text><Pressable accessibilityRole="button" onPress={()=>recovery.current?.retry()} style={styles.retry}><Text style={styles.retryText}>Try again / Pokušaj ponovo</Text></Pressable></View>:view.phase!=='ready'||uri===null?<View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>:<WebView
+   key={generation}
    ref={webView}
    source={{uri}}
    originWhitelist={['file://*']}
@@ -76,14 +98,16 @@ function NativeExperience(){
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>allowWebNavigation(r,uri)}
-   onLoadStart={()=>ads.current?.resetDocument()}
-   onLoadEnd={()=>nativeMetric('webview_loaded')}
-   onError={()=>{nativeMetric('page_error');setError('LifeSpinner se nije učitao. Zatvori i ponovo otvori aplikaciju.');}}
+   onLoadStart={()=>{if(recovery.current?.current(generation))ads.current?.resetDocument();}}
+   onLoadEnd={()=>{if(recovery.current?.current(generation))nativeMetric('webview_loaded');}}
+   onContentProcessDidTerminate={()=>recovery.current?.terminated(generation)}
+   onError={()=>recovery.current?.failed(generation)}
    onMessage={event=>{
+    if(!recovery.current?.current(generation))return;
     const raw=event.nativeEvent.data;
     const adMessage=parseAdMessage(raw);if(adMessage){ads.current?.receive(adMessage);return;}
     const back=parseBackResult(raw,pendingBack.current);if(back!==null){pendingBack.current=null;if(!back&&Platform.OS==='android')BackHandler.exitApp();return;}
-    const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');void catalogStorage.current.clear().then(()=>FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','')).then(()=>notify(true)).catch(()=>notify(false));return;}
+    const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>{if(recovery.current?.current(generation))webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');};void catalogStorage.current.clear().then(()=>FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','')).then(()=>notify(true)).catch(()=>notify(false));return;}
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}
@@ -96,4 +120,4 @@ function NativeExperience(){
   />}
  </View>;
 }
-const styles=StyleSheet.create({screen:{flex:1,backgroundColor:'#fbefe7'},web:{flex:1,backgroundColor:'#fbefe7'},loading:{position:'absolute',top:0,bottom:0,left:0,right:0,justifyContent:'center',alignItems:'center',backgroundColor:'#fbefe7'},error:{padding:30}});
+const styles=StyleSheet.create({screen:{flex:1,backgroundColor:'#fbefe7'},web:{flex:1,backgroundColor:'#fbefe7'},loading:{position:'absolute',top:0,bottom:0,left:0,right:0,justifyContent:'center',alignItems:'center',backgroundColor:'#fbefe7'},error:{padding:30},retry:{marginTop:20,padding:16,borderRadius:20,backgroundColor:'#af6c68'},retryText:{color:'#fff',textAlign:'center',fontSize:18}});

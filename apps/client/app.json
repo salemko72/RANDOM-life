@@ -40,6 +40,7 @@
     "backgroundColor": "#fbefe7",
     "plugins": [
       ["expo-localization", {"supportedLocales": ["en", "bs"], "allowDynamicLocaleChangesAndroid": true}],
+      "./plugins/withOptionalPortraitFeature.cjs",
       [
         "react-native-google-mobile-ads",
         {

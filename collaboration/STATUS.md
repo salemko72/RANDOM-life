@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## Android Play portrait feature upozorenje — source korekcija19.11.
+
+Prijavljeni code11(1.0.1) screenshot odgovara implicitnom portrait filteru iz MainActivity screenOrientation. Na zasebnoj grani `codex/ahmed-portrait-feature`, source `dacad203fc7e48901a830d55d4483130e1aeec72`, Expo plugin eksplicitno dodaje android.hardware.screen.portrait required=false, uz očuvani portrait prikaz.336testova/typecheck/preview/stvarni Expo generisani manifest PASS, [draft PR5](https://github.com/salemko72/RANDOM-life/pull/5), [sesija14](sessions/2026-11-19-ahmed-admob-14.md). Postojeći AAB11 nije promijenjen; nema novog builda, mergea, Play klika/uploada/submissiona ili troška. Screenshot nudi Proceed anyway za prihvatanje ograničenja trenutnog AAB-a; uklanjanje iz artefakta zahtijeva novi build/broj i finalni audit. Noviji iOS/i18n source nije uključen.
+
 ## Aktuelno — build5 zamjenjuje build4, 17.11.2026.
 
 **Novi zajednički source4a567c339a7efeff625ccecf1024887c7e9c9cd4** na codex/salem-offline-build5 uključuje UI, Spin again i recipe offline/cache korekcije; [nova predaja/ZIP](../docs/BUILD5_SHARED_HANDOFF.md). iOS1.0.1(5) EASf1644fa5-f626-4963-9eda-e8be438f6a4e FINISHED, test ads; submission795ff8f0-4f2c-4d09-a62d-4d75e410cf8c **FINISHED17.11.18:15CET** — EAS upload Appleu uspješan; Apple processing i dostupnost konkretnoj tester grupi nisu nezavisno provjereni; Android11 kandidat provjerava Ahmed. **Ne koristiti build4 ZIP/ded4bf6 za novi Android.** Rezerva100/20,8ispravljenih recepata u njoj i17bounded consumer korekcija. Online D1 nije publikovan ovim radom; vidi zaseban Studio operator korak.333tests/TypeScript/preview/ENG+BHS online→offline-cache PASS. iOS4 FINISHED, ali nije uploadan Appleu: scheduling odbijen zbog opcionalnog Enterprise changeloga; nema troška/upgradea. Nema PR mergea/web deploya/Play slanja. Ništa ovdje nije potvrda završenog RIGHTS/ATT audita.

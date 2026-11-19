@@ -1,5 +1,13 @@
 # Zajednički zadaci
 
+## ANDROID-PORTRAIT-FEATURE-001 — Ukloniti implicitni Play portrait hardware filter
+
+- **Odgovorni/grana:** ahmed-admob / `codex/ahmed-portrait-feature`; prijavljeni Google Play issue19.11. za Android11(1.0.1).
+- **Status:** in_review; [draft PR5](https://github.com/salemko72/RANDOM-life/pull/5), implementacija `dacad203fc7e48901a830d55d4483130e1aeec72`. Claim `c78638b` pushan prije koda.336/336testova/45fajlova, typecheck/preview i Expo manifest introspection PASS. [Sesija14](sessions/2026-11-19-ahmed-admob-14.md). Osnova `origin/codex/salem-offline-build5`/`e0cc30c`, aplikacijski source jednak napravljenom AAB-u4a567c3. Izolovan worktree; postojeće Ahmedove/Salemove grane ostaju netaknute. Nema novog AAB-a ili Play provjere izmijenjenog artefakta.
+- **Scope:** novi apps/client/plugins/withOptionalPortraitFeature.cjs, njegova registracija u app.json, manifest provjera/test i vlastita sesija14/kratki STATUS/TASKS. Bez izmjene screenOrientation, SDK-a, oglasa, verzije/broja ili drugih feature deklaracija.
+- **Kriteriji:** eksplicitni uses-feature android.hardware.screen.portrait required=false u Expo generisanom manifestu; MainActivity i dalje portrait; idempotentna korekcija postojeće required=true deklaracije bez duplikata; iOS/config identitet/oglasi očuvani. Reprodukcija na code11 manifestu, relevantni testovi i Expo introspection/prebuild, TypeScript, commit/push/PR.
+- **Saradnja/granice:** fetch svih remote grana i API PR1–4 potvrđeni, novi iOS resume/i18n claimovi pregledani. Njihov source nije uključen. Ovo je priprema source ispravke; nema novog EAS builda, Play klika/Proceed anyway/uploada/submissiona, mergea/deploya, novih ključeva ili troška. Screenshot ima Proceed anyway: upozorenje može biti prihvaćeno za trenutni artefakt; njegova izmjena zahtijeva novi build/broj i provjere prije zasebno zatraženog builda.
+
 ## OFFLINE-RECIPES-005 — Zajednički paket s novim receptima i iOS5
 
 - **Odgovorni/grana:** salem-offline / codex/salem-offline-build5; korisnik17.11. izričito traži offline korekciju, zamjenski ZIP i odmah TestFlight build5.

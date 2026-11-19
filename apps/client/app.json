@@ -39,6 +39,7 @@
     },
     "backgroundColor": "#fbefe7",
     "plugins": [
+      "./plugins/withOptionalPortraitFeature.cjs",
       [
         "react-native-google-mobile-ads",
         {

@@ -9,7 +9,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.salemko.randomlife",
-      "buildNumber": "5",
+      "buildNumber": "6",
       "icon": "./assets/ios-icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -48,7 +48,9 @@
           "delayAppMeasurementInit": true,
           "optimizeInitialization": true,
           "optimizeAdLoading": true,
-          "skAdNetworkItems": ["cstr6suwn9.skadnetwork"]
+          "skAdNetworkItems": [
+            "cstr6suwn9.skadnetwork"
+          ]
         }
       ]
     ]

@@ -191,3 +191,10 @@ Zapis je dogovor o radu, **nije automatsko zaključavanje**. Prije preuzimanja p
 - **Zavisnosti:** zasebna WIP predaja, RIGHTS-001, IOS-001 i PREF-001; svi ovi taskovi sada se usklađuju s istim release koordinatorom. Osnovni SDK/AdMob ne zahtijevaju kupovinu licence; kvote EAS-a i hosting limiti provjeriti bez paid upgradea. Posebno odobrenje prije produkcijske objave ili slanja trgovinama.
 
 - **IOS-TF-UPDATE-001 dopuna opsega:** korisnik traži isti GitHub ZIP za Ahmedov novi Android build. Dodati Android versionCode kandidat11 prije zamrzavanja zajedničkog sourcea; Ahmed provjerava Play/EAS broj, kvotu/signer i gradi Android. iOS pre-upload CLI za raniji fab01bc zaustavljen tokom kompresije; prije novog pokušaja ponovo provjeriti da nije kreiran build. Nema duplog builda.
+
+## IOS-BUILD-006 — TestFlight 1.0.1 (6)
+- Owner: salem-ios; branch: codex/salem-ios-build6; status: claimed.
+- Base: 3a7f39c52c80061fc2010d501b6ff7e98f572eda.
+- Scope: iOS build number and release handoff; existing testflight profile/signing.
+- Checks: 346 tests and TypeScript PASS on Mac; free quota 5/15 iOS used.
+- Authorized: build and TestFlight upload; no production release or merge.

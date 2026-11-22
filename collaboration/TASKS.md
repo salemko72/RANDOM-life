@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## ANDROID-SHARED-20261122 — Zajednički Android/iOS source i Android WebView recovery
+
+- **Odgovorni/grana:** ahmed-admob / `codex/ahmed-android-shared-update`, izričit nalog22.11.2026.
+- **Status:** in_review za source, fizički QA/release uslovi otvoreni; [draft PR6](https://github.com/salemko72/RANDOM-life/pull/6), [predaja](../docs/ANDROID_SHARED_UPDATE.md), [sesija15](sessions/2026-11-22-ahmed-admob-15.md). Zajednički kandidatski pin **`2fa68549d444a309fb4e1dd32b953fe18476a037`**, Android12/iOS7 kandidati, store brojevi još nepotvrđeni.392testa/60fajlova, TypeScript/preview/native config/Android live JS+Hermes/iOS+Android lifecycle/browser PASS. Claim `d52843d1cacfe564eb9a2aa72b41fe0c06695bfa` pushan prije integracije. Base854de3d, recovery9b5f097 i PR5 portrait plugin integrisani. ADB nema uređaja, fizički QA nije proveden; novi APK/AAB nije pokrenut.
+- **Scope:** integrisati application recovery commit `9b5f097835cb4d5da44db2d418ce7df4a533492f` uz očuvanje novijeg device-language/build-info bridgea; Android onRenderProcessGone sa generation/retry/background/storage zaštitama; prenijeti vlastiti portrait-feature fix iz PR5. App.tsx, native recovery/preview/catalog/diagnostics moduli, relevantni testovi/harnessi/config i vlastiti handoff/sesija15/kratki TASKS/STATUS. Test alati uključuju Windows-safe review-share-stubs i lokalni screenshot output smoke-build-label, potrebni za punu izolaciju/provjere u ovom okruženju. Ne prepisivati prevode ili noviji source build5 paketom.
+- **Kriteriji:** svi zahtijevani UI/spin/Home/menu/language/catalog/offline/generic/AdMob tokovi sačuvani; puni testovi/TypeScript/preview/Android release export i lifecycle/browser regresije; fizički Android QA ako uređaj dostupan, inače precizna blokada i preostali koraci. Jedan čist zajednički source SHA, commit/push/PR.
+- **Jezici/granice:** pročitati CONTENT_TRANSLATION_HANDOFF activation blokade; četiri nova jezika ne aktivirati u produkciji niti objavljivati D1 bez njihovog zatvaranja. Postojeći EN/BHS/izbor jezika i puni draft source ostaju. Bez automatskog mergea, D1/web deploya, Play slanja ili dodatnog troška. Novi APK/AAB tek nakon svježe provjere Play/EAS broja/kvote/postojećeg signera; fizički QA nije isto što i harness/browser.
+- **Saradnja:** fetch svih grana i API PR1–5 potvrđeni. Pročitani jezički/content/iOS resume claimovi i novi zasebni IOS build6 source4b09443; build6 nije jezički integration source i ne preuzima se. Korisnik izričito ovdje delegira kombinovanu integraciju; tuđe grane/claimovi/sesije ne uređuju se.
+
 ## I18N-CONTENT-004 — Prevod467stavki i100offline rezerve
 
 - **Odgovorni/grana:** salem-content / codex/salem-content-translations; base2b0ef74527b9f953c3f61aa05cab1d1f759fa042; nalog OK go18.11.2026.

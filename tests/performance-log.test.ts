@@ -17,3 +17,9 @@ it('reports slow frames without claiming a frame rate for hidden or reduced-moti
 it('preserves Spotify lifecycle numbers without retaining SDK messages, tokens or device IDs',()=>{
  const event=parsePerformanceMessage(JSON.stringify({type:'random-life.performance.v1',name:'spotify_player',at:2,metrics:{source:1,stage:5,paused:1,positionMs:450,token:'private',message:'private account',device_id:'private'}}));expect(event).toEqual({name:'spotify_player',at:2,metrics:{source:1,stage:5,paused:1,positionMs:450}});
 });
+
+it('persists anonymous native resume and recovery events',()=>{
+ const names=['native_background','native_foreground','android_render_process_gone','web_content_terminated','webview_prepared','webview_recovery_failed'];
+ const log=new PerformanceLog(JSON.stringify(names.map((name,at)=>({name,at,metrics:{elapsedMs:10,profile:'private'}}))));
+ expect(log.rows.map(row=>row.name)).toEqual(names);expect(log.rows.every(row=>JSON.stringify(row.metrics)==='{"elapsedMs":10}')).toBe(true);
+});

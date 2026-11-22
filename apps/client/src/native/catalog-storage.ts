@@ -7,7 +7,7 @@ export function parseCatalogClearMessage(raw:string):string|null{try{if(raw.leng
 export function createNativeCatalogStorage(files:Files,pointer:Pointer){
  const path=(slot:string)=>{if(!files.documentDirectory)throw Error('CATALOG_DIRECTORY');return files.documentDirectory+'lifespinner-consumer-catalog-'+slot+'.json';};let queue=Promise.resolve();
  return{
- async read():Promise<string|null>{try{const slot=await pointer.getItem(KEY);if(slot!=='a'&&slot!=='b')return null;const raw=await files.readAsStringAsync(path(slot));return parseCatalogMessage(JSON.stringify({type:'random-life.consumer-catalog.save.v1',snapshot:JSON.parse(raw)}));}catch{return null;}},
+ async read():Promise<string|null>{await queue.catch(()=>{});try{const slot=await pointer.getItem(KEY);if(slot!=='a'&&slot!=='b')return null;const raw=await files.readAsStringAsync(path(slot));return parseCatalogMessage(JSON.stringify({type:'random-life.consumer-catalog.save.v1',snapshot:JSON.parse(raw)}));}catch{return null;}},
  clear():Promise<void>{queue=queue.catch(()=>{}).then(async()=>{await pointer.setItem(KEY,'');if(!files.deleteAsync)throw Error('CATALOG_CLEAR_UNAVAILABLE');await Promise.all(['a','b'].map(slot=>files.deleteAsync!(path(slot),{idempotent:true})));});return queue;},
  write(raw:string):Promise<void>{queue=queue.catch(()=>{}).then(async()=>{const current=await pointer.getItem(KEY),slot=current==='a'?'b':'a';await files.writeAsStringAsync(path(slot),raw);await pointer.setItem(KEY,slot);});return queue;}
  };

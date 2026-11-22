@@ -7,3 +7,12 @@ test('a failed pointer commit keeps the previous file authoritative',async()=>{c
 
 test('native clear removes both file slots and keeps the committed pointer empty',async()=>{const{cache,files}=fixture();await cache.write(JSON.stringify(snapshot));await cache.write(JSON.stringify({...snapshot,checkedAt:200}));expect(files.size).toBe(2);await cache.clear();expect(files.size).toBe(0);expect(await cache.read()).toBeNull();});
 test('native cache clear only accepts bounded typed requests',()=>{expect(parseCatalogClearMessage(JSON.stringify({type:'random-life.consumer-catalog.clear.v1',requestId:'clear-12345678'}))).toBe('clear-12345678');expect(parseCatalogClearMessage(JSON.stringify({type:'profile',requestId:'clear-12345678'}))).toBeNull();expect(parseCatalogClearMessage(JSON.stringify({type:'random-life.consumer-catalog.clear.v1',requestId:'../bad'}))).toBeNull();});
+test('recovery reads the latest received catalog even while its file write is queued',async()=>{
+ const{cache,fs}=fixture();await cache.write(JSON.stringify(snapshot));
+ let release!:()=>void;const gate=new Promise<void>(resolve=>release=resolve);
+ const write=fs.writeAsStringAsync.getMockImplementation()!;
+ fs.writeAsStringAsync.mockImplementationOnce(async(path,raw)=>{await gate;await write(path,raw);});
+ const pending=cache.write(JSON.stringify({...snapshot,checkedAt:500}));
+ const read=cache.read();release();await pending;
+ expect(JSON.parse((await read)! ).checkedAt).toBe(500);
+});

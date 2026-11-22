@@ -9,7 +9,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.salemko.randomlife",
-      "buildNumber": "5",
+      "buildNumber": "7",
       "icon": "./assets/ios-icon.png",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -26,7 +26,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.salemko.randomlife",
-      "versionCode": 11
+      "versionCode": 12
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -40,6 +40,7 @@
     "backgroundColor": "#fbefe7",
     "plugins": [
       ["expo-localization", {"supportedLocales": ["en", "bs"], "allowDynamicLocaleChangesAndroid": true}],
+      "./plugins/withOptionalPortraitFeature.cjs",
       [
         "react-native-google-mobile-ads",
         {

@@ -4,6 +4,8 @@ import {build} from 'esbuild';
 import {chromium} from 'playwright-core';
 import {createServer} from 'node:http';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const nativeConfig=JSON.parse(await readFile('apps/client/app.json','utf8')).expo;
 const mock=`
 import React,{useEffect,useImperativeHandle,forwardRef} from 'react';
 const env=()=>window.nativeTest;
@@ -55,7 +57,7 @@ try{for(const platform of ['ios','android']){
  await page.evaluate(()=>{const e=window.nativeTest;delete e.files['file:///cache/random-preview-abc123/index.html'];e.active='active';e.listeners.forEach(fn=>fn('active'));});
  await page.waitForSelector('[data-webview]');assert.equal(await page.evaluate(()=>window.nativeTest.mounts),2);
  const restored=await page.evaluate(()=>{const e=window.nativeTest,w={ReactNativeWebView:{postMessage(){}}};new Function('window','document',e.files['file:///cache/random-preview-abc123/native-state.js'])(w,{documentElement:{style:{setProperty(){}}}});return{profile:w.localStorage.getItem('random-life.local-profile.v1'),favorites:w.localStorage.getItem('random-life.experience.favorites'),history:w.localStorage.getItem('random-life.experience.history'),locale:w.localStorage.getItem('random-life.locale.v1'),catalog:e.files['file:///cache/random-preview-abc123/catalog-cache.js'],html:e.files['file:///cache/random-preview-abc123/index.html'],languages:w.__lifespinnerDeviceLanguages,build:w.__lifespinnerBuild,ads:e.adsInstances,disposals:e.adsDisposals};});
- assert.deepEqual({...restored,catalog:undefined},{profile:'new preferences',favorites:'new favorites',history:'new history',locale:'bs',catalog:undefined,html:'installed HTML',languages:['bs-BA','en-US'],build:{version:'1.0.1',build:platform==='android'?'11':'5',platform},ads:1,disposals:0});assert.match(restored.catalog,/'?checkedAt"?:500/);
+ assert.deepEqual({...restored,catalog:undefined},{profile:'new preferences',favorites:'new favorites',history:'new history',locale:'bs',catalog:undefined,html:'installed HTML',languages:['bs-BA','en-US'],build:{version:nativeConfig.version,build:String(platform==='android'?nativeConfig.android.versionCode:nativeConfig.ios.buildNumber),platform},ads:1,disposals:0});assert.match(restored.catalog,/'?checkedAt"?:500/);
  // Late callbacks from the old unmounted view cannot overwrite state or restart.
  await page.evaluate(()=>{const p=window.nativeTest.oldViews[0];window.nativeTest.terminate(p);p.onError();p.onMessage({nativeEvent:{data:JSON.stringify({type:'random-life.local-state.v1',operation:'clear'})}});});
  assert.equal(await page.evaluate(()=>window.nativeTest.mounts),2);

@@ -19,7 +19,7 @@ it('preserves Spotify lifecycle numbers without retaining SDK messages, tokens o
 });
 
 it('persists anonymous native resume and recovery events',()=>{
- const names=['native_background','native_foreground','web_content_terminated','webview_prepared','webview_recovery_failed'];
+ const names=['native_background','native_foreground','android_render_process_gone','web_content_terminated','webview_prepared','webview_recovery_failed'];
  const log=new PerformanceLog(JSON.stringify(names.map((name,at)=>({name,at,metrics:{elapsedMs:10,profile:'private'}}))));
  expect(log.rows.map(row=>row.name)).toEqual(names);expect(log.rows.every(row=>JSON.stringify(row.metrics)==='{"elapsedMs":10}')).toBe(true);
 });

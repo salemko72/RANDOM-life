@@ -37,7 +37,7 @@ function NativeExperience(){
   if(!diagnosticsLoaded.current){diagnosticsLoaded.current=true;diagnosticQueue.current=AsyncStorage.getItem(PERFORMANCE_STORAGE_KEY).then(raw=>{diagnostics.current=new PerformanceLog(raw);}).catch(()=>{});}
   diagnosticQueue.current=diagnosticQueue.current.then(async()=>{diagnostics.current.add(event);await AsyncStorage.setItem(PERFORMANCE_STORAGE_KEY,JSON.stringify(diagnostics.current.rows));}).catch(()=>{});
  }
- function nativeMetric(name:string){recordDiagnostic({name,at:Date.now(),metrics:{elapsedMs:Date.now()-nativeStartedAt.current}});}
+ function nativeMetric(name:string,metrics:Record<string,number>={}){recordDiagnostic({name,at:Date.now(),metrics:{elapsedMs:Date.now()-nativeStartedAt.current,...metrics}});}
  async function shareDiagnostics(){
   await diagnosticQueue.current;
   const constants=Platform.constants as unknown as Record<string,unknown>;
@@ -104,13 +104,14 @@ function NativeExperience(){
    onLoadStart={()=>{if(recovery.current?.current(generation))ads.current?.resetDocument();}}
    onLoadEnd={()=>{if(recovery.current?.current(generation))nativeMetric('webview_loaded');}}
    onContentProcessDidTerminate={()=>recovery.current?.terminated(generation)}
+   onRenderProcessGone={event=>{if(!recovery.current?.current(generation))return;nativeMetric('android_render_process_gone',{failed:event.nativeEvent.didCrash?1:0});recovery.current.terminated(generation);}}
    onError={()=>recovery.current?.failed(generation)}
    onMessage={event=>{
     if(!recovery.current?.current(generation))return;
     const raw=event.nativeEvent.data;
     const adMessage=parseAdMessage(raw);if(adMessage){ads.current?.receive(adMessage);return;}
     const back=parseBackResult(raw,pendingBack.current);if(back!==null){pendingBack.current=null;if(!back&&Platform.OS==='android')BackHandler.exitApp();return;}
-    const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>{if(recovery.current?.current(generation))webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');};void catalogStorage.current.clear().then(()=>FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','')).then(()=>notify(true)).catch(()=>notify(false));return;}
+    const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>{if(recovery.current?.current(generation))webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');};void catalogStorage.current.clear().then(()=>{if(recovery.current?.current(generation))return FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','');}).then(()=>notify(true)).catch(()=>notify(false));return;}
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}
     if(raw.length<100&&raw===JSON.stringify({type:'random-life.performance.export.v1'})){void shareDiagnostics().catch(()=>{});return;}
     const metric=parsePerformanceMessage(raw);if(metric){recordDiagnostic(metric);return;}

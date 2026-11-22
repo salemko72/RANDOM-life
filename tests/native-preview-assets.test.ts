@@ -58,10 +58,13 @@ it('boots reviewed device preferences alongside existing build, ads and local pr
   let current={ [PROFILE_KEY]:'old', 'random-life.experience.favorites':'old-favorite' };
   const writes:Record<string,string>={};
   const fs={cacheDirectory:'file:///cache/',makeDirectoryAsync:async()=>{},getInfoAsync:async()=>({exists:true}),copyAsync:async()=>{},writeAsStringAsync:async(path:string,text:string)=>{writes[path]=text;}};
-  const pending=prepareNativePreview({hash:'abc123',localUri:'file:///bundle/ui.html',downloadAsync:()=>download},fs,()=>current,{top:0,bottom:0});
+  const pending=prepareNativePreview({hash:'abc123',localUri:'file:///bundle/ui.html',downloadAsync:()=>download},fs,()=>current,{top:0,bottom:0},null,{deviceLanguages:['de-DE','en-US'],buildInfo:{version:'1.0.1',build:'12',platform:'android'},ads:true});
   current={[PROFILE_KEY]:'latest', 'random-life.experience.favorites':'latest-favorite'};finish();await pending;
   const window:any={ReactNativeWebView:{postMessage:()=>{}}};
   runInNewContext(writes['file:///cache/random-preview-abc123/native-state.js'],{window,document:{documentElement:{style:{setProperty:()=>{}}}}});
   expect(window.localStorage.getItem(PROFILE_KEY)).toBe('latest');
   expect(window.localStorage.getItem('random-life.experience.favorites')).toBe('latest-favorite');
+  expect(Array.from(window.__lifespinnerDeviceLanguages)).toEqual(['de-DE','en-US']);
+  expect(window.__lifespinnerBuild).toEqual({version:'1.0.1',build:'12',platform:'android'});
+  expect(window.__lifespinnerAds).toBe(true);
  });

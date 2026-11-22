@@ -1,5 +1,14 @@
 # Zajednički zadaci
 
+## ANDROID-SHARED-20261122 — Zajednički Android/iOS source i Android WebView recovery
+
+- **Odgovorni/grana:** ahmed-admob / `codex/ahmed-android-shared-update`, izričit nalog22.11.2026.
+- **Status:** claimed; base `854de3d3e315bdacc326f0caf2a6149ec2efc168` (content translations docs head). Izolovan worktree; postojeći lokalni rad/grane ostaju netaknuti.
+- **Scope:** integrisati application recovery commit `9b5f097835cb4d5da44db2d418ce7df4a533492f` uz očuvanje novijeg device-language/build-info bridgea; Android onRenderProcessGone sa generation/retry/background/storage zaštitama; prenijeti vlastiti portrait-feature fix iz PR5. App.tsx, native recovery/preview/catalog/diagnostics moduli, relevantni testovi/harnessi/config i vlastiti handoff/sesija15/kratki TASKS/STATUS. Ne prepisivati prevode ili noviji source build5 paketom.
+- **Kriteriji:** svi zahtijevani UI/spin/Home/menu/language/catalog/offline/generic/AdMob tokovi sačuvani; puni testovi/TypeScript/preview/Android release export i lifecycle/browser regresije; fizički Android QA ako uređaj dostupan, inače precizna blokada i preostali koraci. Jedan čist zajednički source SHA, commit/push/PR.
+- **Jezici/granice:** pročitati CONTENT_TRANSLATION_HANDOFF activation blokade; četiri nova jezika ne aktivirati u produkciji niti objavljivati D1 bez njihovog zatvaranja. Postojeći EN/BHS/izbor jezika i puni draft source ostaju. Bez automatskog mergea, D1/web deploya, Play slanja ili dodatnog troška. Novi APK/AAB tek nakon svježe provjere Play/EAS broja/kvote/postojećeg signera; fizički QA nije isto što i harness/browser.
+- **Saradnja:** fetch svih grana i API PR1–5 potvrđeni. Pročitani jezički/content/iOS resume claimovi i novi zasebni IOS build6 source4b09443; build6 nije jezički integration source i ne preuzima se. Korisnik izričito ovdje delegira kombinovanu integraciju; tuđe grane/claimovi/sesije ne uređuju se.
+
 ## I18N-CONTENT-004 — Prevod467stavki i100offline rezerve
 
 - **Odgovorni/grana:** salem-content / codex/salem-content-translations; base2b0ef74527b9f953c3f61aa05cab1d1f759fa042; nalog OK go18.11.2026.

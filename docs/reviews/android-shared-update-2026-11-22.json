@@ -1,0 +1,127 @@
+{
+  "date": "2026-11-22",
+  "source": "2fa68549d444a309fb4e1dd32b953fe18476a037",
+  "branch": "codex/ahmed-android-shared-update",
+  "pr": "https://github.com/salemko72/RANDOM-life/pull/6",
+  "inputs": {
+    "contentTranslationHead": "854de3d3e315bdacc326f0caf2a6149ec2efc168",
+    "iosRecovery": "9b5f097835cb4d5da44db2d418ce7df4a533492f",
+    "portraitFeatureFix": "dacad203fc7e48901a830d55d4483130e1aeec72"
+  },
+  "candidates": {
+    "version": "1.0.1",
+    "android": 12,
+    "ios": "7",
+    "easInventoryAbsent": true,
+    "playAvailabilityVerified": false,
+    "ascAvailabilityVerified": false
+  },
+  "checks": {
+    "tests": {
+      "passed": 392,
+      "files": 60
+    },
+    "typecheck": "PASS",
+    "preview": "PASS",
+    "nativeLanguageConfig": "PASS",
+    "portraitManifest": "PASS",
+    "uiCopyInventory": {
+      "currentKeys": 362,
+      "coveredKeys": 365
+    },
+    "nativeLifecycleHarness": {
+      "ios": "PASS",
+      "android": "PASS",
+      "latestState": true,
+      "deviceLanguage": true,
+      "installedBuild": true,
+      "pendingCatalogWrites": true,
+      "staleCallbacks": true,
+      "catalogClearDuringRecovery": true,
+      "restartBudget": true,
+      "nativeAdsRuntimeRetained": true
+    },
+    "browser": {
+      "spinHomeDetailCategory": "PASS en/bs",
+      "recipeOnlineToOfflineCache": "PASS en/bs",
+      "profileLanguage": "PASS 320/390",
+      "automaticLanguage": "PASS",
+      "menuDiagnosticsBuild": "PASS 320x568/320/390/430",
+      "adBridge": "PASS",
+      "genericOfflineImages": "PASS"
+    }
+  },
+  "exports": {
+    "androidLiveJS": {
+      "file": "index-d9b20361edbe3816fbbd20f776cac250.js",
+      "bytes": 1898768,
+      "sha256": "db9a405df5e6fdd87dbbab9a8c631de21eb68d7214967a6ec57fb3d98d2e399a",
+      "literalLive": true,
+      "realAndroidUnit": true,
+      "NPA": true,
+      "noRuntimeEnvLookup": true
+    },
+    "androidHermes": {
+      "file": "index-14930cc81209f2f1576580139529051c.hbc",
+      "bytes": 2724093,
+      "sha256": "4505085aeca2bc2398851dbf4351622d60f955629ec74a0d8aa308e9b3f9d967",
+      "parsed": true
+    }
+  },
+  "ads": {
+    "profile": "ads-live",
+    "androidAppId": "ca-app-pub-8395430021391101~6926064985",
+    "androidInterstitial": "ca-app-pub-8395430021391101/6024046858",
+    "signerSha256": "67768f6f56b3d542ab700b91e3e2dce6f0682c4798fa908927d53593cde6ed6e",
+    "existingSignerMatched": true,
+    "credentialsModified": false
+  },
+  "catalog": {
+    "publicVersion": "59a712e7856e411d0d1b11e7c7c681cdb0e4e769522ccdbcd84a502df53eebf8",
+    "publicCount": 467,
+    "sourcePinMatchesPublicManifest": true,
+    "offlineItems": 100,
+    "draftLocales": [
+      "es",
+      "pt-BR",
+      "de",
+      "it"
+    ],
+    "draftTranslations": 1868,
+    "offlineDraftTranslations": 400,
+    "activeLocales": [
+      "en",
+      "bs"
+    ],
+    "activatedNewLocales": false,
+    "d1Published": false
+  },
+  "eas": {
+    "plan": "Free",
+    "totalUsed": 10,
+    "totalLimit": 30,
+    "androidUsed": 4,
+    "androidLimit": 15,
+    "iosUsed": 6,
+    "iosLimit": 15,
+    "overage": 0,
+    "estimatedTotalCents": 0
+  },
+  "physicalAndroidQA": {
+    "performed": false,
+    "reason": "adb devices -l empty; user requested to connect device"
+  },
+  "nativeBuild": {
+    "created": false,
+    "apk": null,
+    "aab": null,
+    "ipa": null
+  },
+  "productionActions": {
+    "merged": false,
+    "webDeployed": false,
+    "d1Changed": false,
+    "playUploaded": false,
+    "storeSubmitted": false
+  }
+}

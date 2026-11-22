@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## Zajednička Android/iOS integracija22.11. — source predan, fizički QA otvoren
+
+`codex/ahmed-android-shared-update`, [draft PR6](https://github.com/salemko72/RANDOM-life/pull/6), jedan kandidatski source **`2fa68549d444a309fb4e1dd32b953fe18476a037`** za Android i naredni iOS. Najnoviji translation source854de3d + recovery9b5f097 uz očuvani language/build-info bridge; dodat Android onRenderProcessGone, zaštita stale catalog-clear callbacka i PR5 optional portrait feature. Onboarding/Home repeat/recipe online-cache-offline/generic/language chooser/menu diagnostics i stvarni build sačuvani.392testa/60fajlova, TS/preview/native config/Android live JS+Hermes i lifecycle/browser PASS. Kandidati1.0.1/Android12/iOS7, nisu potvrđeni u Play/ASC; EAS nema12/7, Free10/30(Android4/15,iOS6/15),overage0; Android signer isti. **Nema novog APK/AAB/IPA niti fizičkog QA** (ADB prazan). Novi jezici ostaju pripremljeni draftovi, en/bs aktivni; nema D1/web aktivacije, mergea ili store slanja. [Predaja/blokade](../docs/ANDROID_SHARED_UPDATE.md), [sesija15](sessions/2026-11-22-ahmed-admob-15.md). Ovo ne vraća source na stariji build5 niti mijenja postojeće instalirane buildove.
+
 ## Preveden katalog u sourceu i punom previewu — 18.11.2026.
 
 **App/catalogue sourceb8fa083ea010468a0cb42b67b540dc2516fa42d3**, review20bc5d9657cb767c7bbf9b5004a755deb47e7f83 na `codex/salem-content-translations`. Svih467zapisa×4jezika=1868potpunih draftova; svi100offline/400dodataka pokriveni.3038jedinstvenih tekstova pojeziku,365UIključeva.376tests/58files, TypeScript/preview i4jezika×5kategorija browserPASS; postojećiENG/BHS regresioni tokoviPASS. [Novi puni ZIP](../review-previews/README.md), [operator handoff](../docs/CONTENT_TRANSLATION_HANDOFF.md). StariUI-onlyZIP nije aktuelni paket u ovoj grani.

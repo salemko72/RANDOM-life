@@ -32,7 +32,7 @@ Application source **2a0503c249b11a3e2afad44266cc687644bfb417**, grana `codex/sa
 
 ## Stanje isporuke
 
-**EAS zakazan24.11.2026.14:06UTC /15:06CET**, čist build source **99625ee9b7488d9af5a70e323434e7ae1a2f056b**, application code2a0503c. [Build](https://expo.dev/accounts/salemko/projects/random/builds/d2164cee-e1b0-4a7e-81f0-71b17b1c62fc) trenutno IN_PROGRESS; [submission](https://expo.dev/accounts/salemko/projects/random/submissions/05b7385a-dc5b-4ba1-ab00-c6841807710f) AWAITING_BUILD. Ne pokretati duplikat. Log već potvrđuje VMmacos-tahoe-26.6-xcode-27.2, Xcode27.2(27B52), uspješan install95pods, Xcode archive radi. Apple provisioning validation i TestFlightgroup setup su dobili403; CLI nastavio s lokalno važećim postojećim profilom i remote submissionAPIkeyem. To nije dokaz Apple upload greške; rezultat submissiona još otvoren. Nema novih signing ključeva.
+**EAS zakazan24.11.2026.14:06UTC /15:06CET**, čist build source **99625ee9b7488d9af5a70e323434e7ae1a2f056b**, application code2a0503c. [Build](https://expo.dev/accounts/salemko/projects/random/builds/d2164cee-e1b0-4a7e-81f0-71b17b1c62fc) **FINISHED** (Xcode archive uspješan); [submission](https://expo.dev/accounts/salemko/projects/random/submissions/05b7385a-dc5b-4ba1-ab00-c6841807710f) **IN_QUEUE**, još čeka worker/upload. Ne pokretati duplikat. Log već potvrđuje VMmacos-tahoe-26.6-xcode-27.2, Xcode27.2(27B52), uspješan install95pods, Xcode archive radi. Apple provisioning validation i TestFlightgroup setup su dobili403; CLI nastavio s lokalno važećim postojećim profilom i remote submissionAPIkeyem. To nije dokaz Apple upload greške; rezultat submissiona još otvoren. Nema novih signing ključeva.
 
 GitHub draft PR create prema Ahmedshared branch dobio GraphQL403. Grana je pushana; [tačan compare](https://github.com/salemko72/RANDOM-life/compare/codex/ahmed-android-shared-update...codex/salem-ios-build7-cinema?expand=1). PR nije stvoren. Ovo nije auto-review approval rejection.
 
@@ -41,3 +41,11 @@ Source je implementiran/testiran; stvarni EASbuild/submission/Appleprocessing i 
 Za Ahmeda: ovaj app commit je novi zajednički code pin za Android12/iOS7 (sa iOS-specifičnim scene/image configom). Ne buildati stari2fa ako želi iste oglase/sliku. Primijeniti vlastitu granu/predaju, svježe provjeriti Play broj/kvotu/signer; nema pretpostavke automatskog obavještavanja.
 
 Fizički QA na iPhoneu i Androidu ostaje potreban:5vrtnji i naredniSpin svih3ulaza; menu/Home/profile/history bez oglasa; consent/refuse/no-fill/offline; povratak/close oglasa i dug background/resume; sačuvani podaci, low-phosphate/allergen hard filteri, ispravljeni sadržaj i nova kino slika. TestFlight služi za ove provjere, nije potvrda gotovog store reviewa.
+
+## Završena native izrada, upload još čeka
+
+Build7 je FINISHED. Stvarni Xcode build log sadrži `iPhoneOS27.2.sdk` i `ARCHIVE SUCCEEDED`; SDK27.2 nije samo konfiguracijska tvrdnja. [Rezultat](reviews/ios7-result-20261124.json) ima clean source, build/submission ID, logSHA i zero-cost usage7/15iOS,11/30ukupno,estimated0. IPA download iz ovog okruženja blokira403 na redirecthostu wf-artifacts.eascdn.net, zato IPA hash/Info.plist nisu nezavisno provjereni i ne navode se kao PASS.
+
+Submission05b7385a-dc5b-4ba1-ab00-c6841807710f jošIN_QUEUE, bez greške; AppStoreConnect upload/processing i fizičkiTestFlightQA ostaju otvoreni. EASworkerza upload još nije startao prema jobRun stanju. Direktni status.expo.dev GET iz ovog okruženja također403 pa incident status nije potvrđen; ne tvrditi da je servis pao.
+
+Dodatni lokalni Android live Hermesexport913modula PASS iz istog aplikacijskog sourcea. To nije APK/AAB niti Play upload; Ahmed može preuzeti frozen source99625ee9b7488d9af5a70e323434e7ae1a2f056b za svoj release postupak.

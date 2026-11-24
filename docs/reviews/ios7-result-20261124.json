@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-11-24",
+  "frozenSource": "99625ee9b7488d9af5a70e323434e7ae1a2f056b",
+  "applicationSource": "2a0503c249b11a3e2afad44266cc687644bfb417",
+  "build": {
+    "id": "d2164cee-e1b0-4a7e-81f0-71b17b1c62fc",
+    "status": "FINISHED",
+    "version": "1.0.1",
+    "buildNumber": "7",
+    "createdAt": "2026-11-24T14:06:06.219Z",
+    "completedAt": "2026-11-24T14:09:13.606Z",
+    "url": "https://expo.dev/accounts/salemko/projects/random/builds/d2164cee-e1b0-4a7e-81f0-71b17b1c62fc"
+  },
+  "nativeProof": {
+    "xcode": "27.2 (27B52)",
+    "sdk": "iPhoneOS27.2.sdk",
+    "archiveSucceeded": true,
+    "xcodeLogSha256": "96cce6c723d00490943c881df86ef63723717fbaf0e89e42ecae9e77b8c2d09e"
+  },
+  "submission": {
+    "id": "05b7385a-dc5b-4ba1-ab00-c6841807710f",
+    "status": "IN_QUEUE",
+    "error": null,
+    "url": "https://expo.dev/accounts/salemko/projects/random/submissions/05b7385a-dc5b-4ba1-ab00-c6841807710f"
+  },
+  "ipaAudit": {
+    "downloaded": false,
+    "blockedRedirectHost": "wf-artifacts.eascdn.net",
+    "httpStatus": 403,
+    "sha256": null,
+    "note": "Actual IPA metadata/hash not independently checked; actual SDK/compile proven by Xcode build log."
+  },
+  "usageAfter": {
+    "ios": {
+      "used": 7,
+      "limit": 15,
+      "percentUsed": 46
+    },
+    "total": {
+      "used": 11,
+      "limit": 30,
+      "percentUsed": 36
+    },
+    "estimatedCents": 0
+  },
+  "physicalDeviceQa": "not performed",
+  "testflightAvailability": "not yet independently verified",
+  "publicStoreRelease": false,
+  "androidLiveLocalExport": {
+    "passed": true,
+    "modules": 913,
+    "path": "/workspace/shared/ios7-android-live-export",
+    "nativeApkAabCreated": false
+  }
+}

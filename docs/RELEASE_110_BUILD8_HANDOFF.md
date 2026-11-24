@@ -45,3 +45,9 @@ Frozen clean EAS source: **05990c0f86bba45d0d871ac06856cff71307f7d5** (same appl
 Source ZIP: GitHub archive for frozen source05990c0f86bba45d0d871ac06856cff71307f7d5, or local `/workspace/shared/LifeSpinner-1.1.0-build8-source.zip` (root folderLifeSpinner-1.1.0-build8). Local ZIP SHA256 `caaaf8d50a284ce0f1e2e07139ab7840f3e8d4b2a4ce72d7e87b2dabd85dd5a3`; GitHub-generated ZIP may have different container bytes, use source SHA as identity. Generated previews are not committed; run `npm ci` from source root to generate the installed HTML, then verification, before any platform build.
 
 PR creation returned `Post https://api.github.com/graphql: Forbidden` (403). No PR was created. [Create draft PR against build7 branch](https://github.com/salemko72/RANDOM-life/compare/codex/salem-ios-build7-cinema...codex/salem-110-regional-units?expand=1). This is an API authorization block, not an automatic approval-review rejection.
+
+## Native build completed
+
+EAS build62ad0b5a-91e6-4de7-a05c-f099fecec2f7 is **FINISHED**, error null, completed24 November2026 at17:07CET. Source **05990c0f86bba45d0d871ac06856cff71307f7d5**, version **1.1.0 (8)**. This supersedes the initial IN_QUEUE status above. Real Xcode log confirms `iPhoneOS27.2.sdk`, Xcodebuild27B52 and `ARCHIVE SUCCEEDED`. Decoded logSHA256 and safe cost/status evidence in [result JSON](reviews/release110-build8-result.json). Artifact URL exists in EAS, independent IPA download returnsHTTP403 here; IPA SHA/embedded Info.plist were not independently inspected. No duplicate native build is needed.
+
+Build-only: no Apple submission was requested for8 and it is not yet available in TestFlight. Existing testflight submit profile targets LifeSpinner6830084481; a specifically authorized operator can submit this existing buildID, then verify Apple processing/tester group assignment. Do not rebuild just to submit it. Physical QA still pending.

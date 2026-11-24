@@ -1,0 +1,34 @@
+{
+  "id": "62ad0b5a-91e6-4de7-a05c-f099fecec2f7",
+  "status": "FINISHED",
+  "version": "1.1.0",
+  "number": "8",
+  "source": "05990c0f86bba45d0d871ac06856cff71307f7d5",
+  "completedAt": "2026-11-24T16:07:24.216Z",
+  "error": null,
+  "nativeEvidence": {
+    "xcodeBuildLogPath": "/workspace/shared/ios8-xcode-build.log",
+    "decodedLogSHA256": "72e3b68fc231c9ddda89f34b5d16825f46cc7e6e80f1fa6375b60f784d012d31",
+    "sdk": "iPhoneOS27.2.sdk",
+    "xcodeBuild": "27B52",
+    "archive": "ARCHIVE SUCCEEDED"
+  },
+  "ipaIndependentDownload": "HTTP403; no IPA hash/metadata claim",
+  "appleSubmissionRequested": false,
+  "usageAfter": {
+    "ios": {
+      "used": 8,
+      "limit": 15,
+      "percentUsed": 53
+    },
+    "total": {
+      "used": 12,
+      "limit": 30,
+      "percentUsed": 40
+    },
+    "estimated": {
+      "overageCents": 0,
+      "totalCents": 0
+    }
+  }
+}

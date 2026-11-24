@@ -37,3 +37,11 @@ Test actual iPhone/Android: regional auto and manual unit choice; six languages 
 ## Ahmed / GitHub continuation
 
 Fetch this branch, read AGENTS/STATUS/TASKS and this handoff, claim your own task/branch before editing. Do not work from stale Android11/build5 source. Test shared behavior on Android with original signer, fresh Play versionCode and free-quota check. No merge, web/database deploy, paid resource or store publication without the user's specific authorization. GitHub API PR creation has returned403 in this environment; a pushed branch/compare link is not an existing PR.
+
+## Remote build requested
+
+Frozen clean EAS source: **05990c0f86bba45d0d871ac06856cff71307f7d5** (same application code8de3199). EAS accepted1.1.0(8) at24 November2026 17:04CET. [Build62ad0b5a](https://expo.dev/accounts/salemko/projects/random/builds/62ad0b5a-91e6-4de7-a05c-f099fecec2f7), latest observed **IN_QUEUE**, error null. Not an IPA completion or Apple upload. Build-only request, no auto-submit. Do not start a duplicate; query this ID for the result and record actual native build/test results. Apple profile validation returned403; CLI explicitly continued with the unchanged locally valid existing profile, with frozen credentials.
+
+Source ZIP: GitHub archive for frozen source05990c0f86bba45d0d871ac06856cff71307f7d5, or local `/workspace/shared/LifeSpinner-1.1.0-build8-source.zip` (root folderLifeSpinner-1.1.0-build8). Local ZIP SHA256 `caaaf8d50a284ce0f1e2e07139ab7840f3e8d4b2a4ce72d7e87b2dabd85dd5a3`; GitHub-generated ZIP may have different container bytes, use source SHA as identity. Generated previews are not committed; run `npm ci` from source root to generate the installed HTML, then verification, before any platform build.
+
+PR creation returned `Post https://api.github.com/graphql: Forbidden` (403). No PR was created. [Create draft PR against build7 branch](https://github.com/salemko72/RANDOM-life/compare/codex/salem-ios-build7-cinema...codex/salem-110-regional-units?expand=1). This is an API authorization block, not an automatic approval-review rejection.

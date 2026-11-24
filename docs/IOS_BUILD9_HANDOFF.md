@@ -31,3 +31,9 @@ Application/frozen EAS source **8bdc628151d8839cf2ebca1f17a203ea73ebfac9**, clea
 [Download frozen source ZIP](https://github.com/salemko72/RANDOM-life/archive/8bdc628151d8839cf2ebca1f17a203ea73ebfac9.zip). Local ZIP `/workspace/shared/LifeSpinner-1.1.1-build9-source.zip`, SHA256 `a1206c211426d9e53505d5498c036fcee114303b882cd856de072bcac131333c` (GitHub's archive container may have a different hash; source SHA is the identity). Run root `npm ci` to regenerate ignored installed preview HTML before a build.
 
 Apple server provisioning validation returned403; EAS continued with existing locally valid frozen profile. PR creation returned `Post https://api.github.com/graphql: Forbidden`; no PR exists from this attempt. Branch push succeeded. [Create draft PR against build8 branch](https://github.com/salemko72/RANDOM-life/compare/codex/salem-110-regional-units...codex/salem-detail-scroll-fade?expand=1). This is a GitHub API authorization failure, not an automatic approval rejection.
+
+## Completed native archive
+
+**FINISHED**, error null,24 November2026 at22:43CET. Version **1.1.1 (9)**, frozen clean source **8bdc628151d8839cf2ebca1f17a203ea73ebfac9**, EAS **95160386-2cfb-40ab-af7e-74a1ef3cd3aa**. Supersedes initial queue status above. Actual Xcode log confirms `iPhoneOS27.2.sdk`, Xcodebuild27B52 and `ARCHIVE SUCCEEDED`. Decoded logSHA256 `47570019e1a14bf91947d20dd9d7cd8304982dbf23964bbbf05ff008159acffb`. Independent IPA download from this environment returnedHTTP403; no IPA hash/embedded metadata claim. Free quota after build: iOS9/15,total13/30,estimated/overage0.
+
+**No TestFlight submission requested for9.** The archive is ready for a separately authorized upload using this existing EAS ID; do not rebuild to submit. Apple processing/group availability and physical QA remain open. No production publication, merge, web or DB deployment.

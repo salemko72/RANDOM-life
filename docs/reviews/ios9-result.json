@@ -1,12 +1,36 @@
 {
   "id": "95160386-2cfb-40ab-af7e-74a1ef3cd3aa",
-  "status": "IN_QUEUE",
+  "status": "FINISHED",
   "appVersion": "1.1.1",
   "appBuildVersion": "9",
   "gitCommitHash": "8bdc628151d8839cf2ebca1f17a203ea73ebfac9",
   "createdAt": "2026-11-24T21:40:23.560Z",
-  "completedAt": null,
+  "completedAt": "2026-11-24T21:43:57.894Z",
   "error": null,
   "autoSubmit": false,
-  "localSourceZipSHA256": "a1206c211426d9e53505d5498c036fcee114303b882cd856de072bcac131333c"
+  "localSourceZipSHA256": "a1206c211426d9e53505d5498c036fcee114303b882cd856de072bcac131333c",
+  "nativeEvidence": {
+    "sdk": "iPhoneOS27.2.sdk",
+    "xcodeBuild": "27B52",
+    "archive": "ARCHIVE SUCCEEDED",
+    "logPath": "/workspace/shared/ios9-xcode-build.log",
+    "decodedLogSHA256": "47570019e1a14bf91947d20dd9d7cd8304982dbf23964bbbf05ff008159acffb"
+  },
+  "ipaIndependentDownload": "HTTP403; no IPA hash or embedded metadata claim",
+  "freeQuotaAfter": {
+    "ios": {
+      "used": 9,
+      "limit": 15,
+      "percentUsed": 60
+    },
+    "total": {
+      "used": 13,
+      "limit": 30,
+      "percentUsed": 43
+    },
+    "cost": {
+      "overageCents": 0,
+      "totalCents": 0
+    }
+  }
 }

@@ -1,4 +1,4 @@
-> **1.1.1 (9):** fade correction source8bdc628151d8839cf2ebca1f17a203ea73ebfac9; EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa IN_QUEUE, no Apple submission. [Handoff](../docs/IOS_BUILD9_HANDOFF.md). Build8 stays unchanged.
+> **1.1.1 (9):** fade correction source8bdc628151d8839cf2ebca1f17a203ea73ebfac9; EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa FINISHED, no Apple submission. [Handoff](../docs/IOS_BUILD9_HANDOFF.md). Build8 stays unchanged.
 
 ## UI-SCROLL-009 — claimed24.11.2026
 

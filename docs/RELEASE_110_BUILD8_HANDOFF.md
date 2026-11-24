@@ -1,6 +1,6 @@
 # LifeSpinner 1.1.0 (8) — regional units and six languages
 
-Prepared 24 November 2026 on `codex/salem-110-regional-units`, based on build7 branch `3b35368512ff967b0b3e46e4829e91278d741860`. Application and frozen build SHAs are recorded below after commit. No merge, D1 migration, web deploy or store publication.
+Prepared 24 November 2026 on `codex/salem-110-regional-units`, based on build7 branch `3b35368512ff967b0b3e46e4829e91278d741860`. Application source **8de3199e81fbbf0a1ad153e195378a4e4102f770**. The documentation-only commit immediately following it freezes the EAS source; its SHA is recorded with the remote build result. No application changes between these commits. No merge, D1 migration, web deploy or store publication.
 
 ## Behavior
 

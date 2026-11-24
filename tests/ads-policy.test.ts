@@ -6,14 +6,14 @@ describe('Shared native interstitial placement policy',()=>{
   for(const data of [{type:'lifespinner.ads.v1',event:'spin',seq:1,name:'Alex'},{type:'lifespinner.ads.v1',event:'start',seq:1},{type:'lifespinner.ads.v1',event:'home',seq:-1},{type:'lifespinner.ads.v1',event:'spin',seq:1.3}])expect(parseAdMessage(JSON.stringify(data))).toBeNull();
   expect(parseAdMessage('x'.repeat(501))).toBeNull();
  });
- it('needs six successful spins and two active minutes, then reserves a single natural break',()=>{
+ it('becomes eligible after five completed spins without a two-minute startup delay',()=>{
   const p=new AdPolicy(null,0);p.setActive(true,0);p.ready(0);
-  for(let i=0;i<5;i++)p.spin(10000+i);expect(p.eligible(130000)).toBe(false);
-  p.spin(130000);expect(p.eligible(130000)).toBe(true);p.reserve(130000);expect(p.eligible(130001)).toBe(false);
+  for(let i=0;i<4;i++)p.spin(1000+i);expect(p.eligible(2000)).toBe(false);
+  p.spin(3000);expect(p.eligible(3000)).toBe(true);p.reserve(3000);expect(p.eligible(3001)).toBe(false);
  });
  it('never counts background time and keeps cooldown and spins across restarts',()=>{
   const p=new AdPolicy(null,0);p.setActive(true,0);p.ready(0);p.setActive(false,60000);p.setActive(true,600000);for(let i=0;i<6;i++)p.spin(600001+i);
-  expect(p.eligible(600010)).toBe(false);expect(p.eligible(660010)).toBe(true);p.reserve(660010);
+  expect(p.eligible(600010)).toBe(true);expect(p.eligible(660010)).toBe(true);p.reserve(660010);
   const next=new AdPolicy(p.serialize(660010),660010);next.setActive(true,660010);next.ready(660010);for(let i=0;i<6;i++)next.spin(660011+i);
   expect(next.eligible(840009)).toBe(false);expect(next.eligible(840010)).toBe(true);
  });

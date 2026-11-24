@@ -19,7 +19,7 @@ try {
       localStorage.setItem('random-life.local-profile.v1',JSON.stringify(profile));
       window.__lifespinnerAds = native;
       window.__messages = [];
-      window.ReactNativeWebView = {postMessage: raw => {window.__messages.push(JSON.parse(raw));}};
+      window.ReactNativeWebView = {postMessage: raw => {const m=JSON.parse(raw);window.__messages.push(m);if(m.type==='lifespinner.ads.v1'&&m.event==='request')queueMicrotask(()=>window.dispatchEvent(new CustomEvent('lifespinner.ads.response.v1',{detail:{seq:m.seq,stage:'continue'}})));}};
       window.confirm = () => true;
     }, {profile,native});
     const ads = () => page.evaluate(() => window.__messages.filter(m => m.type === 'lifespinner.ads.v1'));
@@ -34,7 +34,7 @@ try {
     assert.equal((await ads()).filter(m => m.event === 'home').length,0);
     await page.locator('.bottom-nav button').first().click();
     await page.locator('.home-scene.scene-visible').waitFor();
-    assert.equal((await ads()).filter(m => m.event === 'home').length,native ? 1 : 0);
+    assert.equal((await ads()).filter(m => m.event === 'home').length,0);
     await page.locator('.rail-category').first().click();
     await page.locator('.result-item-title').waitFor();
     await page.locator('.bottom-nav button').last().click();
@@ -43,13 +43,13 @@ try {
     if (native) {await privacy.click(); assert.equal((await ads()).filter(m => m.event === 'privacy').length,1);}
     await page.getByRole('button',{name:'Delete profile & data',exact:true}).click();
     await page.locator('.onboarding-field input').first().waitFor();
-    assert.equal((await ads()).filter(m => m.event === 'home').length,native ? 1 : 0,'Profile deletion is not an ad opportunity');
+    assert.equal((await ads()).filter(m => m.event === 'home').length,0,'Profile deletion is not an ad opportunity');
     const messages = await ads();
     assert(messages.every(m => Object.keys(m).sort().join(',') === 'event,seq,type'));
     assert(!JSON.stringify(messages).includes('Private test name'));
     assert(!JSON.stringify(messages).includes('peanut'));
     assert(messages.every((m,i) => i===0 || m.seq > messages[i-1].seq));
-    console.log('PASS '+(native?'native capability: successful spin, natural break, privacy and bounded payloads':'web: no ads capability, messages or privacy control'));
+    console.log('PASS '+(native?'native capability: explicit Spin handshake, completed spin, no Home opportunity, privacy and bounded payloads':'web: no ads capability, messages or privacy control'));
     await page.close();
   }
 } finally {await browser.close(); await new Promise(resolve => server.close(resolve));}

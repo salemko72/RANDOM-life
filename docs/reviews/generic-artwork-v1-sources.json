@@ -6,8 +6,11 @@
   },
   {
     "key": "film-02-cinema",
-    "source": "/workspace/generated_images/exec-0674f026-6ca5-4dae-bc83-84fb53b41e43.png",
-    "path": "/media/generic-film-02-cinema-v1.webp"
+    "source": "/workspace/generated_images/exec-2f17fc89-1efb-45b8-8b28-309034a3dbf7.png",
+    "path": "/media/generic-film-02-cinema-v1.webp",
+    "previousSource": "/workspace/generated_images/exec-0674f026-6ca5-4dae-bc83-84fb53b41e43.png",
+    "edit": "Original cinema reference edited to add vintage countdown numeral5 on the screen",
+    "updatedAt": "2026-11-24"
   },
   {
     "key": "film-03-seats",

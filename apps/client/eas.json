@@ -29,7 +29,8 @@
     "testflight": {
       "extends": "production",
       "ios": {
-        "simulator": false
+        "simulator": false,
+        "image": "macos-tahoe-26.6-xcode-27.2"
       }
     },
     "ios-simulator": {

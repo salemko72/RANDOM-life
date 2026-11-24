@@ -22,9 +22,13 @@ export function createAdController(deps: {
   let policy: AdPolicy;
   let dead = false, active = false, ready = false, allowed = false;
   let initialized = false, booting = false, showing = false, loaded = false;
+  let documentGeneration = 0;
   let lastSeq = 0, generation = 0, adGeneration = 0, loadedAt = 0;
   let nextLoadAt = 0, nextConsentAt = 0, storageHealthy = true;
   let privacyPending = false;
+  let resumeRequest: (() => void) | null = null;
+  let adClosed: Promise<void> | null = null;
+  function releaseRequest() { const resume=resumeRequest;resumeRequest=null;adClosed=null;resume?.(); }
   let ad: ReturnType<AdsAdapter['preload']> | null = null;
   let writes: Promise<void> = Promise.resolve();
   const hydrated = Promise.resolve().then(deps.read).then(raw => {
@@ -51,6 +55,7 @@ export function createAdController(deps: {
   }
   function finishShowing() {
     showing = false;
+    releaseRequest();
     policy.setActive(active && ready, deps.now());
   }
   function failed() {
@@ -72,6 +77,7 @@ export function createAdController(deps: {
           if (dead || epoch !== adGeneration) return;
           finishShowing();
           drop();
+          prepare();
         },
         failed: () => {
           if (!dead && epoch === adGeneration) failed();
@@ -114,10 +120,13 @@ export function createAdController(deps: {
     } else if (!booting && !allowed && deps.now() >= nextConsentAt) void boot();
     else preload();
   }
-  async function opportunity(token: number) {
+  async function opportunity(token: number, onShowing?: () => void) {
+    if(dead)return;
+    if(showing){onShowing?.();await adClosed;return;}
     if (dead || !active || !ready || !allowed || !storageHealthy || !loaded || !ad || showing || deps.now() - loadedAt >= MAX_LOADED_MS || !policy.eligible(deps.now())) return;
     showing = true;
     const candidate = ad;
+    const closed = adClosed = new Promise<void>(resolve => { resumeRequest=resolve; });
     policy.reserve(deps.now());
     policy.setActive(false, deps.now());
     try {
@@ -127,16 +136,19 @@ export function createAdController(deps: {
         return;
       }
       loaded = false;
+      onShowing?.();
       await candidate.show();
+      await closed;
     } catch { if (!dead) failed(); }
   }
   return {
-    receive(m: AdMessage) {
+    receive(m: AdMessage, onShowing?: () => void) {
       if (dead || m.seq <= lastSeq) return;
       lastSeq = m.seq;
       const token = ++generation;
-      void hydrated.then(() => {
-        if (dead) return;
+      const documentToken = documentGeneration;
+      return hydrated.then(async () => {
+        if (dead || documentToken !== documentGeneration) return;
         if (m.event === 'ready') {
           ready = true;
           policy.ready(deps.now());
@@ -146,13 +158,13 @@ export function createAdController(deps: {
           policy.spin(deps.now());
           void persist().catch(() => {});
           preload();
-        } else if (m.event === 'home') {
-          if (token === generation) void opportunity(token);
+        } else if (m.event === 'request') {
+          if (token === generation) await opportunity(token,onShowing);
           preload();
         } else if (m.event === 'privacy') {
           // Invalidate old consent/preloads immediately, including during a pending write.
           allowed = false;
-          drop();
+          if(!showing)drop();
           privacyPending = true;
           prepare();
         }
@@ -169,11 +181,12 @@ export function createAdController(deps: {
       });
     },
     resetDocument() {
+      ++documentGeneration;
       lastSeq = 0;
       ++generation;
       ready = false;
       void hydrated.then(() => { if (!dead && !ready) policy.setActive(false, deps.now()); });
     },
-    dispose() { dead = true; ++generation; drop(); },
+    dispose() { dead = true; ++documentGeneration; ++generation; releaseRequest(); drop(); },
   };
 }

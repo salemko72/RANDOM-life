@@ -31,7 +31,7 @@ export const writeAsStringAsync=async(p,v)=>{if(env().failFiles)throw Error('dis
 export const readAsStringAsync=async p=>{if(!(p in env().files))throw Error('missing');return env().files[p];};
 export const deleteAsync=async p=>{delete env().files[p];};
 export const Asset={fromModule:()=>({hash:'abc123',localUri:'file:///bundle/ui.html',downloadAsync:async()=>{}})};
-export function createAdsRuntime(){env().adsInstances++;return{active(){},receive(){},resetDocument(){env().adDocumentResets++;},dispose(){env().adsDisposals++;}};}
+export function createAdsRuntime(){env().adsInstances++;return{active(){},receive(m,onShowing){if(m.event==='request'){onShowing?.();return new Promise(resolve=>{env().resumeAdRequest=resolve;});}},resetDocument(){env().adDocumentResets++;},dispose(){env().adsDisposals++;}};}
 export const WebView=forwardRef((props,ref)=>{
  useImperativeHandle(ref,()=>({injectJavaScript:script=>{env().injections.push(script);}}));
  useEffect(()=>{env().mounts++;env().view=props;props.onLoadStart?.();props.onLoadEnd?.();return()=>{env().oldViews.push(props);env().terminate(props);};},[]);
@@ -47,6 +47,11 @@ try{for(const platform of ['ios','android']){
  const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(`http://127.0.0.1:${server.address().port}/?platform=${platform}`);await page.waitForSelector('[data-webview]');
  const initial=await page.evaluate(()=>window.nativeTest.mounts);assert.equal(initial,1);
+ // Native responses from a same-WebView reload must not target the next document.
+ await page.evaluate(()=>{const e=window.nativeTest;e.view.onMessage({nativeEvent:{data:JSON.stringify({type:'lifespinner.ads.v1',event:'request',seq:100})}});e.view.onLoadStart();e.resumeAdRequest();});
+ await page.waitForTimeout(30);
+ assert(!await page.evaluate(()=>window.nativeTest.injections.some(script=>script.includes('"seq":100')&&script.includes('"stage":"continue"'))),'An old request cannot continue a new document after same-view reload');
+
  // Healthy background/resume keeps the same mounted document.
  await page.evaluate(()=>{const e=window.nativeTest;e.languages=['bs-BA','en-US'];for(const s of ['inactive','background','active']){e.active=s;e.listeners.forEach(fn=>fn(s));}});
  assert.equal(await page.evaluate(()=>window.nativeTest.mounts),1);

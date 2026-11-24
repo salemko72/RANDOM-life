@@ -1,6 +1,6 @@
 import {uiText,formatUi} from './ui-copy';
 import {formatInstalledBuild} from './build-info';
-import {adEvent,hasNativeAds} from './ads-bridge';
+import {adEvent,hasNativeAds,requestSpin} from './ads-bridge';
 import ShareAppControl from'./ShareAppControl';
 import{useNativeBack}from'./useNativeBack';
 import{backAction}from'../native/back-navigation';
@@ -165,6 +165,7 @@ function Experience(){
  async function startSpin(target?:SpinCategory){
   const reduced=motionReduced();performanceEvent('spin_requested',{reduced:Number(reduced),locked:Number(locked.current),targeted:Number(Boolean(target))});
   if(locked.current)return;adEvent('busy');void sfx.current?.unlock();locked.current=true;setBusy(true);setPanel(null);setMessage('');setDetails(false);
+  const continueSpin=await requestSpin();if(!mounted.current)return;if(!continueSpin){locked.current=false;setBusy(false);setMessage(uiText('Spin again','Zavrti ponovo',locale));return;}
   let currentProfile=profile;
   if(scene==='result'&&item&&!profile.completedIds.includes(item.id)&&!profile.events.some(e=>e.itemId===item.id&&e.kind==='accept')){currentProfile=recordSignal(profile,item,'skip');setProfile(currentProfile);}
   let current:ContentRecord[];try{current=await readPreviewCatalog();setPublished(approvedCatalog(current));setCatalogState(consumerCatalogStatus().source);setCatalogError('');}catch(error){const code=catalogFailure(error);setCatalogState('error');setCatalogError(code);setMessage((uiText("Online library could not be loaded.","Online biblioteka se nije učitala.",locale))+' · '+code);locked.current=false;setBusy(false);return;}
@@ -190,7 +191,7 @@ function Experience(){
   if(recommendation){sfx.current?.finish();expose(recommendation);adEvent('spin');}else{setItem(null);setMessage("Nema novog izbora za ova ograničenja. Vrati prethodne prijedloge ili izmijeni profil.");}
   locked.current=false;setBusy(false);
  }
- function goHome(){if(busy||locked.current)return;adEvent(scene==='result'&&!visiblePanel&&!details&&!editingProfile&&!imageExpanded&&entered&&launchPhase==='ready'?'home':'busy');setWheelChoices(null);setScene('home');setPanel(null);setDetails(false);}
+ function goHome(){if(busy||locked.current)return;adEvent('busy');setWheelChoices(null);setScene('home');setPanel(null);setDetails(false);}
  function toggleFavorite(event?:React.MouseEvent<HTMLButtonElement>){if(!item)return;const removing=favoriteIds.includes(item.id);setFavoriteIds(ids=>removing?ids.filter(id=>id!==item.id):[...ids,item.id].slice(-200));if(!removing){sfx.current?.save();signal(item,'save');setSaveNotice(uiText("Saved to favorites","Sačuvano u favorite",locale));const card=document.querySelector('.random-card')?.getBoundingClientRect();const origin=event?.currentTarget.getBoundingClientRect();const target=document.querySelector('[data-nav="favorites"]')?.getBoundingClientRect();if(card&&origin&&target){setSaveFlight({id:Date.now(),x:origin.x+origin.width/2-card.x,y:origin.y+origin.height/2-card.y,toX:target.x+target.width/2-card.x,toY:target.y+target.height/2-card.y,label:uiText("Saved to favorites","Sačuvano u favorite",locale)});}}else{setSaveFlight(null);setSaveNotice(uiText("Removed from favorites","Uklonjeno iz favorita",locale));}}
  useEffect(()=>{if(!saveFlight)return;const timer=setTimeout(()=>setSaveFlight(null),900);return()=>clearTimeout(timer);},[saveFlight]);
  useEffect(()=>{if(!saveNotice)return;const timer=setTimeout(()=>setSaveNotice(''),1800);return()=>clearTimeout(timer);},[saveNotice]);

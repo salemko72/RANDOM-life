@@ -39,7 +39,16 @@
     },
     "backgroundColor": "#fbefe7",
     "plugins": [
-      ["expo-localization", {"supportedLocales": ["en", "bs"], "allowDynamicLocaleChangesAndroid": true}],
+      [
+        "expo-localization",
+        {
+          "supportedLocales": [
+            "en",
+            "bs"
+          ],
+          "allowDynamicLocaleChangesAndroid": true
+        }
+      ],
       "./plugins/withOptionalPortraitFeature.cjs",
       [
         "react-native-google-mobile-ads",
@@ -50,7 +59,17 @@
           "delayAppMeasurementInit": true,
           "optimizeInitialization": true,
           "optimizeAdLoading": true,
-          "skAdNetworkItems": ["cstr6suwn9.skadnetwork"]
+          "skAdNetworkItems": [
+            "cstr6suwn9.skadnetwork"
+          ]
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "enableSceneSupport": true
+          }
         }
       ]
     ]

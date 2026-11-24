@@ -54,6 +54,7 @@ function NativeExperience(){
  const currentInsets=useRef(insets);currentInsets.current=insets;
  const state=useRef<LocalState>({});
  const webView=useRef<WebView>(null);
+ const adDocument=useRef(0);
  useEffect(()=>{const listener=AppState.addEventListener('change',next=>{if(next==='active')webView.current?.injectJavaScript(deviceLanguageScript(getLocales().map(locale=>locale.languageTag),true));});return()=>listener.remove();},[]);
  const pendingBack=useRef<string|null>(null),backSequence=useRef(0);
  useEffect(()=>{if(Platform.OS!=='android')return;const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webView.current||!uri||error||!recovery.current?.current(generation))return false;const requestId='back-'+(++backSequence.current);pendingBack.current=requestId;webView.current.injectJavaScript(nativeBackScript(requestId));return true;});return()=>subscription.remove();},[uri,error,generation]);
@@ -101,7 +102,7 @@ function NativeExperience(){
    javaScriptEnabled domStorageEnabled startInLoadingState
    renderLoading={()=><View style={styles.loading}><ActivityIndicator color="#af6c68"/></View>}
    onShouldStartLoadWithRequest={r=>allowWebNavigation(r,uri)}
-   onLoadStart={()=>{if(recovery.current?.current(generation))ads.current?.resetDocument();}}
+   onLoadStart={()=>{if(recovery.current?.current(generation)){adDocument.current++;ads.current?.resetDocument();}}}
    onLoadEnd={()=>{if(recovery.current?.current(generation))nativeMetric('webview_loaded');}}
    onContentProcessDidTerminate={()=>recovery.current?.terminated(generation)}
    onRenderProcessGone={event=>{if(!recovery.current?.current(generation))return;nativeMetric('android_render_process_gone',{failed:event.nativeEvent.didCrash?1:0});recovery.current.terminated(generation);}}
@@ -109,7 +110,13 @@ function NativeExperience(){
    onMessage={event=>{
     if(!recovery.current?.current(generation))return;
     const raw=event.nativeEvent.data;
-    const adMessage=parseAdMessage(raw);if(adMessage){ads.current?.receive(adMessage);return;}
+    const adMessage=parseAdMessage(raw);if(adMessage){
+     const documentToken=adDocument.current;
+     const notify=(stage:'showing'|'continue')=>{if(adDocument.current===documentToken&&recovery.current?.current(generation))webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent("lifespinner.ads.response.v1",{detail:'+JSON.stringify({seq:adMessage.seq,stage})+'}));true;');};
+     const result=ads.current?.receive(adMessage,()=>notify('showing'));
+     if(adMessage.event==='request')void Promise.resolve(result).then(()=>notify('continue')).catch(()=>notify('continue'));
+     return;
+    }
     const back=parseBackResult(raw,pendingBack.current);if(back!==null){pendingBack.current=null;if(!back&&Platform.OS==='android')BackHandler.exitApp();return;}
     const clearId=parseCatalogClearMessage(raw);if(clearId){const notify=(ok:boolean)=>{if(recovery.current?.current(generation))webView.current?.injectJavaScript('window.dispatchEvent(new CustomEvent(\"random-life.catalog-clear-result\",{detail:'+JSON.stringify({requestId:clearId,ok})+'}));true;');};void catalogStorage.current.clear().then(()=>{if(recovery.current?.current(generation))return FileSystem.writeAsStringAsync(uri.slice(0,uri.lastIndexOf('/')+1)+'catalog-cache.js','');}).then(()=>notify(true)).catch(()=>notify(false));return;}
     const catalog=parseCatalogMessage(raw);if(catalog){void catalogStorage.current.write(catalog).catch(()=>{});return;}

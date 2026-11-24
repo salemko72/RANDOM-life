@@ -10,3 +10,11 @@
 - User authorization: newiOSbuild+TestFlight upload; no public store release, merge, web/D1deploy, Androidnativebuild or extra cost. Do not activate new4languages; en/bs only.
 
 Actual delivery IDs/source/result follow after build attempt. No TestFlight availability claim before Apple processing.
+
+## Zakazano izdanje
+
+- Frozen clean EAS source **99625ee9b7488d9af5a70e323434e7ae1a2f056b**, appcode2a0503c249b11a3e2afad44266cc687644bfb417; sve kasnije izmjene su samo dokazi/dokumentacija.
+- Build **d2164cee-e1b0-4a7e-81f0-71b17b1c62fc** /1.0.1(7), testflight/testads, IN_PROGRESS. Auto submission **05b7385a-dc5b-4ba1-ab00-c6841807710f** AWAITING_BUILD.
+- Source push verified. PRcreate GraphQL403; compare https://github.com/salemko72/RANDOM-life/compare/codex/ahmed-android-shared-update...codex/salem-ios-build7-cinema?expand=1 . Nema PR ili mergea.
+- --freeze-credentials koristio isti cert/profil; Apple direktna remote provjera i TestFlightgroup setup vratili403, CLI fallback na postojeću lokalnu validaciju. EAS auto-submission zakazan s postojećim APIkeyem. Ne tvrditi da je Appleupload uspio doksubmissionne završi; tester group možda treba ručnu dodjelu.
+- Remote log potvrđuje Xcode27.2(27B52) i95instaliranih pods. Archive/IPA/SDK27metadata/submission/Appleprocessing/fizičkiQA još čekaju.

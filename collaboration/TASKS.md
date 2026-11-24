@@ -2,7 +2,7 @@
 
 ## IOS-BUILD-007-ADS — Cinema counter i oglas na Spin poslije5vrtnji
 
-- **Owner/grana:** salem-ios / codex/salem-ios-build7-cinema; implemented/tested24.11.2026, nalog korisnika za novi TestFlight i korekciju oglasa.
+- **Owner/grana:** salem-ios / codex/salem-ios-build7-cinema; build_in_progress24.11.2026 (buildd2164cee-e1b0-4a7e-81f0-71b17b1c62fc; submission05b7385a-dc5b-4ba1-ab00-c6841807710f; bez duplikata), nalog korisnika za novi TestFlight i korekciju oglasa.
 - **Osnova:** Ahmedov predani zajednički source2fa68549d444a309fb4e1dd32b953fe18476a037, docs head15dad55fce4a82af3dad317e2f8879d19e593df3; ne prepisivati novije language/build/Android recovery bridgeove.
 - **Scope:** cinema webp asset/provenance and offline imageBytes metadata; shared native ads-policy/controller/runtime, web ads-bridge/WebExperience i App.tsx handshake; relevantni testovi/harnessi; eas.json/Xcode27.2 image, SDK57 expo-build-properties scene support/dependency/lock, native build number ako potrebno; vlastita sesija/handoff, kratki TASKS/STATUS. Nema promjene tuđe grane.
 - **Kriteriji:** nakon5završenih vrtnji oglas isključivo na sljedeći centralni/category/repeat Spin; menu/Home/profile/navigation/foreground/late load nisu prilike; pauzirati vrtnju tokom oglasa, nastaviti nakon close ili odmah ako unavailable/consent/no-fill; nema beskonačnog čekanja/duplih oglasa/starih callbacks. Vremenski cap3min/3u30min zadržan kao saopšteni default; korisnik još nije odgovorio na optional pitanje. Brojač i capovi trajni; ne slati preference SDK-u. Nova kino slika s counterom5 umjesto praznog platna, bundled online/cache/reserve tokovi.

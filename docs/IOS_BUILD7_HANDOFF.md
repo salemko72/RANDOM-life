@@ -32,6 +32,10 @@ Application source **2a0503c249b11a3e2afad44266cc687644bfb417**, grana `codex/sa
 
 ## Stanje isporuke
 
+**EAS zakazan24.11.2026.14:06UTC /15:06CET**, čist build source **99625ee9b7488d9af5a70e323434e7ae1a2f056b**, application code2a0503c. [Build](https://expo.dev/accounts/salemko/projects/random/builds/d2164cee-e1b0-4a7e-81f0-71b17b1c62fc) trenutno IN_PROGRESS; [submission](https://expo.dev/accounts/salemko/projects/random/submissions/05b7385a-dc5b-4ba1-ab00-c6841807710f) AWAITING_BUILD. Ne pokretati duplikat. Log već potvrđuje VMmacos-tahoe-26.6-xcode-27.2, Xcode27.2(27B52), uspješan install95pods, Xcode archive radi. Apple provisioning validation i TestFlightgroup setup su dobili403; CLI nastavio s lokalno važećim postojećim profilom i remote submissionAPIkeyem. To nije dokaz Apple upload greške; rezultat submissiona još otvoren. Nema novih signing ključeva.
+
+GitHub draft PR create prema Ahmedshared branch dobio GraphQL403. Grana je pushana; [tačan compare](https://github.com/salemko72/RANDOM-life/compare/codex/ahmed-android-shared-update...codex/salem-ios-build7-cinema?expand=1). PR nije stvoren. Ovo nije auto-review approval rejection.
+
 Source je implementiran/testiran; stvarni EASbuild/submission/Appleprocessing i fizički QA se evidentiraju naknadno u sesiji i release handoffu. Nema automatskog mergea, web/D1 deploya, Android builda, prod App Store releasea ili dodatnog troška.
 
 Za Ahmeda: ovaj app commit je novi zajednički code pin za Android12/iOS7 (sa iOS-specifičnim scene/image configom). Ne buildati stari2fa ako želi iste oglase/sliku. Primijeniti vlastitu granu/predaju, svježe provjeriti Play broj/kvotu/signer; nema pretpostavke automatskog obavještavanja.

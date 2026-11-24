@@ -1,5 +1,15 @@
 # Zajednički zadaci
 
+## RELEASE-110-008 — Regionalne jedinice i6aktivnih jezika
+
+- **Owner/grana:** salem-release / codex/salem-110-regional-units, claimed24.11.2026; korisnik izričito traži jedinice po regiji, aktivne jezike i1.1.0/build8. Ovo zamjenjuje raniji EN/BS-only activation hold za novu binariju, ne daje lažnu ljudsku review oznaku.
+- **Base:**3b35368512ff967b0b3e46e4829e91278d741860, application2a0503c, build7source99625ee. Sačuvati cinema5/ads5-nextSpin/WebViewrecovery/Xcode27.2scene/latestAhmedshared.
+- **Scope:** measurement helper/tests, regional boot+foreground bridge/native allowlist, web unit preference/provider/chooser i recipe ingredient/text rendering;6locale UI selection/native supportedLocales/sharefallback/inline surfaces, relevant tests/browser harness;1.1.0/iOS8config i vlastiti plan/session/handoff. Dva nezavisna file scopea: root jezici/UI/native/integration; units worker samo packages/shared/src/measurement.ts i tests/measurement.test.ts.
+- **Kriteriji:** OSmeasurement/region automatski, manualauto/metric/us rememberedlocal, ne zavisi od izabranog UIjezika; coreUS conversions mass/volume/temp tačne, ne pogađati densitycup→grams/neodređene mjere;6lokalizacijaonline/cache/100reserve/profile/menu, locale-aware display, izvorni protected quantities/nutrition/allergens/filteri/IDs/hash/cachebytes nepromijenjeni. Native boot/resume i shared views.
+- **Pristup:** postojeći guarded consumer overlay već dodaje4prevoda preko nepromijenjenog javnog feeda. Aktivirati klijent bez D1/versionmutacija; stari klijenti i17recipe wording bounds ostaju sigurni. Existing server/share/legal endpoints EN/BS imaju eksplicitni English fallback za nove appjezike, bez tvrdnje da su prevedeni eksterni dokumenti/SDKporuke.
+- **Ovlaštenje/granice:** source, provjere i priprema1.1.0(8); novi nativebuild tek nakon pinnedsource/broj/kvota/signercheck. Bez paidresursa, mergea, DB/web/prodAppStorereleasea. Build7submission ne duplirati/ne otkazivati.
+
+
 ## IOS-BUILD-007-ADS — Cinema counter i oglas na Spin poslije5vrtnji
 
 - **Owner/grana:** salem-ios / codex/salem-ios-build7-cinema; build_in_progress24.11.2026 (buildd2164cee-e1b0-4a7e-81f0-71b17b1c62fc; submission05b7385a-dc5b-4ba1-ab00-c6841807710f; bez duplikata), nalog korisnika za novi TestFlight i korekciju oglasa.

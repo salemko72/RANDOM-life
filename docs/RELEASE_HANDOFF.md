@@ -1,3 +1,5 @@
+> **24.11.2026. iOS7 kandidat:** application source `2a0503c249b11a3e2afad44266cc687644bfb417`, codex/salem-ios-build7-cinema.403tests/TS/preview/Spin-ad/native lifecycle/browser/iOSHermes export PASS; stvarni build/submission još nisu pokrenuti. Novi cinema counter5, oglasi poslije5samo na sljedećiSpin, latest Ahmed shared source, Xcode27.2 scene support. Test ads; nema prod releasea. [Precizna predaja](IOS_BUILD7_HANDOFF.md).
+
 # LifeSpinner — release handoff
 
 ## Završeni Android live AAB16.11.

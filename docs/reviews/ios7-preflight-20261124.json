@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-24",
+  "candidate": {
+    "version": "1.0.1",
+    "iosBuild": "7",
+    "androidCandidate": 12,
+    "profile": "testflight",
+    "adsMode": "test"
+  },
+  "sourceBase": "2fa68549d444a309fb4e1dd32b953fe18476a037",
+  "easFreeQuota": {
+    "ios": {
+      "used": 6,
+      "limit": 15,
+      "percentUsed": 40
+    },
+    "total": {
+      "used": 10,
+      "limit": 30,
+      "percentUsed": 33
+    },
+    "overageCents": 0
+  },
+  "signingPublicMetadata": [
+    {
+      "appleAppIdentifier": {
+        "bundleIdentifier": "com.salemko.randomlife",
+        "__typename": "AppleAppIdentifier"
+      },
+      "iosAppBuildCredentialsList": [
+        {
+          "iosDistributionType": "APP_STORE",
+          "distributionCertificate": {
+            "serialNumber": "CC1209C468F7ABC54F45E3BFA7E67FB",
+            "validityNotAfter": "2027-11-03T09:10:33.000Z",
+            "__typename": "AppleDistributionCertificate"
+          },
+          "provisioningProfile": {
+            "status": "active",
+            "expiration": "2027-11-03T09:10:33.000Z",
+            "__typename": "AppleProvisioningProfile"
+          },
+          "__typename": "IosAppBuildCredentials"
+        }
+      ],
+      "__typename": "IosAppCredentials"
+    }
+  ],
+  "lastEasIosBuild": {
+    "number": 6,
+    "id": "89d27194-7318-4264-8af8-ef1ad8cedf6d",
+    "source": "4b094435d995f0a35ed91baa54bc17ed5b99f605"
+  },
+  "asset": {
+    "path": "apps/client/src/web/assets/generic/generic-film-02-cinema-v1.webp",
+    "bytes": 97048,
+    "sha256": "2a55c6c9e2611d95b7e17e7bd51198366b2cf260594ecdbfbb2accbdd18ebe45"
+  },
+  "configuredImage": "macos-tahoe-26.6-xcode-27.2",
+  "imageReference": "https://github.com/expo/expo/blob/main/docs/pages/build-reference/infrastructure.mdx",
+  "sceneManifest": {
+    "UIApplicationSupportsMultipleScenes": false,
+    "UISceneConfigurations": {
+      "UIWindowSceneSessionRoleApplication": [
+        {
+          "UISceneConfigurationName": "Default Configuration",
+          "UISceneDelegateClassName": "EXExpoAppSceneDelegate"
+        }
+      ]
+    }
+  },
+  "nativeCompile": "not run yet; local prebuild/config and Metro/Hermes export only",
+  "activeLocales": [
+    "en",
+    "bs"
+  ],
+  "pending": "EAS build, actual Xcode/SDK log proof, Apple submission/processing and physical QA"
+}

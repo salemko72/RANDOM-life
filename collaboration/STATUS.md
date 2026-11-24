@@ -2,7 +2,7 @@
 
 ## Novi iOS kandidat24.11.2026.
 
-IOS-BUILD-007-ADS preuzet na codex/salem-ios-build7-cinema iz Ahmedovog zajedničkog sourcea2fa6854/docs15dad55. Korisnik traži novu kino sliku sa counterom5 i potvrđuje oglas nakon5završenih vrtnji isključivo na sljedeći Spin pritisak. Dosadašnji kod je6spins/2min/Home; prvo regresije i handshake. EAS pristup radi kao postojeći owner; inventar najvišeiOS6. Bez novog builda ili store slanja u trenutku claima.
+IOS-BUILD-007-ADS implementiran/testiran, source2a0503c249b11a3e2afad44266cc687644bfb417,403tests/TS/native scene config/browser/iOSexport PASS. [Predaja](../docs/IOS_BUILD7_HANDOFF.md). Stvarni build još nije pokrenut. Preuzet na codex/salem-ios-build7-cinema iz Ahmedovog zajedničkog sourcea2fa6854/docs15dad55. Korisnik traži novu kino sliku sa counterom5 i potvrđuje oglas nakon5završenih vrtnji isključivo na sljedeći Spin pritisak. Dosadašnji kod je6spins/2min/Home; prvo regresije i handshake. EAS pristup radi kao postojeći owner; inventar najvišeiOS6. Bez novog builda ili store slanja u trenutku claima.
 
 ## Zajednička Android/iOS integracija22.11. — source predan, fizički QA otvoren
 

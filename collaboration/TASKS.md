@@ -1,5 +1,15 @@
 # Zajednički zadaci
 
+## IOS-BUILD-007-ADS — Cinema counter i oglas na Spin poslije5vrtnji
+
+- **Owner/grana:** salem-ios / codex/salem-ios-build7-cinema; claimed24.11.2026, nalog korisnika za novi TestFlight i korekciju oglasa.
+- **Osnova:** Ahmedov predani zajednički source2fa68549d444a309fb4e1dd32b953fe18476a037, docs head15dad55fce4a82af3dad317e2f8879d19e593df3; ne prepisivati novije language/build/Android recovery bridgeove.
+- **Scope:** cinema webp asset; shared native ads-policy/controller/runtime, web ads-bridge/WebExperience i App.tsx handshake; relevantni testovi/harnessi; eas.json/Xcode image, native build number ako potrebno; vlastita sesija/handoff, kratki TASKS/STATUS. Nema promjene tuđe grane.
+- **Kriteriji:** nakon5završenih vrtnji oglas isključivo na sljedeći centralni/category/repeat Spin; menu/Home/profile/navigation/foreground/late load nisu prilike; pauzirati vrtnju tokom oglasa, nastaviti nakon close ili odmah ako unavailable/consent/no-fill; nema beskonačnog čekanja/duplih oglasa/starih callbacks. Vremenski cap još predmet korisničkog odgovora. Brojač i capovi trajni; ne slati preference SDK-u. Nova kino slika s counterom5 umjesto praznog platna, bundled online/cache/reserve tokovi.
+- **Provjere:** test-first regresije i puni suite, TS/preview, stvarni web/native-boundary lifecycle i spin browser harness; lokalni iOS export/native config. Prije jednog EASbuilda provjeriti kvotu, postojeći signer, slobodan broj i Xcode/SDK.
+- **Ovlaštenje/granice:** novi iOS TestFlight build/upload, test oglasi ostaju u testflight profilu; bez prod releasea, mergea, DB/web deploya ili troška. Nove4lokalizacije ostaju neaktivirane prema postojećoj predaji. IOS7 kandidat provjeren u EAS inventaru (najveći6), ASC dostupnost još nije nezavisno potvrđena.
+
+
 ## ANDROID-SHARED-20261122 — Zajednički Android/iOS source i Android WebView recovery
 
 - **Odgovorni/grana:** ahmed-admob / `codex/ahmed-android-shared-update`, izričit nalog22.11.2026.

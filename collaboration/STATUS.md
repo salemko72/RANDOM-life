@@ -1,5 +1,9 @@
 # Trenutno stanje
 
+## Novi iOS kandidat24.11.2026.
+
+IOS-BUILD-007-ADS preuzet na codex/salem-ios-build7-cinema iz Ahmedovog zajedničkog sourcea2fa6854/docs15dad55. Korisnik traži novu kino sliku sa counterom5 i potvrđuje oglas nakon5završenih vrtnji isključivo na sljedeći Spin pritisak. Dosadašnji kod je6spins/2min/Home; prvo regresije i handshake. EAS pristup radi kao postojeći owner; inventar najvišeiOS6. Bez novog builda ili store slanja u trenutku claima.
+
 ## Zajednička Android/iOS integracija22.11. — source predan, fizički QA otvoren
 
 `codex/ahmed-android-shared-update`, [draft PR6](https://github.com/salemko72/RANDOM-life/pull/6), jedan kandidatski source **`2fa68549d444a309fb4e1dd32b953fe18476a037`** za Android i naredni iOS. Najnoviji translation source854de3d + recovery9b5f097 uz očuvani language/build-info bridge; dodat Android onRenderProcessGone, zaštita stale catalog-clear callbacka i PR5 optional portrait feature. Onboarding/Home repeat/recipe online-cache-offline/generic/language chooser/menu diagnostics i stvarni build sačuvani.392testa/60fajlova, TS/preview/native config/Android live JS+Hermes i lifecycle/browser PASS. Kandidati1.0.1/Android12/iOS7, nisu potvrđeni u Play/ASC; EAS nema12/7, Free10/30(Android4/15,iOS6/15),overage0; Android signer isti. **Nema novog APK/AAB/IPA niti fizičkog QA** (ADB prazan). Novi jezici ostaju pripremljeni draftovi, en/bs aktivni; nema D1/web aktivacije, mergea ili store slanja. [Predaja/blokade](../docs/ANDROID_SHARED_UPDATE.md), [sesija15](sessions/2026-11-22-ahmed-admob-15.md). Ovo ne vraća source na stariji build5 niti mijenja postojeće instalirane buildove.

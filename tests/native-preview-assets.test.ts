@@ -68,3 +68,10 @@ it('boots reviewed device preferences alongside existing build, ads and local pr
   expect(window.__lifespinnerBuild).toEqual({version:'1.0.1',build:'12',platform:'android'});
   expect(window.__lifespinnerAds).toBe(true);
  });
+
+it('includes device regional settings in a refreshed bootstrap while preserving current preferences',async()=>{
+ const writes:Record<string,string>={};const fs={cacheDirectory:'file:///cache/',makeDirectoryAsync:async()=>{},getInfoAsync:async()=>({exists:true}),copyAsync:async()=>{},writeAsStringAsync:async(path:string,value:string)=>{writes[path]=value;}};
+ await prepareNativePreview({hash:'abc123',localUri:'file:///bundle/preview.html',downloadAsync:async()=>{}},fs,{[PROFILE_KEY]:'kept'}, {top:0,bottom:0},null,{regionalSettings:{regionCode:'DE',measurementSystem:'metric'}});
+ const window:any={ReactNativeWebView:{postMessage(){}}};runInNewContext(writes['file:///cache/random-preview-abc123/native-state.js'],{window,document:{documentElement:{style:{setProperty(){}}}}});
+ expect(JSON.parse(JSON.stringify(window.__lifespinnerRegionalSettings))).toEqual({regionCode:'DE',measurementSystem:'metric'});expect(window.localStorage.getItem(PROFILE_KEY)).toBe('kept');
+});

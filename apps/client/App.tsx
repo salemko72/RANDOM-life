@@ -1,3 +1,4 @@
+import{regionalSettingsScript}from'./src/native/regional-settings';
 import {getLocales} from 'expo-localization';
 import {deviceLanguageScript} from './src/native/device-language';
 import {createWebViewRecovery,type WebViewSnapshot} from './src/native/webview-recovery';
@@ -55,7 +56,7 @@ function NativeExperience(){
  const state=useRef<LocalState>({});
  const webView=useRef<WebView>(null);
  const adDocument=useRef(0);
- useEffect(()=>{const listener=AppState.addEventListener('change',next=>{if(next==='active')webView.current?.injectJavaScript(deviceLanguageScript(getLocales().map(locale=>locale.languageTag),true));});return()=>listener.remove();},[]);
+ useEffect(()=>{const listener=AppState.addEventListener('change',next=>{if(next==='active'){const locales=getLocales();webView.current?.injectJavaScript(deviceLanguageScript(locales.map(locale=>locale.languageTag),true)+regionalSettingsScript(locales[0],true));}});return()=>listener.remove();},[]);
  const pendingBack=useRef<string|null>(null),backSequence=useRef(0);
  useEffect(()=>{if(Platform.OS!=='android')return;const subscription=BackHandler.addEventListener('hardwareBackPress',()=>{if(!webView.current||!uri||error||!recovery.current?.current(generation))return false;const requestId='back-'+(++backSequence.current);pendingBack.current=requestId;webView.current.injectJavaScript(nativeBackScript(requestId));return true;});return()=>subscription.remove();},[uri,error,generation]);
  const catalogStorage=useRef(createNativeCatalogStorage(FileSystem,AsyncStorage));
@@ -78,7 +79,7 @@ function NativeExperience(){
     await loadState();
     const catalog=await catalogStorage.current.read();
     const asset=Asset.fromModule(require('./src/generated/preview.html'));
-    return prepareNativePreview(asset,FileSystem,()=>state.current,currentInsets.current,catalog,{deviceLanguages:getLocales().map(locale=>locale.languageTag),ads:Platform.OS==='android'||Platform.OS==='ios',buildInfo:Platform.OS==='ios'||Platform.OS==='android'?{version:appConfig.expo.version,build:String(nativeBuild),platform:Platform.OS}:undefined});
+    return prepareNativePreview(asset,FileSystem,()=>state.current,currentInsets.current,catalog,{deviceLanguages:getLocales().map(locale=>locale.languageTag),regionalSettings:getLocales()[0],ads:Platform.OS==='android'||Platform.OS==='ios',buildInfo:Platform.OS==='ios'||Platform.OS==='android'?{version:appConfig.expo.version,build:String(nativeBuild),platform:Platform.OS}:undefined});
    },
    changed:next=>{if(mounted){if(next.phase!=='ready')pendingBack.current=null;setView(next);}},
    metric:nativeMetric,

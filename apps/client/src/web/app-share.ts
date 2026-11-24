@@ -1,10 +1,11 @@
 import {uiText} from './ui-copy';
-import type{Locale}from'@random/shared';
+import {appLocales,type Locale}from'@random/shared';
 export const APP_SHARE_ORIGIN='https://random-life-preview.pages.dev';
-export const appShareUrl=(locale:Locale)=>`${APP_SHARE_ORIGIN}/get-app?lang=${locale}`;
+export const publicShareLocale=(locale:Locale):'en'|'bs'=>locale==='bs'?'bs':'en';
+export const appShareUrl=(locale:Locale)=>`${APP_SHARE_ORIGIN}/get-app?lang=${publicShareLocale(locale)}`;
 const description=(locale:Locale)=>uiText("LifeSpinner — discover recipes, books, films and ideas for your next moment.","LifeSpinner — otkrij recepte, knjige, filmove i ideje za svoj sljedeći trenutak.",locale);
 export function parseAppShare(raw:string):{title:string;message:string;url:string}|null{
- if(raw.length>300)return null;try{const x=JSON.parse(raw);if(!x||x.type!=='lifespinner.app-share.v1'||!['en','bs'].includes(x.locale)||Object.keys(x).some(k=>!['type','locale'].includes(k)))return null;const url=appShareUrl(x.locale);return{title:'LifeSpinner',message:description(x.locale)+'\n'+url,url};}catch{return null;}
+ if(raw.length>300)return null;try{const x=JSON.parse(raw);if(!x||x.type!=='lifespinner.app-share.v1'||!appLocales.includes(x.locale)||Object.keys(x).some(k=>!['type','locale'].includes(k)))return null;const url=appShareUrl(x.locale);return{title:'LifeSpinner',message:description(x.locale)+'\n'+url,url};}catch{return null;}
 }
 export async function shareApp(locale:Locale):Promise<'shared'|'copied'|'cancelled'|'manual'>{
  const payload={type:'lifespinner.app-share.v1',locale},share=parseAppShare(JSON.stringify(payload))!;

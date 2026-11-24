@@ -1,7 +1,8 @@
+import type{Locale}from'@random/shared';
 import {uiText} from './ui-copy';
 import React,{useEffect,useState}from'react';
 import{clearConsumerCatalog,consumerCatalogInfo}from'./bundled-catalog';
-export default function CatalogControls({locale}:{locale:'en'|'bs'}){
+export default function CatalogControls({locale}:{locale:Locale}){
  const[network,setNetwork]=useState(()=>navigator.onLine);const[,update]=useState(0);const[clearing,setClearing]=useState(false);const[notice,setNotice]=useState('');
  useEffect(()=>{const connection=()=>setNetwork(navigator.onLine),catalog=()=>update(v=>v+1);window.addEventListener('online',connection);window.addEventListener('offline',connection);window.addEventListener('random-catalog-updated',catalog);return()=>{window.removeEventListener('online',connection);window.removeEventListener('offline',connection);window.removeEventListener('random-catalog-updated',catalog);};},[]);
  const info=consumerCatalogInfo();

@@ -30,11 +30,12 @@ const labels = {
     review: "Na pregledu",
     published: "Objavljeno",
 };
-export default function App({ preview = false, samples = demoItems, locale = 'en' }: {
+export default function App({ preview = false, samples = demoItems, locale:requestedLocale = 'en' }: {
     preview?: boolean;
     samples?: ContentInput[];
     locale?: Locale;
 } = {}) {
+    const locale:'en'|'bs'=requestedLocale==='bs'?'bs':'en';
     const tx = (value: string) => studioText(locale, value);
     const [atlasQueue,setAtlasQueue]=useState<AtlasBatch[]>(()=>{try{const saved=JSON.parse(localStorage.getItem('random-life.atlas-queue.v1')||'[]');return Array.isArray(saved)?saved.filter(b=>b?.status==='pending'&&b?.columns===10&&b?.rows===10&&Array.isArray(b.cells)&&b.cells.length===100):[];}catch{return [];}});
     const [batchJSON,setBatchJSON]=useState('');

@@ -15,7 +15,7 @@ try{
  await page.reload();await chooser.waitFor();assert.equal(await page.locator('html').getAttribute('lang'),'bs');
  assert.equal(await page.evaluate(()=>localStorage.getItem('random-life.locale.v1')),'auto');
  await page.evaluate(()=>{window.__lifespinnerDeviceLanguages=['de-DE','en-US'];window.dispatchEvent(new Event('languagechange'));});
- await page.waitForFunction(()=>document.documentElement.lang==='en');
+ await page.waitForFunction(()=>document.documentElement.lang==='de');
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
  await page.evaluate(()=>localStorage.setItem('random-life.locale.v1','bs'));
  await page.reload();await chooser.waitFor();assert.equal(await page.locator('html').getAttribute('lang'),'bs');
@@ -23,7 +23,7 @@ try{
  assert.equal(await page.locator('html').getAttribute('lang'),'bs');
  await context.close();
  const german=await browser.newContext({locale:'de-DE',viewport:{width:390,height:844},reducedMotion:'reduce'});
- const germanPage=await german.newPage();await germanPage.goto('http://127.0.0.1:'+server.address().port);await germanPage.locator('.language-chooser').first().waitFor();assert.equal(await germanPage.locator('html').getAttribute('lang'),'en','Unfinished German stays gated');
+ const germanPage=await german.newPage();await germanPage.goto('http://127.0.0.1:'+server.address().port);await germanPage.locator('.language-chooser').first().waitFor();assert.equal(await germanPage.locator('html').getAttribute('lang'),'de','German follows device language');
  await german.close();
  const blocked=await browser.newContext({locale:'bs-BA',reducedMotion:'reduce'});await blocked.addInitScript(()=>{Storage.prototype.getItem=function(){throw Error('storage blocked');};Storage.prototype.setItem=function(){throw Error('storage blocked');};});const blockedPage=await blocked.newPage();await blockedPage.goto('http://127.0.0.1:'+server.address().port);await blockedPage.locator('.language-chooser').first().waitFor();assert.equal(await blockedPage.locator('html').getAttribute('lang'),'bs','Storage failure must not crash initial language selection');await blocked.close();
  console.log('PASS automatic device language, manual override, reload, foreground fallback, compact layout');

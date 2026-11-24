@@ -11,3 +11,4 @@ export * from './access-links';
 export * from './language-preference';
 
 export * from './content-draft-translations';
+export * from './measurement';

@@ -1,7 +1,7 @@
-import{appShareUrl}from'./app-share';
+import{appShareUrl,publicShareLocale}from'./app-share';
 import type {Locale} from '@random/shared';
 export const SHARE_ORIGIN='https://random-life-preview.pages.dev';
-export function itemShareUrl(id:string,locale:Locale){return `${SHARE_ORIGIN}/item/${encodeURIComponent(id)}?lang=${locale}`;}
+export function itemShareUrl(id:string,locale:Locale){return `${SHARE_ORIGIN}/item/${encodeURIComponent(id)}?lang=${publicShareLocale(locale)}`;}
 export function parseNativeShare(raw:string):{title:string;message:string;url:string}|null{
  if(raw.length>6000)return null;
  try{const m=JSON.parse(raw),url=new URL(m.url);if(m.type!=='random-life.share.v1'||url.origin!==SHARE_ORIGIN||!/^\/item\/[a-zA-Z0-9_-]{1,180}$/.test(url.pathname)||!['en','bs'].includes(url.searchParams.get('lang')??'')||typeof m.title!=='string'||m.title.length>500||typeof m.message!=='string'||m.message.length>2000)return null;if(url.hash||url.username||url.password||[...url.searchParams.keys()].some(k=>k!=='lang')||url.searchParams.getAll('lang').length!==1)return null;return{title:m.title,message:`${m.title}\n${url.href}\nLifeSpinner: ${appShareUrl(url.searchParams.get('lang') as Locale)}`,url:url.href};}catch{return null;}

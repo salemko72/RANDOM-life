@@ -479,3 +479,6 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 
 .menu-footer{margin-top:16px;padding-top:8px;border-top:1px solid rgba(175,108,104,.16)}
 .menu-footer .panel-menu-item{font-size:12px}
+
+/* Region/unit controls share the existing compact preference buttons. */
+.unit-settings{margin:14px 0}.unit-settings .eyebrow{margin-bottom:8px}.unit-chooser{display:flex;flex-wrap:wrap;gap:7px}.unit-chooser button{font-size:12px;letter-spacing:0;padding:9px 12px}.units-note{font-size:11px;line-height:1.5;margin-top:8px}.onboarding-content .unit-settings{max-width:100%;margin:10px 0 18px}.language-chooser{flex-wrap:wrap}

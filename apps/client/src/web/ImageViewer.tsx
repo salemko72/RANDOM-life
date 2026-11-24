@@ -1,9 +1,10 @@
+import type{Locale}from'@random/shared';
 import {uiText,formatUi} from './ui-copy';
 import React,{useEffect,useRef} from 'react';
 import {createPortal} from 'react-dom';
 import Icon from './Icon';
 
-export default function ImageViewer({src,alt,title,locale,onClose}:{src:string;alt:string;title:string;locale:'en'|'bs';onClose:()=>void}){
+export default function ImageViewer({src,alt,title,locale,onClose}:{src:string;alt:string;title:string;locale:Locale;onClose:()=>void}){
  const dialog=useRef<HTMLDialogElement>(null);
  const close=useRef<HTMLButtonElement>(null);
  useEffect(()=>{

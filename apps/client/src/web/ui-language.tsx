@@ -1,6 +1,7 @@
+import{MeasurementProvider}from'./measurement-preference';
 import {uiText,uiLocaleCode,type UiLocale} from './ui-copy';
 import React, {createContext, useContext, useState, useEffect} from 'react';
-import {chooseSupportedLocale,readLanguagePreference,LANGUAGE_PREFERENCE_KEY,type Locale} from '@random/shared';
+import {appLocales,chooseSupportedLocale,readLanguagePreference,LANGUAGE_PREFERENCE_KEY,type Locale} from '@random/shared';
 import {preferredDeviceLanguages} from './device-language';
 const english:Record<string,string> = {
  "Povezanost":"Connection", "Ljubaznost":"Kindness", "Briga o sebi":"Self-care", "Na otvorenom":"Outdoors", "Muzika":"Music", "Mali red u domu":"Home reset",
@@ -206,8 +207,8 @@ export function translate(text:string,locale:UiLocale):string {return locale==='
 export function categoryLabel(code:string,locale:UiLocale):string {const labels:Record<string,string>={EAT:'HRANA',READ:'KNJIGE',BOOK:'KNJIGE',WATCH:'GLEDAJ',MOVE:'POKRENI SE',GO:'IZAĐI',LISTEN:'SLUŠAJ',PLAY:'IGRAJ',CREATE:'STVARAJ',LEARN:'UČI'};return uiText(code==='BOOK'?'READ':code,labels[code]??code,locale);}
 const values:Record<string,string>={connection:'Povezanost',kindness:'Ljubaznost','self-care':'Briga o sebi',outdoors:'Na otvorenom',music:'Muzika','home-reset':'Mali red u domu',milk:'Mlijeko',eggs:'Jaja',wheat:'Pšenica',nuts:'Orašasti plodovi',peanuts:'Kikiriki',soy:'Soja',fish:'Riba',shellfish:'Školjke',sesame:'Susam',mustard:'Senf',celery:'Celer',sulfites:'Sulfiti',lupin:'Lupina',lactose:'Laktoza',gluten:'Gluten',gym:'Gym',trim:'Trim',yoga:'Yoga',cinema:'Kino',theater:'Teatar',disco:'Ples',cafe:'Kafić'};
 export function valueLabel(value:string,locale:UiLocale):string{return translate(values[value]??value,locale);}
-// Only reviewed UI/content locales are selectable in this phase.
-const readyLocales=['en','bs'] as const;
+// Product-enabled locales; translation review provenance remains unchanged.
+const readyLocales=appLocales;
 type Preference=Locale|'auto';
 function loadPreference():Preference {try{return readLanguagePreference(localStorage,readyLocales);}catch{return 'auto';}}
 function deviceLocale():Locale {
@@ -221,10 +222,10 @@ export function LanguageProvider({children}:{children:React.ReactNode}) {
  const locale=preference==='auto'?automaticLocale:preference;
  useEffect(()=>{const update=()=>setAutomaticLocale(deviceLocale());window.addEventListener('languagechange',update);update();return()=>window.removeEventListener('languagechange',update);},[]);
  useEffect(()=>{try{localStorage.setItem(LANGUAGE_PREFERENCE_KEY,preference);}catch{}document.documentElement.lang=locale;},[preference,locale]);
- return <LanguageContext.Provider value={{locale,preference,setLocale:setPreference,setPreference}}>{children}</LanguageContext.Provider>;
+ return <LanguageContext.Provider value={{locale,preference,setLocale:setPreference,setPreference}}><MeasurementProvider>{children}</MeasurementProvider></LanguageContext.Provider>;
 }
 export function useLanguage(){const context=useContext(LanguageContext);return {...context,t:(text:string)=>translate(text,context.locale),category:(code:string)=>categoryLabel(code,context.locale),value:(value:string)=>valueLabel(value,context.locale)};}
 export function LanguageChooser(){const {locale,preference,setPreference}=useLanguage();return <div className="language-chooser" role="group" aria-label={uiText('Language','Jezik',locale)}>
  <button type="button" aria-pressed={preference==='auto'} onClick={()=>setPreference('auto')}>{uiText('Automatic','Automatski',locale)}{preference==='auto'?` · ${uiLocaleCode(locale)}`:''}</button>
- {readyLocales.map(code=><button type="button" key={code} aria-pressed={preference===code} onClick={()=>setPreference(code)}>{code==='en'?'ENG':'BHS'}</button>)}
+ {readyLocales.map(code=><button type="button" key={code} aria-pressed={preference===code} onClick={()=>setPreference(code)}>{uiLocaleCode(code)}</button>)}
  </div>;}

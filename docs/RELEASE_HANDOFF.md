@@ -1,3 +1,5 @@
+> **24.11.2026. novi kandidat1.1.0(8):** regionalne display jedinice,6aktivnih jezika,431tests/TS/browser/iOS+AndroidHermes PASS. Stvarni EASbuild8 nije još završen. [Aktuelna predaja](RELEASE_110_BUILD8_HANDOFF.md). Build7 upload je u međuvremenu FINISHED; historijski IN_QUEUE ispod zamijenjen tim rezultatom.
+
 > **24.11.2026. iOS7 kandidat:** application source `2a0503c249b11a3e2afad44266cc687644bfb417`, codex/salem-ios-build7-cinema.403tests/TS/preview/Spin-ad/native lifecycle/browser/iOSHermes export PASS; čist EASsource99625ee9b7488d9af5a70e323434e7ae1a2f056b, buildd2164cee-e1b0-4a7e-81f0-71b17b1c62fc FINISHED/submission05b7385a-dc5b-4ba1-ab00-c6841807710f IN_QUEUE; Xcode27.2 i stvarniSDK27.2/ARCHIVE SUCCEEDED potvrđeni; ne duplirati. Novi cinema counter5, oglasi poslije5samo na sljedećiSpin, latest Ahmed shared source, Xcode27.2 scene support. Test ads; nema prod releasea. [Precizna predaja](IOS_BUILD7_HANDOFF.md).
 
 # LifeSpinner — release handoff

@@ -2,7 +2,8 @@ import {z} from 'zod';
 import type {ContentInput} from './content';
 import {resolveIngredient} from './ingredient-tags';
 export const supportedLocales=['en','bs','fr','de','es','zh-Hans','ar','pt-BR','it'] as const;
-export type Locale='en'|'bs';
+export const appLocales=['en','bs','es','pt-BR','de','it'] as const;
+export type Locale=typeof appLocales[number];
 /** Accepted content translations; selectable UI locales are gated separately. */
 export type ContentLocale=typeof supportedLocales[number];
 const line=z.string().trim().min(1).max(2000);

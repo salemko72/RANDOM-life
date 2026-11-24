@@ -2,6 +2,8 @@
 
 ## RELEASE-110-008 — Regionalne jedinice i6aktivnih jezika
 
+- **Napredak:** implementirano/testirano431tests/65files, TS, browser6jezika+regional units, oba nativeHermes exporta; remote build8 još nije završen. [Predaja](../docs/RELEASE_110_BUILD8_HANDOFF.md).
+
 - **Owner/grana:** salem-release / codex/salem-110-regional-units, claimed24.11.2026; korisnik izričito traži jedinice po regiji, aktivne jezike i1.1.0/build8. Ovo zamjenjuje raniji EN/BS-only activation hold za novu binariju, ne daje lažnu ljudsku review oznaku.
 - **Base:**3b35368512ff967b0b3e46e4829e91278d741860, application2a0503c, build7source99625ee. Sačuvati cinema5/ads5-nextSpin/WebViewrecovery/Xcode27.2scene/latestAhmedshared.
 - **Scope:** measurement helper/tests, regional boot+foreground bridge/native allowlist, web unit preference/provider/chooser i recipe ingredient/text rendering;6locale UI selection/native supportedLocales/sharefallback/inline surfaces, relevant tests/browser harness;1.1.0/iOS8config i vlastiti plan/session/handoff. Dva nezavisna file scopea: root jezici/UI/native/integration; units worker samo packages/shared/src/measurement.ts i tests/measurement.test.ts.

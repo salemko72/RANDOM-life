@@ -1,3 +1,5 @@
+> **1.1.1 (9):** fade correction source8bdc628151d8839cf2ebca1f17a203ea73ebfac9; EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa IN_QUEUE, no Apple submission. [Handoff](../docs/IOS_BUILD9_HANDOFF.md). Build8 stays unchanged.
+
 ## UI-SCROLL-009 — claimed24.11.2026
 
 Preparing focused content fade beneath fixed Back arrow, then1.1.1(9), on codex/salem-detail-scroll-fade. Build8 remains completed and unchanged. Implemented/tested:431tests, TS/preview/iOSHermes, fade browser all5categories at390/320px/native safe area, Back touch guard and lifecycle/Spin ads PASS. [Handoff](../docs/IOS_BUILD9_HANDOFF.md); native9 not yet finished.

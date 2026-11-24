@@ -7,3 +7,5 @@
 - Fresh preflight: latest EAS8/no9, Free8/15iOS/12/30total,cost0, original signer/profile active until2027-11-03. Exact application/build SHA and remote result follow after verification/commit.
 
 - Final431tests/65files PASS, TS/preview PASS, local iOS917moduleHermes PASS, both native lifecycle and all3Spin ad entrypoint browser regressions PASS. No actual native9 yet.
+
+- Frozen clean app/buildsource8bdc628151d8839cf2ebca1f17a203ea73ebfac9 pushed; EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa accepted1.1.1(9), IN_QUEUE/errornull. Build-only, no auto-submit. Use same ID, do not duplicate. GitHub PRcreate403; compare URL in handoff, branch exists. SourceZIP outsideGit, hash in result. Apple server validation403 continued on locally valid frozen signer.

@@ -1,0 +1,12 @@
+{
+  "id": "95160386-2cfb-40ab-af7e-74a1ef3cd3aa",
+  "status": "IN_QUEUE",
+  "appVersion": "1.1.1",
+  "appBuildVersion": "9",
+  "gitCommitHash": "8bdc628151d8839cf2ebca1f17a203ea73ebfac9",
+  "createdAt": "2026-11-24T21:40:23.560Z",
+  "completedAt": null,
+  "error": null,
+  "autoSubmit": false,
+  "localSourceZipSHA256": "a1206c211426d9e53505d5498c036fcee114303b882cd856de072bcac131333c"
+}

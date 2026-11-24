@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-24",
+  "version": "1.1.1",
+  "iosBuild": "9",
+  "profile": "testflight",
+  "ads": "test",
+  "iosInventory": [
+    {
+      "number": "8",
+      "version": "1.1.0",
+      "id": "62ad0b5a-91e6-4de7-a05c-f099fecec2f7",
+      "status": "FINISHED"
+    },
+    {
+      "number": "7",
+      "version": "1.0.1",
+      "id": "d2164cee-e1b0-4a7e-81f0-71b17b1c62fc",
+      "status": "FINISHED"
+    },
+    {
+      "number": "6",
+      "version": "1.0.1",
+      "id": "89d27194-7318-4264-8af8-ef1ad8cedf6d",
+      "status": "FINISHED"
+    },
+    {
+      "number": "5",
+      "version": "1.0.1",
+      "id": "f1644fa5-f626-4963-9eda-e8be438f6a4e",
+      "status": "FINISHED"
+    },
+    {
+      "number": "4",
+      "version": "1.0.1",
+      "id": "d42fa459-d386-42fb-a29f-646bc0efbad2",
+      "status": "FINISHED"
+    },
+    {
+      "number": "3",
+      "version": "0.23.0",
+      "id": "734be437-bd03-4453-a125-3d019062c03c",
+      "status": "FINISHED"
+    },
+    {
+      "number": "2",
+      "version": "0.23.0",
+      "id": "a73b11b1-93e0-4af5-b12c-70b77a6a185c",
+      "status": "FINISHED"
+    },
+    {
+      "number": "1",
+      "version": "0.23.0",
+      "id": "c5acb3e5-b9c9-4b49-a59e-3b756c71d362",
+      "status": "FINISHED"
+    }
+  ],
+  "freeQuota": {
+    "ios": {
+      "used": 8,
+      "limit": 15,
+      "percentUsed": 53
+    },
+    "total": {
+      "used": 12,
+      "limit": 30,
+      "percentUsed": 40
+    },
+    "cost": {
+      "overageCents": 0,
+      "totalCents": 0
+    }
+  },
+  "signingPublicMetadata": [
+    {
+      "appleAppIdentifier": {
+        "bundleIdentifier": "com.salemko.randomlife",
+        "__typename": "AppleAppIdentifier"
+      },
+      "iosAppBuildCredentialsList": [
+        {
+          "iosDistributionType": "APP_STORE",
+          "distributionCertificate": {
+            "serialNumber": "CC1209C468F7ABC54F45E3BFA7E67FB",
+            "validityNotAfter": "2027-11-03T09:10:33.000Z",
+            "__typename": "AppleDistributionCertificate"
+          },
+          "provisioningProfile": {
+            "status": "active",
+            "expiration": "2027-11-03T09:10:33.000Z",
+            "__typename": "AppleProvisioningProfile"
+          },
+          "__typename": "IosAppBuildCredentials"
+        }
+      ],
+      "__typename": "IosAppCredentials"
+    }
+  ],
+  "verification": {
+    "tests": 431,
+    "files": 65,
+    "typecheck": "PASS",
+    "preview": "PASS",
+    "iosHermesModules": 917,
+    "fadeBrowser": "all5categories at390/320px with44pxsafearea PASS",
+    "lifecycle": "iOS/Android boundary simulation PASS",
+    "spinAds": "central/category/repeat PASS"
+  }
+}

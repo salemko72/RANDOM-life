@@ -482,3 +482,10 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 
 /* Region/unit controls share the existing compact preference buttons. */
 .unit-settings{margin:14px 0}.unit-settings .eyebrow{margin-bottom:8px}.unit-chooser{display:flex;flex-wrap:wrap;gap:7px}.unit-chooser button{font-size:12px;letter-spacing:0;padding:9px 12px}.units-note{font-size:11px;line-height:1.5;margin-top:8px}.onboarding-content .unit-settings{max-width:100%;margin:10px 0 18px}.language-chooser{flex-wrap:wrap}
+
+/* A stationary, scroll-driven veil keeps the fixed Back arrow clear. The final
+   64px blends into the artwork; opacity ramps with scroll rather than switching. */
+.detail-top-fade{position:absolute;inset:0 0 auto;height:calc(150px + var(--native-safe-top));z-index:10;opacity:0;pointer-events:none;background:linear-gradient(to bottom,#faeee8 0,#faeee8 calc(86px + var(--native-safe-top)),rgba(250,238,232,0) 100%)}
+.detail-top-guard{position:absolute;inset:0 0 auto;height:calc(86px + var(--native-safe-top));z-index:11;pointer-events:none}
+/* Hidden detail surfaces must never cover the normal result screen. */
+.result-scene:not(.show-details)>.detail-top-fade,.result-scene:not(.show-details)>.detail-top-guard{display:none}

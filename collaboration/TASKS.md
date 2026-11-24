@@ -1,3 +1,12 @@
+## UI-SCROLL-009 — Fading content below fixed Back button
+
+- ID/status: UI-SCROLL-009, claimed24.11.2026 before implementation.
+- Owner: salem-release; branch codex/salem-detail-scroll-fade; base ca7de2c from verified1.1.0(8).
+- Files: focused detail scroll wrapper/CSS/WebExperience; browser smoke; app version1.1.1/iOS9; own session/handoff/STATUS. No parallel file editing.
+- Acceptance: all item categories fade continuously toward upper fixed Back zone as user scrolls, no sudden strip; Back stays legible and wins touches over scrolled Like/Share/Completed; scroll-to-top restores original artwork; respect safe-area and small screens; language/units/ads/renderer fixes preserved. Prepare native1.1.1(9) after tests, clean source, quota/inventory/signer check.
+- Dependencies:1.1.0(8) frozen application8de3199/source05990c0, no DB/web changes. PR API403 means remote PR claim visibility not fully verified; fetched published refs show no newer shared work. Do not claim automatic lock.
+- Authorized: user asks correction and new1.1.1(9) build. No store submission, merge, web/DB deploy, paid resources or replacing finished8.
+
 > **Build8 status24.11.2026.:** EAS62ad0b5a-91e6-4de7-a05c-f099fecec2f7 **FINISHED**, version1.1.0(8), frozen source05990c0f86bba45d0d871ac06856cff71307f7d5. No Apple upload/auto-submit. Do not duplicate. [Current handoff](../docs/RELEASE_110_BUILD8_HANDOFF.md).
 
 # Zajednički zadaci

@@ -1,3 +1,7 @@
+## UI-SCROLL-009 — claimed24.11.2026
+
+Preparing focused content fade beneath fixed Back arrow, then1.1.1(9), on codex/salem-detail-scroll-fade. Build8 remains completed and unchanged. No new implementation/native9 yet.
+
 > **Build8 status24.11.2026.:** EAS62ad0b5a-91e6-4de7-a05c-f099fecec2f7 **FINISHED**, version1.1.0(8), frozen source05990c0f86bba45d0d871ac06856cff71307f7d5. No Apple upload/auto-submit. Do not duplicate. [Current handoff](../docs/RELEASE_110_BUILD8_HANDOFF.md).
 
 # Trenutno stanje

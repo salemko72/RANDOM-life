@@ -17,3 +17,7 @@ Branch `codex/salem-profile-action-buttons`, based on completed/uploaded1.1.1(9)
 No new native build, EAS upload, TestFlight submission, DB/web deploy or merge is requested by this UI task. These changes are **not inside the already uploaded1.1.1(9)**; include the new application source in a subsequent explicitly requested build. Preserve all six languages, regional units, top detail fade, Spin-ad policy and native recovery fixes from9. Android and iOS share these web UI components.
 
 Claims0930755/9f92d58/3395800 were pushed before each scope's implementation. GitHub PR API returned403 in previous tasks; use the compare link below if creation remains blocked, and never claim that an uncreated PR exists.
+
+## Source handoff
+
+Application source **3b1a70a849203d724254ba726ac03b4716ba214d**, pushed on `codex/salem-profile-action-buttons`. Followup documentation commit records this SHA; no further code changes. PR creation attempted and returned `Post https://api.github.com/graphql: Forbidden` (403), so no draft PR was created. [Create PR against build9 branch](https://github.com/salemko72/RANDOM-life/compare/codex/salem-detail-scroll-fade...codex/salem-profile-action-buttons?expand=1). This is an API authorization block, not an automatic approval rejection. No merge/deploy/native build.

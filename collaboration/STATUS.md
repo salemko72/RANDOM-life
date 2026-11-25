@@ -1,3 +1,5 @@
+> **25.11.2026. HRV i naslovi knjiga.** Prikaz naslova odvojen od prijevoda opisa. Pokriveno 172 naslova u snimci kataloga, uključujući svih 20 offline naslova. 435 testova i TypeScript prolaze. Izvori izdanja i svježi javni katalog vraćaju 403 pa bibliografska potvrda još nije potpuna. [Zapis](sessions/2026-11-25-salem-book-editions-01.md).
+
 > **25.11.2026. Personalize i Spin SFX.** Uklonjena slika knjiga iz personalizacije i uređivanja profila. Oporavak zvuka nakon prekida potvrđen simulacijom. Source `9282fde4c27a1266ed1b37bd2fd5d322fa417043`, 433 testa, TypeScript i browser provjere prolaze. Spremno za naredni build. [Zapis](sessions/2026-11-25-salem-spin-audio-01.md).
 
 > **25.11.2026.14:39CET — TestFlight10 upload FINISHED:** submissiona751bc73-c295-4309-8634-b2d53904264e, existing1.1.1(10)/buildc4ef113d/source09eb611/ASC6830084481 verified. Errornull; Apple processing/group/tester availability not independently confirmed. No rebuild/publicrelease. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Supersedes historical pending/no-upload notes below.

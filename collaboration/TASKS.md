@@ -1,4 +1,6 @@
-## BOOK-EDITION-TITLES — 25.11.2026.
+## BOOK-EDITION-TITLES — prikaz implementiran, vanjska provjera otvorena 25.11.2026.
+
+- Aplikacijski source: `6ea2e7efb93359befc9c94196972d77c0e347e64`. Testirani su svi naslovi u snimci kataloga i u offline rezervi. Mrežni izvori vraćaju 403.
 
 - Owner: Salem. Branch: codex/salem-book-edition-titles. Scope: localized book titles, catalog projection, user-facing HRV label, checks and handoff.
 - Verify edition titles online and use English fallback when there is no local edition. Preserve stored locale compatibility. Check the published and reserve catalogs.

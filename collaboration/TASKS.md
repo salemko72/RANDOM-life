@@ -1,3 +1,9 @@
+## UI-SPIN-AUDIO — 25.11.2026.
+
+- Vlasnik: Salemov Codex. Grana: `codex/salem-personalize-remove-books`. Datoteke: `sfx.ts` i regresijski test.
+- Istražiti prekid zvuka pri ponovnom Spin pritisku. Provjeriti oporavak Web Audio konteksta nakon prekida i sačuvati ponašanje prekidača zvuka. Ranija provjera PR-ova vraća 403.
+- UI-PERSONALIZE-ART je testiran i pushan kao `fe30f52`.
+
 ## UI-PERSONALIZE-ART — 25.11.2026.
 
 - Vlasnik: Salemov Codex. Grana: `codex/salem-personalize-remove-books`. Osnova: `17bb42d`.

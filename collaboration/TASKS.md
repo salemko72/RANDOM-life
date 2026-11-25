@@ -1,3 +1,9 @@
+## IOS-SUBMIT-010 — claimed25.11.2026
+
+- Owner salem-release, branch codex/salem-ios-build10; user explicitly requests “salji da testiram” after completed1.1.1(10) handoff. Authorizes existing archive upload to TestFlight only.
+- Exact EASbuild c4ef113d-35cd-4915-abaa-98e3907d4e73/source09eb6116050a69b12f07f253fc289a1ca86e2ae4, LifeSpinner ASC6830084481. FINISHED identity verified; last20iOS submissions contain no upload for10, no duplicate requested. Existing testflight submit profile/team/remote API key, no key copying.
+- Files: own session/handoff/safe result/STATUS/RELEASE only. Claim pushed before upload. Acceptance: existing build submitted once, terminal upload result recorded, Apple processing/tester availability distinguished from upload. No rebuild, new costs, public AppStore release, merge or DB/web deploy.
+
 ## IOS-BUILD-010 — archive FINISHED25.11.2026
 
 - Result:1.1.1(10), EASc4ef113d-35cd-4915-abaa-98e3907d4e73, frozen source09eb6116050a69b12f07f253fc289a1ca86e2ae4, SDK27.2/ARCHIVE SUCCEEDED. Free10/15iOS,14/30total,cost0. No Apple upload; physical QA pending.

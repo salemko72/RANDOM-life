@@ -1,3 +1,5 @@
+> **25.11.2026. Personalize i Spin SFX.** Uklonjena slika knjiga iz personalizacije i uređivanja profila. Oporavak zvuka nakon prekida potvrđen simulacijom. Source `9282fde4c27a1266ed1b37bd2fd5d322fa417043`, 433 testa, TypeScript i browser provjere prolaze. Spremno za naredni build. [Zapis](sessions/2026-11-25-salem-spin-audio-01.md).
+
 > **25.11.2026.14:39CET — TestFlight10 upload FINISHED:** submissiona751bc73-c295-4309-8634-b2d53904264e, existing1.1.1(10)/buildc4ef113d/source09eb611/ASC6830084481 verified. Errornull; Apple processing/group/tester availability not independently confirmed. No rebuild/publicrelease. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Supersedes historical pending/no-upload notes below.
 
 > **TestFlight10 upload authorized25.11.2026:** existing1.1.1(10), submissiona751bc73-c295-4309-8634-b2d53904264e IN_QUEUE/errornull. No rebuild/publicrelease. [Current upload handoff](../docs/IOS_BUILD10_HANDOFF.md). Do not duplicate; tester availability not confirmed yet.

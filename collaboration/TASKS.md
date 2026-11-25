@@ -1,4 +1,6 @@
-## UI-SPIN-AUDIO — 25.11.2026.
+## UI-SPIN-AUDIO — implementirano i testirano 25.11.2026.
+
+- Rezultat: `9282fde4c27a1266ed1b37bd2fd5d322fa417043`. Oporavak prekinutog zvuka i sprečavanje kasnog pokretanja potvrđeni regresijskim testovima. Fizički iPhone ostaje za naredni build.
 
 - Vlasnik: Salemov Codex. Grana: `codex/salem-personalize-remove-books`. Datoteke: `sfx.ts` i regresijski test.
 - Istražiti prekid zvuka pri ponovnom Spin pritisku. Provjeriti oporavak Web Audio konteksta nakon prekida i sačuvati ponašanje prekidača zvuka. Ranija provjera PR-ova vraća 403.

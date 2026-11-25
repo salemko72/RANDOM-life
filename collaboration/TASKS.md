@@ -1,3 +1,9 @@
+## UI-PERSONALIZE-ART — 25.11.2026.
+
+- Vlasnik: Salemov Codex. Grana: `codex/salem-personalize-remove-books`. Osnova: `17bb42d`.
+- Opseg: `Onboarding.tsx` i zapis sesije. Ukloniti dekorativnu sliku knjiga s koraka Personalize i pri uređivanju profila. Početni ekran za unos imena pri prvom otvaranju zadržava svoj izgled.
+- Provjera: tok odabira personalizacije i uređivanje profila u pregledniku, uz TypeScript i izradu previewa. GitHub API vratio je 403 pri provjeri PR-ova.
+
 ## IOS-SUBMIT-010 — upload FINISHED25.11.2026
 
 - Result: submissiona751bc73-c295-4309-8634-b2d53904264e FINISHED/errornull14:39CET, independently matched to buildc4ef113d/ASC6830084481. Apple processing/group/tester availability still unverified; no duplicate, no new build/publicrelease.

@@ -18,3 +18,11 @@ Fresh EAS inventory latest9/no10; Free iOS9/15,total13/30,estimated/overage0. Ex
 This task requests **build-only**, not Apple upload/public release. No auto-submit, duplicate9 upload, Android native build, merge, web/DB deploy or production publication. Record actual EAS10/native archive result; build completion alone is not TestFlight availability. Physical QA still required, especially popup scroll/layout, native share/privacy and inherited background/Spin-ad behavior.
 
 Source/result/ZIP and PR compare follow below. GitHub PR API previously403; never claim an uncreated PR exists.
+
+## Frozen source and scheduled archive
+
+Clean EAS/application source **09eb6116050a69b12f07f253fc289a1ca86e2ae4**, pushed on `codex/salem-ios-build10`. [Buildc4ef113d](https://expo.dev/accounts/salemko/projects/random/builds/c4ef113d-35cd-4915-abaa-98e3907d4e73), **1.1.1 (10)**, initiallyIN_QUEUE/errornull. [Safe result](reviews/ios10-result.json). Reuse this ID, do not schedule another archive. No auto-submit.
+
+[Download frozen source ZIP](https://github.com/salemko72/RANDOM-life/archive/09eb6116050a69b12f07f253fc289a1ca86e2ae4.zip). Local archive `/workspace/shared/LifeSpinner-1.1.1-build10-source.zip`, SHA256 `89cf4b40f893f10ccc5760d39abe32e1f1591bce7c434bd6a4446d944cf951a8` (GitHub ZIP container can differ; source SHA is authoritative). Root `npm ci` regenerates ignored native preview HTML. Ahmed can use this same shared source after his own Play versionCode/quota/signer checks; no Android archive or Play upload performed here.
+
+Apple profile validation returned403; CLI continued using the unchanged locally valid frozen existing profile. GitHub draft PR creation also returned `Post https://api.github.com/graphql: Forbidden` (403); no PR was created. Branch push succeeded. [Create PR against popup branch](https://github.com/salemko72/RANDOM-life/compare/codex/salem-profile-action-buttons...codex/salem-ios-build10?expand=1). API access failure, not an automatic approval-review rejection.

@@ -1,0 +1,12 @@
+{
+  "id": "c4ef113d-35cd-4915-abaa-98e3907d4e73",
+  "status": "IN_PROGRESS",
+  "appVersion": "1.1.1",
+  "appBuildVersion": "10",
+  "gitCommitHash": "09eb6116050a69b12f07f253fc289a1ca86e2ae4",
+  "createdAt": "2026-11-25T13:19:19.546Z",
+  "completedAt": null,
+  "error": null,
+  "autoSubmit": false,
+  "sourceZipSHA256": "89cf4b40f893f10ccc5760d39abe32e1f1591bce7c434bd6a4446d944cf951a8"
+}

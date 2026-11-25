@@ -1,3 +1,5 @@
+> **1.1.1(10) scheduled:** EASc4ef113d-35cd-4915-abaa-98e3907d4e73 IN_QUEUE, errornull, source09eb6116050a69b12f07f253fc289a1ca86e2ae4. No Apple submission. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Do not duplicate.
+
 > **1.1.1(10) preparation25.11.2026:** user requests new iOS10 with organized popup layout. Branchcodex/salem-ios-build10, unchanged popupcode3b1a70a plus build-number bump; fresh preview/TS/11metadata-assets tests/native locale config PASS. EAS number10 free; Free9/15iOS; existing signer. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Native build not finished yet, no Apple submission.
 
 > **25.11.2026. popup layout:** codex/salem-profile-action-buttons implements ordered primary menu + separated settings/profile categories and2×2 transparent profile actions.431tests/65files, TS/preview PASS; browser six locales×390/320px/menu order/dividers/handlers and web fallback PASS. [Handoff](../docs/PROFILE_MENU_LAYOUT_HANDOFF.md). Source-only; not included in already uploaded1.1.1(9), no new native build or deploy.

@@ -1,3 +1,5 @@
+> **25.11.2026. new1.1.1(10):** organized popups included, frozen source09eb6116050a69b12f07f253fc289a1ca86e2ae4. EASc4ef113d-35cd-4915-abaa-98e3907d4e73 IN_QUEUE/errornull, no Apple submission. [Current handoff](IOS_BUILD10_HANDOFF.md).
+
 > **25.11.2026. TestFlight upload completed:**1.1.1(9), build95160386-2cfb-40ab-af7e-74a1ef3cd3aa, submission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 **FINISHED**. Apple processing/group availability still to verify. [Evidence and instructions](IOS_BUILD9_HANDOFF.md). Supersedes historical “no Apple submission” below.
 
 > **New1.1.1 (9) candidate:** progressive top content fade and Back touch guard; shared build8 features retained. Source8bdc628151d8839cf2ebca1f17a203ea73ebfac9,431tests/TS/preview/localiOSHermes/browserPASS. EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa FINISHED; no Apple submission. [Precise handoff](IOS_BUILD9_HANDOFF.md).

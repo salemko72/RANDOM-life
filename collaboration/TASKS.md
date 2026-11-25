@@ -1,3 +1,9 @@
+## UI-PROFILE-ACTIONS — claimed25.11.2026
+
+- Owner salem-release, branch codex/salem-profile-action-buttons, base9e5e13a; user screenshot specifies four smaller transparent black-text controls in two rows below EDIT ANSWERS with more separation.
+- Scope: WebExperience profile action wrapper, scoped experience.css, own session/status/handoff; preserve all existing handlers, destructive confirmation, native privacy/share and catalog controls. No app version/native build/upload/deploy/merge.
+- Acceptance: native four controls2×2, transparent background/black text/thin outline, separated from primary Edit; multiline six-language labels fit390/320px; no effect on other profile-reset controls; web three-control fallback tidy. Claim pushed before implementation; fetched remote refs unchanged, PR API visibility still403 from previous attempt.
+
 ## IOS-SUBMIT-009 — upload FINISHED,25.11.2026
 
 - Result: submission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 FINISHED/errornull for exact build9 and ASC6830084481,09:05CET. Apple processing/tester group confirmation remains; no new build/public release.

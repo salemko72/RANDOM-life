@@ -1,3 +1,9 @@
+## BOOK-EDITION-TITLES — 25.11.2026.
+
+- Owner: Salem. Branch: codex/salem-book-edition-titles. Scope: localized book titles, catalog projection, user-facing HRV label, checks and handoff.
+- Verify edition titles online and use English fallback when there is no local edition. Preserve stored locale compatibility. Check the published and reserve catalogs.
+- Prior GitHub PR listing returned 403, so open PR claims cannot be fully verified.
+
 ## UI-SPIN-AUDIO — implementirano i testirano 25.11.2026.
 
 - Rezultat: `9282fde4c27a1266ed1b37bd2fd5d322fa417043`. Oporavak prekinutog zvuka i sprečavanje kasnog pokretanja potvrđeni regresijskim testovima. Fizički iPhone ostaje za naredni build.

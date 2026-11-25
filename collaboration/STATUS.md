@@ -1,3 +1,5 @@
+> **TestFlight10 upload authorized25.11.2026:** existing1.1.1(10), submissiona751bc73-c295-4309-8634-b2d53904264e IN_QUEUE/errornull. No rebuild/publicrelease. [Current upload handoff](../docs/IOS_BUILD10_HANDOFF.md). Do not duplicate; tester availability not confirmed yet.
+
 > **1.1.1(10) scheduled:** EASc4ef113d-35cd-4915-abaa-98e3907d4e73 FINISHED, errornull, source09eb6116050a69b12f07f253fc289a1ca86e2ae4. No Apple submission. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Do not duplicate.
 
 > **1.1.1(10) preparation25.11.2026:** user requests new iOS10 with organized popup layout. Branchcodex/salem-ios-build10, unchanged popupcode3b1a70a plus build-number bump; fresh preview/TS/11metadata-assets tests/native locale config PASS. EAS number10 free; Free9/15iOS; existing signer. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Native1.1.1(10) FINISHED, SDK27.2/archive confirmed; no Apple submission.

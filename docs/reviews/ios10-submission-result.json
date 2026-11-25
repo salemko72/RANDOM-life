@@ -1,0 +1,14 @@
+{
+  "id": "a751bc73-c295-4309-8634-b2d53904264e",
+  "status": "IN_QUEUE",
+  "error": null,
+  "submittedBuild": "c4ef113d-35cd-4915-abaa-98e3907d4e73",
+  "version": "1.1.1",
+  "buildNumber": "10",
+  "source": "09eb6116050a69b12f07f253fc289a1ca86e2ae4",
+  "ascApp": "6830084481",
+  "newBuildRequested": false,
+  "publicReleaseRequested": false,
+  "appleProcessing": "not independently verified",
+  "groupSetup": "client skipped after Apple403; remote submission pending"
+}

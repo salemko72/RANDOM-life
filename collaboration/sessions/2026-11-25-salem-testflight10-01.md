@@ -1,3 +1,5 @@
 #25 November2026 — salem-testflight10
 
 User explicitly authorized “salji da testiram” for finished1.1.1(10). Exact EASbuildc4ef113d-35cd-4915-abaa-98e3907d4e73/source09eb6116050a69b12f07f253fc289a1ca86e2ae4 and targetLifeSpinner6830084481 verified, FINISHED/errornull. No matching submission in last20iOS inventory. Clean ownbranchcodex/salem-ios-build10, remote fetched, base617ce25. Existing testflight submit configuration/remote credentials, no copying secrets. Claim committed/pushed before submit. Scope upload-only; no native build, public release/review submission, merge, web/DB deploy or paid resource. Result follows.
+
+- Existing archive submit scheduleda751bc73-c295-4309-8634-b2d53904264e, initiallyIN_QUEUE/errornull. Client group setupApple403 skipped, remote upload scheduling succeeded. No new native build/key/publicrelease. Monitoring existing submission; result pending. Safe JSON/handoff records IDs without credentials or signed URLs.

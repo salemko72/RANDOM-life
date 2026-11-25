@@ -1,3 +1,9 @@
+## IOS-BUILD-011 — 25.11.2026.
+
+- Owner: Salem. Branch: codex/salem-ios-build11. Base: 47e88def2c78d75489539c81716f2e42a64af981.
+- “ok dizibuild” authorizes preparing iOS 1.1.1 (11) and uploading that archive for TestFlight. Scope: build number and release evidence.
+- Verify the existing EAS project, free quota, signing and archive identity. Confirm upload status separately from Apple processing. Includes HRV, edition titles, Personalize artwork and Spin audio changes.
+
 ## BOOK-EDITION-TITLES — prikaz implementiran, vanjska provjera otvorena 25.11.2026.
 
 - Nastavak na istoj grani: provjera preko javnih bibliografskih skupova podataka i ispravka naslova potvrđenih naslovom, autorom i izdanjem.

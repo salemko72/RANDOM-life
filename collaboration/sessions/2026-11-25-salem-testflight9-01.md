@@ -1,0 +1,3 @@
+#25 November2026 — salem-testflight9
+
+User explicitly authorized upload of completed1.1.1(9): “ok dizi gore”. Scope existing build95160386-2cfb-40ab-af7e-74a1ef3cd3aa/source8bdc628151d8839cf2ebca1f17a203ea73ebfac9, LifeSpinner6830084481; no new build/public release/webDBdeploy/merge. Own branch clean/fetched, latest ownhead6471b78. Build FINISHED identity and older submission inventory checked, no duplicate9 found. Initial pre-upload claim write failed due to wrong apps/client cwd; shell continued to authorized submit. Corrected immediately at repo root; do not falsely record earlier claim push. Uses existing EAS remote submission credentials, no private key/token copied. Result follows after upload.

@@ -1,3 +1,11 @@
+## IOS-SUBMIT-009 — authorized TestFlight upload,25.11.2026
+
+- Owner salem-release, branch codex/salem-detail-scroll-fade; scope existing finished EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa,1.1.1(9), source8bdc628151d8839cf2ebca1f17a203ea73ebfac9, to LifeSpinner6830084481. User explicitly says “ok dizi gore” after finished9 handoff.
+- Files: own25Nov session, current handoff/status and safe submission evidence only. No application change, new build, merge, public App Store release, web or DB deployment.
+- Preflight: build identity/FINISHED verified; last20iOS submissions have no submission for9 (five older completed uploads). Existing target6830084481/teamMNQY6SH96C verified. Uses original remote API key; no credential copying.
+- Acceptance: submit existing archive, monitor terminal status, distinguish upload from Apple processing/tester availability, preserve exact IDs/result. No new cost/build quota consumed.
+- Ordering exception: initial claim write used apps/client cwd and failed; shell then continued to submit command. Corrected claim immediately in repository root; do not claim pre-upload claim push succeeded. User authorization/preflight were already verified before submit.
+
 ## UI-SCROLL-009 — Fading content below fixed Back button
 
 - ID/status: UI-SCROLL-009, implementation verified431tests/TS/preview/iOSHermes/browser; native1.1.1(9) FINISHED, EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa. Actual SDK27.2/archive PASS; no TestFlight upload. Claimed24.11.2026 before implementation.

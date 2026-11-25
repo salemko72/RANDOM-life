@@ -1,4 +1,6 @@
-## IOS-SUBMIT-010 — claimed25.11.2026
+## IOS-SUBMIT-010 — upload FINISHED25.11.2026
+
+- Result: submissiona751bc73-c295-4309-8634-b2d53904264e FINISHED/errornull14:39CET, independently matched to buildc4ef113d/ASC6830084481. Apple processing/group/tester availability still unverified; no duplicate, no new build/publicrelease.
 
 - Owner salem-release, branch codex/salem-ios-build10; user explicitly requests “salji da testiram” after completed1.1.1(10) handoff. Authorizes existing archive upload to TestFlight only.
 - Exact EASbuild c4ef113d-35cd-4915-abaa-98e3907d4e73/source09eb6116050a69b12f07f253fc289a1ca86e2ae4, LifeSpinner ASC6830084481. FINISHED identity verified; last20iOS submissions contain no upload for10, no duplicate requested. Existing testflight submit profile/team/remote API key, no key copying.

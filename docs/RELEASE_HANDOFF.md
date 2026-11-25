@@ -1,3 +1,5 @@
+> **25.11.2026.1.1.1(10) TestFlight upload completed:** EASsubmissiona751bc73-c295-4309-8634-b2d53904264e FINISHED/errornull, exact buildc4ef113d-35cd-4915-abaa-98e3907d4e73 and LifeSpinner6830084481 verified. Apple processing/tester group availability not yet independently confirmed. [Result and tester instructions](IOS_BUILD10_HANDOFF.md). No new build/publicrelease; supersedes prior no-upload/queue notes.
+
 > **25.11.2026. new1.1.1(10):** organized popups included, frozen source09eb6116050a69b12f07f253fc289a1ca86e2ae4. EASc4ef113d-35cd-4915-abaa-98e3907d4e73 FINISHED/errornull, no Apple submission. [Current handoff](IOS_BUILD10_HANDOFF.md).
 
 > **25.11.2026. TestFlight upload completed:**1.1.1(9), build95160386-2cfb-40ab-af7e-74a1ef3cd3aa, submission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 **FINISHED**. Apple processing/group availability still to verify. [Evidence and instructions](IOS_BUILD9_HANDOFF.md). Supersedes historical “no Apple submission” below.

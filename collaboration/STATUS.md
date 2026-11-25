@@ -1,3 +1,5 @@
+> **25.11.2026.14:39CET — TestFlight10 upload FINISHED:** submissiona751bc73-c295-4309-8634-b2d53904264e, existing1.1.1(10)/buildc4ef113d/source09eb611/ASC6830084481 verified. Errornull; Apple processing/group/tester availability not independently confirmed. No rebuild/publicrelease. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Supersedes historical pending/no-upload notes below.
+
 > **TestFlight10 upload authorized25.11.2026:** existing1.1.1(10), submissiona751bc73-c295-4309-8634-b2d53904264e IN_QUEUE/errornull. No rebuild/publicrelease. [Current upload handoff](../docs/IOS_BUILD10_HANDOFF.md). Do not duplicate; tester availability not confirmed yet.
 
 > **1.1.1(10) scheduled:** EASc4ef113d-35cd-4915-abaa-98e3907d4e73 FINISHED, errornull, source09eb6116050a69b12f07f253fc289a1ca86e2ae4. No Apple submission. [Handoff](../docs/IOS_BUILD10_HANDOFF.md). Do not duplicate.

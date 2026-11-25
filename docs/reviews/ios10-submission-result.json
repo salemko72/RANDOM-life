@@ -1,14 +1,23 @@
 {
+  "checkedAt": "2026-11-25T13:39:43.543Z",
   "id": "a751bc73-c295-4309-8634-b2d53904264e",
-  "status": "IN_QUEUE",
+  "status": "FINISHED",
   "error": null,
   "submittedBuild": "c4ef113d-35cd-4915-abaa-98e3907d4e73",
+  "ascApp": "6830084481",
   "version": "1.1.1",
   "buildNumber": "10",
   "source": "09eb6116050a69b12f07f253fc289a1ca86e2ae4",
-  "ascApp": "6830084481",
+  "appleProcessing": "not independently confirmed",
+  "testFlightGroup": "automatic client setup skipped after Apple403; tester availability not verified",
   "newBuildRequested": false,
   "publicReleaseRequested": false,
-  "appleProcessing": "not independently verified",
-  "groupSetup": "client skipped after Apple403; remote submission pending"
+  "completedAt": "2026-11-25T13:39:28.087Z",
+  "workerTiming": {
+    "status": "FINISHED",
+    "enqueuedAt": "2026-11-25T13:31:58.000Z",
+    "startedAt": "2026-11-25T13:39:21.433Z",
+    "endedAt": "2026-11-25T13:39:27.966Z"
+  },
+  "appStoreConnectBuildUpload": null
 }

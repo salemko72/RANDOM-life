@@ -1,4 +1,6 @@
-## IOS-BUILD-010 — claimed25.11.2026
+## IOS-BUILD-010 — archive FINISHED25.11.2026
+
+- Result:1.1.1(10), EASc4ef113d-35cd-4915-abaa-98e3907d4e73, frozen source09eb6116050a69b12f07f253fc289a1ca86e2ae4, SDK27.2/ARCHIVE SUCCEEDED. Free10/15iOS,14/30total,cost0. No Apple upload; physical QA pending.
 
 - Owner salem-release, branch codex/salem-ios-build10, base80ec1125c71c168ee48192b17ac9d4c53df7064c; popup application source3b1a70a849203d724254ba726ac03b4716ba214d.
 - User authorizes “idemo novi build10”; target1.1.1(10), existing testflight profile/test ads. Scope app.json iOS build number and own release records only; preserve popup layout plus all9 functionality. No new code feature, Android build, merge, DB/web deploy, paid resources or public release/Apple submission.

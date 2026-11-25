@@ -1,4 +1,6 @@
-## UI-PROFILE-ACTIONS — claimed25.11.2026
+## UI-PROFILE-ACTIONS — implemented/tested25.11.2026
+
+- Final verification:431tests/65files, TS/preview, native-mode browser six locales×390/320px with layout/dividers/menu order, clear/delete-cancel/privacy/share callbacks, and web3-action fallback PASS. Native build not requested; ready for next binary.
 
 - User followup expands scope: main menu title, My profile and Saved picks first, then language chooser, units and remaining settings; diagnostics/build remain bottom. Same WebExperience file/branch owner. No new binary requested. Further user followup: organize settings/profile into clear groups with divider lines between categories; preserve primary navigation first and all existing actions.
 

@@ -489,3 +489,48 @@ html[lang="bs"] .wheel-svg text{font-size:15px}
 .detail-top-guard{position:absolute;inset:0 0 auto;height:calc(86px + var(--native-safe-top));z-index:11;pointer-events:none}
 /* Hidden detail surfaces must never cover the normal result screen. */
 .result-scene:not(.show-details)>.detail-top-fade,.result-scene:not(.show-details)>.detail-top-guard{display:none}
+
+/* Secondary profile actions sit apart from the primary Edit Answers action. */
+.profile-secondary-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:28px 0 8px}
+.profile-secondary-actions>.share-app-control{display:flex;flex-direction:column;min-width:0}
+.random-world .profile-secondary-actions>.profile-reset,.random-world .profile-secondary-actions>.share-app-control>.profile-reset{display:flex;align-items:center;justify-content:center;gap:7px;box-sizing:border-box;width:100%;min-height:64px;margin:0;padding:12px 10px;border:1px solid rgba(0,0,0,.22);border-radius:15px;background:transparent;color:#111;box-shadow:none;text-decoration:none;text-align:center;font-size:13px;font-weight:500;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
+.profile-secondary-actions>.share-app-control>.profile-reset{flex:1}
+.profile-secondary-actions .profile-reset svg{flex-shrink:0}
+.profile-secondary-actions .profile-reset:focus-visible{outline:2px solid #111;outline-offset:3px}
+.profile-secondary-actions>.share-app-control:nth-child(3):last-child{grid-column:1/-1}
+
+.menu-settings{margin-top:20px}
+
+/* Popup hierarchy: navigation first; each settings/profile category has its own divider. */
+.menu-primary-section>.eyebrow,.profile-intro>.eyebrow{margin-top:0}
+.menu-primary-section h3{font-size:28px;line-height:1.16;margin-bottom:18px;padding-right:26px;overflow-wrap:anywhere}
+.menu-primary-section>.panel-menu-item:last-child{border-bottom:0!important}
+.menu-settings,.popup-section{border-top:1px solid rgba(117,77,63,.2);margin-top:22px;padding-top:20px}
+.menu-section+.menu-section{border-top:1px solid rgba(117,77,63,.2);margin-top:22px;padding-top:20px}
+.menu-section>.eyebrow{margin:0 0 12px}
+.menu-language>.language-chooser,.menu-measurements .language-chooser{margin:0}
+.menu-measurements .unit-settings{margin:0}
+.menu-measurements .units-note{margin:12px 0 0}
+.menu-sound>.panel-menu-item{border-bottom:0!important;font-size:13px}
+.profile-intro h3{padding-right:26px;overflow-wrap:anywhere}
+.profile-intro>.panel-note,.profile-about>.panel-note{margin-bottom:0}
+.profile-about>.profile-interests:empty{display:none}
+.profile-about>.panel-note{margin-top:0}
+.profile-about>.profile-interests:not(:empty){margin-bottom:12px}
+.profile-preferences>.preference-check{margin:0;padding:12px 0;line-height:1.5}
+.profile-preferences>.preference-check:first-child{padding-top:0}
+.profile-preferences>.preference-check:last-child{border-bottom:0;padding-bottom:0}
+.profile-edit-section>.profile-stats{margin:0 0 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.profile-edit-section>.pill-primary{width:100%}
+.profile-tools{margin-top:28px}
+.profile-tools>.profile-secondary-actions{margin:0}
+.floating-panel>.profile-catalog{margin-top:22px;padding-top:20px;border-top:1px solid rgba(117,77,63,.2)}
+.profile-legal{display:flex;flex-wrap:wrap;gap:7px;line-height:1.6}
+
+.profile-catalog h4{font-size:13px;font-weight:600;margin-bottom:12px}
+.random-world .profile-catalog .profile-cache-clear{min-height:44px;padding:10px 12px;border:1px solid rgba(0,0,0,.22);border-radius:12px;color:#111;text-decoration:none;font-size:12px;text-align:center}
+.profile-connection-status{font-size:11px;line-height:1.6}
+.profile-connection-status>div{padding:6px 0;margin:0}
+.profile-connection-status>div+div{border-top:1px solid rgba(117,77,63,.1)}
+
+.menu-footer>.panel-menu-item{border-bottom:0!important}

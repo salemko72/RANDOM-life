@@ -1,0 +1,8 @@
+#25 November2026 — salem-popup-layout
+
+- Base9e5e13a; branchcodex/salem-profile-action-buttons. Claims0930755/9f92d58/3395800 pushed before implementation/scope extensions. User first requested transparent black2×2 profile action buttons, then menu title/Profile/Saved above languages, then clear grouping/divider lines in both popups. Existing behavior retained; no new build authorized for this source change.
+- Changed WebExperience JSX wrappers/order and scoped experience.css only. Added existing translated Language heading; no new untranslated UI strings. Added real-browser layout/behavior smoke script. Share/native/clear/delete handlers unchanged. Kept diagnostics/build bottom and all previous9 features.
+- Screenshot review caught redundant navigation border alongside category separator; scoped important override removes duplicate lines. Header and labels wrap; profile stats equal columns; secondary actions outlined/transparent black; catalog clear action and statuses tidied. Native/privacy and web fallback covered.
+- Final test results/application SHA follow below after completion. No EAS/nativebuild/Appleupload/webDBdeploy/merge or paid resource. Existing TestFlight1.1.1(9) cannot receive this source without a new binary.
+
+- Final431tests/65files PASS; TS/preview PASS. Real app browser all6locales×390/320px menuorder/profilelines/2x2buttons/transparentblackstyles/wrap/spacing/deletecancel/clear/privacy/share PASS; webfallback3controls PASS. Screenshot visual review complete. Nativecapability is a boundary double; physical iPhone test pending next binary. Test API503 fixture intentionally shows offline catalogue, not a real production failure.

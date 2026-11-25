@@ -1,3 +1,5 @@
+> **25.11.2026. popup layout:** codex/salem-profile-action-buttons implements ordered primary menu + separated settings/profile categories and2×2 transparent profile actions.431tests/65files, TS/preview PASS; browser six locales×390/320px/menu order/dividers/handlers and web fallback PASS. [Handoff](../docs/PROFILE_MENU_LAYOUT_HANDOFF.md). Source-only; not included in already uploaded1.1.1(9), no new native build or deploy.
+
 > **25.11.2026.09:05CET — TestFlight9:** existing1.1.1(9) uploaded, EASsubmission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 **FINISHED**, error null; correct build95160386/ASC6830084481 verified. User authorized “ok dizi gore”. Apple processing/tester group availability not independently confirmed; no new build/public release. [Handoff](../docs/IOS_BUILD9_HANDOFF.md).
 
 > **1.1.1 (9):** fade correction source8bdc628151d8839cf2ebca1f17a203ea73ebfac9; EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa FINISHED, no Apple submission. [Handoff](../docs/IOS_BUILD9_HANDOFF.md). Build8 stays unchanged.

@@ -1,3 +1,5 @@
+> **25.11.2026. TestFlight upload completed:**1.1.1(9), build95160386-2cfb-40ab-af7e-74a1ef3cd3aa, submission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 **FINISHED**. Apple processing/group availability still to verify. [Evidence and instructions](IOS_BUILD9_HANDOFF.md). Supersedes historical “no Apple submission” below.
+
 > **New1.1.1 (9) candidate:** progressive top content fade and Back touch guard; shared build8 features retained. Source8bdc628151d8839cf2ebca1f17a203ea73ebfac9,431tests/TS/preview/localiOSHermes/browserPASS. EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa FINISHED; no Apple submission. [Precise handoff](IOS_BUILD9_HANDOFF.md).
 
 > **Build8 status24.11.2026.:** EAS62ad0b5a-91e6-4de7-a05c-f099fecec2f7 **FINISHED**, version1.1.0(8), frozen source05990c0f86bba45d0d871ac06856cff71307f7d5. No Apple upload/auto-submit. Do not duplicate. [Current handoff](RELEASE_110_BUILD8_HANDOFF.md).

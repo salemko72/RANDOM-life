@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-25T08:05:23.046Z",
+  "id": "7570c8e9-ce23-48bb-98f2-568ba0ad4e54",
+  "status": "FINISHED",
+  "error": null,
+  "submittedBuild": "95160386-2cfb-40ab-af7e-74a1ef3cd3aa",
+  "ascApp": "6830084481",
+  "version": "1.1.1",
+  "buildNumber": "9",
+  "source": "8bdc628151d8839cf2ebca1f17a203ea73ebfac9",
+  "appleProcessing": "not independently confirmed",
+  "testFlightGroup": "automatic setup skipped after client Apple403; group availability not verified",
+  "newBuildRequested": false,
+  "publicReleaseRequested": false
+}

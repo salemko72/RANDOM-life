@@ -1,4 +1,6 @@
-## IOS-SUBMIT-009 — authorized TestFlight upload,25.11.2026
+## IOS-SUBMIT-009 — upload FINISHED,25.11.2026
+
+- Result: submission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 FINISHED/errornull for exact build9 and ASC6830084481,09:05CET. Apple processing/tester group confirmation remains; no new build/public release.
 
 - Owner salem-release, branch codex/salem-detail-scroll-fade; scope existing finished EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa,1.1.1(9), source8bdc628151d8839cf2ebca1f17a203ea73ebfac9, to LifeSpinner6830084481. User explicitly says “ok dizi gore” after finished9 handoff.
 - Files: own25Nov session, current handoff/status and safe submission evidence only. No application change, new build, merge, public App Store release, web or DB deployment.

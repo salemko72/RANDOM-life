@@ -1,8 +1,10 @@
+> **25.11.2026.09:05CET — TestFlight9:** existing1.1.1(9) uploaded, EASsubmission7570c8e9-ce23-48bb-98f2-568ba0ad4e54 **FINISHED**, error null; correct build95160386/ASC6830084481 verified. User authorized “ok dizi gore”. Apple processing/tester group availability not independently confirmed; no new build/public release. [Handoff](../docs/IOS_BUILD9_HANDOFF.md).
+
 > **1.1.1 (9):** fade correction source8bdc628151d8839cf2ebca1f17a203ea73ebfac9; EAS95160386-2cfb-40ab-af7e-74a1ef3cd3aa FINISHED, no Apple submission. [Handoff](../docs/IOS_BUILD9_HANDOFF.md). Build8 stays unchanged.
 
 ## UI-SCROLL-009 — claimed24.11.2026
 
-Preparing focused content fade beneath fixed Back arrow, then1.1.1(9), on codex/salem-detail-scroll-fade. Build8 remains completed and unchanged. Implemented/tested:431tests, TS/preview/iOSHermes, fade browser all5categories at390/320px/native safe area, Back touch guard and lifecycle/Spin ads PASS. [Handoff](../docs/IOS_BUILD9_HANDOFF.md); native9 not yet finished.
+Preparing focused content fade beneath fixed Back arrow, then1.1.1(9), on codex/salem-detail-scroll-fade. Build8 remains completed and unchanged. Implemented/tested:431tests, TS/preview/iOSHermes, fade browser all5categories at390/320px/native safe area, Back touch guard and lifecycle/Spin ads PASS. [Handoff](../docs/IOS_BUILD9_HANDOFF.md); native9 FINISHED; subsequent authorized upload also FINISHED, see newest entry above.
 
 > **Build8 status24.11.2026.:** EAS62ad0b5a-91e6-4de7-a05c-f099fecec2f7 **FINISHED**, version1.1.0(8), frozen source05990c0f86bba45d0d871ac06856cff71307f7d5. No Apple upload/auto-submit. Do not duplicate. [Current handoff](../docs/RELEASE_110_BUILD8_HANDOFF.md).
 

@@ -1,6 +1,6 @@
 ## UI-PROFILE-ACTIONS — claimed25.11.2026
 
-- User followup expands scope: main menu title, My profile and Saved picks first, then language chooser, units and remaining settings; diagnostics/build remain bottom. Same WebExperience file/branch owner. No new binary requested.
+- User followup expands scope: main menu title, My profile and Saved picks first, then language chooser, units and remaining settings; diagnostics/build remain bottom. Same WebExperience file/branch owner. No new binary requested. Further user followup: organize settings/profile into clear groups with divider lines between categories; preserve primary navigation first and all existing actions.
 
 - Owner salem-release, branch codex/salem-profile-action-buttons, base9e5e13a; user screenshot specifies four smaller transparent black-text controls in two rows below EDIT ANSWERS with more separation.
 - Scope: WebExperience profile action wrapper, scoped experience.css, own session/status/handoff; preserve all existing handlers, destructive confirmation, native privacy/share and catalog controls. No app version/native build/upload/deploy/merge.

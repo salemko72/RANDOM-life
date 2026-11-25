@@ -1,3 +1,10 @@
+## IOS-BUILD-010 — claimed25.11.2026
+
+- Owner salem-release, branch codex/salem-ios-build10, base80ec1125c71c168ee48192b17ac9d4c53df7064c; popup application source3b1a70a849203d724254ba726ac03b4716ba214d.
+- User authorizes “idemo novi build10”; target1.1.1(10), existing testflight profile/test ads. Scope app.json iOS build number and own release records only; preserve popup layout plus all9 functionality. No new code feature, Android build, merge, DB/web deploy, paid resources or public release/Apple submission.
+- Fresh preflight: EAS latest9, no10 in inventory; read-only free-quota/signer check before scheduling. Acceptance: clean pinned source, generated preview and build-metadata checks, existing signer, successful actual Xcode archive and accurate evidence; don't duplicate jobs or imply tester availability from build completion.
+- Files: app.json, own session, handoff, safe preflight/result JSON, TASKS/STATUS/RELEASE summary. No overlapping owner edits; remote ownbase verified. Prior GitHub PRAPI403 means open PR visibility not fully verified.
+
 ## UI-PROFILE-ACTIONS — implemented/tested25.11.2026
 
 - Final verification:431tests/65files, TS/preview, native-mode browser six locales×390/320px with layout/dividers/menu order, clear/delete-cancel/privacy/share callbacks, and web3-action fallback PASS. Native build not requested; ready for next binary.

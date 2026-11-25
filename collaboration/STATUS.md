@@ -1,3 +1,5 @@
+> **25.11.2026. Dodatna bibliografska provjera.** Javne kopije kataloga potvrdile su pet brazilskih naslova i ispravku **Vovó Vigarista**. Evidencija s ISBN-ovima i preostalim provjerama dostupna je u [zapisu](sessions/2026-11-25-salem-book-editions-02.md).
+
 > **25.11.2026. HRV i naslovi knjiga.** Prikaz naslova odvojen od prijevoda opisa. Pokriveno 172 naslova u snimci kataloga, uključujući svih 20 offline naslova. 435 testova i TypeScript prolaze. Izvori izdanja i svježi javni katalog vraćaju 403 pa bibliografska potvrda još nije potpuna. [Zapis](sessions/2026-11-25-salem-book-editions-01.md).
 
 > **25.11.2026. Personalize i Spin SFX.** Uklonjena slika knjiga iz personalizacije i uređivanja profila. Oporavak zvuka nakon prekida potvrđen simulacijom. Source `9282fde4c27a1266ed1b37bd2fd5d322fa417043`, 433 testa, TypeScript i browser provjere prolaze. Spremno za naredni build. [Zapis](sessions/2026-11-25-salem-spin-audio-01.md).

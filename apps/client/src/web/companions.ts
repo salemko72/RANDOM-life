@@ -1,5 +1,6 @@
+import {localizeDisplayContent} from './localize-display-content';
 import {uiText} from './ui-copy';
-import {localizeContent,type Locale,type ContentRecord} from '@random/shared';
+import {type Locale,type ContentRecord} from '@random/shared';
 import {demoCatalog} from './bilingualCatalog';
 import {valueLabel} from './ui-language';
 import {previewCatalog} from './catalog';
@@ -50,11 +51,11 @@ export function companionItems(item:{category:string;id:string;authors?:string[]
  if(catalog){
   const source=catalog.find(r=>r.id===item.id);
   if(!source)return [];
-  return catalog.filter(r=>r.id!==item.id&&r.category===source.category&&r.category!=='EAT'&&(source.category==='BOOK'&&r.category==='BOOK'?r.authors.some(a=>source.authors.includes(a)):source.category==='WATCH'&&r.category==='WATCH'?r.genres.some(g=>source.genres.includes(g)):true)).slice(0,8).map(r=>{const d=localizeContent(r,locale);return{id:r.id,targetId:r.id,title:d.title,subtitle:d.summary,category:r.category as Companion['category']};});
+  return catalog.filter(r=>r.id!==item.id&&r.category===source.category&&r.category!=='EAT'&&(source.category==='BOOK'&&r.category==='BOOK'?r.authors.some(a=>source.authors.includes(a)):source.category==='WATCH'&&r.category==='WATCH'?r.genres.some(g=>source.genres.includes(g)):true)).slice(0,8).map(r=>{const d=localizeDisplayContent(r,locale);return{id:r.id,targetId:r.id,title:d.title,subtitle:d.summary,category:r.category as Companion['category']};});
  }
  return sourceCompanionItems(item).map(companion=>{
   const source=demoCatalog.find(record=>record.id===companion.targetId);
-  if(source){const display=localizeContent(source,locale);return {...companion,title:display.title,subtitle:display.category==='WATCH'?`${valueLabel(display.format,locale)} · ${display.genres.join(', ')}`:display.category==='MOVE'?`${display.durationMinutes} min · ${valueLabel(display.subtype,locale)}`:display.summary};}
+  if(source){const display=localizeDisplayContent(source,locale);return {...companion,title:display.title,subtitle:display.category==='WATCH'?`${valueLabel(display.format,locale)} · ${display.genres.join(', ')}`:display.category==='MOVE'?`${display.durationMinutes} min · ${valueLabel(display.subtype,locale)}`:display.summary};}
   const author=companion.id.startsWith('other-work-')?companion.subtitle.split(' · ')[0]:null;
   return {...companion,title:(locale==='bs'?bhsWorks:englishWorks)[companion.title]??companion.title,
    subtitle:author?`${author} · ${uiText("another work; edition not specified","drugo djelo; izdanje nije specificirano",locale)}`:

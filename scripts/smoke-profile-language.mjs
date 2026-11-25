@@ -3,7 +3,7 @@ const html=await readFile('apps/client/preview-dist/RANDOM_INTERACTIVE_PREVIEW.h
 try{for(const width of[320,390]){
  const page=await browser.newPage({viewport:{width,height:844},reducedMotion:'reduce'});const now=Date.now();await page.clock.install({time:now});await page.clock.pauseAt(now+1000);
  async function boot(){await page.goto('http://127.0.0.1:'+server.address().port);await page.locator('.app-splash').waitFor();await page.clock.runFor(2050);await page.locator('.main-stage').waitFor({state:'attached'});await page.clock.runFor(1100);}
- await boot();const setup=page.locator('.onboarding-screen');await setup.locator('.language-chooser').getByRole('button',{name:'BHS',exact:true}).click();assert.equal(await page.locator('html').getAttribute('lang'),'bs');
+ await boot();const setup=page.locator('.onboarding-screen');await setup.locator('.language-chooser').getByRole('button',{name:'HRV',exact:true}).click();assert.equal(await page.locator('html').getAttribute('lang'),'bs');
  await setup.locator('.onboarding-actions button[type="submit"]').click();await setup.locator('.onboarding-skip').first().click();await page.clock.runFor(600);assert.equal(await setup.count(),0);
  await boot();assert.equal(await page.locator('html').getAttribute('lang'),'bs');assert.equal(await setup.count(),0,'Completed setup survives relaunch');
  await page.locator('.bottom-nav button').last().click();await page.locator('.floating-panel .pill-primary').first().click();await page.clock.runFor(350);

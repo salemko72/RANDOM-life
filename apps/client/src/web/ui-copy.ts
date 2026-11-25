@@ -17,5 +17,5 @@ export function formatUi(key:string,locale:UiLocale|string,values:Record<string,
  return uiText(key,key,locale).replace(/\{([a-zA-Z0-9_]+)\}/g,(token,name:string)=>Object.hasOwn(values,name)?String(values[name]):token);
 }
 
-const localeCodes:Record<string,string>={en:'ENG',bs:'BHS',es:'ESP','pt-BR':'POR',de:'DEU',it:'ITA'};
+const localeCodes:Record<string,string>={en:'ENG',bs:'HRV',es:'ESP','pt-BR':'POR',de:'DEU',it:'ITA'};
 export function uiLocaleCode(locale:UiLocale|string):string{return Object.hasOwn(localeCodes,locale)?localeCodes[locale]:'ENG';}

@@ -1,3 +1,4 @@
+import {localizeDisplayContent} from './localize-display-content';
 import{MeasurementProvider,useMeasurements}from'./measurement-preference';
 import{formatIngredientAmount,formatRecipeText,recipeMeasurementRegion}from'@random/shared';
 import{applyContentTranslations}from'./content-translations';
@@ -6,7 +7,7 @@ import {uiText} from './ui-copy';
 import {withGenericArtwork} from '../../../../packages/shared/src/generic-artwork';
 import{appShareUrl}from'./app-share';
 import React,{useEffect,useState} from 'react';
-import {localizeContent,type ContentRecord,type Locale} from '@random/shared';
+import {type ContentRecord,type Locale} from '@random/shared';
 import ItemActions from './ItemActions';
 import ImageViewer from './ImageViewer';
 import AccessLinks from './AccessLinks';
@@ -22,7 +23,7 @@ function SharedRecipe(){
  useEffect(()=>{saveProfile(profile);},[profile]);useEffect(()=>{saveExperience(profile.id,experience);},[profile.id,experience]);
  if(!item)return <div className="random-world shared-world"><main className="random-card shared-unavailable"><h1>{uiText("Item unavailable","Item nije dostupan",locale)}</h1><p>{uiText("This shared item is currently unavailable.","Ovaj podijeljeni item trenutno nije dostupan.",locale)}</p><span>LifeSpinner</span></main></div>;
  const recipeRegion=item.category==='EAT'?recipeMeasurementRegion(item.ingredients):undefined;
- const d=localizeContent(item,locale),category=d.category.toLowerCase(),liked=experience.favorites.includes(item.id);
+ const d=localizeDisplayContent(item,locale),category=d.category.toLowerCase(),liked=experience.favorites.includes(item.id);
  return <div className="random-world shared-world"><div className="random-card item-focused"><main className={`main-stage shared-stage result-scene category-${category==='book'?'read':category} show-details`}>
   <article className="shared-article"><div className="detail-hero"><button className="detail-photo photo-expand" onClick={()=>setExpanded(true)} aria-label={uiText("View full image","Prikaži cijelu sliku",locale)}><span className="detail-full-image" style={{backgroundImage:`url("${d.image.path}")`}}/></button><ItemActions item={item} locale={locale} liked={liked} completed={profile.completedIds.includes(item.id)} onLike={()=>setExperience(s=>({...s,favorites:liked?s.favorites.filter(id=>id!==item.id):[...s.favorites,item.id].slice(-200)}))} onCompleted={()=>setProfile(p=>toggleCompleted(p,item.id))}/></div>
   <div className="detail-reading-surface"><div className="detail-heading"><p className="eyebrow">LifeSpinner · {d.category==='BOOK'?'READ':d.category}</p><h1>{d.title}</h1>{d.category==='BOOK'&&<p className="book-author">{d.authors.join(', ')}</p>}<p className="shared-summary">{d.category==='EAT'?formatRecipeText(d.summary,unitSystem,locale,recipeRegion,{mass:false}):d.summary}</p>{d.category==='EAT'&&<div className="detail-meta"><span><Icon name="clock"/>{d.totalMinutes} min</span><span><Icon name="people"/>{d.servings} {uiText("servings","porcije",locale)}</span></div>}</div>

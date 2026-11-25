@@ -25,6 +25,6 @@ test('prototype names are unsupported locales and never dictionary registries',(
 });
 
  test('automatic language badges identify each draft locale and streaming keeps platform names literal',()=>{
-  for(const[locale,code]of [['en','ENG'],['bs','BHS'],['es','ESP'],['pt-BR','POR'],['de','DEU'],['it','ITA']]as const)expect(uiLocaleCode(locale)).toBe(code);
+  for(const[locale,code]of [['en','ENG'],['bs','HRV'],['es','ESP'],['pt-BR','POR'],['de','DEU'],['it','ITA']]as const)expect(uiLocaleCode(locale)).toBe(code);
   for(const locale of ['es','pt-BR','de','it']){const label=formatUi('Streaming: {platform}',locale,{platform:'HBO <test>'});expect(label).toContain('HBO <test>');expect(label).not.toBe('Streaming: HBO <test>');}
  });

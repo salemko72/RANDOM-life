@@ -1,7 +1,7 @@
+import {localizeDisplayContent} from './localize-display-content';
 import {uiText} from './ui-copy';
 import React,{useEffect,useState} from 'react';
 import type {ContentRecord,Locale} from '@random/shared';
-import {localizeContent} from '@random/shared';
 import Icon from './Icon';
 import {itemShareUrl,shareItem} from './item-share';
 
@@ -9,7 +9,7 @@ export default function ItemActions({item,locale,liked,completed,onLike,onComple
  const [notice,setNotice]=useState(''),[manual,setManual]=useState(false);const url=itemShareUrl(item.id,locale);
  useEffect(()=>{if(!notice)return;const timer=setTimeout(()=>setNotice(''),2400);return()=>clearTimeout(timer);},[notice]);
  const completedName=item.category==='BOOK'?(uiText("Already read","Već pročitano",locale)):item.category==='WATCH'?(uiText("Already watched","Već pogledano",locale)):item.category==='MOVE'?(uiText("Already done","Već odrađeno",locale)):item.category==='GO'?(uiText("Already visited","Već posjećeno",locale)):(uiText("Already tried","Već isprobano",locale));
- async function share(){const result=await shareItem(localizeContent(item,locale).title,url);if(result==='copied')setNotice(uiText("Link copied","Link je kopiran",locale));if(result==='manual')setManual(true);}
+ async function share(){const result=await shareItem(localizeDisplayContent(item,locale).title,url);if(result==='copied')setNotice(uiText("Link copied","Link je kopiran",locale));if(result==='manual')setManual(true);}
  return <><div className="item-social-actions" role="group" aria-label={uiText("Item actions","Akcije za item",locale)}>
   <button type="button" className={`favorite-float ${liked?'saved':''}`} aria-label={uiText("Like","Sviđa mi se",locale)} aria-pressed={liked} onClick={onLike}><Icon name="heart" size={23}/></button>
   <button type="button" className="share-float" aria-label={uiText("Share","Podijeli",locale)} onClick={()=>void share()}><Icon name="share" size={23}/></button>

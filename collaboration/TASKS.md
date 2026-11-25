@@ -1,6 +1,6 @@
 ## IOS-BUILD-011 — arhiva završena 25.11.2026.
 
-- Source `f9a676af09f634b5aaeb818c9e1b0f8db49c0092`. iOS 1.1.1 (11) arhiva završena. Status slanja Appleu: `IN_QUEUE`. [Zapis](sessions/2026-11-25-salem-ios11-01.md).
+- Source `f9a676af09f634b5aaeb818c9e1b0f8db49c0092`. iOS 1.1.1 (11) arhiva završena. Prijenos Appleu dovršen u 21:23 CET. [Zapis](sessions/2026-11-25-salem-ios11-01.md).
 
 - Owner: Salem. Branch: codex/salem-ios-build11. Base: 47e88def2c78d75489539c81716f2e42a64af981.
 - “ok dizibuild” authorizes preparing iOS 1.1.1 (11) and uploading that archive for TestFlight. Scope: build number and release evidence.

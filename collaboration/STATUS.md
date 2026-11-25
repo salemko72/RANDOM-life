@@ -1,4 +1,4 @@
-> **25.11.2026. iOS 1.1.1 (11).** Arhiva uspješno završena. Expo status slanja Appleu je `IN_QUEUE`. [Dokazi i linkovi](sessions/2026-11-25-salem-ios11-01.md).
+> **25.11.2026. iOS 1.1.1 (11).** Arhiva uspješno završena. Prijenos Appleu dovršen u 21:23 CET. Dostupnost testerima još nije potvrđena. [Dokazi i linkovi](sessions/2026-11-25-salem-ios11-01.md).
 
 > **25.11.2026. Dodatna bibliografska provjera.** Javne kopije kataloga potvrdile su pet brazilskih naslova i ispravku **Vovó Vigarista**. Evidencija s ISBN-ovima i preostalim provjerama dostupna je u [zapisu](sessions/2026-11-25-salem-book-editions-02.md).
 
